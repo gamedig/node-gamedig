@@ -1,22 +1,5 @@
-var Iconv = require('iconv').Iconv,
+var Iconv = require('iconv-lite'),
 	Bignum = require('bignum');
-
-
-
-var Iconv_converters = {};
-function getIconv(from) {
-	var to = 'utf-8';
-	var key = from+'---'+to;
-	if(!(key in Iconv_converters)) {
-		Iconv_converters[key] = new Iconv(from, to);
-	}
-	return Iconv_converters[key];
-}
-
-
-
-
-
 
 function Reader(query,buffer) {
 	this.query = query;
@@ -39,7 +22,7 @@ Reader.prototype = {
 		}
 
 		options.encoding = options.encoding || this.query.encoding;
-		if(options.encoding == 'latin1') options.encoding = 'windows-1252';
+		if(options.encoding == 'latin1') options.encoding = 'win1252';
 
 		var start = this.i+0;
 		var end = start;
@@ -65,8 +48,7 @@ Reader.prototype = {
 		if(enc == 'utf8' || enc == 'ucs2' || enc == 'binary') {
 			out = out.toString(enc);
 		} else {
-			var converter = getIconv(enc);
-			out = converter.convert(out).toString();
+			out = Iconv.decode(out,enc);
 		}
 		return out;
 	},

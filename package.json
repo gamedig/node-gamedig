@@ -26,7 +26,7 @@
 		}
 	],
 	"dependencies": {
-		"iconv": ">=2.0.6",
+		"iconv-lite": ">=0.2.10",
 		"bignum": ">=0.6.1",
 		"async": ">=0.2.9",
 		"compressjs": ">=1.0.0"
