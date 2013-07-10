@@ -1,5 +1,5 @@
 {
-	"name": "GameDig",
+	"name": "gamedig",
 	"description": "Query for the status of any game server in Node.JS",
 	"tags": [
 		"srcds",
