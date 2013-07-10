@@ -28,9 +28,9 @@ what is available from the queried server:
 * numplayers
 * maxplayers
 * players
-** name
-** ping
-** score
+	* name
+	* ping
+	* score
 * map
 * gametype
 * name
@@ -39,21 +39,21 @@ Supported Games
 ---
 * Armagetron
 * Gamespy 3 Protocol
-** 
+	* Minecraft
 * Unreal 2 Protocol
-** Killing Floor
+	* Killing Floor
 * Quake 2
 * Quake 3
 * Source Engine
-** Counter-Strike: Source
-** Counter-Strike: Global Offensive
-** Team Fortress 2
-** + others
+	* Counter-Strike: Source
+	* Counter-Strike: Global Offensive
+	* Team Fortress 2
+	* + others
 * GoldSrc Engine
-** Half Life: Death Match
-** Ricochet
-** Counter-Strike: 1.6
-** + others
+	* Half Life: Death Match
+	* Ricochet
+	* Counter-Strike: 1.6
+	* + others
 
 Unstable API
 ---
