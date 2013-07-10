@@ -29,14 +29,22 @@ module.exports = require('./core').extend({
 			state.players = [];
 			while(!reader.done()) {
 				var player = reader.string();
-				var split = player.split('"');
-				var split1 = split[0].split(' ');
 
-				var frags = parseInt(split1[0]);
-				var ping = parseInt(split1[1]);
-				var name = split[1] || '';
-				var address = split[3] || '';
-				
+				var args = [];
+				var split = player.split('"');
+				var inQuote = false;
+				for(var i = 0; i < split; i++) {
+					var part = split[i];
+					var inQuote = (i%2 == 1);
+					if(inQuote) args.push(part);
+					else args = args.concat(part.split(' '));
+				}
+
+				var frags = parseInt(args[0]);
+				var ping = parseInt(args[1]);
+				var name = args[2] || '';
+				var address = args[3] || '';
+
 				state.players.push({
 					frags:frags, ping:ping, name:name, address:address
 				});
