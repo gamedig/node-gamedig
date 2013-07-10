@@ -1,7 +1,7 @@
 module.exports = require('./core').extend({
 	init: function() {
 		this._super();
-		this.port = 27910;
+		this.options.port = 27910;
 		this.encoding = 'latin1';
 		this.delimiter = '\n';
 		this.sendHeader = 'status';

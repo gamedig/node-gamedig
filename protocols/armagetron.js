@@ -3,6 +3,7 @@ module.exports = require('./core').extend({
 		this._super();
 		this.encoding = 'latin1';
 		this.byteorder = 'be';
+		this.options.port = 4534;
 	},
 	run: function() {
 		var self = this;

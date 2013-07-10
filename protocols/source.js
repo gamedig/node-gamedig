@@ -4,6 +4,7 @@ module.exports = require('./core').extend({
 	init: function() {
 		this._super();
 		this.goldsrc = false;
+		this.options.port = 27015;
 	},
 	run: function() {
 
