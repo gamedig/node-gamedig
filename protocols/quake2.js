@@ -11,7 +11,6 @@ module.exports = require('./core').extend({
 		var self = this;
 
 		this.udpSend('\xff\xff\xff\xff'+this.sendHeader+'\x00',function(buffer) {
-			console.log(buffer);
 			var reader = self.reader(buffer);
 			var header = reader.string();
 			if(header != '\xff\xff\xff\xff'+this.responseHeader) return;
