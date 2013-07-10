@@ -163,8 +163,6 @@ module.exports = require('./core').extend({
 					if(id == 0 && bzip) payload = buffer.slice(20);
 					else payload = buffer.slice(12);
 				}
-				
-				console.log(id,numPackets);
 
 				packets[id] = payload;
 
