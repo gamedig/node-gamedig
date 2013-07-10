@@ -30,9 +30,11 @@ module.exports = {
 		query.options = options;
 		activeQueries.push(query);
 
-		query.on('finished', function() {
+		query.on('finished',function(state) {
 			var i = activeQueries.indexOf(query);
 			if(i >= 0) activeQueries.splice(i, 1);
+
+			if(options.callback) options.callback(state);
 		});
 		
 		process.nextTick(function() {

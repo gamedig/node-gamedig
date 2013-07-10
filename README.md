@@ -9,7 +9,7 @@ var Gamedig = require('gamedig');
 Gamedig.query({
 	type: 'minecraft',
 	host: 'mc.example.com',
-	success: function(state) {
+	callback: function(state) {
 		if(state.error) console.log("Server is offline");
 		else console.log(state);
 	}
@@ -18,6 +18,9 @@ Gamedig.query({
 
 State Object
 ---
+The callback function is "guaranteed" to be called exactly once, indicating either a query error or timeout
+(in the state's error key), or with a state object containg the successful results.
+
 The returned state object may contain some or all of the following keys, depending on
 what is available from the queried server:
 
