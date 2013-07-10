@@ -4,16 +4,22 @@ node-GameDig - Game Server Query Library
 Usage
 ---
 
+```bash
+npm install gamedig
+```
+
 ```javascript
 var Gamedig = require('gamedig');
-Gamedig.query({
-	type: 'minecraft',
-	host: 'mc.example.com',
-	callback: function(state) {
+Gamedig.query(
+	{
+		type: 'minecraft',
+		host: 'mc.example.com'
+	},
+	function(state) {
 		if(state.error) console.log("Server is offline");
 		else console.log(state);
 	}
-});
+);
 ```
 
 State Object
