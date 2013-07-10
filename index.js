@@ -20,21 +20,25 @@ udpSocket.on('message', function(buffer, rinfo) {
 
 module.exports = {
 
-	query: function(options) {
-		var type = (options.type || '').replace(/\W/g,'');
+	query: function(options,callback) {
+		if(callback) options.callback = callback;
 
+		var type = (options.type || '').replace(/\W/g,'');
 		var protocol = require('./protocols/'+type);
+
 		var query = new protocol();
 		query.udpSocket = udpSocket;
 		query.type = type;
-		query.options = options;
+		
+		// copy over options
+		query.options = {};
+		for(var i in options) query.options[i] = options[i];
+
 		activeQueries.push(query);
 
 		query.on('finished',function(state) {
 			var i = activeQueries.indexOf(query);
 			if(i >= 0) activeQueries.splice(i, 1);
-
-			if(options.callback) options.callback(state);
 		});
 		
 		process.nextTick(function() {

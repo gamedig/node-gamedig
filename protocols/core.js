@@ -48,6 +48,7 @@ module.exports = Class.extend(EventEmitter,{
 		this.reset();
 		this.finished = true;
 		this.emit('finished',result);
+		if(this.options.callback) this.options.callback(result);
 	},
 
 	reset: function() {
