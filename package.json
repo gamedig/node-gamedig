@@ -29,6 +29,7 @@
 		"iconv-lite": ">=0.2.10",
 		"bignum": ">=0.6.1",
 		"async": ">=0.2.9",
-		"compressjs": ">=1.0.0"
+		"compressjs": ">=1.0.0",
+		"gbxremote": ">=0.1.2"
 	}
 }
