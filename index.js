@@ -31,7 +31,6 @@ module.exports = {
 		query.type = type;
 		
 		// copy over options
-		query.options = {};
 		for(var i in options) query.options[i] = options[i];
 
 		activeQueries.push(query);
