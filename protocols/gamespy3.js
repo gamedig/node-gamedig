@@ -80,7 +80,7 @@ module.exports = require('./core').extend({
 			id = id & 0x7f;
 			if(last) numPackets = id+1;
 
-			packets[id] = buffer;
+			packets[id] = buffer.slice(16);
 
 			if(!numPackets || Object.keys(packets).length != numPackets) return;
 			
@@ -91,7 +91,7 @@ module.exports = require('./core').extend({
 					self.error('Missing packet #'+i);
 					return true;
 				}
-				list.push(packets[i].slice(16));
+				list.push(packets[i]);
 			}
 			var assembled = Buffer.concat(list);
 			c(assembled);

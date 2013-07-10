@@ -28,6 +28,7 @@
 	"dependencies": {
 		"iconv": ">=2.0.6",
 		"bignum": ">=0.6.1",
-		"async": ">=0.2.9"
+		"async": ">=0.2.9",
+		"compressjs": ">=1.0.0"
 	}
 }

@@ -1,4 +1,5 @@
-var async = require('async');
+var async = require('async'),
+	Bzip2 = require('compressjs').Bzip2;
 
 module.exports = require('./core').extend({
 	init: function() {
@@ -15,7 +16,7 @@ module.exports = require('./core').extend({
 		async.series([
 			function(c) {
 				self.sendPacket(
-					0x54,false,new Buffer('Source Engine Query'),
+					0x54,false,new Buffer('Source Engine Query\0'),
 					self.goldsrc ? 0x6D : 0x49,
 					function(b) {
 						var reader = self.reader(b);
@@ -136,13 +137,54 @@ module.exports = require('./core').extend({
 			return true;
 		}
 
+		var numPackets = 0;
 		var packets = [];
+		var bzip = false;
 		this.udpSend(b,function(buffer) {
 			var header = buffer.readInt32LE(0);
-			if(header == -1) return received(buffer.slice(4));
+			if(header == -1) {
+				// full package
+				return received(buffer.slice(4));
+			}
+			if(header == -2) {
+				// partial package
+				var uid = buffer.readUInt32LE(4);
+				if(!self.goldsrc && uid & 0x80000000) bzip = true;
 
-			// partial pack
-			console.log(buffer);
+				var id,payload;
+				if(self.goldsrc) {
+					id = buffer.readUInt8(8);
+					numPackets = id & 0x0f;
+					id = id & 0xf0 >> 4;
+					payload = buffer.slice(9);
+				} else {
+					numPackets = buffer.readUInt8(8);
+					id = buffer.readUInt8(9);
+					if(id == 0 && bzip) payload = buffer.slice(20);
+					else payload = buffer.slice(12);
+				}
+				
+				console.log(id,numPackets);
+
+				packets[id] = payload;
+
+				if(!numPackets || Object.keys(packets).length != numPackets) return;
+
+				// assemble the parts
+				var list = [];
+				for(var i = 0; i < numPackets; i++) {
+					if(!(i in packets)) {
+						self.error('Missing packet #'+i);
+						return true;
+					}
+					list.push(packets[i]);
+				}
+				var assembled = Buffer.concat(list);
+				var payload = assembled.slice(4);
+				if(bzip) payload = Bzip2.uncompressFile(payload);
+
+				return received(payload);
+			}
 		});
 	}
 });

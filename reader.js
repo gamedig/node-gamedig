@@ -1,4 +1,8 @@
-var Iconv = require('iconv').Iconv;
+var Iconv = require('iconv').Iconv,
+	Bignum = require('bignum');
+
+
+
 var Iconv_converters = {};
 function getIconv(from) {
 	var to = 'utf-8';
