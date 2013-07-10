@@ -18,8 +18,8 @@ module.exports = require('./gamespy3').extend({
 				self.options.port = line.port;
 				var srvhost = line.name;
 				
-				if(self.options.host.match(/\d+\.\d+\.\d+\.\d+/)) {
-					self.options.host = srvhost;
+				if(srvhost.match(/\d+\.\d+\.\d+\.\d+/)) {
+					self.options.address = srvhost;
 					c();
 				} else {
 					// resolve yet again
