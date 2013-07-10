@@ -1,0 +1,33 @@
+{
+	"name": "GameDig",
+	"description": "Query for the status of any game server in Node.JS",
+	"tags": [
+		"srcds",
+		"query",
+		"game",
+		"utility",
+		"util",
+		"server"
+	],
+	"main": "index.js",
+	"author": "Michael Morrison",
+	"version": "0.1.0",
+	"repository" : {
+		"type" : "git",
+		"url" : "https://github.com/sonicsnes/node-gamedig.git"
+	},
+	"bugs" : {
+		"url" : "https://github.com/sonicsnes/node-gamedig/issues"
+	},
+	"licenses" : [
+		{
+			"type" : "MIT",
+			"url" : "https://raw.github.com/sonicsnes/node-gamedig/master/LICENSE"
+		}
+	],
+	"dependencies": {
+		"iconv": ">2.0.6",
+		"bignum": ">0.6.1",
+		"async": ">0.2.9"
+	}
+}
