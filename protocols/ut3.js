@@ -2,7 +2,7 @@ module.exports = require('./gamespy3').extend({
 	init: function() {
 		this._super();
 		this.options.port = 6500;
-	}
+	},
 	prepState: function(state) {
 		this._super(state);
 
