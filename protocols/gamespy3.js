@@ -11,9 +11,9 @@ module.exports = require('./core').extend({
 		this.sendPacket(9,false,false,false,function(buffer) {
 			var reader = self.reader(buffer);
 			reader.skip(5);
-			var challenge = reader.string();
+			var challenge = parseInt(reader.string());
 
-			self.sendPacket(0,challenge,new Buffer([0,0,0,0]),true,function(buffer) {
+			self.sendPacket(0,challenge,new Buffer([0xff,0xff,0xff,0x01]),true,function(buffer) {
 
 				var reader = self.reader(buffer);
 				var state = {
@@ -59,7 +59,7 @@ module.exports = require('./core').extend({
 		b.writeUInt8(0xFD, 1);
 		b.writeUInt8(type, 2);
 		b.writeUInt32BE(this.sessionId, 3);
-		if(challengeLength) b.writeUInt32BE(challenge, 7);
+		if(challengeLength) b.writeInt32BE(challenge, 7);
 		if(payloadLength) payload.copy(b, 7+challengeLength);
 
 		var numPackets = 0;
