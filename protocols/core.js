@@ -33,16 +33,20 @@ module.exports = Class.extend(EventEmitter,{
 
 		this.done({error: err.toString()});
 	},
+	prepState: function(state) {
+		if(this.options.notes)
+			state.notes = this.options.notes;
+		if('host' in this.options) state.queryhost = this.options.host;
+		if('port' in this.options) state.queryport = this.options.port;
+	},
 	finish: function(result) {
 		this.done(result);
 	},
 	done: function(result) {
 		if(this.finished) return;
-
 		clearTimeout(this.globalTimeoutTimer);
 
-		if(this.options.notes)
-			result.notes = this.options.notes;
+		this.prepState(result);
 
 		this.reset();
 		this.finished = true;
@@ -73,11 +77,7 @@ module.exports = Class.extend(EventEmitter,{
 					self.options.address = self.options.host;
 					c();
 				} else {
-					dns.lookup(self.options.host, function(err,address,family) {
-						if(err) return self.error(err);
-						self.options.address = address;
-						c();
-					});
+					self.parseDns(self.options.host,c);
 				}
 			}, function(c) {
 				self.run();
@@ -85,11 +85,28 @@ module.exports = Class.extend(EventEmitter,{
 
 		]);
 	},
+	parseDns: function(host,c) {
+		var self = this;
+		dns.lookup(host, function(err,address,family) {
+			if(err) return self.error(err);
+			self.options.address = address;
+			c();
+		});
+	},
 
+	// utils
 	reader: function(buffer) {
 		return new Reader(this,buffer);
 	},
-
+	translateState: function(state,trans) {
+		for(var from in trans) {
+			var to = trans[from];
+			if(from in state) {
+				if(to) state[to] = state[from];
+				delete state[from];
+			}
+		}
+	},
 	setTimeout: function(c,t) {
 		if(this.finished) return 0;
 		var id = setTimeout(c,t);
