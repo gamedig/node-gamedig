@@ -11,8 +11,8 @@ udpSocket.bind(21943);
 udpSocket.on('message', function(buffer, rinfo) {
 	for(var i = 0; i < activeQueries.length; i++) {
 		var query = activeQueries[i];
-		if(query.address != rinfo.address) continue;
-		if(query.port != rinfo.port) continue;
+		if(query.options.address != rinfo.address) continue;
+		if(query.options.port != rinfo.port) continue;
 		query._udpResponse(buffer);
 		break;
 	}
