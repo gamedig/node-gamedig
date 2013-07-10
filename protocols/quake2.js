@@ -33,12 +33,17 @@ module.exports = require('./core').extend({
 				var args = [];
 				var split = player.split('"');
 				var inQuote = false;
-				for(var i = 0; i < split; i++) {
-					var part = split[i];
+				split.forEach(function(part,i) {
 					var inQuote = (i%2 == 1);
-					if(inQuote) args.push(part);
-					else args = args.concat(part.split(' '));
-				}
+					if(inQuote) {
+						args.push(part);
+					} else {
+						var splitSpace = part.split(' ');
+						splitSpace.forEach(function(subpart) {
+							if(subpart) args.push(subpart);
+						});
+					}
+				});
 
 				var frags = parseInt(args[0]);
 				var ping = parseInt(args[1]);
