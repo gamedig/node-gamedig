@@ -9,8 +9,10 @@ module.exports = require('./core').extend({
 	},
 	reset: function() {
 		this._super();
-		console.log("~~TERM");
-		if(this.gbxclient) this.gbxclient.terminate();
+		if(this.gbxclient) {
+			this.gbxclient.terminate();
+			this.gbxclient = false;
+		}
 	},
 	run: function() {
 		var self = this;
@@ -45,9 +47,6 @@ module.exports = require('./core').extend({
 			}
 		}, function() {
 			var state = {};
-			for(var i in results[1]) state[i] = results[1][i];
-			for(var i in results[3]) state[i] = results[3][i];
-			for(var i in results[4]) state[i] = results[4][i];
 
 			var gamemode = '';
 			var igm = results[5].GameMode;
@@ -57,23 +56,22 @@ module.exports = require('./core').extend({
 			if(igm == 3) gamemode="Laps";
 			if(igm == 4) gamemode="Stunts";
 			if(igm == 5) gamemode="Cup";
-			state.gamemode = gamemode;
+
+			state.name = self.stripColors(results[3].Name);
+			state.password = (results[3].Password != 'No password');
+			state.maxplayers = results[3].CurrentMaxPlayers;
+			state.map = self.stripColors(results[4].Name);
+			state.gametype = gamemode;
+
+			state.players = [];
+			results[2].forEach(function(player) {
+				state.players.push({name:self.stripColors(player.Name)});
+			});
 
 			console.log(state);
-			// strip colors from Name, Player.NickName
 		});
+	},
+	stripColors: function(str) {
+		return str.replace(/\$([0-9a-f][^\$]?[^\$]?|[^\$]?)/g,'');
 	}
-/*
-	function stripColors($str) {
-		$str2 = str_replace("$", "\001", preg_replace("`[\001\002]`","","a".$str) );
-		$str2 = str_replace("\001\001","$", $str2);
-		$str2 = preg_replace("`\001[hlHL]`","\002",$str2);
-		$str2 = preg_replace("`\002\[([^\]]*)\]([^\002]*)\002`","$2",$str2);
-		$str2 = preg_replace("`\002\[([^\]]*)\]`","",$str2);
-		$str2 = str_replace("\002","", $str2);
-		$str2 = preg_replace("`\001([0-9a-fA-F][0-9a-zA-Z][0-9a-zA-Z]|[^\001])`","",$str2);
-		$str2 = str_replace("\001","$$", substr($str2,1) );
-		return $str2;
-	}
-*/
 });
