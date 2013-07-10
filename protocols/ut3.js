@@ -22,7 +22,7 @@ module.exports = require('./gamespy3').extend({
 			'p268435704': 'frag_limit',
 			'p268435705': 'time_limit',
 			'p268435703': 'numbots',
-			'p268435717': 'stock_mutators'
+			'p268435717': 'stock_mutators',
 			's1': false,
 			's9': false,
 			's11': false,
