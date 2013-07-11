@@ -30,7 +30,6 @@ The callback function is "guaranteed" to be called exactly once, indicating eith
 The returned state object may contain some or all of the following keys:
 
 * error
-
 * name
 * numplayers
 * maxplayers
