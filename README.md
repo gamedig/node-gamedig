@@ -4,7 +4,7 @@ node-GameDig - Game Server Query Library
 Usage
 ---
 
-```bash
+```shell
 npm install gamedig
 ```
 
@@ -34,9 +34,9 @@ The returned state object may contain some or all of the following keys:
 * numplayers
 * maxplayers
 * players
-	* name
-	* ping
-	* score
+ * name
+ * ping
+ * score
 * map
 * gametype
 
@@ -46,34 +46,34 @@ Supported Games
 ---
 * Armagetron
 * Gamespy 3 Protocol
-	* Minecraft
-	* Unreal Tournament 3
+ * Minecraft
+ * Unreal Tournament 3
 * GoldSrc Engine
-	* Half Life: Death Match
-	* Ricochet
-	* Counter-Strike: 1.6
-	* + others
+ * Half Life: Death Match
+ * Ricochet
+ * Counter-Strike: 1.6
+ * + others
 * Nadeo Protocol
-	* Trackmania Forever
-	* Trackmania 2
-	* Shootmania
-	* (requires additional 'login' and 'password' parameters for User login on server)
+ * Trackmania Forever
+ * Trackmania 2
+ * Shootmania
+ * (requires additional 'login' and 'password' parameters for User login on server)
 * Quake 2 Protocol
-	* Quake 2
+ * Quake 2
 * Quake 3 Protocol
-	* Quake 3 Arena
-	* Quake 3 Team Arena
-	* Warsow
+ * Quake 3 Arena
+ * Quake 3 Team Arena
+ * Warsow
 * Source Engine
-	* Counter-Strike: Source
-	* Counter-Strike: Global Offensive
-	* Team Fortress 2
-	* + others
+ * Counter-Strike: Source
+ * Counter-Strike: Global Offensive
+ * Team Fortress 2
+ * + others
 * Tshock Protocol
-	* Terraria
+ * Terraria
 * Unreal 2 Protocol
-	* Killing Floor
-	* Unreal Tournament 2004
+ * Killing Floor
+ * Unreal Tournament 2004
 
 Unstable API
 ---
