@@ -26,9 +26,9 @@ Gamedig.query(
 
 * **type**: One of the types from the protocols folder
 * **host**
-* **port**: Uses the protocol default if not set
-* **login**: Required by nadeo protocol
-* **password**: Required by nadeo protocol
+* **port**: (optional) Uses the protocol default if not set
+* **login**: (optional) Used only by nadeo protocol
+* **password**: (optional) Used only by nadeo protocol
 
 ###Callback Function
 
