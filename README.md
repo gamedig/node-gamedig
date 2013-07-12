@@ -40,20 +40,18 @@ If the error key exists, it should be assumed that the game server is offline or
 
 Otherwise, the returned object is guaranteed to contain the following keys:
 
+**Stable, always present:**
 * **name**
 * **map**
 * **password**: Boolean
 * **maxplayers**
-* **players**: (array of objects) Each object may contain name, ping, score, team, address
-* **bots**: Same as players
-* **raw**: Contains special keys depending on the type of server queried - UNSTABLE
+* **players**: (array of objects) Each object **may** contain name, ping, score, team, address
+* **bots**: Same schema as players
 * **notes**: Passed through from the input
+
+**Unstable, not guaranteed:**
+* **raw**: Contains all information received from the server
 * **query**: Details about the query performed
- * **host**
- * **address**
- * **port**
- * **type**
- * **pretty**: A "pretty" string describing the game
 
 It can usually be assumed that the number of players online is equal to the length of the players array.
 Some servers may return an additional player count number, which may be present in the unstable raw object.
@@ -89,8 +87,3 @@ Supported Games
 * Unreal 2 Protocol
  * Killing Floor
  * Unreal Tournament 2004
-
-Unstable API
----
-The contents of the returned state object may change slightly from build to build, as the API
-is still being formed.
