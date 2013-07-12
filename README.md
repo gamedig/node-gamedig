@@ -22,25 +22,34 @@ Gamedig.query(
 );
 ```
 
-State Object
+Callback Function
 ---
-The callback function is "guaranteed" to be called exactly once, indicating either a query error or timeout
-(in the state's error key), or with a state object containg the successful results.
+The callback function is "guaranteed" to be called exactly once.
 
-The returned state object may contain some or all of the following keys:
+If an error occurs, the returned object will contain an "error" key, indicating the issue.
+If the error key exists, it should be assumed that the game server is offline or unreachable.
 
-* error
+Otherwise, the returned object will contain the following keys:
+
+Guaranteed:
+
 * name
-* numplayers
-* maxplayers
-* players
- * name
- * ping
- * score
 * map
-* gametype
+* password (boolean)
+* maxplayers
+* players (may contain name, ping, score, team, address)
+* bots (same as players)
+* raw (contains special keys depending on the type of server queried - UNSTABLE)
+* notes (passed through from the input)
+* query (details about the query performed)
+ * host
+ * address
+ * port
+ * type
+ * pretty (a "pretty" string describing the game)
 
-Many other keys will also be available will be available on a game by game basis.
+It can usually be assumed that the number of players online is equal to the length of the players array.
+Some servers may return an additional player count number, which may be present in the unstable raw object.
 
 Supported Games
 ---

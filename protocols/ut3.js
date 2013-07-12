@@ -1,13 +1,13 @@
 module.exports = require('./gamespy3').extend({
 	init: function() {
 		this._super();
+		this.pretty = 'Unreal Tournament 3';
 		this.options.port = 6500;
 	},
-	prepState: function(state) {
+	finalizeState: function(state) {
 		this._super(state);
 
-		this.translateState(state,{
-			//'OwningPlayerName': 'hostname',
+		this.translate(state.raw,{
 			'mapname': false,
 			'p1073741825': 'map',
 			'p1073741826': 'gametype',
@@ -35,7 +35,7 @@ module.exports = require('./gamespy3').extend({
 			'p268435968': false,
 			'p268435969': false
 		});
-		
+
 		function split(a) {
 			var s = a.split('\x1c');
 			s = s.filter(function(e) { return e });
@@ -43,5 +43,9 @@ module.exports = require('./gamespy3').extend({
 		}
 		if('custom_mutators' in state) state['custom_mutators'] = split(state['custom_mutators']);
 		if('stock_mutators' in state) state['stock_mutators'] = split(state['stock_mutators']);
+		
+		if('map' in state.raw) state.map = state.raw.map;
+		if('password' in state.raw) state.password = state.raw.password;
+		if('servername' in state.raw) state.name = state.raw.servername;
 	}
 });

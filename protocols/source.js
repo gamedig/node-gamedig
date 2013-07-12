@@ -7,11 +7,10 @@ module.exports = require('./core').extend({
 		this.goldsrc = false;
 		this.options.port = 27015;
 	},
-	run: function() {
+	run: function(state) {
 
 		var self = this;
 		var challenge;
-		var state = {};
 
 		async.series([
 			function(c) {
@@ -21,55 +20,55 @@ module.exports = require('./core').extend({
 					function(b) {
 						var reader = self.reader(b);
 						
-						if(self.goldsrc) state.address = reader.string();
-						else state.protocol = reader.uint(1);
+						if(self.goldsrc) state.raw.address = reader.string();
+						else state.raw.protocol = reader.uint(1);
 
 						state.name = reader.string();
 						state.map = reader.string();
-						state.folder = reader.string();
-						state.game = reader.string();
-						state.steamappid = reader.uint(2);
-						state.numplayers = reader.uint(1);
+						state.raw.folder = reader.string();
+						state.raw.game = reader.string();
+						state.raw.steamappid = reader.uint(2);
+						state.raw.numplayers = reader.uint(1);
 						state.maxplayers = reader.uint(1);
 
-						if(self.goldsrc) state.protocol = reader.uint(1);
-						else state.numbots = reader.uint(1);
+						if(self.goldsrc) state.raw.protocol = reader.uint(1);
+						else state.raw.numbots = reader.uint(1);
 
-						state.listentype = String.fromCharCode(reader.uint(1));
-						state.environment = String.fromCharCode(reader.uint(1));
-						state.passworded = reader.uint(1);
+						state.raw.listentype = String.fromCharCode(reader.uint(1));
+						state.raw.environment = String.fromCharCode(reader.uint(1));
+						state.password = reader.uint(1);
 						if(self.goldsrc) {
-							state.ismod = reader.uint(1);
-							if(state.ismod) {
-								state.modlink = reader.string();
-								state.moddownload = reader.string();
+							state.raw.ismod = reader.uint(1);
+							if(state.raw.ismod) {
+								state.raw.modlink = reader.string();
+								state.raw.moddownload = reader.string();
 								reader.skip(1);
-								state.modversion = reader.uint(4);
-								state.modsize = reader.uint(4);
-								state.modtype = reader.uint(1);
-								state.moddll = reader.uint(1);
+								state.raw.modversion = reader.uint(4);
+								state.raw.modsize = reader.uint(4);
+								state.raw.modtype = reader.uint(1);
+								state.raw.moddll = reader.uint(1);
 							}
 						}
-						state.secure = reader.uint(1);
+						state.raw.secure = reader.uint(1);
 
 						if(self.goldsrc) {
-							state.numbots = reader.uint(1);
+							state.raw.numbots = reader.uint(1);
 						} else {
-							if(state.folder == 'ship') {
-								state.shipmode = reader.uint(1);
-								state.shipwitnesses = reader.uint(1);
-								state.shipduration = reader.uint(1);
+							if(state.raw.folder == 'ship') {
+								state.raw.shipmode = reader.uint(1);
+								state.raw.shipwitnesses = reader.uint(1);
+								state.raw.shipduration = reader.uint(1);
 							}
-							state.version = reader.string();
+							state.raw.version = reader.string();
 							var extraFlag = reader.uint(1);
-							if(extraFlag & 0x80) state.port = reader.uint(2);
-							if(extraFlag & 0x10) state.steamid = reader.uint(8);
+							if(extraFlag & 0x80) state.raw.port = reader.uint(2);
+							if(extraFlag & 0x10) state.raw.steamid = reader.uint(8);
 							if(extraFlag & 0x40) {
-								state.sourcetvport = reader.uint(2);
-								state.sourcetvname = reader.string();
+								state.raw.sourcetvport = reader.uint(2);
+								state.raw.sourcetvname = reader.string();
 							}
-							if(extraFlag & 0x20) state.tags = reader.string();
-							if(extraFlag & 0x01) state.gameid = reader.uint(8);
+							if(extraFlag & 0x20) state.raw.tags = reader.string();
+							if(extraFlag & 0x01) state.raw.gameid = reader.uint(8);
 						}
 
 						c();
@@ -87,13 +86,12 @@ module.exports = require('./core').extend({
 				self.sendPacket(0x55,challenge,false,0x44,function(b) {
 					var reader = self.reader(b);
 					var num = reader.uint(1);
-					state.players = [];
 					for(var i = 0; i < num; i++) {
 						reader.skip(1);
 						var name = reader.string();
 						var score = reader.uint(4);
 						var time = reader.float();
-						state.players.push({
+						(time == -1 ? state.bots : state.players).push({
 							name:name, score:score, time:time
 						});
 					}
@@ -104,11 +102,11 @@ module.exports = require('./core').extend({
 				self.sendPacket(0x56,challenge,false,0x45,function(b) {
 					var reader = self.reader(b);
 					var num = reader.uint(2);
-					state.rules = [];
+					state.raw.rules = [];
 					for(var i = 0; i < num; i++) {
 						var key = reader.string();
 						var value = reader.string();
-						state.rules[key] = value;
+						state.raw.rules[key] = value;
 					}
 					c();
 				});

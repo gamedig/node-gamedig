@@ -5,7 +5,7 @@ module.exports = require('./core').extend({
 		this.encoding = 'latin1';
 		this.byteorder = 'be';
 	},
-	run: function() {
+	run: function(state) {
 		var self = this;
 
 		this.sendPacket(9,false,false,false,function(buffer) {
@@ -16,15 +16,12 @@ module.exports = require('./core').extend({
 			self.sendPacket(0,challenge,new Buffer([0xff,0xff,0xff,0x01]),true,function(buffer) {
 
 				var reader = self.reader(buffer);
-				var state = {
-					players:[]
-				};
 
 				while(!reader.done()) {
 					var key = reader.string();
 					if(!key) break;
 					var value = reader.string();
-					state[key] = value;
+					state.raw[key] = value;
 				}
 				
 				var mode = '';
@@ -42,6 +39,9 @@ module.exports = require('./core').extend({
 						}
 					}
 				}
+				
+				if('hostname' in state.raw) state.name = state.raw.hostname;
+				if('map' in state.raw) state.map = state.raw.map;
 
 				self.finish(state);
 

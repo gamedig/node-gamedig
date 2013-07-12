@@ -33,20 +33,39 @@ module.exports = Class.extend(EventEmitter,{
 
 		this.done({error: err.toString()});
 	},
-	prepState: function(state) {
+	initState: function() {
+		return {
+			name: '',
+			map: '',
+			password: false,
+			
+			raw: {},
+
+			maxplayers: 0,
+			players: [],
+			bots: []
+		};
+	},
+	finalizeState: function(state) {
 		if(this.options.notes)
 			state.notes = this.options.notes;
-		if('host' in this.options) state.queryhost = this.options.host;
-		if('port' in this.options) state.queryport = this.options.port;
+
+		state.query = {};
+		if('host' in this.options) state.query.host = this.options.host;
+		if('port' in this.options) state.query.port = this.options.port;
+		state.query.type = this.type;
+		if('pretty' in this) state.query.pretty = this.pretty;
+		
+		if('players' in state) state.numplayers = state.players.length;
+		if('bots' in state) state.numbots = state.bots.length;
 	},
 	finish: function(result) {
+		this.finalizeState(result);
 		this.done(result);
 	},
 	done: function(result) {
 		if(this.finished) return;
 		clearTimeout(this.globalTimeoutTimer);
-
-		this.prepState(result);
 
 		this.reset();
 		this.finished = true;
@@ -80,7 +99,7 @@ module.exports = Class.extend(EventEmitter,{
 					self.parseDns(self.options.host,c);
 				}
 			}, function(c) {
-				self.run();
+				self.run(self.initState());
 			}
 
 		]);
@@ -98,12 +117,12 @@ module.exports = Class.extend(EventEmitter,{
 	reader: function(buffer) {
 		return new Reader(this,buffer);
 	},
-	translateState: function(state,trans) {
+	translate: function(obj,trans) {
 		for(var from in trans) {
 			var to = trans[from];
-			if(from in state) {
-				if(to) state[to] = state[from];
-				delete state[from];
+			if(from in obj) {
+				if(to) obj[to] = obj[from];
+				delete obj[from];
 			}
 		}
 	},

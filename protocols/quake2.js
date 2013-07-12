@@ -1,13 +1,14 @@
 module.exports = require('./core').extend({
 	init: function() {
 		this._super();
+		this.pretty = 'Quake 2';
 		this.options.port = 27910;
 		this.encoding = 'latin1';
 		this.delimiter = '\n';
 		this.sendHeader = 'status';
 		this.responseHeader = 'print';
 	},
-	run: function() {
+	run: function(state) {
 		var self = this;
 
 		this.udpSend('\xff\xff\xff\xff'+this.sendHeader+'\x00',function(buffer) {
@@ -15,18 +16,15 @@ module.exports = require('./core').extend({
 			var header = reader.string();
 			if(header != '\xff\xff\xff\xff'+this.responseHeader) return;
 
-			var state = {};
-
 			var info = reader.string().split('\\');
 			if(info[0] == '') info.shift();
 			while(true) {
 				var key = info.shift();
 				var value = info.shift();
 				if(typeof value == 'undefined') break;
-				state[key] = value;
+				state.raw[key] = value;
 			}
 
-			state.players = [];
 			while(!reader.done()) {
 				var player = reader.string();
 
@@ -50,10 +48,15 @@ module.exports = require('./core').extend({
 				var name = args[2] || '';
 				var address = args[3] || '';
 
-				state.players.push({
+				(ping == 0 ? state.bots : state.players).push({
 					frags:frags, ping:ping, name:name, address:address
 				});
 			}
+
+			if('g_needpass' in state.raw) state.password = state.raw.g_needpass;
+			if('mapname' in state.raw) state.map = state.raw.mapname;
+			if('sv_maxclients' in state.raw) state.maxplayers = state.raw.sv_maxclients;
+			if('sv_hostname' in state.raw) state.name = state.raw.sv_hostname;
 
 			self.finish(state);
 			return true;

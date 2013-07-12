@@ -1,6 +1,7 @@
 module.exports = require('./quake3').extend({
 	init: function() {
 		this._super();
+		this.pretty = 'Warsow';
 		this.options.port = 44400;
 	},
 	prepState: function(state) {

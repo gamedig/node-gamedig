@@ -3,6 +3,7 @@ var dns = require('dns');
 module.exports = require('./gamespy3').extend({
 	init: function() {
 		this._super();
+		this.pretty = 'Minecraft';
 		this.maxAttempts = 2;
 		this.options.port = 25565;
 	},

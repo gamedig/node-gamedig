@@ -14,7 +14,7 @@ module.exports = require('./core').extend({
 			this.gbxclient = false;
 		}
 	},
-	run: function() {
+	run: function(state) {
 		var self = this;
 
 		var cmds = [
@@ -46,8 +46,6 @@ module.exports = require('./core').extend({
 				});
 			}
 		}, function() {
-			var state = {};
-
 			var gamemode = '';
 			var igm = results[5].GameMode;
 			if(igm == 0) gamemode="Rounds";
@@ -61,14 +59,13 @@ module.exports = require('./core').extend({
 			state.password = (results[3].Password != 'No password');
 			state.maxplayers = results[3].CurrentMaxPlayers;
 			state.map = self.stripColors(results[4].Name);
-			state.gametype = gamemode;
+			state.raw.gametype = gamemode;
 
-			state.players = [];
 			results[2].forEach(function(player) {
 				state.players.push({name:self.stripColors(player.Name)});
 			});
 
-			console.log(state);
+			self.finish(state);
 		});
 	},
 	stripColors: function(str) {

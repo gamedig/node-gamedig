@@ -3,9 +3,10 @@ var request = require('request');
 module.exports = require('./core').extend({
 	init: function() {
 		this._super();
+		this.pretty = 'Terraria';
 		this.options.port = 7878;
 	},
-	run: function() {
+	run: function(state) {
 		var self = this;
 		request({
 			uri: 'http://'+this.options.address+':'+this.options.port+'/status',
@@ -21,18 +22,16 @@ module.exports = require('./core').extend({
 			
 			if(json.status != 200) return self.error('Invalid status');
 
-			var players = [];
 			var split = json.players.split(',');
 			split.forEach(function(one) {
-				players.push({name:one});
+				state.players.push({name:one});
 			});
+			
+			state.name = json.name;
+			state.raw.port = json.port;
+			state.raw.numplayers = json.playercount;
 
-			self.finish({
-				'name': json.name,
-				'port': json.port,
-				'numplayers': json.playercount,
-				'players': players
-			});
+			self.finish(state);
 		});
 	}
 });
