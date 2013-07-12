@@ -41,6 +41,7 @@ If the error key exists, it should be assumed that the game server is offline or
 Otherwise, the returned object is guaranteed to contain the following keys:
 
 **Stable, always present:**
+
 * **name**
 * **map**
 * **password**: Boolean
@@ -50,6 +51,7 @@ Otherwise, the returned object is guaranteed to contain the following keys:
 * **notes**: Passed through from the input
 
 **Unstable, not guaranteed:**
+
 * **raw**: Contains all information received from the server
 * **query**: Details about the query performed
 
@@ -82,8 +84,7 @@ Supported Games
  * Counter-Strike: Global Offensive
  * Team Fortress 2
  * \+ others
-* Tshock Protocol
- * Terraria
+* Terraria (tshock)
 * Unreal 2 Protocol
  * Killing Floor
  * Unreal Tournament 2004
