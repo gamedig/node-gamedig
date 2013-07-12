@@ -46,7 +46,11 @@ module.exports = Class.extend(EventEmitter,{
 			bots: []
 		};
 	},
-	finalizeState: function(state) {
+	finalizeState: function(state) {},
+
+	finish: function(state) {
+		this.finalizeState(state);
+
 		if(this.options.notes)
 			state.notes = this.options.notes;
 
@@ -55,14 +59,10 @@ module.exports = Class.extend(EventEmitter,{
 		if('port' in this.options) state.query.port = this.options.port;
 		state.query.type = this.type;
 		if('pretty' in this) state.query.pretty = this.pretty;
-		
-		if('players' in state) state.numplayers = state.players.length;
-		if('bots' in state) state.numbots = state.bots.length;
+
+		this.done(state);
 	},
-	finish: function(result) {
-		this.finalizeState(result);
-		this.done(result);
-	},
+
 	done: function(result) {
 		if(this.finished) return;
 		clearTimeout(this.globalTimeoutTimer);
