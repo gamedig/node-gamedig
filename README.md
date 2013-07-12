@@ -29,6 +29,7 @@ Gamedig.query(
 * **port**: (optional) Uses the protocol default if not set
 * **login**: (optional) Used only by nadeo protocol
 * **password**: (optional) Used only by nadeo protocol
+* **notes**: (optional) Passed through to output
 
 ###Callback Function
 
@@ -43,7 +44,7 @@ Otherwise, the returned object is guaranteed to contain the following keys:
 * **map**
 * **password**: Boolean
 * **maxplayers**
-* **players**: Array of objects, each may contain name, ping, score, team, address
+* **players**: (array of objects) Each object may contain name, ping, score, team, address
 * **bots**: Same as players
 * **raw**: Contains special keys depending on the type of server queried - UNSTABLE
 * **notes**: Passed through from the input
