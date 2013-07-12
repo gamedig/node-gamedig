@@ -50,6 +50,12 @@ module.exports = Class.extend(EventEmitter,{
 
 	finish: function(state) {
 		this.finalizeState(state);
+		this.done(state);
+	},
+
+	done: function(state) {
+		if(this.finished) return;
+		clearTimeout(this.globalTimeoutTimer);
 
 		if(this.options.notes)
 			state.notes = this.options.notes;
@@ -60,17 +66,10 @@ module.exports = Class.extend(EventEmitter,{
 		state.query.type = this.type;
 		if('pretty' in this) state.query.pretty = this.pretty;
 
-		this.done(state);
-	},
-
-	done: function(result) {
-		if(this.finished) return;
-		clearTimeout(this.globalTimeoutTimer);
-
 		this.reset();
 		this.finished = true;
-		this.emit('finished',result);
-		if(this.options.callback) this.options.callback(result);
+		this.emit('finished',state);
+		if(this.options.callback) this.options.callback(state);
 	},
 
 	reset: function() {
