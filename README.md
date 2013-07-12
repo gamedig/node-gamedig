@@ -22,6 +22,14 @@ Gamedig.query(
 );
 ```
 
+Input Parameters
+---
+* type (one of the types from the protocols folder)
+* host
+* port (uses the protocol default if not set)
+* login (required by nadeo protocol)
+* password (required by nadeo protocol)
+
 Callback Function
 ---
 The callback function is "guaranteed" to be called exactly once.
@@ -64,7 +72,6 @@ Supported Games
  * Trackmania Forever
  * Trackmania 2
  * Shootmania
- * (requires additional 'login' and 'password' parameters for User login on server)
 * Quake 2 Protocol
  * Quake 2
 * Quake 3 Protocol
