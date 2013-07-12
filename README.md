@@ -29,9 +29,7 @@ The callback function is "guaranteed" to be called exactly once.
 If an error occurs, the returned object will contain an "error" key, indicating the issue.
 If the error key exists, it should be assumed that the game server is offline or unreachable.
 
-Otherwise, the returned object will contain the following keys:
-
-Guaranteed:
+Otherwise, the returned object is guaranteed to contain the following keys:
 
 * name
 * map
