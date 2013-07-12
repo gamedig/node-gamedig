@@ -30,7 +30,7 @@
 		"bignum": ">=0.6.1",
 		"async": ">=0.2.9",
 		"compressjs": ">=1.0.0",
-		"gbxremote": ">=0.1.2",
+		"gbxremote": "git://github.com/sonicsnes/node-gbxremote.git",
 		"request": ">=2.22.0"
 	}
 }
