@@ -91,6 +91,10 @@ module.exports = require('./core').extend({
 						var name = reader.string();
 						var score = reader.uint(4);
 						var time = reader.float();
+
+						// connecting players don't could as players.
+						if(!name) continue;
+
 						(time == -1 ? state.bots : state.players).push({
 							name:name, score:score, time:time
 						});
