@@ -43,7 +43,17 @@ module.exports = require('./core').extend({
 					});
 				}
 			}
-
+			/*
+			var m = this.options.address.match(/(\d+)\.(\d+)\.(\d+)\.(\d+)/);
+			if(m) {
+				var o1 = parseInt(m[1]);
+				var o2 = parseInt(m[2]);
+				var o3 = parseInt(m[3]);
+				var o4 = parseInt(m[4]);
+				var addr = o1+(o2<<8)+(o3<<16)+(o4<<24);
+				state.raw.url = 'aos://'+addr;
+			}
+			*/
 			self.finish(state);
 		});
 	}
