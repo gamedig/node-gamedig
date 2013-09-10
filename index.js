@@ -9,16 +9,20 @@ var udpSocket = dgram.createSocket('udp4');
 udpSocket.unref();
 udpSocket.bind(21943);
 udpSocket.on('message', function(buffer, rinfo) {
+	if(Gamedig.debug) console.log("Received",buffer,rinfo.address,rinfo.port);
 	for(var i = 0; i < activeQueries.length; i++) {
 		var query = activeQueries[i];
-		if(query.options.address != rinfo.address) continue;
+		if(
+			query.options.address != rinfo.address
+			&& query.options.altaddress != rinfo.address
+		) continue;
 		if(query.options.port != rinfo.port) continue;
 		query._udpResponse(buffer);
 		break;
 	}
 });
 
-module.exports = {
+Gamedig = {
 
 	query: function(options,callback) {
 		if(callback) options.callback = callback;
@@ -48,3 +52,5 @@ module.exports = {
 	}
 
 };
+
+module.exports = Gamedig;

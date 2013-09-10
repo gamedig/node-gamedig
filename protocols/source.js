@@ -99,6 +99,24 @@ module.exports = require('./core').extend({
 							name:name, score:score, time:time
 						});
 					}
+					
+					// if we didn't find the bots, iterate
+					// through and guess which ones they are
+					if(!state.bots.length) {
+						var maxTime = 0;
+						state.players.forEach(function(player) {
+							maxTime = Math.max(player.time,maxTime);
+						});
+						for(var i = 0; i < state.players.length; i++) {
+							var player = state.players[i];
+							if(state.bots.length >= state.raw.numbots) continue;
+							if(player.time != maxTime) continue;
+							state.bots.push(player);
+							state.players.splice(i, 1);
+							i--;
+						}
+					}
+
 					c();
 				});
 			},

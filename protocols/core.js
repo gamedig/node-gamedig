@@ -62,6 +62,7 @@ module.exports = Class.extend(EventEmitter,{
 
 		state.query = {};
 		if('host' in this.options) state.query.host = this.options.host;
+		if('address' in this.options) state.query.address = this.options.address;
 		if('port' in this.options) state.query.port = this.options.port;
 		state.query.type = this.type;
 		if('pretty' in this) state.query.pretty = this.pretty;
