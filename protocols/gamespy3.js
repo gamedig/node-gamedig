@@ -42,6 +42,7 @@ module.exports = require('./core').extend({
 				
 				if('hostname' in state.raw) state.name = state.raw.hostname;
 				if('map' in state.raw) state.map = state.raw.map;
+				if('mayplayers' in state.raw) state.mayplayers = state.raw.mayplayers;
 
 				self.finish(state);
 
