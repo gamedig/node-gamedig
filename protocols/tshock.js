@@ -9,8 +9,12 @@ module.exports = require('./core').extend({
 	run: function(state) {
 		var self = this;
 		request({
-			uri: 'http://'+this.options.address+':'+this.options.port+'/status',
+			uri: 'http://'+this.options.address+':'+this.options.port+'/v2/server/status',
 			timeout: 3000,
+			qs: {
+				players: 'true',
+				token: this.options.token
+			}
 		}, function(e,r,body) {
 			if(e) return self.error('HTTP error');
 			var json;
@@ -22,9 +26,8 @@ module.exports = require('./core').extend({
 			
 			if(json.status != 200) return self.error('Invalid status');
 
-			var split = json.players.split(',');
-			split.forEach(function(one) {
-				state.players.push({name:one});
+			json.players.forEach(function(one) {
+				state.players.push({name:one.nickname,team:one.team});
 			});
 			
 			state.name = json.name;

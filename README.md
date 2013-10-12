@@ -27,8 +27,6 @@ Gamedig.query(
 * **type**: One of the types from the protocols folder
 * **host**
 * **port**: (optional) Uses the protocol default if not set
-* **login**: (optional) Used only by nadeo protocol
-* **password**: (optional) Used only by nadeo protocol
 * **notes**: (optional) Passed through to output
 
 ###Callback Function
@@ -60,31 +58,46 @@ Some servers may return an additional player count number, which may be present 
 
 Supported Games
 ---
-* Armagetron
-* Gamespy 3 Protocol
- * Minecraft
- * Unreal Tournament 3
-* GoldSrc Engine
- * Half Life: Death Match
- * Ricochet
- * Counter-Strike: 1.6
- * \+ others
-* Nadeo Protocol
- * Trackmania Forever
- * Trackmania 2
- * Shootmania
-* Quake 2 Protocol
- * Quake 2
-* Quake 3 Protocol
- * Quake 3 Arena
- * Quake 3 Team Arena
- * Warsow
-* Source Engine
- * Counter-Strike: Source
- * Counter-Strike: Global Offensive
- * Team Fortress 2
- * \+ others
-* Terraria (tshock)
-* Unreal 2 Protocol
- * Killing Floor
- * Unreal Tournament 2004
+
+###Armagetron
+
+###Gamespy 3 Protocol
+* Minecraft
+* Unreal Tournament 3
+
+###GoldSrc Engine
+* Half Life: Death Match
+* Ricochet
+* Counter-Strike: 1.6
+* \+ others
+
+###Nadeo Protocol
+```
+Requires additional parameters: login, password
+```
+* Trackmania Forever
+* Trackmania 2
+* Shootmania
+
+###Quake 2 Protocol
+* Quake 2
+
+###Quake 3 Protocol
+* Quake 3 Arena
+* Quake 3 Team Arena
+* Warsow
+
+###Source Engine
+* Counter-Strike: Source
+* Counter-Strike: Global Offensive
+* Team Fortress 2
+* \+ others
+
+###Terraria (tshock)
+```
+Requires additional parameter: token
+```
+
+###Unreal 2 Protocol
+* Killing Floor
+* Unreal Tournament 2004
