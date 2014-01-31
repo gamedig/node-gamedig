@@ -1,0 +1,29 @@
+# id | pretty | protocol | port?
+
+alienswarm|Alien Swarm|valve
+csgo|Counter-Strike: Global Offensive|valve
+css|Counter-Strike: Source|valve
+cs16|Counter-Strike 1.6|valvegold
+dinodday|Dino D-Day|valve
+garrysmod|Garry's Mod|valve
+hidden|The Hidden: Source|valve
+kzmod|KzMod|valve
+left4dead|Left 4 Dead|valve
+left4dead2|Left 4 Dead 2|valve
+nmrih|No More Room in Hell|valve
+ns|Natural Selection|valvegold
+ns2|Natural Selection 2|valve|27016
+nucleardawn|Nuclear Dawn|valve
+quake2|Quake 2|quake2
+quake3|Quake 3|quake3
+ricochet|Ricochet|valvegold
+rust|Rust|valve|28016
+ship|The Ship|valve
+shootmania|Shootmania|nadeo
+starbound|Starbound|valve
+suicidesurvival|Suicide Survival|valve
+svencoop|Sven Coop|valvegold
+synergy|Synergy|valve
+tf2|Team Fortress 2|valve
+trackmania2|Trackmania 2|nadeo
+trackmaniaforever|Trackmania Forever|nadeo

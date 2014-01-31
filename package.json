@@ -9,7 +9,7 @@
 		"util",
 		"server"
 	],
-	"main": "index.js",
+	"main": "lib/index.js",
 	"author": "Michael Morrison",
 	"version": "0.1.2",
 	"repository" : {
@@ -26,11 +26,16 @@
 		}
 	],
 	"dependencies": {
-		"iconv-lite": ">=0.2.10",
-		"bignum": ">=0.6.1",
-		"async": ">=0.2.9",
-		"compressjs": ">=1.0.0",
-		"gbxremote": "git://github.com/sonicsnes/node-gbxremote.git",
-		"request": ">=2.22.0"
+		"iconv-lite": "~0.2.11",
+		"long": "~1.1.2",
+		"async": "~0.2.10",
+		"compressjs": "~1.0.1",
+		"gbxremote": "~0.1.4",
+		"request": "~2.33.0",
+		"optimist": "~0.6.0",
+		"varint": "~1.0.0"
+	},
+	"bin": {
+		"gamedig": "bin/gamedig.js"
 	}
 }
