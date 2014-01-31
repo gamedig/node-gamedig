@@ -20,7 +20,7 @@ ricochet|Ricochet|valvegold
 rust|Rust|valve|28016
 ship|The Ship|valve
 shootmania|Shootmania|nadeo
-starbound|Starbound|valve
+starbound|Starbound|valve|21025
 suicidesurvival|Suicide Survival|valve
 svencoop|Sven Coop|valvegold
 synergy|Synergy|valve
