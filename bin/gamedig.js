@@ -4,6 +4,8 @@ var argv = require('optimist').argv;
 
 var debug = argv.debug;
 delete argv.debug;
+var outputFormat = argv.output;
+delete argv.output;
 
 var options = {};
 for(var key in argv) {
@@ -22,6 +24,10 @@ if(debug) Gamedig.debug = true;
 Gamedig.query(
 	options,
 	function(state) {
-		console.log(state);
+		if(outputFormat == 'pretty') {
+			console.log(JSON.stringify(state,null,'  '));
+		} else {
+			console.log(JSON.stringify(state));
+		}
 	}
 );

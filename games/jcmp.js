@@ -19,8 +19,6 @@ module.exports = require('./protocols/gamespy3').extend({
 	},
 	finalizeState: function(state) {
 		this._super(state);
-		console.log(state.players.length);
-		console.log(state.raw.numplayers);
 		if(!state.players.length && parseInt(state.raw.numplayers)) {
 			for(var i = 0; i < parseInt(state.raw.numplayers); i++) {
 				state.players.push({});
