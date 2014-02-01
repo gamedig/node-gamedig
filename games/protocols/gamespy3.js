@@ -7,6 +7,7 @@ module.exports = require('./core').extend({
 		this.encoding = 'latin1';
 		this.byteorder = 'be';
 		this.noChallenge = false;
+		this.useOnlySingleSplit = false;
 	},
 	run: function(state) {
 		var self = this;
@@ -17,7 +18,6 @@ module.exports = require('./core').extend({
 				if(self.noChallenge) return c();
 				self.sendPacket(9,false,false,false,function(buffer) {
 					var reader = self.reader(buffer);
-					reader.skip(5);
 					challenge = parseInt(reader.string());
 					c();
 				});
@@ -125,16 +125,25 @@ module.exports = require('./core').extend({
 			if(iSessionId != self.sessionId) return;
 
 			if(!assemble) {
-				c(buffer);
+				c(buffer.slice(5));
+				return true;
+			}
+			if(self.useOnlySingleSplit) {
+				// has split headers, but they are worthless and only one packet is used
+				c([buffer.slice(16)]);
 				return true;
 			}
 
 			var id = buffer.readUInt16LE(14);
 			var last = (id & 0x80);
 			id = id & 0x7f;
-			if(last || self._singlePacketSplits) numPackets = id+1;
+			if(last) numPackets = id+1;
 
 			packets[id] = buffer.slice(16);
+			if(self.debug) {
+				console.log("Received packet #"+id);
+				if(last) console.log("(last)");
+			}
 
 			if(!numPackets || Object.keys(packets).length != numPackets) return;
 			

@@ -2,6 +2,7 @@
 
 ageofchivalry|Age of Chivalry|valve
 alienswarm|Alien Swarm|valve
+avp2|Aliens vs Predator 2|gamespy1|27888
 americasarmy2|America's Army 2|americasarmy
 americasarmy3|America's Army 3|valve|27020
 americasarmypg|America's Army: Proving Grounds|valve|27020
@@ -10,30 +11,80 @@ arma2|ArmA Armed Assault 2|gamespy3|2302
 arma3|ArmA Armed Assault 3|gamespy3|2302
 bf1942|Battlefield 1942|gamespy1|23000
 bf2142|Battlefield 2142|gamespy3|29900
+bf3|Battlefield 3|battlefield
+bf4|Battlefield 4|battlefield
+bfv|Battlefield Vietnam|gamespy2|23000
 brink|Brink|valve|27016
+cod|Call of Duty|quake3|28960
+cod2|Call of Duty 2|quake3|28960
+cod4|Call of Duty 4|quake3|28960
+codmw3|Call of Duty: Modern Warfare 3|valve|27017
+coduo|Call of Duty: United Offensive|quake3|28960
+codwaw|Call of Duty: World at War|quake3|28960
 csgo|Counter-Strike: Global Offensive|valve
 css|Counter-Strike: Source|valve
-cs16|Counter-Strike 1.6|valvegold
+cs16|Counter-Strike 1.6|valve
+cscz|Counter-Strike: Condition Zero|valve
+crysis|Crysis|gamespy3|64087
+crysis2|Crysis 2|gamespy3|64000
+crysiswars|Crysis Wars|gamespy3|64100
+darkesthour|Darkest Hour|unreal2|7758
+dayz|DayZ|valve|2302
 dinodday|Dino D-Day|valve
+dod|Day of Defeat|valve
+dods|Day of Defeat: Source|valve
+doom3|Doom 3|doom3
+dota2|DOTA 2|valve
+fear|F.E.A.R.|gamespy2|27888
+fortressforever|Fortress Forever|valve
 garrysmod|Garry's Mod|valve
+graw|Ghost Recon: Advanced Warfighter|gamespy2
+graw2|Ghost Recon: Advanced Warfighter 2|gamespy2
+gore|Gore|gamespy1
+hldm|Half-Life 1 Deathmatch|valve
+hl2dm|Half-Life 2 Deathmatch|valve
+halo|Halo|gamespy2|2302
 hidden|The Hidden: Source|valve
+homefront|Homefront|valve
+insurgency|Insurgency|valve
 kzmod|KzMod|valve
 left4dead|Left 4 Dead|valve
 left4dead2|Left 4 Dead 2|valve
+mohaa|Medal of Honor: Allied Assault|gamespy1|12300
+mohsh|Medal of Honor: Spearhead|gamespy1|12300
+mohbt|Medal of Honor: Breakthrough|gamespy1|12300
+moh2010|Medal of Honor 2010|battlefield|48888
+mohwf|Medal of Honor: Warfighter|battlefield|25200
+mnc|Monday Night Combat|valve
+mta|Multi Theft Auto|ase|22126
 nmrih|No More Room in Hell|valve
-ns|Natural Selection|valvegold
+ns|Natural Selection|valve
 ns2|Natural Selection 2|valve|27016
 nucleardawn|Nuclear Dawn|valve
+prey|Prey|doom3|27719
 quake2|Quake 2|quake2
 quake3|Quake 3|quake3
-ricochet|Ricochet|valvegold
+redorchestraost|Red Orchestra: Ostfront 41-45|gamespy1|7767
+redorchestra2|Red Orchestra 2|valve
+rtcw|Return to Castle Wolfenstein|quake3|27960
+ricochet|Ricochet|valve
 rust|Rust|valve|28016
 ship|The Ship|valve
 shootmania|Shootmania|nadeo
+sof2|Soldier of Fortune 2|quake3|20100
+swbf2|Star Wars: Battlefront 2|gamespy2|3658
+swjk|Star Wars: Jedi Knight|quake3|29070
+swjk2|Star Wars: Jedi Knight 2|quake3|28070
 starbound|Starbound|valve|21025
 suicidesurvival|Suicide Survival|valve
-svencoop|Sven Coop|valvegold
+swat4|SWAT 4|gamespy2|10482
+svencoop|Sven Coop|valve
 synergy|Synergy|valve
+tfc|Team Fortress Classic|valve
 tf2|Team Fortress 2|valve
 trackmania2|Trackmania 2|nadeo
 trackmaniaforever|Trackmania Forever|nadeo
+ut|Unreal Tournament|gamespy1|7778
+wolfensteinet|Wolfenstein: Enemy Territory|quake3|27960
+zombiemaster|Zombie Master|valve
+zps|Zombie Panic: Source|valve

@@ -165,6 +165,18 @@ module.exports = Class.extend(EventEmitter,{
 		return id;
 	},
 
+	
+	
+	trueTest: function(str) {
+		if(typeof str == 'boolean') return str;
+		if(typeof str == 'number') return str != 0;
+		if(typeof str == 'string') {
+			if(str.toLowerCase() == 'true') return true;
+			if(str == 'yes') return true;
+			if(str == '1') return true;
+		}
+		return false;
+	},
 
 
 
@@ -194,10 +206,13 @@ module.exports = Class.extend(EventEmitter,{
 		});
 	},
 	tcpSend: function(buffer,ondata) {
-		if(this.tcpCallback) return this.fatal('Attempted to send TCP packet while still waiting on a managed response');
-		this.tcpCallback = ondata;
-		this._tcpConnect(function(socket) {
-			socket.write(buffer);
+		var self = this;
+		process.nextTick(function() {
+			if(self.tcpCallback) return self.fatal('Attempted to send TCP packet while still waiting on a managed response');
+			self.tcpCallback = ondata;
+			self._tcpConnect(function(socket) {
+				socket.write(buffer);
+			});
 		});
 	},
 
@@ -205,18 +220,19 @@ module.exports = Class.extend(EventEmitter,{
 
 	udpSend: function(buffer,onpacket,ontimeout) {
 		var self = this;
+		process.nextTick(function() {
+			if(self.udpCallback) return self.fatal('Attempted to send UDP packet while still waiting on a managed response');
+			self._udpSendNow(buffer);
+			if(!onpacket) return;
 
-		if(self.udpCallback) return self.fatal('Attempted to send UDP packet while still waiting on a managed response');
-		self._udpSendNow(buffer);
-		if(!onpacket) return;
-
-		self.udpTimeoutTimer = self.setTimeout(function() {
-			self.udpCallback = false;
-			var timeout = false;
-			if(!ontimeout || ontimeout() !== true) timeout = true;
-			if(timeout) self.error('timeout');
-		},1000);
-		self.udpCallback = onpacket;
+			self.udpTimeoutTimer = self.setTimeout(function() {
+				self.udpCallback = false;
+				var timeout = false;
+				if(!ontimeout || ontimeout() !== true) timeout = true;
+				if(timeout) self.error('timeout');
+			},1000);
+			self.udpCallback = onpacket;
+		});
 	},
 	_udpSendNow: function(buffer) {
 		if(!('port' in this.options)) return this.fatal('Attempted to send without setting a port');

@@ -4,6 +4,15 @@ var varint = require('varint'),
 function varIntBuffer(num) {
 	return new Buffer(varint.encode(num));
 }
+function buildPacket(id,data) {
+	if(!data) data = new Buffer(0);
+	var idBuffer = varIntBuffer(id);
+	return Buffer.concat([
+		varIntBuffer(data.length+idBuffer.length),
+		idBuffer,
+		data
+	]);
+}
 
 module.exports = require('./protocols/core').extend({
 	init: function() {
@@ -32,22 +41,12 @@ module.exports = require('./protocols/core').extend({
 					portBuf,
 					varIntBuffer(1)
 				];
-
-				function buildPacket(id,data) {
-					if(!data) data = new Buffer(0);
-					var idBuffer = varIntBuffer(id);
-					return Buffer.concat([
-						varIntBuffer(data.length+idBuffer.length),
-						idBuffer,
-						data
-					]);
-				}
 				
 				var outBuffer = Buffer.concat([
 					buildPacket(0,Buffer.concat(bufs)),
 					buildPacket(0)
 				]);
-				
+
 				self.tcpSend(outBuffer, function(data) {
 					if(data.length < 10) return false;
 					var expected = varint.decode(data);
@@ -55,6 +54,7 @@ module.exports = require('./protocols/core').extend({
 					if(data.length < expected) return false;
 					receivedData = data;
 					c();
+					return true;
 				});
 			},
 			function(c) {

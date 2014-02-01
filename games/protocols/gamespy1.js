@@ -16,7 +16,7 @@ module.exports = require('./core').extend({
 					state.raw = data;
 					if('hostname' in state.raw) state.name = state.raw.hostname;
 					if('mapname' in state.raw) state.map = state.raw.mapname;
-					if(state.raw.password == '1') state.password = true;
+					if(self.trueTest(state.raw.password)) state.password = true;
 					if('maxplayers' in state.raw) state.maxplayers = parseInt(state.raw.maxplayers);
 					c();
 				});
@@ -42,7 +42,7 @@ module.exports = require('./core').extend({
 						} else {
 							if(!(id in players)) players[id] = {};
 							if(key == 'playername') key = 'name';
-							else if(key == 'team') value = parseInt(value)-1;
+							else if(key == 'team') value = parseInt(value);
 							else if(key == 'score' || key == 'ping' || key == 'deaths') value = parseInt(value);
 							players[id][key] = value;
 						}
