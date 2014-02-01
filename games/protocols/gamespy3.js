@@ -1,78 +1,111 @@
+var async = require('async');
+
 module.exports = require('./core').extend({
 	init: function() {
 		this._super();
 		this.sessionId = 1;
 		this.encoding = 'latin1';
 		this.byteorder = 'be';
+		this.noChallenge = false;
 	},
 	run: function(state) {
 		var self = this;
+		var challenge,packets;
 
-		this.sendPacket(9,false,false,false,function(buffer) {
-			var reader = self.reader(buffer);
-			reader.skip(5);
-			var challenge = parseInt(reader.string());
+		async.series([
+			function(c) {
+				if(self.noChallenge) return c();
+				self.sendPacket(9,false,false,false,function(buffer) {
+					var reader = self.reader(buffer);
+					reader.skip(5);
+					challenge = parseInt(reader.string());
+					c();
+				});
+			},
+			function(c) {
+				self.sendPacket(0,challenge,new Buffer([0xff,0xff,0xff,0x01]),true,function(b) {
+					packets = b;
+					c();
+				});
+			},
+			function(c) {
+				// iterate over the received packets
+				// the first packet will start off with k/v pairs, followed with data fields
+				// the following packets will only have data fields
+				var data = {};
 
-			self.sendPacket(0,challenge,new Buffer([0xff,0xff,0xff,0x01]),true,function(buffer) {
+				for(var iPacket = 0; iPacket < packets.length; iPacket++) {
+					var packet = packets[iPacket];
+					var reader = self.reader(packet);
 
-				var reader = self.reader(buffer);
+					if(self.debug) {
+						console.log("+++"+packet.toString('hex'));
+						console.log(":::"+packet.toString('ascii'));
+					}
 
-				while(!reader.done()) {
-					var key = reader.string();
-					if(!key) break;
-					var value = reader.string();
-					
-					// reread the next line if we hit the weird ut3 bug
-					if(value == 'p1073741829') value = reader.string();
+					if(iPacket == 0) {
+						while(!reader.done()) {
+							var key = reader.string();
+							if(!key) break;
+							var value = reader.string();
+							
+							// reread the next line if we hit the weird ut3 bug
+							if(value == 'p1073741829') value = reader.string();
 
-					state.raw[key] = value;
-				}
-
-				while(!reader.done()) {
-					var mode = reader.string();
-					if(mode.charCodeAt(0) <= 2) mode = mode.substring(1);
-					if(!mode) continue;
-					var offset = 0;
-					reader.skip(1);
-
-					while(!reader.done()) {
-						var item = reader.string();
-						if(!item) break;
-
-						if(
-							mode == 'player_'
-							|| mode == 'score_'
-							|| mode == 'ping_'
-							|| mode == 'team_'
-							|| mode == 'deaths_'
-							|| mode == 'pid_'
-						) {
-							if(state.players.length <= offset)
-								state.players.push({});
+							state.raw[key] = value;
 						}
-						if(mode == 'player_') state.players[offset].name = item;
-						if(mode == 'score_') state.players[offset].score = item;
-						if(mode == 'ping_') state.players[offset].ping = item;
-						if(mode == 'team_') state.players[offset].team = item;
-						if(mode == 'deaths_') state.players[offset].deaths = item;
-						if(mode == 'pid_') state.players[offset].pid = item;
-						offset++;
+					}
+
+					var firstMode = true;
+					while(!reader.done()) {
+						var mode = reader.string();
+						if(mode.charCodeAt(0) <= 2) mode = mode.substring(1);
+						if(!mode) continue;
+						var offset = 0;
+						if(iPacket != 0 && firstMode) offset = reader.uint(1);
+						reader.skip(1);
+						firstMode = false;
+
+						while(!reader.done()) {
+							var item = reader.string();
+							if(!item) break;
+
+							if(
+								mode == 'player_'
+								|| mode == 'score_'
+								|| mode == 'ping_'
+								|| mode == 'team_'
+								|| mode == 'deaths_'
+								|| mode == 'pid_'
+							) {
+								if(state.players.length <= offset)
+									state.players.push({});
+							}
+							if(mode == 'player_') state.players[offset].name = item;
+							if(mode == 'score_') state.players[offset].score = parseInt(item);
+							if(mode == 'ping_') state.players[offset].ping = parseInt(item);
+							if(mode == 'team_') state.players[offset].team = parseInt(item);
+							if(mode == 'deaths_') state.players[offset].deaths = parseInt(item);
+							if(mode == 'pid_') state.players[offset].pid = item;
+							offset++;
+						}
 					}
 				}
-				
+
 				if('hostname' in state.raw) state.name = state.raw.hostname;
-				if('map' in state.raw) state.map = state.raw.map;
+				else if('servername' in state.raw) state.name = state.raw.servername;
+				if('mapname' in state.raw) state.map = state.raw.mapname;
+				if(state.raw.password == '1') state.password = true;
 				if('maxplayers' in state.raw) state.maxplayers = parseInt(state.raw.maxplayers);
 
 				self.finish(state);
-
-			});
-		});
+			}
+		]);
 	},
 	sendPacket: function(type,challenge,payload,assemble,c) {
 		var self = this;
 
-		var challengeLength = challenge === false ? 0 : 4;
+		var challengeLength = (this.noChallenge || challenge === false) ? 0 : 4;
 		var payloadLength = payload ? payload.length : 0;
 
 		var b = new Buffer(7 + challengeLength + payloadLength);
@@ -114,8 +147,7 @@ module.exports = require('./core').extend({
 				}
 				list.push(packets[i]);
 			}
-			var assembled = Buffer.concat(list);
-			c(assembled);
+			c(list);
 			return true;
 		});
 	}
