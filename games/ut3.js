@@ -41,11 +41,8 @@ module.exports = require('./protocols/gamespy3').extend({
 			s = s.filter(function(e) { return e });
 			return s;
 		}
-		if('custom_mutators' in state) state['custom_mutators'] = split(state['custom_mutators']);
-		if('stock_mutators' in state) state['stock_mutators'] = split(state['stock_mutators']);
-		
+		if('custom_mutators' in state.raw) state.raw['custom_mutators'] = split(state.raw['custom_mutators']);
+		if('stock_mutators' in state.raw) state.raw['stock_mutators'] = split(state.raw['stock_mutators']);
 		if('map' in state.raw) state.map = state.raw.map;
-		if('password' in state.raw) state.password = state.raw.password;
-		if('servername' in state.raw) state.name = state.raw.servername;
 	}
 });
