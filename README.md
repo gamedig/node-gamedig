@@ -170,6 +170,11 @@ Don't see your game listed here?
 
 1. Let us know so we can fix it
 1. You can try using some common query protocols directly by using one of these server types:
+ * protocol-ase
+ * protocol-battlefield
+ * protocol-doom3
+ * protocol-gamespy1
+ * protocol-gamespy2
  * protocol-gamespy3
  * protocol-nadeo
  * protocol-quake2
