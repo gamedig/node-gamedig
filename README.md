@@ -1,5 +1,5 @@
 node-GameDig - Game Server Query Library
----
+===
 
 Usage from Node.js
 ---
@@ -73,11 +73,7 @@ Supported Games
 * KzMod (kzmod)
 * Left 4 Dead (left4dead)
 * Left 4 Dead 2 (left4dead2)
-* Minecraft (minecraft)
-```
-Some minecraft servers may not respond to a typical status query. If this is the case, try using the
-'minecraftping' server type instead, which uses a less accurate but more reliable solution.
-```
+* Minecraft (minecraft) [[Additional Notes](#minecraft)]
 * Mutant Factions (mutantfactions)
 * Natural Selection (ns)
 * Natural Selection 2 (ns2)
@@ -88,41 +84,44 @@ Some minecraft servers may not respond to a typical status query. If this is the
 * Ricochet (ricochet)
 * Rust (rust)
 * The Ship (ship)
-* ShootMania (shootmania)
-```
-Requires additional parameters: login, password
-```
+* ShootMania (shootmania) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]
 * Starbound (starbound)
 * Suicide Survival (suicidesurvival)
 * Sven Coop (svencoop)
 * Synergy (synergy)
 * Team Fortress 2 (tf2)
-* Terraria (terraria)
-```
-Requires tshock server mod, and an additional parameter: token
-```
-* TrackMania 2 (trackmania2)
-```
-Requires additional parameters: login, password
-```
-* TrackMania Forever (trackmaniaforever)
-```
-Requires additional parameters: login, password
-```
+* Terraria (terraria) [[Additional Notes](#terraria)]
+* TrackMania 2 (trackmania2) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]
+* TrackMania Forever (trackmaniaforever) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]
 * Unreal Tournament 2004 (ut2004)
 * Unreal Tournament 3 (ut3)
 * Warsow (warsow)
 
 Don't see your game listed here?
+
 1. Let us know so we can fix it
-2. You can try using some common query protocols directly by using one of these server types:
-* protocol-gamespy3
-* protocol-nadeo
-* protocol-quake2
-* protocol-quake3
-* protocol-unreal2
-* protocol-valve
-* protocol-valvegold
+1. You can try using some common query protocols directly by using one of these server types:
+ * protocol-gamespy3
+ * protocol-nadeo
+ * protocol-quake2
+ * protocol-quake3
+ * protocol-unreal2
+ * protocol-valve
+ * protocol-valvegold
+
+### Games with Additional Notes
+
+#### Minecraft
+Some minecraft servers may not respond to a typical status query. If this is the case, try using the
+'minecraftping' server type instead, which uses a less accurate but more reliable solution.
+
+#### Nadeo (ShootMania / TrackMania / etc)
+To query a nadeo game, you must have a user account on the server with access level User or higher.
+Pass the login into to GameDig with the additional options: login, password
+
+#### Terraria
+Requires tshock server mod, and a REST user token, which can be passed to GameDig with the
+additional option: token
 
 Usage from Command Line
 ---
