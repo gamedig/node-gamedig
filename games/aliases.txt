@@ -1,6 +1,16 @@
 # id | pretty | protocol | port?
 
+ageofchivalry|Age of Chivalry|valve
 alienswarm|Alien Swarm|valve
+americasarmy2|America's Army 2|americasarmy
+americasarmy3|America's Army 3|valve|27020
+americasarmypg|America's Army: Proving Grounds|valve|27020
+arma|ArmA Armed Assault 1|gamespy2|2302
+arma2|ArmA Armed Assault 2|gamespy3|2302
+arma3|ArmA Armed Assault 3|gamespy3|2302
+bf1942|Battlefield 1942|gamespy1|23000
+bf2142|Battlefield 2142|gamespy3|29900
+brink|Brink|valve|27016
 csgo|Counter-Strike: Global Offensive|valve
 css|Counter-Strike: Source|valve
 cs16|Counter-Strike 1.6|valvegold

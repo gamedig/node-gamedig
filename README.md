@@ -59,8 +59,19 @@ Some servers may return an additional player count number, which may be present 
 Supported Games
 ---
 
+* Age of Chivalry (ageofchivalry)
 * Alien Swarm (alienswarm)
+* America's Army 1 (americasarmy) [[Separate Query Port - Usually port+1](#separate-query-port)]
+* America's Army 2 (americasarmy2) [[Separate Query Port - Usually port+1](#separate-query-port)]
+* America's Army 3 (americasarmy3) [[Separate Query Port - Usually 27020](#separate-query-port)]
+* America's Army: Proving Grounds (americasarmypg) [[Separate Query Port - Usually 27020](#separate-query-port)]
+* ArmA Armed Assault 1 (arma)
+* ArmA Armed Assault 2 (arma2)
+* ArmA Armed Assault 3 (arma3)
 * Armagetron (armagetron)
+* Battlefield 1942 (bf1942) [[Separate Query Port - Usually 23000](#separate-query-port)]
+* Battlefield 2 (bf2) [[Separate Query Port - Usually 29900](#separate-query-port)]
+* Brink (brink) [[Separate Query Port - Usually port+1](#separate-query-port)]
 * Build and Shoot (buildandshoot)
 * Counter-Strike 1.6 (cs16)
 * Counter-Strike: Source (css)
@@ -76,7 +87,7 @@ Supported Games
 * Minecraft (minecraft) [[Additional Notes](#minecraft)]
 * Mutant Factions (mutantfactions)
 * Natural Selection (ns)
-* Natural Selection 2 (ns2)
+* Natural Selection 2 (ns2) [[Separate Query Port - Usually port+1](#separate-query-port)]
 * No More Room in Hell (nmrih)
 * Nuclear Dawn (nucleardawn)
 * Quake 2 (quake2)
@@ -116,12 +127,17 @@ Some minecraft servers may not respond to a typical status query. If this is the
 'minecraftping' server type instead, which uses a less accurate but more reliable solution.
 
 #### Nadeo (ShootMania / TrackMania / etc)
-To query a nadeo game, you must have a user account on the server with access level User or higher.
+The server must have xmlrpc enabled, and you must pass the xmlrpc port to GameDig, not the connection port.
+You must have a user account on the server with access level User or higher.
 Pass the login into to GameDig with the additional options: login, password
 
 #### Terraria
 Requires tshock server mod, and a REST user token, which can be passed to GameDig with the
 additional option: token
+
+#### Separate Query Port
+Games with this note use a query port which is usually not the same as the game's connection port.
+You must pass the query port to GameDig, not the connection port.
 
 Usage from Command Line
 ---
