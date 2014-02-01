@@ -1,5 +1,5 @@
 node-GameDig - Game Server Query Library
-===
+---
 
 Usage from Node.js
 ---
