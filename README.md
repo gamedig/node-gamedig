@@ -170,6 +170,7 @@ Supported Games
 * Unreal Tournament (ut) [[Separate Query Port - Usually port+1](#separate-query-port)]
 * Unreal Tournament 2004 (ut2004) [[Separate Query Port - Usually port+1](#separate-query-port)]
 * Unreal Tournament 3 (ut3) [[Separate Query Port - Usually 6500](#separate-query-port)]
+* Ventrilo (ventrilo)
 * Warsow (warsow)
 * Wolfenstein 2009 (wolfenstein2009)
 * Wolfenstein: Enemy Territory (wolfensteinet)
