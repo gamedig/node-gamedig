@@ -161,6 +161,8 @@ Supported Games
 * Synergy (synergy)
 * Team Fortress 2 (tf2)
 * Team Fortress Classic (tfc)
+* Teamspeak 2 (teamspeak2)
+* Teamspeak 3 (teamspeak3)
 * Terraria (terraria) [[Additional Notes](#terraria)]
 * TrackMania 2 (trackmania2) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]
 * TrackMania Forever (trackmaniaforever) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]

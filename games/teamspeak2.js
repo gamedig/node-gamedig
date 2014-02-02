@@ -25,8 +25,8 @@ module.exports = require('./protocols/core').extend({
 					var split = data.split('\r\n');
 					split.forEach(function(line) {
 						var equals = line.indexOf('=');
-						var key = line.substr(0,equals);
-						var value = line.substr(equals+1);
+						var key = equals == -1 ? line : line.substr(0,equals);
+						var value = equals == -1 ? '' : line.substr(equals+1);
 						state.raw[key] = value;
 					});
 					c();
