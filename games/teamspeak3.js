@@ -3,7 +3,7 @@ var async = require('async');
 module.exports = require('./protocols/core').extend({
 	init: function() {
 		this._super();
-		this.pretty = 'Teamspeak 2';
+		this.pretty = 'Teamspeak 3';
 		this.options.port = 9987;
 		this.options.master_port = 10011;
 	},

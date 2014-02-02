@@ -133,6 +133,7 @@ Supported Games
 * Minecraft (minecraft) [[Additional Notes](#minecraft)]
 * Monday Night Combat (mnc)
 * Multi Theft Auto [[Separate Query Port - Usually port+123](#separate-query-port)]
+* Mumble [[Additional Notes](#mumble)]
 * Mutant Factions (mutantfactions)
 * Natural Selection (ns)
 * Natural Selection 2 (ns2) [[Separate Query Port - Usually port+1](#separate-query-port)]
@@ -197,6 +198,12 @@ Don't see your game listed here?
 #### Minecraft
 Some minecraft servers may not respond to a typical status query. If this is the case, try using the
 'minecraftping' server type instead, which uses a less accurate but more reliable solution.
+
+#### Mumble
+For full query results from Mumble, you must be running the
+[GTmurmur plugin](http://www.gametracker.com/downloads/gtmurmurplugin.php).
+If you do not wish to run the plugin, or do not require details such as channel and user lists,
+you can use the 'mumbleping' server type instead, which uses a less accurate but more reliable solution
 
 #### Nadeo (ShootMania / TrackMania / etc)
 The server must have xmlrpc enabled, and you must pass the xmlrpc port to GameDig, not the connection port.

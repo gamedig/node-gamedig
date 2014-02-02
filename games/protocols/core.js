@@ -8,7 +8,10 @@ var EventEmitter = require('events').EventEmitter,
 module.exports = Class.extend(EventEmitter,{
 	init: function() {
 		this._super();
-		this.options = {};
+		this.options = {
+			tcpTimeout: 1000,
+			udpTimeout: 1000
+		};
 		this.maxAttempts = 1;
 		this.attempt = 1;
 		this.finished = false;
@@ -207,6 +210,7 @@ module.exports = Class.extend(EventEmitter,{
 
 		var socket = this.tcpSocket = net.connect(port,address,function() {
 			if(self.debug) console.log(address+':'+port+" TCPCONNECTED");
+			connected = true;
 			c(socket);
 		});
 		socket.setTimeout(10000);
@@ -242,14 +246,13 @@ module.exports = Class.extend(EventEmitter,{
 			if(self.tcpCallback) return self.fatal('Attempted to send TCP packet while still waiting on a managed response');
 			self._tcpConnect(function(socket) {
 				socket.write(buffer);
-				if(self.debug) console.log(socket.remoteAddress+':'+socket.remotePort+" TCP--> "+buffer.toString('hex'));
 			});
 			if(!ondata) return;
 
 			self.tcpTimeoutTimer = self.setTimeout(function() {
 				self.tcpCallback = false;
 				self.fatal('TCP Watchdog Timeout');
-			},1000);
+			},self.options.tcpTimeout);
 			self.tcpCallback = ondata;
 		});
 	},
@@ -268,7 +271,7 @@ module.exports = Class.extend(EventEmitter,{
 				var timeout = false;
 				if(!ontimeout || ontimeout() !== true) timeout = true;
 				if(timeout) self.fatal('UDP Watchdog Timeout');
-			},1000);
+			},self.options.udpTimeout);
 			self.udpCallback = onpacket;
 		});
 	},
