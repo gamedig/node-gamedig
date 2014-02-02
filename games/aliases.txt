@@ -3,6 +3,7 @@
 ageofchivalry|Age of Chivalry|valve
 alienswarm|Alien Swarm|valve
 avp2|Aliens vs Predator 2|gamespy1|27888
+avp3|Aliens vs Predator 3|valve|27016
 americasarmy2|America's Army 2|americasarmy
 americasarmy3|America's Army 3|valve|27020
 americasarmypg|America's Army: Proving Grounds|valve|27020
@@ -14,6 +15,7 @@ bf2142|Battlefield 2142|gamespy3|29900
 bf3|Battlefield 3|battlefield
 bf4|Battlefield 4|battlefield
 bfv|Battlefield Vietnam|gamespy2|23000
+breach|Breach|valve|27016
 brink|Brink|valve|27016
 cod|Call of Duty|quake3|28960
 cod2|Call of Duty 2|quake3|28960
@@ -35,6 +37,8 @@ dod|Day of Defeat|valve
 dods|Day of Defeat: Source|valve
 doom3|Doom 3|doom3
 dota2|DOTA 2|valve
+farcry|Far Cry|ase|49124
+farcry2|Far Cry|ase
 fear|F.E.A.R.|gamespy2|27888
 fortressforever|Fortress Forever|valve
 garrysmod|Garry's Mod|valve
@@ -85,6 +89,8 @@ tf2|Team Fortress 2|valve
 trackmania2|Trackmania 2|nadeo
 trackmaniaforever|Trackmania Forever|nadeo
 ut|Unreal Tournament|gamespy1|7778
+ut2003|Unreal Tournament 2003|unreal2|8978
+urbanterror|Urban Terror|quake3|27960
 wolfensteinet|Wolfenstein: Enemy Territory|quake3|27960
 zombiemaster|Zombie Master|valve
 zps|Zombie Panic: Source|valve

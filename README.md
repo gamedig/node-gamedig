@@ -69,6 +69,7 @@ Supported Games
 * Age of Chivalry (ageofchivalry)
 * Alien Swarm (alienswarm)
 * Aliens vs Predator 2 (avp2)
+* Aliens vs Predator 3 (avp3)
 * America's Army 1 (americasarmy) [[Separate Query Port - Usually port+1](#separate-query-port)]
 * America's Army 2 (americasarmy2) [[Separate Query Port - Usually port+1](#separate-query-port)]
 * America's Army 3 (americasarmy3) [[Separate Query Port - Usually 27020](#separate-query-port)]
@@ -78,11 +79,13 @@ Supported Games
 * ArmA Armed Assault 3 (arma3)
 * Armagetron (armagetron)
 * Battlefield 1942 (bf1942) [[Separate Query Port - Usually 23000](#separate-query-port)]
+* Battlefield 2142 (bf2142) [[Separate Query Port - Usually 29900](#separate-query-port)]
 * Battlefield 2 (bf2) [[Separate Query Port - Usually 29900](#separate-query-port)]
 * Battlefield 3 (bf3) [[Separate Query Port - Usually port+22000](#separate-query-port)]
 * Battlefield 4 (bf4) [[Separate Query Port - Usually port+22000](#separate-query-port)]
 * Battlefield: Bad Company 2 (bfbc2) [[Separate Query Port - Usually 48888](#separate-query-port)]
 * Battlefield: Vietnam (bfv) [[Separate Query Port - Usually 48888](#separate-query-port)]
+* Breach (breach)
 * Brink (brink) [[Separate Query Port - Usually port+1](#separate-query-port)]
 * Build and Shoot (buildandshoot)
 * Call of Duty (cod)
@@ -107,6 +110,8 @@ Supported Games
 * DOTA 2 (dota2)
 * Enemy Territory Quake Wars (etqw)
 * F.E.A.R. (fear)
+* Far Cry (farcry) [[Separate Query Port - Usually port+123](#separate-query-port)]
+* Far Cry 2 (farcry2) [[Separate Query Port - Usually port+123](#separate-query-port)]
 * Fortress Forever (fortressforever)
 * Frontlines: Fuel of War (ffow)
 * Garry's Mod (garrysmod)
@@ -168,8 +173,10 @@ Supported Games
 * TrackMania 2 (trackmania2) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]
 * TrackMania Forever (trackmaniaforever) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]
 * Unreal Tournament (ut) [[Separate Query Port - Usually port+1](#separate-query-port)]
+* Unreal Tournament 2003 (ut2003) [[Separate Query Port - Usually port+1](#separate-query-port)]
 * Unreal Tournament 2004 (ut2004) [[Separate Query Port - Usually port+1](#separate-query-port)]
 * Unreal Tournament 3 (ut3) [[Separate Query Port - Usually 6500](#separate-query-port)]
+* Urban Terror (urbanterror)
 * Ventrilo (ventrilo)
 * Warsow (warsow)
 * Wolfenstein 2009 (wolfenstein2009)
