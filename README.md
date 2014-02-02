@@ -1,5 +1,7 @@
 node-GameDig - Game Server Query Library
 ---
+node-GameDig is a game server library, capable of querying for the status of
+nearly any game server. If has a node.js api, as well as a command line interface.
 
 Usage from Node.js
 ---
