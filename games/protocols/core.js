@@ -201,23 +201,38 @@ module.exports = Class.extend(EventEmitter,{
 
 	_tcpConnect: function(c) {
 		var self = this;
-
 		if(this.tcpSocket) return c(this.tcpSocket);
-		var socket = this.tcpSocket = net.connect(
-			this.options.port,
-			this.options.address,
-			function() {
-				c(socket);
-			}
-		);
+
+		var connected = false;
+		var received = new Buffer(0);
+		var address = this.options.address;
+		var port = this.options.port;
+
+		var socket = this.tcpSocket = net.connect(port,address,function() {
+			c(socket);
+		});
 		socket.setTimeout(10000);
 		socket.setNoDelay(true);
+		if(this.debug) console.log(address+':'+port+" TCPCONNECT-->");
+		
+		var writeHook = socket.write;
+		socket.write = function(data) {
+			if(this.debug) console.log(address+':'+port+" TCP--> "+data.toString('hex'));
+			writeHook.apply(this,arguments);
+		}
 
-		var received = new Buffer(0);
+		socket.on('error', function() {});
+		socket.on('close', function() {
+			if(!self.tcpCallback) return;
+			if(connected) return self.fatal('Socket closed while waiting on TCP');
+			else return self.fatal('TCP Connection Refused');
+		});
 		socket.on('data', function(data) {
 			if(!self.tcpCallback) return;
+			if(this.debug) console.log(address+':'+port+" <--TCP "+data.toString('hex'));
 			received = Buffer.concat([received,data]);
 			if(self.tcpCallback(received)) {
+				clearTimeout(this.tcpTimeoutTimer);
 				self.tcpCallback = false;
 				received = new Buffer(0);
 			}
@@ -227,10 +242,17 @@ module.exports = Class.extend(EventEmitter,{
 		var self = this;
 		process.nextTick(function() {
 			if(self.tcpCallback) return self.fatal('Attempted to send TCP packet while still waiting on a managed response');
-			self.tcpCallback = ondata;
 			self._tcpConnect(function(socket) {
 				socket.write(buffer);
+				if(this.debug) console.log(socket.remoteAddress+':'+socket.remotePort+" TCP--> "+buffer.toString('hex'));
 			});
+			if(!ondata) return;
+
+			//self.tcpTimeoutTimer = self.setTimeout(function() {
+			//	self.tcpCallback = false;
+			//	self.error('timeout');
+			//},1000);
+			self.tcpCallback = ondata;
 		});
 	},
 
@@ -258,7 +280,7 @@ module.exports = Class.extend(EventEmitter,{
 
 		if(typeof buffer == 'string') buffer = new Buffer(buffer,'binary');
 		
-		if(this.debug) console.log(this.options.address+':'+this.options.port+" --> "+buffer.toString('hex'));
+		if(this.debug) console.log(this.options.address+':'+this.options.port+" UDP--> "+buffer.toString('hex'));
 		this.udpSocket.send(buffer,0,buffer.length,this.options.port,this.options.address);
 	},
 	_udpResponse: function(buffer) {
