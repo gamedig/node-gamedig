@@ -5,7 +5,7 @@ function buildPacket(params) {
 	
 	var paramBuffers = [];
 	params.forEach(function(param) {
-		paramBuffers.push(new Buffer(param));
+		paramBuffers.push(new Buffer(param,'utf8'));
 	});
 
 	var totalLength = 12;

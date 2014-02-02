@@ -8,7 +8,7 @@ module.exports = require('./protocols/valve').extend({
 	},
 	queryInfo: function(state,c) {
 		var self = this;
-		self.sendPacket(0x46,false,new Buffer('LSQ'),0x49,function(b) {
+		self.sendPacket(0x46,false,'LSQ',0x49,function(b) {
 			var reader = self.reader(b);
 
 			state.raw.protocol = reader.uint(1);

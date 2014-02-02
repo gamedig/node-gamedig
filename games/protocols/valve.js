@@ -174,7 +174,7 @@ module.exports = require('./core').extend({
 	sendPacket: function(type,sendChallenge,payload,expect,callback,ontimeout) {
 		var self = this;
 
-		if(typeof payload == 'string') payload = new Buffer(payload);
+		if(typeof payload == 'string') payload = new Buffer(payload,'binary');
 		var challengeLength = sendChallenge !== false ? 4 : 0;
 		var payloadLength = payload ? payload.length : 0;
 
