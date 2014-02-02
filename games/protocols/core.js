@@ -206,15 +206,16 @@ module.exports = Class.extend(EventEmitter,{
 		var port = this.options.port;
 
 		var socket = this.tcpSocket = net.connect(port,address,function() {
+			if(self.debug) console.log(address+':'+port+" TCPCONNECTED");
 			c(socket);
 		});
 		socket.setTimeout(10000);
 		socket.setNoDelay(true);
-		if(this.debug) console.log(address+':'+port+" TCPCONNECT-->");
+		if(this.debug) console.log(address+':'+port+" TCPCONNECT");
 		
 		var writeHook = socket.write;
 		socket.write = function(data) {
-			if(this.debug) console.log(address+':'+port+" TCP--> "+data.toString('hex'));
+			if(self.debug) console.log(address+':'+port+" TCP--> "+data.toString('hex'));
 			writeHook.apply(this,arguments);
 		}
 
@@ -226,7 +227,7 @@ module.exports = Class.extend(EventEmitter,{
 		});
 		socket.on('data', function(data) {
 			if(!self.tcpCallback) return;
-			if(this.debug) console.log(address+':'+port+" <--TCP "+data.toString('hex'));
+			if(self.debug) console.log(address+':'+port+" <--TCP "+data.toString('hex'));
 			received = Buffer.concat([received,data]);
 			if(self.tcpCallback(received)) {
 				clearTimeout(this.tcpTimeoutTimer);
