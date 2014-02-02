@@ -4,12 +4,24 @@ var async = require('async'),
 module.exports = require('./core').extend({
 	init: function() {
 		this._super();
-		this.goldsrc = false;
-		this.legacyChallenge = false;
+
 		this.options.port = 27015;
 		
+		// legacy goldsrc info response -- basically not used by ANYTHING now,
+		// as most (all?) goldsrc servers respond with the source info reponse
+		// delete in a few years if nothing ends up using it anymore
+		this.goldsrcInfo = false;
+		
+		// unfortunately, the split format from goldsrc is still around, but we
+		// can detect that during the query
+		this.goldsrcSplits = false;
+
+		// some mods require a challenge, but don't provide them in the new format
+		// at all, use the old dedicated challenge query if needed
+		this.legacyChallenge = false;
+		
 		// 2006 engines don't pass packet switching size in split packet header
-		// while all others do
+		// while all others do, this need is detected automatically
 		this._skipSizeInSplitHeader = false;
 
 		this._challenge = '';
@@ -28,11 +40,11 @@ module.exports = require('./core').extend({
 		var self = this;
 		self.sendPacket(
 			0x54,false,'Source Engine Query\0',
-			self.goldsrc ? 0x6D : 0x49,
+			self.goldsrcInfo ? 0x6D : 0x49,
 			function(b) {
 				var reader = self.reader(b);
 				
-				if(self.goldsrc) state.raw.address = reader.string();
+				if(self.goldsrcInfo) state.raw.address = reader.string();
 				else state.raw.protocol = reader.uint(1);
 
 				state.name = reader.string();
@@ -43,18 +55,18 @@ module.exports = require('./core').extend({
 				state.raw.numplayers = reader.uint(1);
 				state.maxplayers = reader.uint(1);
 
-				if(self.goldsrc) state.raw.protocol = reader.uint(1);
+				if(self.goldsrcInfo) state.raw.protocol = reader.uint(1);
 				else state.raw.numbots = reader.uint(1);
 
 				state.raw.listentype = reader.uint(1);
 				state.raw.environment = reader.uint(1);
-				if(!self.goldsrc) {
+				if(!self.goldsrcInfo) {
 					state.raw.listentype = String.fromCharCode(state.raw.listentype);
 					state.raw.environment = String.fromCharCode(state.raw.environment);
 				}
 
 				state.password = !!reader.uint(1);
-				if(self.goldsrc) {
+				if(self.goldsrcInfo) {
 					state.raw.ismod = reader.uint(1);
 					if(state.raw.ismod) {
 						state.raw.modlink = reader.string();
@@ -68,7 +80,7 @@ module.exports = require('./core').extend({
 				}
 				state.raw.secure = reader.uint(1);
 
-				if(self.goldsrc) {
+				if(self.goldsrcInfo) {
 					state.raw.numbots = reader.uint(1);
 				} else {
 					if(state.raw.folder == 'ship') {
@@ -88,8 +100,24 @@ module.exports = require('./core').extend({
 					if(extraFlag & 0x01) state.raw.gameid = reader.uint(8);
 				}
 
-				if(state.raw.protocol == 7 && state.raw.steamappid == 215) {
+				// from https://developer.valvesoftware.com/wiki/Server_queries
+				if(
+					state.raw.protocol == 7 && (
+						state.raw.steamappid == 215
+						|| state.raw.steamappid == 17550
+						|| state.raw.steamappid == 17700
+						|| state.raw.steamappid == 240
+					)
+				) {
 					self._skipSizeInSplitHeader = true;
+				}
+				if(self.debug) {
+					console.log("STEAM APPID: "+state.raw.steamappid);
+					console.log("PROTOCOL: "+state.raw.protocol);
+				}
+				if(state.raw.protocol == 48) {
+					if(self.debug) console.log("GOLDSRC DETECTED - USING MODIFIED SPLIT FORMAT");
+					self.goldsrcSplits = true;
 				}
 
 				c();
@@ -105,11 +133,7 @@ module.exports = require('./core').extend({
 				c();
 			});
 		} else {
-			self.sendPacket(self.goldsrc?0x56:0x55,0xffffffff,false,0x41,function(b) {
-				var reader = self.reader(b);
-				self._challenge = reader.uint(4);
-				c();
-			});
+			c();
 		}
 	},
 	queryPlayers: function(state,c) {
@@ -123,7 +147,7 @@ module.exports = require('./core').extend({
 				var score = reader.int(4);
 				var time = reader.float();
 
-				// connecting players don't could as players.
+				// connecting players don't count as players.
 				if(!name) continue;
 
 				(time == -1 ? state.bots : state.players).push({
@@ -173,68 +197,70 @@ module.exports = require('./core').extend({
 	},
 	sendPacket: function(type,sendChallenge,payload,expect,callback,ontimeout) {
 		var self = this;
-
-		if(typeof payload == 'string') payload = new Buffer(payload,'binary');
-		var challengeLength = sendChallenge !== false ? 4 : 0;
-		var payloadLength = payload ? payload.length : 0;
-
-		var b = new Buffer(5 + challengeLength + payloadLength);
-		b.writeInt32LE(-1, 0);
-		b.writeUInt8(type, 4);
+		var packetStorage = {};
 		
-		if(sendChallenge !== false) {
-			var challenge = this._challenge;
-			if(typeof sendChallenge == 'number') challenge = sendChallenge;
-			if(self.byteorder == 'le') b.writeUInt32LE(challenge, 5);
-			else b.writeUInt32BE(challenge, 5);
-		}
-		if(payloadLength) payload.copy(b, 5+challengeLength);
+		send();
 
-		function received(payload) {
-			var type = payload.readUInt8(0);
-			if(self.debug) console.log("Received "+type+" expected "+expect);
-			if(type != expect) return;
-			callback(payload.slice(1));
-			return true;
+		function send(c) {
+			if(typeof payload == 'string') payload = new Buffer(payload,'binary');
+			var challengeLength = sendChallenge ? 4 : 0;
+			var payloadLength = payload ? payload.length : 0;
+
+			var b = new Buffer(5 + challengeLength + payloadLength);
+			b.writeInt32LE(-1, 0);
+			b.writeUInt8(type, 4);
+			
+			if(sendChallenge) {
+				var challenge = self._challenge;
+				if(!challenge) challenge = 0xffffffff;
+				if(self.byteorder == 'le') b.writeUInt32LE(challenge, 5);
+				else b.writeUInt32BE(challenge, 5);
+			}
+			if(payloadLength) payload.copy(b, 5+challengeLength);
+
+			self.udpSend(b,receivedOne,ontimeout);
 		}
 
-		var numPackets = 0;
-		var packets = [];
-		var bzip = false;
-		this.udpSend(b,function(buffer) {
-			var header = buffer.readInt32LE(0);
+		function receivedOne(buffer) {
+			var reader = self.reader(buffer);
+
+			var header = reader.int(4);
 			if(header == -1) {
 				// full package
-				return received(buffer.slice(4));
+				if(self.debug) console.log("Received full packet");
+				return receivedFull(reader);
 			}
 			if(header == -2) {
 				// partial package
-				var uid = buffer.readUInt32LE(4);
-				if(!self.goldsrc && uid & 0x80000000) bzip = true;
+				var uid = reader.uint(4);
+				if(!(uid in packetStorage)) packetStorage[uid] = {};
+				var packets = packetStorage[uid];
 
-				var id,payload;
-				if(self.goldsrc) {
-					id = buffer.readUInt8(8);
-					numPackets = id & 0x0f;
-					id = (id & 0xf0) >> 4;
-					payload = buffer.slice(9);
+				var bzip = false;
+				if(!self.goldsrcSplits && uid & 0x80000000) bzip = true;
+
+				var packetNum,payload,numPackets;
+				if(self.goldsrcSplits) {
+					packetNum = reader.uint(1);
+					numPackets = packetNum & 0x0f;
+					packetNum = (packetNum & 0xf0) >> 4;
+					payload = reader.rest();
 				} else {
-					numPackets = buffer.readUInt8(8);
-					id = buffer.readUInt8(9);
-					var sizeOffset = self._skipSizeInSplitHeader ? 0 : 2;
-					if(id == 0 && bzip) payload = buffer.slice(18+sizeOffset);
-					else payload = buffer.slice(10+sizeOffset);
+					numPackets = reader.uint(1);
+					packetNum = reader.uint(1);
+					if(!self._skipSizeInSplitHeader) reader.skip(2);
+					if(packetNum == 0 && bzip) reader.skip(8);
+					payload = reader.rest();
 				}
 
-				packets[id] = payload;
+				packets[packetNum] = payload;
 				
 				if(self.debug) {
-					console.log("Received partial packet id: "+id);
-					console.log("Expecting "+numPackets+" packets, have "+Object.keys(packets).length);
-					console.log("Bzip? "+bzip);
+					console.log("Received partial packet uid:"+uid+" num:"+packetNum);
+					console.log("Received "+Object.keys(packets).length+'/'+numPackets+" packets for this UID");
 				}
 
-				if(!numPackets || Object.keys(packets).length != numPackets) return;
+				if(Object.keys(packets).length != numPackets) return;
 
 				// assemble the parts
 				var list = [];
@@ -245,11 +271,40 @@ module.exports = require('./core').extend({
 					}
 					list.push(packets[i]);
 				}
-				var assembled = Buffer.concat(list);
-				if(bzip) assembled = new Buffer(Bzip2.decompressFile(assembled));
 
-				return received(assembled.slice(4));
+				var assembled = Buffer.concat(list);
+				if(bzip) {
+					if(self.debug) console.log("BZIP DETECTED - Extracing packet...");
+					try {
+						assembled = new Buffer(Bzip2.decompressFile(assembled));
+					} catch(e) {
+						self.fatal('Invalid bzip packet');
+						return true;
+					}
+				}
+				var assembledReader = self.reader(assembled);
+				assembledReader.skip(4); // header
+				return receivedFull(assembledReader);
 			}
-		},ontimeout);
+		}
+
+		function receivedFull(reader) {
+			var type = reader.uint(1);
+			
+			if(type == 0x41) {
+				if(self.debug) console.log('Received challenge key');
+				if(self._challenge) return self.fatal('Received more than one challenge key');
+				self._challenge = reader.uint(4);
+				
+				if(self.debug) console.log('Restarting query');
+				send();
+				return true;
+			}
+			
+			if(self.debug) console.log("Received "+type.toString(16)+" expected "+expect.toString(16));
+			if(type != expect) return;
+			callback(reader.rest());
+			return true;
+		}
 	}
 });
