@@ -151,7 +151,7 @@ module.exports = require('./core').extend({
 			var list = [];
 			for(var i = 0; i < numPackets; i++) {
 				if(!(i in packets)) {
-					self.error('Missing packet #'+i);
+					self.fatal('Missing packet #'+i);
 					return true;
 				}
 				list.push(packets[i]);

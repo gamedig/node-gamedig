@@ -16,15 +16,15 @@ module.exports = require('./protocols/core').extend({
 				token: this.options.token
 			}
 		}, function(e,r,body) {
-			if(e) return self.error('HTTP error');
+			if(e) return self.fatal('HTTP error');
 			var json;
 			try {
 				json = JSON.parse(body);
 			} catch(e) {
-				return self.error('Invalid JSON');
+				return self.fatal('Invalid JSON');
 			}
 			
-			if(json.status != 200) return self.error('Invalid status');
+			if(json.status != 200) return self.fatal('Invalid status');
 
 			json.players.forEach(function(one) {
 				state.players.push({name:one.nickname,team:one.team});

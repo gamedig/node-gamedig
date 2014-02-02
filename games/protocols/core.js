@@ -22,11 +22,8 @@ module.exports = Class.extend(EventEmitter,{
 		},10000);
 	},
 
-	fatal: function(err) {
-		this.error(err,true);
-	},
-	error: function(err,fatal) {
-		if(!fatal && this.attempt < this.maxAttempts) {
+	fatal: function(err,noretry) {
+		if(!noretry && this.attempt < this.maxAttempts) {
 			this.attempt++;
 			this.start();
 			return;
@@ -115,7 +112,7 @@ module.exports = Class.extend(EventEmitter,{
 		
 		function resolveStandard(host,c) {
 			dns.lookup(host, function(err,address,family) {
-				if(err) return self.error(err);
+				if(err) return self.fatal(err);
 				self.options.address = address;
 				c();
 			});
@@ -248,10 +245,10 @@ module.exports = Class.extend(EventEmitter,{
 			});
 			if(!ondata) return;
 
-			//self.tcpTimeoutTimer = self.setTimeout(function() {
-			//	self.tcpCallback = false;
-			//	self.error('timeout');
-			//},1000);
+			self.tcpTimeoutTimer = self.setTimeout(function() {
+				self.tcpCallback = false;
+				self.fatal('TCP Watchdog Timeout');
+			},1000);
 			self.tcpCallback = ondata;
 		});
 	},
@@ -269,7 +266,7 @@ module.exports = Class.extend(EventEmitter,{
 				self.udpCallback = false;
 				var timeout = false;
 				if(!ontimeout || ontimeout() !== true) timeout = true;
-				if(timeout) self.error('timeout');
+				if(timeout) self.fatal('UDP Watchdog Timeout');
 			},1000);
 			self.udpCallback = onpacket;
 		});

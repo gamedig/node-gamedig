@@ -34,13 +34,13 @@ module.exports = require('./core').extend({
 
 			if(cmd == 'Connect') {
 				var client = self.gbxclient = gbxremote.createClient(self.options.port,self.options.host, function(err) {
-					if(err) return self.error('GBX error '+JSON.stringify(err));
+					if(err) return self.fatal('GBX error '+JSON.stringify(err));
 					c();
 				});
 				client.on('error',function(){});
 			} else {
 				self.gbxclient.methodCall(cmd, params, function(err, value) {
-					if(err) return self.error('XMLRPC error '+JSON.stringify(err));
+					if(err) return self.fatal('XMLRPC error '+JSON.stringify(err));
 					results.push(value);
 					c();
 				});

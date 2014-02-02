@@ -12,7 +12,7 @@ module.exports = require('./protocols/core').extend({
 			uri: 'http://mutantfactions.net/game/receiveLobby.php',
 			timeout: 3000,
 		}, function(e,r,body) {
-			if(e) return self.error('Lobby request error');
+			if(e) return self.fatal('Lobby request error');
 
 			var split = body.split('<br/>');
 

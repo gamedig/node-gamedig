@@ -12,7 +12,7 @@ module.exports = require('./protocols/core').extend({
 			uri: 'http://'+this.options.address+':'+this.options.port+'/',
 			timeout: 3000,
 		}, function(e,r,body) {
-			if(e) return self.error('HTTP error');
+			if(e) return self.fatal('HTTP error');
 
 			var m = body.match(/status server for (.*?)\r|\n/);
 			if(m) state.name = m[1];
