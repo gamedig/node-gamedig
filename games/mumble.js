@@ -10,7 +10,7 @@ module.exports = require('./protocols/core').extend({
 	run: function(state) {
 		var self = this;
 		
-		this.tcpSend('\x6A\x73\x6F\x6E', function(buffer) {
+		this.tcpSend('json', function(buffer) {
 			if(buffer.length < 10) return;
 			var str = buffer.toString();
 			var json;
