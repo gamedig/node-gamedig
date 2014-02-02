@@ -177,6 +177,24 @@ module.exports = Class.extend(EventEmitter,{
 		}
 		return false;
 	},
+	debugBuffer: function(buffer) {
+		var out = '';
+		var out2 = '';
+		for(var i = 0; i < buffer.length; i++) {
+			var sliced = buffer.slice(i,i+1);
+			out += sliced.toString('hex')+' ';
+			var chr = sliced.toString();
+			if(chr < ' ' || chr > '~') chr = ' ';
+			out2 += chr+'  ';
+			if(out.length > 60) {
+				console.log(out);
+				console.log(out2);
+				out = out2 = '';
+			}
+		}
+		console.log(out);
+		console.log(out2);
+	},
 
 
 

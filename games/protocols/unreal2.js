@@ -18,9 +18,10 @@ module.exports = require('./core').extend({
 					state.raw.port = reader.uint(4);
 					state.raw.queryport = reader.uint(4);
 					state.name = self.readUnrealString(reader,true);
-					self.readUnrealString(reader); // unknown?
 					state.map = self.readUnrealString(reader,true);
 					state.raw.gametype = self.readUnrealString(reader,true);
+					state.raw.numplayers = reader.uint(4);
+					state.maxplayers = reader.uint(4);
 					self.readExtraInfo(reader,state);
 
 					c();
@@ -47,15 +48,37 @@ module.exports = require('./core').extend({
 			function(c) {
 				self.sendPacket(2,false,function(b) {
 					var reader = self.reader(b);
+
 					while(!reader.done()) {
-						var id = reader.uint(4);
-						var name = self.readUnrealString(reader,true);
-						var ping = reader.uint(4);
-						var score = reader.uint(4);
-						reader.skip(4);
-						(ping == 0 ? state.bots : state.players).push({
-							id: id, name: name, ping: ping, score: score
-						});
+						var player = {};
+						player.id = reader.uint(4);
+						if(!player.id) break;
+						if(player.id == 0) {
+							// Unreal2XMP Player (ID is always 0)
+							reader.skip(4);
+						}
+						player.name = self.readUnrealString(reader,true);
+						player.ping = reader.uint(4);
+						player.score = reader.int(4);
+						reader.skip(4); // stats ID
+
+						// Extra data for Unreal2XMP players
+						if(player.id == 0) {
+							var count = reader.uint(1);
+							for(var iField = 0; iField < count; iField++) {
+								var key = self.readUnrealString(reader,true);
+								var value = self.readUnrealString(reader,true);
+								player[key] = value;
+							}
+						}
+						
+						if(player.id == 0 && player.name == 'Player') {
+							// these show up in ut2004 queries, but aren't real
+							// not even really sure why they're there
+							continue;
+						}
+
+						(player.ping ? state.players : state.bots).push(player);
 					}
 					c();
 				});
@@ -79,7 +102,9 @@ module.exports = require('./core').extend({
 		var length = reader.uint(1);
 		var out;
 		if(length < 0x80) {
-			out = reader.string({length:length});
+			//out = reader.string({length:length});
+			out = '';
+			if(length > 0) out = reader.string();
 		} else {
 			length = (length&0x7f)*2;
 			out = length+reader.string({encoding:'ucs2',length:length});
