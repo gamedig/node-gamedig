@@ -24,6 +24,11 @@ Gamedig.query(
 );
 ```
 
+> Is NPM out of date? If you're feeling lucky, you can install the latest code with
+> ```shell
+> npm install "git+https://github.com/sonicsnes/node-gamedig.git"
+> ```
+
 ### Input Parameters
 
 * **type**: One of the game IDs listed in the game list below
