@@ -119,13 +119,16 @@ module.exports = require('./core').extend({
 		return out;
 	},
 	sendPacket: function(type,required,callback) {
+		var self = this;
 		var outbuffer = new Buffer([0x79,0,0,0,type]);
 
 		var packets = [];
 		this.udpSend(outbuffer,function(buffer) {
-			var iType = buffer.readUInt8(4);
+			var reader = self.reader(buffer);
+			var header = reader.uint(4);
+			var iType = reader.uint(1);
 			if(iType != type) return;
-			packets.push(buffer.slice(5));
+			packets.push(reader.rest());
 		},function() {
 			if(!packets.length && required) return;
 			callback(Buffer.concat(packets));

@@ -119,27 +119,32 @@ module.exports = require('./core').extend({
 		var numPackets = 0;
 		var packets = {};
 		this.udpSend(b,function(buffer) {
-			var iType = buffer.readUInt8(0);
+			var reader = self.reader(buffer);
+			var iType = reader.uint(1);
 			if(iType != type) return;
-			var iSessionId = buffer.readUInt32BE(1);
+			var iSessionId = reader.uint(4);
 			if(iSessionId != self.sessionId) return;
 
 			if(!assemble) {
-				c(buffer.slice(5));
+				c(reader.rest());
 				return true;
 			}
 			if(self.useOnlySingleSplit) {
 				// has split headers, but they are worthless and only one packet is used
-				c([buffer.slice(16)]);
+				reader.skip(11);
+				c([buffer.rest()]);
 				return true;
 			}
 
-			var id = buffer.readUInt16LE(14);
+			reader.skip(9); // filler data -- usually set to 'splitnum\0'
+			var id = reader.uint(1);
 			var last = (id & 0x80);
 			id = id & 0x7f;
 			if(last) numPackets = id+1;
+			
+			reader.skip(1); // "another 'packet number' byte, but isn't understood."
 
-			packets[id] = buffer.slice(16);
+			packets[id] = reader.rest();
 			if(self.debug) {
 				console.log("Received packet #"+id);
 				if(last) console.log("(last)");

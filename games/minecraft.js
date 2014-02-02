@@ -1,5 +1,3 @@
-var dns = require('dns');
-
 module.exports = require('./protocols/gamespy3').extend({
 	init: function() {
 		this._super();
