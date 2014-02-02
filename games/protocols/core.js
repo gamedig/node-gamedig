@@ -230,7 +230,7 @@ module.exports = Class.extend(EventEmitter,{
 			if(self.debug) console.log(address+':'+port+" <--TCP "+data.toString('hex'));
 			received = Buffer.concat([received,data]);
 			if(self.tcpCallback(received)) {
-				clearTimeout(this.tcpTimeoutTimer);
+				clearTimeout(self.tcpTimeoutTimer);
 				self.tcpCallback = false;
 				received = new Buffer(0);
 			}
@@ -242,7 +242,7 @@ module.exports = Class.extend(EventEmitter,{
 			if(self.tcpCallback) return self.fatal('Attempted to send TCP packet while still waiting on a managed response');
 			self._tcpConnect(function(socket) {
 				socket.write(buffer);
-				if(this.debug) console.log(socket.remoteAddress+':'+socket.remotePort+" TCP--> "+buffer.toString('hex'));
+				if(self.debug) console.log(socket.remoteAddress+':'+socket.remotePort+" TCP--> "+buffer.toString('hex'));
 			});
 			if(!ondata) return;
 
