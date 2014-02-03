@@ -1,8 +1,38 @@
 # id | pretty | protocol | options | parameters
 
+#### TODO:
+# cube1|Cube 1|cube|port=28786,port_query_offset=1
+# assaultcube|Assault Cube|cube|port_query=28764
+# cube2|Cube 2: Sauerbraten|cube|port=28785,port_query_offset=1
+# bloodfrontier|Blood Frontier|cube
+
+# arcasimracing|Arca Sim Racing|rfactor|port=34397,port_query_offset=-100
+# rfactor|rFactor|rfactor|port=34397,port_query_offset=-100
+
+# bfris|BFRIS|bfris|port=44001
+# cs2d|Counter-Strike: 2D|cs2d|port_query=36963
+# freelancer|Freelancer|freelancer|port_query=2302
+# gr|Ghost Recon|ghostrecon|port=2346,port_query_offset=2
+# gtr2|GTR2|gtr2|port=34297,port_query_offset=1
+# haze|Haze|haze
+# hexen2|Hexen 2|hexen2|port_query=26900
+# openttd|OpenTTD|openttd|port=3979
+# plainsight|Plain Sight|plainsight
+# redfaction|Red Faction|redfaction|port_query=7755
+# samp|San Andreas Multiplayer|samp|port_query=7777
+# savage|Savage|savage|port_query=11235
+# savage2|Savage 2|savage2|port_query=11235
+# teeworlds|Teeworlds|teeworlds|port=8303
+# tribes|Tribes 1: Starsiege|tribes|port_query=28001
+# tribes2|Tribes 2|tribes2|port_query=28000
+# vcmp|Vice City Multiplayer|vcmp
+# worldinconflict|World in Conflict|worldinconflict
+
+
+
 ageofchivalry|Age of Chivalry|valve
 aoe2|Age of Empires 2|ase|port_query=27224
-alienarena|Alien Arena|quake2|port=27910
+alienarena|Alien Arena|quake2|port_query=27910
 alienswarm|Alien Swarm|valve
 avp2|Aliens vs Predator 2|gamespy1|port=27888
 # avp2010 doesn't really... have a default port or query port
@@ -13,8 +43,6 @@ americasarmy|America's Army|americasarmy|port=1716,port_query_offset=1
 americasarmy2|America's Army 2|americasarmy|port=1716,port_query_offset=1
 americasarmy3|America's Army 3|valve|port=8777,port_query=27020
 americasarmypg|America's Army: Proving Grounds|valve|port=8777,port_query=27020
-
-#arcasimracing|Arca Sim Racing|rfactor|port=34397,port_query_offset=-100
 
 arma|ArmA Armed Assault 1|gamespy2|port=2302
 arma2|ArmA Armed Assault 2|gamespy3|port=2302
@@ -43,34 +71,32 @@ cod3|Call of Duty 3|quake3|port=28960
 cod4|Call of Duty 4: Modern Warfare|quake3|port=28960
 codwaw|Call of Duty: World at War|quake3|port=28960
 codmw2|Call of Duty: Modern Warfare 2|quake3|port=28960
-codmw3|Call of Duty: Modern Warfare 3|valve|port=27015,port_query_offset=2
+codmw3|Call of Duty: Modern Warfare 3|valve|port_query_offset=2
 
 callofjuarez|Call of Juarez|ase|port_query=26000
 chaser|Chaser|ase|port=3000,port_query_offset=123
 chrome|Chrome|ase|port=27015,port_query_offset=123
-codenameeagle|Codename Eagle|gamespy1|port=4711
-commandos3|Commandos 3: Destination Berlin|gamespy1|port=6500
+codenameeagle|Codename Eagle|gamespy1|port_query=4711
+commandos3|Commandos 3: Destination Berlin|gamespy1|port_query=6500
 cacrenegade|Command and Conquer: Renegade|gamespy1|port=4848,port_query=25300
-contactjack|Contact J.A.C.K.|gamespy1|port=27888
+contactjack|Contact J.A.C.K.|gamespy1|port_query=27888
 
 cs16|Counter-Strike 1.6|valve
 cscz|Counter-Strike: Condition Zero|valve
 css|Counter-Strike: Source|valve
 csgo|Counter-Strike: Global Offensive|valve
 
-#cs2d|Counter-Strike: 2D|cs2d|port=?
 crossracing|Cross Racing Championship|ase|port=12321,port_query_offset=123
 
 crysis|Crysis|gamespy3|port=64087
 crysiswars|Crysis Wars|gamespy3|port=64100
 crysis2|Crysis 2|gamespy3|port=64000
 
-# cube|Cube|cube|port=28786,port_query_offset=1
 daikatana|Daikatana|quake2|port=27982,port_query_offset=10
 dmomam|Dark Messiah of Might and Magic|valve
 darkesthour|Darkest Hour|unreal2|port=7757,port_query_offset=1
 dayz|DayZ|valve|port=2302
-deadlydozenpt|Deadly Dozen: Pacific Theater|gamespy1|port=25300
+deadlydozenpt|Deadly Dozen: Pacific Theater|gamespy1|port_query=25300
 dh2005|Deer Hunter 2005|gamespy2|port=23459,port_query=34567
 descent3|Descent 3|gamespy1|port=2092,port_query=20142
 deusex|Deus Ex|gamespy2|port=7791,port_query_offset=1
@@ -83,38 +109,36 @@ doom3|Doom 3|doom3|port=27666
 dota2|DOTA 2|valve
 drakan|Drakan|gamespy1|port=27045,port_query_offset=1
 etqw|Enemy Territory Quake Wars|doom3|port=3074,port_query=27733|isEtqw,hasSpaceBeforeClanTag,hasClanTag,hasTypeFlag
-fear|F.E.A.R.|gamespy2|port=27888
-f12002|F1 2002|gamespy1|port=3297
-f1c9902|F1 Challenge 99-02|gamespy1|port=34397
+fear|F.E.A.R.|gamespy2|port_query=27888
+f12002|F1 2002|gamespy1|port_query=3297
+f1c9902|F1 Challenge 99-02|gamespy1|port_query=34397
 farcry|Far Cry|ase|port=49001,port_query_offset=123
-farcry2|Far Cry|ase|port=14001
+farcry2|Far Cry|ase|port_query=14001
 fortressforever|Fortress Forever|valve
 flashpoint|Flashpoint|gamespy1|port=2302,port_query_offset=1
-#freelancer|Freelancer|freelancer|port=?
 ffow|Frontlines: Fuel of War|ffow|port=5476,port_query_offset=2
 garrysmod|Garry's Mod|valve
-#gr|Ghost Recon|ghostrecon|port=2346,port_query_offset=2
-graw|Ghost Recon: Advanced Warfighter|gamespy2|port=15250
-graw2|Ghost Recon: Advanced Warfighter 2|gamespy2|port=16250
-giantscitizenkabuto|Giants: Citizen Kabuto|gamespy1|port=8911
-globaloperations|Global Operations|gamespy1|port=28672
+graw|Ghost Recon: Advanced Warfighter|gamespy2|port_query=15250
+graw2|Ghost Recon: Advanced Warfighter 2|gamespy2|port_query=16250
+giantscitizenkabuto|Giants: Citizen Kabuto|gamespy1|port_query=8911
+globaloperations|Global Operations|gamespy1|port_query=28672
 gore|Gore|gamespy1|port=27777,port_query_offset=1
-#gtr2|GTR2|gtr2|port=34297,port_query_offset=1
 gunmanchronicles|Gunman Chronicles|valve
 hldm|Half-Life 1 Deathmatch|valve
 hl2dm|Half-Life 2 Deathmatch|valve
 halo|Halo|gamespy2|port=2302
 halo2|Halo 2|gamespy2|port=2302
-heretic2|Heretic 2|gamespy1|port=28910
+heretic2|Heretic 2|gamespy1|port_query=28910
+hexenworld|Hexen World|hexenworld|port_query=26950
 hidden|The Hidden: Source|valve
 had2|Hidden and Dangerous 2|gamespy1|port=11001,port_query_offset=3
 homefront|Homefront|valve
-homeworld2|Homeworld 2|gamespy1|port=6500
-igi2|IGI-2: Covert Strike|gamespy1|port=26001
-il2|IL-2 Sturmovik|gamespy1|port=21000
+homeworld2|Homeworld 2|gamespy1|port_query=6500
+igi2|IGI-2: Covert Strike|gamespy1|port_query=26001
+il2|IL-2 Sturmovik|gamespy1|port_query=21000
 insurgency|Insurgency|valve
-ironstorm|Iron Storm|gamespy1|port=3505
-jamesbondnightfire|James Bond: Nightfire|gamespy1|port=6550
+ironstorm|Iron Storm|gamespy1|port_query=3505
+jamesbondnightfire|James Bond: Nightfire|gamespy1|port_query=6550
 jc2mp|Just Cause 2 Multiplayer|jc2mp|port=7777
 killingfloor|Killing Floor|killingfloor|port=7707,port_query_offset=1
 kingpin|Kingpin: Life of Crime|gamespy1|port=31510,port_query_offset=-10
@@ -140,27 +164,25 @@ mtasa|Multi Theft Auto: San Andreas|ase|port=22003,port_query_offset=123
 mumble|Mumble|mumble|port=64738,port_query=27800
 mumbleping|Mumble|mumbleping|port=64738
 mutantfactions|Mutant Factions|mutantfactions|port=11235
-nascarthunder2004|Nascar Thunder 2004|gamespy2|port=13333
+nascarthunder2004|Nascar Thunder 2004|gamespy2|port_query=13333
 netpanzer|netPanzer|gamespy1|3030
 nmrih|No More Room in Hell|valve
 ns|Natural Selection|valve
 ns2|Natural Selection 2|valve|port_query_offset=1
-nfshp2|Need for Speed: Hot Pursuit 2|gamespy1|port=61220
+nfshp2|Need for Speed: Hot Pursuit 2|gamespy1|port_query=61220
 nab|Nerf Arena Blast|gamespy1|port=4444,port_query_offset=1
-nwn|Neverwinter Nights|gamespy2|port=5121
+nwn|Neverwinter Nights|gamespy2|port_query=5121
 nwn2|Neverwinter Nights 2|gamespy2|port=5121,port_query=6500
-nexuiz|Nexuiz|quake3|port=26000
-nitrofamily|Nitro Family|gamespy1|port=25601
-nolf|No One Lives Forever|gamespy1|port=27888
-nolf2|No One Lives Forever 2|gamespy1|port=27890
+nexuiz|Nexuiz|quake3|port_query=26000
+nitrofamily|Nitro Family|gamespy1|port_query=25601
+nolf|No One Lives Forever|gamespy1|port_query=27888
+nolf2|No One Lives Forever 2|gamespy1|port_query=27890
 nucleardawn|Nuclear Dawn|valve
-openarena|OpenArena|quake3|port=27960
-#openttd|OpenTTD|openttd|port=?
+openarena|OpenArena|quake3|port_query=27960
 operationflashpoint|Operation Flashpoint|gamespy1|port=2234,port_query_offset=1
 painkiller|Painkiller|ase|port=3455,port_query_offset=123
-#plainsight|Plain Sight|plainsight|port=?
 postal2|Postal 2|gamespy1|port=7777,port_query_offset=1
-prey|Prey|doom3|port=27719
+prey|Prey|doom3|port_query=27719
 
 quake1|Quake 1: QuakeWorld|quake1|port=27500
 quake2|Quake 2|quake2|port=27910
@@ -168,45 +190,43 @@ quake3|Quake 3: Arena|quake3|port=27960
 quake4|Quake 4|doom3|port=28004|hasClanTag
 
 ragdollkungfu|Rag Doll Kung Fu|valve
-r6|Rainbow Six|gamespy1|port=2348
-r6ravenshield|Rainbow Six: Raven Shield|gamespy1|port=7777,port_query_offset=1000
-r6roguespear|Rainbow Six: Rogue Spear|gamespy1|port=2346
-rallisportchallenge|RalliSport Challenge|gamespy1|port=17500
-rallymasters|Rally Masters|gamespy1|port=16666
+
+r6|Rainbow Six|gamespy1|port_query=2348
+r6roguespear|Rainbow Six 2: Rogue Spear|gamespy1|port_query=2346
+r6ravenshield|Rainbow Six 3: Raven Shield|gamespy1|port=7777,port_query_offset=1000
+
+rallisportchallenge|RalliSport Challenge|gamespy1|port_query=17500
+rallymasters|Rally Masters|gamespy1|port_query=16666
 redorchestra|Red Orchestra|unreal2|port=7758,port_query_offset=1
 redorchestraost|Red Orchestra: Ostfront 41-45|gamespy1|port=7757,port_query_offset=10
 redorchestra2|Red Orchestra 2|valve|port=7777,port_query=27015
-#rfactor|rFactor|rfactor|port=34397,port_query_offset=-100
-redline|Redline|gamespy1|port=25252
-rtcw|Return to Castle Wolfenstein|quake3|port=27960
+redline|Redline|gamespy1|port_query=25252
+rtcw|Return to Castle Wolfenstein|quake3|port_query=27960
 ricochet|Ricochet|valve
-riseofnations|Rise of Nations|gamespy1|port=6501
+riseofnations|Rise of Nations|gamespy1|port_query=6501
 rune|Rune|gamespy1|port=7777,port_query_offset=1
 rust|Rust|valve|port=28015,port_query_offset=1
-#samp|San Andreas Multiplayer|samp|port=?
-#savage|Savage|savage|port=?
-#savage2|Savage 2|savage2|port=?
 ss|Serious Sam|gamespy1|port=25600,port_query_offset=1
 ss2|Serious Sam 2|gamespy2|port=25600
 shatteredhorizon|Shattered Horizon|valve
 ship|The Ship|valve
-shogo|Shogo|gamespy1|port=27888
+shogo|Shogo|gamespy1|port_query=27888
 shootmania|Shootmania|nadeo
-sin|SiN|gamespy1|port=22450
+sin|SiN|gamespy1|port_query=22450
 sinep|SiN Episodes|valve
 soldat|Soldat|ase|port=13073,port_query_offset=123
-sof|Soldier of Fortune|quake1|port=28910
-sof2|Soldier of Fortune 2|quake3|port=20100
+sof|Soldier of Fortune|quake1|port_query=28910
+sof2|Soldier of Fortune 2|quake3|port_query=20100
 stalker|S.T.A.L.K.E.R.|gamespy3|port=5445,port_query_offset=2
 
-stbc|Star Trek: Bridge Commander|gamespy1|port=22101
-stvef|Star Trek: Voyager - Elite Force|quake3|port=27960
-stvef2|Star Trek: Voyager - Elite Force 2|quake3|port=29253
+stbc|Star Trek: Bridge Commander|gamespy1|port_query=22101
+stvef|Star Trek: Voyager - Elite Force|quake3|port_query=27960
+stvef2|Star Trek: Voyager - Elite Force 2|quake3|port_query=29253
 
-swbf|Star Wars: Battlefront|gamespy2|port=3658
-swbf2|Star Wars: Battlefront 2|gamespy2|port=3658
-swjk|Star Wars: Jedi Knight|quake3|port=29070
-swjk2|Star Wars: Jedi Knight 2|quake3|port=28070
+swbf|Star Wars: Battlefront|gamespy2|port_query=3658
+swbf2|Star Wars: Battlefront 2|gamespy2|port_query=3658
+swjk|Star Wars: Jedi Knight|quake3|port_query=29070
+swjk2|Star Wars: Jedi Knight 2|quake3|port_query=28070
 swrc|Star Wars: Republic Commando|gamespy2|port=7777,port_query=11138
 
 starbound|Starbound|valve|port=21025
@@ -215,25 +235,22 @@ swat4|SWAT 4|gamespy2|port=10480,port_query_offset=2
 svencoop|Sven Coop|valve
 synergy|Synergy|valve
 tacticalops|Tactical Ops|gamespy1|port=7777,port_query_offset=1
-teamfactor|Team Factor|gamespy1|port=57778
+teamfactor|Team Factor|gamespy1|port_query=57778
 tfc|Team Fortress Classic|valve
 tf2|Team Fortress 2|valve
 teamspeak2|Teamspeak 2|teamspeak2|port=8767,port_query=51234
 teamspeak3|Teamspeak 3|teamspeak3|port=9987,port_query=10011
-#teeworlds|Teeworlds|teeworlds|port=?
-terminus|Terminus|gamespy1|port=12286
+terminus|Terminus|gamespy1|port_query=12286
 terraria|Terraria|terraria|port=7777,port_query_offset=101
-thps3|Tony Hawk's Pro Skater 3|gamespy1|port=6500
-thps4|Tony Hawk's Pro Skater 4|gamespy1|port=6500
-thu2|Tony Hawk's Underground 2|gamespy1|port=5153
+thps3|Tony Hawk's Pro Skater 3|gamespy1|port_query=6500
+thps4|Tony Hawk's Pro Skater 4|gamespy1|port_query=6500
+thu2|Tony Hawk's Underground 2|gamespy1|port_query=5153
 trackmania2|Trackmania 2|nadeo
 trackmaniaforever|Trackmania Forever|nadeo
-tremulous|Tremulous|quake3|port=30720
-#tribes|Tribes|tribes|port=?
-#tribes2|Tribes 2|tribes2|port=?
+tremulous|Tremulous|quake3|port_query=30720
 tribesvengeance|Tribes: Vengeance|gamespy2|port=7777,port_query_offset=1
-tron20|Tron 2.0|gamespy2|port=27888
-turok2|Turok 2|gamespy1|port=12880
+tron20|Tron 2.0|gamespy2|port_query=27888
+turok2|Turok 2|gamespy1|port_query=12880
 universalcombat|Universal Combat|ase|port=1135,port_query_offset=123
 
 unreal|Unreal|gamespy1|port=7777,port_query_offset=1
@@ -242,16 +259,15 @@ ut2003|Unreal Tournament 2003|unreal2|port=7757,port_query_offset=1
 ut2004|Unreal Tournament 2004|ut2004|port=7777,port_query_offset=1
 ut3|Unreal Tournament 3|ut3|port=7777,port_query_offset=-1277
 
-urbanterror|Urban Terror|quake3|port=27960
-v8supercar|V8 Supercar Challenge|gamespy1|port=16700
+urbanterror|Urban Terror|quake3|port_query=27960
+v8supercar|V8 Supercar Challenge|gamespy1|port_query=16700
 ventrilo|Ventrilo|ventrilo|port=3784
-#vcmp|Vice City Multiplayer|vcmp|port=?
 vietcong|Vietcong|gamespy1|port=5425,port_query=15425
 vietcong2|Vietcong 2|gamespy2|port=5001,port_query=19967
 warsow|Warsow|warsow|port=44400
 wheeloftime|Wheel of Time|gamespy1|port=7777,port_query_offset=1
-wolfenstein2009|Wolfenstein 2009|doom3|port=27666|hasSpaceBeforeClanTag,hasClanTag,hasTypeFlag
-wolfensteinet|Wolfenstein: Enemy Territory|quake3|port=27960
+wolfenstein2009|Wolfenstein 2009|doom3|port_query=27666|hasSpaceBeforeClanTag,hasClanTag,hasTypeFlag
+wolfensteinet|Wolfenstein: Enemy Territory|quake3|port_query=27960
 xpandrally|Xpand Rally|ase|port=28015,port_query_offset=123
 zombiemaster|Zombie Master|valve
 zps|Zombie Panic: Source|valve
