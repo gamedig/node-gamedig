@@ -1,7 +1,11 @@
 node-GameDig - Game Server Query Library
 ---
-node-GameDig is a game server library, capable of querying for the status of
-nearly any game server. If has a node.js api, as well as a command line interface.
+node-GameDig is a game server query library, capable of querying for the status of
+nearly any game or voice server. If a server makes its status publically available,
+GameDig can fetch it for you.
+
+GameDig is available as a node.js module, as well as a
+[command line executable](#usage-from-command-line).
 
 Usage from Node.js
 ---
