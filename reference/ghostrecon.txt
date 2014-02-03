@@ -1,0 +1,133 @@
+
+ /*----------------------------------------------------------------------------------------------------------\
+ |                                                                                                            |
+ |                      [ LIVE GAME SERVER LIST ] [ © RICHARD PERRY FROM GREYCUBE.COM ]                       |
+ |                                                                                                            |
+ |    Released under the terms and conditions of the GNU General Public License Version 3 (http://gnu.org)    |
+ |                                                                                                            |
+ \-----------------------------------------------------------------------------------------------------------*/
+
+
+
+  function lgsl_query_19(&$server, &$lgsl_need, &$lgsl_fp)
+  {
+//---------------------------------------------------------+
+
+    fwrite($lgsl_fp, "\xC0\xDE\xF1\x11\x42\x06\x00\xF5\x03\x21\x21\x21\x21");
+
+    $buffer = fread($lgsl_fp, 4096);
+
+    if (!$buffer) { return FALSE; }
+
+//---------------------------------------------------------+
+
+    $buffer = substr($buffer, 25); // REMOVE HEADER
+
+    $server['s']['name']       = lgsl_get_string(lgsl_cut_pascal($buffer, 4, 3, -3));
+    $server['s']['map']        = lgsl_get_string(lgsl_cut_pascal($buffer, 4, 3, -3));
+    $server['e']['nextmap']    = lgsl_get_string(lgsl_cut_pascal($buffer, 4, 3, -3));
+    $server['e']['gametype']   = lgsl_get_string(lgsl_cut_pascal($buffer, 4, 3, -3));
+
+    $buffer = substr($buffer, 1);
+
+    $server['s']['password']   = ord(lgsl_cut_byte($buffer, 1));
+    $server['s']['playersmax'] = ord(lgsl_cut_byte($buffer, 4));
+    $server['s']['players']    = ord(lgsl_cut_byte($buffer, 4));
+
+//---------------------------------------------------------+
+
+    for ($player_key=0; $player_key<$server['s']['players']; $player_key++)
+    {
+     $server['p'][$player_key]['name'] = lgsl_get_string(lgsl_cut_pascal($buffer, 4, 3, -3));
+    }
+
+//---------------------------------------------------------+
+
+    $buffer = substr($buffer, 17);
+
+    $server['e']['version']    = lgsl_get_string(lgsl_cut_pascal($buffer, 4, 3, -3));
+    $server['e']['mods']       = lgsl_get_string(lgsl_cut_pascal($buffer, 4, 3, -3));
+    $server['e']['dedicated']  = ord(lgsl_cut_byte($buffer, 1));
+    $server['e']['time']       = lgsl_time(lgsl_unpack(lgsl_cut_byte($buffer, 4), "f"));
+    $server['e']['status']     = ord(lgsl_cut_byte($buffer, 4));
+    $server['e']['gamemode']   = ord(lgsl_cut_byte($buffer, 4));
+    $server['e']['motd']       = lgsl_get_string(lgsl_cut_pascal($buffer, 4, 3, -3));
+    $server['e']['respawns']   = ord(lgsl_cut_byte($buffer, 4));
+    $server['e']['time_limit'] = lgsl_time(lgsl_unpack(lgsl_cut_byte($buffer, 4), "f"));
+    $server['e']['voting']     = ord(lgsl_cut_byte($buffer, 4));
+
+    $buffer = substr($buffer, 2);
+
+//---------------------------------------------------------+
+
+    for ($player_key=0; $player_key<$server['s']['players']; $player_key++)
+    {
+     $server['p'][$player_key]['team'] = ord(lgsl_cut_byte($buffer, 4));
+
+     $unknown = ord(lgsl_cut_byte($buffer, 1));
+    }
+
+//---------------------------------------------------------+
+
+    $buffer = substr($buffer, 7);
+
+    $server['e']['platoon_1_color']   = ord(lgsl_cut_byte($buffer, 8));
+    $server['e']['platoon_2_color']   = ord(lgsl_cut_byte($buffer, 8));
+    $server['e']['platoon_3_color']   = ord(lgsl_cut_byte($buffer, 8));
+    $server['e']['platoon_4_color']   = ord(lgsl_cut_byte($buffer, 8));
+    $server['e']['timer_on']          = ord(lgsl_cut_byte($buffer, 1));
+    $server['e']['timer_time']        = lgsl_time(lgsl_unpack(lgsl_cut_byte($buffer, 4), "f"));
+    $server['e']['time_debriefing']   = lgsl_time(lgsl_unpack(lgsl_cut_byte($buffer, 4), "f"));
+    $server['e']['time_respawn_min']  = lgsl_time(lgsl_unpack(lgsl_cut_byte($buffer, 4), "f"));
+    $server['e']['time_respawn_max']  = lgsl_time(lgsl_unpack(lgsl_cut_byte($buffer, 4), "f"));
+    $server['e']['time_respawn_safe'] = lgsl_time(lgsl_unpack(lgsl_cut_byte($buffer, 4), "f"));
+    $server['e']['difficulty']        = ord(lgsl_cut_byte($buffer, 4));
+    $server['e']['respawn_total']     = ord(lgsl_cut_byte($buffer, 4));
+    $server['e']['random_insertions'] = ord(lgsl_cut_byte($buffer, 1));
+    $server['e']['spectators']        = ord(lgsl_cut_byte($buffer, 1));
+    $server['e']['arcademode']        = ord(lgsl_cut_byte($buffer, 1));
+    $server['e']['ai_backup']         = ord(lgsl_cut_byte($buffer, 1));
+    $server['e']['random_teams']      = ord(lgsl_cut_byte($buffer, 1));
+    $server['e']['time_starting']     = lgsl_time(lgsl_unpack(lgsl_cut_byte($buffer, 4), "f"));
+    $server['e']['identify_friends']  = ord(lgsl_cut_byte($buffer, 1));
+    $server['e']['identify_threats']  = ord(lgsl_cut_byte($buffer, 1));
+
+    $buffer = substr($buffer, 5);
+
+    $server['e']['restrictions']      = lgsl_get_string(lgsl_cut_pascal($buffer, 4, 3, -3));
+
+//---------------------------------------------------------+
+
+    switch ($server['e']['status'])
+    {
+      case 3: $server['e']['status'] = "Joining"; break;
+      case 4: $server['e']['status'] = "Joining"; break;
+      case 5: $server['e']['status'] = "Joining"; break;
+    }
+
+    switch ($server['e']['gamemode'])
+    {
+      case 2: $server['e']['gamemode'] = "Co-Op"; break;
+      case 3: $server['e']['gamemode'] = "Solo";  break;
+      case 4: $server['e']['gamemode'] = "Team";  break;
+    }
+
+    switch ($server['e']['respawns'])
+    {
+      case 0: $server['e']['respawns'] = "None";       break;
+      case 1: $server['e']['respawns'] = "Individual"; break;
+      case 2: $server['e']['respawns'] = "Team";       break;
+      case 3: $server['e']['respawns'] = "Infinite";   break;
+    }
+
+    switch ($server['e']['difficulty'])
+    {
+      case 0: $server['e']['difficulty'] = "Recruit"; break;
+      case 1: $server['e']['difficulty'] = "Veteran"; break;
+      case 2: $server['e']['difficulty'] = "Elite";   break;
+    }
+
+//---------------------------------------------------------+
+
+    return TRUE;
+  }

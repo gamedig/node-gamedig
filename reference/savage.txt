@@ -1,0 +1,66 @@
+
+ /*----------------------------------------------------------------------------------------------------------\
+ |                                                                                                            |
+ |                      [ LIVE GAME SERVER LIST ] [ © RICHARD PERRY FROM GREYCUBE.COM ]                       |
+ |                                                                                                            |
+ |    Released under the terms and conditions of the GNU General Public License Version 3 (http://gnu.org)    |
+ |                                                                                                            |
+ \-----------------------------------------------------------------------------------------------------------*/
+
+
+  function lgsl_query_17(&$server, &$lgsl_need, &$lgsl_fp)
+  {
+//---------------------------------------------------------+
+//  REFERENCE: http://masterserver.savage.s2games.com
+
+    fwrite($lgsl_fp, "\x9e\x4c\x23\x00\x00\xce\x21\x21\x21\x21");
+
+    $buffer = fread($lgsl_fp, 4096);
+
+    if (!$buffer) { return FALSE; }
+
+//---------------------------------------------------------+
+
+    $buffer = substr($buffer, 12); // REMOVE HEADER
+
+    while ($key = strtolower(lgsl_cut_string($buffer, 0, "\xFE")))
+    {
+      if ($key == "players") { break; }
+
+      $value = lgsl_cut_string($buffer, 0, "\xFF");
+      $value = str_replace("\x00", "", $value);
+      $value = lgsl_parse_color($value, $server['b']['type']);
+
+      $server['e'][$key] = $value;
+    }
+
+    $server['s']['name']       = $server['e']['name'];  unset($server['e']['name']);
+    $server['s']['map']        = $server['e']['world']; unset($server['e']['world']);
+    $server['s']['players']    = $server['e']['cnum'];  unset($server['e']['cnum']);
+    $server['s']['playersmax'] = $server['e']['cmax'];  unset($server['e']['cnum']);
+    $server['s']['password']   = $server['e']['pass'];  unset($server['e']['cnum']);
+
+//---------------------------------------------------------+
+
+    $server['t'][0]['name'] = $server['e']['race1'];
+    $server['t'][1]['name'] = $server['e']['race2'];
+    $server['t'][2]['name'] = "spectator";
+
+    $team_key   = -1;
+    $player_key = 0;
+
+    while ($value = lgsl_cut_string($buffer, 0, "\x0a"))
+    {
+      if ($value[0] == "\x00") { break; }
+      if ($value[0] != "\x20") { $team_key++; continue; }
+
+      $server['p'][$player_key]['name'] = lgsl_parse_color(substr($value, 1), $server['b']['type']);
+      $server['p'][$player_key]['team'] = $server['t'][$team_key]['name'];
+
+      $player_key++;
+    }
+
+//---------------------------------------------------------+
+
+    return TRUE;
+  }

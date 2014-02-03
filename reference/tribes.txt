@@ -1,0 +1,125 @@
+
+ /*----------------------------------------------------------------------------------------------------------\
+ |                                                                                                            |
+ |                      [ LIVE GAME SERVER LIST ] [ © RICHARD PERRY FROM GREYCUBE.COM ]                       |
+ |                                                                                                            |
+ |    Released under the terms and conditions of the GNU General Public License Version 3 (http://gnu.org)    |
+ |                                                                                                            |
+ \-----------------------------------------------------------------------------------------------------------*/
+
+
+  function lgsl_query_23(&$server, &$lgsl_need, &$lgsl_fp)
+  {
+//---------------------------------------------------------+
+//  REFERENCE:
+//  http://siteinthe.us
+//  http://www.tribesmasterserver.com
+
+    fwrite($lgsl_fp, "b++");
+
+    $buffer = fread($lgsl_fp, 4096);
+
+    if (!$buffer) { return FALSE; }
+
+    $buffer = substr($buffer, 4); // REMOVE HEADER
+
+//---------------------------------------------------------+
+
+    $server['s']['game']       = lgsl_cut_pascal($buffer);
+    $server['e']['version']    = lgsl_cut_pascal($buffer);
+    $server['s']['name']       = lgsl_cut_pascal($buffer);
+    $server['e']['dedicated']  = ord(lgsl_cut_byte($buffer, 1));
+    $server['s']['password']   = ord(lgsl_cut_byte($buffer, 1));
+    $server['s']['players']    = ord(lgsl_cut_byte($buffer, 1));
+    $server['s']['playersmax'] = ord(lgsl_cut_byte($buffer, 1));
+    $server['e']['cpu']        = lgsl_unpack(lgsl_cut_byte($buffer, 2), "S");
+    $server['e']['mod']        = lgsl_cut_pascal($buffer);
+    $server['e']['type']       = lgsl_cut_pascal($buffer);
+    $server['s']['map']        = lgsl_cut_pascal($buffer);
+    $server['e']['motd']       = lgsl_cut_pascal($buffer);
+    $server['e']['teams']      = ord(lgsl_cut_byte($buffer, 1));
+
+//---------------------------------------------------------+
+
+    $team_field = "?".lgsl_cut_pascal($buffer);
+    $team_field = split("\t", $team_field);
+
+    foreach ($team_field as $key => $value)
+    {
+      $value = substr($value, 1);
+      $value = strtolower($value);
+      $team_field[$key] = $value;
+    }
+
+//---------------------------------------------------------+
+
+    $player_field = "?".lgsl_cut_pascal($buffer);
+    $player_field = split("\t", $player_field);
+
+    foreach ($player_field as $key => $value)
+    {
+      $value = substr($value, 1);
+      $value = strtolower($value);
+
+      if ($value == "player name") { $value = "name"; }
+
+      $player_field[$key] = $value;
+    }
+
+    $player_field[] = "unknown_1";
+    $player_field[] = "unknown_2";
+
+//---------------------------------------------------------+
+
+    for ($i=0; $i<$server['e']['teams']; $i++)
+    {
+      $team_name = lgsl_cut_pascal($buffer);
+      $team_info = lgsl_cut_pascal($buffer);
+
+      if (!$team_info) { continue; }
+
+      $team_info = str_replace("%t", $team_name, $team_info);
+      $team_info = split("\t", $team_info);
+
+      foreach ($team_info as $key => $value)
+      {
+        $field = $team_field[$key];
+        $value = trim($value);
+
+        if ($field == "team name") { $field = "name"; }
+
+        $server['t'][$i][$field] = $value;
+      }
+    }
+
+//---------------------------------------------------------+
+
+    for ($i=0; $i<$server['s']['players']; $i++)
+    {
+      $player_bits   = array();
+      $player_bits[] = ord(lgsl_cut_byte($buffer, 1)) * 4; // %p = PING
+      $player_bits[] = ord(lgsl_cut_byte($buffer, 1));     // %l = PACKET LOSS
+      $player_bits[] = ord(lgsl_cut_byte($buffer, 1));     // %t = TEAM
+      $player_bits[] = lgsl_cut_pascal($buffer);           // %n = PLAYER NAME
+      $player_info   = lgsl_cut_pascal($buffer);
+
+      if (!$player_info) { continue; }
+
+      $player_info = str_replace(array("%p","%l","%t","%n"), $player_bits, $player_info);
+      $player_info = split("\t", $player_info);
+
+      foreach ($player_info as $key => $value)
+      {
+        $field = $player_field[$key];
+        $value = trim($value);
+
+        if ($field == "team") { $value = $server['t'][$value]['name']; }
+
+        $server['p'][$i][$field] = $value;
+      }
+    }
+
+//---------------------------------------------------------+
+
+    return TRUE;
+  }

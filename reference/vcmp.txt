@@ -1,0 +1,90 @@
+
+ /*----------------------------------------------------------------------------------------------------------\
+ |                                                                                                            |
+ |                      [ LIVE GAME SERVER LIST ] [ © RICHARD PERRY FROM GREYCUBE.COM ]                       |
+ |                                                                                                            |
+ |    Released under the terms and conditions of the GNU General Public License Version 3 (http://gnu.org)    |
+ |                                                                                                            |
+ \-----------------------------------------------------------------------------------------------------------*/
+
+  function lgsl_query_12(&$server, &$lgsl_need, &$lgsl_fp)
+  {
+//---------------------------------------------------------+
+//  REFERENCE:
+//  VICE CITY CURRENTLY ONLY SUPPORTS THE 'i' CHALLENGE
+
+    if     ($server['b']['type'] == "samp") { $challenge_packet = "SAMP\x21\x21\x21\x21\x00\x00"; }
+    elseif ($server['b']['type'] == "vcmp") { $challenge_packet = "VCMP\x21\x21\x21\x21\x00\x00"; $lgsl_need['e'] = FALSE; $lgsl_need['p'] = FALSE; }
+
+    if     ($lgsl_need['s']) { $challenge_packet .= "i"; }
+    elseif ($lgsl_need['e']) { $challenge_packet .= "r"; }
+    elseif ($lgsl_need['p']) { $challenge_packet .= "d"; }
+
+    fwrite($lgsl_fp, $challenge_packet);
+
+    $buffer = fread($lgsl_fp, 4096);
+
+    if (!$buffer) { return FALSE; }
+
+//---------------------------------------------------------+
+
+    $buffer = substr($buffer, 10); // REMOVE HEADER
+
+    $response_type = lgsl_cut_byte($buffer, 1);
+
+//---------------------------------------------------------+
+
+    if ($response_type == "i")
+    {
+      $lgsl_need['s'] = FALSE;
+
+      $server['s']['password']   = ord(lgsl_cut_byte($buffer, 1));
+      $server['s']['players']    = lgsl_unpack(lgsl_cut_byte($buffer, 2), "S");
+      $server['s']['playersmax'] = lgsl_unpack(lgsl_cut_byte($buffer, 2), "S");
+      $server['s']['name']       = lgsl_cut_pascal($buffer, 4);
+      $server['e']['gamemode']   = lgsl_cut_pascal($buffer, 4);
+      $server['s']['map']        = lgsl_cut_pascal($buffer, 4);
+    }
+
+//---------------------------------------------------------+
+
+    elseif ($response_type == "r")
+    {
+      $lgsl_need['e'] = FALSE;
+
+      $item_total = lgsl_unpack(lgsl_cut_byte($buffer, 2), "S");
+
+      for ($i=0; $i<$item_total; $i++)
+      {
+        if (!$buffer) { return FALSE; }
+
+        $data_key   = strtolower(lgsl_cut_pascal($buffer));
+        $data_value = lgsl_cut_pascal($buffer);
+
+        $server['e'][$data_key] = $data_value;
+      }
+    }
+
+//---------------------------------------------------------+
+
+    elseif ($response_type == "d")
+    {
+      $lgsl_need['p'] = FALSE;
+
+      $player_total = lgsl_unpack(lgsl_cut_byte($buffer, 2), "S");
+
+      for ($i=0; $i<$player_total; $i++)
+      {
+        if (!$buffer) { return FALSE; }
+
+        $server['p'][$i]['pid']   = ord(lgsl_cut_byte($buffer, 1));
+        $server['p'][$i]['name']  = lgsl_cut_pascal($buffer);
+        $server['p'][$i]['score'] = lgsl_unpack(lgsl_cut_byte($buffer, 4), "S");
+        $server['p'][$i]['ping']  = lgsl_unpack(lgsl_cut_byte($buffer, 4), "S");
+      }
+    }
+
+//---------------------------------------------------------+
+
+    return TRUE;
+  }

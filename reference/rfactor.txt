@@ -1,0 +1,94 @@
+
+ /*----------------------------------------------------------------------------------------------------------\
+ |                                                                                                            |
+ |                      [ LIVE GAME SERVER LIST ] [ © RICHARD PERRY FROM GREYCUBE.COM ]                       |
+ |                                                                                                            |
+ |    Released under the terms and conditions of the GNU General Public License Version 3 (http://gnu.org)    |
+ |                                                                                                            |
+ \-----------------------------------------------------------------------------------------------------------*/
+
+  function lgsl_query_16(&$server, &$lgsl_need, &$lgsl_fp)
+  {
+//---------------------------------------------------------+
+//  REFERENCE:
+//  http://www.planetpointy.co.uk/software/rfactorsspy.shtml
+//  http://users.pandora.be/viperius/mUtil/
+//  USES FIXED DATA POSITIONS WITH RANDOM CHARACTERS FILLING THE GAPS
+
+    fwrite($lgsl_fp, "rF_S");
+
+    $buffer = fread($lgsl_fp, 4096);
+
+    if (!$buffer) { return FALSE; }
+
+//---------------------------------------------------------+
+
+//  $server['e']['gamename']         = lgsl_get_string($buffer);
+    $buffer = substr($buffer, 8);
+//  $server['e']['fullupdate']       = lgsl_unpack($buffer[0], "C");
+    $server['e']['region']           = lgsl_unpack($buffer[1] .$buffer[2],  "S");
+//  $server['e']['ip']               = ($buffer[3] .$buffer[4].$buffer[5].$buffer[6]); // UNSIGNED LONG
+//  $server['e']['size']             = lgsl_unpack($buffer[7] .$buffer[8],  "S");
+    $server['e']['version']          = lgsl_unpack($buffer[9] .$buffer[10], "S");
+//  $server['e']['version_racecast'] = lgsl_unpack($buffer[11].$buffer[12], "S");
+    $server['e']['hostport']         = lgsl_unpack($buffer[13].$buffer[14], "S");
+//  $server['e']['queryport']        = lgsl_unpack($buffer[15].$buffer[16], "S");
+    $buffer = substr($buffer, 17);
+    $server['s']['game']             = lgsl_get_string($buffer);
+    $buffer = substr($buffer, 20);
+    $server['s']['name']             = lgsl_get_string($buffer);
+    $buffer = substr($buffer, 28);
+    $server['s']['map']              = lgsl_get_string($buffer);
+    $buffer = substr($buffer, 32);
+    $server['e']['motd']             = lgsl_get_string($buffer);
+    $buffer = substr($buffer, 96);
+    $server['e']['packed_aids']      = lgsl_unpack($buffer[0].$buffer[1], "S");
+//  $server['e']['ping']             = lgsl_unpack($buffer[2].$buffer[3], "S");
+    $server['e']['packed_flags']     = lgsl_unpack($buffer[4],  "C");
+    $server['e']['rate']             = lgsl_unpack($buffer[5],  "C");
+    $server['s']['players']          = lgsl_unpack($buffer[6],  "C");
+    $server['s']['playersmax']       = lgsl_unpack($buffer[7],  "C");
+    $server['e']['bots']             = lgsl_unpack($buffer[8],  "C");
+    $server['e']['packed_special']   = lgsl_unpack($buffer[9],  "C");
+    $server['e']['damage']           = lgsl_unpack($buffer[10], "C");
+    $server['e']['packed_rules']     = lgsl_unpack($buffer[11].$buffer[12], "S");
+    $server['e']['credits1']         = lgsl_unpack($buffer[13], "C");
+    $server['e']['credits2']         = lgsl_unpack($buffer[14].$buffer[15], "S");
+    $server['e']['time']   = lgsl_time(lgsl_unpack($buffer[16].$buffer[17], "S"));
+    $server['e']['laps']             = lgsl_unpack($buffer[18].$buffer[19], "s") / 16;
+    $buffer = substr($buffer, 23);
+    $server['e']['vehicles']         = lgsl_get_string($buffer);
+
+    // DOES NOT RETURN PLAYER INFORMATION
+
+//---------------------------------------------------------+
+
+    $server['s']['password']    = ($server['e']['packed_special'] & 2)  ? 1 : 0;
+    $server['e']['racecast']    = ($server['e']['packed_special'] & 4)  ? 1 : 0;
+    $server['e']['fixedsetups'] = ($server['e']['packed_special'] & 16) ? 1 : 0;
+
+                                              $server['e']['aids']  = "";
+    if ($server['e']['packed_aids'] & 1)    { $server['e']['aids'] .= " TractionControl"; }
+    if ($server['e']['packed_aids'] & 2)    { $server['e']['aids'] .= " AntiLockBraking"; }
+    if ($server['e']['packed_aids'] & 4)    { $server['e']['aids'] .= " StabilityControl"; }
+    if ($server['e']['packed_aids'] & 8)    { $server['e']['aids'] .= " AutoShifting"; }
+    if ($server['e']['packed_aids'] & 16)   { $server['e']['aids'] .= " AutoClutch"; }
+    if ($server['e']['packed_aids'] & 32)   { $server['e']['aids'] .= " Invulnerability"; }
+    if ($server['e']['packed_aids'] & 64)   { $server['e']['aids'] .= " OppositeLock"; }
+    if ($server['e']['packed_aids'] & 128)  { $server['e']['aids'] .= " SteeringHelp"; }
+    if ($server['e']['packed_aids'] & 256)  { $server['e']['aids'] .= " BrakingHelp"; }
+    if ($server['e']['packed_aids'] & 512)  { $server['e']['aids'] .= " SpinRecovery"; }
+    if ($server['e']['packed_aids'] & 1024) { $server['e']['aids'] .= " AutoPitstop"; }
+
+    $server['e']['aids']     = str_replace(" ", " / ", trim($server['e']['aids']));
+    $server['e']['vehicles'] = str_replace("|", " / ", trim($server['e']['vehicles']));
+
+    unset($server['e']['packed_aids']);
+    unset($server['e']['packed_flags']);
+    unset($server['e']['packed_special']);
+    unset($server['e']['packed_rules']);
+
+//---------------------------------------------------------+
+
+    return TRUE;
+  }

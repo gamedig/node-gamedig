@@ -71,120 +71,219 @@ Supported Games
 ---
 
 * Age of Chivalry (ageofchivalry)
+* Age of Empires 2 (aoe2) [[Separate Query Port](#separate-query-port)]
+* Alien Arena (alienarena)
 * Alien Swarm (alienswarm)
 * Aliens vs Predator 2 (avp2)
-* Aliens vs Predator 3 (avp3)
-* America's Army 1 (americasarmy) [[Separate Query Port - Usually port+1](#separate-query-port)]
-* America's Army 2 (americasarmy2) [[Separate Query Port - Usually port+1](#separate-query-port)]
-* America's Army 3 (americasarmy3) [[Separate Query Port - Usually 27020](#separate-query-port)]
-* America's Army: Proving Grounds (americasarmypg) [[Separate Query Port - Usually 27020](#separate-query-port)]
+* Aliens vs Predator 2010 (avp2010)
+* America's Army (americasarmy) [[Separate Query Port](#separate-query-port)]
+* America's Army 2 (americasarmy2) [[Separate Query Port](#separate-query-port)]
+* America's Army 3 (americasarmy3) [[Separate Query Port](#separate-query-port)]
+* America's Army: Proving Grounds (americasarmypg) [[Separate Query Port](#separate-query-port)]
 * ArmA Armed Assault 1 (arma)
 * ArmA Armed Assault 2 (arma2)
 * ArmA Armed Assault 3 (arma3)
 * Armagetron (armagetron)
-* Battlefield 1942 (bf1942) [[Separate Query Port - Usually 23000](#separate-query-port)]
-* Battlefield 2142 (bf2142) [[Separate Query Port - Usually 29900](#separate-query-port)]
-* Battlefield 2 (bf2) [[Separate Query Port - Usually 29900](#separate-query-port)]
-* Battlefield 3 (bf3) [[Separate Query Port - Usually port+22000](#separate-query-port)]
-* Battlefield 4 (bf4) [[Separate Query Port - Usually port+22000](#separate-query-port)]
-* Battlefield: Bad Company 2 (bfbc2) [[Separate Query Port - Usually 48888](#separate-query-port)]
-* Battlefield: Vietnam (bfv) [[Separate Query Port - Usually 48888](#separate-query-port)]
+* Baldur's Gate (baldursgate) [[Separate Query Port](#separate-query-port)]
+* Battlefield 1942 (bf1942) [[Separate Query Port](#separate-query-port)]
+* Battlefield Vietnam (bfv) [[Separate Query Port](#separate-query-port)]
+* Battlefield 2 (bf2) [[Separate Query Port](#separate-query-port)]
+* Battlefield 2142 (bf2142) [[Separate Query Port](#separate-query-port)]
+* Battlefield: Bad Company 2 (bfbc2) [[Separate Query Port](#separate-query-port)]
+* Battlefield 3 (bf3) [[Separate Query Port](#separate-query-port)]
+* Battlefield 4 (bf4) [[Separate Query Port](#separate-query-port)]
 * Breach (breach)
-* Brink (brink) [[Separate Query Port - Usually port+1](#separate-query-port)]
-* Build and Shoot (buildandshoot)
+* Breed (breed)
+* Brink (brink) [[Separate Query Port](#separate-query-port)]
+* Build and Shoot (buildandshoot) [[Separate Query Port](#separate-query-port)]
 * Call of Duty (cod)
-* Call of Duty 2 (cod2)
-* Call of Duty 4 (cod4)
-* Call of Duty: Modern Warfare 3 (codmw3) [[Separate Query Port - Usually port+2](#separate-query-port)]
 * Call of Duty: United Offensive (coduo)
+* Call of Duty 2 (cod2)
+* Call of Duty 3 (cod3)
+* Call of Duty 4: Modern Warfare (cod4)
 * Call of Duty: World at War (codwaw)
+* Call of Duty: Modern Warfare 2 (codmw2)
+* Call of Duty: Modern Warfare 3 (codmw3) [[Separate Query Port](#separate-query-port)]
+* Call of Juarez (callofjuarez) [[Separate Query Port](#separate-query-port)]
+* Chaser (chaser) [[Separate Query Port](#separate-query-port)]
+* Chrome (chrome) [[Separate Query Port](#separate-query-port)]
+* Codename Eagle (codenameeagle)
+* Commandos 3: Destination Berlin (commandos3)
+* Command and Conquer: Renegade (cacrenegade) [[Separate Query Port](#separate-query-port)]
+* Contact J.A.C.K. (contactjack)
 * Counter-Strike 1.6 (cs16)
 * Counter-Strike: Condition Zero (cscz)
 * Counter-Strike: Source (css)
 * Counter-Strike: Global Offensive (csgo)
+* Cross Racing Championship (crossracing) [[Separate Query Port](#separate-query-port)]
 * Crysis (crysis)
-* Crysis 2 (crysis2)
 * Crysis Wars (crysiswars)
-* Darkest Hour (darkesthour) [[Separate Query Port - Usually port+1](#separate-query-port)]
+* Crysis 2 (crysis2)
+* Daikatana (daikatana) [[Separate Query Port](#separate-query-port)]
+* Dark Messiah of Might and Magic (dmomam)
+* Darkest Hour (darkesthour) [[Separate Query Port](#separate-query-port)]
+* DayZ (dayz)
+* Deadly Dozen: Pacific Theater (deadlydozenpt)
+* Deer Hunter 2005 (dh2005) [[Separate Query Port](#separate-query-port)]
+* Descent 3 (descent3) [[Separate Query Port](#separate-query-port)]
+* Deus Ex (deusex) [[Separate Query Port](#separate-query-port)]
+* Devastation (devastation) [[Separate Query Port](#separate-query-port)]
+* Dino D-Day (dinodday)
+* Dirt Track Racing 2 (dirttrackracing2) [[Separate Query Port](#separate-query-port)]
 * Day of Defeat (dod)
 * Day of Defeat: Source (dods)
-* DayZ (dayz) [[Separate Query Port - Usually 27016-27020](#separate-query-port)]
-* Dino D-Day (dinodday)
 * Doom 3 (doom3)
 * DOTA 2 (dota2)
-* Enemy Territory Quake Wars (etqw)
+* Drakan (drakan) [[Separate Query Port](#separate-query-port)]
+* Enemy Territory Quake Wars (etqw) [[Separate Query Port](#separate-query-port)]
 * F.E.A.R. (fear)
-* Far Cry (farcry) [[Separate Query Port - Usually port+123](#separate-query-port)]
-* Far Cry 2 (farcry2) [[Separate Query Port - Usually port+123](#separate-query-port)]
+* F1 2002 (f12002)
+* F1 Challenge 99-02 (f1c9902)
+* Far Cry (farcry) [[Separate Query Port](#separate-query-port)]
+* Far Cry (farcry2)
 * Fortress Forever (fortressforever)
-* Frontlines: Fuel of War (ffow)
+* Flashpoint (flashpoint) [[Separate Query Port](#separate-query-port)]
+* Frontlines: Fuel of War (ffow) [[Separate Query Port](#separate-query-port)]
 * Garry's Mod (garrysmod)
 * Ghost Recon: Advanced Warfighter (graw)
 * Ghost Recon: Advanced Warfighter 2 (graw2)
-* Gore (gore)
+* Giants: Citizen Kabuto (giantscitizenkabuto)
+* Global Operations (globaloperations)
+* Gore (gore) [[Separate Query Port](#separate-query-port)]
+* Gunman Chronicles (gunmanchronicles)
 * Half-Life 1 Deathmatch (hldm)
 * Half-Life 2 Deathmatch (hl2dm)
 * Halo (halo)
+* Halo 2 (halo2)
+* Heretic 2 (heretic2)
 * The Hidden: Source (hidden)
+* Hidden and Dangerous 2 (had2) [[Separate Query Port](#separate-query-port)]
 * Homefront (homefront)
+* Homeworld 2 (homeworld2)
+* IGI-2: Covert Strike (igi2)
+* IL-2 Sturmovik (il2)
 * Insurgency (insurgency)
+* Iron Storm (ironstorm)
+* James Bond: Nightfire (jamesbondnightfire)
 * Just Cause 2 Multiplayer (jc2mp)
-* Killing Floor (killingfloor)
+* Killing Floor (killingfloor) [[Separate Query Port](#separate-query-port)]
+* Kingpin: Life of Crime (kingpin) [[Separate Query Port](#separate-query-port)]
+* KISS Psycho Circus (kisspc) [[Separate Query Port](#separate-query-port)]
 * KzMod (kzmod)
 * Left 4 Dead (left4dead)
 * Left 4 Dead 2 (left4dead2)
-* Mafia 2 Multiplayer (m2mp) [[Separate Query Port - Usually port+1](#separate-query-port)]
-* Medal of Honor: Allied Assault (mohaa) [[Separate Query Port - Usually port+97](#separate-query-port)]
-* Medal of Honor: Spearhead (mohsh) [[Separate Query Port - Usually port+97](#separate-query-port)]
-* Medal of Honor: Breakthrough (mohbt) [[Separate Query Port - Usually port+97](#separate-query-port)]
-* Medal of Honor 2010 (moh2010) [[Separate Query Port - Usually 48888](#separate-query-port)]
-* Medal of Honor: Warfighter (mohwf)
-* Minecraft (minecraft) [[Additional Notes](#minecraft)]
-* Monday Night Combat (mnc)
-* Multi Theft Auto [[Separate Query Port - Usually port+123](#separate-query-port)]
-* Mumble [[Additional Notes](#mumble)]
+* Mafia 2 Multiplayer (m2mp) [[Separate Query Port](#separate-query-port)]
+* Medal of Honor: Allied Assault (mohaa) [[Separate Query Port](#separate-query-port)]
+* Medal of Honor: Pacific Assault (mohpa) [[Separate Query Port](#separate-query-port)]
+* Medal of Honor: Airborne (mohab) [[Separate Query Port](#separate-query-port)]
+* Medal of Honor: Spearhead (mohsh) [[Separate Query Port](#separate-query-port)]
+* Medal of Honor: Breakthrough (mohbt) [[Separate Query Port](#separate-query-port)]
+* Medal of Honor 2010 (moh2010) [[Separate Query Port](#separate-query-port)]
+* Medal of Honor: Warfighter (mohwf) [[Separate Query Port](#separate-query-port)]
+* Minecraft (minecraft)
+* Minecraft (minecraftping)
+* Monday Night Combat (mnc) [[Separate Query Port](#separate-query-port)]
+* Multi Theft Auto: Vice City (mtavc) [[Separate Query Port](#separate-query-port)]
+* Multi Theft Auto: San Andreas (mtasa) [[Separate Query Port](#separate-query-port)]
+* Mumble (mumble) [[Separate Query Port](#separate-query-port)]
+* Mumble (mumbleping)
 * Mutant Factions (mutantfactions)
-* Natural Selection (ns)
-* Natural Selection 2 (ns2) [[Separate Query Port - Usually port+1](#separate-query-port)]
+* Nascar Thunder 2004 (nascarthunder2004)
+* netPanzer (netpanzer)
 * No More Room in Hell (nmrih)
+* Natural Selection (ns)
+* Natural Selection 2 (ns2) [[Separate Query Port](#separate-query-port)]
+* Need for Speed: Hot Pursuit 2 (nfshp2)
+* Nerf Arena Blast (nab) [[Separate Query Port](#separate-query-port)]
+* Neverwinter Nights (nwn)
+* Neverwinter Nights 2 (nwn2) [[Separate Query Port](#separate-query-port)]
+* Nexuiz (nexuiz)
+* Nitro Family (nitrofamily)
+* No One Lives Forever (nolf)
+* No One Lives Forever 2 (nolf2)
 * Nuclear Dawn (nucleardawn)
+* OpenArena (openarena)
+* Operation Flashpoint (operationflashpoint) [[Separate Query Port](#separate-query-port)]
+* Painkiller (painkiller) [[Separate Query Port](#separate-query-port)]
+* Postal 2 (postal2) [[Separate Query Port](#separate-query-port)]
 * Prey (prey)
-* Quake 1 (quake1)
+* Quake 1: QuakeWorld (quake1)
 * Quake 2 (quake2)
-* Quake 3 (quake3)
+* Quake 3: Arena (quake3)
 * Quake 4 (quake4)
-* Red Orchestra: Ostfront 41-45 (redorchestraost) [[Separate Query Port - Usually port+10](#separate-query-port)]
-* Red Orchestra 2 (redorchestra2) [[Separate Query Port - Usually 27015](#separate-query-port)]
+* Rag Doll Kung Fu (ragdollkungfu)
+* Rainbow Six (r6)
+* Rainbow Six: Raven Shield (r6ravenshield) [[Separate Query Port](#separate-query-port)]
+* Rainbow Six: Rogue Spear (r6roguespear)
+* RalliSport Challenge (rallisportchallenge)
+* Rally Masters (rallymasters)
+* Red Orchestra (redorchestra) [[Separate Query Port](#separate-query-port)]
+* Red Orchestra: Ostfront 41-45 (redorchestraost) [[Separate Query Port](#separate-query-port)]
+* Red Orchestra 2 (redorchestra2) [[Separate Query Port](#separate-query-port)]
+* Redline (redline)
 * Return to Castle Wolfenstein (rtcw)
 * Ricochet (ricochet)
-* Rust (rust)
+* Rise of Nations (riseofnations)
+* Rune (rune) [[Separate Query Port](#separate-query-port)]
+* Rust (rust) [[Separate Query Port](#separate-query-port)]
+* Serious Sam (ss) [[Separate Query Port](#separate-query-port)]
+* Serious Sam 2 (ss2)
+* Shattered Horizon (shatteredhorizon)
 * The Ship (ship)
-* ShootMania (shootmania) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]
+* Shogo (shogo)
+* Shootmania (shootmania)
+* SiN (sin)
+* SiN Episodes (sinep)
+* Soldat (soldat) [[Separate Query Port](#separate-query-port)]
+* Soldier of Fortune (sof)
 * Soldier of Fortune 2 (sof2)
+* S.T.A.L.K.E.R. (stalker) [[Separate Query Port](#separate-query-port)]
+* Star Trek: Bridge Commander (stbc)
+* Star Trek: Voyager - Elite Force (stvef)
+* Star Trek: Voyager - Elite Force 2 (stvef2)
+* Star Wars: Battlefront (swbf)
 * Star Wars: Battlefront 2 (swbf2)
 * Star Wars: Jedi Knight (swjk)
 * Star Wars: Jedi Knight 2 (swjk2)
+* Star Wars: Republic Commando (swrc) [[Separate Query Port](#separate-query-port)]
 * Starbound (starbound)
 * Suicide Survival (suicidesurvival)
-* SWAT 4 (swat4) [[Separate Query Port - Usually port+2](#separate-query-port)]
+* SWAT 4 (swat4) [[Separate Query Port](#separate-query-port)]
 * Sven Coop (svencoop)
 * Synergy (synergy)
-* Team Fortress 2 (tf2)
+* Tactical Ops (tacticalops) [[Separate Query Port](#separate-query-port)]
+* Team Factor (teamfactor)
 * Team Fortress Classic (tfc)
-* Teamspeak 2 (teamspeak2)
-* Teamspeak 3 (teamspeak3)
-* Terraria (terraria) [[Additional Notes](#terraria)]
-* TrackMania 2 (trackmania2) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]
-* TrackMania Forever (trackmaniaforever) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]
-* Unreal Tournament (ut) [[Separate Query Port - Usually port+1](#separate-query-port)]
-* Unreal Tournament 2003 (ut2003) [[Separate Query Port - Usually port+1](#separate-query-port)]
-* Unreal Tournament 2004 (ut2004) [[Separate Query Port - Usually port+1](#separate-query-port)]
-* Unreal Tournament 3 (ut3) [[Separate Query Port - Usually 6500](#separate-query-port)]
+* Team Fortress 2 (tf2)
+* Teamspeak 2 (teamspeak2) [[Separate Query Port](#separate-query-port)]
+* Teamspeak 3 (teamspeak3) [[Separate Query Port](#separate-query-port)]
+* Terminus (terminus)
+* Terraria (terraria) [[Separate Query Port](#separate-query-port)]
+* Tony Hawk's Pro Skater 3 (thps3)
+* Tony Hawk's Pro Skater 4 (thps4)
+* Tony Hawk's Underground 2 (thu2)
+* Trackmania 2 (trackmania2)
+* Trackmania Forever (trackmaniaforever)
+* Tremulous (tremulous)
+* Tribes: Vengeance (tribesvengeance) [[Separate Query Port](#separate-query-port)]
+* Tron 2.0 (tron20)
+* Turok 2 (turok2)
+* Universal Combat (universalcombat) [[Separate Query Port](#separate-query-port)]
+* Unreal (unreal) [[Separate Query Port](#separate-query-port)]
+* Unreal Tournament (ut) [[Separate Query Port](#separate-query-port)]
+* Unreal Tournament 2003 (ut2003) [[Separate Query Port](#separate-query-port)]
+* Unreal Tournament 2004 (ut2004) [[Separate Query Port](#separate-query-port)]
+* Unreal Tournament 3 (ut3) [[Separate Query Port](#separate-query-port)]
 * Urban Terror (urbanterror)
+* V8 Supercar Challenge (v8supercar)
 * Ventrilo (ventrilo)
+* Vietcong (vietcong) [[Separate Query Port](#separate-query-port)]
+* Vietcong 2 (vietcong2) [[Separate Query Port](#separate-query-port)]
 * Warsow (warsow)
+* Wheel of Time (wheeloftime) [[Separate Query Port](#separate-query-port)]
 * Wolfenstein 2009 (wolfenstein2009)
 * Wolfenstein: Enemy Territory (wolfensteinet)
+* Xpand Rally (xpandrally) [[Separate Query Port](#separate-query-port)]
 * Zombie Master (zombiemaster)
 * Zombie Panic: Source (zps)
 
@@ -204,6 +303,48 @@ Don't see your game listed here?
  * protocol-unreal2
  * protocol-valve
  * protocol-valvegold
+ 
+Games Not Supported (yet!)
+---
+(Want support for one of these games? Please open an issue!)
+* Arca Sim Racing
+* Cube Engine:
+ * Assault Cube
+ * Cube 2: Sauerbraten
+ * Blood Frontier 
+* BFRIS
+* Call of Duty: Black Ops
+* Call of Duty: Black Ops 2
+* Counter-Strike 2D
+* Delta Force: Land Warrior
+* Enemy Territory: Quake Wars
+* Flashpoint
+* Freelancer
+* Ghost Recon
+* GTR2
+* Haze
+* Hexen 2
+* Hexen World
+* Hidden and Dangerous 2
+* Mohawk Voice Server
+* OpenTTD
+* Pariah
+* Raven Shield
+* Red Faction
+* rFactor
+* San Andreas: Multiplayer
+* Savage: Battle for Newerth
+* Savage 2: A Tortured Soul
+* Shattered Horizons
+* Starsiege
+* Sum of All Fears
+* Teeworlds
+* Tribes 1
+* Tribes 2
+* World in Conflict
+
+> '''Know how to code?''' Many of the protocols for these games are documented
+> in the /reference folder, ready for you to write code for!
 
 ### Games with Additional Notes
 
@@ -228,7 +369,9 @@ additional option: token
 
 #### Separate Query Port
 Games with this note use a query port which is usually not the same as the game's connection port.
-You must pass the query port to GameDig, not the connection port.
+Usually, no action will be required from you. The 'port' option you pass GameDig should be the game's
+connection port. GameDig will attempt to calculate the query port automatically. If the query still fails,
+you may need to pass the 'port_query' option to GameDig as well, indicating the separate query port.
 
 Usage from Command Line
 ---

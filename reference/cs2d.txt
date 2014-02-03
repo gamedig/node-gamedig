@@ -1,0 +1,70 @@
+
+ /*----------------------------------------------------------------------------------------------------------\
+ |                                                                                                            |
+ |                      [ LIVE GAME SERVER LIST ] [ © RICHARD PERRY FROM GREYCUBE.COM ]                       |
+ |                                                                                                            |
+ |    Released under the terms and conditions of the GNU General Public License Version 3 (http://gnu.org)    |
+ |                                                                                                            |
+ \-----------------------------------------------------------------------------------------------------------*/
+
+
+  function lgsl_query_29(&$server, &$lgsl_need, &$lgsl_fp)
+  {
+//---------------------------------------------------------+
+//  REFERENCE: http://www.cs2d.com/servers.php
+
+    if ($lgsl_need['s'] || $lgsl_need['e'])
+    {
+      $lgsl_need['s'] = FALSE;
+      $lgsl_need['e'] = FALSE;
+
+      fwrite($lgsl_fp, "\x01\x00\x03\x10\x21\xFB\x01\x75\x00");
+
+      $buffer = fread($lgsl_fp, 4096);
+
+      if (!$buffer) { return FALSE; }
+
+      $buffer = substr($buffer, 4); // REMOVE HEADER
+
+      $server['e']['bit_flags']  = ord(lgsl_cut_byte($buffer, 1)) - 48;
+      $server['s']['name']       = lgsl_cut_pascal($buffer);
+      $server['s']['map']        = lgsl_cut_pascal($buffer);
+      $server['s']['players']    = ord(lgsl_cut_byte($buffer, 1));
+      $server['s']['playersmax'] = ord(lgsl_cut_byte($buffer, 1));
+      $server['e']['gamemode']   = ord(lgsl_cut_byte($buffer, 1));
+      $server['e']['bots']       = ord(lgsl_cut_byte($buffer, 1));
+
+      $server['s']['password']        = ($server['e']['bit_flags'] & 1) ? "1" : "0";
+      $server['e']['registered_only'] = ($server['e']['bit_flags'] & 2) ? "1" : "0";
+      $server['e']['fog_of_war']      = ($server['e']['bit_flags'] & 4) ? "1" : "0";
+      $server['e']['friendlyfire']    = ($server['e']['bit_flags'] & 8) ? "1" : "0";
+    }
+
+    if ($lgsl_need['p'])
+    {
+      $lgsl_need['p'] = FALSE;
+
+      fwrite($lgsl_fp, "\x01\x00\xFB\x05");
+
+      $buffer = fread($lgsl_fp, 4096);
+
+      if (!$buffer) { return FALSE; }
+
+      $buffer = substr($buffer, 4); // REMOVE HEADER
+
+      $player_total = ord(lgsl_cut_byte($buffer, 1));
+
+      for ($i=0; $i<$player_total; $i++)
+      {
+        $server['p'][$i]['pid']    = ord(lgsl_cut_byte($buffer, 1));
+        $server['p'][$i]['name']   = lgsl_cut_pascal($buffer);
+        $server['p'][$i]['team']   = ord(lgsl_cut_byte($buffer, 1));
+        $server['p'][$i]['score']  = lgsl_unpack(lgsl_cut_byte($buffer, 4), "l");
+        $server['p'][$i]['deaths'] = lgsl_unpack(lgsl_cut_byte($buffer, 4), "l");
+      }
+    }
+
+//---------------------------------------------------------+
+
+    return TRUE;
+  }

@@ -1,0 +1,168 @@
+
+ /*----------------------------------------------------------------------------------------------------------\
+ |                                                                                                            |
+ |                      [ LIVE GAME SERVER LIST ] [ © RICHARD PERRY FROM GREYCUBE.COM ]                       |
+ |                                                                                                            |
+ |    Released under the terms and conditions of the GNU General Public License Version 3 (http://gnu.org)    |
+ |                                                                                                            |
+ \-----------------------------------------------------------------------------------------------------------*/
+
+
+  function lgsl_query_24(&$server, &$lgsl_need, &$lgsl_fp)
+  {
+//---------------------------------------------------------+
+//  REFERENCE: http://cubelister.sourceforge.net
+
+    fwrite($lgsl_fp, "\x21\x21");
+
+    $buffer = fread($lgsl_fp, 4096);
+
+    if (!$buffer) { return FALSE; }
+
+    $buffer = substr($buffer, 2); // REMOVE HEADER
+
+//---------------------------------------------------------+
+
+    if ($buffer[0] == "\x1b") // CUBE 1
+    {
+      // RESPONSE IS XOR ENCODED FOR SOME STRANGE REASON
+      for ($i=0; $i<strlen($buffer); $i++) { $buffer[$i] = chr(ord($buffer[$i]) ^ 0x61); }
+
+      $server['s']['game']       = "Cube";
+      $server['e']['netcode']    = ord(lgsl_cut_byte($buffer, 1));
+      $server['e']['gamemode']   = ord(lgsl_cut_byte($buffer, 1));
+      $server['s']['players']    = ord(lgsl_cut_byte($buffer, 1));
+      $server['e']['timeleft']   = lgsl_time(ord(lgsl_cut_byte($buffer, 1)) * 60);
+      $server['s']['map']        = lgsl_cut_string($buffer);
+      $server['s']['name']       = lgsl_cut_string($buffer);
+      $server['s']['playersmax'] = "0"; // NOT PROVIDED
+
+      // DOES NOT RETURN PLAYER INFORMATION
+
+      return TRUE;
+    }
+
+    elseif ($buffer[0] == "\x80") // ASSAULT CUBE
+    {
+      $server['s']['game']       = "AssaultCube";
+      $server['e']['netcode']    = ord(lgsl_cut_byte($buffer, 1));
+      $server['e']['version']    = lgsl_unpack(lgsl_cut_byte($buffer, 2), "S");
+      $server['e']['gamemode']   = ord(lgsl_cut_byte($buffer, 1));
+      $server['s']['players']    = ord(lgsl_cut_byte($buffer, 1));
+      $server['e']['timeleft']   = lgsl_time(ord(lgsl_cut_byte($buffer, 1)) * 60);
+      $server['s']['map']        = lgsl_cut_string($buffer);
+      $server['s']['name']       = lgsl_cut_string($buffer);
+      $server['s']['playersmax'] = ord(lgsl_cut_byte($buffer, 1));
+    }
+
+    elseif ($buffer[1] == "\x05") // CUBE 2 - SAUERBRATEN
+    {
+      $server['s']['game']       = "Sauerbraten";
+      $server['s']['players']    = ord(lgsl_cut_byte($buffer, 1));
+      $info_returned             = ord(lgsl_cut_byte($buffer, 1)); // CODED FOR 5
+      $server['e']['netcode']    = ord(lgsl_cut_byte($buffer, 1));
+      $server['e']['version']    = lgsl_unpack(lgsl_cut_byte($buffer, 2), "S");
+      $server['e']['gamemode']   = ord(lgsl_cut_byte($buffer, 1));
+      $server['e']['timeleft']   = lgsl_time(ord(lgsl_cut_byte($buffer, 1)) * 60);
+      $server['s']['playersmax'] = ord(lgsl_cut_byte($buffer, 1));
+      $server['s']['password']   = ord(lgsl_cut_byte($buffer, 1)); // BIT FIELD
+      $server['s']['password']   = $server['s']['password'] & 4 ? "1" : "0";
+      $server['s']['map']        = lgsl_cut_string($buffer);
+      $server['s']['name']       = lgsl_cut_string($buffer);
+    }
+
+    elseif ($buffer[1] == "\x06") // BLOODFRONTIER
+    {
+      $server['s']['game']       = "Blood Frontier";
+      $server['s']['players']    = ord(lgsl_cut_byte($buffer, 1));
+      $info_returned             = ord(lgsl_cut_byte($buffer, 1)); // CODED FOR 6
+      $server['e']['netcode']    = ord(lgsl_cut_byte($buffer, 1));
+      $server['e']['version']    = lgsl_unpack(lgsl_cut_byte($buffer, 2), "S");
+      $server['e']['gamemode']   = ord(lgsl_cut_byte($buffer, 1));
+      $server['e']['mutators']   = ord(lgsl_cut_byte($buffer, 1));
+      $server['e']['timeleft']   = lgsl_time(ord(lgsl_cut_byte($buffer, 1)) * 60);
+      $server['s']['playersmax'] = ord(lgsl_cut_byte($buffer, 1));
+      $server['s']['password']   = ord(lgsl_cut_byte($buffer, 1)); // BIT FIELD
+      $server['s']['password']   = $server['s']['password'] & 4 ? "1" : "0";
+      $server['s']['map']        = lgsl_cut_string($buffer);
+      $server['s']['name']       = lgsl_cut_string($buffer);
+    }
+
+    else // UNKNOWN
+    {
+      return FALSE;
+    }
+
+//---------------------------------------------------------+
+//  CRAZY PROTOCOL - REQUESTS MUST BE MADE FOR EACH PLAYER
+//  BOTS ARE RETURNED BUT NOT INCLUDED IN THE PLAYER TOTAL
+//  AND THERE CAN BE ID GAPS BETWEEN THE PLAYERS RETURNED
+
+    if ($lgsl_need['p'] && $server['s']['players'])
+    {
+      $player_key = 0;
+
+      for ($player_id=0; $player_id<32; $player_id++)
+      {
+        fwrite($lgsl_fp, "\x00\x01".chr($player_id));
+
+        // READ PACKET
+        $buffer = fread($lgsl_fp, 4096);
+        if (!$buffer) { break; }
+
+        // CHECK IF PLAYER ID IS ACTIVE
+        if ($buffer[5] != "\x00")
+        {
+          if ($player_key < $server['s']['players']) { continue; }
+          break;
+        }
+
+        // IF PREVIEW PACKET GET THE FULL PACKET THAT FOLLOWS
+        if (strlen($buffer) < 15)
+        {
+          $buffer = fread($lgsl_fp, 4096);
+          if (!$buffer) { break; }
+        }
+
+        // REMOVE HEADER
+        $buffer = substr($buffer, 7);
+
+        // WE CAN NOW GET THE PLAYER DETAILS
+        if ($server['s']['game'] == "Blood Frontier")
+        {
+          $server['p'][$player_key]['pid']       = lgsl_unpack(lgsl_cut_byte($buffer, 1), "C");
+          $server['p'][$player_key]['ping']      = lgsl_unpack(lgsl_cut_byte($buffer, 1), "C");
+          $server['p'][$player_key]['ping']      = $server['p'][$player_key]['ping'] == 128 ? lgsl_unpack(lgsl_cut_byte($buffer, 2), "S") : $server['p'][$player_key]['ping'];
+          $server['p'][$player_key]['name']      = lgsl_cut_string($buffer);
+          $server['p'][$player_key]['team']      = lgsl_cut_string($buffer);
+          $server['p'][$player_key]['score']     = lgsl_unpack(lgsl_cut_byte($buffer, 1), "c");
+          $server['p'][$player_key]['damage']    = lgsl_unpack(lgsl_cut_byte($buffer, 1), "C");
+          $server['p'][$player_key]['deaths']    = lgsl_unpack(lgsl_cut_byte($buffer, 1), "C");
+          $server['p'][$player_key]['teamkills'] = lgsl_unpack(lgsl_cut_byte($buffer, 1), "C");
+          $server['p'][$player_key]['accuracy']  = lgsl_unpack(lgsl_cut_byte($buffer, 1), "C")."%";
+          $server['p'][$player_key]['health']    = lgsl_unpack(lgsl_cut_byte($buffer, 1), "c");
+          $server['p'][$player_key]['spree']     = lgsl_unpack(lgsl_cut_byte($buffer, 1), "C");
+          $server['p'][$player_key]['weapon']    = lgsl_unpack(lgsl_cut_byte($buffer, 1), "C");
+        }
+        else
+        {
+          $server['p'][$player_key]['pid']       = lgsl_unpack(lgsl_cut_byte($buffer, 1), "C");
+          $server['p'][$player_key]['name']      = lgsl_cut_string($buffer);
+          $server['p'][$player_key]['team']      = lgsl_cut_string($buffer);
+          $server['p'][$player_key]['score']     = lgsl_unpack(lgsl_cut_byte($buffer, 1), "c");
+          $server['p'][$player_key]['deaths']    = lgsl_unpack(lgsl_cut_byte($buffer, 1), "C");
+          $server['p'][$player_key]['teamkills'] = lgsl_unpack(lgsl_cut_byte($buffer, 1), "C");
+          $server['p'][$player_key]['accuracy']  = lgsl_unpack(lgsl_cut_byte($buffer, 1), "C")."%";
+          $server['p'][$player_key]['health']    = lgsl_unpack(lgsl_cut_byte($buffer, 1), "c");
+          $server['p'][$player_key]['armour']    = lgsl_unpack(lgsl_cut_byte($buffer, 1), "C");
+          $server['p'][$player_key]['weapon']    = lgsl_unpack(lgsl_cut_byte($buffer, 1), "C");
+        }
+
+        $player_key++;
+      }
+    }
+
+//---------------------------------------------------------+
+
+    return TRUE;
+  }
