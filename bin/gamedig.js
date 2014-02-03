@@ -21,6 +21,7 @@ for(var key in argv) {
 
 var Gamedig = require('../lib/index');
 if(debug) Gamedig.debug = true;
+Gamedig.isCommandLine = true;
 Gamedig.query(
 	options,
 	function(state) {
