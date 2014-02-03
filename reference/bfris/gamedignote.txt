@@ -1,0 +1,2 @@
+gamedig note:
+connect over TCP, and the data just starts coming, no packet needs sent?

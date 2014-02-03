@@ -1,0 +1,144 @@
+LICENSE: The Artistic License 2.0
+
+/*
+ * qstat.h
+ * by Steve Jankowski
+ * steve@qstat.org
+ * http://www.qstat.org
+ *
+ * Copyright 1996,1997,1998,1999,2000,2001,2002 by Steve Jankowski
+ */
+
+char tee_serverstatus[14] = { '\x20', '\0', '\0', '\0', '\0', '\0', '\xFF', '\xFF', '\xFF', '\xFF', 'g', 'i', 'e', 'f' };
+
+
+ {
+    /* Teeworlds */
+    TEE_SERVER,						/* id */
+    "TEE",							/* type_prefix */
+    "tee",							/* type_string */
+    "-tee",							/* type_option */
+    "Teeworlds",		/* game_name */
+    0,								/* master */
+    35515,							/* default_port */
+    0,								/* port_offset */
+    0,				/* flags */
+    "gametype",							/* game_rule */
+    "TEE",							/* template_var */
+    tee_serverstatus,						/* status_packet */
+    sizeof(tee_serverstatus),					/* status_len */
+    NULL,							/* player_packet */
+    0,								/* player_len */
+    NULL,							/* rule_packet */
+    0,								/* rule_len */
+    NULL,							/* master_packet */
+    0,								/* master_len */
+    NULL,							/* master_protocol */
+    NULL,							/* master_query */
+    display_tee_player_info,			/* display_player_func */
+    display_server_rules,			/* display_rule_func */
+    raw_display_tee_player_info,		/* display_raw_player_func */
+    raw_display_server_rules,		/* display_raw_rule_func */
+    xml_display_tee_player_info,		/* display_xml_player_func */
+    xml_display_server_rules,		/* display_xml_rule_func */
+    send_tee_request_packet,			/* status_query_func */
+    NULL,							/* rule_query_func */
+    NULL,							/* player_query_func */
+    deal_with_tee_packet,			/* packet_func */
+},
+
+
+
+/*
+ * qstat 2.11
+ * by Steve Jankowski
+ *
+ * Teeworlds protocol
+ * Copyright 2008 ? Emiliano Leporati
+ *
+ * Licensed under the Artistic License, see LICENSE.txt for license terms
+ *
+ */
+
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+#include "debug.h"
+#include "qstat.h"
+#include "packet_manip.h"
+
+char tee_serverinfo[8] = { '\xFF', '\xFF', '\xFF', '\xFF', 'i', 'n', 'f', 'o' };
+
+query_status_t send_tee_request_packet( struct qserver *server )
+{
+	return send_packet( server, server->type->status_packet, server->type->status_len );
+}
+
+query_status_t deal_with_tee_packet( struct qserver *server, char *rawpkt, int pktlen )
+{
+	// skip unimplemented ack, crc, etc
+	char *pkt = rawpkt + 6;
+	char *tok = NULL, *version = NULL;
+	int i;
+	struct player* player;
+
+	server->ping_total += time_delta(&packet_recv_time, &server->packet_time1);
+
+	if (0 == memcmp( pkt, tee_serverinfo, 8)) 
+	{
+		pkt += 8;
+		// version
+		version = strdup(pkt); pkt += strlen(pkt) + 1;
+		// server name
+		server->server_name = strdup(pkt); pkt += strlen(pkt) + 1;
+		// map name
+		server->map_name = strdup(pkt); pkt += strlen(pkt) + 1;
+		// game type
+		switch(atoi(pkt)) {
+		case 0:
+			add_rule( server, server->type->game_rule, "dm", NO_FLAGS);
+			break;
+		case 1:
+			add_rule( server, server->type->game_rule, "tdm", NO_FLAGS);
+			break;
+		case 2:
+			add_rule( server, server->type->game_rule, "ctf", NO_FLAGS);
+			break;
+		default:
+			add_rule( server, server->type->game_rule, "unknown", NO_FLAGS);
+			break;
+		}
+		pkt += strlen(pkt) + 1; 
+		pkt += strlen(pkt) + 1;
+		pkt += strlen(pkt) + 1;
+		// num players
+		server->num_players = atoi(pkt); pkt += strlen(pkt) + 1;
+		// max players
+		server->max_players = atoi(pkt); pkt += strlen(pkt) + 1;
+		// players
+		for(i = 0; i < server->num_players; i++)
+		{
+			player = add_player( server, i );
+			player->name = strdup(pkt); pkt += strlen(pkt) + 1;
+			player->score = atoi(pkt); pkt += strlen(pkt) + 1;
+		}
+		// version reprise
+		server->protocol_version = 0;
+
+		if (NULL == (tok = strtok(version, "."))) return -1;
+		server->protocol_version |= (atoi(tok) & 0x000F) << 12;
+		if (NULL == (tok = strtok(NULL, "."))) return -1;
+		server->protocol_version |= (atoi(tok) & 0x000F) << 8;
+		if (NULL == (tok = strtok(NULL, "."))) return -1;
+		server->protocol_version |= (atoi(tok) & 0x00FF);
+
+		free(version);
+
+		return DONE_FORCE;
+	}
+
+	// unknown packet type
+	return PKT_ERROR;
+}
+

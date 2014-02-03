@@ -1,0 +1,223 @@
+LICENSE: The Artistic License 2.0
+
+/*
+ * qstat.h
+ * by Steve Jankowski
+ * steve@qstat.org
+ * http://www.qstat.org
+ *
+ * Copyright 1996,1997,1998,1999,2000,2001,2002 by Steve Jankowski
+ */
+
+ 
+/* for some reason Descent3 uses a different request for pxo/non-pxo games. blah. */
+unsigned char descent3_pxoinfoquery[] = {
+    0x01, /* "internal descent3 routing" */
+    0x29, /* request server info? (pxo listed servers) */
+    0x0b, 0x00, /* packet length (- routing byte) */
+    0x1b, 0x2f, 0xf4, 0x41, 0x09, 0x00, 0x00, 0x00 /* unknown */
+};
+unsigned char descent3_tcpipinfoquery[] = {
+    0x01, /* "internal descent3 routing" */
+    0x1e, /* request server info? (tcpip only servers) */
+    0x0b, 0x00, /* packet length (- routing byte) */
+    0x1b, 0x2f, 0xf4, 0x41, 0x09, 0x00, 0x00, 0x00 /* unknown */
+};
+/* http://ml.warpcore.org/d3dl/200101/msg00001.html
+ * http://ml.warpcore.org/d3dl/200101/msg00004.html */
+unsigned char descent3_playerquery[] = {
+    0x01, /* "internal descent3 routing" */
+    0x72, /* MP_REQUEST_PLAYERLIST   */
+    0x03, 0x00 /* packet length (- routing byte) */
+};
+
+ 
+
+
+{
+    /* DESCENT3 PROTOCOL */
+    DESCENT3_SERVER,		/* id */
+    "D3S",			/* type_prefix */
+    "d3s",			/* type_string */
+    "-d3s",			/* type_option */
+    "Descent3",			/* game_name */
+    0,				/* master */
+    DESCENT3_DEFAULT_PORT,	/* default_port */
+    0,				/* port_offset */
+    0,				/* flags */
+    "gametype",			/* game_rule */
+    "DESCENT3",			/* template_var */
+    (char*) &descent3_tcpipinfoquery,	/* status_packet */
+    sizeof( descent3_tcpipinfoquery),	/* status_len */
+    (char*) &descent3_playerquery,	/* player_packet */
+    sizeof( descent3_playerquery),	/* player_len */
+    NULL,			/* rule_packet */
+    0,				/* rule_len */
+    NULL,			/* master_packet */
+    0,				/* master_len */
+    NULL,			/* master_protocol */
+    NULL,			/* master_query */
+    display_descent3_player_info,	/* display_player_func */
+    display_server_rules,	/* display_rule_func */
+    raw_display_descent3_player_info,	/* display_raw_player_func */
+    raw_display_server_rules,	/* display_raw_rule_func */
+    xml_display_descent3_player_info,	/* display_xml_player_func */
+    xml_display_server_rules,	/* display_xml_rule_func */
+    send_gps_request_packet,	/* status_query_func */
+    NULL,			/* rule_query_func */
+    NULL,			/* player_query_func */
+    deal_with_descent3_packet,	/* packet_func */
+},
+{
+    /* DESCENT3 PROTOCOL */
+    DESCENT3_PXO_SERVER,	/* id */
+    "D3P",			/* type_prefix */
+    "d3p",			/* type_string */
+    "-d3p",			/* type_option */
+    "Descent3 PXO protocol",	/* game_name */
+    0,				/* master */
+    DESCENT3_DEFAULT_PORT,	/* default_port */
+    0,				/* port_offset */
+    0,				/* flags */
+    "gametype",			/* game_rule */
+    "DESCENT3",			/* template_var */
+    (char*) &descent3_pxoinfoquery,	/* status_packet */
+    sizeof( descent3_pxoinfoquery),	/* status_len */
+    (char*) &descent3_playerquery,	/* player_packet */
+    sizeof( descent3_playerquery),	/* player_len */
+    NULL,			/* rule_packet */
+    0,				/* rule_len */
+    NULL,			/* master_packet */
+    0,				/* master_len */
+    NULL,			/* master_protocol */
+    NULL,			/* master_query */
+    display_descent3_player_info,	/* display_player_func */
+    display_server_rules,	/* display_rule_func */
+    raw_display_descent3_player_info,	/* display_raw_player_func */
+    raw_display_server_rules,	/* display_raw_rule_func */
+    xml_display_descent3_player_info,	/* display_xml_player_func */
+    xml_display_server_rules,	/* display_xml_rule_func */
+    send_gps_request_packet,	/* status_query_func */
+    NULL,			/* rule_query_func */
+    NULL,			/* player_query_func */
+    deal_with_descent3_packet,	/* packet_func */
+},
+
+
+
+
+query_status_t deal_with_descent3_packet(struct qserver *server, char *rawpkt, int pktlen)
+{
+	char *pkt;
+	char buf[24];
+
+	debug( 2, "deal_with_descent3_packet %p, %d", server, pktlen );
+
+	if (server->server_name == NULL)
+	{
+		server->ping_total += time_delta(&packet_recv_time, &server->packet_time1);
+	}
+
+	if (pktlen < 4)
+	{
+		fprintf(stderr, "short descent3 packet\n");
+		print_packet(server, rawpkt, pktlen);
+		return PKT_ERROR;
+	}
+
+	/* 'info' response */
+	if (rawpkt[1] == 0x1f)
+	{
+		if (server->server_name != NULL)
+		{
+			return PKT_ERROR;
+		}
+
+
+		pkt = &rawpkt[0x15];
+		server->server_name = strdup(pkt);
+		pkt += strlen(pkt) + 2;
+		server->map_name = strdup(pkt); /* mission name (blah.mn3) */
+		pkt += strlen(pkt) + 2;
+		add_rule(server, "level_name", pkt, NO_FLAGS);
+		pkt += strlen(pkt) + 2;
+		add_rule(server, "gametype", pkt, NO_FLAGS);
+		pkt += strlen(pkt) + 1;
+
+		sprintf(buf, "%hu", swap_short_from_little(pkt));
+		add_rule(server, "level_num", buf, NO_FLAGS);
+		pkt += 2;
+		server->num_players = swap_short_from_little(pkt);
+		pkt += 2;
+		server->max_players = swap_short_from_little(pkt);
+		pkt += 2;
+
+		/* unknown/undecoded fields.. stuff like permissible, banned items/ships, etc */
+		add_uchar_rule(server, "u0", pkt[0]);
+		add_uchar_rule(server, "u1", pkt[1]);
+		add_uchar_rule(server, "u2", pkt[2]);
+		add_uchar_rule(server, "u3", pkt[3]);
+		add_uchar_rule(server, "u4", pkt[4]);
+		add_uchar_rule(server, "u5", pkt[5]);
+		add_uchar_rule(server, "u6", pkt[6]);
+		add_uchar_rule(server, "u7", pkt[7]);
+		add_uchar_rule(server, "u8", pkt[8]);
+
+		add_uchar_rule(server, "randpowerup", (unsigned char)!(pkt[4] &1)); /*
+		randomize powerup spawn */
+		add_uchar_rule(server, "acccollisions", (unsigned char)((pkt[5] &4) > 0));
+		/* accurate collision detection */
+		add_uchar_rule(server, "brightships", (unsigned char)((pkt[5] &16) > 0));
+		/* bright player ships */
+		add_uchar_rule(server, "mouselook", (unsigned char)((pkt[6] &1) > 0)); /*
+		mouselook enabled */
+		sprintf(buf, "%s%s", (pkt[4] &16) ? "PP" : "CS", (pkt[6] &1) ? "-ML" : "");
+		add_rule(server, "servertype", buf, NO_FLAGS);
+
+		sprintf(buf, "%hhu", pkt[9]);
+		add_rule(server, "difficulty", buf, NO_FLAGS);
+
+		/* unknown/undecoded fields after known flags removed */
+		add_uchar_rule(server, "x4", (unsigned char)(pkt[4] &~(1+16)));
+		add_uchar_rule(server, "x5", (unsigned char)(pkt[5] &~(4+16)));
+		add_uchar_rule(server, "x6", (unsigned char)(pkt[6] &~1));
+
+		if (get_player_info && server->num_players)
+		{
+			server->next_player_info = 0;
+			send_player_request_packet(server);
+			return INPROGRESS;
+		}
+
+	}
+	/* MP_PLAYERLIST_DATA */
+	else if (rawpkt[1] == 0x73)
+	{
+		struct player *player;
+		struct player **last_player = &server->players;
+
+		if (server->players != NULL)
+		{
+			return PKT_ERROR;
+		}
+
+		pkt = &rawpkt[0x4];
+		while (*pkt)
+		{
+			player = (struct player*)calloc(1, sizeof(struct player));
+			player->name = strdup(pkt);
+			pkt += strlen(pkt) + 1;
+			*last_player = player;
+			last_player = &player->next;
+		}
+		server->next_player_info = NO_PLAYER_INFO;
+	}
+	else
+	{
+		fprintf(stderr, "unknown d3 packet\n");
+		print_packet(server, rawpkt, pktlen);
+	}
+
+	return DONE_FORCE;
+}
+

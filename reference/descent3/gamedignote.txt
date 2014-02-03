@@ -1,0 +1,2 @@
+This is the doc for some descent 3 protocol that ISNT the gamespy
+protocol. Not really sure what it's for.

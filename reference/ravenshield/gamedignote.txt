@@ -1,0 +1,3 @@
+Most sources say raven shield uses gamespy1, but these docs are for 
+some other raven shield protocol. If anyone has an issue, this may
+be the actual protocol.

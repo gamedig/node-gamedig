@@ -1,0 +1,694 @@
+LICENSE: The Artistic License 2.0
+
+/*
+ * qstat.h
+ * by Steve Jankowski
+ * steve@qstat.org
+ * http://www.qstat.org
+ *
+ * Copyright 1996,1997,1998,1999,2000,2001,2002 by Steve Jankowski
+ */
+ 
+ 
+ 
+unsigned char ghostrecon_serverquery[] = {
+	0xc0,0xde,0xf1,0x11,	/* const ? header */
+	0x42,			/* start flag */
+	0x03,0x00,		/* data len */
+	0xe9,0x03,0x00		/* server request ?? */
+};
+
+unsigned char ghostrecon_playerquery[] = {
+	0xc0,0xde,0xf1,0x11,		/* const ? header */
+	0x42,				/* start flag */
+	0x06,0x00,			/* data len */
+	0xf5,0x03,0x00,0x78,0x30,0x63 /* player request ?? may be flag 0xf5; len 0x03,0x00; data 0x78, 0x30, 0x63 */
+};
+
+
+ {
+    /* GHOSTRECON PROTOCOL */
+    GHOSTRECON_SERVER,		/* id */
+    "GRS",			/* type_prefix */
+    "grs",			/* type_string */
+    "-grs",			/* type_option */
+    "Ghost Recon",		/* game_name */
+    0,				/* master */
+    GHOSTRECON_PLAYER_DEFAULT_PORT,	/* default_port */
+    2,				/* port_offset */
+    TF_QUERY_ARG,		/* flags */
+    "gametype",			/* game_rule */
+    "GHOSTRECON",			/* template_var */
+    (char*) &ghostrecon_playerquery,	/* status_packet */
+    sizeof( ghostrecon_playerquery),	/* status_len */
+    NULL,			/* player_packet */
+    0,				/* player_len */
+    NULL,			/* rule_packet */
+    0,				/* rule_len */
+    NULL,			/* master_packet */
+    0,				/* master_len */
+    NULL,			/* master_protocol */
+    NULL,			/* master_query */
+    display_ghostrecon_player_info,	/* display_player_func */
+    display_server_rules,		/* display_rule_func */
+    raw_display_ghostrecon_player_info,	/* display_raw_player_func */
+    raw_display_server_rules,		/* display_raw_rule_func */
+    xml_display_ghostrecon_player_info,	/* display_xml_player_func */
+    xml_display_server_rules,		/* display_xml_rule_func */
+    send_qserver_request_packet,	/* status_query_func */
+    NULL,				/* rule_query_func */
+    NULL,				/* player_query_func */
+    deal_with_ghostrecon_packet,	/* packet_func */
+},
+
+
+
+
+static const char GrPacketHead[] =
+{
+	'\xc0', '\xde', '\xf1', '\x11'
+};
+static const char PacketStart = '\x42';
+static char Dat2Reply1_2_10[] =
+{
+	'\xf4', '\x03', '\x14', '\x02', '\x0a', '\x41', '\x02', '\x0a', '\x41', '\x00', '\x00', '\x78', '\x30', '\x63'
+};
+static char Dat2Reply1_3[] =
+{
+	'\xf4', '\x03', '\x14', '\x03', '\x05', '\x41', '\x03', '\x05', '\x41', '\x00', '\x00', '\x78', '\x30', '\x63'
+};
+static char Dat2Reply1_4[] =
+{
+	'\xf4', '\x03', '\x14', '\x04', '\x00', '\x41', '\x04', '\x00', '\x41', '\x00', '\x00', '\x78', '\x30', '\x63'
+};
+//static char HDat2[]={'\xea','\x03','\x02','\x00','\x14'};
+
+#define SHORT_GR_LEN	75
+#define LONG_GR_LEN	500
+#define UNKNOWN_VERSION	0
+#define VERSION_1_2_10	1
+#define VERSION_1_3	2
+#define VERSION_1_4	3
+
+query_status_t deal_with_ghostrecon_packet(struct qserver *server, char *pkt, int pktlen)
+{
+	char str[256], *start, *end, StartFlag, *lpszIgnoreServerPlayer;
+	char *lpszMission;
+	unsigned int iIgnoreServerPlayer, iDedicatedServer, iUseStartTimer;
+	unsigned short GrPayloadLen;
+	int i;
+	struct player *player;
+	int iLen, iTemp;
+	short sLen;
+	int iSecsPlayed;
+	long iSpawnType;
+	int ServerVersion = UNKNOWN_VERSION;
+	float flStartTimerSetPoint;
+
+	debug( 2, "deal_with_ghostrecon_packet %p, %d", server, pktlen );
+
+	start = pkt;
+	end = &pkt[pktlen];
+	pkt[pktlen] = '\0';
+
+	/*
+	This function walks a packet that is recieved from a ghost recon server - default from port 2348. It does quite a few
+	sanity checks along the way as the structure is not documented. The packet is mostly binary in nature with many string
+	fields being variable in length, ie the length is listed foloowed by that many bytes. There are two structure arrays
+	that have an array size followed by structure size * number of elements (player name and player data). This routine
+	walks this packet and increments a pointer "pkt" to extract the info.
+	 */
+
+
+	if (server->server_name == NULL)
+	{
+		server->ping_total += time_delta(&packet_recv_time, &server->packet_time1);
+	}
+
+	/* sanity check against packet */
+	if (memcmp(pkt, GrPacketHead, sizeof(GrPacketHead)) != 0)
+	{
+		server->server_name = strdup("Unknown Packet Header");
+		return PKT_ERROR;
+	}
+
+	pkt += sizeof(GrPacketHead);
+	StartFlag = pkt[0];
+	pkt += 1;
+	if (StartFlag != 0x42)
+	{
+		server->server_name = strdup("Unknown Start Flag");
+		return PKT_ERROR;
+	}
+
+	/* compare packet length recieved to included size - header info */
+	sLen = swap_short_from_little(pkt);
+	pkt += 2;
+	GrPayloadLen = pktlen - sizeof(GrPacketHead) - 3;
+	// 3 = size slen + size start flag
+
+	if (sLen != GrPayloadLen)
+	{
+		server->server_name = strdup("Packet Size Mismatch");
+		return PKT_ERROR;
+	}
+
+	/*
+	Will likely need to verify and add to this "if" construct with every patch / add-on.
+	 */
+	if (memcmp(pkt, Dat2Reply1_2_10, sizeof(Dat2Reply1_2_10)) == 0)
+	{
+		ServerVersion = VERSION_1_2_10;
+	}
+	else if (memcmp(pkt, Dat2Reply1_3, sizeof(Dat2Reply1_3)) == 0)
+	{
+		ServerVersion = VERSION_1_3;
+	}
+	else if (memcmp(pkt, Dat2Reply1_4, sizeof(Dat2Reply1_4)) == 0)
+	{
+		ServerVersion = VERSION_1_4;
+	}
+
+	if (ServerVersion == UNKNOWN_VERSION)
+	{
+		server->server_name = strdup("Unknown GR Version");
+		return PKT_ERROR;
+	}
+
+	switch (ServerVersion)
+	{
+	case VERSION_1_2_10:
+		strcpy(str, "1.2.10");
+		pkt += sizeof(Dat2Reply1_2_10);
+		break;
+
+	case VERSION_1_3:
+		strcpy(str, "1.3");
+		pkt += sizeof(Dat2Reply1_3);
+		break;
+
+	case VERSION_1_4:
+		strcpy(str, "1.4");
+		pkt += sizeof(Dat2Reply1_4);
+		break;
+
+	}
+	add_rule(server, "patch", str, NO_FLAGS);
+
+	/* have player packet */
+
+	// Ghost recon has one of the player slots filled up with the server program itself. By default we will
+	// drop the first player listed. This causes a bit of a mess here and below but makes for the best display
+	// a user can specify -grs,ignoreserverplayer=no to override this behaviour.
+
+	lpszIgnoreServerPlayer = get_param_value(server, "ignoreserverplayer", "yes");
+	for (i = 0; i < 4; i++)
+	{
+		str[i] = tolower(lpszIgnoreServerPlayer[i]);
+	}
+	if (strcmp(str, "yes") == 0)
+	{
+		iIgnoreServerPlayer = 1;
+	}
+	else
+	{
+		iIgnoreServerPlayer = 0;
+	}
+
+	pkt += 4; /* unknown */
+
+
+	// this is the first of many variable strings. get the length,
+	// increment pointer over length, check for sanity,
+	// get the string, increment the pointer over string (using length)
+
+	iLen = swap_long_from_little(pkt);
+	pkt += 4;
+	if ((iLen < 1) || (iLen > SHORT_GR_LEN))
+	{
+		server->server_name = strdup("Server Name too Long");
+		return PKT_ERROR;
+	}
+	server->server_name = strndup(pkt, iLen);
+	pkt += iLen;
+
+	iLen = swap_long_from_little(pkt);
+	pkt += 4;
+	if ((iLen < 1) || (iLen > SHORT_GR_LEN))
+	{
+		add_rule(server, "error", "Map Name too Long", NO_FLAGS);
+		return PKT_ERROR;
+	}
+	server->map_name = strndup(pkt, iLen);
+	pkt += iLen;
+
+	iLen = swap_long_from_little(pkt);
+	pkt += 4;
+	if ((iLen < 1) || (iLen > SHORT_GR_LEN))
+	{
+		add_rule(server, "error", "Mission Name too Long", NO_FLAGS);
+		return PKT_ERROR;
+	}
+	/* mission does not make sense unless a coop game type. Since
+	we dont know that now, we will save the mission and set
+	the rule and free memory below when we know game type */
+	lpszMission = strndup(pkt, iLen);
+	pkt += iLen;
+
+
+	iLen = swap_long_from_little(pkt);
+	pkt += 4;
+	if ((iLen < 1) || (iLen > SHORT_GR_LEN))
+	{
+		add_rule(server, "error", "Mission Type too Long", NO_FLAGS);
+		return PKT_ERROR;
+	}
+	add_nrule(server, "missiontype", pkt, iLen);
+	pkt += iLen;
+
+	if (pkt[1])
+	{
+		add_rule(server, "password", "Yes", NO_FLAGS);
+	}
+	else
+	{
+		add_rule(server, "password", "No", NO_FLAGS);
+	}
+	pkt += 2;
+
+	server->max_players = swap_long_from_little(pkt);
+	pkt += 4;
+	if (server->max_players > 36)
+	{
+		add_rule(server, "error", "Max players more then 36", NO_FLAGS);
+		return PKT_ERROR;
+	}
+
+	server->num_players = swap_long_from_little(pkt);
+	pkt += 4;
+	if (server->num_players > server->max_players)
+	{
+		add_rule(server, "error", "More then MAX Players", NO_FLAGS);
+		return PKT_ERROR;
+	}
+
+	if (iIgnoreServerPlayer)
+	// skip past first player
+	{
+		server->num_players--;
+		server->max_players--;
+		iLen = swap_long_from_little(pkt);
+		pkt += 4;
+		pkt += iLen;
+	}
+
+	for (i = 0; i < server->num_players; i++)
+	// read each player name
+	{
+		iLen = swap_long_from_little(pkt);
+		pkt += 4;
+
+		player = (struct player*)calloc(1, sizeof(struct player));
+
+		if ((iLen < 1) || (iLen > SHORT_GR_LEN))
+		{
+			add_rule(server, "error", "Player Name too Long", NO_FLAGS);
+			return PKT_ERROR;
+		}
+		player->name = strndup(pkt, iLen);
+		pkt += iLen; /* player name */
+		player->team = i; // tag so we can find this record when we have player dat.
+		player->team_name = "Unassigned";
+		player->flags |= PLAYER_FLAG_DO_NOT_FREE_TEAM;
+		player->frags = 0;
+
+		player->next = server->players;
+		server->players = player;
+	}
+
+	pkt += 17;
+
+	iLen = swap_long_from_little(pkt);
+	pkt += 4;
+	if ((iLen < 1) || (iLen > SHORT_GR_LEN))
+	{
+		add_rule(server, "error", "Version too Long", NO_FLAGS);
+		return PKT_ERROR;
+	}
+	strncpy(str, pkt, iLen);
+	add_rule(server, "version", str, NO_FLAGS);
+	pkt += iLen; /* version */
+
+	iLen = swap_long_from_little(pkt);
+	pkt += 4;
+	if ((iLen < 1) || (iLen > LONG_GR_LEN))
+	{
+		add_rule(server, "error", "Mods too Long", NO_FLAGS);
+		return PKT_ERROR;
+	}
+	server->game = strndup(pkt, iLen);
+
+	for (i = 0; i < (int)strlen(server->game) - 5; i++)
+	// clean the "/mods/" part from every entry
+	{
+		if (memcmp(&server->game[i], "\\mods\\", 6) == 0)
+		{
+			server->game[i] = ' ';
+			strcpy(&server->game[i + 1], &server->game[i + 6]);
+		}
+	}
+	add_rule(server, "game", server->game, NO_FLAGS);
+
+	pkt += iLen; /* mods */
+
+	iDedicatedServer = pkt[0];
+	if (iDedicatedServer)
+	{
+		add_rule(server, "dedicated", "Yes", NO_FLAGS);
+	}
+	else
+	{
+		add_rule(server, "dedicated", "No", NO_FLAGS);
+	}
+
+	pkt += 1; /* unknown */
+
+	iSecsPlayed = swap_float_from_little(pkt);
+
+	add_rule(server, "timeplayed", play_time(iSecsPlayed, 2), NO_FLAGS);
+
+	pkt += 4; /* time played */
+
+	switch (pkt[0])
+	{
+	case 3:
+		strcpy(str, "Joining");
+		break;
+	case 4:
+		strcpy(str, "Playing");
+		break;
+	case 5:
+		strcpy(str, "Debrief");
+		break;
+	default:
+		strcpy(str, "Undefined");
+	}
+	add_rule(server, "status", str, NO_FLAGS);
+
+	pkt += 1;
+
+	pkt += 3; /* unknown */
+
+
+	switch (pkt[0])
+	{
+		case 2:
+			strcpy(str, "COOP");
+			break;
+		case 3:
+			strcpy(str, "SOLO");
+			break;
+		case 4:
+			strcpy(str, "TEAM");
+			break;
+		default:
+			sprintf(str, "UNKOWN %u", pkt[0]);
+			break;
+	}
+
+	add_rule(server, "gamemode", str, NO_FLAGS);
+
+	if (pkt[0] == 2)
+	{
+		add_rule(server, "mission", lpszMission, NO_FLAGS);
+	}
+	else
+	{
+		add_rule(server, "mission", "No Mission", NO_FLAGS);
+	}
+
+	free(lpszMission);
+
+	pkt += 1; /* Game Mode */
+
+	pkt += 3; /* unknown */
+
+	iLen = swap_long_from_little(pkt);
+	pkt += 4;
+	if ((iLen < 1) || (iLen > LONG_GR_LEN))
+	{
+		add_rule(server, "error", "MOTD too Long", NO_FLAGS);
+		return PKT_ERROR;
+	}
+	strncpy(str, pkt, sizeof(str));
+	str[sizeof(str) - 1] = 0;
+	add_rule(server, "motd", str, NO_FLAGS);
+	pkt += iLen; /* MOTD */
+
+	iSpawnType = swap_long_from_little(pkt);
+
+	switch (iSpawnType)
+	{
+	case 0:
+		strcpy(str, "None");
+		break;
+	case 1:
+		strcpy(str, "Individual");
+		break;
+	case 2:
+		strcpy(str, "Team");
+		break;
+	case 3:
+		strcpy(str, "Infinite");
+		break;
+	default:
+		strcpy(str, "Unknown");
+	}
+
+	add_rule(server, "spawntype", str, NO_FLAGS);
+	pkt += 4; /* spawn type */
+
+	iTemp = swap_float_from_little(pkt);
+	add_rule(server, "gametime", play_time(iTemp, 2), NO_FLAGS);
+
+	iTemp = iTemp - iSecsPlayed;
+
+	if (iTemp <= 0)
+	{
+		iTemp = 0;
+	}
+	add_rule(server, "remainingtime", play_time(iTemp, 2), NO_FLAGS);
+	pkt += 4; /* Game time */
+
+
+	iTemp = swap_long_from_little(pkt);
+	if (iIgnoreServerPlayer)
+	{
+		iTemp--;
+	}
+	if (iTemp != server->num_players)
+	{
+		add_rule(server, "error", "Number of Players Mismatch", NO_FLAGS);
+	}
+
+
+	pkt += 4; /* player count 2 */
+
+	if (iIgnoreServerPlayer)
+	{
+		pkt += 5; // skip first player data
+	}
+
+	for (i = 0; i < server->num_players; i++)
+	// for each player get binary data
+	{
+		player = server->players;
+		// first we must find the player - lets look for the tag
+		while (player && (player->team != i))
+		{
+			player = player->next;
+		}
+		/* get to player - linked list is in reverse order */
+
+		if (player)
+		{
+			player->team = pkt[2];
+			switch (player->team)
+			{
+			case 1:
+				player->team_name = "Red";
+				break;
+			case 2:
+				player->team_name = "Blue";
+				break;
+			case 3:
+				player->team_name = "Yellow";
+				break;
+			case 4:
+				player->team_name = "Green";
+				break;
+			case 5:
+				player->team_name = "Unassigned";
+				break;
+			default:
+				player->team_name = "Not Known";
+				break;
+			}
+			player->flags |= PLAYER_FLAG_DO_NOT_FREE_TEAM;
+			player->deaths = pkt[1];
+		}
+		pkt += 5; /* player data*/
+	}
+
+	for (i = 0; i < 5; i++)
+	{
+		pkt += 8; /* team data who knows what they have in here */
+	}
+
+	pkt += 1;
+	iUseStartTimer = pkt[0]; // UseStartTimer
+
+	pkt += 1;
+
+	iTemp = flStartTimerSetPoint = swap_float_from_little(pkt);
+	// Start Timer Set Point
+	pkt += 4;
+
+	if (iUseStartTimer)
+	{
+		add_rule(server, "usestarttime", "Yes", NO_FLAGS);
+		add_rule(server, "starttimeset", play_time(iTemp, 2), NO_FLAGS);
+	}
+	else
+	{
+		add_rule(server, "usestarttime", "No", NO_FLAGS);
+		add_rule(server, "starttimeset", play_time(0, 2), NO_FLAGS);
+	}
+
+	if ((ServerVersion == VERSION_1_3) || // stuff added in patch 1.3
+	(ServerVersion == VERSION_1_4))
+	{
+		iTemp = swap_float_from_little(pkt); // Debrief Time
+		add_rule(server, "debrieftime", play_time(iTemp, 2), NO_FLAGS);
+		pkt += 4;
+
+		iTemp = swap_float_from_little(pkt); // Respawn Min
+		add_rule(server, "respawnmin", play_time(iTemp, 2), NO_FLAGS);
+		pkt += 4;
+
+		iTemp = swap_float_from_little(pkt); // Respawn Max
+		add_rule(server, "respawnmax", play_time(iTemp, 2), NO_FLAGS);
+		pkt += 4;
+
+		iTemp = swap_float_from_little(pkt); // Respawn Invulnerable
+		add_rule(server, "respawnsafe", play_time(iTemp, 2), NO_FLAGS);
+		pkt += 4;
+	}
+	else
+	{
+		add_rule(server, "debrieftime", "Undefined", NO_FLAGS);
+		add_rule(server, "respawnmin", "Undefined", NO_FLAGS);
+		add_rule(server, "respawnmax", "Undefined", NO_FLAGS);
+		add_rule(server, "respawnsafe", "Undefined", NO_FLAGS);
+
+	}
+
+
+	pkt += 4; // 4
+	iTemp = pkt[0]; // Spawn Count
+
+	if ((iSpawnType == 1) || (iSpawnType == 2))
+	/* Individual or team */
+	{
+		sprintf(str, "%u", iTemp);
+	}
+	else
+	/* else not used */
+	{
+		sprintf(str, "%u", 0);
+	}
+	add_rule(server, "spawncount", str, NO_FLAGS);
+	pkt += 1; // 5
+
+	pkt += 4; // 9
+
+	iTemp = pkt[0]; // Allow Observers
+	if (iTemp)
+	{
+		strcpy(str, "Yes");
+	}
+	else
+	/* else not used */
+	{
+		strcpy(str, "No");
+	}
+	add_rule(server, "allowobservers", str, NO_FLAGS);
+	pkt += 1; // 10
+
+	pkt += 3; // 13
+
+	//	pkt += 13;
+
+	if (iUseStartTimer)
+	{
+		iTemp = swap_float_from_little(pkt); // Start Timer Count
+		add_rule(server, "startwait", play_time(iTemp, 2), NO_FLAGS);
+	}
+	else
+	{
+		add_rule(server, "startwait", play_time(0, 2), NO_FLAGS);
+	}
+	pkt += 4; //17
+
+	iTemp = pkt[0]; // IFF
+	switch (iTemp)
+	{
+		case 0:
+			strcpy(str, "None");
+			break;
+		case 1:
+			strcpy(str, "Reticule");
+			break;
+		case 2:
+			strcpy(str, "Names");
+			break;
+		default:
+			strcpy(str, "Unknown");
+			break;
+	}
+	add_rule(server, "iff", str, NO_FLAGS);
+	pkt += 1; // 18
+
+	iTemp = pkt[0]; // Threat Indicator
+	if (iTemp)
+	{
+		add_rule(server, "ti", "ON ", NO_FLAGS);
+	}
+	else
+	{
+		add_rule(server, "ti", "OFF", NO_FLAGS);
+	}
+
+	pkt += 1; // 19
+
+	pkt += 5; // 24
+
+
+	iLen = swap_long_from_little(pkt);
+	pkt += 4;
+	if ((iLen < 1) || (iLen > SHORT_GR_LEN))
+	{
+		add_rule(server, "error", "Restrictions too Long", NO_FLAGS);
+		return PKT_ERROR;
+	}
+	add_rule(server, "restrict", pkt, NO_FLAGS);
+	pkt += iLen; /* restrictions */
+
+	pkt += 23;
+
+	/*
+	if ( ghostrecon_debug) print_packet( pkt, GrPayloadLen);
+	 */
+
+	return DONE_FORCE;
+}

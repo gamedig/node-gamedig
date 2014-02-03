@@ -1,7 +1,3 @@
-I was under the impression all the farcry games used ASE?
-If anyone notices a problem, this is reference for some old cryengine protocol:
-
-
 <?php
 /**
  * This file is part of GameQ.

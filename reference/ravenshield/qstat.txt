@@ -1,0 +1,446 @@
+LICENSE: The Artistic License 2.0
+
+/*
+ * qstat.h
+ * by Steve Jankowski
+ * steve@qstat.org
+ * http://www.qstat.org
+ *
+ * Copyright 1996,1997,1998,1999,2000,2001,2002 by Steve Jankowski
+ */
+
+ 
+char ravenshield_serverquery[] = "REPORT";
+
+ 
+{
+    /* RAVENSHIELD PROTOCOL */
+    RAVENSHIELD_SERVER,		/* id */
+    "RSS",			/* type_prefix */
+    "rss",			/* type_string */
+    "-rss",			/* type_option */
+    "Ravenshield",		/* game_name */
+    0,				/* master */
+    RAVENSHIELD_DEFAULT_PORT,	/* default_port */
+    1000,				/* port_offset */
+    TF_QUERY_ARG,		/* flags */
+    "gametype",			/* game_rule */
+    "RAVENSHIELD",			/* template_var */
+    (char*)ravenshield_serverquery,			/* status_packet */
+    sizeof( ravenshield_serverquery ) - 1,	/* status_len */
+    NULL,			/* player_packet */
+    0,				/* player_len */
+    NULL,			/* rule_packet */
+    0,				/* rule_len */
+    NULL,			/* master_packet */
+    0,				/* master_len */
+    NULL,			/* master_protocol */
+    NULL,			/* master_query */
+    display_ravenshield_player_info,	/* display_player_func */
+    display_server_rules,		/* display_rule_func */
+    raw_display_ravenshield_player_info,	/* display_raw_player_func */
+    raw_display_server_rules,		/* display_raw_rule_func */
+    xml_display_ravenshield_player_info,	/* display_xml_player_func */
+    xml_display_server_rules,		/* display_xml_rule_func */
+    send_qserver_request_packet,	/* status_query_func */
+    NULL,				/* rule_query_func */
+    NULL,				/* player_query_func */
+    deal_with_ravenshield_packet,	/* packet_func */
+},
+
+
+
+
+query_status_t deal_with_ravenshield_packet(struct qserver *server, char *rawpkt, int pktlen)
+{
+	char *s, *key, *value;
+
+	debug( 2, "deal_with_ravenshield_packet %p, %d", server, pktlen );
+
+	server->n_servers++;
+	if (NULL == server->server_name)
+	{
+		server->ping_total += time_delta(&packet_recv_time, &server->packet_time1);
+	}
+	else
+	{
+		gettimeofday(&server->packet_time1, NULL);
+	}
+
+	rawpkt[pktlen] = '\0';
+
+	s = rawpkt;
+	while (*s)
+	{
+		// Find the seperator
+		while (*s && *s != '\xB6')
+		{
+			s++;
+		}
+
+		if (! *s)
+		{
+			// Hit the end no more
+			break;
+		}
+
+		// key start
+		key = ++s;
+		while (*s && *s != ' ')
+		{
+			s++;
+		}
+		if (*s != ' ')
+		{
+			// malformed
+			break;
+		}
+		*s++ = '\0';
+		// key end
+		// value start
+		value = s;
+
+		while (*s && *s != '\xB6')
+		{
+			s++;
+		}
+
+		if (*s == '\xB6')
+		{
+			*(s - 1) = '\0';
+		}
+
+		// Decode current key par
+		if (0 == strcmp("A1", key))
+		{
+			// Max players
+			server->max_players = atoi(value);
+		}
+		else if (0 == strcmp("A2", key))
+		{
+			// TeamKillerPenalty
+			add_rule(server, "TeamKillerPenalty", value, NO_FLAGS);
+		}
+		else if (0 == strcmp("B1", key))
+		{
+			// Current players
+			server->num_players = atoi(value);
+		}
+		else if (0 == strcmp("B2", key))
+		{
+			// AllowRadar
+			add_rule(server, "AllowRadar", value, NO_FLAGS);
+		}
+		else if (0 == strcmp("D2", key))
+		{
+			// Version info
+			add_rule(server, "Version", value, NO_FLAGS);
+		}
+		else if (0 == strcmp("E1", key))
+		{
+			// Current map
+			server->map_name = strdup(value);
+		}
+		else if (0 == strcmp("E2", key))
+		{
+			// Unknown
+		}
+		else if (0 == strcmp("F1", key))
+		{
+			// Game type
+			server->game = find_ravenshield_game(value);
+			add_rule(server, server->type->game_rule, server->game, NO_FLAGS);
+		}
+		else if (0 == strcmp("F2", key))
+		{
+			// Unknown
+		}
+		else if (0 == strcmp("G1", key))
+		{
+			// Password
+			add_rule(server, "Password", value, NO_FLAGS);
+		}
+		else if (0 == strcmp("G2", key))
+		{
+			// Query port
+		}
+		else if (0 == strcmp("H1", key))
+		{
+			// Unknown
+		}
+		else if (0 == strcmp("H2", key))
+		{
+			// Number of Terrorists
+			add_rule(server, "nbTerro", value, NO_FLAGS);
+		}
+		else if (0 == strcmp("I1", key))
+		{
+			// Server name
+			server->server_name = strdup(value);
+		}
+		else if (0 == strcmp("I2", key))
+		{
+			// Unknown
+		}
+		else if (0 == strcmp("J1", key))
+		{
+			// Game Type Order
+			// Not pretty ignore for now
+			//add_rule( server, "Game Type Order", value, NO_FLAGS );
+		}
+		else if (0 == strcmp("J2", key))
+		{
+			// RotateMap
+			add_rule(server, "RotateMap", value, NO_FLAGS);
+		}
+		else if (0 == strcmp("K1", key))
+		{
+			// Map Cycle
+			// Not pretty ignore for now
+			//add_rule( server, "Map Cycle", value, NO_FLAGS );
+		}
+		else if (0 == strcmp("K2", key))
+		{
+			// Force First Person Weapon
+			add_rule(server, "ForceFPersonWeapon", value, NO_FLAGS);
+		}
+		else if (0 == strcmp("L1", key))
+		{
+			// Players names
+			int player_number = 0;
+			char *n = value;
+
+			if (*n == '/')
+			{
+				// atleast 1 player
+				n++;
+				while (*n && *n != '\xB6')
+				{
+					char *player_name = n;
+					while (*n && *n != '/' && *n != '\xB6')
+					{
+						n++;
+					}
+
+					if (*n == '/')
+					{
+						*n++ = '\0';
+					}
+					else if (*n == '\xB6')
+					{
+						*(n - 1) = '\0';
+					}
+
+					if (0 != strlen(player_name))
+					{
+						struct player *player = add_player(server, player_number);
+						if (NULL != player)
+						{
+							player->name = strdup(player_name);
+						}
+						player_number++;
+					}
+				}
+			}
+		}
+		else if (0 == strcmp("L3", key))
+		{
+			// PunkBuster state
+			add_rule(server, "PunkBuster", value, NO_FLAGS);
+		}
+		else if (0 == strcmp("M1", key))
+		{
+			// Players times
+			int player_number = 0;
+			char *n = value;
+			if (*n == '/')
+			{
+				// atleast 1 player
+				n++;
+				while (*n && *n != '\xB6')
+				{
+					char *time = n;
+					while (*n && *n != '/' && *n != '\xB6')
+					{
+						n++;
+					}
+
+					if (*n == '/')
+					{
+						*n++ = '\0';
+					}
+					else if (*n == '\xB6')
+					{
+						*(n - 1) = '\0';
+					}
+
+					if (0 != strlen(time))
+					{
+						int mins, seconds;
+						if (2 == sscanf(time, "%d:%d", &mins, &seconds))
+						{
+							struct player *player = get_player_by_number(server, player_number);
+							if (NULL != player)
+							{
+								player->connect_time = mins * 60+seconds;
+							}
+						}
+						player_number++;
+					}
+				}
+			}
+		}
+		else if (0 == strcmp("N1", key))
+		{
+			// Players ping
+			int player_number = 0;
+			char *n = value;
+			if (*n == '/')
+			{
+				// atleast 1 player
+				n++;
+				while (*n && *n != '\xB6')
+				{
+					char *ping = n;
+					while (*n && *n != '/' && *n != '\xB6')
+					{
+						n++;
+					}
+
+					if (*n == '/')
+					{
+						*n++ = '\0';
+					}
+					else if (*n == '\xB6')
+					{
+						*(n - 1) = '\0';
+					}
+
+					if (0 != strlen(ping))
+					{
+						struct player *player = get_player_by_number(server, player_number);
+						if (NULL != player)
+						{
+							player->ping = atoi(ping);
+						} player_number++;
+					}
+				}
+			}
+		}
+		else if (0 == strcmp("O1", key))
+		{
+			// Players fags
+			int player_number = 0;
+			char *n = value;
+			if (*n == '/')
+			{
+				// atleast 1 player
+				n++;
+				while (*n && *n != '\xB6')
+				{
+					char *frags = n;
+					while (*n && *n != '/' && *n != '\xB6')
+					{
+						n++;
+					}
+
+					if (*n == '/')
+					{
+						*n++ = '\0';
+					}
+					else if (*n == '\xB6')
+					{
+						*(n - 1) = '\0';
+					}
+
+					if (0 != strlen(frags))
+					{
+						struct player *player = get_player_by_number(server, player_number);
+						if (NULL != player)
+						{
+							player->frags = atoi(frags);
+						} player_number++;
+					}
+				}
+			}
+		}
+		else if (0 == strcmp("P1", key))
+		{
+			// Game port
+			// Not pretty ignore for now
+			/*
+			change_server_port( server, atoi( value ), 0 );
+			 */
+		}
+		else if (0 == strcmp("Q1", key))
+		{
+			// RoundsPerMatch
+			add_rule(server, "RoundsPerMatch", value, NO_FLAGS);
+		}
+		else if (0 == strcmp("R1", key))
+		{
+			// RoundTime
+			add_rule(server, "RoundTime", value, NO_FLAGS);
+		}
+		else if (0 == strcmp("S1", key))
+		{
+			// BetweenRoundTime
+			add_rule(server, "BetweenRoundTime", value, NO_FLAGS);
+		}
+		else if (0 == strcmp("T1", key))
+		{
+			// BombTime
+			add_rule(server, "BombTime", value, NO_FLAGS);
+		}
+		else if (0 == strcmp("W1", key))
+		{
+			// ShowNames
+			add_rule(server, "ShowNames", value, NO_FLAGS);
+		}
+		else if (0 == strcmp("X1", key))
+		{
+			// InternetServer
+			add_rule(server, "InternetServer", value, NO_FLAGS);
+		}
+		else if (0 == strcmp("Y1", key))
+		{
+			// FriendlyFire
+			add_rule(server, "FriendlyFire", value, NO_FLAGS);
+		}
+		else if (0 == strcmp("Z1", key))
+		{
+			// Autobalance
+			add_rule(server, "Autobalance", value, NO_FLAGS);
+		}
+	}
+
+	return DONE_FORCE;
+}
+
+
+char *find_ravenshield_game(char *gameno)
+{
+	switch (atoi(gameno))
+	{
+		case 8:
+			return strdup("Team Deathmatch");
+			break;
+		case 13:
+			return strdup("Deathmatch");
+			break;
+		case 14:
+			return strdup("Team Deathmatch");
+			break;
+		case 15:
+			return strdup("Bomb");
+			break;
+		case 16:
+			return strdup("Escort Pilot");
+			break;
+		default:
+			// 1.50 and above actually uses a string so
+			// return that
+			return strdup(gameno);
+			break;
+	}
+}
