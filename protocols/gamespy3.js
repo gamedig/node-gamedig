@@ -132,7 +132,7 @@ module.exports = require('./core').extend({
 			if(self.useOnlySingleSplit) {
 				// has split headers, but they are worthless and only one packet is used
 				reader.skip(11);
-				c([buffer.rest()]);
+				c([reader.rest()]);
 				return true;
 			}
 
