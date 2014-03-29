@@ -227,6 +227,7 @@ Supported Games
 * Rise of Nations (riseofnations) [[Separate Query Port](#separate-query-port)]
 * Rune (rune) [[Separate Query Port](#separate-query-port)]
 * Rust (rust) [[Separate Query Port](#separate-query-port)]
+* San Andreas Multiplayer (samp) [[Separate Query Port](#separate-query-port)]
 * Serious Sam (ss) [[Separate Query Port](#separate-query-port)]
 * Serious Sam 2 (ss2)
 * Shattered Horizon (shatteredhorizon)
