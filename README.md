@@ -304,7 +304,6 @@ Don't see your game listed here?
  * protocol-quake3
  * protocol-unreal2
  * protocol-valve
- * protocol-valvegold
  
 Games Not Supported (yet!)
 ---
@@ -327,7 +326,6 @@ Games Not Supported (yet!)
 * OpenTTD
 * Plain Sight
 * Red Faction
-* San Andreas: Multiplayer
 * Savage: Battle for Newerth
 * Savage 2: A Tortured Soul
 * Sum of All Fears
