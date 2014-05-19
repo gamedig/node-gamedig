@@ -20,6 +20,10 @@ module.exports = require('./core').extend({
 		// at all, use the old dedicated challenge query if needed
 		this.legacyChallenge = false;
 		
+		// cs:go provides an annoying additional bot that looks exactly like a player,
+		// but is always named "Max Players"
+		this.isCsGo = false;
+		
 		// 2006 engines don't pass packet switching size in split packet header
 		// while all others do, this need is detected automatically
 		this._skipSizeInSplitHeader = false;
@@ -149,6 +153,8 @@ module.exports = require('./core').extend({
 
 				// connecting players don't count as players.
 				if(!name) continue;
+				
+				if(self.isCsGo && name === 'Max Players') continue;
 
 				(time == -1 ? state.bots : state.players).push({
 					name:name, score:score, time:time
