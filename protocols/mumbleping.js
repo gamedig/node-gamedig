@@ -1,6 +1,6 @@
 var async = require('async');
 
-module.exports = require('./protocols/core').extend({
+module.exports = require('./core').extend({
 	init: function() {
 		this._super();
 		this.byteorder = 'be';
