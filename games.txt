@@ -44,8 +44,8 @@ americasarmy3|America's Army 3|valve|port=8777,port_query=27020
 americasarmypg|America's Army: Proving Grounds|valve|port=8777,port_query=27020
 
 arma|ArmA Armed Assault 1|gamespy2|port=2302
-arma2|ArmA Armed Assault 2|gamespy3|port=2302
-arma3|ArmA Armed Assault 3|valve|port_query_offset=1
+arma2|ArmA Armed Assault 2|valve|port=2302,port_query_offset=1
+arma3|ArmA Armed Assault 3|valve|port=2302,port_query_offset=1
 
 armagetron|Armagetron|armagetron|port=4534
 baldursgate|Baldur's Gate|gamespy1|port=6073,port_query=1470
