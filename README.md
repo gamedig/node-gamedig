@@ -184,8 +184,8 @@ Games List
 * Medal of Honor: Breakthrough (mohbt) [[Separate Query Port](#separate-query-port)]
 * Medal of Honor 2010 (moh2010) [[Separate Query Port](#separate-query-port)]
 * Medal of Honor: Warfighter (mohwf) [[Separate Query Port](#separate-query-port)]
-* Minecraft (minecraft)
-* Minecraft (minecraftping)
+* Minecraft (minecraft) [[Additional Notes](#minecraft)]
+* Minecraft (minecraftping) [[Additional Notes](#minecraft)]
 * Monday Night Combat (mnc) [[Separate Query Port](#separate-query-port)]
 * Multi Theft Auto: Vice City (mtavc) [[Separate Query Port](#separate-query-port)]
 * Multi Theft Auto: San Andreas (mtasa) [[Separate Query Port](#separate-query-port)]
