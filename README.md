@@ -67,9 +67,10 @@ Otherwise, the returned object is guaranteed to contain the following keys:
 It can usually be assumed that the number of players online is equal to the length of the players array.
 Some servers may return an additional player count number, which may be present in the unstable raw object.
 
-Supported Games
+Games List
 ---
 
+###Supported
 <!--- BEGIN GENERATED GAMES -->
 
 * Age of Chivalry (ageofchivalry)
@@ -293,24 +294,7 @@ Supported Games
 
 <!--- END GENERATED GAMES -->
 
-Don't see your game listed here?
-
-1. Let us know so we can fix it
-1. You can try using some common query protocols directly by using one of these server types:
- * protocol-ase
- * protocol-battlefield
- * protocol-doom3
- * protocol-gamespy1
- * protocol-gamespy2
- * protocol-gamespy3
- * protocol-nadeo
- * protocol-quake2
- * protocol-quake3
- * protocol-unreal2
- * protocol-valve
- 
-Games Not Supported (yet!)
----
+###Not supported (yet)
 
 * rFactor Engine (rfactor):
  * rFactor
@@ -321,6 +305,7 @@ Games Not Supported (yet!)
  * Cube 2: Sauerbraten
  * Blood Frontier
 * BFRIS
+* Call of Duty: Black Ops 1 and 2 (no documentation, may require rcon)
 * Counter-Strike 2D
 * Freelancer
 * Ghost Recon
@@ -340,40 +325,54 @@ Games Not Supported (yet!)
 * World in Conflict
 
 > Want support for one of these games? Please open an issue to show your interest!
-
-> __Know how to code?__ Protocols for the games above are documented
+> __Know how to code?__ Protocols for most of the games above are documented
 > in the /reference folder, ready for you to develop into GameDig!
 
-Not Supported
+<!-- -->
+
+> Don't see your game listed here?
+>
+> First, let us know so we can fix it. Then, you can try using some common query
+> protocols directly by using one of these server types:
+> * protocol-ase
+> * protocol-battlefield
+> * protocol-doom3
+> * protocol-gamespy1
+> * protocol-gamespy2
+> * protocol-gamespy3
+> * protocol-nadeo
+> * protocol-quake2
+> * protocol-quake3
+> * protocol-unreal2
+> * protocol-valve
+
+Games with Additional Notes
 ---
-* Call of Duty: Black Ops 1 and 2 (no documentation, may require rcon)
 
-### Games with Additional Notes
-
-#### DayZ
+### DayZ
 DayZ uses a query port that is separate from its main game port. The query port is usually
 the game port PLUS 24714 or 24715. You may need to pass this port in as the 'port_query' request option.
 
-#### Minecraft
+### Minecraft
 Some minecraft servers may not respond to a typical status query. If this is the case, try using the
 'minecraftping' server type instead, which uses a less accurate but more reliable solution.
 
-#### Mumble
+### Mumble
 For full query results from Mumble, you must be running the
 [GTmurmur plugin](http://www.gametracker.com/downloads/gtmurmurplugin.php).
 If you do not wish to run the plugin, or do not require details such as channel and user lists,
 you can use the 'mumbleping' server type instead, which uses a less accurate but more reliable solution
 
-#### Nadeo (ShootMania / TrackMania / etc)
+### Nadeo (ShootMania / TrackMania / etc)
 The server must have xmlrpc enabled, and you must pass the xmlrpc port to GameDig, not the connection port.
 You must have a user account on the server with access level User or higher.
 Pass the login into to GameDig with the additional options: login, password
 
-#### Terraria
+### Terraria
 Requires tshock server mod, and a REST user token, which can be passed to GameDig with the
 additional option: token
 
-#### Separate Query Port
+### Separate Query Port
 Games with this note use a query port which is usually not the same as the game's connection port.
 Usually, no action will be required from you. The 'port' option you pass GameDig should be the game's
 connection port. GameDig will attempt to calculate the query port automatically. If the query still fails,
