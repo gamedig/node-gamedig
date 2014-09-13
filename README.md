@@ -122,7 +122,7 @@ Supported Games
 * Daikatana (daikatana) [[Separate Query Port](#separate-query-port)]
 * Dark Messiah of Might and Magic (dmomam)
 * Darkest Hour (darkesthour) [[Separate Query Port](#separate-query-port)]
-* DayZ (dayz)
+* DayZ (dayz) [[Separate Query Port](#separate-query-port)] [[Additional Notes](#dayz)]
 * Deadly Dozen: Pacific Theater (deadlydozenpt) [[Separate Query Port](#separate-query-port)]
 * Deer Hunter 2005 (dh2005) [[Separate Query Port](#separate-query-port)]
 * Descent 3 (descent3) [[Separate Query Port](#separate-query-port)]
@@ -186,8 +186,8 @@ Supported Games
 * Monday Night Combat (mnc) [[Separate Query Port](#separate-query-port)]
 * Multi Theft Auto: Vice City (mtavc) [[Separate Query Port](#separate-query-port)]
 * Multi Theft Auto: San Andreas (mtasa) [[Separate Query Port](#separate-query-port)]
-* Mumble (mumble) [[Separate Query Port](#separate-query-port)]
-* Mumble (mumbleping)
+* Mumble (mumble) [[Separate Query Port](#separate-query-port)] [[Additional Notes](#mumble)]
+* Mumble (mumbleping) [[Additional Notes](#mumble)]
 * Mutant Factions (mutantfactions)
 * Nascar Thunder 2004 (nascarthunder2004) [[Separate Query Port](#separate-query-port)]
 * netPanzer (netpanzer)
@@ -227,13 +227,13 @@ Supported Games
 * Rise of Nations (riseofnations) [[Separate Query Port](#separate-query-port)]
 * Rune (rune) [[Separate Query Port](#separate-query-port)]
 * Rust (rust) [[Separate Query Port](#separate-query-port)]
-* San Andreas Multiplayer (samp) [[Separate Query Port](#separate-query-port)]
+* San Andreas Multiplayer (samp)
 * Serious Sam (ss) [[Separate Query Port](#separate-query-port)]
 * Serious Sam 2 (ss2)
 * Shattered Horizon (shatteredhorizon)
 * The Ship (ship)
 * Shogo (shogo) [[Separate Query Port](#separate-query-port)]
-* Shootmania (shootmania)
+* Shootmania (shootmania) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]
 * SiN (sin) [[Separate Query Port](#separate-query-port)]
 * SiN Episodes (sinep)
 * Soldat (soldat) [[Separate Query Port](#separate-query-port)]
@@ -260,12 +260,12 @@ Supported Games
 * Teamspeak 2 (teamspeak2) [[Separate Query Port](#separate-query-port)]
 * Teamspeak 3 (teamspeak3) [[Separate Query Port](#separate-query-port)]
 * Terminus (terminus) [[Separate Query Port](#separate-query-port)]
-* Terraria (terraria) [[Separate Query Port](#separate-query-port)]
+* Terraria (terraria) [[Separate Query Port](#separate-query-port)] [[Additional Notes](#terraria)]
 * Tony Hawk's Pro Skater 3 (thps3) [[Separate Query Port](#separate-query-port)]
 * Tony Hawk's Pro Skater 4 (thps4) [[Separate Query Port](#separate-query-port)]
 * Tony Hawk's Underground 2 (thu2) [[Separate Query Port](#separate-query-port)]
-* Trackmania 2 (trackmania2)
-* Trackmania Forever (trackmaniaforever)
+* Trackmania 2 (trackmania2) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]
+* Trackmania Forever (trackmaniaforever) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]
 * Tremulous (tremulous) [[Separate Query Port](#separate-query-port)]
 * Tribes: Vengeance (tribesvengeance) [[Separate Query Port](#separate-query-port)]
 * Tron 2.0 (tron20) [[Separate Query Port](#separate-query-port)]
@@ -345,6 +345,10 @@ Not Supported
 * Call of Duty: Black Ops 1 and 2 (no documentation, may require rcon)
 
 ### Games with Additional Notes
+
+#### DayZ
+DayZ uses a query port that is separate from its main game port. The query port is usually
+the game port PLUS 24714 or 24715. You may need to pass this port in as the 'port_query' request option.
 
 #### Minecraft
 Some minecraft servers may not respond to a typical status query. If this is the case, try using the

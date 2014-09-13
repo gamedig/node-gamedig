@@ -94,7 +94,7 @@ crysis2|Crysis 2|gamespy3|port=64000
 daikatana|Daikatana|quake2|port=27982,port_query_offset=10
 dmomam|Dark Messiah of Might and Magic|valve
 darkesthour|Darkest Hour|unreal2|port=7757,port_query_offset=1
-dayz|DayZ|valve|port=2302
+dayz|DayZ|valve|port=2302,port_query_offset=24714|doc_notes=dayz
 deadlydozenpt|Deadly Dozen: Pacific Theater|gamespy1|port_query=25300
 dh2005|Deer Hunter 2005|gamespy2|port=23459,port_query=34567
 descent3|Descent 3|gamespy1|port=2092,port_query=20142
@@ -155,13 +155,13 @@ mohbt|Medal of Honor: Breakthrough|gamespy1|port=12203,port_query_offset=97
 moh2010|Medal of Honor 2010|battlefield|port=7673,port_query=48888
 mohwf|Medal of Honor: Warfighter|battlefield|port=25200,port_query_offset=22000
 
-minecraft|Minecraft|gamespy3|port=25565|maxAttempts=2,srvRecord=_minecraft._tcp
-minecraftping|Minecraft|minecraftping|port=25565|srvRecord=_minecraft._tcp
+minecraft|Minecraft|gamespy3|port=25565|maxAttempts=2,srvRecord=_minecraft._tcp|doc_notes=minecraft
+minecraftping|Minecraft|minecraftping|port=25565|srvRecord=_minecraft._tcp|doc_notes=minecraft
 mnc|Monday Night Combat|valve|port=7777,port_query=27016
 mtavc|Multi Theft Auto: Vice City|ase|port=22003,port_query_offset=123
 mtasa|Multi Theft Auto: San Andreas|ase|port=22003,port_query_offset=123
-mumble|Mumble|mumble|port=64738,port_query=27800
-mumbleping|Mumble|mumbleping|port=64738
+mumble|Mumble|mumble|port=64738,port_query=27800|doc_notes=mumble
+mumbleping|Mumble|mumbleping|port=64738|doc_notes=mumble
 mutantfactions|Mutant Factions|mutantfactions|port=11235
 nascarthunder2004|Nascar Thunder 2004|gamespy2|port_query=13333
 netpanzer|netPanzer|gamespy1|3030
@@ -211,7 +211,7 @@ ss2|Serious Sam 2|gamespy2|port=25600
 shatteredhorizon|Shattered Horizon|valve
 ship|The Ship|valve
 shogo|Shogo|gamespy1|port_query=27888
-shootmania|Shootmania|nadeo
+shootmania|Shootmania|nadeo||doc_notes=nadeo-shootmania--trackmania--etc
 sin|SiN|gamespy1|port_query=22450
 sinep|SiN Episodes|valve
 soldat|Soldat|ase|port=13073,port_query_offset=123
@@ -241,12 +241,12 @@ tf2|Team Fortress 2|valve
 teamspeak2|Teamspeak 2|teamspeak2|port=8767,port_query=51234
 teamspeak3|Teamspeak 3|teamspeak3|port=9987,port_query=10011
 terminus|Terminus|gamespy1|port_query=12286
-terraria|Terraria|terraria|port=7777,port_query_offset=101
+terraria|Terraria|terraria|port=7777,port_query_offset=101|doc_notes=terraria
 thps3|Tony Hawk's Pro Skater 3|gamespy1|port_query=6500
 thps4|Tony Hawk's Pro Skater 4|gamespy1|port_query=6500
 thu2|Tony Hawk's Underground 2|gamespy1|port_query=5153
-trackmania2|Trackmania 2|nadeo
-trackmaniaforever|Trackmania Forever|nadeo
+trackmania2|Trackmania 2|nadeo||doc_notes=nadeo-shootmania--trackmania--etc
+trackmaniaforever|Trackmania Forever|nadeo||doc_notes=nadeo-shootmania--trackmania--etc
 tremulous|Tremulous|quake3|port_query=30720
 tribesvengeance|Tribes: Vengeance|gamespy2|port=7777,port_query_offset=1
 tron20|Tron 2.0|gamespy2|port_query=27888
