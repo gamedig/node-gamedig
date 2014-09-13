@@ -71,6 +71,7 @@ Supported Games
 ---
 
 <!--- BEGIN GENERATED GAMES -->
+
 * Age of Chivalry (ageofchivalry)
 * Age of Empires 2 (aoe2) [[Separate Query Port](#separate-query-port)]
 * Alien Arena (alienarena) [[Separate Query Port](#separate-query-port)]
@@ -289,6 +290,7 @@ Supported Games
 * Xpand Rally (xpandrally) [[Separate Query Port](#separate-query-port)]
 * Zombie Master (zombiemaster)
 * Zombie Panic: Source (zps)
+
 <!--- END GENERATED GAMES -->
 
 Don't see your game listed here?

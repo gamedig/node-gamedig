@@ -13,9 +13,7 @@ var marker_bottom = '<!--- END GENERATED GAMES -->';
 
 var start = readme.indexOf(marker_top);
 start += marker_top.length;
-while(readme.charAt(start) == "\n" || readme.charAt(start) == "\r") { start++; }
-
 var end = readme.indexOf(marker_bottom);
 
-var updated = readme.substr(0,start)+generated+readme.substr(end);
+var updated = readme.substr(0,start)+"\n\n"+generated+"\n"+readme.substr(end);
 fs.writeFileSync(readmeFilename, updated);
