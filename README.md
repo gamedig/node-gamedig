@@ -70,6 +70,7 @@ Some servers may return an additional player count number, which may be present 
 Supported Games
 ---
 
+<!--- BEGIN GENERATED GAMES -->
 * Age of Chivalry (ageofchivalry)
 * Age of Empires 2 (aoe2) [[Separate Query Port](#separate-query-port)]
 * Alien Arena (alienarena) [[Separate Query Port](#separate-query-port)]
@@ -81,8 +82,8 @@ Supported Games
 * America's Army 3 (americasarmy3) [[Separate Query Port](#separate-query-port)]
 * America's Army: Proving Grounds (americasarmypg) [[Separate Query Port](#separate-query-port)]
 * ArmA Armed Assault 1 (arma)
-* ArmA Armed Assault 2 (arma2)
-* ArmA Armed Assault 3 (arma3)
+* ArmA Armed Assault 2 (arma2) [[Separate Query Port](#separate-query-port)]
+* ArmA Armed Assault 3 (arma3) [[Separate Query Port](#separate-query-port)]
 * Armagetron (armagetron)
 * Baldur's Gate (baldursgate) [[Separate Query Port](#separate-query-port)]
 * Battlefield 1942 (bf1942) [[Separate Query Port](#separate-query-port)]
@@ -288,6 +289,7 @@ Supported Games
 * Xpand Rally (xpandrally) [[Separate Query Port](#separate-query-port)]
 * Zombie Master (zombiemaster)
 * Zombie Panic: Source (zps)
+<!--- END GENERATED GAMES -->
 
 Don't see your game listed here?
 
