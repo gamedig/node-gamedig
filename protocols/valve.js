@@ -145,20 +145,27 @@ module.exports = require('./core').extend({
 		self.sendPacket(0x55,true,false,0x44,function(b) {
 			var reader = self.reader(b);
 			var num = reader.uint(1);
+			var csgoHiddenPlayers = false;
 			for(var i = 0; i < num; i++) {
 				reader.skip(1);
 				var name = reader.string();
 				var score = reader.int(4);
 				var time = reader.float();
 
+				if(self.debug) console.log("Found player: "+name+" "+score+" "+time);
+
 				// connecting players don't count as players.
 				if(!name) continue;
-				
-				if(self.isCsGo && name === 'Max Players') continue;
 
 				(time == -1 ? state.bots : state.players).push({
 					name:name, score:score, time:time
 				});
+			}
+
+			if(self.isCsGo && state.players.length == 1 && state.players[0].name == 'Max Players') {
+				if(self.debug) console.log("CSGO server using limited player details");
+				state.players = [];
+				for(var i = 0; i < state.raw.numplayers; i++) { state.players.push({}); }
 			}
 			
 			// if we didn't find the bots, iterate
