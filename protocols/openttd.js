@@ -13,7 +13,6 @@ module.exports = require('./core').extend({
 					if(version >= 4) {
 						var numGrf = reader.uint(1);
 						state.raw.grfs = [];
-						console.log("GRF", numGrf);
 						for(var i = 0; i < numGrf; i++) {
 							var grf = {};
 							grf.id = reader.part(4).toString('hex');
