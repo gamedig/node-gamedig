@@ -178,6 +178,7 @@ nolf|No One Lives Forever|gamespy1|port_query=27888
 nolf2|No One Lives Forever 2|gamespy1|port_query=27890
 nucleardawn|Nuclear Dawn|valve
 openarena|OpenArena|quake3|port_query=27960
+openttd|OpenTTD|openttd|port=3979
 operationflashpoint|Operation Flashpoint|gamespy1|port=2234,port_query_offset=1
 painkiller|Painkiller|ase|port=3455,port_query_offset=123
 postal2|Postal 2|gamespy1|port=7777,port_query_offset=1

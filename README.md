@@ -207,6 +207,7 @@ Games List
 * No One Lives Forever 2 (nolf2) [[Separate Query Port](#separate-query-port)]
 * Nuclear Dawn (nucleardawn)
 * OpenArena (openarena) [[Separate Query Port](#separate-query-port)]
+* OpenTTD (openttd)
 * Operation Flashpoint (operationflashpoint) [[Separate Query Port](#separate-query-port)]
 * Painkiller (painkiller) [[Separate Query Port](#separate-query-port)]
 * Postal 2 (postal2) [[Separate Query Port](#separate-query-port)]
@@ -312,7 +313,6 @@ Games List
 * GTR2
 * Haze
 * Hexen 2
-* OpenTTD
 * Plain Sight
 * Red Faction
 * Savage: Battle for Newerth
