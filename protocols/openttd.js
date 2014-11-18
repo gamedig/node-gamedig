@@ -44,7 +44,7 @@ module.exports = require('./core').extend({
 					for(var i = 0; i < state.raw.numplayers; i++) {
 						state.players.push({});
 					}
-					state.raw.spectators = reader.uint(1);
+					state.raw.numspectators = reader.uint(1);
 					state.map = reader.string();
 					state.raw.map_width = reader.uint(2);
 					state.raw.map_height = reader.uint(2);
