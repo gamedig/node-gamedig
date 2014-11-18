@@ -30,7 +30,7 @@ Gamedig.query(
 
 > Is NPM out of date? If you're feeling lucky, you can install the latest code with
 > ```shell
-> npm install "git+https://github.com/sonicsnes/node-gamedig.git"
+> npm install sonicsnes/node-gamedig
 > ```
 
 ### Input Parameters
