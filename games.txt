@@ -95,6 +95,7 @@ daikatana|Daikatana|quake2|port=27982,port_query_offset=10
 dmomam|Dark Messiah of Might and Magic|valve
 darkesthour|Darkest Hour|unreal2|port=7757,port_query_offset=1
 dayz|DayZ|valve|port=2302,port_query_offset=24714|doc_notes=dayz
+dayzmod|DayZ Mod|valve|port=2302,port_query_offset=1
 deadlydozenpt|Deadly Dozen: Pacific Theater|gamespy1|port_query=25300
 dh2005|Deer Hunter 2005|gamespy2|port=23459,port_query=34567
 descent3|Descent 3|gamespy1|port=2092,port_query=20142

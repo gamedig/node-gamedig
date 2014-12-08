@@ -126,6 +126,7 @@ Games List
 * Dark Messiah of Might and Magic (dmomam)
 * Darkest Hour (darkesthour) [[Separate Query Port](#separate-query-port)]
 * DayZ (dayz) [[Separate Query Port](#separate-query-port)] [[Additional Notes](#dayz)]
+* DayZ Mod (dayzmod) [[Separate Query Port](#separate-query-port)]
 * Deadly Dozen: Pacific Theater (deadlydozenpt) [[Separate Query Port](#separate-query-port)]
 * Deer Hunter 2005 (dh2005) [[Separate Query Port](#separate-query-port)]
 * Descent 3 (descent3) [[Separate Query Port](#separate-query-port)]
