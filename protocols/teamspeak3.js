@@ -15,6 +15,8 @@ module.exports = require('./core').extend({
 			function(c) {
 				self.sendCommand('serverinfo', function(data) {
 					state.raw = data[0];
+					if('virtualserver_name' in state.raw) state.name = state.raw.virtualserver_name;
+                                        if('virtualserver_maxclients' in state.raw) state.maxplayers = state.raw.virtualserver_maxclients;
 					c();
 				});
 			},
