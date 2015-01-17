@@ -350,6 +350,10 @@ Games List
 Games with Additional Notes
 ---
 
+### <a name="csgo"></a>Counter-Strike: Global Offensive
+To receive a full player list response from CS:GO servers, the server must
+have set the cvar: host_players_show 2
+
 ### DayZ
 DayZ uses a query port that is separate from its main game port. The query port is usually
 the game port PLUS 24714 or 24715. You may need to pass this port in as the 'port_query' request option.
@@ -368,6 +372,16 @@ you can use the 'mumbleping' server type instead, which uses a less accurate but
 The server must have xmlrpc enabled, and you must pass the xmlrpc port to GameDig, not the connection port.
 You must have a user account on the server with access level User or higher.
 Pass the login into to GameDig with the additional options: login, password
+
+### <a name="teamspeak3"></a>TeamSpeak 3
+For teamspeak 3 queries to work correctly, the following permissions must be available for the guest server group:
+* Virtual Server
+** b_virtualserver_info_view
+** b_virtualserver_channel_list
+** b_virtualserver_client_list
+* Group
+** b_virtualserver_servergroup_list
+** b_virtualserver_channelgroup_list
 
 ### Terraria
 Requires tshock server mod, and a REST user token, which can be passed to GameDig with the

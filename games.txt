@@ -83,7 +83,7 @@ contactjack|Contact J.A.C.K.|gamespy1|port_query=27888
 cs16|Counter-Strike 1.6|valve
 cscz|Counter-Strike: Condition Zero|valve
 css|Counter-Strike: Source|valve
-csgo|Counter-Strike: Global Offensive|valve||isCsGo
+csgo|Counter-Strike: Global Offensive|valve||isCsGo,doc_notes=csgo
 
 crossracing|Cross Racing Championship|ase|port=12321,port_query_offset=123
 
@@ -241,7 +241,7 @@ teamfactor|Team Factor|gamespy1|port_query=57778
 tfc|Team Fortress Classic|valve
 tf2|Team Fortress 2|valve
 teamspeak2|Teamspeak 2|teamspeak2|port=8767,port_query=51234
-teamspeak3|Teamspeak 3|teamspeak3|port=9987,port_query=10011
+teamspeak3|Teamspeak 3|teamspeak3|port=9987,port_query=10011|doc_notes=teamspeak3
 terminus|Terminus|gamespy1|port_query=12286
 terraria|Terraria|terraria|port=7777,port_query_offset=101|doc_notes=terraria
 thps3|Tony Hawk's Pro Skater 3|gamespy1|port_query=6500
