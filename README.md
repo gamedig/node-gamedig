@@ -117,7 +117,7 @@ Games List
 * Counter-Strike 1.6 (cs16)
 * Counter-Strike: Condition Zero (cscz)
 * Counter-Strike: Source (css)
-* Counter-Strike: Global Offensive (csgo)
+* Counter-Strike: Global Offensive (csgo) [[Additional Notes](#csgo)]
 * Cross Racing Championship (crossracing) [[Separate Query Port](#separate-query-port)]
 * Crysis (crysis)
 * Crysis Wars (crysiswars)
@@ -263,7 +263,7 @@ Games List
 * Team Fortress Classic (tfc)
 * Team Fortress 2 (tf2)
 * Teamspeak 2 (teamspeak2) [[Separate Query Port](#separate-query-port)]
-* Teamspeak 3 (teamspeak3) [[Separate Query Port](#separate-query-port)]
+* Teamspeak 3 (teamspeak3) [[Separate Query Port](#separate-query-port)] [[Additional Notes](#teamspeak3)]
 * Terminus (terminus) [[Separate Query Port](#separate-query-port)]
 * Terraria (terraria) [[Separate Query Port](#separate-query-port)] [[Additional Notes](#terraria)]
 * Tony Hawk's Pro Skater 3 (thps3) [[Separate Query Port](#separate-query-port)]
