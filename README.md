@@ -375,13 +375,14 @@ Pass the login into to GameDig with the additional options: login, password
 
 ### <a name="teamspeak3"></a>TeamSpeak 3
 For teamspeak 3 queries to work correctly, the following permissions must be available for the guest server group:
+
 * Virtual Server
-** b_virtualserver_info_view
-** b_virtualserver_channel_list
-** b_virtualserver_client_list
+ * b_virtualserver_info_view
+ * b_virtualserver_channel_list
+ * b_virtualserver_client_list
 * Group
-** b_virtualserver_servergroup_list
-** b_virtualserver_channelgroup_list
+ * b_virtualserver_servergroup_list
+ * b_virtualserver_channelgroup_list
 
 ### Terraria
 Requires tshock server mod, and a REST user token, which can be passed to GameDig with the
