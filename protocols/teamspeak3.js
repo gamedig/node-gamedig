@@ -15,6 +15,8 @@ module.exports = require('./core').extend({
 			function(c) {
 				self.sendCommand('serverinfo', function(data) {
 					state.raw = data[0];
+					if('virtualserver_name' in state.raw) state.name = state.raw.virtualserver_name;
+                    if('virtualserver_maxclients' in state.raw) state.maxplayers = state.raw.virtualserver_maxclients;
 					c();
 				});
 			},
@@ -44,7 +46,7 @@ module.exports = require('./core').extend({
 			if(buffer.length < 21) return;
 			if(buffer.slice(-21).toString() != '\n\rerror id=0 msg=ok\n\r') return;
 			var body = buffer.slice(0,-21).toString();
-			
+
 			var out;
 
 			if(raw) {
@@ -65,9 +67,9 @@ module.exports = require('./core').extend({
 					out.push(unit);
 				});
 			}
-			
+
 			c(out);
-			
+
 			return true;
 		});
 	}
