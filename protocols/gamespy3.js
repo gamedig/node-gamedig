@@ -8,6 +8,7 @@ module.exports = require('./core').extend({
 		this.byteorder = 'be';
 		this.noChallenge = false;
 		this.useOnlySingleSplit = false;
+		this.isJc2mp = false;
 	},
 	run: function(state) {
 		var self = this;
@@ -23,7 +24,15 @@ module.exports = require('./core').extend({
 				});
 			},
 			function(c) {
-				self.sendPacket(0,challenge,new Buffer([0xff,0xff,0xff,0x01]),true,function(b) {
+				var requestPayload;
+				if(self.isJc2mp) {
+					// they completely alter the protocol. because why not.
+					requestPayload = new Buffer([0xff,0xff,0xff,0x02]);
+				} else {
+					requestPayload = new Buffer([0xff,0xff,0xff,0x01]);
+				}
+
+				self.sendPacket(0,challenge,requestPayload,true,function(b) {
 					packets = b;
 					c();
 				});
@@ -32,7 +41,8 @@ module.exports = require('./core').extend({
 				// iterate over the received packets
 				// the first packet will start off with k/v pairs, followed with data fields
 				// the following packets will only have data fields
-				var data = {};
+
+				state.raw.playerTeamInfo = {};
 
 				for(var iPacket = 0; iPacket < packets.length; iPacket++) {
 					var packet = packets[iPacket];
@@ -43,12 +53,14 @@ module.exports = require('./core').extend({
 						console.log(":::"+packet.toString('ascii'));
 					}
 
+					// Parse raw server key/values
+
 					if(iPacket == 0) {
 						while(!reader.done()) {
 							var key = reader.string();
 							if(!key) break;
 							var value = reader.string();
-							
+
 							// reread the next line if we hit the weird ut3 bug
 							if(value == 'p1073741829') value = reader.string();
 
@@ -56,47 +68,75 @@ module.exports = require('./core').extend({
 						}
 					}
 
-					var firstMode = true;
-					while(!reader.done()) {
-						var mode = reader.string();
-						if(mode.charCodeAt(0) <= 2) mode = mode.substring(1);
-						if(!mode) continue;
-						var offset = 0;
-						if(iPacket != 0 && firstMode) offset = reader.uint(1);
-						reader.skip(1);
-						firstMode = false;
+					// Parse player, team, item array state
 
+					if(self.isJc2mp) {
+						state.raw.numPlayers2 = reader.uint(2);
 						while(!reader.done()) {
-							var item = reader.string();
-							if(!item) break;
+							var player = {};
+							player.name = reader.string();
+							player.steamid = reader.string();
+							player.ping = reader.uint(2);
+							state.players.push(player);
+						}
+					} else {
+						var firstMode = true;
+						while(!reader.done()) {
+							var mode = reader.string();
+							if(mode.charCodeAt(0) <= 2) mode = mode.substring(1);
+							if(!mode) continue;
+							var offset = 0;
+							if(iPacket != 0 && firstMode) offset = reader.uint(1);
+							reader.skip(1);
+							firstMode = false;
 
-							if(
-								mode == 'player_'
-								|| mode == 'score_'
-								|| mode == 'ping_'
-								|| mode == 'team_'
-								|| mode == 'deaths_'
-								|| mode == 'pid_'
-							) {
-								if(state.players.length <= offset)
-									state.players.push({});
+							var modeSplit = mode.split('_');
+							var modeName = modeSplit[0];
+							var modeType = modeSplit.length > 1 ? modeSplit[1] : 'no_';
+
+							if(!(modeType in state.raw.playerTeamInfo)) {
+								state.raw.playerTeamInfo[modeType] = [];
 							}
-							if(mode == 'player_') state.players[offset].name = item;
-							if(mode == 'score_') state.players[offset].score = parseInt(item);
-							if(mode == 'ping_') state.players[offset].ping = parseInt(item);
-							if(mode == 'team_') state.players[offset].team = parseInt(item);
-							if(mode == 'deaths_') state.players[offset].deaths = parseInt(item);
-							if(mode == 'pid_') state.players[offset].pid = item;
-							offset++;
+							var store = state.raw.playerTeamInfo[modeType];
+
+							while(!reader.done()) {
+								var item = reader.string();
+								if(!item) break;
+
+								while(store.length <= offset) { store.push({}); }
+								store[offset][modeName] = item;
+								offset++;
+							}
 						}
 					}
 				}
+
+				c();
+			},
+
+			function(c) {
+				// Turn all that raw state into something useful
 
 				if('hostname' in state.raw) state.name = state.raw.hostname;
 				else if('servername' in state.raw) state.name = state.raw.servername;
 				if('mapname' in state.raw) state.map = state.raw.mapname;
 				if(state.raw.password == '1') state.password = true;
 				if('maxplayers' in state.raw) state.maxplayers = parseInt(state.raw.maxplayers);
+
+				if('' in state.raw.playerTeamInfo) {
+					state.raw.playerTeamInfo[''].forEach(function(playerInfo) {
+						var player = {};
+						for(var from in playerInfo) {
+							var key = from;
+							var value = playerInfo[from];
+
+							if(key == 'player') key = 'name';
+							if(key == 'score' || key == 'ping' || key == 'team' || key == 'deaths' || key == 'pid') value = parseInt(value);
+							player[key] = value;
+						}
+						state.players.push(player);
+					})
+				}
 
 				self.finish(state);
 			}
@@ -141,7 +181,7 @@ module.exports = require('./core').extend({
 			var last = (id & 0x80);
 			id = id & 0x7f;
 			if(last) numPackets = id+1;
-			
+
 			reader.skip(1); // "another 'packet number' byte, but isn't understood."
 
 			packets[id] = reader.rest();
@@ -151,7 +191,7 @@ module.exports = require('./core').extend({
 			}
 
 			if(!numPackets || Object.keys(packets).length != numPackets) return;
-			
+
 			// assemble the parts
 			var list = [];
 			for(var i = 0; i < numPackets; i++) {
