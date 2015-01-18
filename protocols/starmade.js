@@ -43,7 +43,7 @@ module.exports = require('./core').extend({
 				return true;
 			}
 
-			if(typeof data[3] == 'number') state.raw.version = data[3];
+			if(typeof data[3] == 'number') state.raw.version = data[3].toFixed(7).replace(/0+$/, '');
 			if(typeof data[4] == 'string') state.name = data[4];
 			if(typeof data[5] == 'string') state.raw.description = data[5];
 			if(typeof data[7] == 'number') state.raw.numplayers = data[7];
