@@ -35,7 +35,7 @@ module.exports = require('./core').extend({
 					portBuf,
 					varIntBuffer(1)
 				];
-				
+
 				var outBuffer = Buffer.concat([
 					buildPacket(0,Buffer.concat(bufs)),
 					buildPacket(0)
@@ -44,7 +44,7 @@ module.exports = require('./core').extend({
 				self.tcpSend(outBuffer, function(data) {
 					if(data.length < 10) return false;
 					var expected = varint.decode(data);
-					data = data.slice(varint.decode.bytesRead);
+					data = data.slice(varint.decode.bytes);
 					if(data.length < expected) return false;
 					receivedData = data;
 					c();
@@ -56,21 +56,26 @@ module.exports = require('./core').extend({
 
 				var data = receivedData;
 				var packetId = varint.decode(data);
-				data = data.slice(varint.decode.bytesRead);
-				
+				if(self.debug) console.log("Packet ID: "+packetId);
+				data = data.slice(varint.decode.bytes);
+
 				var strLen = varint.decode(data);
-				data = data.slice(varint.decode.bytesRead);
+				if(self.debug) console.log("String Length: "+strLen);
+				data = data.slice(varint.decode.bytes);
 
 				var str = data.toString('utf8');
+				if(self.debug) {
+					console.log(str);
+				}
+
 				var json;
 				try {
 					json = JSON.parse(str);
 					delete json.favicon;
-					if(self.debug) console.log(json);
 				} catch(e) {
 					return self.fatal('Invalid JSON');
 				}
-				
+
 				state.raw.version = json.version.name;
 				state.maxplayers = json.players.max;
 				state.raw.description = json.description.text;
@@ -85,7 +90,7 @@ module.exports = require('./core').extend({
 				while(state.players.length < json.players.online) {
 					state.players.push({});
 				}
-				
+
 				self.finish(state);
 			}
 		]);
