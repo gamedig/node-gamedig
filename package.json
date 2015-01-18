@@ -26,10 +26,10 @@
 		}
 	],
 	"dependencies": {
-		"iconv-lite": "~0.2.11",
-		"long": "~1.1.2",
-		"async": "~0.2.10",
-		"compressjs": "~1.0.1",
+		"iconv-lite": "~0.4.6",
+		"long": "~2.2.3",
+		"async": "~0.9.0",
+		"compressjs": "~1.0.2",
 		"gbxremote": "~0.1.4",
 		"request": "~2.51.0",
 		"minimist": "~1.1.0",
