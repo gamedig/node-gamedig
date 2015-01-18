@@ -254,6 +254,7 @@ Games List
 * Star Wars: Jedi Knight 2 (swjk2) [[Separate Query Port](#separate-query-port)]
 * Star Wars: Republic Commando (swrc) [[Separate Query Port](#separate-query-port)]
 * Starbound (starbound)
+* StarMade (starmade)
 * Suicide Survival (suicidesurvival)
 * SWAT 4 (swat4) [[Separate Query Port](#separate-query-port)]
 * Sven Coop (svencoop)

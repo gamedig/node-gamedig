@@ -232,6 +232,7 @@ swjk2|Star Wars: Jedi Knight 2|quake3|port_query=28070
 swrc|Star Wars: Republic Commando|gamespy2|port=7777,port_query=11138
 
 starbound|Starbound|valve|port=21025
+starmade|StarMade|starmade|port=4242
 suicidesurvival|Suicide Survival|valve
 swat4|SWAT 4|gamespy2|port=10480,port_query_offset=2
 svencoop|Sven Coop|valve
