@@ -1,6 +1,6 @@
 var request = require('request');
 
-module.exports = require('./protocols/core').extend({
+module.exports = require('./core').extend({
 	run: function(state) {
 		var self = this;
 		request({
@@ -22,7 +22,7 @@ module.exports = require('./protocols/core').extend({
 					break;
 				}
 			}
-			
+
 			if(!found) return self.fatal('Server not found in list');
 
 			state.raw.countrycode = fields[0];
