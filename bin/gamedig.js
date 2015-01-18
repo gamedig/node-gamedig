@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-var argv = require('optimist').argv;
+var argv = require('minimist')(process.argv.slice(2));
+console.log(argv);
 
 var debug = argv.debug;
 delete argv.debug;

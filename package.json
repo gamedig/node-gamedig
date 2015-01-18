@@ -32,7 +32,7 @@
 		"compressjs": "~1.0.1",
 		"gbxremote": "~0.1.4",
 		"request": "~2.33.0",
-		"optimist": "~0.6.0",
+		"minimist": "~1.1.0",
 		"varint": "~4.0.0",
 		"moment": "~2.9.0"
 	},
