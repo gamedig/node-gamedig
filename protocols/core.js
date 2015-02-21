@@ -39,9 +39,10 @@ module.exports = Class.extend(EventEmitter,{
 			name: '',
 			map: '',
 			password: false,
-			
+
 			raw: {},
 
+			onlineplayers: 0,
 			maxplayers: 0,
 			players: [],
 			bots: []
@@ -60,6 +61,9 @@ module.exports = Class.extend(EventEmitter,{
 
 		if(this.options.notes)
 			state.notes = this.options.notes;
+
+		//Additional Conditionals
+		if('players' in state) state.onlineplayers = state.players.length;
 
 		state.query = {};
 		if('host' in this.options) state.query.host = this.options.host;
@@ -82,7 +86,7 @@ module.exports = Class.extend(EventEmitter,{
 			});
 		}
 		this.timers = [];
-		
+
 		if(this.tcpSocket) {
 			this.tcpSocket.destroy();
 			delete this.tcpSocket;
@@ -124,7 +128,7 @@ module.exports = Class.extend(EventEmitter,{
 	},
 	parseDns: function(host,c) {
 		var self = this;
-		
+
 		function resolveStandard(host,c) {
 			dns.lookup(host, function(err,address,family) {
 				if(err) return self.fatal(err);
@@ -139,7 +143,7 @@ module.exports = Class.extend(EventEmitter,{
 					var line = addresses[0];
 					self.options.port = line.port;
 					var srvhost = line.name;
-					
+
 					if(srvhost.match(/\d+\.\d+\.\d+\.\d+/)) {
 						self.options.address = srvhost;
 						c();
@@ -177,8 +181,8 @@ module.exports = Class.extend(EventEmitter,{
 		return id;
 	},
 
-	
-	
+
+
 	trueTest: function(str) {
 		if(typeof str == 'boolean') return str;
 		if(typeof str == 'number') return str != 0;
@@ -228,7 +232,7 @@ module.exports = Class.extend(EventEmitter,{
 		socket.setTimeout(10000);
 		socket.setNoDelay(true);
 		if(this.debug) console.log(address+':'+port+" TCPCONNECT");
-		
+
 		var writeHook = socket.write;
 		socket.write = function(data) {
 			if(self.debug) console.log(address+':'+port+" TCP--> "+data.toString('hex'));
@@ -292,7 +296,7 @@ module.exports = Class.extend(EventEmitter,{
 		if(!('address' in this.options)) return this.fatal('Attempted to send without setting an address');
 
 		if(typeof buffer == 'string') buffer = new Buffer(buffer,'binary');
-		
+
 		if(this.debug) console.log(this.options.address+':'+this.options.port_query+" UDP--> "+buffer.toString('hex'));
 		this.udpSocket.send(buffer,0,buffer.length,this.options.port_query,this.options.address);
 	},

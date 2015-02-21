@@ -54,6 +54,7 @@ Otherwise, the returned object is guaranteed to contain the following keys:
 * **name**
 * **map**
 * **password**: Boolean
+* **onlineplayers**
 * **maxplayers**
 * **players**: (array of objects) Each object **may** contain name, ping, score, team, address
 * **bots**: Same schema as players
