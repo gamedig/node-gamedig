@@ -48,6 +48,7 @@ module.exports = require('./core').extend({
 					for(var i = 0; i < state.raw.numplayers; i++) {
 						state.players.push({});
 					}
+					c();
 				});
 			},
 			function(c) {
