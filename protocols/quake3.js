@@ -6,6 +6,8 @@ module.exports = require('./quake2').extend({
 	},
 	finalizeState: function(state) {
 		state.name = this.stripColors(state.name);
+		state.raw.numplayers = state.players.length;
+		
 		for(var i in state.raw) {
 			state.raw[i] = this.stripColors(state.raw[i]);
 		}
