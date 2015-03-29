@@ -6,14 +6,14 @@ module.exports = require('./quake2').extend({
 	},
 	finalizeState: function(state) {
 		state.name = this.stripColors(state.name);
-		state.raw.numplayers = state.players.length;
-		
 		for(var i in state.raw) {
 			state.raw[i] = this.stripColors(state.raw[i]);
 		}
 		for(var i = 0; i < state.players.length; i++) {
 			state.players[i].name = this.stripColors(state.players[i].name);
 		}
+		
+		state.raw.numplayers = state.players.length;
 	},
 	stripColors: function(str) {
 		return str.replace(/\^(X.{6}|.)/g,'');
