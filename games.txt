@@ -33,6 +33,7 @@ ageofchivalry|Age of Chivalry|valve
 aoe2|Age of Empires 2|ase|port_query=27224
 alienarena|Alien Arena|quake2|port_query=27910
 alienswarm|Alien Swarm|valve
+arkse|ARK: Survival Evolved|valve|port=7777,port_query=27015
 avp2|Aliens vs Predator 2|gamespy1|port=27888
 # avp2010 doesn't really... have a default port or query port
 # both port and port_query should be specified when used
