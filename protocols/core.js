@@ -42,7 +42,6 @@ module.exports = Class.extend(EventEmitter,{
 
 			raw: {},
 
-			onlineplayers: 0,
 			maxplayers: 0,
 			players: [],
 			bots: []
@@ -61,9 +60,6 @@ module.exports = Class.extend(EventEmitter,{
 
 		if(this.options.notes)
 			state.notes = this.options.notes;
-
-		//Additional Conditionals
-		if('players' in state) state.onlineplayers = state.players.length;
 
 		state.query = {};
 		if('host' in this.options) state.query.host = this.options.host;
