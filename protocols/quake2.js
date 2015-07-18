@@ -12,7 +12,7 @@ module.exports = require('./core').extend({
 
 		this.udpSend('\xff\xff\xff\xff'+this.sendHeader+'\x00',function(buffer) {
 			var reader = self.reader(buffer);
-			
+
 			var header = reader.string({length:4});
 			if(header != '\xff\xff\xff\xff') return;
 
@@ -76,6 +76,7 @@ module.exports = require('./core').extend({
 			if('g_needpass' in state.raw) state.password = state.raw.g_needpass;
 			if('mapname' in state.raw) state.map = state.raw.mapname;
 			if('sv_maxclients' in state.raw) state.maxplayers = state.raw.sv_maxclients;
+			if('maxclients' in state.raw) state.maxplayers = state.raw.maxclients;
 			if('sv_hostname' in state.raw) state.name = state.raw.sv_hostname;
 
 			self.finish(state);
