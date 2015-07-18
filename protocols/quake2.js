@@ -78,6 +78,7 @@ module.exports = require('./core').extend({
 			if('sv_maxclients' in state.raw) state.maxplayers = state.raw.sv_maxclients;
 			if('maxclients' in state.raw) state.maxplayers = state.raw.maxclients;
 			if('sv_hostname' in state.raw) state.name = state.raw.sv_hostname;
+			if('hostname' in state.raw) state.name = state.raw.hostname;
 
 			self.finish(state);
 			return true;
