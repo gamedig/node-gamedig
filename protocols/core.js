@@ -3,7 +3,8 @@ var EventEmitter = require('events').EventEmitter,
 	net = require('net'),
 	async = require('async'),
 	Class = require('../lib/Class'),
-	Reader = require('../lib/reader');
+	Reader = require('../lib/reader'),
+	ping = require('jjg-ping');
 
 module.exports = Class.extend(EventEmitter,{
 	init: function() {
@@ -18,6 +19,7 @@ module.exports = Class.extend(EventEmitter,{
 		this.encoding = 'utf8';
 		this.byteorder = 'le';
 		this.delimiter = '\0';
+		this.ping = 0;
 
 		var self = this;
 		this.globalTimeoutTimer = setTimeout(function() {
@@ -68,6 +70,7 @@ module.exports = Class.extend(EventEmitter,{
 		if('port_query' in this.options) state.query.port_query = this.options.port_query;
 		state.query.type = this.type;
 		if('pretty' in this) state.query.pretty = this.pretty;
+		state.query.server_ping = this.ping;
 
 		this.reset();
 		this.finished = true;
@@ -106,6 +109,13 @@ module.exports = Class.extend(EventEmitter,{
 				} else {
 					self.parseDns(options.host,c);
 				}
+			},
+			function(c) {
+				// not sure if this is the best way to ping a host
+				ping.system.ping(options.host, function(latency, status) {
+					if(status) self.ping = latency;
+				});
+				c();
 			},
 			function(c) {
 				// calculate query port if needed
