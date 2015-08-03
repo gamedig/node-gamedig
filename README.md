@@ -77,6 +77,7 @@ Games List
 * Age of Empires 2 (aoe2) [[Separate Query Port](#separate-query-port)]
 * Alien Arena (alienarena) [[Separate Query Port](#separate-query-port)]
 * Alien Swarm (alienswarm)
+* ARK: Survival Evolved (arkse) [[Separate Query Port](#separate-query-port)]
 * Aliens vs Predator 2 (avp2)
 * Aliens vs Predator 2010 (avp2010)
 * America's Army (americasarmy) [[Separate Query Port](#separate-query-port)]
@@ -95,6 +96,7 @@ Games List
 * Battlefield: Bad Company 2 (bfbc2) [[Separate Query Port](#separate-query-port)]
 * Battlefield 3 (bf3) [[Separate Query Port](#separate-query-port)]
 * Battlefield 4 (bf4) [[Separate Query Port](#separate-query-port)]
+* Battlefield Hardline (bfh) [[Separate Query Port](#separate-query-port)]
 * Breach (breach)
 * Breed (breed)
 * Brink (brink) [[Separate Query Port](#separate-query-port)]
@@ -172,6 +174,7 @@ Games List
 * James Bond: Nightfire (jamesbondnightfire) [[Separate Query Port](#separate-query-port)]
 * Just Cause 2 Multiplayer (jc2mp)
 * Killing Floor (killingfloor) [[Separate Query Port](#separate-query-port)]
+* Killing Floor 2 (killingfloor2)
 * Kingpin: Life of Crime (kingpin) [[Separate Query Port](#separate-query-port)]
 * KISS Psycho Circus (kisspc) [[Separate Query Port](#separate-query-port)]
 * KzMod (kzmod)
