@@ -143,7 +143,7 @@ ironstorm|Iron Storm|gamespy1|port_query=3505
 jamesbondnightfire|James Bond: Nightfire|gamespy1|port_query=6550
 jc2mp|Just Cause 2 Multiplayer|jc2mp|port=7777|isJc2mp
 killingfloor|Killing Floor|killingfloor|port=7707,port_query_offset=1
-killingfloor2|Killing Floor 2|valve|port=7777
+killingfloor2|Killing Floor 2|valve|port=7777,port_query=27015
 kingpin|Kingpin: Life of Crime|gamespy1|port=31510,port_query_offset=-10
 kisspc|KISS Psycho Circus|gamespy1|port=7777,port_query_offset=1
 kzmod|KzMod|valve
