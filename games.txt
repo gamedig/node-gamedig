@@ -253,6 +253,7 @@ terraria|Terraria|terraria|port=7777,port_query_offset=101|doc_notes=terraria
 thps3|Tony Hawk's Pro Skater 3|gamespy1|port_query=6500
 thps4|Tony Hawk's Pro Skater 4|gamespy1|port_query=6500
 thu2|Tony Hawk's Underground 2|gamespy1|port_query=5153
+towerunite|Tower Unite|valve
 trackmania2|Trackmania 2|nadeo||doc_notes=nadeo-shootmania--trackmania--etc
 trackmaniaforever|Trackmania Forever|nadeo||doc_notes=nadeo-shootmania--trackmania--etc
 tremulous|Tremulous|quake3|port_query=30720
