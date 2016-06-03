@@ -28,7 +28,7 @@
 # worldinconflict|World in Conflict|worldinconflict
 
 
-7d2d|7 Days to Die|valve|port_query_offset=1
+7d2d|7 Days to Die|valve|port=26900,port_query_offset=1
 ageofchivalry|Age of Chivalry|valve
 aoe2|Age of Empires 2|ase|port_query=27224
 alienarena|Alien Arena|quake2|port_query=27910
