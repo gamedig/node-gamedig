@@ -73,7 +73,7 @@ Games List
 ###Supported
 <!--- BEGIN GENERATED GAMES -->
 
-* 7 Days to Die (7d2d)
+* 7 Days to Die (7d2d) [[Separate Query Port](#separate-query-port)]
 * Age of Chivalry (ageofchivalry)
 * Age of Empires 2 (aoe2) [[Separate Query Port](#separate-query-port)]
 * Alien Arena (alienarena) [[Separate Query Port](#separate-query-port)]
@@ -235,7 +235,7 @@ Games List
 * Ricochet (ricochet)
 * Rise of Nations (riseofnations) [[Separate Query Port](#separate-query-port)]
 * Rune (rune) [[Separate Query Port](#separate-query-port)]
-* Rust (rust) [[Separate Query Port](#separate-query-port)]
+* Rust (rust)
 * San Andreas Multiplayer (samp)
 * Serious Sam (ss) [[Separate Query Port](#separate-query-port)]
 * Serious Sam 2 (ss2)
