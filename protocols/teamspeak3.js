@@ -25,7 +25,9 @@ module.exports = require('./core').extend({
 					for(var i = 0; i < data.length; i++) {
 						data[i].name = data[i].client_nickname;
 						delete data[i].client_nickname;
-						state.players.push(data[i]);
+						if(data[i].client_type == 0) {
+							state.players.push(data[i]);
+						}
 					}
 					c();
 				});
