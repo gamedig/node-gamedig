@@ -209,7 +209,8 @@ rtcw|Return to Castle Wolfenstein|quake3|port_query=27960
 ricochet|Ricochet|valve
 riseofnations|Rise of Nations|gamespy1|port_query=6501
 rune|Rune|gamespy1|port=7777,port_query_offset=1
-rust|Rust|valve|port=28015,port_query_offset=1
+rustlegacy|Rust|valve|port=28015,port_query_offset=1
+rust|Rust|valve|port=28015
 samp|San Andreas Multiplayer|samp|port=7777
 ss|Serious Sam|gamespy1|port=25600,port_query_offset=1
 ss2|Serious Sam 2|gamespy2|port=25600
