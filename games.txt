@@ -16,6 +16,7 @@
 # gtr2|GTR2|gtr2|port=34297,port_query_offset=1
 # haze|Haze|haze
 # hexen2|Hexen 2|hexen2|port_query=26900
+# hurtworld|Hurtworld|valve|port=12871,port_query=12881
 # openttd|OpenTTD|openttd|port=3979
 # plainsight|Plain Sight|plainsight
 # redfaction|Red Faction|redfaction|port_query=7755
