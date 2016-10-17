@@ -137,6 +137,7 @@ hidden|The Hidden: Source|valve
 had2|Hidden and Dangerous 2|gamespy1|port=11001,port_query_offset=3
 homefront|Homefront|valve
 homeworld2|Homeworld 2|gamespy1|port_query=6500
+hurtworld|Hurtworld|valve|port=12871,port_query=12881
 igi2|IGI-2: Covert Strike|gamespy1|port_query=26001
 il2|IL-2 Sturmovik|gamespy1|port_query=21000
 insurgency|Insurgency|valve
