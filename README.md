@@ -168,6 +168,7 @@ Games List
 * Hidden and Dangerous 2 (had2) [[Separate Query Port](#separate-query-port)]
 * Homefront (homefront)
 * Homeworld 2 (homeworld2) [[Separate Query Port](#separate-query-port)]
+* Hurtworld (hurtworld) [[Seperate Query Port](#seperate-query-port)]
 * IGI-2: Covert Strike (igi2) [[Separate Query Port](#separate-query-port)]
 * IL-2 Sturmovik (il2) [[Separate Query Port](#separate-query-port)]
 * Insurgency (insurgency)
