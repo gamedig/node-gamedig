@@ -80,7 +80,7 @@ chrome|Chrome|ase|port=27015,port_query_offset=123
 codenameeagle|Codename Eagle|gamespy1|port_query=4711
 commandos3|Commandos 3: Destination Berlin|gamespy1|port_query=6500
 cacrenegade|Command and Conquer: Renegade|gamespy1|port=4848,port_query=25300
-conanexiles|Conan Exiles|valve|port_query=27016
+conanexiles|Conan Exiles|valve|port=7777,port_query=27015
 contactjack|Contact J.A.C.K.|gamespy1|port_query=27888
 
 cs16|Counter-Strike 1.6|valve
