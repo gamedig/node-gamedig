@@ -116,6 +116,7 @@ Games List
 * Codename Eagle (codenameeagle) [[Separate Query Port](#separate-query-port)]
 * Commandos 3: Destination Berlin (commandos3) [[Separate Query Port](#separate-query-port)]
 * Command and Conquer: Renegade (cacrenegade) [[Separate Query Port](#separate-query-port)]
+* Conan Exiles (conanexiles) [[Separate Query Port](#separate-query-port)]
 * Contact J.A.C.K. (contactjack) [[Separate Query Port](#separate-query-port)]
 * Counter-Strike 1.6 (cs16)
 * Counter-Strike: Condition Zero (cscz)
