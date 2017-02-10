@@ -189,7 +189,7 @@ operationflashpoint|Operation Flashpoint|gamespy1|port=2234,port_query_offset=1
 painkiller|Painkiller|ase|port=3455,port_query_offset=123
 postal2|Postal 2|gamespy1|port=7777,port_query_offset=1
 prey|Prey|doom3|port_query=27719
-primalcarnage|Primal Carnage: Extinction|valve|port_query=27015
+primalcarnage|Primal Carnage: Extinction|valve|port=7777,port_query=27015
 
 quake1|Quake 1: QuakeWorld|quake1|port=27500
 quake2|Quake 2|quake2|port=27910
