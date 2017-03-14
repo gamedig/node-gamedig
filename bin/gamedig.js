@@ -22,13 +22,19 @@ for(var key in argv) {
 var Gamedig = require('../lib/index');
 if(debug) Gamedig.debug = true;
 Gamedig.isCommandLine = true;
-Gamedig.query(
-	options,
-	function(state) {
+
+Gamedig.query(options)
+	.then((state) => {
 		if(outputFormat == 'pretty') {
 			console.log(JSON.stringify(state,null,'  '));
 		} else {
 			console.log(JSON.stringify(state));
 		}
-	}
-);
+	})
+	.catch((error) => {
+		if(outputFormat == 'pretty') {
+			console.log(JSON.stringify({error:error},null,'  '));
+		} else {
+			console.log(JSON.stringify({error:error}));
+		}
+	});

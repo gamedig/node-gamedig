@@ -14,18 +14,30 @@ Usage from Node.js
 npm install gamedig
 ```
 
+Promise:
 ```javascript
 var Gamedig = require('gamedig');
-Gamedig.query(
-	{
-		type: 'minecraft',
-		host: 'mc.example.com'
-	},
-	function(state) {
-		if(state.error) console.log("Server is offline");
-		else console.log(state);
-	}
-);
+Gamedig.query({
+	type: 'minecraft',
+	host: 'mc.example.com'
+}).then((state) => {
+	console.log(state);
+}).catch((error) => {
+	console.log("Server is offline");
+});
+```
+
+or Node.JS Callback:
+```javascript
+var Gamedig = require('gamedig');
+Gamedig.query({
+	type: 'minecraft',
+	host: 'mc.example.com'
+},
+function(e,state) {
+	if(e) console.log("Server is offline");
+	else console.log(state);
+});
 ```
 
 > Is NPM out of date? If you're feeling lucky, you can install the latest code with
@@ -40,14 +52,9 @@ Gamedig.query(
 * **port**: (optional) Uses the protocol default if not set
 * **notes**: (optional) Passed through to output
 
-###Callback Function
+### Return Value
 
-The callback function is "guaranteed" to be called exactly once.
-
-If an error occurs, the returned object will contain an "error" key, indicating the issue.
-If the error key exists, it should be assumed that the game server is offline or unreachable.
-
-Otherwise, the returned object is guaranteed to contain the following keys:
+The returned state object will contain the following keys:
 
 **Stable, always present:**
 
@@ -70,7 +77,7 @@ Some servers may return an additional player count number, which may be present 
 Games List
 ---
 
-###Supported
+### Supported
 <!--- BEGIN GENERATED GAMES -->
 
 * 7 Days to Die (7d2d) [[Separate Query Port](#separate-query-port)]
@@ -305,7 +312,7 @@ Games List
 
 <!--- END GENERATED GAMES -->
 
-###Not supported (yet)
+### Not supported (yet)
 
 * rFactor Engine (rfactor):
  * rFactor
