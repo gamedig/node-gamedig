@@ -12,6 +12,8 @@ module.exports = require('./quake2').extend({
 		for(var i = 0; i < state.players.length; i++) {
 			state.players[i].name = this.stripColors(state.players[i].name);
 		}
+		
+		state.raw.numplayers = state.players.length;
 	},
 	stripColors: function(str) {
 		return str.replace(/\^(X.{6}|.)/g,'');
