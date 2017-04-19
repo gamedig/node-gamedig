@@ -164,6 +164,7 @@ Games List
 * Ghost Recon: Advanced Warfighter 2 (graw2) [[Separate Query Port](#separate-query-port)]
 * Giants: Citizen Kabuto (giantscitizenkabuto) [[Separate Query Port](#separate-query-port)]
 * Global Operations (globaloperations) [[Separate Query Port](#separate-query-port)]
+* GoldenEye: Source (ges)
 * Gore (gore) [[Separate Query Port](#separate-query-port)]
 * Gunman Chronicles (gunmanchronicles)
 * Half-Life 1 Deathmatch (hldm)
