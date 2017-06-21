@@ -108,6 +108,7 @@ dinodday|Dino D-Day|valve
 dirttrackracing2|Dirt Track Racing 2|gamespy1|port=32240,port_query_offset=-100
 dod|Day of Defeat|valve
 dods|Day of Defeat: Source|valve
+doi|Day of Infamy|valve
 doom3|Doom 3|doom3|port=27666
 dota2|DOTA 2|valve
 drakan|Drakan|gamespy1|port=27045,port_query_offset=1
