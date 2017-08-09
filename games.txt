@@ -125,6 +125,7 @@ graw|Ghost Recon: Advanced Warfighter|gamespy2|port_query=15250
 graw2|Ghost Recon: Advanced Warfighter 2|gamespy2|port_query=16250
 giantscitizenkabuto|Giants: Citizen Kabuto|gamespy1|port_query=8911
 globaloperations|Global Operations|gamespy1|port_query=28672
+geneshift|Geneshift|geneshift|port=11235
 ges|GoldenEye: Source|valve
 gore|Gore|gamespy1|port=27777,port_query_offset=1
 gunmanchronicles|Gunman Chronicles|valve
@@ -171,7 +172,7 @@ mtavc|Multi Theft Auto: Vice City|ase|port=22003,port_query_offset=123
 mtasa|Multi Theft Auto: San Andreas|ase|port=22003,port_query_offset=123
 mumble|Mumble|mumble|port=64738,port_query=27800|doc_notes=mumble
 mumbleping|Mumble|mumbleping|port=64738|doc_notes=mumble
-mutantfactions|Mutant Factions|mutantfactions|port=11235
+mutantfactions|Mutant Factions|geneshift|port=11235
 nascarthunder2004|Nascar Thunder 2004|gamespy2|port_query=13333
 netpanzer|netPanzer|gamespy1|3030
 nmrih|No More Room in Hell|valve

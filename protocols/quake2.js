@@ -15,7 +15,6 @@ class Quake2 extends require('./core') {
             const header = reader.string({length:4});
 			if(header !== '\xff\xff\xff\xff') return;
 
-            this.debugBuffer(buffer);
             let response;
 			if(this.isQuake1) {
 				response = reader.string({length:this.responseHeader.length});

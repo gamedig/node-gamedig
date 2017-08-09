@@ -2,7 +2,7 @@ const varint = require('varint'),
 	async = require('async');
 
 function varIntBuffer(num) {
-	return Buffer.alloc(varint.encode(num));
+	return Buffer.from(varint.encode(num));
 }
 function buildPacket(id,data) {
 	if(!data) data = Buffer.from([]);

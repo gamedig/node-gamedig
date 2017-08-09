@@ -125,15 +125,19 @@ class Core extends EventEmitter {
 
 	parseDns(host,c) {
 		const resolveStandard = (host,c) => {
+            if(this.debug) console.log("Standard DNS Lookup: " + host);
 			dns.lookup(host, (err,address,family) => {
 				if(err) return this.fatal(err);
+                if(this.debug) console.log(address);
                 this.options.address = address;
 				c();
 			});
 		};
 
 		const resolveSrv = (srv,host,c) => {
+            if(this.debug) console.log("SRV DNS Lookup: " + srv+'.'+host);
 			dns.resolve(srv+'.'+host, 'SRV', (err,addresses) => {
+                if(this.debug) console.log(err, addresses);
 				if(err) return resolveStandard(host,c);
 				if(addresses.length >= 1) {
 					const line = addresses[0];

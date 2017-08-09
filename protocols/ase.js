@@ -22,8 +22,7 @@ class Ase extends require('./core') {
                 const value = this.readString(reader);
 				state.raw[key] = value;
 			}
-			
-			console.log(reader.rest());
+
 			while(!reader.done()) {
                 const flags = reader.uint(1);
                 const player = {};
