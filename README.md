@@ -432,3 +432,10 @@ gamedig --type minecraft --host mc.example.com --port 11234
 ```
 
 The output of the command will be in JSON format.
+
+Major Version Changes
+---
+
+### 1.0
+* First official release
+* Node.js 6.0 is now required
