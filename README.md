@@ -92,9 +92,9 @@ Games List
 * America's Army 2 (americasarmy2) [[Separate Query Port](#separate-query-port)]
 * America's Army 3 (americasarmy3) [[Separate Query Port](#separate-query-port)]
 * America's Army: Proving Grounds (americasarmypg) [[Separate Query Port](#separate-query-port)]
-* ArmA Armed Assault 1 (arma)
-* ArmA Armed Assault 2 (arma2) [[Separate Query Port](#separate-query-port)]
-* ArmA Armed Assault 3 (arma3) [[Separate Query Port](#separate-query-port)]
+* ArmA (arma)
+* ArmA 2 (arma2) [[Separate Query Port](#separate-query-port)]
+* ArmA 3 (arma3) [[Separate Query Port](#separate-query-port)]
 * Armagetron (armagetron)
 * Baldur's Gate (baldursgate) [[Separate Query Port](#separate-query-port)]
 * Battlefield 1942 (bf1942) [[Separate Query Port](#separate-query-port)]
@@ -147,6 +147,7 @@ Games List
 * Dirt Track Racing 2 (dirttrackracing2) [[Separate Query Port](#separate-query-port)]
 * Day of Defeat (dod)
 * Day of Defeat: Source (dods)
+* Day of Infamy (doi)
 * Doom 3 (doom3)
 * DOTA 2 (dota2)
 * Drakan (drakan) [[Separate Query Port](#separate-query-port)]
@@ -177,7 +178,7 @@ Games List
 * Hidden and Dangerous 2 (had2) [[Separate Query Port](#separate-query-port)]
 * Homefront (homefront)
 * Homeworld 2 (homeworld2) [[Separate Query Port](#separate-query-port)]
-* Hurtworld (hurtworld) [[Seperate Query Port](#seperate-query-port)]
+* Hurtworld (hurtworld) [[Separate Query Port](#separate-query-port)]
 * IGI-2: Covert Strike (igi2) [[Separate Query Port](#separate-query-port)]
 * IL-2 Sturmovik (il2) [[Separate Query Port](#separate-query-port)]
 * Insurgency (insurgency)
@@ -192,6 +193,7 @@ Games List
 * Left 4 Dead (left4dead)
 * Left 4 Dead 2 (left4dead2)
 * Mafia 2 Multiplayer (m2mp) [[Separate Query Port](#separate-query-port)]
+* Medieval Engineers (medievalengineers)
 * Medal of Honor: Allied Assault (mohaa) [[Separate Query Port](#separate-query-port)]
 * Medal of Honor: Pacific Assault (mohpa) [[Separate Query Port](#separate-query-port)]
 * Medal of Honor: Airborne (mohab) [[Separate Query Port](#separate-query-port)]
@@ -200,6 +202,7 @@ Games List
 * Medal of Honor 2010 (moh2010) [[Separate Query Port](#separate-query-port)]
 * Medal of Honor: Warfighter (mohwf) [[Separate Query Port](#separate-query-port)]
 * Minecraft (minecraft) [[Additional Notes](#minecraft)]
+* Minecraft: Pocket Edition (minecraftpe)
 * Minecraft (minecraftping) [[Additional Notes](#minecraft)]
 * Monday Night Combat (mnc) [[Separate Query Port](#separate-query-port)]
 * Multi Theft Auto: Vice City (mtavc) [[Separate Query Port](#separate-query-port)]
@@ -248,6 +251,7 @@ Games List
 * Rune (rune) [[Separate Query Port](#separate-query-port)]
 * Rust (rust)
 * San Andreas Multiplayer (samp)
+* Space Engineers (spaceengineers)
 * Serious Sam (ss) [[Separate Query Port](#separate-query-port)]
 * Serious Sam 2 (ss2)
 * Shattered Horizon (shatteredhorizon)
@@ -285,6 +289,7 @@ Games List
 * Tony Hawk's Pro Skater 3 (thps3) [[Separate Query Port](#separate-query-port)]
 * Tony Hawk's Pro Skater 4 (thps4) [[Separate Query Port](#separate-query-port)]
 * Tony Hawk's Underground 2 (thu2) [[Separate Query Port](#separate-query-port)]
+* Tower Unite (towerunite)
 * Trackmania 2 (trackmania2) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]
 * Trackmania Forever (trackmaniaforever) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]
 * Tremulous (tremulous) [[Separate Query Port](#separate-query-port)]
