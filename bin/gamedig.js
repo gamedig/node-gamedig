@@ -11,27 +11,27 @@ delete argv.output;
 const options = {};
 for(const key of Object.keys(argv)) {
     const value = argv[key];
-	if(
-		key === '_'
-		|| key.charAt(0) === '$'
-		|| (typeof value !== 'string' && typeof value !== 'number')
-	)
-		continue;
-	options[key] = value;
+    if(
+        key === '_'
+        || key.charAt(0) === '$'
+        || (typeof value !== 'string' && typeof value !== 'number')
+    )
+        continue;
+    options[key] = value;
 }
 
 if(debug) Gamedig.debug = true;
 Gamedig.isCommandLine = true;
 
 Gamedig.query(options)
-	.then((state) => {
-		if(outputFormat === 'pretty') {
-			console.log(JSON.stringify(state,null,'  '));
-		} else {
-			console.log(JSON.stringify(state));
-		}
-	})
-	.catch((error) => {
+    .then((state) => {
+        if(outputFormat === 'pretty') {
+            console.log(JSON.stringify(state,null,'  '));
+        } else {
+            console.log(JSON.stringify(state));
+        }
+    })
+    .catch((error) => {
         if (debug) {
             if (error instanceof Error) {
                 console.log(error.stack);
@@ -48,4 +48,4 @@ Gamedig.query(options)
                 console.log(JSON.stringify({error: error}));
             }
         }
-	});
+    });
