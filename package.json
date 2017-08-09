@@ -12,16 +12,16 @@
 	"main": "lib/index.js",
 	"author": "Michael Morrison",
 	"version": "0.2.29",
-	"repository" : {
-		"type" : "git",
-		"url" : "https://github.com/sonicsnes/node-gamedig.git"
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/sonicsnes/node-gamedig.git"
 	},
-	"bugs" : {
-		"url" : "https://github.com/sonicsnes/node-gamedig/issues"
+	"bugs": {
+		"url": "https://github.com/sonicsnes/node-gamedig/issues"
 	},
-	"license" : "MIT",
-	"engines" : {
-		"node" : ">=4.0.0"
+	"license": "MIT",
+	"engines": {
+		"node": ">=4.0.0"
 	},
 	"dependencies": {
 		"iconv-lite": "~0.4.6",
