@@ -126,6 +126,7 @@ graw|Ghost Recon: Advanced Warfighter|gamespy2|port_query=15250
 graw2|Ghost Recon: Advanced Warfighter 2|gamespy2|port_query=16250
 giantscitizenkabuto|Giants: Citizen Kabuto|gamespy1|port_query=8911
 globaloperations|Global Operations|gamespy1|port_query=28672
+ges|GoldenEye: Source|valve
 gore|Gore|gamespy1|port=27777,port_query_offset=1
 gunmanchronicles|Gunman Chronicles|valve
 hldm|Half-Life 1 Deathmatch|valve
