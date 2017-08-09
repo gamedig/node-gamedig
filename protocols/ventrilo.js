@@ -1,58 +1,53 @@
-var async = require('async');
-
-module.exports = require('./core').extend({
-	init: function() {
-		this._super();
+class Ventrilo extends require('./core') {
+	constructor() {
+		super();
 		this.byteorder = 'be';
-	},
-	run: function(state) {
-		var self = this;
-
-		this.sendCommand(2,'',function(data) {
+	}
+	run(state) {
+		this.sendCommand(2,'',(data) => {
 			state.raw = splitFields(data.toString());
-			state.raw.CLIENTS.forEach(function(client) {
+			for (const client of state.raw.CLIENTS) {
 				client.name = client.NAME;
 				delete client.NAME;
 				client.ping = parseInt(client.PING);
 				delete client.PING;
 				state.players.push(client);
-			});
+			}
 			delete state.raw.CLIENTS;
 			
 			if('NAME' in state.raw) state.name = state.raw.NAME;
 			if('MAXCLIENTS' in state.raw) state.maxplayers = state.raw.MAXCLIENTS;
-			if(self.trueTest(state.raw.AUTH)) state.password = true;
-			self.finish(state);
+			if(this.trueTest(state.raw.AUTH)) state.password = true;
+			this.finish(state);
 		});
-	},
-	sendCommand: function(cmd,password,c) {
-		var self = this;
-		var body = new Buffer(16);
+	}
+	sendCommand(cmd,password,c) {
+        const body = Buffer.alloc(16);
 		body.write(password,0,15,'utf8');
-		var encrypted = encrypt(cmd,body);
+        const encrypted = encrypt(cmd,body);
 
-		var packets = {};
-		this.udpSend(encrypted, function(buffer) {
+        const packets = {};
+		this.udpSend(encrypted, (buffer) => {
 			if(buffer.length < 20) return;
-			var data = decrypt(buffer);
+            const data = decrypt(buffer);
 
-			if(data.zero != 0) return;
+			if(data.zero !== 0) return;
 			packets[data.packetNum] = data.body;
-			if(Object.keys(packets).length != data.packetTotal) return;
-			
-			var out = [];
-			for(var i = 0; i < data.packetTotal; i++) {
-				if(!(i in packets)) return self.fatal('Missing packet #'+i);
+			if(Object.keys(packets).length !== data.packetTotal) return;
+
+            const out = [];
+			for(let i = 0; i < data.packetTotal; i++) {
+				if(!(i in packets)) return this.fatal('Missing packet #'+i);
 				out.push(packets[i]);
 			}
 			c(Buffer.concat(out));
 			return true;
 		});
 	}
-});
+}
 
 function splitFields(str,subMode) {
-	var splitter,delim;
+	let splitter,delim;
 	if(subMode) {
 		splitter = '=';
 		delim = ',';
@@ -61,21 +56,21 @@ function splitFields(str,subMode) {
 		delim = '\n';
 	}
 
-	var split = str.split(delim);
-	var out = {};
+    const split = str.split(delim);
+    const out = {};
 	if(!subMode) {
 		out.CHANNELS = [];
 		out.CLIENTS = [];
 	}
-	split.forEach(function(one) {
-		var equal = one.indexOf(splitter);
-		var key = equal == -1 ? one : one.substr(0,equal);
-		if(!key || key == '\0') return;
-		var value = equal == -1 ? '' : one.substr(equal+splitter.length);
-		if(!subMode && key == 'CHANNEL') out.CHANNELS.push(splitFields(value,true));
-		else if(!subMode && key == 'CLIENT') out.CLIENTS.push(splitFields(value,true));
+	for (const one of split) {
+        const equal = one.indexOf(splitter);
+        const key = equal === -1 ? one : one.substr(0,equal);
+		if(!key || key === '\0') continue;
+        const value = equal === -1 ? '' : one.substr(equal+splitter.length);
+		if(!subMode && key === 'CHANNEL') out.CHANNELS.push(splitFields(value,true));
+		else if(!subMode && key === 'CLIENT') out.CLIENTS.push(splitFields(value,true));
 		else out[key] = value;
-	});
+	}
 	return out;
 }
 
@@ -84,8 +79,8 @@ function randInt(min,max) {
 }
 
 function crc(body) {
-	var crc = 0;
-	for(var i = 0; i < body.length; i++) {
+	let crc = 0;
+	for(let i = 0; i < body.length; i++) {
 		crc = crc_table[crc>>8] ^ body.readUInt8(i) ^ (crc<<8);
 		crc &= 0xffff;
 	}
@@ -93,12 +88,12 @@ function crc(body) {
 }
 
 function encrypt(cmd,body) {
-	var headerKeyStart = randInt(0,0xff);
-	var headerKeyAdd = randInt(1,0xff);
-	var bodyKeyStart = randInt(0,0xff);
-	var bodyKeyAdd = randInt(1,0xff);
+    const headerKeyStart = randInt(0,0xff);
+    const headerKeyAdd = randInt(1,0xff);
+    const bodyKeyStart = randInt(0,0xff);
+    const bodyKeyAdd = randInt(1,0xff);
 
-	var header = new Buffer(20);
+    const header = Buffer.alloc(20);
 	header.writeUInt8(headerKeyStart,0);
 	header.writeUInt8(headerKeyAdd,1);
 	header.writeUInt16BE(cmd,4);
@@ -110,9 +105,9 @@ function encrypt(cmd,body) {
 	header.writeUInt8(bodyKeyAdd,17);
 	header.writeUInt16BE(crc(body),18);
 
-	var offset = headerKeyStart;
-	for(var i = 2; i < header.length; i++) {
-		var val = header.readUInt8(i);
+    let offset = headerKeyStart;
+	for(let i = 2; i < header.length; i++) {
+        let val = header.readUInt8(i);
 		val += code_head.charCodeAt(offset) + ((i-2) % 5);
 		val = val & 0xff;
 		header.writeUInt8(val,i);
@@ -120,8 +115,8 @@ function encrypt(cmd,body) {
 	}
 
 	offset = bodyKeyStart;
-	for(var i = 0; i < body.length; i++) {
-		var val = body.readUInt8(i);
+	for(let i = 0; i < body.length; i++) {
+		let val = body.readUInt8(i);
 		val += code_body.charCodeAt(offset) + (i % 72);
 		val = val & 0xff;
 		body.writeUInt8(val,i);
@@ -131,25 +126,25 @@ function encrypt(cmd,body) {
 	return Buffer.concat([header,body]);
 }
 function decrypt(data) {
-	var header = data.slice(0,20);
-	var body = data.slice(20);
-	var headerKeyStart = header.readUInt8(0);
-	var headerKeyAdd = header.readUInt8(1);
+    const header = data.slice(0,20);
+    const body = data.slice(20);
+    const headerKeyStart = header.readUInt8(0);
+    const headerKeyAdd = header.readUInt8(1);
 
-	var offset = headerKeyStart;
-	for(var i = 2; i < header.length; i++) {
-		var val = header.readUInt8(i);
+	let offset = headerKeyStart;
+	for(let i = 2; i < header.length; i++) {
+		let val = header.readUInt8(i);
 		val -= code_head.charCodeAt(offset) + ((i-2) % 5);
 		val = val & 0xff;
 		header.writeUInt8(val,i);
 		offset = (offset+headerKeyAdd) & 0xff;
 	}
 
-	var bodyKeyStart = header.readUInt8(16);
-	var bodyKeyAdd = header.readUInt8(17);
+    const bodyKeyStart = header.readUInt8(16);
+    const bodyKeyAdd = header.readUInt8(17);
 	offset = bodyKeyStart;
-	for(var i = 0; i < body.length; i++) {
-		var val = body.readUInt8(i);
+	for(let i = 0; i < body.length; i++) {
+		let val = body.readUInt8(i);
 		val -= code_body.charCodeAt(offset) + (i % 72);
 		val = val & 0xff;
 		body.writeUInt8(val,i);
@@ -168,7 +163,7 @@ function decrypt(data) {
 	};
 }
 
-var code_head =
+const code_head =
 	'\x80\xe5\x0e\x38\xba\x63\x4c\x99\x88\x63\x4c\xd6\x54\xb8\x65\x7e'+
 	'\xbf\x8a\xf0\x17\x8a\xaa\x4d\x0f\xb7\x23\x27\xf6\xeb\x12\xf8\xea'+
 	'\x17\xb7\xcf\x52\x57\xcb\x51\xcf\x1b\x14\xfd\x6f\x84\x38\xb5\x24'+
@@ -186,7 +181,7 @@ var code_head =
 	'\xb6\xac\x77\xc4\xbf\x59\x5e\x80\x74\xbb\xf2\xde\x57\x62\x4c\x1a'+
 	'\xff\x95\x6d\xc7\x04\xa2\x3b\xc4\x1b\x72\xc7\x6c\x82\x60\xd1\x0d';
 
-var code_body =
+const code_body =
 	'\x82\x8b\x7f\x68\x90\xe0\x44\x09\x19\x3b\x8e\x5f\xc2\x82\x38\x23'+
 	'\x6d\xdb\x62\x49\x52\x6e\x21\xdf\x51\x6c\x76\x37\x86\x50\x7d\x48'+
 	'\x1f\x65\xe7\x52\x6a\x88\xaa\xc1\x32\x2f\xf7\x54\x4c\xaa\x6d\x7e'+
@@ -204,7 +199,7 @@ var code_body =
 	'\x52\x23\xa7\x20\xd2\xd7\x28\x07\x23\x14\x24\x3d\x45\xa5\xc7\x90'+
 	'\xdb\x77\xdd\xea\x38\x59\x89\x32\xbc\x00\x3a\x6d\x61\x4e\xdb\x29';
 
-var crc_table = [
+const crc_table = [
 	0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x60c6, 0x70e7,
 	0x8108, 0x9129, 0xa14a, 0xb16b, 0xc18c, 0xd1ad, 0xe1ce, 0xf1ef,
 	0x1231, 0x0210, 0x3273, 0x2252, 0x52b5, 0x4294, 0x72f7, 0x62d6,
@@ -238,3 +233,5 @@ var crc_table = [
 	0xef1f, 0xff3e, 0xcf5d, 0xdf7c, 0xaf9b, 0xbfba, 0x8fd9, 0x9ff8,
 	0x6e17, 0x7e36, 0x4e55, 0x5e74, 0x2e93, 0x3eb2, 0x0ed1, 0x1ef0
 ];
+
+module.exports = Ventrilo;

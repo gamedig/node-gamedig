@@ -1,12 +1,12 @@
-var varint = require('varint'),
+const varint = require('varint'),
 	async = require('async');
 
 function varIntBuffer(num) {
-	return new Buffer(varint.encode(num));
+	return Buffer.alloc(varint.encode(num));
 }
 function buildPacket(id,data) {
-	if(!data) data = new Buffer(0);
-	var idBuffer = varIntBuffer(id);
+	if(!data) data = Buffer.from([]);
+    const idBuffer = varIntBuffer(id);
 	return Buffer.concat([
 		varIntBuffer(data.length+idBuffer.length),
 		idBuffer,
@@ -14,21 +14,20 @@ function buildPacket(id,data) {
 	]);
 }
 
-module.exports = require('./core').extend({
-	run: function(state) {
-		var self = this;
-		var receivedData;
+class MinecraftPing extends require('./core') {
+	run(state) {
+		let receivedData;
 
 		async.series([
-			function(c) {
+			(c) => {
 				// build and send handshake and status TCP packet
 
-				var portBuf = new Buffer(2);
-				portBuf.writeUInt16BE(self.options.port_query,0);
+                const portBuf = Buffer.alloc(2);
+				portBuf.writeUInt16BE(this.options.port_query,0);
 
-				var addressBuf = new Buffer(self.options.address,'utf8');
+                const addressBuf = Buffer.from(this.options.address,'utf8');
 
-				var bufs = [
+                const bufs = [
 					varIntBuffer(4),
 					varIntBuffer(addressBuf.length),
 					addressBuf,
@@ -36,14 +35,14 @@ module.exports = require('./core').extend({
 					varIntBuffer(1)
 				];
 
-				var outBuffer = Buffer.concat([
+                const outBuffer = Buffer.concat([
 					buildPacket(0,Buffer.concat(bufs)),
 					buildPacket(0)
 				]);
 
-				self.tcpSend(outBuffer, function(data) {
+				this.tcpSend(outBuffer, (data) => {
 					if(data.length < 10) return false;
-					var expected = varint.decode(data);
+                    const expected = varint.decode(data);
 					data = data.slice(varint.decode.bytes);
 					if(data.length < expected) return false;
 					receivedData = data;
@@ -51,39 +50,39 @@ module.exports = require('./core').extend({
 					return true;
 				});
 			},
-			function(c) {
+			(c) => {
 				// parse response
 
-				var data = receivedData;
-				var packetId = varint.decode(data);
-				if(self.debug) console.log("Packet ID: "+packetId);
+                let data = receivedData;
+                const packetId = varint.decode(data);
+				if(this.debug) console.log("Packet ID: "+packetId);
 				data = data.slice(varint.decode.bytes);
 
-				var strLen = varint.decode(data);
-				if(self.debug) console.log("String Length: "+strLen);
+                const strLen = varint.decode(data);
+				if(this.debug) console.log("String Length: "+strLen);
 				data = data.slice(varint.decode.bytes);
 
-				var str = data.toString('utf8');
-				if(self.debug) {
+                const str = data.toString('utf8');
+				if(this.debug) {
 					console.log(str);
 				}
 
-				var json;
+                let json;
 				try {
 					json = JSON.parse(str);
 					delete json.favicon;
 				} catch(e) {
-					return self.fatal('Invalid JSON');
+					return this.fatal('Invalid JSON');
 				}
 
 				state.raw.version = json.version.name;
 				state.maxplayers = json.players.max;
 				state.raw.description = json.description.text;
 				if(json.players.sample) {
-					for(var i = 0; i < json.players.sample.length; i++) {
+					for(const player of json.players.sample) {
 						state.players.push({
-							id: json.players.sample[i].id,
-							name: json.players.sample[i].name
+							id: player.id,
+							name: player.name
 						});
 					}
 				}
@@ -91,8 +90,10 @@ module.exports = require('./core').extend({
 					state.players.push({});
 				}
 
-				self.finish(state);
+				this.finish(state);
 			}
 		]);
 	}
-});
+}
+
+module.exports = MinecraftPing;

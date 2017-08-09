@@ -1,64 +1,66 @@
-module.exports = require('./core').extend({
-	init: function() {
-		this._super();
+class Armagetron extends require('./core') {
+	constructor() {
+		super();
 		this.encoding = 'latin1';
 		this.byteorder = 'be';
-	},
-	run: function(state) {
-		var self = this;
+	}
 
-		var b = new Buffer([0,0x35,0,0,0,0,0,0x11]);
+	run(state) {
+        const b = Buffer.from([0,0x35,0,0,0,0,0,0x11]);
 
-		this.udpSend(b,function(buffer) {
-			var reader = self.reader(buffer);
+		this.udpSend(b,(buffer) => {
+			const reader = this.reader(buffer);
 
 			reader.skip(6);
 
-			state.raw.port = self.readUInt(reader);
-			state.raw.hostname = self.readString(reader,buffer);
-			state.name = self.stripColorCodes(self.readString(reader,buffer));
-			state.raw.numplayers = self.readUInt(reader);
-			state.raw.versionmin = self.readUInt(reader);
-			state.raw.versionmax = self.readUInt(reader);
-			state.raw.version = self.readString(reader,buffer);
-			state.maxplayers = self.readUInt(reader);
+			state.raw.port = this.readUInt(reader);
+			state.raw.hostname = this.readString(reader);
+			state.name = this.stripColorCodes(this.readString(reader));
+			state.raw.numplayers = this.readUInt(reader);
+			state.raw.versionmin = this.readUInt(reader);
+			state.raw.versionmax = this.readUInt(reader);
+			state.raw.version = this.readString(reader);
+			state.maxplayers = this.readUInt(reader);
 
-			var players = self.readString(reader,buffer);
-			var list = players.split('\n');
-			for(var i = 0; i < list.length; i++) {
-				if(!list[i]) continue;
+            const players = this.readString(reader);
+            const list = players.split('\n');
+			for(const name of list) {
+				if(!name) continue;
 				state.players.push({
-					name:self.stripColorCodes(list[i])
+					name: this.stripColorCodes(name)
 				});
 			}
 
-			state.raw.options = self.stripColorCodes(self.readString(reader,buffer));
-			state.raw.uri = self.readString(reader,buffer);
-			state.raw.globalids = self.readString(reader,buffer);
-			self.finish(state);
+			state.raw.options = this.stripColorCodes(this.readString(reader));
+			state.raw.uri = this.readString(reader);
+			state.raw.globalids = this.readString(reader);
+            this.finish(state);
 			return true;
 		});
-	},
-	readUInt: function(reader) {
-		var a = reader.uint(2);
-		var b = reader.uint(2);
+	}
+
+	readUInt(reader) {
+		const a = reader.uint(2);
+        const b = reader.uint(2);
 		return (b<<16) + a;
-	},
-	readString: function(reader,b) {
-		var len = reader.uint(2);
+	}
+	readString(reader) {
+        const len = reader.uint(2);
 		if(!len) return '';
 
-		var out = '';
-		for(var i = 0; i < len; i+=2) {
-			var hi = reader.uint(1);
-			var lo = reader.uint(1);
+		let out = '';
+		for(let i = 0; i < len; i += 2) {
+            const hi = reader.uint(1);
+            const lo = reader.uint(1);
 			if(i+1<len) out += String.fromCharCode(lo);
 			if(i+2<len) out += String.fromCharCode(hi);
 		}
 
 		return out;
-	},
-	stripColorCodes: function(str) {
+	}
+	stripColorCodes(str) {
 		return str.replace(/0x[0-9a-f]{6}/g,'');
 	}
-});
+}
+
+module.exports = Armagetron;

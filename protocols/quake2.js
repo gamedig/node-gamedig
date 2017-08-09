@@ -1,60 +1,59 @@
-module.exports = require('./core').extend({
-	init: function() {
-		this._super();
+class Quake2 extends require('./core') {
+    constructor() {
+		super();
 		this.encoding = 'latin1';
 		this.delimiter = '\n';
 		this.sendHeader = 'status';
 		this.responseHeader = 'print';
 		this.isQuake1 = false;
-	},
-	run: function(state) {
-		var self = this;
+	}
 
-		this.udpSend('\xff\xff\xff\xff'+this.sendHeader+'\x00',function(buffer) {
-			var reader = self.reader(buffer);
+	run(state) {
+		this.udpSend('\xff\xff\xff\xff'+this.sendHeader+'\x00', (buffer) => {
+            const reader = this.reader(buffer);
 
-			var header = reader.string({length:4});
-			if(header != '\xff\xff\xff\xff') return;
+            const header = reader.string({length:4});
+			if(header !== '\xff\xff\xff\xff') return;
 
-			var response;
+            this.debugBuffer(buffer);
+            let response;
 			if(this.isQuake1) {
-				response = reader.string({length:1});
+				response = reader.string({length:this.responseHeader.length});
 			} else {
 				response = reader.string();
 			}
-			if(response != this.responseHeader) return;
+			if(response !== this.responseHeader) return;
 
-			var info = reader.string().split('\\');
-			if(info[0] == '') info.shift();
+            const info = reader.string().split('\\');
+			if(info[0] === '') info.shift();
 
 			while(true) {
-				var key = info.shift();
-				var value = info.shift();
-				if(typeof value == 'undefined') break;
+                const key = info.shift();
+                const value = info.shift();
+				if(typeof value === 'undefined') break;
 				state.raw[key] = value;
 			}
 
 			while(!reader.done()) {
-				var line = reader.string();
-				if(!line || line.charAt(0) == '\0') break;
+                const line = reader.string();
+				if(!line || line.charAt(0) === '\0') break;
 
-				var args = [];
-				var split = line.split('"');
-				var inQuote = false;
-				split.forEach(function(part,i) {
-					var inQuote = (i%2 == 1);
+                const args = [];
+                const split = line.split('"');
+				split.forEach((part,i) => {
+                    const inQuote = (i%2 === 1);
 					if(inQuote) {
 						args.push(part);
 					} else {
-						var splitSpace = part.split(' ');
-						splitSpace.forEach(function(subpart) {
+                        const splitSpace = part.split(' ');
+						for (const subpart of splitSpace) {
 							if(subpart) args.push(subpart);
-						});
+						}
 					}
 				});
 
-				var player = {};
-				if(self.isQuake1) {
+                const player = {};
+				if(this.isQuake1) {
 					player.id = parseInt(args.shift());
 					player.score = parseInt(args.shift());
 					player.time = parseInt(args.shift());
@@ -80,8 +79,10 @@ module.exports = require('./core').extend({
 			if('sv_hostname' in state.raw) state.name = state.raw.sv_hostname;
 			if('hostname' in state.raw) state.name = state.raw.hostname;
 
-			self.finish(state);
+			this.finish(state);
 			return true;
 		});
 	}
-});
+}
+
+module.exports = Quake2;

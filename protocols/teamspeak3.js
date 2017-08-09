@@ -1,73 +1,71 @@
-var async = require('async');
+const async = require('async');
 
-module.exports = require('./core').extend({
-	run: function(state) {
-		var self = this;
-
+class Teamspeak3 extends require('./core') {
+	run(state) {
 		async.series([
-			function(c) {
-				self.sendCommand('use port='+self.options.port, function(data) {
-					var split = data.split('\n\r');
-					if(split[0] != 'TS3') self.fatal('Invalid header');
+			(c) => {
+				this.sendCommand('use port='+this.options.port, (data) => {
+					const split = data.split('\n\r');
+					if(split[0] !== 'TS3') this.fatal('Invalid header');
 					c();
 				}, true);
 			},
-			function(c) {
-				self.sendCommand('serverinfo', function(data) {
+			(c) => {
+				this.sendCommand('serverinfo', (data) => {
 					state.raw = data[0];
 					if('virtualserver_name' in state.raw) state.name = state.raw.virtualserver_name;
                     if('virtualserver_maxclients' in state.raw) state.maxplayers = state.raw.virtualserver_maxclients;
 					c();
 				});
 			},
-			function(c) {
-				self.sendCommand('clientlist', function(data) {
-					for(var i = 0; i < data.length; i++) {
-						data[i].name = data[i].client_nickname;
-						delete data[i].client_nickname;
-						if(data[i].client_type == 0) {
-							state.players.push(data[i]);
+			(c) => {
+				this.sendCommand('clientlist', (list) => {
+					for (const client of list) {
+                        client.name = client.client_nickname;
+						delete client.client_nickname;
+						if(client.client_type === '0') {
+							state.players.push(client);
 						}
 					}
 					c();
 				});
 			},
-			function(c) {
-				self.sendCommand('channellist -topic', function(data) {
+			(c) => {
+				this.sendCommand('channellist -topic', (data) => {
 					state.raw.channels = data;
 					c();
 				});
 			},
-			function(c) {
-				self.finish(state);
+			(c) => {
+				this.finish(state);
 			}
 		]);
-	},
-	sendCommand: function(cmd,c,raw) {
-		this.tcpSend(cmd+'\x0A', function(buffer) {
+	}
+	sendCommand(cmd,c,raw) {
+		this.tcpSend(cmd+'\x0A', (buffer) => {
 			if(buffer.length < 21) return;
-			if(buffer.slice(-21).toString() != '\n\rerror id=0 msg=ok\n\r') return;
-			var body = buffer.slice(0,-21).toString();
+			if(buffer.slice(-21).toString() !== '\n\rerror id=0 msg=ok\n\r') return;
+			const body = buffer.slice(0,-21).toString();
 
-			var out;
+			let out;
 
 			if(raw) {
 				out = body;
 			} else {
-				var segments = body.split('|');
+                const segments = body.split('|');
 				out = [];
-				segments.forEach(function(line) {
-					var split = line.split(' ');
-					var unit = {};
-					split.forEach(function(field) {
-						var equals = field.indexOf('=');
-						var key = equals == -1 ? field : field.substr(0,equals);
-						var value = equals == -1 ? '' : field.substr(equals+1)
+				for (const line of segments) {
+                    const split = line.split(' ');
+                    const unit = {};
+					for (const field of split) {
+                        const equals = field.indexOf('=');
+                        const key = equals === -1 ? field : field.substr(0,equals);
+                        const value = equals === -1 ? '' : field.substr(equals+1)
 							.replace(/\\s/g,' ').replace(/\\\//g,'/');
 						unit[key] = value;
-					});
+					}
 					out.push(unit);
-				});
+				}
 			}
 
 			c(out);
@@ -75,4 +73,6 @@ module.exports = require('./core').extend({
 			return true;
 		});
 	}
-});
+}
+
+module.exports = Teamspeak3;

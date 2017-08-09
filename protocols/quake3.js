@@ -1,19 +1,21 @@
-module.exports = require('./quake2').extend({
-	init: function() {
-		this._super();
+class Quake3 extends require('./quake2') {
+	constructor() {
+		super();
 		this.sendHeader = 'getstatus';
 		this.responseHeader = 'statusResponse';
-	},
-	finalizeState: function(state) {
+	}
+	finalizeState(state) {
 		state.name = this.stripColors(state.name);
-		for(var i in state.raw) {
-			state.raw[i] = this.stripColors(state.raw[i]);
+		for(const key of Object.keys(state.raw)) {
+			state.raw[key] = this.stripColors(state.raw[key]);
 		}
-		for(var i = 0; i < state.players.length; i++) {
-			state.players[i].name = this.stripColors(state.players[i].name);
+		for(const player of state.players) {
+			player.name = this.stripColors(player.name);
 		}
-	},
-	stripColors: function(str) {
+	}
+	stripColors(str) {
 		return str.replace(/\^(X.{6}|.)/g,'');
 	}
-});
+}
+
+module.exports = Quake3;

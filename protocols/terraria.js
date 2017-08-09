@@ -1,8 +1,7 @@
-var request = require('request');
+const request = require('request');
 
-module.exports = require('./core').extend({
-	run: function(state) {
-		var self = this;
+class Terraria extends require('./core') {
+	run(state) {
 		request({
 			uri: 'http://'+this.options.address+':'+this.options.port_query+'/v2/server/status',
 			timeout: 3000,
@@ -10,26 +9,28 @@ module.exports = require('./core').extend({
 				players: 'true',
 				token: this.options.token
 			}
-		}, function(e,r,body) {
-			if(e) return self.fatal('HTTP error');
-			var json;
+		}, (e,r,body) => {
+			if(e) return this.fatal('HTTP error');
+			let json;
 			try {
 				json = JSON.parse(body);
 			} catch(e) {
-				return self.fatal('Invalid JSON');
+				return this.fatal('Invalid JSON');
 			}
 			
-			if(json.status != 200) return self.fatal('Invalid status');
+			if(json.status !== 200) return this.fatal('Invalid status');
 
-			json.players.forEach(function(one) {
+			for (const one of json.players) {
 				state.players.push({name:one.nickname,team:one.team});
-			});
+			}
 			
 			state.name = json.name;
 			state.raw.port = json.port;
 			state.raw.numplayers = json.playercount;
 
-			self.finish(state);
+			this.finish(state);
 		});
 	}
-});
+}
+
+module.exports = Terraria;

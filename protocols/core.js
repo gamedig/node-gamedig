@@ -1,13 +1,12 @@
-var EventEmitter = require('events').EventEmitter,
+const EventEmitter = require('events').EventEmitter,
 	dns = require('dns'),
 	net = require('net'),
 	async = require('async'),
-	Class = require('../lib/Class'),
 	Reader = require('../lib/reader');
 
-module.exports = Class.extend(EventEmitter,{
-	init: function() {
-		this._super();
+class Core extends EventEmitter {
+	constructor() {
+		super();
 		this.options = {
 			tcpTimeout: 1000,
 			udpTimeout: 1000
@@ -19,13 +18,12 @@ module.exports = Class.extend(EventEmitter,{
 		this.byteorder = 'le';
 		this.delimiter = '\0';
 
-		var self = this;
-		this.globalTimeoutTimer = setTimeout(function() {
-			self.fatal('timeout');
+		this.globalTimeoutTimer = setTimeout(() => {
+            this.fatal('timeout');
 		},10000);
-	},
+	}
 
-	fatal: function(err,noretry) {
+	fatal(err,noretry) {
 		if(!noretry && this.attempt < this.maxAttempts) {
 			this.attempt++;
 			this.start();
@@ -33,8 +31,9 @@ module.exports = Class.extend(EventEmitter,{
 		}
 
 		this.done({error: err.toString()});
-	},
-	initState: function() {
+	}
+
+	initState() {
 		return {
 			name: '',
 			map: '',
@@ -46,15 +45,16 @@ module.exports = Class.extend(EventEmitter,{
 			players: [],
 			bots: []
 		};
-	},
-	finalizeState: function(state) {},
+	}
 
-	finish: function(state) {
+	finalizeState(state) {}
+
+	finish(state) {
 		this.finalizeState(state);
 		this.done(state);
-	},
+	}
 
-	done: function(state) {
+	done(state) {
 		if(this.finished) return;
 		clearTimeout(this.globalTimeoutTimer);
 
@@ -73,13 +73,13 @@ module.exports = Class.extend(EventEmitter,{
 		this.finished = true;
 		this.emit('finished',state);
 		if(this.options.callback) this.options.callback(state);
-	},
+	}
 
-	reset: function() {
+	reset() {
 		if(this.timers) {
-			this.timers.forEach(function(timer) {
+			for (const timer of this.timers) {
 				clearTimeout(timer);
-			});
+			}
 		}
 		this.timers = [];
 
@@ -90,58 +90,58 @@ module.exports = Class.extend(EventEmitter,{
 
 		this.udpTimeoutTimer = false;
 		this.udpCallback = false;
-	},
-	start: function() {
-		var self = this;
-		var options = self.options;
+	}
+
+	start() {
+		const options = this.options;
 		this.reset();
 
 		async.series([
-			function(c) {
+			(c) => {
 				// resolve host names
 				if(!('host' in options)) return c();
 				if(options.host.match(/\d+\.\d+\.\d+\.\d+/)) {
 					options.address = options.host;
 					c();
 				} else {
-					self.parseDns(options.host,c);
+                    this.parseDns(options.host,c);
 				}
 			},
-			function(c) {
+			(c) => {
 				// calculate query port if needed
 				if(!('port_query' in options) && 'port' in options) {
-					var offset = options.port_query_offset || 0;
+					const offset = options.port_query_offset || 0;
 					options.port_query = options.port + offset;
 				}
 				c();
 			},
-			function(c) {
+			(c) => {
 				// run
-				self.run(self.initState());
+				this.run(this.initState());
 			}
 
 		]);
-	},
-	parseDns: function(host,c) {
-		var self = this;
+	}
 
-		function resolveStandard(host,c) {
-			dns.lookup(host, function(err,address,family) {
-				if(err) return self.fatal(err);
-				self.options.address = address;
+	parseDns(host,c) {
+		const resolveStandard = (host,c) => {
+			dns.lookup(host, (err,address,family) => {
+				if(err) return this.fatal(err);
+                this.options.address = address;
 				c();
 			});
-		}
-		function resolveSrv(srv,host,c) {
-			dns.resolve(srv+'.'+host, 'SRV', function(err,addresses) {
+		};
+
+		const resolveSrv = (srv,host,c) => {
+			dns.resolve(srv+'.'+host, 'SRV', (err,addresses) => {
 				if(err) return resolveStandard(host,c);
 				if(addresses.length >= 1) {
-					var line = addresses[0];
-					self.options.port = line.port;
-					var srvhost = line.name;
+					const line = addresses[0];
+                    this.options.port = line.port;
+                    const srvhost = line.name;
 
 					if(srvhost.match(/\d+\.\d+\.\d+\.\d+/)) {
-						self.options.address = srvhost;
+                        this.options.address = srvhost;
 						c();
 					} else {
 						// resolve yet again
@@ -151,51 +151,50 @@ module.exports = Class.extend(EventEmitter,{
 				}
 				return resolveStandard(host,c);
 			});
-		}
+		};
 
 		if(this.srvRecord) resolveSrv(this.srvRecord,host,c);
 		else resolveStandard(host,c);
-	},
+	}
 
 	// utils
-	reader: function(buffer) {
+	/** @returns {Reader} */
+	reader(buffer) {
 		return new Reader(this,buffer);
-	},
-	translate: function(obj,trans) {
-		for(var from in trans) {
-			var to = trans[from];
+	}
+	translate(obj,trans) {
+		for(const from of Object.keys(trans)) {
+            const to = trans[from];
 			if(from in obj) {
 				if(to) obj[to] = obj[from];
 				delete obj[from];
 			}
 		}
-	},
-	setTimeout: function(c,t) {
+	}
+	setTimeout(c,t) {
 		if(this.finished) return 0;
-		var id = setTimeout(c,t);
+		const id = setTimeout(c,t);
 		this.timers.push(id);
 		return id;
-	},
+	}
 
-
-
-	trueTest: function(str) {
-		if(typeof str == 'boolean') return str;
-		if(typeof str == 'number') return str != 0;
-		if(typeof str == 'string') {
-			if(str.toLowerCase() == 'true') return true;
-			if(str == 'yes') return true;
-			if(str == '1') return true;
+	trueTest(str) {
+		if(typeof str === 'boolean') return str;
+		if(typeof str === 'number') return str !== 0;
+		if(typeof str === 'string') {
+			if(str.toLowerCase() === 'true') return true;
+			if(str === 'yes') return true;
+			if(str === '1') return true;
 		}
 		return false;
-	},
-	debugBuffer: function(buffer) {
-		var out = '';
-		var out2 = '';
-		for(var i = 0; i < buffer.length; i++) {
-			var sliced = buffer.slice(i,i+1);
+	}
+	debugBuffer(buffer) {
+		let out = '';
+        let out2 = '';
+		for(let i = 0; i < buffer.length; i++) {
+			const sliced = buffer.slice(i,i+1);
 			out += sliced.toString('hex')+' ';
-			var chr = sliced.toString();
+            let chr = sliced.toString();
 			if(chr < ' ' || chr > '~') chr = ' ';
 			out2 += chr+'  ';
 			if(out.length > 60) {
@@ -206,22 +205,21 @@ module.exports = Class.extend(EventEmitter,{
 		}
 		console.log(out);
 		console.log(out2);
-	},
+	}
 
 
 
 
-	_tcpConnect: function(c) {
-		var self = this;
+	_tcpConnect(c) {
 		if(this.tcpSocket) return c(this.tcpSocket);
 
-		var connected = false;
-		var received = new Buffer(0);
-		var address = this.options.address;
-		var port = this.options.port_query;
+		let connected = false;
+		let received = Buffer.from([]);
+		const address = this.options.address;
+        const port = this.options.port_query;
 
-		var socket = this.tcpSocket = net.connect(port,address,function() {
-			if(self.debug) console.log(address+':'+port+" TCPCONNECTED");
+        const socket = this.tcpSocket = net.connect(port,address,() => {
+			if(this.debug) console.log(address+':'+port+" TCPCONNECTED");
 			connected = true;
 			c(socket);
 		});
@@ -229,76 +227,74 @@ module.exports = Class.extend(EventEmitter,{
 		socket.setNoDelay(true);
 		if(this.debug) console.log(address+':'+port+" TCPCONNECT");
 
-		var writeHook = socket.write;
-		socket.write = function(data) {
-			if(self.debug) console.log(address+':'+port+" TCP--> "+data.toString('hex'));
-			writeHook.apply(this,arguments);
-		}
+		const writeHook = socket.write;
+		socket.write = (...args) => {
+			if(this.debug) console.log(address+':'+port+" TCP--> "+args[0].toString('hex'));
+			writeHook.apply(socket,args);
+		};
 
-		socket.on('error', function() {});
-		socket.on('close', function() {
-			if(!self.tcpCallback) return;
-			if(connected) return self.fatal('Socket closed while waiting on TCP');
-			else return self.fatal('TCP Connection Refused');
+		socket.on('error', () => {});
+		socket.on('close', () => {
+			if(!this.tcpCallback) return;
+			if(connected) return this.fatal('Socket closed while waiting on TCP');
+			else return this.fatal('TCP Connection Refused');
 		});
-		socket.on('data', function(data) {
-			if(!self.tcpCallback) return;
-			if(self.debug) console.log(address+':'+port+" <--TCP "+data.toString('hex'));
+		socket.on('data', (data) => {
+			if(!this.tcpCallback) return;
+			if(this.debug) console.log(address+':'+port+" <--TCP "+data.toString('hex'));
 			received = Buffer.concat([received,data]);
-			if(self.tcpCallback(received)) {
-				clearTimeout(self.tcpTimeoutTimer);
-				self.tcpCallback = false;
-				received = new Buffer(0);
+			if(this.tcpCallback(received)) {
+				clearTimeout(this.tcpTimeoutTimer);
+                this.tcpCallback = false;
+				received = Buffer.from([]);
 			}
 		});
-	},
-	tcpSend: function(buffer,ondata) {
-		var self = this;
-		process.nextTick(function() {
-			if(self.tcpCallback) return self.fatal('Attempted to send TCP packet while still waiting on a managed response');
-			self._tcpConnect(function(socket) {
+	}
+	tcpSend(buffer,ondata) {
+		process.nextTick(() => {
+			if(this.tcpCallback) return this.fatal('Attempted to send TCP packet while still waiting on a managed response');
+            this._tcpConnect((socket) => {
 				socket.write(buffer);
 			});
 			if(!ondata) return;
 
-			self.tcpTimeoutTimer = self.setTimeout(function() {
-				self.tcpCallback = false;
-				self.fatal('TCP Watchdog Timeout');
-			},self.options.tcpTimeout);
-			self.tcpCallback = ondata;
+            this.tcpTimeoutTimer = this.setTimeout(() => {
+                this.tcpCallback = false;
+                this.fatal('TCP Watchdog Timeout');
+			},this.options.tcpTimeout);
+            this.tcpCallback = ondata;
 		});
-	},
+	}
 
 
 
-	udpSend: function(buffer,onpacket,ontimeout) {
-		var self = this;
-		process.nextTick(function() {
-			if(self.udpCallback) return self.fatal('Attempted to send UDP packet while still waiting on a managed response');
-			self._udpSendNow(buffer);
+	udpSend(buffer,onpacket,ontimeout) {
+		process.nextTick(() => {
+			if(this.udpCallback) return this.fatal('Attempted to send UDP packet while still waiting on a managed response');
+            this._udpSendNow(buffer);
 			if(!onpacket) return;
 
-			self.udpTimeoutTimer = self.setTimeout(function() {
-				self.udpCallback = false;
-				var timeout = false;
+            this.udpTimeoutTimer = this.setTimeout(() => {
+                this.udpCallback = false;
+				let timeout = false;
 				if(!ontimeout || ontimeout() !== true) timeout = true;
-				if(timeout) self.fatal('UDP Watchdog Timeout');
-			},self.options.udpTimeout);
-			self.udpCallback = onpacket;
+				if(timeout) this.fatal('UDP Watchdog Timeout');
+			},this.options.udpTimeout);
+            this.udpCallback = onpacket;
 		});
-	},
-	_udpSendNow: function(buffer) {
+	}
+	_udpSendNow(buffer) {
 		if(!('port_query' in this.options)) return this.fatal('Attempted to send without setting a port');
 		if(!('address' in this.options)) return this.fatal('Attempted to send without setting an address');
 
-		if(typeof buffer == 'string') buffer = new Buffer(buffer,'binary');
+		if(typeof buffer === 'string') buffer = Buffer.from(buffer,'binary');
 
 		if(this.debug) console.log(this.options.address+':'+this.options.port_query+" UDP--> "+buffer.toString('hex'));
 		this.udpSocket.send(buffer,0,buffer.length,this.options.port_query,this.options.address);
-	},
-	_udpResponse: function(buffer) {
+	}
+	_udpResponse(buffer) {
 		if(this.udpCallback) {
-			var result = this.udpCallback(buffer);
+			const result = this.udpCallback(buffer);
 			if(result === true) {
 				// we're done with this udp session
 				clearTimeout(this.udpTimeoutTimer);
@@ -307,6 +303,8 @@ module.exports = Class.extend(EventEmitter,{
 		} else {
 			this.udpResponse(buffer);
 		}
-	},
-	udpResponse: function() {}
-});
+	}
+	udpResponse() {}
+}
+
+module.exports = Core;

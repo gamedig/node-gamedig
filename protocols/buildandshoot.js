@@ -1,35 +1,37 @@
-var request = require('request');
+const request = require('request');
 
-module.exports = require('./core').extend({
-	run: function(state) {
-		var self = this;
+class BuildAndShoot extends require('./core') {
+	run(state) {
 		request({
 			uri: 'http://'+this.options.address+':'+this.options.port_query+'/',
 			timeout: 3000,
-		}, function(e,r,body) {
-			if(e) return self.fatal('HTTP error');
+		}, (e,r,body) => {
+			if(e) return this.fatal('HTTP error');
 
-			var m = body.match(/status server for (.*?)\r|\n/);
+			let m;
+
+			m = body.match(/status server for (.*?)\r|\n/);
 			if(m) state.name = m[1];
 
-			var m = body.match(/Current uptime: (\d+)/);
+			m = body.match(/Current uptime: (\d+)/);
 			if(m) state.raw.uptime = m[1];
 			
-			var m = body.match(/currently running (.*?) by /);
+			m = body.match(/currently running (.*?) by /);
 			if(m) state.map = m[1];
 			
-			var m = body.match(/Current players: (\d+)\/(\d+)/);
+			m = body.match(/Current players: (\d+)\/(\d+)/);
 			if(m) {
 				state.raw.numplayers = m[1];
 				state.maxplayers = m[2];
 			}
 
-			var m = body.match(/class="playerlist"([^]+?)\/table/);
+			m = body.match(/class="playerlist"([^]+?)\/table/);
 			if(m) {
-				var table = m[1];
-				var pre = /<tr>[^]*<td>([^]*)<\/td>[^]*<td>([^]*)<\/td>[^]*<td>([^]*)<\/td>[^]*<td>([^]*)<\/td>/g;
+				const table = m[1];
+                const pre = /<tr>[^]*<td>([^]*)<\/td>[^]*<td>([^]*)<\/td>[^]*<td>([^]*)<\/td>[^]*<td>([^]*)<\/td>/g;
+                let pm;
 				while(pm = pre.exec(table)) {
-					if(pm[2] == 'Ping') continue;
+					if(pm[2] === 'Ping') continue;
 					state.players.push({
 						name: pm[1],
 						ping: pm[2],
@@ -49,7 +51,9 @@ module.exports = require('./core').extend({
 				state.raw.url = 'aos://'+addr;
 			}
 			*/
-			self.finish(state);
+			this.finish(state);
 		});
 	}
-});
+}
+
+module.exports = BuildAndShoot;

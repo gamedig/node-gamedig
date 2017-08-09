@@ -1,40 +1,51 @@
 #!/usr/bin/env node
 
-var argv = require('minimist')(process.argv.slice(2));
+const argv = require('minimist')(process.argv.slice(2)),
+    Gamedig = require('..');
 
-var debug = argv.debug;
+const debug = argv.debug;
 delete argv.debug;
-var outputFormat = argv.output;
+const outputFormat = argv.output;
 delete argv.output;
 
-var options = {};
-for(var key in argv) {
-	var value = argv[key];
+const options = {};
+for(const key of Object.keys(argv)) {
+    const value = argv[key];
 	if(
-		key == '_'
-		|| key.charAt(0) == '$'
-		|| (typeof value != 'string' && typeof value != 'number')
+		key === '_'
+		|| key.charAt(0) === '$'
+		|| (typeof value !== 'string' && typeof value !== 'number')
 	)
 		continue;
 	options[key] = value;
 }
 
-var Gamedig = require('../lib/index');
 if(debug) Gamedig.debug = true;
 Gamedig.isCommandLine = true;
 
 Gamedig.query(options)
 	.then((state) => {
-		if(outputFormat == 'pretty') {
+		if(outputFormat === 'pretty') {
 			console.log(JSON.stringify(state,null,'  '));
 		} else {
 			console.log(JSON.stringify(state));
 		}
 	})
 	.catch((error) => {
-		if(outputFormat == 'pretty') {
-			console.log(JSON.stringify({error:error},null,'  '));
-		} else {
-			console.log(JSON.stringify({error:error}));
-		}
+        if (debug) {
+            if (error instanceof Error) {
+                console.log(error.stack);
+            } else {
+                console.log(error);
+            }
+        } else {
+            if (error instanceof Error) {
+                error = error.message;
+            }
+            if (outputFormat === 'pretty') {
+                console.log(JSON.stringify({error: error}, null, '  '));
+            } else {
+                console.log(JSON.stringify({error: error}));
+            }
+        }
 	});

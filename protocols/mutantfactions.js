@@ -1,54 +1,53 @@
-var request = require('request');
+const request = require('request');
 
-module.exports = require('./core').extend({
-	run: function(state) {
-		var self = this;
+class MutantFactions extends require('./core') {
+	run(state) {
 		request({
 			uri: 'http://mutantfactions.net/game/receiveLobby.php',
 			timeout: 3000,
-		}, function(e,r,body) {
-			if(e) return self.fatal('Lobby request error');
+		}, (e,r,body) => {
+			if(e) return this.fatal('Lobby request error');
 
-			var split = body.split('<br/>');
-
-			var found = false;
-			for(var i = 0; i < split.length; i++) {
-				var line = split[i];
-				var fields = line.split('::');
-				var ip = fields[2];
-				var port = fields[3];
-				if(ip == self.options.address && port == self.options.port) {
+            const split = body.split('<br/>');
+			let found = false;
+			for(const line of split) {
+                const fields = line.split('::');
+                const ip = fields[2];
+                const port = fields[3];
+				if(ip === this.options.address && port === this.options.port) {
 					found = fields;
 					break;
 				}
 			}
 
-			if(!found) return self.fatal('Server not found in list');
+			if(!found) return this.fatal('Server not found in list');
 
-			state.raw.countrycode = fields[0];
-			state.raw.country = fields[1];
-			state.name = fields[4];
-			state.map = fields[5];
-			state.raw.numplayers = fields[6];
-			state.maxplayers = fields[7];
+			state.raw.countrycode = found[0];
+			state.raw.country = found[1];
+			state.name = found[4];
+			state.map = found[5];
+			state.raw.numplayers = found[6];
+			state.maxplayers = found[7];
 			// fields[8] is unknown?
-			state.raw.rules = fields[9];
-			state.raw.gamemode = fields[10];
-			state.raw.gangsters = fields[11];
-			state.raw.cashrate = fields[12];
-			state.raw.missions = fields[13];
-			state.raw.vehicles = fields[14];
-			state.raw.customweapons = fields[15];
-			state.raw.friendlyfire = fields[16];
-			state.raw.mercs = fields[17];
+			state.raw.rules = found[9];
+			state.raw.gamemode = found[10];
+			state.raw.gangsters = found[11];
+			state.raw.cashrate = found[12];
+			state.raw.missions = found[13];
+			state.raw.vehicles = found[14];
+			state.raw.customweapons = found[15];
+			state.raw.friendlyfire = found[16];
+			state.raw.mercs = found[17];
 			// fields[18] is unknown? listen server?
-			state.raw.version = fields[19];
+			state.raw.version = found[19];
 
-			for(var i = 0; i < state.raw.numplayers; i++) {
+			for(let i = 0; i < state.raw.numplayers; i++) {
 				state.players.push({});
 			}
 
-			self.finish(state);
+			this.finish(state);
 		});
 	}
-});
+}
+
+module.exports = MutantFactions;

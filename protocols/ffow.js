@@ -1,14 +1,12 @@
-module.exports = require('./valve').extend({
-	init: function() {
-		this._super();
+class Ffow extends require('./valve') {
+	constructor() {
+		super();
 		this.byteorder = 'be';
 		this.legacyChallenge = true;
-	},
-	queryInfo: function(state,c) {
-		var self = this;
-		self.sendPacket(0x46,false,'LSQ',0x49,function(b) {
-			var reader = self.reader(b);
-
+	}
+	queryInfo(state,c) {
+		this.sendPacket(0x46,false,'LSQ',0x49, (b) => {
+			const reader = this.reader(b);
 			state.raw.protocol = reader.uint(1);
 			state.name = reader.string();
 			state.map = reader.string();
@@ -30,4 +28,6 @@ module.exports = require('./valve').extend({
 			c();
 		});
 	}
-});
+}
+
+module.exports = Ffow;

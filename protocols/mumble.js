@@ -1,17 +1,14 @@
-var async = require('async');
-
-module.exports = require('./core').extend({
-	init: function() {
-		this._super();
+class Mumble extends require('./core') {
+	constructor() {
+		super();
 		this.options.tcpTimeout = 5000;
-	},
-	run: function(state) {
-		var self = this;
-		
-		this.tcpSend('json', function(buffer) {
+	}
+
+	run(state) {
+		this.tcpSend('json', (buffer) => {
 			if(buffer.length < 10) return;
-			var str = buffer.toString();
-			var json;
+            const str = buffer.toString();
+			let json;
 			try {
 				json = JSON.parse(str);
 			} catch(e) {
@@ -21,24 +18,26 @@ module.exports = require('./core').extend({
 			
 			state.raw = json;
 			state.name = json.name;
-			
-			var channelStack = [state.raw.root];
+
+            let channelStack = [state.raw.root];
 			while(channelStack.length) {
-				var channel = channelStack.shift();
-				channel.description = self.cleanComment(channel.description);
+                const channel = channelStack.shift();
+				channel.description = this.cleanComment(channel.description);
 				channelStack = channelStack.concat(channel.channels);
-				for(var i = 0; i < channel.users.length; i++) {
-					var user = channel.users[i];
-					user.comment = self.cleanComment(user.comment);
+				for(const user of channel.users) {
+					user.comment = this.cleanComment(user.comment);
 					state.players.push(user);
 				}
 			}
 			
-			self.finish(state);
+			this.finish(state);
 			return true;
 		});
-	},
-	cleanComment: function(str) {
+	}
+
+	cleanComment(str) {
 		return str.replace(/<.*>/g,'');
 	}
-});
+}
+
+module.exports = Mumble;

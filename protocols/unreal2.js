@@ -1,78 +1,75 @@
-var async = require('async');
+const async = require('async');
 
-module.exports = require('./core').extend({
-	init: function() {
-		this._super();
+class Unreal2 extends require('./core') {
+	constructor() {
+		super();
 		this.encoding = 'latin1';
-	},
-	run: function(state) {
-
-		var self = this;
-
+	}
+	run(state) {
 		async.series([
-			function(c) {
-				self.sendPacket(0,true,function(b) {
-					var reader = self.reader(b);
+			(c) => {
+				this.sendPacket(0,true,(b) => {
+					const reader = this.reader(b);
 					state.raw.serverid = reader.uint(4);
-					state.raw.ip = self.readUnrealString(reader);
+					state.raw.ip = this.readUnrealString(reader);
 					state.raw.port = reader.uint(4);
 					state.raw.queryport = reader.uint(4);
-					state.name = self.readUnrealString(reader,true);
-					state.map = self.readUnrealString(reader,true);
-					state.raw.gametype = self.readUnrealString(reader,true);
+					state.name = this.readUnrealString(reader,true);
+					state.map = this.readUnrealString(reader,true);
+					state.raw.gametype = this.readUnrealString(reader,true);
 					state.raw.numplayers = reader.uint(4);
 					state.maxplayers = reader.uint(4);
-					self.readExtraInfo(reader,state);
+					this.readExtraInfo(reader,state);
 
 					c();
 				});
 			},
-			function(c) {
-				self.sendPacket(1,true,function(b) {
-					var reader = self.reader(b);
+			(c) => {
+				this.sendPacket(1,true,(b) => {
+                    const reader = this.reader(b);
 					state.raw.mutators = [];
 					state.raw.rules = {};
 					while(!reader.done()) {
-						var key = self.readUnrealString(reader,true);
-						var value = self.readUnrealString(reader,true);
-						if(key == 'Mutator') state.raw.mutators.push(value);
+                        const key = this.readUnrealString(reader,true);
+                        const value = this.readUnrealString(reader,true);
+						if(key === 'Mutator') state.raw.mutators.push(value);
 						else state.raw.rules[key] = value;
 					}
 
 					if('GamePassword' in state.raw.rules)
-						state.password = state.raw.rules.GamePassword != 'True';
+						state.password = state.raw.rules.GamePassword !== 'True';
 
 					c();
 				});
 			},
-			function(c) {
-				self.sendPacket(2,false,function(b) {
-					var reader = self.reader(b);
+			(c) => {
+				this.sendPacket(2,false,(b) => {
+                    const reader = this.reader(b);
 
 					while(!reader.done()) {
-						var player = {};
+                        const player = {};
 						player.id = reader.uint(4);
 						if(!player.id) break;
-						if(player.id == 0) {
+						if(player.id === 0) {
 							// Unreal2XMP Player (ID is always 0)
 							reader.skip(4);
 						}
-						player.name = self.readUnrealString(reader,true);
+						player.name = this.readUnrealString(reader,true);
 						player.ping = reader.uint(4);
 						player.score = reader.int(4);
 						reader.skip(4); // stats ID
 
 						// Extra data for Unreal2XMP players
-						if(player.id == 0) {
-							var count = reader.uint(1);
-							for(var iField = 0; iField < count; iField++) {
-								var key = self.readUnrealString(reader,true);
-								var value = self.readUnrealString(reader,true);
+						if(player.id === 0) {
+                            const count = reader.uint(1);
+							for(let iField = 0; iField < count; iField++) {
+                                const key = this.readUnrealString(reader,true);
+                                const value = this.readUnrealString(reader,true);
 								player[key] = value;
 							}
 						}
 						
-						if(player.id == 0 && player.name == 'Player') {
+						if(player.id === 0 && player.name === 'Player') {
 							// these show up in ut2004 queries, but aren't real
 							// not even really sure why they're there
 							continue;
@@ -83,12 +80,12 @@ module.exports = require('./core').extend({
 					c();
 				});
 			},
-			function(c) {
-				self.finish(state);
+			(c) => {
+				this.finish(state);
 			}
 		]);
-	},
-	readExtraInfo: function(reader,state) {
+	}
+	readExtraInfo(reader,state) {
 		if(this.debug) {
 			console.log("UNREAL2 EXTRA INFO:");
 			console.log(reader.uint(4));
@@ -97,10 +94,10 @@ module.exports = require('./core').extend({
 			console.log(reader.uint(4));
 			console.log(reader.buffer.slice(reader.i));
 		}
-	},
-	readUnrealString: function(reader, stripColor) {
-		var length = reader.uint(1);
-		var out;
+	}
+	readUnrealString(reader, stripColor) {
+        let length = reader.uint(1);
+        let out;
 		if(length < 0x80) {
 			//out = reader.string({length:length});
 			out = '';
@@ -114,29 +111,30 @@ module.exports = require('./core').extend({
 			out = reader.string({encoding:'ucs2',length:length});
 		}
 		
-		if(out.charCodeAt(out.length-1) == 0)
+		if(out.charCodeAt(out.length-1) === 0)
 			out = out.substring(0,out.length-1);
 		
 		if(stripColor)
 			out = out.replace(/\x1b...|[\x00-\x1a]/g,'');
 
 		return out;
-	},
-	sendPacket: function(type,required,callback) {
-		var self = this;
-		var outbuffer = new Buffer([0x79,0,0,0,type]);
+	}
+	sendPacket(type,required,callback) {
+        const outbuffer = Buffer.from([0x79,0,0,0,type]);
 
-		var packets = [];
-		this.udpSend(outbuffer,function(buffer) {
-			var reader = self.reader(buffer);
-			var header = reader.uint(4);
-			var iType = reader.uint(1);
-			if(iType != type) return;
+        const packets = [];
+		this.udpSend(outbuffer,(buffer) => {
+            const reader = this.reader(buffer);
+            const header = reader.uint(4);
+            const iType = reader.uint(1);
+			if(iType !== type) return;
 			packets.push(reader.rest());
-		},function() {
+		}, () => {
 			if(!packets.length && required) return;
 			callback(Buffer.concat(packets));
 			return true;
 		});
 	}
-});
+}
+
+module.exports = Unreal2;

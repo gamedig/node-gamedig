@@ -1,6 +1,6 @@
-module.exports = require('./gamespy3').extend({
-	finalizeState: function(state) {
-		this._super(state);
+class Ut3 extends require('./gamespy3') {
+	finalizeState(state) {
+		super.finalizeState(state);
 
 		this.translate(state.raw,{
 			'mapname': false,
@@ -31,13 +31,15 @@ module.exports = require('./gamespy3').extend({
 			'p268435969': false
 		});
 
-		function split(a) {
-			var s = a.split('\x1c');
-			s = s.filter(function(e) { return e });
+		const split = (a) => {
+			let s = a.split('\x1c');
+			s = s.filter((e) => { return e });
 			return s;
-		}
+		};
 		if('custom_mutators' in state.raw) state.raw['custom_mutators'] = split(state.raw['custom_mutators']);
 		if('stock_mutators' in state.raw) state.raw['stock_mutators'] = split(state.raw['stock_mutators']);
 		if('map' in state.raw) state.map = state.raw.map;
 	}
-});
+}
+
+module.exports = Ut3;

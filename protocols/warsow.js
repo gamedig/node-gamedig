@@ -1,12 +1,13 @@
-module.exports = require('./quake3').extend({
-	finalizeState: function(state) {
-		this._super(state);
+class Warsow extends require('./quake3') {
+	finalizeState(state) {
+		super.finalizeState(state);
 		if(state.players) {
-			for(var i = 0; i < state.players.length; i++) {
-				var player = state.players[i];
+			for(const player of state.players) {
 				player.team = player.address;
 				delete player.address;
 			}
 		}
 	}
-});
+}
+
+module.exports = Warsow;

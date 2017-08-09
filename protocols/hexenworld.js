@@ -1,6 +1,9 @@
-module.exports = require('./quake2').extend({
-	init: function() {
-		this._super();
+class HexenWorld extends require('./quake1') {
+	constructor() {
+		super();
 		this.sendHeader = '\xFFstatus\x0a';
+        this.responseHeader = '\xffn';
 	}
-});
+}
+
+module.exports = HexenWorld;
