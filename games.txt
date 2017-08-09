@@ -15,7 +15,6 @@
 # gr|Ghost Recon|ghostrecon|port=2346,port_query_offset=2
 # gtr2|GTR2|gtr2|port=34297,port_query_offset=1
 # haze|Haze|haze
-# hexen2|Hexen 2|hexen2|port_query=26900
 # openttd|OpenTTD|openttd|port=3979
 # plainsight|Plain Sight|plainsight
 # redfaction|Red Faction|redfaction|port_query=7755
@@ -133,8 +132,8 @@ hldm|Half-Life 1 Deathmatch|valve
 hl2dm|Half-Life 2 Deathmatch|valve
 halo|Halo|gamespy2|port=2302
 halo2|Halo 2|gamespy2|port=2302
-heretic2|Heretic 2|gamespy1|port_query=28910
-hexenworld|Hexen World|hexenworld|port_query=26950
+heretic2|Heretic 2|gamespy1|port=27900,port_query_offset=1
+hexen2|Hexen 2|hexen2|port=26900,port_query_offset=50
 hidden|The Hidden: Source|valve
 had2|Hidden and Dangerous 2|gamespy1|port=11001,port_query_offset=3
 homefront|Homefront|valve
