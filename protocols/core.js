@@ -17,6 +17,7 @@ class Core extends EventEmitter {
         this.encoding = 'utf8';
         this.byteorder = 'le';
         this.delimiter = '\0';
+        this.srvRecord = null;
 
         this.globalTimeoutTimer = setTimeout(() => {
             this.fatal('timeout');

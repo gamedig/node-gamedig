@@ -4,6 +4,7 @@ class Battlefield extends require('./core') {
     constructor() {
         super();
         this.encoding = 'latin1';
+        this.isBadCompany2 = false;
     }
 
     run(state) {

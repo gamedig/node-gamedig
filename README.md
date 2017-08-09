@@ -16,7 +16,7 @@ npm install gamedig
 
 Promise:
 ```javascript
-var Gamedig = require('gamedig');
+const Gamedig = require('gamedig');
 Gamedig.query({
 	type: 'minecraft',
 	host: 'mc.example.com'
@@ -29,7 +29,7 @@ Gamedig.query({
 
 or Node.JS Callback:
 ```javascript
-var Gamedig = require('gamedig');
+const Gamedig = require('gamedig');
 Gamedig.query({
 	type: 'minecraft',
 	host: 'mc.example.com'
