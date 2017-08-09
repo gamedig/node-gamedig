@@ -44,9 +44,9 @@ americasarmy2|America's Army 2|americasarmy|port=1716,port_query_offset=1
 americasarmy3|America's Army 3|valve|port=8777,port_query=27020
 americasarmypg|America's Army: Proving Grounds|valve|port=8777,port_query=27020
 
-arma|ArmA Armed Assault 1|gamespy2|port=2302
-arma2|ArmA Armed Assault 2|valve|port=2302,port_query_offset=1
-arma3|ArmA Armed Assault 3|valve|port=2302,port_query_offset=1
+arma|ArmA|gamespy2|port=2302
+arma2|ArmA 2|valve|port=2302,port_query_offset=1
+arma3|ArmA 3|valve|port=2302,port_query_offset=1
 
 armagetron|Armagetron|armagetron|port=4534
 baldursgate|Baldur's Gate|gamespy1|port=6073,port_query=1470
@@ -108,6 +108,7 @@ dinodday|Dino D-Day|valve
 dirttrackracing2|Dirt Track Racing 2|gamespy1|port=32240,port_query_offset=-100
 dod|Day of Defeat|valve
 dods|Day of Defeat: Source|valve
+doi|Day of Infamy|valve
 doom3|Doom 3|doom3|port=27666
 dota2|DOTA 2|valve
 drakan|Drakan|gamespy1|port=27045,port_query_offset=1
