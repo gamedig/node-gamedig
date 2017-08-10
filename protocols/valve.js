@@ -217,15 +217,20 @@ class Valve extends require('./core') {
             const type = reader.uint(1);
 
             if(type === 0x41) {
-                if(this.debug) console.log('Received challenge key');
-                if(this._challenge) return this.fatal('Received more than one challenge key');
-                this._challenge = reader.uint(4);
+                const key = reader.uint(4);
 
-                if(sendChallenge) {
-                    if(this.debug) console.log('Restarting query');
-                    send();
-                    return true;
+                if(this.debug) console.log('Received challenge key: ' + key);
+
+                if(this._challenge !== key) {
+                    this._challenge = key;
+                    if(sendChallenge) {
+                        if (this.debug) console.log('Restarting query');
+                        send();
+                        return true;
+                    }
                 }
+
+                return;
             }
 
             if(this.debug) console.log("Received "+type.toString(16)+" expected "+expect.toString(16));
