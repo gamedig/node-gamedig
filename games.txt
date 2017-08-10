@@ -120,6 +120,7 @@ farcry2|Far Cry|ase|port_query=14001
 fortressforever|Fortress Forever|valve
 flashpoint|Flashpoint|gamespy1|port=2302,port_query_offset=1
 ffow|Frontlines: Fuel of War|ffow|port=5476,port_query_offset=2
+fivem|FiveM|fivem|port=30120
 garrysmod|Garry's Mod|valve
 graw|Ghost Recon: Advanced Warfighter|gamespy2|port_query=15250
 graw2|Ghost Recon: Advanced Warfighter 2|gamespy2|port_query=16250

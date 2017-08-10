@@ -2,7 +2,8 @@ const EventEmitter = require('events').EventEmitter,
     dns = require('dns'),
     net = require('net'),
     async = require('async'),
-    Reader = require('../lib/reader');
+    Reader = require('../lib/reader'),
+    HexUtil = require('../lib/HexUtil');
 
 class Core extends EventEmitter {
     constructor() {
@@ -193,27 +194,6 @@ class Core extends EventEmitter {
         }
         return false;
     }
-    debugBuffer(buffer) {
-        let out = '';
-        let out2 = '';
-        for(let i = 0; i < buffer.length; i++) {
-            const sliced = buffer.slice(i,i+1);
-            out += sliced.toString('hex')+' ';
-            let chr = sliced.toString();
-            if(chr < ' ' || chr > '~') chr = ' ';
-            out2 += chr+'  ';
-            if(out.length > 60) {
-                console.log(out);
-                console.log(out2);
-                out = out2 = '';
-            }
-        }
-        console.log(out);
-        console.log(out2);
-    }
-
-
-
 
     _tcpConnect(c) {
         if(this.tcpSocket) return c(this.tcpSocket);
@@ -234,7 +214,10 @@ class Core extends EventEmitter {
 
         const writeHook = socket.write;
         socket.write = (...args) => {
-            if(this.debug) console.log(address+':'+port+" TCP--> "+args[0].toString('hex'));
+            if(this.debug) {
+                console.log(address+':'+port+" TCP-->");
+                console.log(HexUtil.debugDump(args[0]));
+            }
             writeHook.apply(socket,args);
         };
 
@@ -246,7 +229,10 @@ class Core extends EventEmitter {
         });
         socket.on('data', (data) => {
             if(!this.tcpCallback) return;
-            if(this.debug) console.log(address+':'+port+" <--TCP "+data.toString('hex'));
+            if(this.debug) {
+                console.log(address+':'+port+" <--TCP");
+                console.log(HexUtil.debugDump(data));
+            }
             received = Buffer.concat([received,data]);
             if(this.tcpCallback(received)) {
                 clearTimeout(this.tcpTimeoutTimer);
@@ -294,7 +280,10 @@ class Core extends EventEmitter {
 
         if(typeof buffer === 'string') buffer = Buffer.from(buffer,'binary');
 
-        if(this.debug) console.log(this.options.address+':'+this.options.port_query+" UDP--> "+buffer.toString('hex'));
+        if(this.debug) {
+            console.log(this.options.address+':'+this.options.port_query+" UDP-->");
+            console.log(HexUtil.debugDump(buffer));
+        }
         this.udpSocket.send(buffer,0,buffer.length,this.options.port_query,this.options.address);
     }
     _udpResponse(buffer) {

@@ -160,11 +160,13 @@ Games List
 * Fortress Forever (fortressforever)
 * Flashpoint (flashpoint) [[Separate Query Port](#separate-query-port)]
 * Frontlines: Fuel of War (ffow) [[Separate Query Port](#separate-query-port)]
+* FiveM (fivem)
 * Garry's Mod (garrysmod)
 * Ghost Recon: Advanced Warfighter (graw) [[Separate Query Port](#separate-query-port)]
 * Ghost Recon: Advanced Warfighter 2 (graw2) [[Separate Query Port](#separate-query-port)]
 * Giants: Citizen Kabuto (giantscitizenkabuto) [[Separate Query Port](#separate-query-port)]
 * Global Operations (globaloperations) [[Separate Query Port](#separate-query-port)]
+* Geneshift (geneshift)
 * GoldenEye: Source (ges)
 * Gore (gore) [[Separate Query Port](#separate-query-port)]
 * Gunman Chronicles (gunmanchronicles)
@@ -173,7 +175,7 @@ Games List
 * Halo (halo)
 * Halo 2 (halo2)
 * Heretic 2 (heretic2) [[Separate Query Port](#separate-query-port)]
-* Hexen World (hexenworld) [[Separate Query Port](#separate-query-port)]
+* Hexen 2 (hexen2) [[Separate Query Port](#separate-query-port)]
 * The Hidden: Source (hidden)
 * Hidden and Dangerous 2 (had2) [[Separate Query Port](#separate-query-port)]
 * Homefront (homefront)
