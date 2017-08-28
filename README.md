@@ -145,6 +145,7 @@ Games List
 * Devastation (devastation) [[Separate Query Port](#separate-query-port)]
 * Dino D-Day (dinodday)
 * Dirt Track Racing 2 (dirttrackracing2) [[Separate Query Port](#separate-query-port)]
+* Dark and Light (dnl) [[Separate Query Port](#separate-query-port)]
 * Day of Defeat (dod)
 * Day of Defeat: Source (dods)
 * Day of Infamy (doi)
