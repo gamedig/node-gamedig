@@ -105,6 +105,7 @@ deusex|Deus Ex|gamespy2|port=7791,port_query_offset=1
 devastation|Devastation|unreal2|port=7777,port_query_offset=1
 dinodday|Dino D-Day|valve
 dirttrackracing2|Dirt Track Racing 2|gamespy1|port=32240,port_query_offset=-100
+dnl|Dark and Light|valve|port=7777,port_query=27015
 dod|Day of Defeat|valve
 dods|Day of Defeat: Source|valve
 doi|Day of Infamy|valve
