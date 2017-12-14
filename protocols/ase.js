@@ -1,4 +1,10 @@
 class Ase extends require('./core') {
+    constructor( timeout ){
+        super();
+        this.options.tcpTimeout = timeout
+        this.options.udpTimeout = timeout
+    }
+
     run(state) {
         this.udpSend('s',(buffer) => {
             const reader = this.reader(buffer);

@@ -6,11 +6,12 @@ const EventEmitter = require('events').EventEmitter,
     HexUtil = require('../lib/HexUtil');
 
 class Core extends EventEmitter {
-    constructor() {
+    constructor( timeout ) {
         super();
+
         this.options = {
-            tcpTimeout: 1000,
-            udpTimeout: 1000
+            tcpTimeout: timeout ? timeout : 1000,
+            udpTimeout: timeout ? timeout : 1000
         };
         this.maxAttempts = 1;
         this.attempt = 1;
