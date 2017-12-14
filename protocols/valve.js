@@ -2,8 +2,11 @@ const async = require('async'),
     Bzip2 = require('compressjs').Bzip2;
 
 class Valve extends require('./core') {
-    constructor() {
+    constructor( timeout ) {
         super();
+
+        this.options.tcpTimeout = timeout
+        this.options.udpTimeout = timeout
 
         this.options.port = 27015;
 

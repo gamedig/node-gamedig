@@ -1,8 +1,10 @@
 class Starmade extends require('./core') {
-    constructor() {
+    constructor( timeout ) {
         super();
         this.encoding = 'latin1';
         this.byteorder = 'be';
+        this.options.tcpTimeout = timeout
+        this.options.udpTimeout = timeout
     }
     run(state) {
         const b = Buffer.from([0x00,0x00,0x00,0x09,0x2a,0xff,0xff,0x01,0x6f,0x00,0x00,0x00,0x00]);

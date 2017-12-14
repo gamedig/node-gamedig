@@ -1,6 +1,12 @@
 const request = require('request');
 
 class BuildAndShoot extends require('./core') {
+    constructor( timeout ){
+        super();
+        this.options.tcpTimeout = timeout
+        this.options.udpTimeout = timeout
+    }
+    
     run(state) {
         request({
             uri: 'http://'+this.options.address+':'+this.options.port_query+'/',

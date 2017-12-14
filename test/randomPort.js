@@ -5,7 +5,7 @@ var servers = [['45.32.246.255','28036'], ['108.61.227.175','28016'], ['139.99.1
 var jobs = []
 servers.map((server) => {
 	jobs.push(
-		GameDig.query({ type: 'rust', host: server[0], port: server[1] })
+		GameDig.query({ type: 'rust', host: server[0], port: server[1]})
 		.then( details => { console.log( "Got server:", details.name )})
 		.catch( e => {console.log('Error:', e)})
 	)
