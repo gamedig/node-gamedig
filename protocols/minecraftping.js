@@ -15,13 +15,6 @@ function buildPacket(id,data) {
 }
 
 class MinecraftPing extends require('./core') {
-    constructor( timeout ) {
-        super();
-
-        this.options.tcpTimeout = timeout
-        this.options.udpTimeout = timeout
-    }
-    
     run(state) {
         let receivedData;
 

@@ -1,9 +1,6 @@
 class Armagetron extends require('./core') {
-    constructor( timeout ) {
+    constructor() {
         super();
-
-        this.options.tcpTimeout = timeout
-        this.options.udpTimeout = timeout
         this.encoding = 'latin1';
         this.byteorder = 'be';
     }

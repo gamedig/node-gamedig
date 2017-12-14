@@ -1,10 +1,8 @@
 const async = require('async');
 
 class Unreal2 extends require('./core') {
-    constructor( timeout ) {
+    constructor() {
         super();
-        this.options.tcpTimeout = timeout
-        this.options.udpTimeout = timeout
         this.encoding = 'latin1';
     }
     run(state) {

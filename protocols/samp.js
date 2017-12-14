@@ -1,13 +1,6 @@
 const async = require('async');
 
 class Samp extends require('./core') {
-    constructor( timeout ) {
-        super();
-
-        this.options.tcpTimeout = timeout
-        this.options.udpTimeout = timeout
-    }
-    
     run(state) {
         async.series([
             (c) => {

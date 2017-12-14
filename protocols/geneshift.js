@@ -1,12 +1,6 @@
 const request = require('request');
 
 class GeneShift extends require('./core') {
-    constructor( timeout ){
-        super();
-        this.options.tcpTimeout = timeout
-        this.options.udpTimeout = timeout
-    }
-    
     run(state) {
         request({
             uri: 'http://geneshift.net/game/receiveLobby.php',

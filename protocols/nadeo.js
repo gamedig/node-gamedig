@@ -2,13 +2,11 @@ const gbxremote = require('gbxremote'),
     async = require('async');
 
 class Nadeo extends require('./core') {
-    constructor( timeout ) {
+    constructor() {
         super();
         this.options.port = 2350;
         this.options.port_query = 5000;
         this.gbxclient = false;
-        this.options.tcpTimeout = timeout
-        this.options.udpTimeout = timeout
     }
 
     reset() {

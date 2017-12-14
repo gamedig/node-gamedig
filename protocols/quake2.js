@@ -1,8 +1,6 @@
 class Quake2 extends require('./core') {
     constructor() {
         super();
-        this.options.tcpTimeout = timeout
-        this.options.udpTimeout = timeout
         this.encoding = 'latin1';
         this.delimiter = '\n';
         this.sendHeader = 'status';

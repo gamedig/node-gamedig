@@ -1,8 +1,6 @@
 class Gamespy2 extends require('./core') {
-    constructor( timeout ) {
+    constructor() {
         super();
-        this.options.tcpTimeout = timeout
-        this.options.udpTimeout = timeout
         this.sessionId = 1;
         this.encoding = 'latin1';
         this.byteorder = 'be';

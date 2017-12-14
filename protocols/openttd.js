@@ -2,13 +2,6 @@ const async = require('async'),
     moment = require('moment');
 
 class OpenTtd extends require('./core') {
-    constructor( timeout ) {
-        super();
-
-        this.options.tcpTimeout = timeout
-        this.options.udpTimeout = timeout
-    }
-    
     run(state) {
         async.series([
             (c) => {

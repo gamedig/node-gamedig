@@ -1,8 +1,6 @@
 class Doom3 extends require('./core') {
-    constructor( timeout ) {
+    constructor() {
         super();
-        this.options.tcpTimeout = timeout
-        this.options.udpTimeout = timeout
         this.pretty = 'Doom 3';
         this.encoding = 'latin1';
         this.isEtqw = false;
