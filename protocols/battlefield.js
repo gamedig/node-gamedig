@@ -1,8 +1,10 @@
 const async = require('async');
 
 class Battlefield extends require('./core') {
-    constructor() {
+    constructor( timeout ) {
         super();
+        this.options.tcpTimeout = timeout
+        this.options.udpTimeout = timeout
         this.encoding = 'latin1';
         this.isBadCompany2 = false;
     }

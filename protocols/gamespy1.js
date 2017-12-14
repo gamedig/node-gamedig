@@ -1,8 +1,10 @@
 const async = require('async');
 
 class Gamespy1 extends require('./core') {
-    constructor() {
+    constructor( timeout ) {
         super();
+        this.options.tcpTimeout = timeout
+        this.options.udpTimeout = timeout
         this.sessionId = 1;
         this.encoding = 'latin1';
         this.byteorder = 'be';

@@ -1,7 +1,9 @@
 class MumblePing extends require('./core') {
-    constructor() {
+    constructor( timeout ) {
         super();
         this.byteorder = 'be';
+        this.options.tcpTimeout = timeout
+        this.options.udpTimeout = timeout
     }
 
     run(state) {

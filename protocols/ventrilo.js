@@ -1,6 +1,8 @@
 class Ventrilo extends require('./core') {
-    constructor() {
+    constructor( timeout ) {
         super();
+        this.options.tcpTimeout = timeout
+        this.options.udpTimeout = timeout
         this.byteorder = 'be';
     }
     run(state) {
