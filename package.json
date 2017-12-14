@@ -19,6 +19,9 @@
 	"bugs": {
 		"url": "https://github.com/sonicsnes/node-gamedig/issues"
 	},
+	"scripts": {
+		"dev": "nodemon test/randomPort.js"
+	},
 	"license": "MIT",
 	"engines": {
 		"node": ">=6.0.0"
@@ -32,6 +35,7 @@
 		"minimist": "^1.2.0",
 		"moment": "^2.18.1",
 		"request": "^2.81.0",
+		"udp-free-port": "^1.0.0",
 		"varint": "^4.0.1"
 	},
 	"bin": {
@@ -44,5 +48,8 @@
 		"games.txt",
 		"LICENSE",
 		"README.md"
-	]
+	],
+	"devDependencies": {
+		"nodemon": "^1.12.7"
+	}
 }
