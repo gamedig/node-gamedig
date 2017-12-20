@@ -51,6 +51,7 @@ function(e,state) {
 * **host**
 * **port**: (optional) Uses the protocol default if not set
 * **timeout**: (optional) The max timeout, in milliseconds, for both UDP & TCP requests (default: 1000)
+* **maxAttempts**: (optional) How many times should the query be retried in case it fails
 * **notes**: (optional) Passed through to output
 
 ### Return Value
