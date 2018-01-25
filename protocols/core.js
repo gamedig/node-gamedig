@@ -70,6 +70,7 @@ class Core extends EventEmitter {
         if('port_query' in this.options) state.query.port_query = this.options.port_query;
         state.query.type = this.type;
         if('pretty' in this) state.query.pretty = this.pretty;
+        if(this.startTime) state.query.timeTaken = (new Date() - this.startTime) / 1000
 
         this.reset();
         this.finished = true;
@@ -95,6 +96,7 @@ class Core extends EventEmitter {
     }
 
     start() {
+        this.startTime = new Date()
         const options = this.options;
         this.reset();
 
