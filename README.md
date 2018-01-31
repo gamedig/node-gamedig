@@ -50,6 +50,7 @@ function(e,state) {
 * **type**: One of the game IDs listed in the game list below
 * **host**
 * **port**: (optional) Uses the protocol default if not set
+* **maxAttempts**: (optional) How many times should the query be retried in case it fails
 * **notes**: (optional) Passed through to output
 
 ### Return Value
