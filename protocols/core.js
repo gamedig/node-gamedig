@@ -70,8 +70,7 @@ class Core extends EventEmitter {
         if('port_query' in this.options) state.query.port_query = this.options.port_query;
         state.query.type = this.type;
         if('pretty' in this) state.query.pretty = this.pretty;
-
-        state.duration = Date.now() - this.startMillis;
+        state.query.duration = Date.now() - this.startMillis;
 
         this.reset();
         this.finished = true;
