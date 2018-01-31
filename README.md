@@ -50,6 +50,7 @@ function(e,state) {
 * **type**: One of the game IDs listed in the game list below
 * **host**
 * **port**: (optional) Uses the protocol default if not set
+* **timeout**: (optional) The max timeout, in milliseconds, for both UDP & TCP requests (default: 1000)
 * **notes**: (optional) Passed through to output
 * **maxAttempts**: (optional) Number of attempts to query server in case of failure (default 1)
 
