@@ -71,6 +71,8 @@ class Core extends EventEmitter {
         state.query.type = this.type;
         if('pretty' in this) state.query.pretty = this.pretty;
 
+        state.duration = Date.now() - this.startMillis;
+
         this.reset();
         this.finished = true;
         this.emit('finished',state);
@@ -97,6 +99,8 @@ class Core extends EventEmitter {
     start() {
         const options = this.options;
         this.reset();
+
+        this.startMillis = Date.now();
 
         async.series([
             (c) => {
