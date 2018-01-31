@@ -51,6 +51,7 @@ function(e,state) {
 * **host**
 * **port**: (optional) Uses the protocol default if not set
 * **notes**: (optional) Passed through to output
+* **maxAttempts**: (optional) Number of attempts to query server in case of failure (default 1)
 
 ### Return Value
 

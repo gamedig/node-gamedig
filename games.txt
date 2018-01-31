@@ -166,8 +166,8 @@ mohbt|Medal of Honor: Breakthrough|gamespy1|port=12203,port_query_offset=97
 moh2010|Medal of Honor 2010|battlefield|port=7673,port_query=48888
 mohwf|Medal of Honor: Warfighter|battlefield|port=25200,port_query_offset=22000
 
-minecraft|Minecraft|gamespy3|port=25565|maxAttempts=2,srvRecord=_minecraft._tcp,doc_notes=minecraft
-minecraftpe|Minecraft: Pocket Edition|gamespy3|port=19132|maxAttempts=2
+minecraft|Minecraft|gamespy3|port=25565,maxAttempts=2|srvRecord=_minecraft._tcp,doc_notes=minecraft
+minecraftpe|Minecraft: Pocket Edition|gamespy3|port=19132,maxAttempts=2
 minecraftping|Minecraft|minecraftping|port=25565|srvRecord=_minecraft._tcp,doc_notes=minecraft
 mnc|Monday Night Combat|valve|port=7777,port_query=27016
 mtavc|Multi Theft Auto: Vice City|ase|port=22003,port_query_offset=123

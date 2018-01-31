@@ -10,9 +10,9 @@ class Core extends EventEmitter {
         super();
         this.options = {
             tcpTimeout: 1000,
-            udpTimeout: 1000
+            udpTimeout: 1000,
+            maxAttempts: 1
         };
-        this.maxAttempts = 1;
         this.attempt = 1;
         this.finished = false;
         this.encoding = 'utf8';
@@ -26,7 +26,7 @@ class Core extends EventEmitter {
     }
 
     fatal(err,noretry) {
-        if(!noretry && this.attempt < this.maxAttempts) {
+        if(!noretry && this.attempt < this.options.maxAttempts) {
             this.attempt++;
             this.start();
             return;
