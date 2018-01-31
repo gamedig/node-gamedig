@@ -45,13 +45,22 @@ function(e,state) {
 > npm install sonicsnes/node-gamedig
 > ```
 
-### Input Parameters
+### Query Options
+
+**Typical**
 
 * **type**: One of the game IDs listed in the game list below
-* **host**
+* **host**: Hostname or IP of the game server
 * **port**: (optional) Uses the protocol default if not set
-* **notes**: (optional) Passed through to output
-* **maxAttempts**: (optional) Number of attempts to query server in case of failure (default 1)
+
+**Advanced**
+
+* **notes**: (optional) An object passed through in the return value.
+* **maxAttempts**: (optional) Number of attempts to query server in case of failure. (default 1)
+* **socketTimeout**: (optional) Milliseconds to wait for a single packet. Beware that increasing this
+ will cause many queries to take longer even if the server is online. (default 1000)
+* **attemptTimeout**: (optional) Milliseconds allowed for an entire query attempt. This timeout is not commonly hit,
+ as the socketTimeout typically fires first. (default 10000)
 
 ### Return Value
 

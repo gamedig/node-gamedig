@@ -1,7 +1,7 @@
 class Mumble extends require('./core') {
     constructor() {
         super();
-        this.options.tcpTimeout = 5000;
+        this.options.socketTimeout = 5000;
     }
 
     run(state) {

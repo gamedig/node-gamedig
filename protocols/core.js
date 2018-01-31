@@ -9,8 +9,8 @@ class Core extends EventEmitter {
     constructor() {
         super();
         this.options = {
-            tcpTimeout: 1000,
-            udpTimeout: 1000,
+            socketTimeout: 1000,
+            attemptTimeout: 10000,
             maxAttempts: 1
         };
         this.attempt = 1;
@@ -19,10 +19,7 @@ class Core extends EventEmitter {
         this.byteorder = 'le';
         this.delimiter = '\0';
         this.srvRecord = null;
-
-        this.globalTimeoutTimer = setTimeout(() => {
-            this.fatal('timeout');
-        },10000);
+        this.attemptTimeoutTimer = null;
     }
 
     fatal(err,noretry) {
@@ -58,7 +55,6 @@ class Core extends EventEmitter {
 
     done(state) {
         if(this.finished) return;
-        clearTimeout(this.globalTimeoutTimer);
 
         if(this.options.notes)
             state.notes = this.options.notes;
@@ -71,6 +67,7 @@ class Core extends EventEmitter {
         state.query.type = this.type;
         if('pretty' in this) state.query.pretty = this.pretty;
         state.query.duration = Date.now() - this.startMillis;
+        state.query.attempts = this.attempt;
 
         this.reset();
         this.finished = true;
@@ -79,6 +76,7 @@ class Core extends EventEmitter {
     }
 
     reset() {
+        clearTimeout(this.attemptTimeoutTimer);
         if(this.timers) {
             for (const timer of this.timers) {
                 clearTimeout(timer);
@@ -100,6 +98,10 @@ class Core extends EventEmitter {
         this.reset();
 
         this.startMillis = Date.now();
+
+        this.attemptTimeoutTimer = setTimeout(() => {
+            this.fatal('timeout');
+        },this.options.attemptTimeout);
 
         async.series([
             (c) => {
@@ -211,7 +213,6 @@ class Core extends EventEmitter {
             connected = true;
             c(socket);
         });
-        socket.setTimeout(10000);
         socket.setNoDelay(true);
         if(this.debug) console.log(address+':'+port+" TCPCONNECT");
 
@@ -255,12 +256,10 @@ class Core extends EventEmitter {
             this.tcpTimeoutTimer = this.setTimeout(() => {
                 this.tcpCallback = false;
                 this.fatal('TCP Watchdog Timeout');
-            },this.options.tcpTimeout);
+            },this.options.socketTimeout);
             this.tcpCallback = ondata;
         });
     }
-
-
 
     udpSend(buffer,onpacket,ontimeout) {
         process.nextTick(() => {
@@ -273,7 +272,7 @@ class Core extends EventEmitter {
                 let timeout = false;
                 if(!ontimeout || ontimeout() !== true) timeout = true;
                 if(timeout) this.fatal('UDP Watchdog Timeout');
-            },this.options.udpTimeout);
+            },this.options.socketTimeout);
             this.udpCallback = onpacket;
         });
     }
