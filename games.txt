@@ -152,6 +152,7 @@ killingfloor|Killing Floor|killingfloor|port=7707,port_query_offset=1
 killingfloor2|Killing Floor 2|valve|port=7777,port_query=27015
 kingpin|Kingpin: Life of Crime|gamespy1|port=31510,port_query_offset=-10
 kisspc|KISS Psycho Circus|gamespy1|port=7777,port_query_offset=1
+kspdmp|DMP - KSP Multiplayer|kspdmp|port=6702,port_query_offset=1
 kzmod|KzMod|valve
 left4dead|Left 4 Dead|valve
 left4dead2|Left 4 Dead 2|valve

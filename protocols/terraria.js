@@ -4,7 +4,7 @@ class Terraria extends require('./core') {
     run(state) {
         request({
             uri: 'http://'+this.options.address+':'+this.options.port_query+'/v2/server/status',
-            timeout: 3000,
+            timeout: this.options.socketTimeout,
             qs: {
                 players: 'true',
                 token: this.options.token

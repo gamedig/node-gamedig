@@ -202,6 +202,7 @@ Games List
 * Killing Floor 2 (killingfloor2) [[Separate Query Port](#separate-query-port)]
 * Kingpin: Life of Crime (kingpin) [[Separate Query Port](#separate-query-port)]
 * KISS Psycho Circus (kisspc) [[Separate Query Port](#separate-query-port)]
+* DMP - KSP Multiplayer (kspdmp) [[Separate Query Port](#separate-query-port)]
 * KzMod (kzmod)
 * Left 4 Dead (left4dead)
 * Left 4 Dead 2 (left4dead2)
