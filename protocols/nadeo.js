@@ -22,7 +22,7 @@ class Nadeo extends require('./core') {
             ['Connect'],
             ['Authenticate', this.options.login,this.options.password],
             ['GetStatus'], // 1
-            ['GetPlayerList',500,0], // 2
+            ['GetPlayerList',10000,0], // 2
             ['GetServerOptions'], // 3
             ['GetCurrentMapInfo'], // 4
             ['GetCurrentGameInfo'], // 5
@@ -64,13 +64,10 @@ class Nadeo extends require('./core') {
             state.currmap_name = this.stripColors(results[4].Name);
             state.currmap_uid = results[4].UId;
             state.gametype = gamemode;
+            state.players = results[2];
             state.mapcount = results[5].NbChallenge;
             state.nextmap_name = this.stripColors(results[6].Name);
             state.nextmap_uid = results[6].UId;
-
-            for (const player of results[2]) {
-                state.players.push({name:this.stripColors(player.Name)});
-            }
 
             this.finish(state);
         });
