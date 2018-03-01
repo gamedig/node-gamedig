@@ -74,8 +74,9 @@ class Nadeo extends require('./core') {
     }
 
     stripColors(str) {
-        return str.replace(/\$([0-9a-f][^\$]?[^\$]?|[^\$]?)/g,'');
+        return str.replace(/\$([0-9a-f][^\$][^\$]|[^\$]?[^\$]?[^\$])/g,'');
     }
+
 }
 
 module.exports = Nadeo;
