@@ -34,16 +34,15 @@ class Unreal2 extends require('./core') {
             state.raw.teams = [];
             for(let i = 0; i < state.raw.teamCount; i++) {
                 const teamName = this.readString(reader);
-                const teamValues = this.readString(reader)
-                    .replace(/%t/g, teamName)
-                    .split('\t')
-                    .map((a) => a.trim());
+                const teamValues = this.readValues(reader);
 
                 const teamInfo = {};
                 for (let i = 0; i < teamValues.length && i < teamFields.length; i++) {
-                    const key = teamFields[i];
+                    let key = teamFields[i];
                     let value = teamValues[i];
-                    if (key === 'score' || key === 'players') value = parseInt(value);
+                    if (key === 'ultra_base') key = 'name';
+                    if (value === '%t') value = teamName;
+                    if (['score','players'].includes(key)) value = parseInt(value);
                     teamInfo[key] = value;
                 }
                 state.raw.teams.push(teamInfo);
@@ -54,21 +53,17 @@ class Unreal2 extends require('./core') {
                 const packetLoss = reader.uint(1);
                 const teamNum = reader.uint(1);
                 const name = this.readString(reader);
-                const valuesStr = this.readString(reader);
-                if (!valuesStr) continue;
-                const playerValues = valuesStr
-                    .replace(/%p/g, ping)
-                    .replace(/%l/g, packetLoss)
-                    .replace(/%t/g, teamNum)
-                    .replace(/%n/g, name)
-                    .split('\t')
-                    .map((a) => a.trim());
+                const playerValues = this.readValues(reader);
 
                 const playerInfo = {};
                 for (let i = 0; i < playerValues.length && i < playerFields.length; i++) {
-                    const key = playerFields[i];
+                    let key = playerFields[i];
                     let value = playerValues[i];
-                    if (key === 'score' || key === 'ping' || key === 'pl') value = parseInt(value);
+                    if (value === '%p') value = ping;
+                    if (value === '%l') value = packetLoss;
+                    if (value === '%t') value = teamNum;
+                    if (value === '%n') value = name;
+                    if (['score','ping','pl','kills','lvl'].includes(key)) value = parseInt(value);
                     if (key === 'team') {
                         const teamId = parseInt(value);
                         if (teamId >= 0 && teamId < state.raw.teams.length && state.raw.teams[teamId].name) {
@@ -87,11 +82,20 @@ class Unreal2 extends require('./core') {
         });
     }
     readFieldList(reader) {
-        return ('?'+this.readString(reader))
+        const str = this.readString(reader);
+        if (!str) return [];
+        return ('?'+str)
             .split('\t')
-            .map((a) => a.substr(1).toLowerCase())
+            .map((a) => a.substr(1).trim().toLowerCase())
             .map((a) => a === 'team name' ? 'name' : a)
             .map((a) => a === 'player name' ? 'name' : a);
+    }
+    readValues(reader) {
+        const str = this.readString(reader);
+        if (!str) return [];
+        return str
+            .split('\t')
+            .map((a) => a.trim());
     }
     readString(reader) {
         const length = reader.uint(1);
