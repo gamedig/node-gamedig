@@ -1,4 +1,4 @@
-class Unreal2 extends require('./core') {
+class Tribes1 extends require('./core') {
     constructor() {
         super();
         this.encoding = 'latin1';
@@ -28,8 +28,6 @@ class Unreal2 extends require('./core') {
 
             const teamFields = this.readFieldList(reader);
             const playerFields = this.readFieldList(reader);
-            console.log(teamFields);
-            console.log(playerFields);
 
             state.raw.teams = [];
             for(let i = 0; i < state.raw.teamCount; i++) {
@@ -104,4 +102,4 @@ class Unreal2 extends require('./core') {
     }
 }
 
-module.exports = Unreal2;
+module.exports = Tribes1;
