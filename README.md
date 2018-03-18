@@ -307,6 +307,7 @@ Games List
 * Trackmania 2 (trackmania2) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]
 * Trackmania Forever (trackmaniaforever) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]
 * Tremulous (tremulous) [[Separate Query Port](#separate-query-port)]
+* Tribes 1: Starsiege (tribes1)
 * Tribes: Vengeance (tribesvengeance) [[Separate Query Port](#separate-query-port)]
 * Tron 2.0 (tron20) [[Separate Query Port](#separate-query-port)]
 * Turok 2 (turok2) [[Separate Query Port](#separate-query-port)]
@@ -356,7 +357,6 @@ Games List
 * Savage 2: A Tortured Soul
 * Sum of All Fears
 * Teeworlds
-* Tribes 1: Starsiege
 * Tribes 2
 * Vice City Multiplayer
 * World in Conflict

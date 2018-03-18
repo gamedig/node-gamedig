@@ -266,6 +266,7 @@ towerunite|Tower Unite|valve
 trackmania2|Trackmania 2|nadeo||doc_notes=nadeo-shootmania--trackmania--etc
 trackmaniaforever|Trackmania Forever|nadeo||doc_notes=nadeo-shootmania--trackmania--etc
 tremulous|Tremulous|quake3|port_query=30720
+tribes1|Tribes 1: Starsiege|tribes1|port=28001
 tribesvengeance|Tribes: Vengeance|gamespy2|port=7777,port_query_offset=1
 tron20|Tron 2.0|gamespy2|port_query=27888
 turok2|Turok 2|gamespy1|port_query=12880
