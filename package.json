@@ -30,8 +30,8 @@
 		"iconv-lite": "^0.4.18",
 		"long": "^2.4.0",
 		"minimist": "^1.2.0",
-		"moment": "^2.18.1",
-		"request": "^2.81.0",
+		"moment": "^2.21.0",
+		"request": "^2.85.0",
 		"varint": "^4.0.1"
 	},
 	"bin": {
