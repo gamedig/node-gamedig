@@ -21,11 +21,12 @@ class Nadeo extends require('./core') {
         const cmds = [
             ['Connect'],
             ['Authenticate', this.options.login,this.options.password],
-            ['GetStatus'],
-            ['GetPlayerList',500,0],
-            ['GetServerOptions'],
-            ['GetCurrentChallengeInfo'],
-            ['GetCurrentGameInfo']
+            ['GetStatus'], // 1
+            ['GetPlayerList',10000,0], // 2
+            ['GetServerOptions'], // 3
+            ['GetCurrentMapInfo'], // 4
+            ['GetCurrentGameInfo'], // 5
+            ['GetNextMapInfo'] // 6
         ];
         const results = [];
 
@@ -59,11 +60,19 @@ class Nadeo extends require('./core') {
             state.name = this.stripColors(results[3].Name);
             state.password = (results[3].Password !== 'No password');
             state.maxplayers = results[3].CurrentMaxPlayers;
+            state.raw.maxspectators = results[3].CurrentMaxSpectators;
             state.map = this.stripColors(results[4].Name);
+            state.raw.mapUid = results[4].UId;
             state.raw.gametype = gamemode;
+            state.raw.players = results[2];
+            state.raw.mapcount = results[5].NbChallenge;
+            state.raw.nextmapName = this.stripColors(results[6].Name);
+            state.raw.nextmapUid = results[6].UId;
 
-            for (const player of results[2]) {
-                state.players.push({name:this.stripColors(player.Name)});
+            for (const player of state.raw.players) {
+                state.players.push({
+                    name:this.stripColors(player.Name || player.NickName)
+                });
             }
 
             this.finish(state);
@@ -71,8 +80,9 @@ class Nadeo extends require('./core') {
     }
 
     stripColors(str) {
-        return str.replace(/\$([0-9a-f][^\$]?[^\$]?|[^\$]?)/g,'');
+        return str.replace(/\$([0-9a-f]{3}|[a-z])/gi,'');
     }
+
 }
 
 module.exports = Nadeo;
