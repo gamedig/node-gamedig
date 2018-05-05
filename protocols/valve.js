@@ -20,10 +20,6 @@ class Valve extends require('./core') {
         // at all, use the old dedicated challenge query if needed
         this.legacyChallenge = false;
 
-        // cs:go provides an annoying additional bot that looks exactly like a player,
-        // but is always named "Max Players"
-        this.isCsGo = false;
-
         // 2006 engines don't pass packet switching size in split packet header
         // while all others do, this need is detected automatically
         this._skipSizeInSplitHeader = false;
@@ -143,6 +139,7 @@ class Valve extends require('./core') {
     }
 
     queryPlayers(state,c) {
+        state.raw.players = [];
         this.sendPacket(0x55,true,false,0x44,(b) => {
             const reader = this.reader(b);
             const num = reader.uint(1);
@@ -157,46 +154,19 @@ class Valve extends require('./core') {
                 // connecting players don't count as players.
                 if(!name) continue;
 
-                (time === -1 ? state.bots : state.players).push({
+                // CSGO sometimes adds a bot named 'Max Players' if host_players_show is not 2
+                if (state.raw.steamappid === 730 && name === 'Max Players') continue;
+
+                state.raw.players.push({
                     name:name, score:score, time:time
                 });
             }
 
-            if(this.isCsGo && state.players.length === 1 && state.players[0].name === 'Max Players') {
-                if(this.debug) console.log("CSGO server using limited player details");
-                state.players = [];
-                for(let i = 0; i < state.raw.numplayers; i++) {
-                    state.players.push({});
-                }
-            }
-
-            // if we didn't find the bots, iterate
-            // through and guess which ones they are
-            if(!state.bots.length && state.raw.numbots) {
-                let maxTime = 0;
-                for (const player of state.players) {
-                    maxTime = Math.max(player.time,maxTime);
-                }
-                for(let i = 0; i < state.players.length; i++) {
-                    const player = state.players[i];
-                    if(state.bots.length >= state.raw.numbots) continue;
-                    if(player.time !== maxTime) continue;
-                    state.bots.push(player);
-                    state.players.splice(i, 1);
-                    i--;
-                }
-            }
-
             c();
         }, () => {
-            // no players were returned after timeout --
-            // csgo seems to do this sometimes if host_players_show is not 2
-            if (this.isCsGo) {
-                if(this.debug) console.log("CSGO server didn't respond with player list");
-                state.players = [];
-                for(let i = 0; i < state.raw.numplayers; i++) {
-                    state.players.push({});
-                }
+            // CSGO doesn't even respond sometimes if host_players_show is not 2
+            // Ignore timeouts in only this case
+            if (state.raw.steamappid === 730) {
                 c();
                 return true;
             }
@@ -230,10 +200,6 @@ class Valve extends require('./core') {
             delete state.raw.rules.bat_name_s;
             if ('bat_player_count_s' in state.raw.rules) {
                 state.raw.numplayers = parseInt(state.raw.rules.bat_player_count_s);
-                state.players = [];
-                for(let i = 0; i < state.raw.numplayers; i++) {
-                    state.players.push({});
-                }
                 delete state.raw.rules.bat_player_count_s;
             }
             if ('bat_max_players_i' in state.raw.rules) {
@@ -246,6 +212,26 @@ class Valve extends require('./core') {
             }
             // apparently map is already right, and this var is often wrong
             delete state.raw.rules.bat_map_s;
+        }
+
+        // Organize players / hidden players into player / bot arrays
+        const botProbability = (p) => {
+            if (p.time === -1) return Number.MAX_VALUE;
+            return p.time;
+        };
+        const sortedPlayers = state.raw.players.sort((a,b) => {
+            return botProbability(a) - botProbability(b);
+        });
+        delete state.raw.players;
+        const numBots = state.raw.numbots;
+        const numPlayers = state.raw.numplayers - numBots;
+        while(state.bots.length < numBots) {
+            if (sortedPlayers.length) state.bots.push(sortedPlayers.pop());
+            else state.bots.push({});
+        }
+        while(state.players.length < numPlayers || sortedPlayers.length) {
+            if (sortedPlayers.length) state.players.push(sortedPlayers.pop());
+            else state.players.push({});
         }
 
         c();
