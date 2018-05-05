@@ -107,6 +107,7 @@ Games List
 * ArmA 3 (arma3) [[Separate Query Port](#separate-query-port)]
 * Armagetron (armagetron)
 * Baldur's Gate (baldursgate) [[Separate Query Port](#separate-query-port)]
+* Battalion 1944 (bat1944) [[Separate Query Port](#separate-query-port)]
 * Battlefield 1942 (bf1942) [[Separate Query Port](#separate-query-port)]
 * Battlefield Vietnam (bfv) [[Separate Query Port](#separate-query-port)]
 * Battlefield 2 (bf2) [[Separate Query Port](#separate-query-port)]

@@ -37,6 +37,7 @@ class Valve extends require('./core') {
             (c) => { this.queryChallenge(state,c); },
             (c) => { this.queryPlayers(state,c); },
             (c) => { this.queryRules(state,c); },
+            (c) => { this.cleanup(state,c); },
             (c) => { this.finish(state); }
         ]);
     }
@@ -203,10 +204,10 @@ class Valve extends require('./core') {
     }
 
     queryRules(state,c) {
+        state.raw.rules = {};
         this.sendPacket(0x56,true,false,0x45,(b) => {
             const reader = this.reader(b);
             const num = reader.uint(2);
-            state.raw.rules = {};
             for(let i = 0; i < num; i++) {
                 const key = reader.string();
                 const value = reader.string();
@@ -220,6 +221,34 @@ class Valve extends require('./core') {
             c();
             return true;
         });
+    }
+
+    cleanup(state,c) {
+        // Battalion 1944 puts its info into rules fields for some reason
+        if ('bat_name_s' in state.raw.rules) {
+            state.name = state.raw.rules.bat_name_s;
+            delete state.raw.rules.bat_name_s;
+            if ('bat_player_count_s' in state.raw.rules) {
+                state.raw.numplayers = parseInt(state.raw.rules.bat_player_count_s);
+                state.players = [];
+                for(let i = 0; i < state.raw.numplayers; i++) {
+                    state.players.push({});
+                }
+                delete state.raw.rules.bat_player_count_s;
+            }
+            if ('bat_max_players_i' in state.raw.rules) {
+                state.maxplayers = parseInt(state.raw.rules.bat_max_players_i);
+                delete state.raw.rules.bat_max_players_i;
+            }
+            if ('bat_has_password_s' in state.raw.rules) {
+                state.password = state.raw.rules.bat_has_password_s === 'Y';
+                delete state.raw.rules.bat_has_password_s;
+            }
+            // apparently map is already right, and this var is often wrong
+            delete state.raw.rules.bat_map_s;
+        }
+
+        c();
     }
 
     sendPacket(type,sendChallenge,payload,expect,callback,ontimeout) {

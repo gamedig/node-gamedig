@@ -49,6 +49,7 @@ arma3|ArmA 3|valve|port=2302,port_query_offset=1
 
 armagetron|Armagetron|armagetron|port=4534
 baldursgate|Baldur's Gate|gamespy1|port=6073,port_query=1470
+bat1944|Battalion 1944|valve|port=7777,port_query_offset=3
 
 bf1942|Battlefield 1942|gamespy1|port=14567,port_query=23000
 bfv|Battlefield Vietnam|gamespy2|port=15567,port_query=23000
