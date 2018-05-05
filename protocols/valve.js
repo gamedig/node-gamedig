@@ -187,6 +187,18 @@ class Valve extends require('./core') {
             }
 
             c();
+        }, () => {
+            // no players were returned after timeout --
+            // csgo seems to do this sometimes if host_players_show is not 2
+            if (this.isCsGo) {
+                if(this.debug) console.log("CSGO server didn't respond with player list");
+                state.players = [];
+                for(let i = 0; i < state.raw.numplayers; i++) {
+                    state.players.push({});
+                }
+                c();
+                return true;
+            }
         });
     }
 
