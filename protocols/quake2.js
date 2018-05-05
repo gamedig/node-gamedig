@@ -12,14 +12,14 @@ class Quake2 extends require('./core') {
         this.udpSend('\xff\xff\xff\xff'+this.sendHeader+'\x00', (buffer) => {
             const reader = this.reader(buffer);
 
-            const header = reader.string({length:4});
+            const header = reader.string({length:4,encoding:'latin1'});
             if(header !== '\xff\xff\xff\xff') return;
 
             let response;
             if(this.isQuake1) {
                 response = reader.string({length:this.responseHeader.length});
             } else {
-                response = reader.string();
+                response = reader.string({encoding:'latin1'});
             }
             if(response !== this.responseHeader) return;
 

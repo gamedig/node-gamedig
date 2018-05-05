@@ -5,6 +5,7 @@ class FiveM extends require('./quake2') {
         super();
         this.sendHeader = 'getinfo xxx';
         this.responseHeader = 'infoResponse';
+        this.encoding = 'utf8';
     }
 
     finish(state) {
