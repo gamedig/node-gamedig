@@ -9,7 +9,7 @@ class Core extends EventEmitter {
     constructor() {
         super();
         this.options = {
-            socketTimeout: 1000,
+            socketTimeout: 2000,
             attemptTimeout: 10000,
             maxAttempts: 1
         };
