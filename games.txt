@@ -170,7 +170,7 @@ mohwf|Medal of Honor: Warfighter|battlefield|port=25200,port_query_offset=22000
 
 minecraft|Minecraft|minecraft|port=25565|srvRecord=_minecraft._tcp,doc_notes=minecraft
 # Legacy name
-minecraftping|Minecraft|minecraft|port=25565|srvRecord=_minecraft._tcp,doc_notes=minecraft
+minecraftping||minecraft|port=25565|srvRecord=_minecraft._tcp,doc_notes=minecraft
 
 minecraftpe|Minecraft: Pocket Edition|gamespy3|port=19132,maxAttempts=2
 mnc|Monday Night Combat|valve|port=7777,port_query=27016

@@ -218,7 +218,6 @@ Games List
 * Medal of Honor: Warfighter (mohwf) [[Separate Query Port](#separate-query-port)]
 * Minecraft (minecraft) [[Additional Notes](#minecraft)]
 * Minecraft: Pocket Edition (minecraftpe)
-* Minecraft (minecraftping) [[Additional Notes](#minecraft)]
 * Monday Night Combat (mnc) [[Separate Query Port](#separate-query-port)]
 * Multi Theft Auto: Vice City (mtavc) [[Separate Query Port](#separate-query-port)]
 * Multi Theft Auto: San Andreas (mtasa) [[Separate Query Port](#separate-query-port)]
@@ -394,10 +393,6 @@ have set the cvar: host_players_show 2
 ### DayZ
 DayZ uses a query port that is separate from its main game port. The query port is usually
 the game port PLUS 24714 or 24715. You may need to pass this port in as the 'port_query' request option.
-
-### Minecraft
-Some minecraft servers may not respond to a typical status query. If this is the case, try using the
-'minecraftping' server type instead, which uses a less accurate but more reliable solution.
 
 ### Mumble
 For full query results from Mumble, you must be running the
