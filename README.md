@@ -58,7 +58,7 @@ function(e,state) {
 * **notes**: (optional) An object passed through in the return value.
 * **maxAttempts**: (optional) Number of attempts to query server in case of failure. (default 1)
 * **socketTimeout**: (optional) Milliseconds to wait for a single packet. Beware that increasing this
- will cause many queries to take longer even if the server is online. (default 1000)
+ will cause many queries to take longer even if the server is online. (default 2000)
 * **attemptTimeout**: (optional) Milliseconds allowed for an entire query attempt. This timeout is not commonly hit,
  as the socketTimeout typically fires first. (default 10000)
 
