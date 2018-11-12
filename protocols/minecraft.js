@@ -71,12 +71,13 @@ class Minecraft extends require('./core') {
                 try {
                     json = JSON.parse(str);
                     delete json.favicon;
+
+                    state.raw = json;
+                    state.maxplayers = json.players.max;
                 } catch(e) {
                     return this.fatal('Invalid JSON');
                 }
 
-                state.raw = json;
-                state.maxplayers = json.players.max;
                 if(json.players.sample) {
                     for(const player of json.players.sample) {
                         state.players.push({
