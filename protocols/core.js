@@ -286,7 +286,11 @@ class Core extends EventEmitter {
             console.log(this.options.address+':'+this.options.port_query+" UDP-->");
             console.log(HexUtil.debugDump(buffer));
         }
-        this.udpSocket.send(buffer,0,buffer.length,this.options.port_query,this.options.address);
+        if(this.options.port_query > 0 && this.options.port_query <= 65535) {
+            this.udpSocket.send(buffer,0,buffer.length,this.options.port_query,this.options.address);
+        } else {
+            return this.fatal('Attempted to scan a server with an out of range port');
+        }
     }
     _udpResponse(buffer) {
         if(this.udpCallback) {
