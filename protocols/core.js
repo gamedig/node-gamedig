@@ -130,6 +130,8 @@ class Core extends EventEmitter {
         ]);
     }
 
+    run() {}
+
     parseDns(host,c) {
         const resolveStandard = (host,c) => {
             if(this.debug) console.log("Standard DNS Lookup: " + host);

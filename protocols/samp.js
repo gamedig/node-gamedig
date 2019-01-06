@@ -1,6 +1,12 @@
-const async = require('async');
+const async = require('async'),
+    Core = require('./core');
 
-class Samp extends require('./core') {
+class Samp extends Core {
+    constructor() {
+        super();
+        this.encoding = 'win1252';
+    }
+
     run(state) {
         async.series([
             (c) => {
