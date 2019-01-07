@@ -1,7 +1,8 @@
 const async = require('async'),
-    Bzip2 = require('compressjs').Bzip2;
+    Bzip2 = require('compressjs').Bzip2,
+    Core = require('./core');
 
-class Valve extends require('./core') {
+class Valve extends Core {
     constructor() {
         super();
 
@@ -128,7 +129,7 @@ class Valve extends require('./core') {
 
     queryChallenge(state,c) {
         if(this.legacyChallenge) {
-            this.sendPacket(0x57,false,false,0x41,(b) => {
+            this.sendPacket(0x57,false,null,0x41,(b) => {
                 // sendPacket will catch the response packet and
                 // save the challenge for us
                 c();
@@ -140,7 +141,7 @@ class Valve extends require('./core') {
 
     queryPlayers(state,c) {
         state.raw.players = [];
-        this.sendPacket(0x55,true,false,0x44,(b) => {
+        this.sendPacket(0x55,true,null,0x44,(b) => {
             const reader = this.reader(b);
             const num = reader.uint(1);
             for(let i = 0; i < num; i++) {
@@ -175,7 +176,7 @@ class Valve extends require('./core') {
 
     queryRules(state,c) {
         state.raw.rules = {};
-        this.sendPacket(0x56,true,false,0x45,(b) => {
+        this.sendPacket(0x56,true,null,0x45,(b) => {
             const reader = this.reader(b);
             const num = reader.uint(2);
             for(let i = 0; i < num; i++) {
@@ -237,7 +238,22 @@ class Valve extends require('./core') {
         c();
     }
 
-    sendPacket(type,sendChallenge,payload,expect,callback,ontimeout) {
+    /**
+     * @param {number} type
+     * @param {boolean} sendChallenge
+     * @param {?string|Buffer} payload
+     * @param {number} expect
+     * @param {function(Buffer)} callback
+     * @param {(function():boolean)=} ontimeout
+     **/
+    sendPacket(
+        type,
+        sendChallenge,
+        payload,
+        expect,
+        callback,
+        ontimeout
+    ) {
         const packetStorage = {};
 
         const receivedFull = (reader) => {

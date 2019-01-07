@@ -1,4 +1,6 @@
-class Hexen2 extends require('./quake1') {
+const Quake1 = require('./quake1');
+
+class Hexen2 extends Quake1 {
     constructor() {
         super();
         this.sendHeader = '\xFFstatus\x0a';

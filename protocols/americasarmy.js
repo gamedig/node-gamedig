@@ -1,4 +1,6 @@
-class AmericasArmy extends require('./gamespy2') {
+const Gamespy2 = require('./gamespy2');
+
+class AmericasArmy extends Gamespy2 {
     finalizeState(state) {
         super.finalizeState(state);
         state.name = this.stripColor(state.name);

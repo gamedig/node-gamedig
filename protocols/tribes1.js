@@ -1,4 +1,6 @@
-class Tribes1 extends require('./core') {
+const Core = require('./core');
+
+class Tribes1 extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';

@@ -1,4 +1,6 @@
-class Starmade extends require('./core') {
+const Core = require('./core');
+
+class Starmade extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';

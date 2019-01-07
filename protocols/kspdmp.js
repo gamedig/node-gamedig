@@ -1,6 +1,7 @@
-const request = require('request');
+const request = require('request'),
+    Core = require('./core');
 
-class Kspdmp extends require('./core') {
+class Kspdmp extends Core {
     run(state) {
         request({
             uri: 'http://'+this.options.address+':'+this.options.port_query,

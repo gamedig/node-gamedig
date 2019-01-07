@@ -1,6 +1,7 @@
-const request = require('request');
+const request = require('request'),
+    Core = require('./core');
 
-class Terraria extends require('./core') {
+class Terraria extends Core {
     run(state) {
         request({
             uri: 'http://'+this.options.address+':'+this.options.port_query+'/v2/server/status',

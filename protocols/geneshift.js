@@ -1,6 +1,7 @@
-const request = require('request');
+const request = require('request'),
+    Core = require('./core');
 
-class GeneShift extends require('./core') {
+class GeneShift extends Core {
     run(state) {
         request({
             uri: 'http://geneshift.net/game/receiveLobby.php',

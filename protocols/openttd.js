@@ -1,7 +1,8 @@
 const async = require('async'),
-    moment = require('moment');
+    moment = require('moment'),
+    Core = require('./core');
 
-class OpenTtd extends require('./core') {
+class OpenTtd extends Core {
     run(state) {
         async.series([
             (c) => {

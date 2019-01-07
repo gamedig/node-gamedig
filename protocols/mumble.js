@@ -1,4 +1,6 @@
-class Mumble extends require('./core') {
+const Core = require('./core');
+
+class Mumble extends Core {
     constructor() {
         super();
         this.options.socketTimeout = 5000;

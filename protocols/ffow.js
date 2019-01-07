@@ -1,4 +1,6 @@
-class Ffow extends require('./valve') {
+const Valve = require('./valve');
+
+class Ffow extends Valve {
     constructor() {
         super();
         this.byteorder = 'be';

@@ -1,4 +1,6 @@
-class Quake3 extends require('./quake2') {
+const Quake2 = require('./quake2');
+
+class Quake3 extends Quake2 {
     constructor() {
         super();
         this.sendHeader = 'getstatus';

@@ -1,4 +1,6 @@
-class Armagetron extends require('./core') {
+const Core = require('./core');
+
+class Armagetron extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';

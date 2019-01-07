@@ -1,6 +1,7 @@
-const async = require('async');
+const async = require('async'),
+    Core = require('./core');
 
-class Gamespy3 extends require('./core') {
+class Gamespy3 extends Core {
     constructor() {
         super();
         this.sessionId = 1;
@@ -12,7 +13,10 @@ class Gamespy3 extends require('./core') {
     }
 
     run(state) {
-        let challenge,packets;
+        let challenge;
+
+        /** @type Buffer[] */
+        let packets;
 
         async.series([
             (c) => {

@@ -1,4 +1,6 @@
-class Quake2 extends require('./core') {
+const Core = require('./core');
+
+class Quake2 extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';

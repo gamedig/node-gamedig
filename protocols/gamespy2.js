@@ -1,4 +1,6 @@
-class Gamespy2 extends require('./core') {
+const Core = require('./core');
+
+class Gamespy2 extends Core {
     constructor() {
         super();
         this.sessionId = 1;

@@ -1,6 +1,7 @@
-const async = require('async');
+const async = require('async'),
+    Core = require('./core');
 
-class Teamspeak3 extends require('./core') {
+class Teamspeak3 extends Core {
     run(state) {
         async.series([
             (c) => {

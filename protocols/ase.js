@@ -1,4 +1,6 @@
-class Ase extends require('./core') {
+const Core = require('./core');
+
+class Ase extends Core {
     run(state) {
         this.udpSend('s',(buffer) => {
             const reader = this.reader(buffer);

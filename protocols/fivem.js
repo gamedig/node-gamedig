@@ -1,6 +1,7 @@
-const request = require('request');
+const request = require('request'),
+    Quake2 = require('./quake2');
 
-class FiveM extends require('./quake2') {
+class FiveM extends Quake2 {
     constructor() {
         super();
         this.sendHeader = 'getinfo xxx';

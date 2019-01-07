@@ -1,4 +1,6 @@
-class M2mp extends require('./core') {
+const Core = require('./core');
+
+class M2mp extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';

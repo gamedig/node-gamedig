@@ -1,4 +1,6 @@
-class Ventrilo extends require('./core') {
+const Core = require('./core');
+
+class Ventrilo extends Core {
     constructor() {
         super();
         this.byteorder = 'be';

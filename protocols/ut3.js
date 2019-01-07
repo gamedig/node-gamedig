@@ -1,4 +1,6 @@
-class Ut3 extends require('./gamespy3') {
+const Gamespy3 = require('./gamespy3');
+
+class Ut3 extends Gamespy3 {
     finalizeState(state) {
         super.finalizeState(state);
 

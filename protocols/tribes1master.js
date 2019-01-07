@@ -1,6 +1,8 @@
+const Core = require('./core');
+
 /** Unsupported -- use at your own risk!! */
 
-class Tribes1Master extends require('./core') {
+class Tribes1Master extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';

@@ -1,7 +1,8 @@
 const gbxremote = require('gbxremote'),
-    async = require('async');
+    async = require('async'),
+    Core = require('./core');
 
-class Nadeo extends require('./core') {
+class Nadeo extends Core {
     constructor() {
         super();
         this.options.port = 2350;

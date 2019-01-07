@@ -1,4 +1,6 @@
-class MumblePing extends require('./core') {
+const Core = require('./core');
+
+class MumblePing extends Core {
     constructor() {
         super();
         this.byteorder = 'be';

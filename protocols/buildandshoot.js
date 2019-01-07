@@ -1,6 +1,7 @@
-const request = require('request');
+const request = require('request'),
+    Core = require('./core');
 
-class BuildAndShoot extends require('./core') {
+class BuildAndShoot extends Core {
     run(state) {
         request({
             uri: 'http://'+this.options.address+':'+this.options.port_query+'/',

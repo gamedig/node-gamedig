@@ -1,6 +1,7 @@
-const async = require('async');
+const async = require('async'),
+    Core = require('./core');
 
-class Gamespy1 extends require('./core') {
+class Gamespy1 extends Core {
     constructor() {
         super();
         this.sessionId = 1;

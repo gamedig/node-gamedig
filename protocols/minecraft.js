@@ -1,5 +1,6 @@
 const varint = require('varint'),
-    async = require('async');
+    async = require('async'),
+    Core = require('./core');
 
 function varIntBuffer(num) {
     return Buffer.from(varint.encode(num));
@@ -14,8 +15,9 @@ function buildPacket(id,data) {
     ]);
 }
 
-class Minecraft extends require('./core') {
+class Minecraft extends Core {
     run(state) {
+        /** @type Buffer */
         let receivedData;
 
         async.series([

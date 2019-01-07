@@ -1,6 +1,7 @@
-const async = require('async');
+const async = require('async'),
+    Core = require('./core');
 
-class Battlefield extends require('./core') {
+class Battlefield extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';

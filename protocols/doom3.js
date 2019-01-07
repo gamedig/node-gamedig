@@ -1,4 +1,6 @@
-class Doom3 extends require('./core') {
+const Core = require('./core');
+
+class Doom3 extends Core {
     constructor() {
         super();
         this.pretty = 'Doom 3';
