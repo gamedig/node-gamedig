@@ -5,7 +5,7 @@ const argv = require('minimist')(process.argv.slice(2)),
 
 const debug = argv.debug;
 delete argv.debug;
-const outputFormat = argv.output;
+const pretty = !!argv.pretty;
 delete argv.output;
 
 const options = {};
@@ -25,7 +25,7 @@ Gamedig.isCommandLine = true;
 
 Gamedig.query(options)
     .then((state) => {
-        if(outputFormat === 'pretty') {
+        if(pretty) {
             console.log(JSON.stringify(state,null,'  '));
         } else {
             console.log(JSON.stringify(state));
@@ -42,7 +42,7 @@ Gamedig.query(options)
             if (error instanceof Error) {
                 error = error.message;
             }
-            if (outputFormat === 'pretty') {
+            if (pretty) {
                 console.log(JSON.stringify({error: error}, null, '  '));
             } else {
                 console.log(JSON.stringify({error: error}));

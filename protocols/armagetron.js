@@ -7,10 +7,10 @@ class Armagetron extends Core {
         this.byteorder = 'be';
     }
 
-    run(state) {
+    async run(state) {
         const b = Buffer.from([0,0x35,0,0,0,0,0,0x11]);
 
-        this.udpSend(b,(buffer) => {
+        await this.udpSend(b,(buffer) => {
             const reader = this.reader(buffer);
 
             reader.skip(6);
@@ -37,7 +37,7 @@ class Armagetron extends Core {
             state.raw.uri = this.readString(reader);
             state.raw.globalids = this.readString(reader);
             this.finish(state);
-            return true;
+            return null;
         });
     }
 

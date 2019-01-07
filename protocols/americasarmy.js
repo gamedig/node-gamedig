@@ -1,8 +1,8 @@
 const Gamespy2 = require('./gamespy2');
 
 class AmericasArmy extends Gamespy2 {
-    finalizeState(state) {
-        super.finalizeState(state);
+    async run(state) {
+        await super.run(state);
         state.name = this.stripColor(state.name);
         state.map = this.stripColor(state.map);
         for(const key of Object.keys(state.raw)) {
