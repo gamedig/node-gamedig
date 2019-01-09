@@ -57,17 +57,15 @@ class Minecraft extends Core {
 
                 let data = receivedData;
                 const packetId = varint.decode(data);
-                if(this.debug) console.log("Packet ID: "+packetId);
+                this.debugLog("Packet ID: "+packetId);
                 data = data.slice(varint.decode.bytes);
 
                 const strLen = varint.decode(data);
-                if(this.debug) console.log("String Length: "+strLen);
+                this.debugLog("String Length: "+strLen);
                 data = data.slice(varint.decode.bytes);
 
                 const str = data.toString('utf8');
-                if(this.debug) {
-                    console.log(str);
-                }
+                this.debugLog(str);
 
                 let json;
                 try {

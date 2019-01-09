@@ -7,7 +7,7 @@ class Ffow extends Valve {
         this.legacyChallenge = true;
     }
     async queryInfo(state) {
-        if(this.debug) console.log("Requesting ffow info ...");
+        this.debugLog("Requesting ffow info ...");
         const b = await this.sendPacket(
             0x46,
             false,

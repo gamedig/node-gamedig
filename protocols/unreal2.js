@@ -87,14 +87,14 @@ class Unreal2 extends Core {
         ]);
     }
     readExtraInfo(reader,state) {
-        if(this.debug) {
-            console.log("UNREAL2 EXTRA INFO:");
-            console.log(reader.uint(4));
-            console.log(reader.uint(4));
-            console.log(reader.uint(4));
-            console.log(reader.uint(4));
-            console.log(reader.buffer.slice(reader.i));
-        }
+        this.debugLog(log => {
+            log("UNREAL2 EXTRA INFO:");
+            log(reader.uint(4));
+            log(reader.uint(4));
+            log(reader.uint(4));
+            log(reader.uint(4));
+            log(reader.buffer.slice(reader.i));
+        });
     }
     readUnrealString(reader, stripColor) {
         let length = reader.uint(1);
@@ -105,10 +105,10 @@ class Unreal2 extends Core {
             if(length > 0) out = reader.string();
         } else {
             length = (length&0x7f)*2;
-            if(this.debug) {
-                console.log("UCS2 STRING");
-                console.log(length,reader.buffer.slice(reader.i,reader.i+length));
-            }
+            this.debugLog(log => {
+                log("UCS2 STRING");
+                log(length,reader.buffer.slice(reader.i,reader.i+length));
+            });
             out = reader.string({encoding:'ucs2',length:length});
         }
 

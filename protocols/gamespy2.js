@@ -64,19 +64,19 @@ class Gamespy2 extends Core {
         // so we can detect this.
         if (count > 64) {
             reader.skip(-1);
-            if (this.debug) console.log("Detected missing count byte, rewinding by 1");
+            this.debugLog("Detected missing count byte, rewinding by 1");
         } else {
-            if (this.debug) console.log("Detected row count: " + count);
+            this.debugLog("Detected row count: " + count);
         }
 
-        if(this.debug) console.log("Reading fields, starting at: "+reader.rest());
+        this.debugLog(() => "Reading fields, starting at: "+reader.rest());
 
         const fields = [];
         while(!reader.done()) {
             let field = reader.string();
             if(!field) break;
             fields.push(field);
-            if(this.debug) console.log("field:"+field);
+            this.debugLog("field:"+field);
         }
 
         if (!fields.length) return [];
@@ -88,7 +88,7 @@ class Gamespy2 extends Core {
                 let key = fields[iField];
                 let value = reader.string();
                 if(!value && iField === 0) break outer;
-                if(this.debug) console.log("value:"+value);
+                this.debugLog("value:"+value);
                 if(key === 'player_') key = 'name';
                 else if(key === 'score_') key = 'score';
                 else if(key === 'deaths_') key = 'deaths';

@@ -36,7 +36,7 @@ class Valve extends Core {
     }
 
     async queryInfo(state) {
-        if(this.debug) console.log("Requesting info ...");
+        this.debugLog("Requesting info ...");
         const b = await this.sendPacket(
             0x54,
             false,
@@ -114,12 +114,10 @@ class Valve extends Core {
         ) {
             this._skipSizeInSplitHeader = true;
         }
-        if(this.debug) {
-            console.log("STEAM APPID: "+state.raw.steamappid);
-            console.log("PROTOCOL: "+state.raw.protocol);
-        }
+        this.debugLog("STEAM APPID: "+state.raw.steamappid);
+        this.debugLog("PROTOCOL: "+state.raw.protocol);
         if(state.raw.protocol === 48) {
-            if(this.debug) console.log("GOLDSRC DETECTED - USING MODIFIED SPLIT FORMAT");
+            this.debugLog("GOLDSRC DETECTED - USING MODIFIED SPLIT FORMAT");
             this.goldsrcSplits = true;
         }
     }
@@ -128,7 +126,7 @@ class Valve extends Core {
         if(this.legacyChallenge) {
             // sendPacket will catch the response packet and
             // save the challenge for us
-            if(this.debug) console.log("Requesting legacy challenge key ...");
+            this.debugLog("Requesting legacy challenge key ...");
             await this.sendPacket(
                 0x57,
                 false,
@@ -146,7 +144,7 @@ class Valve extends Core {
         // Ignore timeouts in only this case
         const allowTimeout = state.raw.steamappid === 730;
 
-        if(this.debug) console.log("Requesting player list ...");
+        this.debugLog("Requesting player list ...");
         const b = await this.sendPacket(
             0x55,
             true,
@@ -164,7 +162,7 @@ class Valve extends Core {
             const score = reader.int(4);
             const time = reader.float();
 
-            if(this.debug) console.log("Found player: "+name+" "+score+" "+time);
+            this.debugLog("Found player: "+name+" "+score+" "+time);
 
             // connecting players don't count as players.
             if(!name) continue;
@@ -180,7 +178,7 @@ class Valve extends Core {
 
     async queryRules(state) {
         state.raw.rules = {};
-        if(this.debug) console.log("Requesting rules ...");
+        this.debugLog("Requesting rules ...");
         const b = await this.sendPacket(0x56,true,null,0x45,true);
         if (b === null) return; // timed out - the server probably just has rules disabled
 
@@ -258,14 +256,14 @@ class Valve extends Core {
                 (payload) => {
                     const reader = this.reader(payload);
                     const type = reader.uint(1);
-                    if (this.debug) console.log("Received " + type.toString(16) + " expected " + expect.toString(16));
+                    this.debugLog(() => "Received " + type.toString(16) + " expected " + expect.toString(16));
                     if (type === 0x41) {
                         const key = reader.uint(4);
                         if (this._challenge !== key) {
-                            if (this.debug) console.log('Received new challenge key: ' + key);
+                            this.debugLog('Received new challenge key: ' + key);
                             this._challenge = key;
                             if (sendChallenge) {
-                                if (this.debug) console.log('Challenge key changed -- allowing query retry if needed');
+                                this.debugLog('Challenge key changed -- allowing query retry if needed');
                                 requestKeyChanged = true;
                             }
                         }
@@ -326,7 +324,7 @@ class Valve extends Core {
                 const header = reader.int(4);
                 if(header === -1) {
                     // full package
-                    if(this.debug) console.log("Received full packet");
+                    this.debugLog("Received full packet");
                     return onResponse(reader.rest());
                 }
                 if(header === -2) {
@@ -354,10 +352,8 @@ class Valve extends Core {
 
                     packets[packetNum] = payload;
 
-                    if(this.debug) {
-                        console.log("Received partial packet uid:"+uid+" num:"+packetNum);
-                        console.log("Received "+Object.keys(packets).length+'/'+numPackets+" packets for this UID");
-                    }
+                    this.debugLog(() => "Received partial packet uid:"+uid+" num:"+packetNum);
+                    this.debugLog(() => "Received "+Object.keys(packets).length+'/'+numPackets+" packets for this UID");
 
                     if(Object.keys(packets).length !== numPackets) return;
 
@@ -365,20 +361,18 @@ class Valve extends Core {
                     const list = [];
                     for(let i = 0; i < numPackets; i++) {
                         if(!(i in packets)) {
-                            this.fatal('Missing packet #'+i);
-                            return true;
+                            throw new Error('Missing packet #'+i);
                         }
                         list.push(packets[i]);
                     }
 
                     let assembled = Buffer.concat(list);
                     if(bzip) {
-                        if(this.debug) console.log("BZIP DETECTED - Extracing packet...");
+                        this.debugLog("BZIP DETECTED - Extracing packet...");
                         try {
                             assembled = Buffer.from(Bzip2.decompressFile(assembled));
                         } catch(e) {
-                            this.fatal('Invalid bzip packet');
-                            return true;
+                            throw new Error('Invalid bzip packet');
                         }
                     }
                     const assembledReader = this.reader(assembled);

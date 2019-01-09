@@ -39,10 +39,8 @@ class Gamespy3 extends Core {
             const packet = packets[iPacket];
             const reader = this.reader(packet);
 
-            if(this.debug) {
-                console.log("Parsing packet #" + iPacket);
-                console.log(HexUtil.debugDump(packet));
-            }
+            this.debugLog("Parsing packet #" + iPacket);
+            this.debugLog(packet);
 
             // Parse raw server key/values
 
@@ -58,7 +56,7 @@ class Gamespy3 extends Core {
                     }
 
                     state.raw[key] = value;
-                    if (this.debug) console.log(key + " = " + value);
+                    this.debugLog(key + " = " + value);
                 }
             }
 
@@ -92,9 +90,7 @@ class Gamespy3 extends Core {
                     let offset = reader.uint(1);
                     firstMode = false;
 
-                    if (this.debug) {
-                        console.log("Parsing new field: itemType=" + itemType + " fieldName=" + fieldName + " startOffset=" + offset);
-                    }
+                    this.debugLog(() => "Parsing new field: itemType=" + itemType + " fieldName=" + fieldName + " startOffset=" + offset);
 
                     while(!reader.done()) {
                         const item = reader.string();
@@ -102,7 +98,7 @@ class Gamespy3 extends Core {
 
                         while(items.length <= offset) { items.push({}); }
                         items[offset][fieldName] = item;
-                        if (this.debug) console.log("* " + item);
+                        this.debugLog("* " + item);
                         offset++;
                     }
                 }
@@ -173,8 +169,7 @@ class Gamespy3 extends Core {
 
             packets[id] = reader.rest();
             if(this.debug) {
-                console.log("Received packet #"+id);
-                if(last) console.log("(last)");
+                this.debugLog("Received packet #"+id + (last ? " (last)" : ""));
             }
 
             if(!numPackets || Object.keys(packets).length !== numPackets) return;

@@ -98,7 +98,7 @@ class Battlefield extends Core {
         return await this.tcpSend(socket, outPacket, (data) => {
             const decoded = this.decodePacket(data);
             if(decoded) {
-                if(this.debug) console.log(decoded);
+                this.debugLog(decoded);
                 if(decoded.shift() !== 'OK') throw new Error('Missing OK');
                 return decoded;
             }

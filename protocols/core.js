@@ -79,7 +79,7 @@ class Core extends EventEmitter {
                 try {
                     leak.cleanup();
                 } catch(e) {
-                    if (this.debug) console.log("Error during async cleanup: " + e.stack);
+                    this.debugLog("Error during async cleanup: " + e.stack);
                 }
             }
             this.asyncLeaks.clear();
@@ -137,18 +137,18 @@ class Core extends EventEmitter {
         };
         const resolveStandard = async (host) => {
             if(isIp(host)) return host;
-            if(this.debug) console.log("Standard DNS Lookup: " + host);
+            this.debugLog("Standard DNS Lookup: " + host);
             const {address,family} = await dnsLookupAsync(host);
-            if(this.debug) console.log(address);
+            this.debugLog(address);
             return address;
         };
         const resolveSrv = async (srv,host) => {
             if(isIp(host)) return host;
-            if(this.debug) console.log("SRV DNS Lookup: " + srv+'.'+host);
+            this.debugLog("SRV DNS Lookup: " + srv+'.'+host);
             let records;
             try {
                 records = await dnsResolveAsync(srv + '.' + host, 'SRV');
-                if(this.debug) console.log(records);
+                this.debugLog(records);
                 if(records.length >= 1) {
                     const record = records[0];
                     this.options.port = record.port;
@@ -156,7 +156,7 @@ class Core extends EventEmitter {
                     return await resolveStandard(srvhost);
                 }
             } catch(e) {
-                if (this.debug) console.log(e.toString());
+                this.debugLog(e.toString());
             }
             return await resolveStandard(host);
         };
@@ -169,10 +169,10 @@ class Core extends EventEmitter {
         const id = ++this.lastAsyncLeakId;
         const stack = new Error().stack;
         const entry = { id: id, cleanup: fn, stack: stack };
-        if (this.debug) console.log("Registering async leak: " + id);
+        this.debugLog("Registering async leak: " + id);
         this.asyncLeaks.add(entry);
         return () => {
-            if (this.debug) console.log("Removing async leak: " + id);
+            this.debugLog("Removing async leak: " + id);
             this.asyncLeaks.delete(entry);
         }
     }
@@ -215,24 +215,22 @@ class Core extends EventEmitter {
         socket.setNoDelay(true);
         const cancelAsyncLeak = this.addAsyncLeak(() => socket.destroy());
 
-        if(this.debug) {
-            console.log(address+':'+port+" TCP Connecting");
+        this.debugLog(log => {
+            this.debugLog(address+':'+port+" TCP Connecting");
             const writeHook = socket.write;
             socket.write = (...args) => {
-                console.log(address+':'+port+" TCP-->");
-                console.log(HexUtil.debugDump(args[0]));
+                log(address+':'+port+" TCP-->");
+                log(HexUtil.debugDump(args[0]));
                 writeHook.apply(socket,args);
             };
-            socket.on('error', e => console.log('TCP Error: ' + e));
-            socket.on('close', () => console.log('TCP Closed'));
+            socket.on('error', e => log('TCP Error: ' + e));
+            socket.on('close', () => log('TCP Closed'));
             socket.on('data', (data) => {
-                if(this.debug) {
-                    console.log(address+':'+port+" <--TCP");
-                    console.log(HexUtil.debugDump(data));
-                }
+                    log(address+':'+port+" <--TCP");
+                    log(data);
             });
-            socket.on('ready', () => console.log(address+':'+port+" TCP Connected"));
-        }
+            socket.on('ready', () => log(address+':'+port+" TCP Connected"));
+        });
 
         try {
             await this.timedPromise(
@@ -314,22 +312,22 @@ class Core extends EventEmitter {
         if(!('port_query' in this.options)) throw new Error('Attempted to send without setting a port');
         if(!('address' in this.options)) throw new Error('Attempted to send without setting an address');
         if(typeof buffer === 'string') buffer = Buffer.from(buffer,'binary');
-        if(this.debug) {
-            console.log(this.options.address+':'+this.options.port_query+" UDP-->");
-            console.log(HexUtil.debugDump(buffer));
-        }
+        this.debugLog(log => {
+            log(this.options.address+':'+this.options.port_query+" UDP-->");
+            log(HexUtil.debugDump(buffer));
+        });
 
         return await this.withUdpLock(async() => {
             this.udpSocket.send(buffer,0,buffer.length,this.options.port_query,this.options.address);
 
             return await new Promise((resolve,reject) => {
                 const cancelTimeout = this.setTimeout(() => {
-                    if (this.debug) console.log("UDP timeout detected");
+                    this.debugLog("UDP timeout detected");
                     let success = false;
                     if (onTimeout) {
                         const result = onTimeout();
                         if (result !== undefined) {
-                            if (this.debug) console.log("UDP timeout resolved by callback");
+                            this.debugLog("UDP timeout resolved by callback");
                             resolve(result);
                             success = true;
                         }
@@ -342,7 +340,7 @@ class Core extends EventEmitter {
                 this.udpCallback = (buffer) => {
                     const result = onPacket(buffer);
                     if(result !== undefined) {
-                        if (this.debug) console.log("UDP send finished by callback");
+                        this.debugLog("UDP send finished by callback");
                         cancelTimeout();
                         resolve(result);
                     }
@@ -365,6 +363,24 @@ class Core extends EventEmitter {
         });
         promise.finally(cancelAsyncLeak);
         return promise;
+    }
+
+    debugLog(...args) {
+        if (!this.debug) return;
+        try {
+            if(args[0] instanceof Buffer) {
+                this.debugLog(HexUtil.debugDump(args[0]));
+            } else if (typeof args[0] == 'function') {
+                const result = args[0].call(undefined, this.debugLog.bind(this));
+                if (result !== undefined) {
+                    this.debugLog(result);
+                }
+            } else {
+                console.log(...args);
+            }
+        } catch(e) {
+            console.log("Error while debug logging: " + e);
+        }
     }
 }
 
