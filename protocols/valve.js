@@ -36,6 +36,7 @@ class Valve extends Core {
     }
 
     async queryInfo(state) {
+        if(this.debug) console.log("Requesting info ...");
         const b = await this.sendPacket(
             0x54,
             false,
@@ -127,6 +128,7 @@ class Valve extends Core {
         if(this.legacyChallenge) {
             // sendPacket will catch the response packet and
             // save the challenge for us
+            if(this.debug) console.log("Requesting legacy challenge key ...");
             await this.sendPacket(
                 0x57,
                 false,
@@ -144,6 +146,7 @@ class Valve extends Core {
         // Ignore timeouts in only this case
         const allowTimeout = state.raw.steamappid === 730;
 
+        if(this.debug) console.log("Requesting player list ...");
         const b = await this.sendPacket(
             0x55,
             true,
@@ -177,6 +180,7 @@ class Valve extends Core {
 
     async queryRules(state) {
         state.raw.rules = {};
+        if(this.debug) console.log("Requesting rules ...");
         const b = await this.sendPacket(0x56,true,null,0x45,true);
         if (b === null) return; // timed out - the server probably just has rules disabled
 
@@ -248,34 +252,37 @@ class Valve extends Core {
         allowTimeout
     ) {
         for (let keyRetry = 0; keyRetry < 3; keyRetry++) {
-            let retryQuery = false;
+            let requestKeyChanged = false;
             const response = await this.sendPacketRaw(
                 type, sendChallenge, payload,
                 (payload) => {
                     const reader = this.reader(payload);
                     const type = reader.uint(1);
+                    if (this.debug) console.log("Received " + type.toString(16) + " expected " + expect.toString(16));
                     if (type === 0x41) {
                         const key = reader.uint(4);
                         if (this._challenge !== key) {
                             if (this.debug) console.log('Received new challenge key: ' + key);
                             this._challenge = key;
-                            retryQuery = true;
-                            if (keyRetry === 0 && sendChallenge) {
-                                if (this.debug) console.log('Restarting query');
-                                return null;
+                            if (sendChallenge) {
+                                if (this.debug) console.log('Challenge key changed -- allowing query retry if needed');
+                                requestKeyChanged = true;
                             }
                         }
                     }
-                    if (this.debug) console.log("Received " + type.toString(16) + " expected " + expect.toString(16));
                     if (type === expect) {
                         return reader.rest();
+                    } else if (requestKeyChanged) {
+                        return null;
                     }
                 },
                 () => {
                     if (allowTimeout) return null;
                 }
             );
-            if (!retryQuery) return response;
+            if (!requestKeyChanged) {
+                return response;
+            }
         }
         throw new Error('Received too many challenge key responses');
     }

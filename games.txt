@@ -63,7 +63,7 @@ bfh|Battlefield Hardline|battlefield|port=25200,port_query_offset=22000
 breach|Breach|valve|port=27016
 breed|Breed|gamespy2|port=7649
 brink|Brink|valve|port_query_offset=1
-buildandshoot|Build and Shoot|buildandshoot|port=32887,port_query=32886
+buildandshoot|Build and Shoot|buildandshoot|port=32887,port_query_offset=-1
 
 cod|Call of Duty|quake3|port=28960
 coduo|Call of Duty: United Offensive|quake3|port=28960
@@ -148,7 +148,7 @@ il2|IL-2 Sturmovik|gamespy1|port_query=21000
 insurgency|Insurgency|valve
 ironstorm|Iron Storm|gamespy1|port_query=3505
 jamesbondnightfire|James Bond: Nightfire|gamespy1|port_query=6550
-jc2mp|Just Cause 2 Multiplayer|jc2mp|port=7777|isJc2mp
+jc2mp|Just Cause 2 Multiplayer|jc2mp|port=7777
 killingfloor|Killing Floor|killingfloor|port=7707,port_query_offset=1
 killingfloor2|Killing Floor 2|valve|port=7777,port_query=27015
 kingpin|Kingpin: Life of Crime|gamespy1|port=31510,port_query_offset=-10

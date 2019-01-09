@@ -6,9 +6,10 @@ class Jc2mp extends Gamespy3 {
     constructor() {
         super();
         this.useOnlySingleSplit = true;
+        this.isJc2mp = true;
     }
-    finalizeState(state) {
-        super.finalizeState(state);
+    async run(state) {
+        super.run(state);
         if(!state.players.length && parseInt(state.raw.numplayers)) {
             for(let i = 0; i < parseInt(state.raw.numplayers); i++) {
                 state.players.push({});

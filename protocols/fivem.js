@@ -1,5 +1,4 @@
-const request = require('request'),
-    Quake2 = require('./quake2');
+const Quake2 = require('./quake2');
 
 class FiveM extends Quake2 {
     constructor() {
@@ -9,43 +8,28 @@ class FiveM extends Quake2 {
         this.encoding = 'utf8';
     }
 
-    finish(state) {
-        request({
-            uri: 'http://'+this.options.address+':'+this.options.port_query+'/info.json',
-            timeout: this.options.socketTimeout
-        }, (e,r,body) => {
-            if(e) return this.fatal('HTTP error');
-            let json;
-            try {
-                json = JSON.parse(body);
-            } catch(e) {
-                return this.fatal('Invalid JSON');
-            }
+    async run(state) {
+        await super.run(state);
 
-            state.raw.info = json;
-
-            request({
-                uri: 'http://'+this.options.address+':'+this.options.port_query+'/players.json',
-                timeout: this.options.socketTimeout
-            }, (e,r,body) => {
-                if(e) return this.fatal('HTTP error');
-                let json;
-                try {
-                    json = JSON.parse(body);
-                } catch(e) {
-                    return this.fatal('Invalid JSON');
-                }
-
-                state.raw.players = json;
-
-                state.players = [];
-                for (const player of json) {
-                    state.players.push({name:player.name, ping:player.ping});
-                }
-
-                super.finish(state);
+        {
+            const raw = await this.request({
+                uri: 'http://' + this.options.address + ':' + this.options.port_query + '/info.json'
             });
-        });
+            const json = JSON.parse(raw);
+            state.raw.info = json;
+        }
+
+        {
+            const raw = await this.request({
+                uri: 'http://' + this.options.address + ':' + this.options.port_query + '/players.json'
+            });
+            const json = JSON.parse(raw);
+            state.raw.players = json;
+            state.players = [];
+            for (const player of json) {
+                state.players.push({name: player.name, ping: player.ping});
+            }
+        }
     }
 }
 
