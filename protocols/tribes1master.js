@@ -7,7 +7,8 @@ class Tribes1Master extends Core {
         super();
         this.encoding = 'latin1';
     }
-    run(state) {
+
+    async run(state) {
         const queryBuffer = Buffer.from([
             0x10, // standard header
             0x03, // dump servers
@@ -18,28 +19,27 @@ class Tribes1Master extends Core {
 
         let parts = new Map();
         let total = 0;
-        this.udpSend(queryBuffer,(buffer) => {
+        const full = await this.udpSend(queryBuffer,(buffer) => {
             const reader = this.reader(buffer);
             const header = reader.uint(2);
             if (header !== 0x0610) {
-                this.fatal('Header response does not match: ' + header.toString(16));
-                return true;
+                this.debugLog('Header response does not match: ' + header.toString(16));
+                return;
             }
             const num = reader.uint(1);
             const t = reader.uint(1);
             if (t <= 0 || (total > 0 && t !== total)) {
-                this.fatal('Conflicting total: ' + t);
-                return true;
+                throw new Error('Conflicting packet total: ' + t);
             }
             total = t;
 
             if (num < 1 || num > total) {
-                this.fatal('Invalid packet number: ' + num + ' ' + total);
-                return true;
+                this.debugLog('Invalid packet number: ' + num + ' ' + total);
+                return;
             }
             if (parts.has(num)) {
-                this.fatal('Duplicate part: ' + num);
-                return true;
+                this.debugLog('Duplicate part: ' + num);
+                return;
             }
 
             reader.skip(2); // challenge (0x0201)
@@ -49,32 +49,29 @@ class Tribes1Master extends Core {
             if (parts.size === total) {
                 const ordered = [];
                 for (let i = 1; i <= total; i++) ordered.push(parts.get(i));
-                const full = Buffer.concat(ordered);
-                const fullReader = this.reader(full);
-
-                state.raw.name = this.readString(fullReader);
-                state.raw.motd = this.readString(fullReader);
-
-                state.raw.servers = [];
-                while (!fullReader.done()) {
-                    fullReader.skip(1); // junk ?
-                    const count = fullReader.uint(1);
-                    for (let i = 0; i < count; i++) {
-                        const six = fullReader.uint(1);
-                        if (six !== 6) {
-                            this.fatal('Expecting 6');
-                            return true;
-                        }
-                        const ip = fullReader.uint(4);
-                        const port = fullReader.uint(2);
-                        const ipStr = (ip & 255) + '.' + (ip >> 8 & 255) + '.' + (ip >> 16 & 255) + '.' + (ip >>> 24);
-                        state.raw.servers.push(ipStr+":"+port);
-                    }
-                }
-                this.finish(state);
-                return true;
+                return Buffer.concat(ordered);
             }
         });
+
+        const fullReader = this.reader(full);
+        state.raw.name = this.readString(fullReader);
+        state.raw.motd = this.readString(fullReader);
+
+        state.raw.servers = [];
+        while (!fullReader.done()) {
+            fullReader.skip(1); // junk ?
+            const count = fullReader.uint(1);
+            for (let i = 0; i < count; i++) {
+                const six = fullReader.uint(1);
+                if (six !== 6) {
+                    throw new Error('Expecting 6');
+                }
+                const ip = fullReader.uint(4);
+                const port = fullReader.uint(2);
+                const ipStr = (ip & 255) + '.' + (ip >> 8 & 255) + '.' + (ip >> 16 & 255) + '.' + (ip >>> 24);
+                state.raw.servers.push(ipStr+":"+port);
+            }
+        }
     }
     readString(reader) {
         const length = reader.uint(1);

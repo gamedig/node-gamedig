@@ -87,12 +87,13 @@ class Core extends EventEmitter {
     }
 
     timedPromise(promise, timeoutMs, timeoutMsg) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve,reject) => {
             const cancelTimeout = this.setTimeout(
                 () => reject(new Error(timeoutMsg + " - Timed out after " + timeoutMs + "ms")),
                 timeoutMs
             );
-            promise.finally(cancelTimeout).then(resolve,reject);
+            promise = promise.finally(cancelTimeout);
+            promise.then(resolve,reject);
         });
     }
 
@@ -204,8 +205,9 @@ class Core extends EventEmitter {
     }
 
     /**
-     * @param {function(Socket):Promise} fn
-     * @returns {Promise<Socket>}
+     * @template T
+     * @param {function(Socket):Promise<T>} fn
+     * @returns {Promise<T>}
      */
     async withTcp(fn) {
         const address = this.options.address;
@@ -263,10 +265,11 @@ class Core extends EventEmitter {
     }
 
     /**
+     * @template T
      * @param {Socket} socket
-     * @param {Buffer} buffer
-     * @param {function(Buffer):boolean} ondata
-     * @returns {Promise}
+     * @param {Buffer|string} buffer
+     * @param {function(Buffer):T} ondata
+     * @returns Promise<T>
      */
     async tcpSend(socket,buffer,ondata) {
         return await this.timedPromise(
@@ -354,14 +357,22 @@ class Core extends EventEmitter {
     }
 
     request(params) {
-        const promise = requestAsync({
+        let promise = requestAsync({
             ...params,
-            timeout: this.options.socketTimeout
+            timeout: this.options.socketTimeout,
+            resolveWithFullResponse: true
         });
         const cancelAsyncLeak = this.addAsyncLeak(() => {
             promise.cancel();
         });
-        promise.finally(cancelAsyncLeak);
+        this.debugLog(log => {
+            log(() => params.uri+" HTTP-->");
+            promise
+                .then((response) => log(params.uri+" <--HTTP " + response.statusCode))
+                .catch(()=>{});
+        });
+        promise = promise.finally(cancelAsyncLeak);
+        promise = promise.then(response => response.body);
         return promise;
     }
 

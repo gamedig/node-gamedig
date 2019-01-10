@@ -68,7 +68,9 @@ class Quake2 extends Core {
                 player.frags = parseInt(args.shift());
                 player.ping = parseInt(args.shift());
                 player.name = args.shift() || '';
+                if (!player.name) delete player.name;
                 player.address = args.shift() || '';
+                if (!player.address) delete player.address;
             }
 
             (player.ping ? state.players : state.bots).push(player);

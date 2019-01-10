@@ -1,96 +1,75 @@
-const varint = require('varint'),
-    async = require('async'),
-    Core = require('./core');
-
-function varIntBuffer(num) {
-    return Buffer.from(varint.encode(num));
-}
-function buildPacket(id,data) {
-    if(!data) data = Buffer.from([]);
-    const idBuffer = varIntBuffer(id);
-    return Buffer.concat([
-        varIntBuffer(data.length+idBuffer.length),
-        idBuffer,
-        data
-    ]);
-}
+const Core = require('./core'),
+    Varint = require('varint');
 
 class Minecraft extends Core {
-    run(state) {
-        /** @type Buffer */
-        let receivedData;
+    async run(state) {
+        const portBuf = Buffer.alloc(2);
+        portBuf.writeUInt16BE(this.options.port_query,0);
 
-        async.series([
-            (c) => {
-                // build and send handshake and status TCP packet
+        const addressBuf = Buffer.from(this.options.host,'utf8');
 
-                const portBuf = Buffer.alloc(2);
-                portBuf.writeUInt16BE(this.options.port_query,0);
+        const bufs = [
+            this.varIntBuffer(4),
+            this.varIntBuffer(addressBuf.length),
+            addressBuf,
+            portBuf,
+            this.varIntBuffer(1)
+        ];
 
-                const addressBuf = Buffer.from(this.options.address,'utf8');
+        const outBuffer = Buffer.concat([
+            this.buildPacket(0,Buffer.concat(bufs)),
+            this.buildPacket(0)
+        ]);
 
-                const bufs = [
-                    varIntBuffer(4),
-                    varIntBuffer(addressBuf.length),
-                    addressBuf,
-                    portBuf,
-                    varIntBuffer(1)
-                ];
+        const data = await this.withTcp(async socket => {
+            return await this.tcpSend(socket, outBuffer, data => {
+                if(data.length < 10) return;
+                const reader = this.reader(data);
+                const length = reader.varint();
+                if(data.length < length) return;
+                return reader.rest();
+            });
+        });
 
-                const outBuffer = Buffer.concat([
-                    buildPacket(0,Buffer.concat(bufs)),
-                    buildPacket(0)
-                ]);
+        const reader = this.reader(data);
 
-                this.tcpSend(outBuffer, (data) => {
-                    if(data.length < 10) return false;
-                    const expected = varint.decode(data);
-                    data = data.slice(varint.decode.bytes);
-                    if(data.length < expected) return false;
-                    receivedData = data;
-                    c();
-                    return true;
+        const packetId = reader.varint();
+        this.debugLog("Packet ID: "+packetId);
+
+        const strLen = reader.varint();
+        this.debugLog("String Length: "+strLen);
+
+        const str = reader.rest().toString('utf8');
+        this.debugLog(str);
+
+        const json = JSON.parse(str);
+        delete json.favicon;
+
+        state.raw = json;
+        state.maxplayers = json.players.max;
+        if(json.players.sample) {
+            for(const player of json.players.sample) {
+                state.players.push({
+                    id: player.id,
+                    name: player.name
                 });
-            },
-            (c) => {
-                // parse response
-
-                let data = receivedData;
-                const packetId = varint.decode(data);
-                this.debugLog("Packet ID: "+packetId);
-                data = data.slice(varint.decode.bytes);
-
-                const strLen = varint.decode(data);
-                this.debugLog("String Length: "+strLen);
-                data = data.slice(varint.decode.bytes);
-
-                const str = data.toString('utf8');
-                this.debugLog(str);
-
-                let json;
-                try {
-                    json = JSON.parse(str);
-                    delete json.favicon;
-                } catch(e) {
-                    return this.fatal('Invalid JSON');
-                }
-
-                state.raw = json;
-                state.maxplayers = json.players.max;
-                if(json.players.sample) {
-                    for(const player of json.players.sample) {
-                        state.players.push({
-                            id: player.id,
-                            name: player.name
-                        });
-                    }
-                }
-                while(state.players.length < json.players.online) {
-                    state.players.push({});
-                }
-
-                this.finish(state);
             }
+        }
+        while(state.players.length < json.players.online) {
+            state.players.push({});
+        }
+    }
+
+    varIntBuffer(num) {
+        return Buffer.from(Varint.encode(num));
+    }
+    buildPacket(id,data) {
+        if(!data) data = Buffer.from([]);
+        const idBuffer = this.varIntBuffer(id);
+        return Buffer.concat([
+            this.varIntBuffer(data.length+idBuffer.length),
+            idBuffer,
+            data
         ]);
     }
 }

@@ -1,5 +1,4 @@
 const gbxremote = require('gbxremote'),
-    async = require('async'),
     Core = require('./core');
 
 class Nadeo extends Core {
@@ -7,77 +6,89 @@ class Nadeo extends Core {
         super();
         this.options.port = 2350;
         this.options.port_query = 5000;
-        this.gbxclient = false;
     }
 
-    reset() {
-        super.reset();
-        if(this.gbxclient) {
-            this.gbxclient.terminate();
-            this.gbxclient = false;
-        }
-    }
+    async run(state) {
+        await this.withClient(async client => {
+            await this.methodCall(client, 'Authenticate', this.options.login, this.options.password);
+            //const data = this.methodCall(client, 'GetStatus');
 
-    run(state) {
-        const cmds = [
-            ['Connect'],
-            ['Authenticate', this.options.login,this.options.password],
-            ['GetStatus'], // 1
-            ['GetPlayerList',10000,0], // 2
-            ['GetServerOptions'], // 3
-            ['GetCurrentMapInfo'], // 4
-            ['GetCurrentGameInfo'], // 5
-            ['GetNextMapInfo'] // 6
-        ];
-        const results = [];
-
-        async.eachSeries(cmds, (cmdset,c) => {
-            const cmd = cmdset[0];
-            const params = cmdset.slice(1);
-
-            if(cmd === 'Connect') {
-                const client = this.gbxclient = gbxremote.createClient(this.options.port_query,this.options.host, (err) => {
-                    if(err) return this.fatal('GBX error '+JSON.stringify(err));
-                    c();
-                });
-                client.on('error',() => {});
-            } else {
-                this.gbxclient.methodCall(cmd, params, (err, value) => {
-                    if(err) return this.fatal('XMLRPC error '+JSON.stringify(err));
-                    results.push(value);
-                    c();
-                });
+            {
+                const results = await this.methodCall(client, 'GetServerOptions');
+                state.name = this.stripColors(results.Name);
+                state.password = (results.Password !== 'No password');
+                state.maxplayers = results.CurrentMaxPlayers;
+                state.raw.maxspectators = results.CurrentMaxSpectators;
             }
-        }, () => {
-            let gamemode = '';
-            const igm = results[5].GameMode;
-            if(igm === 0) gamemode="Rounds";
-            if(igm === 1) gamemode="Time Attack";
-            if(igm === 2) gamemode="Team";
-            if(igm === 3) gamemode="Laps";
-            if(igm === 4) gamemode="Stunts";
-            if(igm === 5) gamemode="Cup";
 
-            state.name = this.stripColors(results[3].Name);
-            state.password = (results[3].Password !== 'No password');
-            state.maxplayers = results[3].CurrentMaxPlayers;
-            state.raw.maxspectators = results[3].CurrentMaxSpectators;
-            state.map = this.stripColors(results[4].Name);
-            state.raw.mapUid = results[4].UId;
-            state.raw.gametype = gamemode;
-            state.raw.players = results[2];
-            state.raw.mapcount = results[5].NbChallenge;
-            state.raw.nextmapName = this.stripColors(results[6].Name);
-            state.raw.nextmapUid = results[6].UId;
+            {
+                const results = await this.methodCall(client, 'GetCurrentMapInfo');
+                state.map = this.stripColors(results.Name);
+                state.raw.mapUid = results.UId;
+            }
 
+            {
+                const results = await this.methodCall(client, 'GetCurrentGameInfo');
+                let gamemode = '';
+                const igm = results.GameMode;
+                if(igm === 0) gamemode="Rounds";
+                if(igm === 1) gamemode="Time Attack";
+                if(igm === 2) gamemode="Team";
+                if(igm === 3) gamemode="Laps";
+                if(igm === 4) gamemode="Stunts";
+                if(igm === 5) gamemode="Cup";
+                state.raw.gametype = gamemode;
+                state.raw.mapcount = results.NbChallenge;
+            }
+
+            {
+                const results = await this.methodCall(client, 'GetNextMapInfo');
+                state.raw.nextmapName = this.stripColors(results.Name);
+                state.raw.nextmapUid = results.UId;
+            }
+
+            state.raw.players = await this.methodCall(client, 'GetPlayerList', 10000, 0);
             for (const player of state.raw.players) {
                 state.players.push({
                     name:this.stripColors(player.Name || player.NickName)
                 });
             }
-
-            this.finish(state);
         });
+    }
+
+    async withClient(fn) {
+        const socket = gbxremote.createClient(this.options.port_query, this.options.host);
+        const cancelAsyncLeak = this.addAsyncLeak(() => socket.terminate());
+        try {
+            await this.timedPromise(
+                new Promise((resolve,reject) => {
+                    socket.on('connect', resolve);
+                    socket.on('error', e => reject(new Error('GBX Remote Connection Error: ' + e)));
+                    socket.on('close', () => reject(new Error('GBX Remote Connection Refused')));
+                }),
+                this.options.socketTimeout,
+                'GBX Remote Opening'
+            );
+            return await fn(socket);
+        } finally {
+            cancelAsyncLeak();
+            socket.terminate();
+        }
+    }
+
+    async methodCall(client, ...cmdset) {
+        const cmd = cmdset[0];
+        const params = cmdset.slice(1);
+        return await this.timedPromise(
+            new Promise(async (resolve,reject) => {
+                client.methodCall(cmd, params, (err, value) => {
+                    if (err) reject('XMLRPC error ' + JSON.stringify(err));
+                    resolve(value);
+                });
+            }),
+            this.options.socketTimeout,
+            'GBX Method Call'
+        );
     }
 
     stripColors(str) {
