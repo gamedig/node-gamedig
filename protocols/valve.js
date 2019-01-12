@@ -5,8 +5,6 @@ class Valve extends Core {
     constructor() {
         super();
 
-        this.options.port = 27015;
-
         // legacy goldsrc info response -- basically not used by ANYTHING now,
         // as most (all?) goldsrc servers respond with the source info reponse
         // delete in a few years if nothing ends up using it anymore
@@ -28,6 +26,7 @@ class Valve extends Core {
     }
 
     async run(state) {
+        if (!this.options.port) this.options.port = 27015;
         await this.queryInfo(state);
         await this.queryChallenge();
         await this.queryPlayers(state);
@@ -93,7 +92,7 @@ class Valve extends Core {
             }
             state.raw.version = reader.string();
             const extraFlag = reader.uint(1);
-            if(extraFlag & 0x80) state.raw.port = reader.uint(2);
+            if(extraFlag & 0x80) state.gamePort = reader.uint(2);
             if(extraFlag & 0x10) state.raw.steamid = reader.uint(8);
             if(extraFlag & 0x40) {
                 state.raw.sourcetvport = reader.uint(2);

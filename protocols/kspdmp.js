@@ -16,6 +16,7 @@ class Kspdmp extends Core {
         }
         state.name = json.server_name;
         state.maxplayers = json.max_players;
+        state.gamePort = json.port;
         if (json.players) {
             const split = json.players.split(', ');
             for (const name of split) {

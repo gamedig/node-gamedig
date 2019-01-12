@@ -1,11 +1,6 @@
 const Core = require('./core');
 
 class Mumble extends Core {
-    constructor() {
-        super();
-        this.options.socketTimeout = 5000;
-    }
-
     async run(state) {
         const json = await this.withTcp(async socket => {
             return await this.tcpSend(socket, 'json', (buffer) => {
@@ -24,6 +19,7 @@ class Mumble extends Core {
 
         state.raw = json;
         state.name = json.name;
+        state.gamePort = json.x_gtmurmur_connectport || 64738;
 
         let channelStack = [state.raw.root];
         while(channelStack.length) {

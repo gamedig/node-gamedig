@@ -20,6 +20,7 @@ class M2mp extends Core {
         state.maxplayers = this.readString(reader);
         state.raw.gamemode = this.readString(reader);
         state.password = !!reader.uint(1);
+        state.gamePort = this.options.port - 1;
 
         while(!reader.done()) {
             const name = this.readString(reader);

@@ -109,11 +109,12 @@ class Gamespy3 extends Core {
 
         // Turn all that raw state into something useful
 
-        if('hostname' in state.raw) state.name = state.raw.hostname;
+        if ('hostname' in state.raw) state.name = state.raw.hostname;
         else if('servername' in state.raw) state.name = state.raw.servername;
-        if('mapname' in state.raw) state.map = state.raw.mapname;
-        if(state.raw.password === '1') state.password = true;
-        if('maxplayers' in state.raw) state.maxplayers = parseInt(state.raw.maxplayers);
+        if ('mapname' in state.raw) state.map = state.raw.mapname;
+        if (state.raw.password === '1') state.password = true;
+        if ('maxplayers' in state.raw) state.maxplayers = parseInt(state.raw.maxplayers);
+        if ('hostport' in state.raw) state.gamePort = parseInt(state.raw.hostport);
 
         if('' in state.raw.playerTeamInfo) {
             for (const playerInfo of state.raw.playerTeamInfo['']) {

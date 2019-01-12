@@ -9,7 +9,7 @@ class BuildAndShoot extends Core {
 
         let m;
 
-        m = body.match(/status server for (.*?)\r|\n/);
+        m = body.match(/status server for (.*?)\.?(\r|\n)/);
         if(m) state.name = m[1];
 
         m = body.match(/Current uptime: (\d+)/);
@@ -22,6 +22,11 @@ class BuildAndShoot extends Core {
         if(m) {
             state.raw.numplayers = m[1];
             state.maxplayers = m[2];
+        }
+
+        m = body.match(/aos:\/\/[0-9]+:[0-9]+/);
+        if (m) {
+            state.connect = m[0];
         }
 
         const $ = cheerio.load(body);

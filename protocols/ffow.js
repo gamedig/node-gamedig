@@ -23,7 +23,7 @@ class Ffow extends Valve {
         state.raw.gamemode = reader.string();
         state.raw.description = reader.string();
         state.raw.version = reader.string();
-        state.raw.port = reader.uint(2);
+        state.gamePort = reader.uint(2);
         state.raw.numplayers = reader.uint(1);
         state.maxplayers = reader.uint(1);
         state.raw.listentype = String.fromCharCode(reader.uint(1));

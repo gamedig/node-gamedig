@@ -18,10 +18,11 @@ class Gamespy2 extends Core {
                 if (!key) break;
                 state.raw[key] = value;
             }
-            if('hostname' in state.raw) state.name = state.raw.hostname;
-            if('mapname' in state.raw) state.map = state.raw.mapname;
-            if(this.trueTest(state.raw.password)) state.password = true;
-            if('maxplayers' in state.raw) state.maxplayers = parseInt(state.raw.maxplayers);
+            if ('hostname' in state.raw) state.name = state.raw.hostname;
+            if ('mapname' in state.raw) state.map = state.raw.mapname;
+            if (this.trueTest(state.raw.password)) state.password = true;
+            if ('maxplayers' in state.raw) state.maxplayers = parseInt(state.raw.maxplayers);
+            if ('hostport' in state.raw) state.gamePort = parseInt(state.raw.hostport);
         }
 
         // Parse players
@@ -56,10 +57,6 @@ class Gamespy2 extends Core {
                 if(!('name' in player)) continue;
                 player.name = stripColor(player.name);
             }
-        }
-
-        if (state.raw.hostport) {
-            state.gamePort = parseInt(state.raw.hostport);
         }
     }
 

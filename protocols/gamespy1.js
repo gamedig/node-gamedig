@@ -15,6 +15,7 @@ class Gamespy1 extends Core {
             if ('mapname' in state.raw) state.map = state.raw.mapname;
             if (this.trueTest(state.raw.password)) state.password = true;
             if ('maxplayers' in state.raw) state.maxplayers = parseInt(state.raw.maxplayers);
+            if ('hostport' in state.raw) state.gamePort = parseInt(state.raw.hostport);
         }
         {
             const data = await this.sendPacket('rules');

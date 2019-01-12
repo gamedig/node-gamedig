@@ -18,7 +18,7 @@ class Terraria extends Core {
         }
 
         state.name = json.name;
-        state.raw.port = json.port;
+        state.gamePort = json.port;
         state.raw.numplayers = json.playercount;
     }
 }

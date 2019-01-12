@@ -41,6 +41,10 @@ class Nadeo extends Core {
                 state.raw.nextmapUid = results.UId;
             }
 
+            if (this.options.port === 5000) {
+                state.gamePort = 2350;
+            }
+
             state.raw.players = await this.methodCall(client, 'GetPlayerList', 10000, 0);
             for (const player of state.raw.players) {
                 state.players.push({

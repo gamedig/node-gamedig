@@ -424,7 +424,7 @@ additional option: token
 Games with this note use a query port which is usually not the same as the game's connection port.
 Usually, no action will be required from you. The 'port' option you pass GameDig should be the game's
 connection port. GameDig will attempt to calculate the query port automatically. If the query still fails,
-you may need to pass the 'port_query' option to GameDig as well, indicating the separate query port.
+you may need to find your server's query port, and pass that to GameDig instead.
 
 Usage from Command Line
 ---

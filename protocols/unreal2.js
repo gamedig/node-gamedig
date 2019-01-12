@@ -11,7 +11,7 @@ class Unreal2 extends Core {
             const reader = this.reader(b);
             state.raw.serverid = reader.uint(4);
             state.raw.ip = this.readUnrealString(reader);
-            state.raw.port = reader.uint(4);
+            state.gamePort = reader.uint(4);
             state.raw.queryport = reader.uint(4);
             state.name = this.readUnrealString(reader, true);
             state.map = this.readUnrealString(reader, true);

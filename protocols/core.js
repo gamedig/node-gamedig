@@ -92,7 +92,7 @@ class Core extends EventEmitter {
             state.notes = this.options.notes;
 
         // because lots of servers prefix with spaces to try to appear first
-        state.name = state.name.trim();
+        state.name = (state.name || '').trim();
 
         state.duration = Date.now() - startMillis;
         if (!('connect' in state)) {
@@ -185,9 +185,9 @@ class Core extends EventEmitter {
      * @param {function(Socket):Promise<T>} fn
      * @returns {Promise<T>}
      */
-    async withTcp(fn) {
+    async withTcp(fn, port) {
         const address = this.options.address;
-        const port = this.options.port;
+        if (!port) port = this.options.port;
         this.assertValidPort(port);
 
         let socket, connectionTimeout;
@@ -342,10 +342,9 @@ class Core extends EventEmitter {
                 log(() => params.uri + " HTTP-->");
                 requestPromise
                     .then((response) => log(params.uri + " <--HTTP " + response.statusCode))
-                    .catch(() => {
-                    });
+                    .catch(() => {});
             });
-            const wrappedPromise = promise.then(response => response.body);
+            const wrappedPromise = requestPromise.then(response => response.body);
             return await Promise.race([wrappedPromise, this.abortedPromise]);
         } finally {
             requestPromise && requestPromise.cancel();

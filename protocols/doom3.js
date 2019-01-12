@@ -71,7 +71,7 @@ class Doom3 extends Core {
         }
 
         state.raw.osmask = reader.uint(4);
-        if(isEtqw) {
+        if (isEtqw) {
             state.raw.ranked = reader.uint(1);
             state.raw.timeleft = reader.uint(4);
             state.raw.gamestate = reader.uint(1);
@@ -85,10 +85,12 @@ class Doom3 extends Core {
             }
         }
 
-        if(state.raw.si_name) state.name = state.raw.si_name;
-        if(state.raw.si_map) state.map = state.raw.si_map;
-        if(state.raw.si_maxplayers) state.maxplayers = parseInt(state.raw.si_maxplayers);
-        if(state.raw.si_usepass === '1') state.password = true;
+        if (state.raw.si_name) state.name = state.raw.si_name;
+        if (state.raw.si_map) state.map = state.raw.si_map;
+        if (state.raw.si_maxplayers) state.maxplayers = parseInt(state.raw.si_maxplayers);
+        if (state.raw.si_maxPlayers) state.maxplayers = parseInt(state.raw.si_maxplayers);
+        if (state.raw.si_usepass === '1') state.password = true;
+        if (state.raw.si_needPass === '1') state.password = true;
         if (this.options.port === 27733) state.gamePort = 3074; // etqw has a different query and game port
     }
 

@@ -2,6 +2,8 @@ const Core = require('./core');
 
 class Teamspeak2 extends Core {
     async run(state) {
+        const queryPort = this.options.teamspeakQueryPort || 51234;
+
         await this.withTcp(async socket => {
             {
                 const data = await this.sendCommand(socket, 'sel '+this.options.port);
@@ -55,7 +57,7 @@ class Teamspeak2 extends Core {
                     state.raw.channels.push(channel);
                 }
             }
-        });
+        }, queryPort);
     }
 
     async sendCommand(socket,cmd) {
