@@ -7,17 +7,19 @@ class Gamespy3 extends Core {
         this.sessionId = 1;
         this.encoding = 'latin1';
         this.byteorder = 'be';
-        this.noChallenge = false;
         this.useOnlySingleSplit = false;
         this.isJc2mp = false;
     }
 
     async run(state) {
-        let challenge = null;
-        if (!this.noChallenge) {
-            const buffer = await this.sendPacket(9, false, false, false);
-            const reader = this.reader(buffer);
-            challenge = parseInt(reader.string());
+        const buffer = await this.sendPacket(9, false, false, false);
+        const reader = this.reader(buffer);
+        let challenge = parseInt(reader.string());
+        this.debugLog("Received challenge key: " + challenge);
+        if (challenge === 0) {
+            // Some servers send us a 0 if they don't want a challenge key used
+            // BF2 does this.
+            challenge = null;
         }
 
         let requestPayload;

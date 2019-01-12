@@ -3,7 +3,7 @@ const Core = require('./core');
 class Kspdmp extends Core {
     async run(state) {
         const body = await this.request({
-            uri: 'http://'+this.options.address+':'+this.options.port_query
+            uri: 'http://'+this.options.address+':'+this.options.port
         });
 
         const json = JSON.parse(body);

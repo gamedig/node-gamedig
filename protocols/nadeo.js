@@ -2,12 +2,6 @@ const gbxremote = require('gbxremote'),
     Core = require('./core');
 
 class Nadeo extends Core {
-    constructor() {
-        super();
-        this.options.port = 2350;
-        this.options.port_query = 5000;
-    }
-
     async run(state) {
         await this.withClient(async client => {
             await this.methodCall(client, 'Authenticate', this.options.login, this.options.password);
@@ -57,8 +51,8 @@ class Nadeo extends Core {
     }
 
     async withClient(fn) {
-        const socket = gbxremote.createClient(this.options.port_query, this.options.host);
-        const cancelAsyncLeak = this.addAsyncLeak(() => socket.terminate());
+        const socket = gbxremote.createClient(this.options.port, this.options.host);
+        const cancelAsyncLeak = this.addCleanup(() => socket.terminate());
         try {
             await this.timedPromise(
                 new Promise((resolve,reject) => {

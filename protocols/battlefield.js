@@ -4,14 +4,13 @@ class Battlefield extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';
-        this.isBadCompany2 = false;
     }
 
     async run(state) {
         await this.withTcp(async socket => {
             {
                 const data = await this.query(socket, ['serverInfo']);
-                state.raw.name = data.shift();
+                state.name = data.shift();
                 state.raw.numplayers = parseInt(data.shift());
                 state.maxplayers = parseInt(data.shift());
                 state.raw.gametype = data.shift();
@@ -29,25 +28,39 @@ class Battlefield extends Core {
                 }
 
                 state.raw.targetscore = parseInt(data.shift());
-                data.shift();
-                state.raw.ranked = (data.shift() === 'true');
-                state.raw.punkbuster = (data.shift() === 'true');
-                state.password = (data.shift() === 'true');
-                state.raw.uptime = parseInt(data.shift());
-                state.raw.roundtime = parseInt(data.shift());
-                if (this.isBadCompany2) {
-                    data.shift();
-                    data.shift();
+                state.raw.status = data.shift();
+
+                // Seems like the fields end at random places beyond this point
+                // depending on the server version
+
+                if (data.length) state.raw.ranked = (data.shift() === 'true');
+                if (data.length) state.raw.punkbuster = (data.shift() === 'true');
+                if (data.length) state.password = (data.shift() === 'true');
+                if (data.length) state.raw.uptime = parseInt(data.shift());
+                if (data.length) state.raw.roundtime = parseInt(data.shift());
+
+                const isBadCompany2 = data[0] === 'BC2';
+                if (isBadCompany2) {
+                    if (data.length) data.shift();
+                    if (data.length) data.shift();
                 }
-                state.raw.ip = data.shift();
-                state.raw.punkbusterversion = data.shift();
-                state.raw.joinqueue = (data.shift() === 'true');
-                state.raw.region = data.shift();
-                if (!this.isBadCompany2) {
-                    state.raw.pingsite = data.shift();
-                    state.raw.country = data.shift();
-                    state.raw.quickmatch = (data.shift() === 'true');
+                if (data.length) {
+                    state.raw.ip = data.shift();
+                    const split = state.raw.ip.split(':');
+                    state.gameHost = split[0];
+                    state.gamePort = split[1];
+                } else {
+                    // best guess if the server doesn't tell us what the server port is
+                    // these are just the default game ports for different default query ports
+                    if (this.options.port === 48888) state.gamePort = 7673;
+                    if (this.options.port === 22000) state.gamePort = 25200;
                 }
+                if (data.length) state.raw.punkbusterversion = data.shift();
+                if (data.length) state.raw.joinqueue = (data.shift() === 'true');
+                if (data.length) state.raw.region = data.shift();
+                if (data.length) state.raw.pingsite = data.shift();
+                if (data.length) state.raw.country = data.shift();
+                if (data.length) state.raw.quickmatch = (data.shift() === 'true');
             }
 
             {
@@ -135,6 +148,7 @@ class Battlefield extends Core {
         const header = reader.uint(4);
         const totalLength = reader.uint(4);
         if(buffer.length < totalLength) return false;
+        this.debugLog("Expected " + totalLength + " bytes, have " + buffer.length);
 
         const paramCount = reader.uint(4);
         const params = [];

@@ -5,12 +5,12 @@ class Ase extends Core {
         const buffer = await this.udpSend('s',(buffer) => {
             const reader = this.reader(buffer);
             const header = reader.string({length: 4});
-            if (header === 'EYE1') return buffer;
+            if (header === 'EYE1') return reader.rest();
         });
 
         const reader = this.reader(buffer);
         state.raw.gamename = this.readString(reader);
-        state.raw.port = parseInt(this.readString(reader));
+        state.gamePort = parseInt(this.readString(reader));
         state.name = this.readString(reader);
         state.raw.gametype = this.readString(reader);
         state.map = this.readString(reader);

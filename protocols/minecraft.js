@@ -2,9 +2,13 @@ const Core = require('./core'),
     Varint = require('varint');
 
 class Minecraft extends Core {
+    constructor() {
+        super();
+        this.srvRecord = "_minecraft._tcp";
+    }
     async run(state) {
         const portBuf = Buffer.alloc(2);
-        portBuf.writeUInt16BE(this.options.port_query,0);
+        portBuf.writeUInt16BE(this.options.port,0);
 
         const addressBuf = Buffer.from(this.options.host,'utf8');
 

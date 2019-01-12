@@ -13,7 +13,7 @@ class FiveM extends Quake2 {
 
         {
             const raw = await this.request({
-                uri: 'http://' + this.options.address + ':' + this.options.port_query + '/info.json'
+                uri: 'http://' + this.options.address + ':' + this.options.port + '/info.json'
             });
             const json = JSON.parse(raw);
             state.raw.info = json;
@@ -21,7 +21,7 @@ class FiveM extends Quake2 {
 
         {
             const raw = await this.request({
-                uri: 'http://' + this.options.address + ':' + this.options.port_query + '/players.json'
+                uri: 'http://' + this.options.address + ':' + this.options.port + '/players.json'
             });
             const json = JSON.parse(raw);
             state.raw.players = json;

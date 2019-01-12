@@ -15,7 +15,7 @@ class Armagetron extends Core {
 
         reader.skip(6);
 
-        state.raw.port = this.readUInt(reader);
+        state.gamePort = this.readUInt(reader);
         state.raw.hostname = this.readString(reader);
         state.name = this.stripColorCodes(this.readString(reader));
         state.raw.numplayers = this.readUInt(reader);

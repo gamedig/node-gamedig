@@ -3,7 +3,7 @@ const Core = require('./core');
 class Terraria extends Core {
     async run(state) {
         const body = await this.request({
-            uri: 'http://'+this.options.address+':'+this.options.port_query+'/v2/server/status',
+            uri: 'http://'+this.options.address+':'+this.options.port+'/v2/server/status',
             qs: {
                 players: 'true',
                 token: this.options.token
