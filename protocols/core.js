@@ -89,9 +89,6 @@ class Core extends EventEmitter {
 
         await this.run(state);
 
-        if (this.options.notes)
-            state.notes = this.options.notes;
-
         // because lots of servers prefix with spaces to try to appear first
         state.name = (state.name || '').trim();
 
