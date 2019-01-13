@@ -312,10 +312,6 @@ class Core extends EventEmitter {
                             const rtt = end-start;
                             this.registerRtt(rtt);
                         }
-                        this.debugLog(log => {
-                            log(fromAddress + ':' + fromPort + " <--UDP");
-                            log(HexUtil.debugDump(buffer));
-                        });
                         const result = onPacket(buffer);
                         if (result !== undefined) {
                             this.debugLog("UDP send finished by callback");
@@ -325,7 +321,7 @@ class Core extends EventEmitter {
                         reject(e);
                     }
                 };
-                socket.addCallback(socketCallback);
+                socket.addCallback(socketCallback, this.options.debug);
             });
             timeout = Promises.createTimeout(this.options.socketTimeout, 'UDP');
             const wrappedTimeout = new Promise((resolve, reject) => {

@@ -27,8 +27,9 @@ if (argv._.length >= 1) {
         options.port = split[1];
     }
 }
-
-if(debug) Gamedig.debug = true;
+if (debug) {
+    options.debug = true;
+}
 
 Gamedig.query(options)
     .then((state) => {
