@@ -14,75 +14,53 @@ Usage from Node.js
 npm install gamedig
 ```
 
-Promise:
 ```javascript
 const Gamedig = require('gamedig');
 Gamedig.query({
-	type: 'minecraft',
-	host: 'mc.example.com'
+    type: 'minecraft',
+    host: 'mc.example.com'
 }).then((state) => {
-	console.log(state);
+    console.log(state);
 }).catch((error) => {
-	console.log("Server is offline");
+    console.log("Server is offline");
 });
 ```
-
-or Node.JS Callback:
-```javascript
-const Gamedig = require('gamedig');
-Gamedig.query({
-	type: 'minecraft',
-	host: 'mc.example.com'
-},
-function(e,state) {
-	if(e) console.log("Server is offline");
-	else console.log(state);
-});
-```
-
-> Is NPM out of date? If you're feeling lucky, you can install the latest code with
-> ```shell
-> npm install sonicsnes/node-gamedig
-> ```
 
 ### Query Options
 
 **Typical**
 
-* **type**: One of the game IDs listed in the game list below
-* **host**: Hostname or IP of the game server
-* **port**: (optional) Uses the protocol default if not set
+* **type**: string - One of the game IDs listed in the game list below
+* **host**: string - Hostname or IP of the game server
+* **port**: number (optional) - Connection port or query port for the game server. Some
+games utilize a separate "query" port. If specifying the game port does not seem to work as expected, passing in
+this query port may work instead. (defaults to protocol default port)
 
 **Advanced**
 
-* **notes**: (optional) An object passed through in the return value.
-* **maxAttempts**: (optional) Number of attempts to query server in case of failure. (default 1)
-* **socketTimeout**: (optional) Milliseconds to wait for a single packet. Beware that increasing this
+* **maxAttempts**: number - Number of attempts to query server in case of failure. (default 1)
+* **socketTimeout**: number - Milliseconds to wait for a single packet. Beware that increasing this
  will cause many queries to take longer even if the server is online. (default 2000)
-* **attemptTimeout**: (optional) Milliseconds allowed for an entire query attempt. This timeout is not commonly hit,
+* **attemptTimeout**: number - Milliseconds allowed for an entire query attempt. This timeout is not commonly hit,
  as the socketTimeout typically fires first. (default 10000)
+* **debug**: boolean - Enables massive amounts of debug logging to stdout. (default false)
 
 ### Return Value
 
 The returned state object will contain the following keys:
 
-**Stable, always present:**
-
-* **name**
-* **map**
-* **password**: Boolean
-* **maxplayers**
-* **players**: (array of objects) Each object **may** contain name, ping, score, team, address
-* **bots**: Same schema as players
-* **notes**: Passed through from the input
-
-**Unstable, not guaranteed:**
-
-* **raw**: Contains all information received from the server
-* **query**: Details about the query performed
-
-It can usually be assumed that the number of players online is equal to the length of the players array.
-Some servers may return an additional player count number, which may be present in the unstable raw object.
+* **name**: string - Server name
+* **map**: string - Current server game map
+* **password**: boolean - If a password is required
+* **maxplayers**: number
+* **players**: array of objects
+  * Each object **may or may not** contain name, ping, score, team, address.
+  * The number of players online can be determined by `players.length`.
+  * For servers which do not provide player names, this may be an array
+of empty objects (ex. `[{},{},{}]`), one for each player without a name.
+* **bots**: array of objects - Same schema as players
+* **raw**: freeform object - Contains all information received from the server in a disorganized format. The content of this
+field is unstable, and may change on a per-protocol basis between GameDig patch releases (although not typical).
 
 Games List
 ---
@@ -365,8 +343,6 @@ Games List
 > __Know how to code?__ Protocols for most of the games above are documented
 > in the /reference folder, ready for you to develop into GameDig!
 
-<!-- -->
-
 > Don't see your game listed here?
 >
 > First, let us know so we can fix it. Then, you can try using some common query
@@ -392,7 +368,7 @@ have set the cvar: host_players_show 2
 
 ### DayZ
 DayZ uses a query port that is separate from its main game port. The query port is usually
-the game port PLUS 24714 or 24715. You may need to pass this port in as the 'port_query' request option.
+the game port PLUS 24714 or 24715. You may need to pass this query port into GameDig instead.
 
 ### Mumble
 For full query results from Mumble, you must be running the
@@ -424,7 +400,7 @@ additional option: token
 Games with this note use a query port which is usually not the same as the game's connection port.
 Usually, no action will be required from you. The 'port' option you pass GameDig should be the game's
 connection port. GameDig will attempt to calculate the query port automatically. If the query still fails,
-you may need to pass the 'port_query' option to GameDig as well, indicating the separate query port.
+you may need to find your server's query port, and pass that to GameDig instead.
 
 Usage from Command Line
 ---
@@ -435,17 +411,56 @@ You'll still need npm to install gamedig:
 npm install gamedig -g
 ```
 
-After installing gamedig globally, you can call gamedig via the command line
-using the same parameters mentioned in the API above:
+After installing gamedig globally, you can call gamedig via the command line:
 ```shell
-gamedig --type minecraft --host mc.example.com --port 11234
+gamedig --type minecraft mc.example.com:11234
 ```
 
-The output of the command will be in JSON format.
+The output of the command will be in JSON format. Additional advanced parameters can be passed in
+as well: `--debug`, `--pretty`, `--socketTimeout 5000`, etc.
 
-Major Version Changes
+Changelog
 ---
+
+### 2.0
+
+##### Breaking API changes
+* **Node 8 is now required**
+* Removed the `port_query` option. You can now pass either the server's game port **or** query port in the `port` option, and 
+GameDig will automatically discover the proper port to query. Passing the query port is more likely be successful in
+unusual cases, as otherwise it must be automatically derived from the game port.
+* Removed `callback` parameter from Gamedig.query. Only promises are now supported. If you would like to continue
+using callbacks, you can use node's `util.callbackify` function to convert the method to callback format.
+* Removed `query` field from response object, as it was poorly documented and unstable.
+* Removed `notes` field from options / response object. Data can be passed through a standard javascript context if needed.
+
+##### Minor Changes
+* Rewrote core to use promises extensively for better error-handling. Async chains have been dramatically simplified
+by using async/await across the codebase, eliminating callback chains and the 'async' dependency.
+* Replaced `--output pretty` cli parameter with `--pretty`.
+* You can now query from CLI using shorthand syntax: `gamedig --type <gameid> <ip>[:<port>]`
+* UDP socket is only opened if needed by a query.
+* Automatic query port detection -- If provided with a non-standard port, gamedig will attempt to discover if it is a
+game port or query port by querying twice: once to the port provided, and once to the port including the game's query
+port offset (if available).
+* Added new `connect` field to the response object. This will typically include the game's `ip:port` (the port will reflect the server's
+game port, even if you passed in a query port in your request). For some games, this may be a server ID or connection url
+if an IP:Port is not appropriate.
+* Added new `ping` field (in milliseconds) to the response object. As icmp packets are often blocked by NATs, and node has poor support
+for raw sockets, this time is derived from the rtt of one of the UDP requests, or the time required to open a TCP socket
+during the query.
+* Improved debug logging across all parts of GameDig
+* Removed global `Gamedig.debug`. `debug` is now an option on each query.
+
+##### Protocol Changes
+* Added support for games using older versions of battlefield protocol.
+* Simplified detection of BC2 when using battlefield protocol.
+* Fixed buildandshoot not reading player list
+* Standardized all doom3 games into a single protocol, which can discover protocol discrepancies automatically.
+* Standardized all gamespy2 games into a single protocol, which can discover protocol discrepancies automatically.
+* Standardized all gamespy3 games into a single protocol, which can discover protocol discrepancies automatically.
+* Improved valve protocol challenge key retry process
 
 ### 1.0
 * First official release
-* Node.js 6.0 is now required
+* Node.js 6 is now required

@@ -1,36 +1,25 @@
-const request = require('request'),
-    Core = require('./core');
+const Core = require('./core');
 
 class Terraria extends Core {
-    run(state) {
-        request({
-            uri: 'http://'+this.options.address+':'+this.options.port_query+'/v2/server/status',
-            timeout: this.options.socketTimeout,
+    async run(state) {
+        const body = await this.request({
+            uri: 'http://'+this.options.address+':'+this.options.port+'/v2/server/status',
             qs: {
                 players: 'true',
                 token: this.options.token
             }
-        }, (e,r,body) => {
-            if(e) return this.fatal('HTTP error');
-            let json;
-            try {
-                json = JSON.parse(body);
-            } catch(e) {
-                return this.fatal('Invalid JSON');
-            }
-
-            if(json.status !== 200) return this.fatal('Invalid status');
-
-            for (const one of json.players) {
-                state.players.push({name:one.nickname,team:one.team});
-            }
-
-            state.name = json.name;
-            state.raw.port = json.port;
-            state.raw.numplayers = json.playercount;
-
-            this.finish(state);
         });
+
+        const json = JSON.parse(body);
+        if(json.status !== 200) throw new Error('Invalid status');
+
+        for (const one of json.players) {
+            state.players.push({name:one.nickname,team:one.team});
+        }
+
+        state.name = json.name;
+        state.gamePort = json.port;
+        state.raw.numplayers = json.playercount;
     }
 }
 

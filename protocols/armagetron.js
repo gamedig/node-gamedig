@@ -7,38 +7,35 @@ class Armagetron extends Core {
         this.byteorder = 'be';
     }
 
-    run(state) {
+    async run(state) {
         const b = Buffer.from([0,0x35,0,0,0,0,0,0x11]);
 
-        this.udpSend(b,(buffer) => {
-            const reader = this.reader(buffer);
+        const buffer = await this.udpSend(b,b => b);
+        const reader = this.reader(buffer);
 
-            reader.skip(6);
+        reader.skip(6);
 
-            state.raw.port = this.readUInt(reader);
-            state.raw.hostname = this.readString(reader);
-            state.name = this.stripColorCodes(this.readString(reader));
-            state.raw.numplayers = this.readUInt(reader);
-            state.raw.versionmin = this.readUInt(reader);
-            state.raw.versionmax = this.readUInt(reader);
-            state.raw.version = this.readString(reader);
-            state.maxplayers = this.readUInt(reader);
+        state.gamePort = this.readUInt(reader);
+        state.raw.hostname = this.readString(reader);
+        state.name = this.stripColorCodes(this.readString(reader));
+        state.raw.numplayers = this.readUInt(reader);
+        state.raw.versionmin = this.readUInt(reader);
+        state.raw.versionmax = this.readUInt(reader);
+        state.raw.version = this.readString(reader);
+        state.maxplayers = this.readUInt(reader);
 
-            const players = this.readString(reader);
-            const list = players.split('\n');
-            for(const name of list) {
-                if(!name) continue;
-                state.players.push({
-                    name: this.stripColorCodes(name)
-                });
-            }
+        const players = this.readString(reader);
+        const list = players.split('\n');
+        for(const name of list) {
+            if(!name) continue;
+            state.players.push({
+                name: this.stripColorCodes(name)
+            });
+        }
 
-            state.raw.options = this.stripColorCodes(this.readString(reader));
-            state.raw.uri = this.readString(reader);
-            state.raw.globalids = this.readString(reader);
-            this.finish(state);
-            return true;
-        });
+        state.raw.options = this.stripColorCodes(this.readString(reader));
+        state.raw.uri = this.readString(reader);
+        state.raw.globalids = this.readString(reader);
     }
 
     readUInt(reader) {

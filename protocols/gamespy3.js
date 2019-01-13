@@ -1,5 +1,5 @@
-const async = require('async'),
-    Core = require('./core');
+const Core = require('./core'),
+    HexUtil = require('../lib/HexUtil');
 
 class Gamespy3 extends Core {
     constructor() {
@@ -7,148 +7,133 @@ class Gamespy3 extends Core {
         this.sessionId = 1;
         this.encoding = 'latin1';
         this.byteorder = 'be';
-        this.noChallenge = false;
         this.useOnlySingleSplit = false;
         this.isJc2mp = false;
     }
 
-    run(state) {
-        let challenge;
+    async run(state) {
+        const buffer = await this.sendPacket(9, false, false, false);
+        const reader = this.reader(buffer);
+        let challenge = parseInt(reader.string());
+        this.debugLog("Received challenge key: " + challenge);
+        if (challenge === 0) {
+            // Some servers send us a 0 if they don't want a challenge key used
+            // BF2 does this.
+            challenge = null;
+        }
 
+        let requestPayload;
+        if(this.isJc2mp) {
+            // they completely alter the protocol. because why not.
+            requestPayload = Buffer.from([0xff,0xff,0xff,0x02]);
+        } else {
+            requestPayload = Buffer.from([0xff,0xff,0xff,0x01]);
+        }
         /** @type Buffer[] */
-        let packets;
+        const packets = await this.sendPacket(0,challenge,requestPayload,true);
 
-        async.series([
-            (c) => {
-                if(this.noChallenge) return c();
-                this.sendPacket(9,false,false,false,(buffer) => {
-                    const reader = this.reader(buffer);
-                    challenge = parseInt(reader.string());
-                    c();
-                });
-            },
-            (c) => {
-                let requestPayload;
-                if(this.isJc2mp) {
-                    // they completely alter the protocol. because why not.
-                    requestPayload = Buffer.from([0xff,0xff,0xff,0x02]);
-                } else {
-                    requestPayload = Buffer.from([0xff,0xff,0xff,0x01]);
+        // iterate over the received packets
+        // the first packet will start off with k/v pairs, followed with data fields
+        // the following packets will only have data fields
+        state.raw.playerTeamInfo = {};
+
+        for(let iPacket = 0; iPacket < packets.length; iPacket++) {
+            const packet = packets[iPacket];
+            const reader = this.reader(packet);
+
+            this.debugLog("Parsing packet #" + iPacket);
+            this.debugLog(packet);
+
+            // Parse raw server key/values
+
+            if(iPacket === 0) {
+                while(!reader.done()) {
+                    const key = reader.string();
+                    if(!key) break;
+
+                    let value = reader.string();
+                    while(value.match(/^p[0-9]+$/)) {
+                        // fix a weird ut3 bug where some keys don't have values
+                        value = reader.string();
+                    }
+
+                    state.raw[key] = value;
+                    this.debugLog(key + " = " + value);
                 }
-
-                this.sendPacket(0,challenge,requestPayload,true,(b) => {
-                    packets = b;
-                    c();
-                });
-            },
-            (c) => {
-                // iterate over the received packets
-                // the first packet will start off with k/v pairs, followed with data fields
-                // the following packets will only have data fields
-
-                state.raw.playerTeamInfo = {};
-
-                for(let iPacket = 0; iPacket < packets.length; iPacket++) {
-                    const packet = packets[iPacket];
-                    const reader = this.reader(packet);
-
-                    if(this.debug) {
-                        console.log("+++"+packet.toString('hex'));
-                        console.log(":::"+packet.toString('ascii'));
-                    }
-
-                    // Parse raw server key/values
-
-                    if(iPacket === 0) {
-                        while(!reader.done()) {
-                            const key = reader.string();
-                            if(!key) break;
-                            let value = reader.string();
-
-                            // reread the next line if we hit the weird ut3 bug
-                            if(value === 'p1073741829') value = reader.string();
-
-                            state.raw[key] = value;
-                        }
-                    }
-
-                    // Parse player, team, item array state
-
-                    if(this.isJc2mp) {
-                        state.raw.numPlayers2 = reader.uint(2);
-                        while(!reader.done()) {
-                            const player = {};
-                            player.name = reader.string();
-                            player.steamid = reader.string();
-                            player.ping = reader.uint(2);
-                            state.players.push(player);
-                        }
-                    } else {
-                        let firstMode = true;
-                        while(!reader.done()) {
-                            let mode = reader.string();
-                            if(mode.charCodeAt(0) <= 2) mode = mode.substring(1);
-                            if(!mode) continue;
-                            let offset = 0;
-                            if(iPacket !== 0 && firstMode) offset = reader.uint(1);
-                            reader.skip(1);
-                            firstMode = false;
-
-                            const modeSplit = mode.split('_');
-                            const modeName = modeSplit[0];
-                            const modeType = modeSplit.length > 1 ? modeSplit[1] : 'no_';
-
-                            if(!(modeType in state.raw.playerTeamInfo)) {
-                                state.raw.playerTeamInfo[modeType] = [];
-                            }
-                            const store = state.raw.playerTeamInfo[modeType];
-
-                            while(!reader.done()) {
-                                const item = reader.string();
-                                if(!item) break;
-
-                                while(store.length <= offset) { store.push({}); }
-                                store[offset][modeName] = item;
-                                offset++;
-                            }
-                        }
-                    }
-                }
-
-                c();
-            },
-
-            (c) => {
-                // Turn all that raw state into something useful
-
-                if('hostname' in state.raw) state.name = state.raw.hostname;
-                else if('servername' in state.raw) state.name = state.raw.servername;
-                if('mapname' in state.raw) state.map = state.raw.mapname;
-                if(state.raw.password === '1') state.password = true;
-                if('maxplayers' in state.raw) state.maxplayers = parseInt(state.raw.maxplayers);
-
-                if('' in state.raw.playerTeamInfo) {
-                    for (const playerInfo of state.raw.playerTeamInfo['']) {
-                        const player = {};
-                        for(const from of Object.keys(playerInfo)) {
-                            let key = from;
-                            let value = playerInfo[from];
-
-                            if(key === 'player') key = 'name';
-                            if(key === 'score' || key === 'ping' || key === 'team' || key === 'deaths' || key === 'pid') value = parseInt(value);
-                            player[key] = value;
-                        }
-                        state.players.push(player);
-                    }
-                }
-
-                this.finish(state);
             }
-        ]);
+
+            // Parse player, team, item array state
+
+            if(this.isJc2mp) {
+                state.raw.numPlayers2 = reader.uint(2);
+                while(!reader.done()) {
+                    const player = {};
+                    player.name = reader.string();
+                    player.steamid = reader.string();
+                    player.ping = reader.uint(2);
+                    state.players.push(player);
+                }
+            } else {
+                let firstMode = true;
+                while(!reader.done()) {
+                    if (reader.uint(1) <= 2) continue;
+                    reader.skip(-1);
+                    let fieldId = reader.string();
+                    if(!fieldId) continue;
+                    const fieldIdSplit = fieldId.split('_');
+                    const fieldName = fieldIdSplit[0];
+                    const itemType = fieldIdSplit.length > 1 ? fieldIdSplit[1] : 'no_';
+
+                    if(!(itemType in state.raw.playerTeamInfo)) {
+                        state.raw.playerTeamInfo[itemType] = [];
+                    }
+                    const items = state.raw.playerTeamInfo[itemType];
+
+                    let offset = reader.uint(1);
+                    firstMode = false;
+
+                    this.debugLog(() => "Parsing new field: itemType=" + itemType + " fieldName=" + fieldName + " startOffset=" + offset);
+
+                    while(!reader.done()) {
+                        const item = reader.string();
+                        if(!item) break;
+
+                        while(items.length <= offset) { items.push({}); }
+                        items[offset][fieldName] = item;
+                        this.debugLog("* " + item);
+                        offset++;
+                    }
+                }
+            }
+        }
+
+        // Turn all that raw state into something useful
+
+        if ('hostname' in state.raw) state.name = state.raw.hostname;
+        else if('servername' in state.raw) state.name = state.raw.servername;
+        if ('mapname' in state.raw) state.map = state.raw.mapname;
+        if (state.raw.password === '1') state.password = true;
+        if ('maxplayers' in state.raw) state.maxplayers = parseInt(state.raw.maxplayers);
+        if ('hostport' in state.raw) state.gamePort = parseInt(state.raw.hostport);
+
+        if('' in state.raw.playerTeamInfo) {
+            for (const playerInfo of state.raw.playerTeamInfo['']) {
+                const player = {};
+                for(const from of Object.keys(playerInfo)) {
+                    let key = from;
+                    let value = playerInfo[from];
+
+                    if(key === 'player') key = 'name';
+                    if(key === 'score' || key === 'ping' || key === 'team' || key === 'deaths' || key === 'pid') value = parseInt(value);
+                    player[key] = value;
+                }
+                state.players.push(player);
+            }
+        }
     }
 
-    sendPacket(type,challenge,payload,assemble,c) {
-        const challengeLength = (this.noChallenge || challenge === false) ? 0 : 4;
+    async sendPacket(type,challenge,payload,assemble) {
+        const challengeLength = challenge === null ? 0 : 4;
         const payloadLength = payload ? payload.length : 0;
 
         const b = Buffer.alloc(7 + challengeLength + payloadLength);
@@ -161,7 +146,7 @@ class Gamespy3 extends Core {
 
         let numPackets = 0;
         const packets = {};
-        this.udpSend(b,(buffer) => {
+        return this.udpSend(b,(buffer) => {
             const reader = this.reader(buffer);
             const iType = reader.uint(1);
             if(iType !== type) return;
@@ -169,14 +154,12 @@ class Gamespy3 extends Core {
             if(iSessionId !== this.sessionId) return;
 
             if(!assemble) {
-                c(reader.rest());
-                return true;
+                return reader.rest();
             }
             if(this.useOnlySingleSplit) {
                 // has split headers, but they are worthless and only one packet is used
                 reader.skip(11);
-                c([reader.rest()]);
-                return true;
+                return [reader.rest()];
             }
 
             reader.skip(9); // filler data -- usually set to 'splitnum\0'
@@ -189,8 +172,7 @@ class Gamespy3 extends Core {
 
             packets[id] = reader.rest();
             if(this.debug) {
-                console.log("Received packet #"+id);
-                if(last) console.log("(last)");
+                this.debugLog("Received packet #"+id + (last ? " (last)" : ""));
             }
 
             if(!numPackets || Object.keys(packets).length !== numPackets) return;
@@ -199,13 +181,11 @@ class Gamespy3 extends Core {
             const list = [];
             for(let i = 0; i < numPackets; i++) {
                 if(!(i in packets)) {
-                    this.fatal('Missing packet #'+i);
-                    return true;
+                    throw new Error('Missing packet #'+i);
                 }
                 list.push(packets[i]);
             }
-            c(list);
-            return true;
+            return list;
         });
     }
 }

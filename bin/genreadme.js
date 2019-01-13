@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs'),
-    TypeResolver = require('../lib/typeresolver');
+    TypeResolver = require('../lib/GameResolver');
 
 const generated = TypeResolver.printReadme();
 

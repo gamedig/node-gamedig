@@ -5,31 +5,30 @@ class Ventrilo extends Core {
         super();
         this.byteorder = 'be';
     }
-    run(state) {
-        this.sendCommand(2,'',(data) => {
-            state.raw = splitFields(data.toString());
-            for (const client of state.raw.CLIENTS) {
-                client.name = client.NAME;
-                delete client.NAME;
-                client.ping = parseInt(client.PING);
-                delete client.PING;
-                state.players.push(client);
-            }
-            delete state.raw.CLIENTS;
 
-            if('NAME' in state.raw) state.name = state.raw.NAME;
-            if('MAXCLIENTS' in state.raw) state.maxplayers = state.raw.MAXCLIENTS;
-            if(this.trueTest(state.raw.AUTH)) state.password = true;
-            this.finish(state);
-        });
+    async run(state) {
+        const data = await this.sendCommand(2,'');
+        state.raw = splitFields(data.toString());
+        for (const client of state.raw.CLIENTS) {
+            client.name = client.NAME;
+            delete client.NAME;
+            client.ping = parseInt(client.PING);
+            delete client.PING;
+            state.players.push(client);
+        }
+        delete state.raw.CLIENTS;
+
+        if('NAME' in state.raw) state.name = state.raw.NAME;
+        if('MAXCLIENTS' in state.raw) state.maxplayers = state.raw.MAXCLIENTS;
+        if(this.trueTest(state.raw.AUTH)) state.password = true;
     }
-    sendCommand(cmd,password,c) {
+    async sendCommand(cmd,password) {
         const body = Buffer.alloc(16);
         body.write(password,0,15,'utf8');
         const encrypted = encrypt(cmd,body);
 
         const packets = {};
-        this.udpSend(encrypted, (buffer) => {
+        return await this.udpSend(encrypted, (buffer) => {
             if(buffer.length < 20) return;
             const data = decrypt(buffer);
 
@@ -39,11 +38,10 @@ class Ventrilo extends Core {
 
             const out = [];
             for(let i = 0; i < data.packetTotal; i++) {
-                if(!(i in packets)) return this.fatal('Missing packet #'+i);
+                if(!(i in packets)) throw new Error('Missing packet #'+i);
                 out.push(packets[i]);
             }
-            c(Buffer.concat(out));
-            return true;
+            return Buffer.concat(out);
         });
     }
 }
