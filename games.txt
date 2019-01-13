@@ -249,6 +249,7 @@ swrc|Star Wars: Republic Commando|gamespy2|port=7777,port_query=11138
 
 starbound|Starbound|valve|port=21025
 starmade|StarMade|starmade|port=4242
+starsiege|Starsiege (2009)|starsiege|port=29001
 suicidesurvival|Suicide Survival|valve|port=27015
 swat4|SWAT 4|gamespy2|port=10480,port_query_offset=2
 svencoop|Sven Coop|valve|port=27015

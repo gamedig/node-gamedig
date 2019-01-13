@@ -266,6 +266,7 @@ Games List
 * Star Wars: Republic Commando (swrc)
 * Starbound (starbound)
 * StarMade (starmade)
+* Starsiege (2009) (starsiege)
 * Suicide Survival (suicidesurvival)
 * SWAT 4 (swat4)
 * Sven Coop (svencoop)
@@ -415,6 +416,9 @@ as well: `--debug`, `--pretty`, `--socketTimeout 5000`, etc.
 
 Changelog
 ---
+
+### 2.0.2
+* Added support for Starsiege 2009 (starsiege)
 
 ### 2.0.1
 * Updated reagme games list for 2.0

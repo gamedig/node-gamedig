@@ -4,28 +4,75 @@ class Tribes1 extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';
+        this.requestByte = 0x62;
+        this.responseByte = 0x63;
+        this.challenge = 0x01;
     }
 
     async run(state) {
-        const queryBuffer = Buffer.from('b++');
-        const reader = await this.udpSend(queryBuffer,(buffer) => {
+        const query = Buffer.alloc(3);
+        query.writeUInt8(this.requestByte, 0);
+        query.writeUInt16LE(this.challenge, 1);
+        const reader = await this.udpSend(query,(buffer) => {
             const reader = this.reader(buffer);
-            const header = reader.string({length: 4});
-            if (header !== 'c++b') {
-                this.debugLog('Header response does not match: ' + header);
+            const responseByte = reader.uint(1);
+            if (responseByte !== this.responseByte) {
+                this.debugLog('Unexpected response byte');
+                return;
+            }
+            const challenge = reader.uint(2);
+            if (challenge !== this.challenge) {
+                this.debugLog('Unexpected challenge');
+                return;
+            }
+            const requestByte = reader.uint(1);
+            if (requestByte !== this.requestByte) {
+                this.debugLog('Unexpected request byte');
                 return;
             }
             return reader;
         });
 
         state.raw.gametype = this.readString(reader);
+        const isStarsiege2009 = state.raw.gametype === 'Starsiege';
         state.raw.version = this.readString(reader);
         state.name = this.readString(reader);
+
+        if (isStarsiege2009) {
+            state.password = !!reader.uint(1);
+            state.raw.dedicated = !!reader.uint(1);
+            state.raw.dropInProgress = !!reader.uint(1);
+            state.raw.gameInProgress = !!reader.uint(1);
+            state.raw.playerCount = reader.uint(4);
+            state.maxplayers = reader.uint(4);
+            state.raw.teamPlay = reader.uint(1);
+            state.map = this.readString(reader);
+            state.raw.cpuSpeed = reader.uint(2);
+            state.raw.factoryVeh = reader.uint(1);
+            state.raw.allowTecmix = reader.uint(1);
+            state.raw.spawnLimit = reader.uint(4);
+            state.raw.fragLimit = reader.uint(4);
+            state.raw.timeLimit = reader.uint(4);
+            state.raw.techLimit = reader.uint(4);
+            state.raw.combatLimit = reader.uint(4);
+            state.raw.massLimit = reader.uint(4);
+            state.raw.playersSent = reader.uint(4);
+            const teams = {1:'yellow', 2:'blue', 4:'red', 8:'purple'};
+            while (!reader.done()) {
+                const player = {};
+                player.name = this.readString(reader);
+                const teamId = reader.uint(1);
+                const team = teams[teamId];
+                if (team) player.team = teams[teamId];
+            }
+            return;
+        }
+
         state.raw.dedicated = !!reader.uint(1);
         state.password = !!reader.uint(1);
         state.raw.playerCount = reader.uint(1);
         state.maxplayers = reader.uint(1);
-        state.raw.cpu = reader.uint(2);
+        state.raw.cpuSpeed = reader.uint(2);
         state.raw.mod = this.readString(reader);
         state.raw.type = this.readString(reader);
         state.map = this.readString(reader);
