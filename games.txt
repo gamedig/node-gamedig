@@ -145,6 +145,7 @@ hurtworld|Hurtworld|valve|port=12871,port_query=12881
 igi2|IGI-2: Covert Strike|gamespy1|port_query=26001
 il2|IL-2 Sturmovik|gamespy1|port_query=21000
 insurgency|Insurgency|valve|port=27015
+insurgencysandstorm|Insurgency: Sandstorm|valve|port=27015,port_query_offset=1
 ironstorm|Iron Storm|gamespy1|port_query=3505
 jamesbondnightfire|James Bond: Nightfire|gamespy1|port_query=6550
 jc2mp|Just Cause 2 Multiplayer|jc2mp|port=7777

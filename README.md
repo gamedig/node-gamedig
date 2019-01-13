@@ -174,6 +174,7 @@ Games List
 * IGI-2: Covert Strike (igi2)
 * IL-2 Sturmovik (il2)
 * Insurgency (insurgency)
+* Insurgency: Sandstorm (insurgencysandstorm)
 * Iron Storm (ironstorm)
 * James Bond: Nightfire (jamesbondnightfire)
 * Just Cause 2 Multiplayer (jc2mp)
@@ -416,6 +417,9 @@ as well: `--debug`, `--pretty`, `--socketTimeout 5000`, etc.
 
 Changelog
 ---
+
+### 2.0.3
+* Added support for Insurgency: Sandstorm
 
 ### 2.0.2
 * Added support for Starsiege 2009 (starsiege)
