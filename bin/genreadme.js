@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 const fs = require('fs'),
-    TypeResolver = require('../lib/GameResolver');
+    GameResolver = require('../lib/GameResolver'),
+    gameResolver = new GameResolver();
 
-const generated = TypeResolver.printReadme();
+const generated = gameResolver.printReadme();
 
 const readmeFilename = __dirname+'/../README.md';
 const readme = fs.readFileSync(readmeFilename, {encoding:'utf8'});

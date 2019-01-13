@@ -85,7 +85,7 @@ contactjack|Contact J.A.C.K.|gamespy1|port_query=27888
 cs16|Counter-Strike 1.6|valve|port=27015
 cscz|Counter-Strike: Condition Zero|valve|port=27015
 css|Counter-Strike: Source|valve|port=27015
-csgo|Counter-Strike: Global Offensive|valve||port=27015|doc_notes=csgo
+csgo|Counter-Strike: Global Offensive|valve|port=27015|doc_notes=csgo
 
 crossracing|Cross Racing Championship|ase|port=12321,port_query_offset=123
 
