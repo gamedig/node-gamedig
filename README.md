@@ -443,8 +443,38 @@ gamedig --type minecraft --host mc.example.com --port 11234
 
 The output of the command will be in JSON format.
 
-Major Version Changes
+Changelog
 ---
+
+### 2.0
+##### Breaking changes
+* Node 8 is now required
+* Removed the `port_query` option. You can now pass either the server's game port **or** query port in the `port` option, and 
+GameDig will automatically discover the proper port to query. Passing the query port is more likely be successful in
+unusual cases, as otherwise it must be automatically derived from the game port.
+* Removed `callback` parameter from Gamedig.query. Only promises are now supported. If you would like to continue
+using callbacks, you can use node's `util.callbackify` function to convert the method to callback format.
+* Removed `query` field from response object, as it was poorly documented and unstable.
+##### Minor Changes
+* Rewrote core to use promises extensively for better error-handling. Async chains have been dramatically simplified
+by using async/await across the codebase, eliminating callback chains and the 'async' dependency.
+* Replaced `--output pretty` cli parameter with `--pretty`.
+* You can now query from CLI using shorthand syntax: `gamedig --type <gameid> <ip>[:<port>]`
+* UDP socket is only opened if needed by a query.
+* Automatic query port detection -- If provided with a non-standard port, gamedig will attempt to discover if it is a
+game port or query port by querying twice: once to the port provided, and once to the port including the game's query
+port offset (if available).
+* Simplified detection of BC2 when using battlefield protocol.
+* Fixed buildandshoot not reading player list
+* Added new `connect` field to the response object. This will typically include the game's `ip:port` (the port will reflect the server's
+game port, even if you passed in a query port in your request). For some games, this may be a server ID or connection url
+if an IP:Port is not appropriate.
+* Added new `ping` field (in milliseconds) to the response object. Since icmp packets are often blocked by NATs, and node has poor support
+for raw sockets, this time is derived from the rtt of one of the UDP requests, tcp socket connection, or http requests made
+during the query.
+
+
+
 
 ### 1.0
 * First official release

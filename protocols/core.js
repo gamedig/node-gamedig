@@ -21,6 +21,8 @@ class Core extends EventEmitter {
         // Sent to us by QueryRunner
         this.options = null;
         this.udpSocket = null;
+        this.shortestRTT = 0;
+        this.usedTcp = false;
     }
 
     async runAllAttempts() {
@@ -68,7 +70,6 @@ class Core extends EventEmitter {
     }
 
     async runOnce() {
-        const startMillis = Date.now();
         const options = this.options;
         if (('host' in options) && !('address' in options)) {
             options.address = await this.parseDns(options.host);
@@ -94,13 +95,13 @@ class Core extends EventEmitter {
         // because lots of servers prefix with spaces to try to appear first
         state.name = (state.name || '').trim();
 
-        state.duration = Date.now() - startMillis;
         if (!('connect' in state)) {
             state.connect = ''
                 + (state.gameHost || this.options.host || this.options.address)
                 + ':'
                 + (state.gamePort || this.options.port)
         }
+        state.ping = this.shortestRTT;
         delete state.gameHost;
         delete state.gamePort;
 
@@ -148,6 +149,23 @@ class Core extends EventEmitter {
         else return await resolveStandard(host);
     }
 
+    /** Param can be a time in ms, or a promise (which will be timed) */
+    registerRtt(param) {
+        if (param.then) {
+            const start = Date.now();
+            param.then(() => {
+                const end = Date.now();
+                const rtt = end - start;
+                this.registerRtt(rtt);
+            }).catch(() => {});
+        } else {
+            this.debugLog("Registered RTT: " + param + "ms");
+            if (this.shortestRTT === 0 || param < this.shortestRTT) {
+                this.shortestRTT = param;
+            }
+        }
+    }
+
     // utils
     /** @returns {Reader} */
     reader(buffer) {
@@ -186,6 +204,7 @@ class Core extends EventEmitter {
      * @returns {Promise<T>}
      */
     async withTcp(fn, port) {
+        this.usedTcp = true;
         const address = this.options.address;
         if (!port) port = this.options.port;
         this.assertValidPort(port);
@@ -216,6 +235,7 @@ class Core extends EventEmitter {
                 socket.on('ready', resolve);
                 socket.on('close', () => reject(new Error('TCP Connection Refused')));
             });
+            this.registerRtt(connectionPromise);
             connectionTimeout = Promises.createTimeout(this.options.socketTimeout, 'TCP Opening');
             await Promise.race([
                 connectionPromise,
@@ -284,10 +304,17 @@ class Core extends EventEmitter {
         let timeout;
         try {
             const promise = new Promise((resolve, reject) => {
+                const start = Date.now();
+                let end = null;
                 socketCallback = (fromAddress, fromPort, buffer) => {
                     try {
                         if (fromAddress !== address) return;
                         if (fromPort !== port) return;
+                        if (end === null) {
+                            end = Date.now();
+                            const rtt = end-start;
+                            this.registerRtt(rtt);
+                        }
                         this.debugLog(log => {
                             log(fromAddress + ':' + fromPort + " <--UDP");
                             log(HexUtil.debugDump(buffer));
@@ -307,7 +334,6 @@ class Core extends EventEmitter {
             const wrappedTimeout = new Promise((resolve, reject) => {
                 timeout.catch((e) => {
                     this.debugLog("UDP timeout detected");
-                    let success = false;
                     if (onTimeout) {
                         try {
                             const result = onTimeout();
@@ -331,6 +357,12 @@ class Core extends EventEmitter {
     }
 
     async request(params) {
+        // If we haven't opened a raw tcp socket yet during this query, just open one and then immediately close it.
+        // This will give us a much more accurate RTT than using the rtt of the http request.
+        if (!this.usedTcp) {
+            await this.withTcp(() => {});
+        }
+
         let requestPromise;
         try {
             requestPromise = requestAsync({
@@ -344,7 +376,10 @@ class Core extends EventEmitter {
                     .then((response) => log(params.uri + " <--HTTP " + response.statusCode))
                     .catch(() => {});
             });
-            const wrappedPromise = requestPromise.then(response => response.body);
+            const wrappedPromise = requestPromise.then(response => {
+                if (response.statusCode !== 200) throw new Error("Bad status code: " + response.statusCode);
+                return response.body;
+            });
             return await Promise.race([wrappedPromise, this.abortedPromise]);
         } finally {
             requestPromise && requestPromise.cancel();

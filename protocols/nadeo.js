@@ -4,7 +4,10 @@ const gbxremote = require('gbxremote'),
 class Nadeo extends Core {
     async run(state) {
         await this.withClient(async client => {
+            const start = Date.now();
             await this.methodCall(client, 'Authenticate', this.options.login, this.options.password);
+            this.registerRtt(Date.now()-start);
+
             //const data = this.methodCall(client, 'GetStatus');
 
             {
