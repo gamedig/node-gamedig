@@ -421,10 +421,10 @@ Changelog
 * Added support for Starsiege 2009 (starsiege)
 
 ### 2.0.1
-* Updated reagme games list for 2.0
+* Updated readme games list for 2.0
 * Fixed csgo default port
 
-### 2.0
+### 2.0.0
 
 ##### Breaking API changes
 * **Node 8 is now required**
@@ -463,6 +463,6 @@ during the query.
 * Standardized all gamespy3 games into a single protocol, which can discover protocol discrepancies automatically.
 * Improved valve protocol challenge key retry process
 
-### 1.0
+### 1.0.0
 * First official release
 * Node.js 6 is now required
