@@ -146,7 +146,7 @@ class Gamespy3 extends Core {
 
         let numPackets = 0;
         const packets = {};
-        return this.udpSend(b,(buffer) => {
+        return await this.udpSend(b,(buffer) => {
             const reader = this.reader(buffer);
             const iType = reader.uint(1);
             if(iType !== type) return;
