@@ -58,9 +58,19 @@ The returned state object will contain the following keys:
   * The number of players online can be determined by `players.length`.
   * For servers which do not provide player names, this may be an array
 of empty objects (ex. `[{},{},{}]`), one for each player without a name.
-* **bots**: array of objects - Same schema as players
-* **raw**: freeform object - Contains all information received from the server in a disorganized format. The content of this
-field is unstable, and may change on a per-protocol basis between GameDig patch releases (although not typical).
+* **bots**: array of objects - Same schema as `players`
+* **connect**: string
+  * This will typically include the game's `ip:port`
+  * The port will reflect the server's game port, even if your request specified the game's query port in the request.
+  * For some games, this may be a server ID or connection url if an IP:Port is not appropriate for end-users.
+* **ping**: number
+  * Round trip time to the server (in milliseconds).
+  * Note that this is not the RTT of an ICMP echo, as ICMP packets are often blocked by NATs and node
+    has poor support for raw sockets.
+  * This value is derived from the RTT of one of the query packets, which is usually quite accurate, but may add a bit due to server lag.
+* **raw**: freeform object (unstable)
+  * Contains all information received from the server in a disorganized format.
+  * The content of this field MAY change on a per-protocol basis between GameDig patch releases (although not typical).
 
 Games List
 ---
@@ -417,6 +427,9 @@ as well: `--debug`, `--pretty`, `--socketTimeout 5000`, etc.
 
 Changelog
 ---
+
+### 2.0.4
+* Added details about new 2.0 reponse fields to the README.
 
 ### 2.0.3
 * Added support for Insurgency: Sandstorm
