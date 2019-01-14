@@ -278,7 +278,7 @@ class Core extends EventEmitter {
 
     /**
      * @param {Buffer|string} buffer
-     * @param {function(Buffer):T} onPacket
+     * @param {function(Buffer):T=} onPacket
      * @param {(function():T)=} onTimeout
      * @returns Promise<T>
      * @template T
@@ -296,6 +296,10 @@ class Core extends EventEmitter {
 
         const socket = this.udpSocket;
         socket.send(buffer, address, port);
+
+        if (!onPacket && !onTimeout) {
+            return null;
+        }
 
         let socketCallback;
         let timeout;

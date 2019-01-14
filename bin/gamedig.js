@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 
-const argv = require('minimist')(process.argv.slice(2)),
+const Minimist = require('minimist'),
     Gamedig = require('..');
+
+const argv = Minimist(process.argv.slice(2), {
+    boolean: ['pretty','debug']
+});
 
 const debug = argv.debug;
 delete argv.debug;

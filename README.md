@@ -125,6 +125,7 @@ Games List
 * Conan Exiles (conanexiles)
 * Contact J.A.C.K. (contactjack)
 * Counter-Strike 1.6 (cs16)
+* Counter-Strike: 2D (cs2d)
 * Counter-Strike: Condition Zero (cscz)
 * Counter-Strike: Source (css)
 * Counter-Strike: Global Offensive (csgo) [[Additional Notes](#csgo)]
@@ -427,6 +428,9 @@ as well: `--debug`, `--pretty`, `--socketTimeout 5000`, etc.
 
 Changelog
 ---
+
+### 2.0.5
+* Added support for Counter-Strike: 2D
 
 ### 2.0.4
 * Added details about new 2.0 reponse fields to the README.

@@ -10,7 +10,6 @@
 # rfactor|rFactor|rfactor|port=34397,port_query_offset=-100
 
 # bfris|BFRIS|bfris|port=44001
-# cs2d|Counter-Strike: 2D|cs2d|port_query=36963
 # freelancer|Freelancer|freelancer|port_query=2302
 # gr|Ghost Recon|ghostrecon|port=2346,port_query_offset=2
 # gtr2|GTR2|gtr2|port=34297,port_query_offset=1
@@ -83,6 +82,7 @@ conanexiles|Conan Exiles|valve|port=7777,port_query=27015
 contactjack|Contact J.A.C.K.|gamespy1|port_query=27888
 
 cs16|Counter-Strike 1.6|valve|port=27015
+cs2d|Counter-Strike: 2D|cs2d|port=36963
 cscz|Counter-Strike: Condition Zero|valve|port=27015
 css|Counter-Strike: Source|valve|port=27015
 csgo|Counter-Strike: Global Offensive|valve|port=27015|doc_notes=csgo
