@@ -1,10 +1,16 @@
 #!/usr/bin/env node
 
 const fs = require('fs'),
-    GameResolver = require('../lib/GameResolver'),
-    gameResolver = new GameResolver();
+    games = require('../games.json');
 
-const generated = gameResolver.printReadme();
+const parsed = games.map(game => {
+  if (!game.name) return;
+  let notes = '';
+  if (game.extra && game.extra.docNotes) notes = ` [[Additional Notes](#${game.extra.docNotes})]`;
+
+  return `* ${game.name} (${game.id})${notes}\n`
+});
+const generated = `${parsed.join('')}`
 
 const readmeFilename = __dirname+'/../README.md';
 const readme = fs.readFileSync(readmeFilename, {encoding:'utf8'});

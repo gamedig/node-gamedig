@@ -1,0 +1,2083 @@
+[
+  {
+    "id": "7d2d",
+    "name": "7 Days to Die",
+    "options": {
+      "port": 26900,
+      "portQueryOffset": 1,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "ageofchivalry",
+    "name": "Age of Chivalry",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "aoe2",
+    "name": "Age of Empires 2",
+    "options": {
+      "portQuery": 27224,
+      "protocol": "ase"
+    }
+  },
+  {
+    "id": "alienarena",
+    "name": "Alien Arena",
+    "options": {
+      "portQuery": 27910,
+      "protocol": "quake2"
+    }
+  },
+  {
+    "id": "alienswarm",
+    "name": "Alien Swarm",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "arkse",
+    "name": "ARK: Survival Evolved",
+    "options": {
+      "port": 7777,
+      "portQuery": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "avp2",
+    "name": "Aliens vs Predator 2",
+    "options": {
+      "port": 27888,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "avp2010",
+    "name": "Aliens vs Predator 2010",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "americasarmy",
+    "name": "America's Army",
+    "options": {
+      "port": 1716,
+      "portQueryOffset": 1,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "americasarmy2",
+    "name": "America's Army 2",
+    "options": {
+      "port": 1716,
+      "portQueryOffset": 1,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "americasarmy3",
+    "name": "America's Army 3",
+    "options": {
+      "port": 8777,
+      "portQuery": 27020,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "americasarmypg",
+    "name": "America's Army: Proving Grounds",
+    "options": {
+      "port": 8777,
+      "portQuery": 27020,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "arma",
+    "name": "ArmA",
+    "options": {
+      "port": 2302,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "arma2",
+    "name": "ArmA 2",
+    "options": {
+      "port": 2302,
+      "portQueryOffset": 1,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "arma3",
+    "name": "ArmA 3",
+    "options": {
+      "port": 2302,
+      "portQueryOffset": 1,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "armagetron",
+    "name": "Armagetron",
+    "options": {
+      "port": 4534,
+      "protocol": "armagetron"
+    }
+  },
+  {
+    "id": "baldursgate",
+    "name": "Baldur's Gate",
+    "options": {
+      "port": 6073,
+      "portQuery": 1470,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "bat1944",
+    "name": "Battalion 1944",
+    "options": {
+      "port": 7777,
+      "portQueryOffset": 3,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "bf1942",
+    "name": "Battlefield 1942",
+    "options": {
+      "port": 14567,
+      "portQuery": 23000,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "bfv",
+    "name": "Battlefield Vietnam",
+    "options": {
+      "port": 15567,
+      "portQuery": 23000,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "bf2",
+    "name": "Battlefield 2",
+    "options": {
+      "port": 16567,
+      "portQuery": 29900,
+      "protocol": "gamespy3"
+    }
+  },
+  {
+    "id": "bf2142",
+    "name": "Battlefield 2142",
+    "options": {
+      "port": 16567,
+      "portQuery": 29900,
+      "protocol": "gamespy3"
+    }
+  },
+  {
+    "id": "bfbc2",
+    "name": "Battlefield: Bad Company 2",
+    "options": {
+      "port": 19567,
+      "portQuery": 48888,
+      "protocol": "battlefield"
+    }
+  },
+  {
+    "id": "bf3",
+    "name": "Battlefield 3",
+    "options": {
+      "port": 25200,
+      "portQueryOffset": 22000,
+      "protocol": "battlefield"
+    }
+  },
+  {
+    "id": "bf4",
+    "name": "Battlefield 4",
+    "options": {
+      "port": 25200,
+      "portQueryOffset": 22000,
+      "protocol": "battlefield"
+    }
+  },
+  {
+    "id": "bfh",
+    "name": "Battlefield Hardline",
+    "options": {
+      "port": 25200,
+      "portQueryOffset": 22000,
+      "protocol": "battlefield"
+    }
+  },
+  {
+    "id": "breach",
+    "name": "Breach",
+    "options": {
+      "port": 27016,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "breed",
+    "name": "Breed",
+    "options": {
+      "port": 7649,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "brink",
+    "name": "Brink",
+    "options": {
+      "portQueryOffset": 1,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "buildandshoot",
+    "name": "Build and Shoot",
+    "options": {
+      "port": 32887,
+      "portQueryOffset": -1,
+      "protocol": "buildandshoot"
+    }
+  },
+  {
+    "id": "cod",
+    "name": "Call of Duty",
+    "options": {
+      "port": 28960,
+      "protocol": "quake3"
+    }
+  },
+  {
+    "id": "coduo",
+    "name": "Call of Duty: United Offensive",
+    "options": {
+      "port": 28960,
+      "protocol": "quake3"
+    }
+  },
+  {
+    "id": "cod2",
+    "name": "Call of Duty 2",
+    "options": {
+      "port": 28960,
+      "protocol": "quake3"
+    }
+  },
+  {
+    "id": "cod3",
+    "name": "Call of Duty 3",
+    "options": {
+      "port": 28960,
+      "protocol": "quake3"
+    }
+  },
+  {
+    "id": "cod4",
+    "name": "Call of Duty 4: Modern Warfare",
+    "options": {
+      "port": 28960,
+      "protocol": "quake3"
+    }
+  },
+  {
+    "id": "codwaw",
+    "name": "Call of Duty: World at War",
+    "options": {
+      "port": 28960,
+      "protocol": "quake3"
+    }
+  },
+  {
+    "id": "codmw2",
+    "name": "Call of Duty: Modern Warfare 2",
+    "options": {
+      "port": 28960,
+      "protocol": "quake3"
+    }
+  },
+  {
+    "id": "codmw3",
+    "name": "Call of Duty: Modern Warfare 3",
+    "options": {
+      "portQueryOffset": 2,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "callofjuarez",
+    "name": "Call of Juarez",
+    "options": {
+      "portQuery": 26000,
+      "protocol": "ase"
+    }
+  },
+  {
+    "id": "chaser",
+    "name": "Chaser",
+    "options": {
+      "port": 3000,
+      "portQueryOffset": 123,
+      "protocol": "ase"
+    }
+  },
+  {
+    "id": "chrome",
+    "name": "Chrome",
+    "options": {
+      "port": 27015,
+      "portQueryOffset": 123,
+      "protocol": "ase"
+    }
+  },
+  {
+    "id": "codenameeagle",
+    "name": "Codename Eagle",
+    "options": {
+      "portQuery": 4711,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "commandos3",
+    "name": "Commandos 3: Destination Berlin",
+    "options": {
+      "portQuery": 6500,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "cacrenegade",
+    "name": "Command and Conquer: Renegade",
+    "options": {
+      "port": 4848,
+      "portQuery": 25300,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "conanexiles",
+    "name": "Conan Exiles",
+    "options": {
+      "port": 7777,
+      "portQuery": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "contactjack",
+    "name": "Contact J.A.C.K.",
+    "options": {
+      "portQuery": 27888,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "cs16",
+    "name": "Counter-Strike 1.6",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "cs2d",
+    "name": "Counter-Strike: 2D",
+    "options": {
+      "port": 36963,
+      "protocol": "cs2d"
+    }
+  },
+  {
+    "id": "cscz",
+    "name": "Counter-Strike: Condition Zero",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "css",
+    "name": "Counter-Strike: Source",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "extra": {
+      "docNotes": "csgo"
+    },
+    "id": "csgo",
+    "name": "Counter-Strike: Global Offensive",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "crossracing",
+    "name": "Cross Racing Championship",
+    "options": {
+      "port": 12321,
+      "portQueryOffset": 123,
+      "protocol": "ase"
+    }
+  },
+  {
+    "id": "crysis",
+    "name": "Crysis",
+    "options": {
+      "port": 64087,
+      "protocol": "gamespy3"
+    }
+  },
+  {
+    "id": "crysiswars",
+    "name": "Crysis Wars",
+    "options": {
+      "port": 64100,
+      "protocol": "gamespy3"
+    }
+  },
+  {
+    "id": "crysis2",
+    "name": "Crysis 2",
+    "options": {
+      "port": 64000,
+      "protocol": "gamespy3"
+    }
+  },
+  {
+    "id": "daikatana",
+    "name": "Daikatana",
+    "options": {
+      "port": 27982,
+      "portQueryOffset": 10,
+      "protocol": "quake2"
+    }
+  },
+  {
+    "id": "dmomam",
+    "name": "Dark Messiah of Might and Magic",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "darkesthour",
+    "name": "Darkest Hour",
+    "options": {
+      "port": 7757,
+      "portQueryOffset": 1,
+      "protocol": "unreal2"
+    }
+  },
+  {
+    "extra": {
+      "docNotes": "dayz"
+    },
+    "id": "dayz",
+    "name": "DayZ",
+    "options": {
+      "port": 2302,
+      "portQueryOffset": 24714,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "dayzmod",
+    "name": "DayZ Mod",
+    "options": {
+      "port": 2302,
+      "portQueryOffset": 1,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "deadlydozenpt",
+    "name": "Deadly Dozen: Pacific Theater",
+    "options": {
+      "portQuery": 25300,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "dh2005",
+    "name": "Deer Hunter 2005",
+    "options": {
+      "port": 23459,
+      "portQuery": 34567,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "descent3",
+    "name": "Descent 3",
+    "options": {
+      "port": 2092,
+      "portQuery": 20142,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "deusex",
+    "name": "Deus Ex",
+    "options": {
+      "port": 7791,
+      "portQueryOffset": 1,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "devastation",
+    "name": "Devastation",
+    "options": {
+      "port": 7777,
+      "portQueryOffset": 1,
+      "protocol": "unreal2"
+    }
+  },
+  {
+    "id": "dinodday",
+    "name": "Dino D-Day",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "dirttrackracing2",
+    "name": "Dirt Track Racing 2",
+    "options": {
+      "port": 32240,
+      "portQueryOffset": -100,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "dnl",
+    "name": "Dark and Light",
+    "options": {
+      "port": 7777,
+      "portQuery": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "dod",
+    "name": "Day of Defeat",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "dods",
+    "name": "Day of Defeat: Source",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "doi",
+    "name": "Day of Infamy",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "doom3",
+    "name": "Doom 3",
+    "options": {
+      "port": 27666,
+      "protocol": "doom3"
+    }
+  },
+  {
+    "id": "dota2",
+    "name": "DOTA 2",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "drakan",
+    "name": "Drakan",
+    "options": {
+      "port": 27045,
+      "portQueryOffset": 1,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "etqw",
+    "name": "Enemy Territory Quake Wars",
+    "options": {
+      "port": 3074,
+      "portQuery": 27733,
+      "protocol": "doom3"
+    }
+  },
+  {
+    "id": "fear",
+    "name": "F.E.A.R.",
+    "options": {
+      "portQuery": 27888,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "f12002",
+    "name": "F1 2002",
+    "options": {
+      "portQuery": 3297,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "f1c9902",
+    "name": "F1 Challenge 99-02",
+    "options": {
+      "portQuery": 34397,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "farcry",
+    "name": "Far Cry",
+    "options": {
+      "port": 49001,
+      "portQueryOffset": 123,
+      "protocol": "ase"
+    }
+  },
+  {
+    "id": "farcry2",
+    "name": "Far Cry",
+    "options": {
+      "portQuery": 14001,
+      "protocol": "ase"
+    }
+  },
+  {
+    "id": "fortressforever",
+    "name": "Fortress Forever",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "flashpoint",
+    "name": "Flashpoint",
+    "options": {
+      "port": 2302,
+      "portQueryOffset": 1,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "ffow",
+    "name": "Frontlines: Fuel of War",
+    "options": {
+      "port": 5476,
+      "portQueryOffset": 2,
+      "protocol": "ffow"
+    }
+  },
+  {
+    "id": "fivem",
+    "name": "FiveM",
+    "options": {
+      "port": 30120,
+      "protocol": "fivem"
+    }
+  },
+  {
+    "id": "garrysmod",
+    "name": "Garry's Mod",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "graw",
+    "name": "Ghost Recon: Advanced Warfighter",
+    "options": {
+      "portQuery": 15250,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "graw2",
+    "name": "Ghost Recon: Advanced Warfighter 2",
+    "options": {
+      "portQuery": 16250,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "giantscitizenkabuto",
+    "name": "Giants: Citizen Kabuto",
+    "options": {
+      "portQuery": 8911,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "globaloperations",
+    "name": "Global Operations",
+    "options": {
+      "portQuery": 28672,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "geneshift",
+    "name": "Geneshift",
+    "options": {
+      "port": 11235,
+      "protocol": "geneshift"
+    }
+  },
+  {
+    "id": "ges",
+    "name": "GoldenEye: Source",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "gore",
+    "name": "Gore",
+    "options": {
+      "port": 27777,
+      "portQueryOffset": 1,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "gunmanchronicles",
+    "name": "Gunman Chronicles",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "hldm",
+    "name": "Half-Life 1 Deathmatch",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "hl2dm",
+    "name": "Half-Life 2 Deathmatch",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "halo",
+    "name": "Halo",
+    "options": {
+      "port": 2302,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "halo2",
+    "name": "Halo 2",
+    "options": {
+      "port": 2302,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "heretic2",
+    "name": "Heretic 2",
+    "options": {
+      "port": 27900,
+      "portQueryOffset": 1,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "hexen2",
+    "name": "Hexen 2",
+    "options": {
+      "port": 26900,
+      "portQueryOffset": 50,
+      "protocol": "hexen2"
+    }
+  },
+  {
+    "id": "hidden",
+    "name": "The Hidden: Source",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "had2",
+    "name": "Hidden and Dangerous 2",
+    "options": {
+      "port": 11001,
+      "portQueryOffset": 3,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "homefront",
+    "name": "Homefront",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "homeworld2",
+    "name": "Homeworld 2",
+    "options": {
+      "portQuery": 6500,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "hurtworld",
+    "name": "Hurtworld",
+    "options": {
+      "port": 12871,
+      "portQuery": 12881,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "igi2",
+    "name": "IGI-2: Covert Strike",
+    "options": {
+      "portQuery": 26001,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "il2",
+    "name": "IL-2 Sturmovik",
+    "options": {
+      "portQuery": 21000,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "insurgency",
+    "name": "Insurgency",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "insurgencysandstorm",
+    "name": "Insurgency: Sandstorm",
+    "options": {
+      "port": 27015,
+      "portQueryOffset": 1,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "ironstorm",
+    "name": "Iron Storm",
+    "options": {
+      "portQuery": 3505,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "jamesbondnightfire",
+    "name": "James Bond: Nightfire",
+    "options": {
+      "portQuery": 6550,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "jc2mp",
+    "name": "Just Cause 2 Multiplayer",
+    "options": {
+      "port": 7777,
+      "protocol": "jc2mp"
+    }
+  },
+  {
+    "id": "killingfloor",
+    "name": "Killing Floor",
+    "options": {
+      "port": 7707,
+      "portQueryOffset": 1,
+      "protocol": "killingfloor"
+    }
+  },
+  {
+    "id": "killingfloor2",
+    "name": "Killing Floor 2",
+    "options": {
+      "port": 7777,
+      "portQuery": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "kingpin",
+    "name": "Kingpin: Life of Crime",
+    "options": {
+      "port": 31510,
+      "portQueryOffset": -10,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "kisspc",
+    "name": "KISS Psycho Circus",
+    "options": {
+      "port": 7777,
+      "portQueryOffset": 1,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "kspdmp",
+    "name": "DMP - KSP Multiplayer",
+    "options": {
+      "port": 6702,
+      "portQueryOffset": 1,
+      "protocol": "kspdmp"
+    }
+  },
+  {
+    "id": "kzmod",
+    "name": "KzMod",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "left4dead",
+    "name": "Left 4 Dead",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "left4dead2",
+    "name": "Left 4 Dead 2",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "m2mp",
+    "name": "Mafia 2 Multiplayer",
+    "options": {
+      "port": 27016,
+      "portQueryOffset": 1,
+      "protocol": "m2mp"
+    }
+  },
+  {
+    "id": "medievalengineers",
+    "name": "Medieval Engineers",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "mohaa",
+    "name": "Medal of Honor: Allied Assault",
+    "options": {
+      "port": 12203,
+      "portQueryOffset": 97,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "mohpa",
+    "name": "Medal of Honor: Pacific Assault",
+    "options": {
+      "port": 13203,
+      "portQueryOffset": 97,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "mohab",
+    "name": "Medal of Honor: Airborne",
+    "options": {
+      "port": 12203,
+      "portQueryOffset": 97,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "mohsh",
+    "name": "Medal of Honor: Spearhead",
+    "options": {
+      "port": 12203,
+      "portQueryOffset": 97,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "mohbt",
+    "name": "Medal of Honor: Breakthrough",
+    "options": {
+      "port": 12203,
+      "portQueryOffset": 97,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "moh2010",
+    "name": "Medal of Honor 2010",
+    "options": {
+      "port": 7673,
+      "portQuery": 48888,
+      "protocol": "battlefield"
+    }
+  },
+  {
+    "id": "mohwf",
+    "name": "Medal of Honor: Warfighter",
+    "options": {
+      "port": 25200,
+      "portQueryOffset": 22000,
+      "protocol": "battlefield"
+    }
+  },
+  {
+    "extra": {
+      "docNotes": "minecraft"
+    },
+    "id": "minecraft",
+    "name": "Minecraft",
+    "options": {
+      "port": 25565,
+      "protocol": "minecraft"
+    }
+  },
+  {
+    "extra": {
+      "docNotes": "minecraft"
+    },
+    "id": "minecraftping",
+    "name": "",
+    "options": {
+      "port": 25565,
+      "protocol": "minecraft"
+    }
+  },
+  {
+    "id": "minecraftpe",
+    "name": "Minecraft: Pocket Edition",
+    "options": {
+      "maxAttempts": 2,
+      "port": 19132,
+      "protocol": "gamespy3"
+    }
+  },
+  {
+    "id": "mnc",
+    "name": "Monday Night Combat",
+    "options": {
+      "port": 7777,
+      "portQuery": 27016,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "mtavc",
+    "name": "Multi Theft Auto: Vice City",
+    "options": {
+      "port": 22003,
+      "portQueryOffset": 123,
+      "protocol": "ase"
+    }
+  },
+  {
+    "id": "mtasa",
+    "name": "Multi Theft Auto: San Andreas",
+    "options": {
+      "port": 22003,
+      "portQueryOffset": 123,
+      "protocol": "ase"
+    }
+  },
+  {
+    "extra": {
+      "docNotes": "mumble"
+    },
+    "id": "mumble",
+    "name": "Mumble",
+    "options": {
+      "port": 64738,
+      "portQuery": 27800,
+      "protocol": "mumble"
+    }
+  },
+  {
+    "extra": {
+      "docNotes": "mumble"
+    },
+    "id": "mumbleping",
+    "name": "Mumble",
+    "options": {
+      "port": 64738,
+      "protocol": "mumbleping"
+    }
+  },
+  {
+    "id": "mutantfactions",
+    "name": "Mutant Factions",
+    "options": {
+      "port": 11235,
+      "protocol": "geneshift"
+    }
+  },
+  {
+    "id": "nascarthunder2004",
+    "name": "Nascar Thunder 2004",
+    "options": {
+      "portQuery": 13333,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "netpanzer",
+    "name": "netPanzer",
+    "options": {
+      "port": 3030,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "nmrih",
+    "name": "No More Room in Hell",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "ns",
+    "name": "Natural Selection",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "ns2",
+    "name": "Natural Selection 2",
+    "options": {
+      "portQueryOffset": 1,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "nfshp2",
+    "name": "Need for Speed: Hot Pursuit 2",
+    "options": {
+      "portQuery": 61220,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "nab",
+    "name": "Nerf Arena Blast",
+    "options": {
+      "port": 4444,
+      "portQueryOffset": 1,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "nwn",
+    "name": "Neverwinter Nights",
+    "options": {
+      "portQuery": 5121,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "nwn2",
+    "name": "Neverwinter Nights 2",
+    "options": {
+      "port": 5121,
+      "portQuery": 6500,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "nexuiz",
+    "name": "Nexuiz",
+    "options": {
+      "portQuery": 26000,
+      "protocol": "quake3"
+    }
+  },
+  {
+    "id": "nitrofamily",
+    "name": "Nitro Family",
+    "options": {
+      "portQuery": 25601,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "nolf",
+    "name": "No One Lives Forever",
+    "options": {
+      "portQuery": 27888,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "nolf2",
+    "name": "No One Lives Forever 2",
+    "options": {
+      "portQuery": 27890,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "nucleardawn",
+    "name": "Nuclear Dawn",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "openarena",
+    "name": "OpenArena",
+    "options": {
+      "portQuery": 27960,
+      "protocol": "quake3"
+    }
+  },
+  {
+    "id": "openttd",
+    "name": "OpenTTD",
+    "options": {
+      "port": 3979,
+      "protocol": "openttd"
+    }
+  },
+  {
+    "id": "operationflashpoint",
+    "name": "Operation Flashpoint",
+    "options": {
+      "port": 2234,
+      "portQueryOffset": 1,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "painkiller",
+    "name": "Painkiller",
+    "options": {
+      "port": 3455,
+      "portQueryOffset": 123,
+      "protocol": "ase"
+    }
+  },
+  {
+    "id": "postal2",
+    "name": "Postal 2",
+    "options": {
+      "port": 7777,
+      "portQueryOffset": 1,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "prey",
+    "name": "Prey",
+    "options": {
+      "port": 27719,
+      "protocol": "doom3"
+    }
+  },
+  {
+    "id": "primalcarnage",
+    "name": "Primal Carnage: Extinction",
+    "options": {
+      "port": 7777,
+      "portQuery": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "quake1",
+    "name": "Quake 1: QuakeWorld",
+    "options": {
+      "port": 27500,
+      "protocol": "quake1"
+    }
+  },
+  {
+    "id": "quake2",
+    "name": "Quake 2",
+    "options": {
+      "port": 27910,
+      "protocol": "quake2"
+    }
+  },
+  {
+    "id": "quake3",
+    "name": "Quake 3: Arena",
+    "options": {
+      "port": 27960,
+      "protocol": "quake3"
+    }
+  },
+  {
+    "id": "quake4",
+    "name": "Quake 4",
+    "options": {
+      "port": 28004,
+      "protocol": "doom3"
+    }
+  },
+  {
+    "id": "ragdollkungfu",
+    "name": "Rag Doll Kung Fu",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "r6",
+    "name": "Rainbow Six",
+    "options": {
+      "portQuery": 2348,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "r6roguespear",
+    "name": "Rainbow Six 2: Rogue Spear",
+    "options": {
+      "portQuery": 2346,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "r6ravenshield",
+    "name": "Rainbow Six 3: Raven Shield",
+    "options": {
+      "port": 7777,
+      "portQueryOffset": 1000,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "rallisportchallenge",
+    "name": "RalliSport Challenge",
+    "options": {
+      "portQuery": 17500,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "rallymasters",
+    "name": "Rally Masters",
+    "options": {
+      "portQuery": 16666,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "redorchestra",
+    "name": "Red Orchestra",
+    "options": {
+      "port": 7758,
+      "portQueryOffset": 1,
+      "protocol": "unreal2"
+    }
+  },
+  {
+    "id": "redorchestraost",
+    "name": "Red Orchestra: Ostfront 41-45",
+    "options": {
+      "port": 7757,
+      "portQueryOffset": 10,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "redorchestra2",
+    "name": "Red Orchestra 2",
+    "options": {
+      "port": 7777,
+      "portQuery": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "redline",
+    "name": "Redline",
+    "options": {
+      "portQuery": 25252,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "rtcw",
+    "name": "Return to Castle Wolfenstein",
+    "options": {
+      "portQuery": 27960,
+      "protocol": "quake3"
+    }
+  },
+  {
+    "id": "ricochet",
+    "name": "Ricochet",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "riseofnations",
+    "name": "Rise of Nations",
+    "options": {
+      "portQuery": 6501,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "rune",
+    "name": "Rune",
+    "options": {
+      "port": 7777,
+      "portQueryOffset": 1,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "rust",
+    "name": "Rust",
+    "options": {
+      "port": 28015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "samp",
+    "name": "San Andreas Multiplayer",
+    "options": {
+      "port": 7777,
+      "protocol": "samp"
+    }
+  },
+  {
+    "id": "spaceengineers",
+    "name": "Space Engineers",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "ss",
+    "name": "Serious Sam",
+    "options": {
+      "port": 25600,
+      "portQueryOffset": 1,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "ss2",
+    "name": "Serious Sam 2",
+    "options": {
+      "port": 25600,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "shatteredhorizon",
+    "name": "Shattered Horizon",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "ship",
+    "name": "The Ship",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "shogo",
+    "name": "Shogo",
+    "options": {
+      "portQuery": 27888,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "extra": {
+      "docNotes": "nadeo-shootmania--trackmania--etc"
+    },
+    "id": "shootmania",
+    "name": "Shootmania",
+    "options": {
+      "port": 2350,
+      "portQuery": 5000,
+      "protocol": "nadeo"
+    }
+  },
+  {
+    "id": "sin",
+    "name": "SiN",
+    "options": {
+      "portQuery": 22450,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "sinep",
+    "name": "SiN Episodes",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "soldat",
+    "name": "Soldat",
+    "options": {
+      "port": 13073,
+      "portQueryOffset": 123,
+      "protocol": "ase"
+    }
+  },
+  {
+    "id": "sof",
+    "name": "Soldier of Fortune",
+    "options": {
+      "portQuery": 28910,
+      "protocol": "quake1"
+    }
+  },
+  {
+    "id": "sof2",
+    "name": "Soldier of Fortune 2",
+    "options": {
+      "portQuery": 20100,
+      "protocol": "quake3"
+    }
+  },
+  {
+    "id": "stalker",
+    "name": "S.T.A.L.K.E.R.",
+    "options": {
+      "port": 5445,
+      "portQueryOffset": 2,
+      "protocol": "gamespy3"
+    }
+  },
+  {
+    "id": "stbc",
+    "name": "Star Trek: Bridge Commander",
+    "options": {
+      "portQuery": 22101,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "stvef",
+    "name": "Star Trek: Voyager - Elite Force",
+    "options": {
+      "portQuery": 27960,
+      "protocol": "quake3"
+    }
+  },
+  {
+    "id": "stvef2",
+    "name": "Star Trek: Voyager - Elite Force 2",
+    "options": {
+      "portQuery": 29253,
+      "protocol": "quake3"
+    }
+  },
+  {
+    "id": "swbf",
+    "name": "Star Wars: Battlefront",
+    "options": {
+      "portQuery": 3658,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "swbf2",
+    "name": "Star Wars: Battlefront 2",
+    "options": {
+      "portQuery": 3658,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "swjk",
+    "name": "Star Wars: Jedi Knight",
+    "options": {
+      "portQuery": 29070,
+      "protocol": "quake3"
+    }
+  },
+  {
+    "id": "swjk2",
+    "name": "Star Wars: Jedi Knight 2",
+    "options": {
+      "portQuery": 28070,
+      "protocol": "quake3"
+    }
+  },
+  {
+    "id": "swrc",
+    "name": "Star Wars: Republic Commando",
+    "options": {
+      "port": 7777,
+      "portQuery": 11138,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "starbound",
+    "name": "Starbound",
+    "options": {
+      "port": 21025,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "starmade",
+    "name": "StarMade",
+    "options": {
+      "port": 4242,
+      "protocol": "starmade"
+    }
+  },
+  {
+    "id": "starsiege",
+    "name": "Starsiege (2009)",
+    "options": {
+      "port": 29001,
+      "protocol": "starsiege"
+    }
+  },
+  {
+    "id": "suicidesurvival",
+    "name": "Suicide Survival",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "swat4",
+    "name": "SWAT 4",
+    "options": {
+      "port": 10480,
+      "portQueryOffset": 2,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "svencoop",
+    "name": "Sven Coop",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "synergy",
+    "name": "Synergy",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "tacticalops",
+    "name": "Tactical Ops",
+    "options": {
+      "port": 7777,
+      "portQueryOffset": 1,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "teamfactor",
+    "name": "Team Factor",
+    "options": {
+      "portQuery": 57778,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "tfc",
+    "name": "Team Fortress Classic",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "tf2",
+    "name": "Team Fortress 2",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "teamspeak2",
+    "name": "Teamspeak 2",
+    "options": {
+      "port": 8767,
+      "protocol": "teamspeak2"
+    }
+  },
+  {
+    "extra": {
+      "docNotes": "teamspeak3"
+    },
+    "id": "teamspeak3",
+    "name": "Teamspeak 3",
+    "options": {
+      "port": 9987,
+      "protocol": "teamspeak3"
+    }
+  },
+  {
+    "id": "terminus",
+    "name": "Terminus",
+    "options": {
+      "portQuery": 12286,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "extra": {
+      "docNotes": "terraria"
+    },
+    "id": "terraria",
+    "name": "Terraria",
+    "options": {
+      "port": 7777,
+      "portQueryOffset": 101,
+      "protocol": "terraria"
+    }
+  },
+  {
+    "id": "thps3",
+    "name": "Tony Hawk's Pro Skater 3",
+    "options": {
+      "portQuery": 6500,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "thps4",
+    "name": "Tony Hawk's Pro Skater 4",
+    "options": {
+      "portQuery": 6500,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "thu2",
+    "name": "Tony Hawk's Underground 2",
+    "options": {
+      "portQuery": 5153,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "towerunite",
+    "name": "Tower Unite",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "extra": {
+      "docNotes": "nadeo-shootmania--trackmania--etc"
+    },
+    "id": "trackmania2",
+    "name": "Trackmania 2",
+    "options": {
+      "port": 2350,
+      "portQuery": 5000,
+      "protocol": "nadeo"
+    }
+  },
+  {
+    "extra": {
+      "docNotes": "nadeo-shootmania--trackmania--etc"
+    },
+    "id": "trackmaniaforever",
+    "name": "Trackmania Forever",
+    "options": {
+      "port": 2350,
+      "portQuery": 5000,
+      "protocol": "nadeo"
+    }
+  },
+  {
+    "id": "tremulous",
+    "name": "Tremulous",
+    "options": {
+      "portQuery": 30720,
+      "protocol": "quake3"
+    }
+  },
+  {
+    "id": "tribes1",
+    "name": "Tribes 1: Starsiege",
+    "options": {
+      "port": 28001,
+      "protocol": "tribes1"
+    }
+  },
+  {
+    "id": "tribesvengeance",
+    "name": "Tribes: Vengeance",
+    "options": {
+      "port": 7777,
+      "portQueryOffset": 1,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "tron20",
+    "name": "Tron 2.0",
+    "options": {
+      "portQuery": 27888,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "turok2",
+    "name": "Turok 2",
+    "options": {
+      "portQuery": 12880,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "universalcombat",
+    "name": "Universal Combat",
+    "options": {
+      "port": 1135,
+      "portQueryOffset": 123,
+      "protocol": "ase"
+    }
+  },
+  {
+    "id": "unreal",
+    "name": "Unreal",
+    "options": {
+      "port": 7777,
+      "portQueryOffset": 1,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "unturned",
+    "name": "unturned",
+    "options": {
+      "port": 27015,
+      "portQueryOffset": 1,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "ut",
+    "name": "Unreal Tournament",
+    "options": {
+      "port": 7777,
+      "portQueryOffset": 1,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "ut2003",
+    "name": "Unreal Tournament 2003",
+    "options": {
+      "port": 7757,
+      "portQueryOffset": 1,
+      "protocol": "unreal2"
+    }
+  },
+  {
+    "id": "ut2004",
+    "name": "Unreal Tournament 2004",
+    "options": {
+      "port": 7777,
+      "portQueryOffset": 1,
+      "protocol": "ut2004"
+    }
+  },
+  {
+    "id": "ut3",
+    "name": "Unreal Tournament 3",
+    "options": {
+      "port": 7777,
+      "portQueryOffset": -1277,
+      "protocol": "ut3"
+    }
+  },
+  {
+    "id": "urbanterror",
+    "name": "Urban Terror",
+    "options": {
+      "portQuery": 27960,
+      "protocol": "quake3"
+    }
+  },
+  {
+    "id": "v8supercar",
+    "name": "V8 Supercar Challenge",
+    "options": {
+      "portQuery": 16700,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "ventrilo",
+    "name": "Ventrilo",
+    "options": {
+      "port": 3784,
+      "protocol": "ventrilo"
+    }
+  },
+  {
+    "id": "vietcong",
+    "name": "Vietcong",
+    "options": {
+      "port": 5425,
+      "portQuery": 15425,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "vietcong2",
+    "name": "Vietcong 2",
+    "options": {
+      "port": 5001,
+      "portQuery": 19967,
+      "protocol": "gamespy2"
+    }
+  },
+  {
+    "id": "warsow",
+    "name": "Warsow",
+    "options": {
+      "port": 44400,
+      "protocol": "warsow"
+    }
+  },
+  {
+    "id": "wheeloftime",
+    "name": "Wheel of Time",
+    "options": {
+      "port": 7777,
+      "portQueryOffset": 1,
+      "protocol": "gamespy1"
+    }
+  },
+  {
+    "id": "wolfenstein2009",
+    "name": "Wolfenstein 2009",
+    "options": {
+      "port": 27666,
+      "protocol": "doom3"
+    }
+  },
+  {
+    "id": "wolfensteinet",
+    "name": "Wolfenstein: Enemy Territory",
+    "options": {
+      "portQuery": 27960,
+      "protocol": "quake3"
+    }
+  },
+  {
+    "id": "xpandrally",
+    "name": "Xpand Rally",
+    "options": {
+      "port": 28015,
+      "portQueryOffset": 123,
+      "protocol": "ase"
+    }
+  },
+  {
+    "id": "zombiemaster",
+    "name": "Zombie Master",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  },
+  {
+    "id": "zps",
+    "name": "Zombie Panic: Source",
+    "options": {
+      "port": 27015,
+      "protocol": "valve"
+    }
+  }
+]
