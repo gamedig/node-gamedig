@@ -429,6 +429,9 @@ as well: `--debug`, `--pretty`, `--socketTimeout 5000`, etc.
 Changelog
 ---
 
+### 2.0.7
+* Prevent tcp socket errors from dumping straight to console
+
 ### 2.0.6
 * Added support for host domains requiring Punycode encoding (special characters)
 

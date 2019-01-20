@@ -179,6 +179,9 @@ class Core extends EventEmitter {
             socket = net.connect(port,address);
             socket.setNoDelay(true);
 
+            // Prevent unhandled 'error' events from dumping straight to console
+            socket.on('error', () => {});
+
             this.debugLog(log => {
                 this.debugLog(address+':'+port+" TCP Connecting");
                 const writeHook = socket.write;
