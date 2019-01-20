@@ -429,6 +429,9 @@ as well: `--debug`, `--pretty`, `--socketTimeout 5000`, etc.
 Changelog
 ---
 
+### 2.0.6
+* Added support for host domains requiring Punycode encoding (special characters)
+
 ### 2.0.5
 * Added support for Counter-Strike: 2D
 

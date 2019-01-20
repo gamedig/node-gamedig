@@ -1,13 +1,11 @@
 const EventEmitter = require('events').EventEmitter,
-    dns = require('dns'),
     net = require('net'),
     Reader = require('../lib/reader'),
     HexUtil = require('../lib/HexUtil'),
-    util = require('util'),
-    dnsLookupAsync = util.promisify(dns.lookup),
-    dnsResolveAsync = util.promisify(dns.resolve),
     requestAsync = require('request-promise'),
-    Promises = require('../lib/Promises');
+    Promises = require('../lib/Promises'),
+    Logger = require('../lib/Logger'),
+    DnsResolver = require('../lib/DnsResolver');
 
 class Core extends EventEmitter {
     constructor() {
@@ -17,6 +15,8 @@ class Core extends EventEmitter {
         this.delimiter = '\0';
         this.srvRecord = null;
         this.abortedPromise = null;
+        this.logger = new Logger();
+        this.dnsResolver = new DnsResolver(this.logger);
 
         // Sent to us by QueryRunner
         this.options = null;
@@ -26,6 +26,10 @@ class Core extends EventEmitter {
     }
 
     async runAllAttempts() {
+        if (this.options.debug) {
+            this.logger.debugEnabled = true;
+        }
+
         let result = null;
         let lastError = null;
         for (let attempt = 1; attempt <= this.options.maxAttempts; attempt++) {
@@ -72,7 +76,9 @@ class Core extends EventEmitter {
     async runOnce() {
         const options = this.options;
         if (('host' in options) && !('address' in options)) {
-            options.address = await this.parseDns(options.host);
+            const resolved = await this.dnsResolver.resolve(options.host, this.srvRecord);
+            options.address = resolved.address;
+            if (resolved.port) options.port = resolved.port;
         }
 
         const state = {
@@ -107,44 +113,6 @@ class Core extends EventEmitter {
     }
 
     async run(state) {}
-
-    /**
-     * @param {string} host
-     * @returns {Promise<string>}
-     */
-    async parseDns(host) {
-        const isIp = (host) => {
-            return !!host.match(/\d+\.\d+\.\d+\.\d+/);
-        };
-        const resolveStandard = async (host) => {
-            if(isIp(host)) return host;
-            this.debugLog("Standard DNS Lookup: " + host);
-            const {address,family} = await dnsLookupAsync(host);
-            this.debugLog(address);
-            return address;
-        };
-        const resolveSrv = async (srv,host) => {
-            if(isIp(host)) return host;
-            this.debugLog("SRV DNS Lookup: " + srv+'.'+host);
-            let records;
-            try {
-                records = await dnsResolveAsync(srv + '.' + host, 'SRV');
-                this.debugLog(records);
-                if(records.length >= 1) {
-                    const record = records[0];
-                    this.options.port = record.port;
-                    const srvhost = record.name;
-                    return await resolveStandard(srvhost);
-                }
-            } catch(e) {
-                this.debugLog(e.toString());
-            }
-            return await resolveStandard(host);
-        };
-
-        if(this.srvRecord) return await resolveSrv(this.srvRecord, host);
-        else return await resolveStandard(host);
-    }
 
     /** Param can be a time in ms, or a promise (which will be timed) */
     registerRtt(param) {
@@ -383,22 +351,9 @@ class Core extends EventEmitter {
         }
     }
 
+    /** @deprecated */
     debugLog(...args) {
-        if (!this.options.debug) return;
-        try {
-            if(args[0] instanceof Buffer) {
-                this.debugLog(HexUtil.debugDump(args[0]));
-            } else if (typeof args[0] == 'function') {
-                const result = args[0].call(undefined, this.debugLog.bind(this));
-                if (result !== undefined) {
-                    this.debugLog(result);
-                }
-            } else {
-                console.log(...args);
-            }
-        } catch(e) {
-            console.log("Error while debug logging: " + e);
-        }
+        this.logger.debug(...args);
     }
 }
 
