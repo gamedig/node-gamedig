@@ -20,6 +20,7 @@ class Core extends EventEmitter {
 
         // Sent to us by QueryRunner
         this.options = null;
+        /** @type GlobalUdpSocket */
         this.udpSocket = null;
         this.shortestRTT = 0;
         this.usedTcp = false;
@@ -190,7 +191,7 @@ class Core extends EventEmitter {
                     log(HexUtil.debugDump(args[0]));
                     writeHook.apply(socket,args);
                 };
-                socket.on('error', e => log('TCP Error: ' + e));
+                socket.on('error', e => log('TCP Error:', e));
                 socket.on('close', () => log('TCP Closed'));
                 socket.on('data', (data) => {
                     log(address+':'+port+" <--TCP");
