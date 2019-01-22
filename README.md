@@ -429,6 +429,11 @@ as well: `--debug`, `--pretty`, `--socketTimeout 5000`, etc.
 Changelog
 ---
 
+### 2.0.8
+* Improve out-of-order packet handling for gamespy1 protocol
+* Work-around for buggy duplicate player reporting from bf1942 servers
+* Report team names rather than IDs when possible for gamespy1 protocol
+
 ### 2.0.7
 * Prevent tcp socket errors from dumping straight to console
 
