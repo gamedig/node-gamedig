@@ -109,6 +109,10 @@ class Core extends EventEmitter {
         delete state.gameHost;
         delete state.gamePort;
 
+        this.logger.debug(log => {
+            log("Size of players array: " + state.players.length);
+            log("Size of bots array: " + state.bots.length);
+        });
 
         return state;
     }
