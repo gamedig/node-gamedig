@@ -99,6 +99,21 @@ class Core extends EventEmitter {
         // because lots of servers prefix with spaces to try to appear first
         state.name = (state.name || '').trim();
 
+        if (typeof state.players === 'number') {
+            const num = state.players;
+            state.players = [];
+            for (let i = 0; i < num; i++) {
+                state.players.push({});
+            }
+        }
+        if (typeof state.bots === 'number') {
+            const num = state.bots;
+            state.bots = [];
+            for (let i = 0; i < num; i++) {
+                state.bots.push({});
+            }
+        }
+
         if (!('connect' in state)) {
             state.connect = ''
                 + (state.gameHost || this.options.host || this.options.address)

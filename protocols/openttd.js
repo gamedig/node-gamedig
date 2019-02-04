@@ -35,10 +35,7 @@ class OpenTtd extends Core {
 
             state.password = !!reader.uint(1);
             state.maxplayers = reader.uint(1);
-            state.raw.numplayers = reader.uint(1);
-            for (let i = 0; i < state.raw.numplayers; i++) {
-                state.players.push({});
-            }
+            state.players = reader.uint(1);
             state.raw.numspectators = reader.uint(1);
             state.map = reader.string();
             state.raw.map_width = reader.uint(2);

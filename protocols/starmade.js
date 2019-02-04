@@ -51,14 +51,8 @@ class Starmade extends Core {
         if(typeof data[3] === 'number') state.raw.version = data[3].toFixed(7).replace(/0+$/, '');
         if(typeof data[4] === 'string') state.name = data[4];
         if(typeof data[5] === 'string') state.raw.description = data[5];
-        if(typeof data[7] === 'number') state.raw.numplayers = data[7];
+        if(typeof data[7] === 'number') state.players = data[7];
         if(typeof data[8] === 'number') state.maxplayers = data[8];
-
-        if('numplayers' in state.raw) {
-            for(let i = 0; i < state.raw.numplayers; i++) {
-                state.players.push({});
-            }
-        }
     }
 }
 

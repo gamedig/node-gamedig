@@ -1,29 +1,5 @@
 # id | pretty name for readme | protocol | options | extra
 
-#### TODO:
-# cube1|Cube 1|cube|port=28786,port_query_offset=1
-# assaultcube|Assault Cube|cube|port_query=28764
-# cube2|Cube 2: Sauerbraten|cube|port=28785,port_query_offset=1
-# bloodfrontier|Blood Frontier|cube
-
-# arcasimracing|Arca Sim Racing|rfactor|port=34397,port_query_offset=-100
-# rfactor|rFactor|rfactor|port=34397,port_query_offset=-100
-
-# bfris|BFRIS|bfris|port=44001
-# freelancer|Freelancer|freelancer|port_query=2302
-# gr|Ghost Recon|ghostrecon|port=2346,port_query_offset=2
-# gtr2|GTR2|gtr2|port=34297,port_query_offset=1
-# haze|Haze|haze
-# plainsight|Plain Sight|plainsight
-# redfaction|Red Faction|redfaction|port_query=7755
-# savage|Savage|savage|port_query=11235
-# savage2|Savage 2|savage2|port_query=11235
-# teeworlds|Teeworlds|teeworlds|port=8303
-# tribes|Tribes 1: Starsiege|tribes|port_query=28001
-# tribes2|Tribes 2|tribes2|port_query=28000
-# worldinconflict|World in Conflict|worldinconflict
-
-
 7d2d|7 Days to Die|valve|port=26900,port_query_offset=1
 ageofchivalry|Age of Chivalry|valve|port=27015
 aoe2|Age of Empires 2|ase|port_query=27224
@@ -218,6 +194,7 @@ redorchestraost|Red Orchestra: Ostfront 41-45|gamespy1|port=7757,port_query_offs
 redorchestra2|Red Orchestra 2|valve|port=7777,port_query=27015
 redline|Redline|gamespy1|port_query=25252
 rtcw|Return to Castle Wolfenstein|quake3|port_query=27960
+rfactor|rFactor|rfactor|port=34397,port_query_offset=-100
 ricochet|Ricochet|valve|port=27015
 riseofnations|Rise of Nations|gamespy1|port_query=6501
 rune|Rune|gamespy1|port=7777,port_query_offset=1

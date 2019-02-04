@@ -12,9 +12,7 @@ class Jc2mp extends Gamespy3 {
     async run(state) {
         await super.run(state);
         if(!state.players.length && parseInt(state.raw.numplayers)) {
-            for(let i = 0; i < parseInt(state.raw.numplayers); i++) {
-                state.players.push({});
-            }
+            state.players = parseInt(state.raw.numplayers);
         }
     }
 }

@@ -70,9 +70,7 @@ class Samp extends Core {
             }
         }
         if (!gotPlayerData) {
-            for(let i = 0; i < state.raw.numplayers; i++) {
-                state.players.push({});
-            }
+            state.players = state.raw.numplayers;
         }
     }
     readString(reader,lenBytes) {

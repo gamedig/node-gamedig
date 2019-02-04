@@ -250,6 +250,7 @@ Games List
 * Red Orchestra 2 (redorchestra2)
 * Redline (redline)
 * Return to Castle Wolfenstein (rtcw)
+* rFactor (rfactor)
 * Ricochet (ricochet)
 * Rise of Nations (riseofnations)
 * Rune (rune)
@@ -429,6 +430,9 @@ as well: `--debug`, `--pretty`, `--socketTimeout 5000`, etc.
 
 Changelog
 ---
+
+### 2.0.10
+Added support for rFactor
 
 ### 2.0.9
 Added support for Vice City: Multiplayer

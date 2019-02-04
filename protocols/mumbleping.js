@@ -17,12 +17,9 @@ class MumblePing extends Core {
         state.raw.versionMinor = reader.uint(1);
         state.raw.versionPatch = reader.uint(1);
         reader.skip(8);
-        state.raw.numplayers = reader.uint(4);
+        state.players = reader.uint(4);
         state.maxplayers = reader.uint(4);
         state.raw.allowedbandwidth = reader.uint(4);
-        for(let i = 0; i < state.raw.numplayers; i++) {
-            state.players.push({});
-        }
     }
 }
 

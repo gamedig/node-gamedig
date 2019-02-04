@@ -59,9 +59,7 @@ class Minecraft extends Core {
                 });
             }
         }
-        while(state.players.length < json.players.online) {
-            state.players.push({});
-        }
+        state.players = json.players.online;
     }
 
     varIntBuffer(num) {

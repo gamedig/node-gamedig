@@ -26,7 +26,7 @@ class GeneShift extends Core {
         state.raw.country = found[1];
         state.name = found[4];
         state.map = found[5];
-        state.raw.numplayers = parseInt(found[6]);
+        state.players = parseInt(found[6]);
         state.maxplayers = parseInt(found[7]);
         // fields[8] is unknown?
         state.raw.rules = found[9];
@@ -40,10 +40,6 @@ class GeneShift extends Core {
         state.raw.mercs = !!parseInt(found[17]);
         // fields[18] is unknown? listen server?
         state.raw.version = found[19];
-
-        for(let i = 0; i < state.raw.numplayers; i++) {
-            state.players.push({});
-        }
     }
 }
 
