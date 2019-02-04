@@ -21,7 +21,6 @@
 # teeworlds|Teeworlds|teeworlds|port=8303
 # tribes|Tribes 1: Starsiege|tribes|port_query=28001
 # tribes2|Tribes 2|tribes2|port_query=28000
-# vcmp|Vice City Multiplayer|vcmp
 # worldinconflict|World in Conflict|worldinconflict
 
 
@@ -285,6 +284,7 @@ ut3|Unreal Tournament 3|ut3|port=7777,port_query_offset=-1277
 
 urbanterror|Urban Terror|quake3|port_query=27960
 v8supercar|V8 Supercar Challenge|gamespy1|port_query=16700
+vcmp|Vice City Multiplayer|vcmp|port=8192
 ventrilo|Ventrilo|ventrilo|port=3784
 vietcong|Vietcong|gamespy1|port=5425,port_query=15425
 vietcong2|Vietcong 2|gamespy2|port=5001,port_query=19967

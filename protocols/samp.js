@@ -4,22 +4,30 @@ class Samp extends Core {
     constructor() {
         super();
         this.encoding = 'win1252';
+        this.magicHeader = 'SAMP';
+        this.responseMagicHeader = null;
+        this.isVcmp = false;
     }
 
     async run(state) {
         // read info
         {
             const reader = await this.sendPacket('i');
+            if (this.isVcmp) {
+                let version = reader.string(12);
+                version = version.replace(/\0.*$/g,'');
+                state.raw.version = version;
+            }
             state.password = !!reader.uint(1);
             state.raw.numplayers = reader.uint(2);
             state.maxplayers = reader.uint(2);
             state.name = this.readString(reader,4);
             state.raw.gamemode = this.readString(reader,4);
-            this.map = this.readString(reader,4);
+            state.raw.map = this.readString(reader,4);
         }
 
         // read rules
-        {
+        if (!this.isVcmp) {
             const reader = await this.sendPacket('r');
             const ruleCount = reader.uint(2);
             state.raw.rules = {};
@@ -28,27 +36,42 @@ class Samp extends Core {
                 const value = this.readString(reader,1);
                 state.raw.rules[key] = value;
             }
-            if('mapname' in state.raw.rules)
-                state.map = state.raw.rules.mapname;
         }
 
         // read players
-        {
-            const reader = await this.sendPacket('d', true);
-            if (reader !== null) {
-                const playerCount = reader.uint(2);
-                for(let i = 0; i < playerCount; i++) {
-                    const player = {};
-                    player.id = reader.uint(1);
-                    player.name = this.readString(reader,1);
-                    player.score = reader.int(4);
-                    player.ping = reader.uint(4);
-                    state.players.push(player);
+        // don't even bother if > 100 players, because the server won't respond
+        let gotPlayerData = false;
+        if (state.raw.numplayers < 100) {
+            if (this.isVcmp) {
+                const reader = await this.sendPacket('c', true);
+                if (reader !== null) {
+                    gotPlayerData = true;
+                    const playerCount = reader.uint(2);
+                    for(let i = 0; i < playerCount; i++) {
+                        const player = {};
+                        player.name = this.readString(reader,1);
+                        state.players.push(player);
+                    }
                 }
             } else {
-                for(let i = 0; i < state.raw.numplayers; i++) {
-                    state.players.push({});
+                const reader = await this.sendPacket('d', true);
+                if (reader !== null) {
+                    gotPlayerData = true;
+                    const playerCount = reader.uint(2);
+                    for(let i = 0; i < playerCount; i++) {
+                        const player = {};
+                        player.id = reader.uint(1);
+                        player.name = this.readString(reader,1);
+                        player.score = reader.int(4);
+                        player.ping = reader.uint(4);
+                        state.players.push(player);
+                    }
                 }
+            }
+        }
+        if (!gotPlayerData) {
+            for(let i = 0; i < state.raw.numplayers; i++) {
+                state.players.push({});
             }
         }
     }
@@ -59,7 +82,7 @@ class Samp extends Core {
     }
     async sendPacket(type,allowTimeout) {
         const outBuffer = Buffer.alloc(11);
-        outBuffer.writeUInt32BE(0x53414D50,0);
+        outBuffer.write(this.magicHeader,0, 4);
         const ipSplit = this.options.address.split('.');
         outBuffer.writeUInt8(parseInt(ipSplit[0]),4);
         outBuffer.writeUInt8(parseInt(ipSplit[1]),5);
@@ -68,12 +91,17 @@ class Samp extends Core {
         outBuffer.writeUInt16LE(this.options.port,8);
         outBuffer.writeUInt8(type.charCodeAt(0),10);
 
+        const checkBuffer = Buffer.from(outBuffer);
+        if (this.responseMagicHeader) {
+            checkBuffer.write(this.responseMagicHeader, 0, 4);
+        }
+
         return await this.udpSend(
             outBuffer,
             (buffer) => {
                 const reader = this.reader(buffer);
-                for(let i = 0; i < outBuffer.length; i++) {
-                    if(outBuffer.readUInt8(i) !== reader.uint(1)) return;
+                for(let i = 0; i < checkBuffer.length; i++) {
+                    if(checkBuffer.readUInt8(i) !== reader.uint(1)) return;
                 }
                 return reader;
             },

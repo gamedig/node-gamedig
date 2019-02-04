@@ -311,6 +311,7 @@ Games List
 * Unreal Tournament 3 (ut3)
 * Urban Terror (urbanterror)
 * V8 Supercar Challenge (v8supercar)
+* Vice City Multiplayer (vcmp)
 * Ventrilo (ventrilo)
 * Vietcong (vietcong)
 * Vietcong 2 (vietcong2)
@@ -349,7 +350,6 @@ Games List
 * Sum of All Fears
 * Teeworlds
 * Tribes 2
-* Vice City Multiplayer
 * World in Conflict
 
 > Want support for one of these games? Please open an issue to show your interest!
@@ -428,6 +428,9 @@ as well: `--debug`, `--pretty`, `--socketTimeout 5000`, etc.
 
 Changelog
 ---
+
+### 2.0.9
+Added support for Vice City: Multiplayer
 
 ### 2.0.8
 * Improve out-of-order packet handling for gamespy1 protocol
