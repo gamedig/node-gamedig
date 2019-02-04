@@ -1,2 +1,0 @@
-I was under the impression all the crysis games used gamespy?
-If anyone notices a problem, this is reference for some old cryengine protocol.

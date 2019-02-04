@@ -1,2 +1,0 @@
-I was under the impression farcry uses ASE.
-If anyone ever has issues, this is the doc for some old farcry query protocol.
