@@ -16,6 +16,8 @@ americasarmy2|America's Army 2|gamespy2|port=1716,port_query_offset=1
 americasarmy3|America's Army 3|valve|port=8777,port_query=27020
 americasarmypg|America's Army: Proving Grounds|valve|port=8777,port_query=27020
 
+arcasimracing|Arca Sim Racing|rfactor|port=34397,port_query_offset=-100
+
 arma|ArmA|gamespy2|port=2302
 arma2|ArmA 2|valve|port=2302,port_query_offset=1
 arma3|ArmA 3|valve|port=2302,port_query_offset=1

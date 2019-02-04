@@ -90,6 +90,7 @@ Games List
 * America's Army 2 (americasarmy2)
 * America's Army 3 (americasarmy3)
 * America's Army: Proving Grounds (americasarmypg)
+* Arca Sim Racing (arcasimracing)
 * ArmA (arma)
 * ArmA 2 (arma2)
 * ArmA 3 (arma3)
@@ -328,9 +329,6 @@ Games List
 
 ### Not supported (yet)
 
-* rFactor Engine (rfactor):
- * rFactor
- * Arca Sim Racing
 * Cube Engine (cube):
  * Cube 1
  * Assault Cube
