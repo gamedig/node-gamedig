@@ -14,9 +14,8 @@ class Samp extends Core {
         {
             const reader = await this.sendPacket('i');
             if (this.isVcmp) {
-                let version = reader.string(12);
-                version = version.replace(/\0.*$/g,'');
-                state.raw.version = version;
+                const consumed = reader.part(12);
+                state.raw.version = this.reader(consumed).string();
             }
             state.password = !!reader.uint(1);
             state.raw.numplayers = reader.uint(2);

@@ -68,7 +68,8 @@ class Rfactor extends Core {
 
     // Consumes bytesToConsume, but only returns string up to the first null
     readString(reader, bytesToConsume) {
-        return reader.string(bytesToConsume).replace(/\0.*$/g,'');
+        const consumed = reader.part(bytesToConsume);
+        return this.reader(consumed).string();
     }
 }
 
