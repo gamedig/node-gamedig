@@ -199,6 +199,7 @@ Games List
 * Left 4 Dead (left4dead)
 * Left 4 Dead 2 (left4dead2)
 * Mafia 2 Multiplayer (m2mp)
+* Mafia 2 Online (m2o)
 * Medieval Engineers (medievalengineers)
 * Medal of Honor: Allied Assault (mohaa)
 * Medal of Honor: Pacific Assault (mohpa)

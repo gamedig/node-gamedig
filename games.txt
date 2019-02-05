@@ -134,7 +134,8 @@ kspdmp|DMP - KSP Multiplayer|kspdmp|port=6702,port_query_offset=1
 kzmod|KzMod|valve|port=27015
 left4dead|Left 4 Dead|valve|port=27015
 left4dead2|Left 4 Dead 2|valve|port=27015
-m2mp|Mafia 2 Multiplayer|m2mp|port=27016,port_query_offset=1
+m2mp|Mafia 2 Multiplayer|mafia2mp|port=27016,port_query_offset=1
+m2o|Mafia 2 Online|mafia2online|port=27015,port_query_offset=1
 medievalengineers|Medieval Engineers|valve|port=27015
 
 mohaa|Medal of Honor: Allied Assault|gamespy1|port=12203,port_query_offset=97
