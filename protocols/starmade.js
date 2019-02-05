@@ -12,10 +12,22 @@ class Starmade extends Core {
 
         const payload = await this.withTcp(async socket => {
             return await this.tcpSend(socket, b, buffer => {
-                if (buffer.length < 4) return;
+                if (buffer.length < 12) return;
                 const reader = this.reader(buffer);
                 const packetLength = reader.uint(4);
-                if (buffer.length < packetLength + 12) return;
+                this.logger.debug("Received packet length: " + packetLength);
+                const timestamp = reader.uint(8);
+                this.logger.debug("Received timestamp: " + timestamp);
+                if (reader.remaining() < packetLength || reader.remaining() < 5) return;
+
+                const checkId = reader.uint(1);
+                const packetId = reader.uint(2);
+                const commandId = reader.uint(1);
+                const type = reader.uint(1);
+
+                this.logger.debug("checkId=" + checkId + " packetId=" + packetId + " commandId=" + commandId + " type=" + type);
+                if (checkId !== 0x2a) return;
+
                 return reader.rest();
             });
         });
@@ -25,7 +37,6 @@ class Starmade extends Core {
         const data = [];
         state.raw.data = data;
 
-        reader.skip(2);
         while(!reader.done()) {
             const mark = reader.uint(1);
             if(mark === 1) {
@@ -36,23 +47,22 @@ class Starmade extends Core {
                 data.push(reader.float());
             } else if(mark === 4) {
                 // string
-                const length = reader.uint(2);
-                data.push(reader.string(length));
+                data.push(reader.pascalString(2));
             } else if(mark === 6) {
                 // byte
                 data.push(reader.uint(1));
             }
         }
 
-        if(data.length < 9) {
-            throw new Error("Not enough units in data packet");
-        }
+        this.logger.debug("Received raw data array", data);
 
-        if(typeof data[3] === 'number') state.raw.version = data[3].toFixed(7).replace(/0+$/, '');
-        if(typeof data[4] === 'string') state.name = data[4];
-        if(typeof data[5] === 'string') state.raw.description = data[5];
-        if(typeof data[7] === 'number') state.players = data[7];
-        if(typeof data[8] === 'number') state.maxplayers = data[8];
+        if(typeof data[0] === 'number') state.raw.infoVersion = data[0];
+        if(typeof data[1] === 'number') state.raw.version = data[1];
+        if(typeof data[2] === 'string') state.name = data[2];
+        if(typeof data[3] === 'string') state.raw.description = data[3];
+        if(typeof data[4] === 'number') state.raw.startTime = data[4];
+        if(typeof data[5] === 'number') state.players = data[5];
+        if(typeof data[6] === 'number') state.maxplayers = data[6];
     }
 }
 

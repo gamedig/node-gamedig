@@ -102,15 +102,21 @@ class Core extends EventEmitter {
         if (typeof state.players === 'number') {
             const num = state.players;
             state.players = [];
-            for (let i = 0; i < num; i++) {
-                state.players.push({});
+            state.raw.rcvNumPlayers = num;
+            if (num < 10000) {
+                for (let i = 0; i < num; i++) {
+                    state.players.push({});
+                }
             }
         }
         if (typeof state.bots === 'number') {
             const num = state.bots;
             state.bots = [];
-            for (let i = 0; i < num; i++) {
-                state.bots.push({});
+            state.raw.rcvNumBots = num;
+            if (num < 10000) {
+                for (let i = 0; i < num; i++) {
+                    state.bots.push({});
+                }
             }
         }
 
