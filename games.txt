@@ -56,8 +56,9 @@ codenameeagle|Codename Eagle|gamespy1|port_query=4711
 commandos3|Commandos 3: Destination Berlin|gamespy1|port_query=6500
 cacrenegade|Command and Conquer: Renegade|gamespy1|port=4848,port_query=25300
 conanexiles|Conan Exiles|valve|port=7777,port_query=27015
-contactjack|Contact J.A.C.K.|gamespy1|port_query=27888
+contactjack|Contract J.A.C.K.|gamespy1|port_query=27888
 
+cs15|Counter-Strike 1.5|valve|port=27015
 cs16|Counter-Strike 1.6|valve|port=27015
 cs2d|Counter-Strike: 2D|cs2d|port=36963
 cscz|Counter-Strike: Condition Zero|valve|port=27015

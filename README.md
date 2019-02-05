@@ -335,22 +335,55 @@ Games List
  * Assault Cube
  * Cube 2: Sauerbraten
  * Blood Frontier
+* Alien vs Predator
+* Armed Assault 2: Operation Arrowhead
+* Battlefield Bad Company 2: Vietnam
 * BFRIS
 * Call of Duty: Black Ops 1 and 2 (no documentation, may require rcon)
-* Counter-Strike 2D
+* Crysis Warhead
+* Days of War
+* DirtyBomb
+* Doom - Skulltag
+* Doom - ZDaemon
+* ECO Global Survival
+* Empyrion - Galactic Survival
+* Farming Simulator
 * Freelancer
 * Ghost Recon
-* GTR2
+* GRAV Online
+* GTA Network
+* GTR 2
 * Haze
-* Hexen 2
+* Hexen World
+* Just Cause 3 Multiplayer
+* Lost Heaven
+* Multi Theft Auto
+* Pariah
 * Plain Sight
+* Project Reality: Battlefield 2
+* Purge Jihad
+* Quake Live
+* Red Eclipse
 * Red Faction
-* Savage: Battle for Newerth
+* Rising Storm 2
+* S.T.A.L.K.E.R. Clear Sky
+* Savage: The Battle For Newerth
 * Savage 2: A Tortured Soul
+* SiN 1 Multiplayer
+* South Park
+* Squad
+* Star Wars Jedi Knight: Dark Forces II
+* Star Wars: X-Wing Alliance
 * Sum of All Fears
 * Teeworlds
+* The Forrest
+* Tibia
+* Titanfall
 * Tribes 2
+* Unreal 2 XMP
 * World in Conflict
+* World Opponent Network
+* Wurm Unlimited
 
 > Want support for one of these games? Please open an issue to show your interest!
 > __Know how to code?__ Protocol details for many of the games above are documented
