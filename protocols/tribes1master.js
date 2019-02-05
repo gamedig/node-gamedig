@@ -74,9 +74,7 @@ class Tribes1Master extends Core {
         }
     }
     readString(reader) {
-        const length = reader.uint(1);
-        if(!length) return '';
-        return reader.string({length:length});
+        return reader.pascalString(1);
     }
 }
 

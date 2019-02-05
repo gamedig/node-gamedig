@@ -89,7 +89,7 @@ class Unreal2 extends Core {
         let length = reader.uint(1);
         let out;
         if(length < 0x80) {
-            //out = reader.string({length:length});
+            //out = reader.string(length);
             out = '';
             if(length > 0) out = reader.string();
         } else {

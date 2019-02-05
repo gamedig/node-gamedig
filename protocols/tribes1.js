@@ -145,9 +145,7 @@ class Tribes1 extends Core {
             .map((a) => a.trim());
     }
     readString(reader) {
-        const length = reader.uint(1);
-        if(!length) return '';
-        return reader.string({length:length});
+        return reader.pascalString(1);
     }
 }
 

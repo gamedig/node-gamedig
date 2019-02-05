@@ -153,8 +153,7 @@ class Battlefield extends Core {
         const paramCount = reader.uint(4);
         const params = [];
         for(let i = 0; i < paramCount; i++) {
-            const len = reader.uint(4);
-            params.push(reader.string({length:len}));
+            params.push(reader.pascalString(4));
             const strNull = reader.uint(1);
         }
         return params;

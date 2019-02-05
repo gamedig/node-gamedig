@@ -16,10 +16,10 @@ class Doom3 extends Core {
             if(header !== 0xffff) return;
             const header2 = reader.string();
             if(header2 !== 'infoResponse') return;
-            const challengePart1 = reader.string({length:4});
+            const challengePart1 = reader.string(4);
             if (challengePart1 !== "PiNG") return;
             // some doom3 implementations only return the first 4 bytes of the challenge
-            const challengePart2 = reader.string({length:4});
+            const challengePart2 = reader.string(4);
             if (challengePart2 !== 'PoNg') reader.skip(-4);
             return reader.rest();
         });

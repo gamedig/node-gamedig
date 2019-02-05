@@ -4,7 +4,7 @@ class Ase extends Core {
     async run(state) {
         const buffer = await this.udpSend('s',(buffer) => {
             const reader = this.reader(buffer);
-            const header = reader.string({length: 4});
+            const header = reader.string(4);
             if (header === 'EYE1') return reader.rest();
         });
 
@@ -40,8 +40,7 @@ class Ase extends Core {
     }
 
     readString(reader) {
-        const len = reader.uint(1);
-        return reader.string({length:len-1});
+        return reader.pascalString(1, -1);
     }
 }
 

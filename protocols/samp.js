@@ -20,9 +20,9 @@ class Samp extends Core {
             state.password = !!reader.uint(1);
             state.raw.numplayers = reader.uint(2);
             state.maxplayers = reader.uint(2);
-            state.name = this.readString(reader,4);
-            state.raw.gamemode = this.readString(reader,4);
-            state.raw.map = this.readString(reader,4);
+            state.name = reader.pascalString(4);
+            state.raw.gamemode = reader.pascalString(4);
+            state.raw.map = reader.pascalString(4);
         }
 
         // read rules
@@ -31,8 +31,8 @@ class Samp extends Core {
             const ruleCount = reader.uint(2);
             state.raw.rules = {};
             for(let i = 0; i < ruleCount; i++) {
-                const key = this.readString(reader,1);
-                const value = this.readString(reader,1);
+                const key = reader.pascalString(1);
+                const value = reader.pascalString(1);
                 state.raw.rules[key] = value;
             }
         }
@@ -48,7 +48,7 @@ class Samp extends Core {
                     const playerCount = reader.uint(2);
                     for(let i = 0; i < playerCount; i++) {
                         const player = {};
-                        player.name = this.readString(reader,1);
+                        player.name = reader.pascalString(1);
                         state.players.push(player);
                     }
                 }
@@ -60,7 +60,7 @@ class Samp extends Core {
                     for(let i = 0; i < playerCount; i++) {
                         const player = {};
                         player.id = reader.uint(1);
-                        player.name = this.readString(reader,1);
+                        player.name = reader.pascalString(1);
                         player.score = reader.int(4);
                         player.ping = reader.uint(4);
                         state.players.push(player);
@@ -71,11 +71,6 @@ class Samp extends Core {
         if (!gotPlayerData) {
             state.players = state.raw.numplayers;
         }
-    }
-    readString(reader,lenBytes) {
-        const length = reader.uint(lenBytes);
-        if(!length) return '';
-        return reader.string({length:length});
     }
     async sendPacket(type,allowTimeout) {
         const outBuffer = Buffer.alloc(11);

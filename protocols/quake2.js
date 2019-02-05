@@ -17,7 +17,7 @@ class Quake2 extends Core {
             if (header !== '\xff\xff\xff\xff') return;
             let type;
             if (this.isQuake1) {
-                type = reader.string({length: this.responseHeader.length});
+                type = reader.string(this.responseHeader.length);
             } else {
                 type = reader.string({encoding: 'latin1'});
             }

@@ -102,7 +102,7 @@ class Gamespy1 extends Core {
 
         return await this.udpSend('\\'+type+'\\', buffer => {
             const reader = this.reader(buffer);
-            const str = reader.string({length:buffer.length});
+            const str = reader.string(buffer.length);
             const split = str.split('\\');
             split.shift();
             const data = {};

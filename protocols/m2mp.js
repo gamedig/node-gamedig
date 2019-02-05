@@ -9,7 +9,7 @@ class M2mp extends Core {
     async run(state) {
         const body = await this.udpSend('M2MP',(buffer) => {
             const reader = this.reader(buffer);
-            const header = reader.string({length: 4});
+            const header = reader.string(4);
             if (header !== 'M2MP') return;
             return reader.rest();
         });
@@ -32,8 +32,7 @@ class M2mp extends Core {
     }
 
     readString(reader) {
-        const length = reader.uint(1);
-        return reader.string({length:length-1});
+        return reader.pascalString(1,-1);
     }
 }
 

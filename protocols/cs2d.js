@@ -66,8 +66,7 @@ class Cs2d extends Core {
     }
 
     readString(reader) {
-        const length = reader.uint(1);
-        return reader.string({length:length});
+        return reader.pascalString(1);
     }
 }
 
