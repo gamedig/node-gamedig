@@ -467,15 +467,20 @@ as well: `--debug`, `--pretty`, `--socketTimeout 5000`, etc.
 Changelog
 ---
 
+### 2.0.12
+* Servers are now limited to 10000 players to prevent OOM
+* Improvements to Starmade (2012)
+* Added Atlas (2018)
+
 ### 2.0.11
-* Added support for Acra Sim Racing
-* Added support for Mafia 2: Online
+* Added Acra Sim Racing
+* Added Mafia 2: Online
 
 ### 2.0.10
-* Added support for rFactor
+* Added rFactor
 
 ### 2.0.9
-* Added support for Vice City: Multiplayer
+* Added Vice City: Multiplayer
 
 ### 2.0.8
 * Improve out-of-order packet handling for gamespy1 protocol
