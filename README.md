@@ -335,10 +335,10 @@ Games List
 ### Not supported (yet)
 
 * Cube Engine (cube):
- * Cube 1
- * Assault Cube
- * Cube 2: Sauerbraten
- * Blood Frontier
+  * Cube 1
+  * Assault Cube
+  * Cube 2: Sauerbraten
+  * Blood Frontier
 * Alien vs Predator
 * Armed Assault 2: Operation Arrowhead
 * Battlefield Bad Company 2: Vietnam
