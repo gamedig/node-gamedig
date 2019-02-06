@@ -78,253 +78,257 @@ Games List
 ### Supported
 <!--- BEGIN GENERATED GAMES -->
 
-* 7 Days to Die (7d2d)
-* Age of Chivalry (ageofchivalry)
-* Age of Empires 2 (aoe2)
-* Alien Arena (alienarena)
-* Alien Swarm (alienswarm)
-* ARK: Survival Evolved (arkse)
-* Aliens vs Predator 2 (avp2)
-* Aliens vs Predator 2010 (avp2010)
-* America's Army (americasarmy)
-* America's Army 2 (americasarmy2)
-* America's Army 3 (americasarmy3)
-* America's Army: Proving Grounds (americasarmypg)
-* Arca Sim Racing (arcasimracing)
-* ArmA (arma)
-* ArmA 2 (arma2)
-* ArmA 3 (arma3)
-* Armagetron (armagetron)
-* Baldur's Gate (baldursgate)
-* Battalion 1944 (bat1944)
-* Battlefield 1942 (bf1942)
-* Battlefield Vietnam (bfv)
-* Battlefield 2 (bf2)
-* Battlefield 2142 (bf2142)
-* Battlefield: Bad Company 2 (bfbc2)
-* Battlefield 3 (bf3)
-* Battlefield 4 (bf4)
-* Battlefield Hardline (bfh)
-* Breach (breach)
-* Breed (breed)
-* Brink (brink)
-* Build and Shoot (buildandshoot)
-* Call of Duty (cod)
-* Call of Duty: United Offensive (coduo)
-* Call of Duty 2 (cod2)
-* Call of Duty 3 (cod3)
-* Call of Duty 4: Modern Warfare (cod4)
-* Call of Duty: World at War (codwaw)
-* Call of Duty: Modern Warfare 2 (codmw2)
-* Call of Duty: Modern Warfare 3 (codmw3)
-* Call of Juarez (callofjuarez)
-* Chaser (chaser)
-* Chrome (chrome)
-* Codename Eagle (codenameeagle)
-* Commandos 3: Destination Berlin (commandos3)
-* Command and Conquer: Renegade (cacrenegade)
-* Conan Exiles (conanexiles)
-* Contact J.A.C.K. (contactjack)
-* Counter-Strike 1.6 (cs16)
-* Counter-Strike: 2D (cs2d)
-* Counter-Strike: Condition Zero (cscz)
-* Counter-Strike: Source (css)
-* Counter-Strike: Global Offensive (csgo) [[Additional Notes](#csgo)]
-* Cross Racing Championship (crossracing)
-* Crysis (crysis)
-* Crysis Wars (crysiswars)
-* Crysis 2 (crysis2)
-* Daikatana (daikatana)
-* Dark Messiah of Might and Magic (dmomam)
-* Darkest Hour (darkesthour)
-* DayZ (dayz) [[Additional Notes](#dayz)]
-* DayZ Mod (dayzmod)
-* Deadly Dozen: Pacific Theater (deadlydozenpt)
-* Deer Hunter 2005 (dh2005)
-* Descent 3 (descent3)
-* Deus Ex (deusex)
-* Devastation (devastation)
-* Dino D-Day (dinodday)
-* Dirt Track Racing 2 (dirttrackracing2)
-* Dark and Light (dnl)
-* Day of Defeat (dod)
-* Day of Defeat: Source (dods)
-* Day of Infamy (doi)
-* Doom 3 (doom3)
-* DOTA 2 (dota2)
-* Drakan (drakan)
-* Enemy Territory Quake Wars (etqw)
-* F.E.A.R. (fear)
-* F1 2002 (f12002)
-* F1 Challenge 99-02 (f1c9902)
-* Far Cry (farcry)
-* Far Cry (farcry2)
-* Fortress Forever (fortressforever)
-* Flashpoint (flashpoint)
-* Frontlines: Fuel of War (ffow)
-* FiveM (fivem)
-* Garry's Mod (garrysmod)
-* Ghost Recon: Advanced Warfighter (graw)
-* Ghost Recon: Advanced Warfighter 2 (graw2)
-* Giants: Citizen Kabuto (giantscitizenkabuto)
-* Global Operations (globaloperations)
-* Geneshift (geneshift)
-* GoldenEye: Source (ges)
-* Gore (gore)
-* Gunman Chronicles (gunmanchronicles)
-* Half-Life 1 Deathmatch (hldm)
-* Half-Life 2 Deathmatch (hl2dm)
-* Halo (halo)
-* Halo 2 (halo2)
-* Heretic 2 (heretic2)
-* Hexen 2 (hexen2)
-* The Hidden: Source (hidden)
-* Hidden and Dangerous 2 (had2)
-* Homefront (homefront)
-* Homeworld 2 (homeworld2)
-* Hurtworld (hurtworld)
-* IGI-2: Covert Strike (igi2)
-* IL-2 Sturmovik (il2)
-* Insurgency (insurgency)
-* Insurgency: Sandstorm (insurgencysandstorm)
-* Iron Storm (ironstorm)
-* James Bond: Nightfire (jamesbondnightfire)
-* Just Cause 2 Multiplayer (jc2mp)
-* Killing Floor (killingfloor)
-* Killing Floor 2 (killingfloor2)
-* Kingpin: Life of Crime (kingpin)
-* KISS Psycho Circus (kisspc)
-* DMP - KSP Multiplayer (kspdmp)
-* KzMod (kzmod)
-* Left 4 Dead (left4dead)
-* Left 4 Dead 2 (left4dead2)
-* Mafia 2 Multiplayer (m2mp)
-* Mafia 2 Online (m2o)
-* Medieval Engineers (medievalengineers)
-* Medal of Honor: Allied Assault (mohaa)
-* Medal of Honor: Pacific Assault (mohpa)
-* Medal of Honor: Airborne (mohab)
-* Medal of Honor: Spearhead (mohsh)
-* Medal of Honor: Breakthrough (mohbt)
-* Medal of Honor 2010 (moh2010)
-* Medal of Honor: Warfighter (mohwf)
-* Minecraft (minecraft) [[Additional Notes](#minecraft)]
-* Minecraft: Pocket Edition (minecraftpe)
-* Monday Night Combat (mnc)
-* Multi Theft Auto: Vice City (mtavc)
-* Multi Theft Auto: San Andreas (mtasa)
-* Mumble (mumble) [[Additional Notes](#mumble)]
-* Mumble (mumbleping) [[Additional Notes](#mumble)]
-* Mutant Factions (mutantfactions)
-* Nascar Thunder 2004 (nascarthunder2004)
-* netPanzer (netpanzer)
-* No More Room in Hell (nmrih)
-* Natural Selection (ns)
-* Natural Selection 2 (ns2)
-* Need for Speed: Hot Pursuit 2 (nfshp2)
-* Nerf Arena Blast (nab)
-* Neverwinter Nights (nwn)
-* Neverwinter Nights 2 (nwn2)
-* Nexuiz (nexuiz)
-* Nitro Family (nitrofamily)
-* No One Lives Forever (nolf)
-* No One Lives Forever 2 (nolf2)
-* Nuclear Dawn (nucleardawn)
-* OpenArena (openarena)
-* OpenTTD (openttd)
-* Operation Flashpoint (operationflashpoint)
-* Painkiller (painkiller)
-* Postal 2 (postal2)
-* Prey (prey)
-* Primal Carnage: Extinction (primalcarnage)
-* Quake 1: QuakeWorld (quake1)
-* Quake 2 (quake2)
-* Quake 3: Arena (quake3)
-* Quake 4 (quake4)
-* Rag Doll Kung Fu (ragdollkungfu)
-* Rainbow Six (r6)
-* Rainbow Six 2: Rogue Spear (r6roguespear)
-* Rainbow Six 3: Raven Shield (r6ravenshield)
-* RalliSport Challenge (rallisportchallenge)
-* Rally Masters (rallymasters)
-* Red Orchestra (redorchestra)
-* Red Orchestra: Ostfront 41-45 (redorchestraost)
-* Red Orchestra 2 (redorchestra2)
-* Redline (redline)
-* Return to Castle Wolfenstein (rtcw)
-* rFactor (rfactor)
-* Ricochet (ricochet)
-* Rise of Nations (riseofnations)
-* Rune (rune)
-* Rust (rust)
-* San Andreas Multiplayer (samp)
-* Space Engineers (spaceengineers)
-* Serious Sam (ss)
-* Serious Sam 2 (ss2)
-* Shattered Horizon (shatteredhorizon)
-* The Ship (ship)
-* Shogo (shogo)
-* Shootmania (shootmania) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]
-* SiN (sin)
-* SiN Episodes (sinep)
-* Soldat (soldat)
-* Soldier of Fortune (sof)
-* Soldier of Fortune 2 (sof2)
-* S.T.A.L.K.E.R. (stalker)
-* Star Trek: Bridge Commander (stbc)
-* Star Trek: Voyager - Elite Force (stvef)
-* Star Trek: Voyager - Elite Force 2 (stvef2)
-* Star Wars: Battlefront (swbf)
-* Star Wars: Battlefront 2 (swbf2)
-* Star Wars: Jedi Knight (swjk)
-* Star Wars: Jedi Knight 2 (swjk2)
-* Star Wars: Republic Commando (swrc)
-* Starbound (starbound)
-* StarMade (starmade)
-* Starsiege (2009) (starsiege)
-* Suicide Survival (suicidesurvival)
-* SWAT 4 (swat4)
-* Sven Coop (svencoop)
-* Synergy (synergy)
-* Tactical Ops (tacticalops)
-* Team Factor (teamfactor)
-* Team Fortress Classic (tfc)
-* Team Fortress 2 (tf2)
-* Teamspeak 2 (teamspeak2)
-* Teamspeak 3 (teamspeak3) [[Additional Notes](#teamspeak3)]
-* Terminus (terminus)
-* Terraria (terraria) [[Additional Notes](#terraria)]
-* Tony Hawk's Pro Skater 3 (thps3)
-* Tony Hawk's Pro Skater 4 (thps4)
-* Tony Hawk's Underground 2 (thu2)
-* Tower Unite (towerunite)
-* Trackmania 2 (trackmania2) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]
-* Trackmania Forever (trackmaniaforever) [[Additional Notes](#nadeo-shootmania--trackmania--etc)]
-* Tremulous (tremulous)
-* Tribes 1: Starsiege (tribes1)
-* Tribes: Vengeance (tribesvengeance)
-* Tron 2.0 (tron20)
-* Turok 2 (turok2)
-* Universal Combat (universalcombat)
-* Unreal (unreal)
-* unturned (unturned)
-* Unreal Tournament (ut)
-* Unreal Tournament 2003 (ut2003)
-* Unreal Tournament 2004 (ut2004)
-* Unreal Tournament 3 (ut3)
-* Urban Terror (urbanterror)
-* V8 Supercar Challenge (v8supercar)
-* Vice City Multiplayer (vcmp)
-* Ventrilo (ventrilo)
-* Vietcong (vietcong)
-* Vietcong 2 (vietcong2)
-* Warsow (warsow)
-* Wheel of Time (wheeloftime)
-* Wolfenstein 2009 (wolfenstein2009)
-* Wolfenstein: Enemy Territory (wolfensteinet)
-* Xpand Rally (xpandrally)
-* Zombie Master (zombiemaster)
-* Zombie Panic: Source (zps)
+| Type ID | Name | Notes
+|---|---|---
+| `7d2d`     | 7 Days to Die (2013)
+| `ageofchivalry` | Age of Chivalry (2007)
+| `aoe2`     | Age of Empires 2 (1999)
+| `alienarena` | Alien Arena (2004)
+| `alienswarm` | Alien Swarm (2010)
+| `arkse`    | Ark: Survival Evolved (2017)
+| `atlas`    | Atlas (2018)
+| `avp2`     | Aliens versus Predator 2 (2001)
+| `avp2010`  | Aliens vs. Predator (2010)
+| `americasarmy` | America's Army (2002)
+| `americasarmy2` | America's Army 2 (2003)
+| `americasarmy3` | America's Army 3 (2009)
+| `americasarmypg` | America's Army: Proving Grounds (2015)
+| `arcasimracing` | Arca Sim Racing (2008)
+| `arma`     | ARMA: Armed Assault (2007)
+| `arma2`    | ARMA 2 (2009)
+| `arma3`    | ARMA 3 (2013)
+| `armagetron` | Armagetron Advanced (2001)
+| `baldursgate` | Baldur's Gate (1998)
+| `bat1944`  | Battalion 1944 (2018)
+| `bf1942`   | Battlefield 1942 (2002)
+| `bfv`      | Battlefield Vietnam (2004)
+| `bf2`      | Battlefield 2 (2005)
+| `bf2142`   | Battlefield 2142 (2006)
+| `bfbc2`    | Battlefield: Bad Company 2 (2010)
+| `bf3`      | Battlefield 3 (2011)
+| `bf4`      | Battlefield 4 (2013)
+| `bfh`      | Battlefield Hardline (2015)
+| `breach`   | Breach (2011)
+| `breed`    | Breed (2004)
+| `brink`    | Brink (2011)
+| `buildandshoot` | Build and Shoot / Ace of Spades Classic (2012)
+| `cod`      | Call of Duty (2003)
+| `coduo`    | Call of Duty: United Offensive (2004)
+| `cod2`     | Call of Duty 2 (2005)
+| `cod3`     | Call of Duty 3 (2006)
+| `cod4`     | Call of Duty 4: Modern Warfare (2007)
+| `codwaw`   | Call of Duty: World at War (2008)
+| `codmw2`   | Call of Duty: Modern Warfare 2 (2009)
+| `codmw3`   | Call of Duty: Modern Warfare 3 (2011)
+| `callofjuarez` | Call of Juarez
+| `chaser`   | Chaser
+| `chrome`   | Chrome
+| `codenameeagle` | Codename Eagle
+| `commandos3` | Commandos 3: Destination Berlin
+| `cacrenegade` | Command and Conquer: Renegade
+| `conanexiles` | Conan Exiles
+| `contactjack` | Contract J.A.C.K.
+| `cs15`     | Counter-Strike 1.5
+| `cs16`     | Counter-Strike 1.6
+| `cs2d`     | Counter-Strike: 2D
+| `cscz`     | Counter-Strike: Condition Zero
+| `css`      | Counter-Strike: Source
+| `csgo`     | Counter-Strike: Global Offensive | [Notes](#csgo)
+| `crossracing` | Cross Racing Championship
+| `crysis`   | Crysis
+| `crysiswars` | Crysis Wars
+| `crysis2`  | Crysis 2
+| `daikatana` | Daikatana
+| `dmomam`   | Dark Messiah of Might and Magic
+| `darkesthour` | Darkest Hour
+| `dayz`     | DayZ | [Notes](#dayz)
+| `dayzmod`  | DayZ Mod
+| `deadlydozenpt` | Deadly Dozen: Pacific Theater
+| `dh2005`   | Deer Hunter 2005
+| `descent3` | Descent 3
+| `deusex`   | Deus Ex
+| `devastation` | Devastation
+| `dinodday` | Dino D-Day
+| `dirttrackracing2` | Dirt Track Racing 2
+| `dnl`      | Dark and Light
+| `dod`      | Day of Defeat
+| `dods`     | Day of Defeat: Source
+| `doi`      | Day of Infamy
+| `doom3`    | Doom 3
+| `dota2`    | DOTA 2
+| `drakan`   | Drakan
+| `etqw`     | Enemy Territory Quake Wars
+| `fear`     | F.E.A.R.
+| `f12002`   | F1 2002
+| `f1c9902`  | F1 Challenge 99-02
+| `farcry`   | Far Cry
+| `farcry2`  | Far Cry
+| `fortressforever` | Fortress Forever
+| `flashpoint` | Flashpoint
+| `ffow`     | Frontlines: Fuel of War
+| `fivem`    | FiveM
+| `garrysmod` | Garry's Mod
+| `graw`     | Ghost Recon: Advanced Warfighter
+| `graw2`    | Ghost Recon: Advanced Warfighter 2
+| `giantscitizenkabuto` | Giants: Citizen Kabuto
+| `globaloperations` | Global Operations
+| `geneshift` | Geneshift
+| `ges`      | GoldenEye: Source
+| `gore`     | Gore
+| `gunmanchronicles` | Gunman Chronicles
+| `hldm`     | Half-Life 1 Deathmatch
+| `hl2dm`    | Half-Life 2 Deathmatch
+| `halo`     | Halo
+| `halo2`    | Halo 2
+| `heretic2` | Heretic 2
+| `hexen2`   | Hexen 2
+| `hidden`   | The Hidden: Source
+| `had2`     | Hidden and Dangerous 2
+| `homefront` | Homefront
+| `homeworld2` | Homeworld 2
+| `hurtworld` | Hurtworld
+| `igi2`     | IGI-2: Covert Strike
+| `il2`      | IL-2 Sturmovik
+| `insurgency` | Insurgency
+| `insurgencysandstorm` | Insurgency: Sandstorm
+| `ironstorm` | Iron Storm
+| `jamesbondnightfire` | James Bond: Nightfire
+| `jc2mp`    | Just Cause 2 Multiplayer
+| `killingfloor` | Killing Floor
+| `killingfloor2` | Killing Floor 2
+| `kingpin`  | Kingpin: Life of Crime
+| `kisspc`   | KISS Psycho Circus
+| `kspdmp`   | DMP - KSP Multiplayer
+| `kzmod`    | KzMod
+| `left4dead` | Left 4 Dead
+| `left4dead2` | Left 4 Dead 2
+| `m2mp`     | Mafia 2 Multiplayer
+| `m2o`      | Mafia 2 Online
+| `medievalengineers` | Medieval Engineers
+| `mohaa`    | Medal of Honor: Allied Assault
+| `mohpa`    | Medal of Honor: Pacific Assault
+| `mohab`    | Medal of Honor: Airborne
+| `mohsh`    | Medal of Honor: Spearhead
+| `mohbt`    | Medal of Honor: Breakthrough
+| `moh2010`  | Medal of Honor 2010
+| `mohwf`    | Medal of Honor: Warfighter
+| `minecraft` | Minecraft | [Notes](#minecraft)
+| `minecraftpe` | Minecraft: Pocket Edition
+| `mnc`      | Monday Night Combat
+| `mtavc`    | Multi Theft Auto: Vice City
+| `mtasa`    | Multi Theft Auto: San Andreas
+| `mumble`   | Mumble (Requires GTmurmur plugin) | [Notes](#mumble)
+| `mumbleping` | Mumble (Lightweight) | [Notes](#mumble)
+| `mutantfactions` | Mutant Factions
+| `nascarthunder2004` | Nascar Thunder 2004
+| `netpanzer` | netPanzer
+| `nmrih`    | No More Room in Hell
+| `ns`       | Natural Selection
+| `ns2`      | Natural Selection 2
+| `nfshp2`   | Need for Speed: Hot Pursuit 2
+| `nab`      | Nerf Arena Blast
+| `nwn`      | Neverwinter Nights
+| `nwn2`     | Neverwinter Nights 2
+| `nexuiz`   | Nexuiz
+| `nitrofamily` | Nitro Family
+| `nolf`     | No One Lives Forever
+| `nolf2`    | No One Lives Forever 2
+| `nucleardawn` | Nuclear Dawn
+| `openarena` | OpenArena
+| `openttd`  | OpenTTD
+| `operationflashpoint` | Operation Flashpoint
+| `painkiller` | Painkiller
+| `postal2`  | Postal 2
+| `prey`     | Prey
+| `primalcarnage` | Primal Carnage: Extinction
+| `quake1`   | Quake 1: QuakeWorld
+| `quake2`   | Quake 2
+| `quake3`   | Quake 3: Arena
+| `quake4`   | Quake 4
+| `ragdollkungfu` | Rag Doll Kung Fu
+| `r6`       | Rainbow Six
+| `r6roguespear` | Rainbow Six 2: Rogue Spear
+| `r6ravenshield` | Rainbow Six 3: Raven Shield
+| `rallisportchallenge` | RalliSport Challenge
+| `rallymasters` | Rally Masters
+| `redorchestra` | Red Orchestra
+| `redorchestraost` | Red Orchestra: Ostfront 41-45
+| `redorchestra2` | Red Orchestra 2
+| `redline`  | Redline
+| `rtcw`     | Return to Castle Wolfenstein
+| `rfactor`  | rFactor
+| `ricochet` | Ricochet
+| `riseofnations` | Rise of Nations
+| `rune`     | Rune
+| `rust`     | Rust
+| `samp`     | San Andreas Multiplayer
+| `spaceengineers` | Space Engineers
+| `ss`       | Serious Sam
+| `ss2`      | Serious Sam 2
+| `shatteredhorizon` | Shattered Horizon
+| `ship`     | The Ship
+| `shogo`    | Shogo
+| `shootmania` | Shootmania | [Notes](#nadeo-shootmania--trackmania--etc)
+| `sin`      | SiN
+| `sinep`    | SiN Episodes
+| `soldat`   | Soldat
+| `sof`      | Soldier of Fortune
+| `sof2`     | Soldier of Fortune 2
+| `stalker`  | S.T.A.L.K.E.R.
+| `stbc`     | Star Trek: Bridge Commander
+| `stvef`    | Star Trek: Voyager - Elite Force
+| `stvef2`   | Star Trek: Voyager - Elite Force 2
+| `swbf`     | Star Wars: Battlefront
+| `swbf2`    | Star Wars: Battlefront 2
+| `swjk`     | Star Wars: Jedi Knight
+| `swjk2`    | Star Wars: Jedi Knight 2
+| `swrc`     | Star Wars: Republic Commando
+| `starbound` | Starbound
+| `starmade` | StarMade
+| `starsiege` | Starsiege (2009)
+| `suicidesurvival` | Suicide Survival
+| `swat4`    | SWAT 4
+| `svencoop` | Sven Coop
+| `synergy`  | Synergy
+| `tacticalops` | Tactical Ops
+| `teamfactor` | Team Factor
+| `tfc`      | Team Fortress Classic
+| `tf2`      | Team Fortress 2
+| `teamspeak2` | Teamspeak 2
+| `teamspeak3` | Teamspeak 3 | [Notes](#teamspeak3)
+| `terminus` | Terminus
+| `terraria` | Terraria | [Notes](#terraria)
+| `thps3`    | Tony Hawk's Pro Skater 3
+| `thps4`    | Tony Hawk's Pro Skater 4
+| `thu2`     | Tony Hawk's Underground 2
+| `towerunite` | Tower Unite
+| `trackmania2` | Trackmania 2 | [Notes](#nadeo-shootmania--trackmania--etc)
+| `trackmaniaforever` | Trackmania Forever | [Notes](#nadeo-shootmania--trackmania--etc)
+| `tremulous` | Tremulous
+| `tribes1`  | Tribes 1: Starsiege
+| `tribesvengeance` | Tribes: Vengeance
+| `tron20`   | Tron 2.0
+| `turok2`   | Turok 2
+| `universalcombat` | Universal Combat
+| `unreal`   | Unreal
+| `unturned` | unturned
+| `ut`       | Unreal Tournament
+| `ut2003`   | Unreal Tournament 2003
+| `ut2004`   | Unreal Tournament 2004
+| `ut3`      | Unreal Tournament 3
+| `urbanterror` | Urban Terror
+| `v8supercar` | V8 Supercar Challenge
+| `vcmp`     | Vice City Multiplayer
+| `ventrilo` | Ventrilo
+| `vietcong` | Vietcong
+| `vietcong2` | Vietcong 2
+| `warsow`   | Warsow
+| `wheeloftime` | Wheel of Time
+| `wolfenstein2009` | Wolfenstein 2009
+| `wolfensteinet` | Wolfenstein: Enemy Territory
+| `xpandrally` | Xpand Rally
+| `zombiemaster` | Zombie Master
+| `zps`      | Zombie Panic: Source
 
 <!--- END GENERATED GAMES -->
 

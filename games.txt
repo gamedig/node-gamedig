@@ -1,53 +1,54 @@
 # id | pretty name for readme | protocol | options | extra
 
-7d2d|7 Days to Die|valve|port=26900,port_query_offset=1
-ageofchivalry|Age of Chivalry|valve|port=27015
-aoe2|Age of Empires 2|ase|port_query=27224
-alienarena|Alien Arena|quake2|port_query=27910
-alienswarm|Alien Swarm|valve|port=27015
-arkse|ARK: Survival Evolved|valve|port=7777,port_query=27015
-avp2|Aliens vs Predator 2|gamespy1|port=27888
+7d2d|7 Days to Die (2013)|valve|port=26900,port_query_offset=1
+ageofchivalry|Age of Chivalry (2007)|valve|port=27015
+aoe2|Age of Empires 2 (1999)|ase|port_query=27224
+alienarena|Alien Arena (2004)|quake2|port_query=27910
+alienswarm|Alien Swarm (2010)|valve|port=27015
+arkse|Ark: Survival Evolved (2017)|valve|port=7777,port_query=27015
+atlas|Atlas (2018)|valve|port=5761,port_query_offset=51800
+avp2|Aliens versus Predator 2 (2001)|gamespy1|port=27888
 # avp2010 doesn't really... have a default port or query port
 # both port and port_query should be specified when used
-avp2010|Aliens vs Predator 2010|valve|port=27015
+avp2010|Aliens vs. Predator (2010)|valve|port=27015
 
-americasarmy|America's Army|gamespy2|port=1716,port_query_offset=1
-americasarmy2|America's Army 2|gamespy2|port=1716,port_query_offset=1
-americasarmy3|America's Army 3|valve|port=8777,port_query=27020
-americasarmypg|America's Army: Proving Grounds|valve|port=8777,port_query=27020
+americasarmy|America's Army (2002)|gamespy2|port=1716,port_query_offset=1
+americasarmy2|America's Army 2 (2003)|gamespy2|port=1716,port_query_offset=1
+americasarmy3|America's Army 3 (2009)|valve|port=8777,port_query=27020
+americasarmypg|America's Army: Proving Grounds (2015)|valve|port=8777,port_query=27020
 
-arcasimracing|Arca Sim Racing|rfactor|port=34397,port_query_offset=-100
+arcasimracing|Arca Sim Racing (2008)|rfactor|port=34397,port_query_offset=-100
 
-arma|ArmA|gamespy2|port=2302
-arma2|ArmA 2|valve|port=2302,port_query_offset=1
-arma3|ArmA 3|valve|port=2302,port_query_offset=1
+arma|ARMA: Armed Assault (2007)|gamespy2|port=2302
+arma2|ARMA 2 (2009)|valve|port=2302,port_query_offset=1
+arma3|ARMA 3 (2013)|valve|port=2302,port_query_offset=1
 
-armagetron|Armagetron|armagetron|port=4534
-baldursgate|Baldur's Gate|gamespy1|port=6073,port_query=1470
-bat1944|Battalion 1944|valve|port=7777,port_query_offset=3
+armagetron|Armagetron Advanced (2001)|armagetron|port=4534
+baldursgate|Baldur's Gate (1998)|gamespy1|port=6073,port_query=1470
+bat1944|Battalion 1944 (2018)|valve|port=7777,port_query_offset=3
 
-bf1942|Battlefield 1942|gamespy1|port=14567,port_query=23000
-bfv|Battlefield Vietnam|gamespy2|port=15567,port_query=23000
-bf2|Battlefield 2|gamespy3|port=16567,port_query=29900
-bf2142|Battlefield 2142|gamespy3|port=16567,port_query=29900
-bfbc2|Battlefield: Bad Company 2|battlefield|port=19567,port_query=48888
-bf3|Battlefield 3|battlefield|port=25200,port_query_offset=22000
-bf4|Battlefield 4|battlefield|port=25200,port_query_offset=22000
-bfh|Battlefield Hardline|battlefield|port=25200,port_query_offset=22000
+bf1942|Battlefield 1942 (2002)|gamespy1|port=14567,port_query=23000
+bfv|Battlefield Vietnam (2004)|gamespy2|port=15567,port_query=23000
+bf2|Battlefield 2 (2005)|gamespy3|port=16567,port_query=29900
+bf2142|Battlefield 2142 (2006)|gamespy3|port=16567,port_query=29900
+bfbc2|Battlefield: Bad Company 2 (2010)|battlefield|port=19567,port_query=48888
+bf3|Battlefield 3 (2011)|battlefield|port=25200,port_query_offset=22000
+bf4|Battlefield 4 (2013)|battlefield|port=25200,port_query_offset=22000
+bfh|Battlefield Hardline (2015)|battlefield|port=25200,port_query_offset=22000
 
-breach|Breach|valve|port=27016
-breed|Breed|gamespy2|port=7649
-brink|Brink|valve|port_query_offset=1
-buildandshoot|Build and Shoot|buildandshoot|port=32887,port_query_offset=-1
+breach|Breach (2011)|valve|port=27016
+breed|Breed (2004)|gamespy2|port=7649
+brink|Brink (2011)|valve|port_query_offset=1
+buildandshoot|Build and Shoot / Ace of Spades Classic (2012)|buildandshoot|port=32887,port_query_offset=-1
 
-cod|Call of Duty|quake3|port=28960
-coduo|Call of Duty: United Offensive|quake3|port=28960
-cod2|Call of Duty 2|quake3|port=28960
-cod3|Call of Duty 3|quake3|port=28960
-cod4|Call of Duty 4: Modern Warfare|quake3|port=28960
-codwaw|Call of Duty: World at War|quake3|port=28960
-codmw2|Call of Duty: Modern Warfare 2|quake3|port=28960
-codmw3|Call of Duty: Modern Warfare 3|valve|port_query_offset=2
+cod|Call of Duty (2003)|quake3|port=28960
+coduo|Call of Duty: United Offensive (2004)|quake3|port=28960
+cod2|Call of Duty 2 (2005)|quake3|port=28960
+cod3|Call of Duty 3 (2006)|quake3|port=28960
+cod4|Call of Duty 4: Modern Warfare (2007)|quake3|port=28960
+codwaw|Call of Duty: World at War (2008)|quake3|port=28960
+codmw2|Call of Duty: Modern Warfare 2 (2009)|quake3|port=28960
+codmw3|Call of Duty: Modern Warfare 3 (2011)|valve|port_query_offset=2
 
 callofjuarez|Call of Juarez|ase|port_query=26000
 chaser|Chaser|ase|port=3000,port_query_offset=123
@@ -155,8 +156,8 @@ minecraftpe|Minecraft: Pocket Edition|gamespy3|port=19132,maxAttempts=2
 mnc|Monday Night Combat|valve|port=7777,port_query=27016
 mtavc|Multi Theft Auto: Vice City|ase|port=22003,port_query_offset=123
 mtasa|Multi Theft Auto: San Andreas|ase|port=22003,port_query_offset=123
-mumble|Mumble|mumble|port=64738,port_query=27800|doc_notes=mumble
-mumbleping|Mumble|mumbleping|port=64738|doc_notes=mumble
+mumble|Mumble (Requires GTmurmur plugin)|mumble|port=64738,port_query=27800|doc_notes=mumble
+mumbleping|Mumble (Lightweight)|mumbleping|port=64738|doc_notes=mumble
 mutantfactions|Mutant Factions|geneshift|port=11235
 nascarthunder2004|Nascar Thunder 2004|gamespy2|port_query=13333
 netpanzer|netPanzer|gamespy1|port=3030
