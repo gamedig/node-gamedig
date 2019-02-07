@@ -21,6 +21,9 @@ arcasimracing|Arca Sim Racing (2008)|rfactor|port=34397,port_query_offset=-100
 
 arma|ARMA: Armed Assault (2007)|gamespy2|port=2302
 arma2|ARMA 2 (2009)|valve|port=2302,port_query_offset=1
+arma2oa|ARMA 2: Operation Arrowhead (2010)|valve|port=2302,port_query_offset=1
+armacwa|ARMA: Cold War Assault (2011)|gamespy1|port=2302,port_query_offset=1
+armar|ARMA: Resistance (2011)|gamespy1|port=2302,port_query_offset=1
 arma3|ARMA 3 (2013)|valve|port=2302,port_query_offset=1
 
 armagetron|Armagetron Advanced (2001)|armagetron|port=4534
@@ -50,55 +53,56 @@ codwaw|Call of Duty: World at War (2008)|quake3|port=28960
 codmw2|Call of Duty: Modern Warfare 2 (2009)|quake3|port=28960
 codmw3|Call of Duty: Modern Warfare 3 (2011)|valve|port_query_offset=2
 
-callofjuarez|Call of Juarez|ase|port_query=26000
-chaser|Chaser|ase|port=3000,port_query_offset=123
-chrome|Chrome|ase|port=27015,port_query_offset=123
-codenameeagle|Codename Eagle|gamespy1|port_query=4711
-commandos3|Commandos 3: Destination Berlin|gamespy1|port_query=6500
-cacrenegade|Command and Conquer: Renegade|gamespy1|port=4848,port_query=25300
-conanexiles|Conan Exiles|valve|port=7777,port_query=27015
-contactjack|Contract J.A.C.K.|gamespy1|port_query=27888
+callofjuarez|Call of Juarez (2006)|ase|port_query=26000
+chaser|Chaser (2003)|ase|port=3000,port_query_offset=123
+chrome|Chrome (2003)|ase|port=27015,port_query_offset=123
+codenameeagle|Codename Eagle (2000)|gamespy1|port_query=4711
+commandos3|Commandos 3: Destination Berlin (2003)|gamespy1|port_query=6500
+cacrenegade|Command and Conquer: Renegade (2002)|gamespy1|port=4848,port_query=25300
+conanexiles|Conan Exiles (2018)|valve|port=7777,port_query=27015
+contactjack|Contract J.A.C.K. (2003)|gamespy1|port_query=27888
 
-cs15|Counter-Strike 1.5|valve|port=27015
-cs16|Counter-Strike 1.6|valve|port=27015
-cs2d|Counter-Strike: 2D|cs2d|port=36963
-cscz|Counter-Strike: Condition Zero|valve|port=27015
-css|Counter-Strike: Source|valve|port=27015
-csgo|Counter-Strike: Global Offensive|valve|port=27015|doc_notes=csgo
+cs15|Counter-Strike 1.5 (2002)|valve|port=27015
+cs16|Counter-Strike 1.6 (2003)|valve|port=27015
+cs2d|Counter-Strike: 2D (2004)|cs2d|port=36963
+cscz|Counter-Strike: Condition Zero (2004)|valve|port=27015
+css|Counter-Strike: Source (2004)|valve|port=27015
+csgo|Counter-Strike: Global Offensive (2012)|valve|port=27015|doc_notes=csgo
 
-crossracing|Cross Racing Championship|ase|port=12321,port_query_offset=123
+crossracing|Cross Racing Championship Extreme 2005 (2005)|ase|port=12321,port_query_offset=123
 
-crysis|Crysis|gamespy3|port=64087
-crysiswars|Crysis Wars|gamespy3|port=64100
-crysis2|Crysis 2|gamespy3|port=64000
+crysis|Crysis (2007)|gamespy3|port=64087
+crysiswars|Crysis Wars (2008)|gamespy3|port=64100
+crysis2|Crysis 2 (2011)|gamespy3|port=64000
 
-daikatana|Daikatana|quake2|port=27982,port_query_offset=10
-dmomam|Dark Messiah of Might and Magic|valve|port=27015
-darkesthour|Darkest Hour|unreal2|port=7757,port_query_offset=1
-dayz|DayZ|valve|port=2302,port_query_offset=24714|doc_notes=dayz
-dayzmod|DayZ Mod|valve|port=2302,port_query_offset=1
-deadlydozenpt|Deadly Dozen: Pacific Theater|gamespy1|port_query=25300
-dh2005|Deer Hunter 2005|gamespy2|port=23459,port_query=34567
-descent3|Descent 3|gamespy1|port=2092,port_query=20142
-deusex|Deus Ex|gamespy2|port=7791,port_query_offset=1
-devastation|Devastation|unreal2|port=7777,port_query_offset=1
-dinodday|Dino D-Day|valve|port=27015
-dirttrackracing2|Dirt Track Racing 2|gamespy1|port=32240,port_query_offset=-100
-dnl|Dark and Light|valve|port=7777,port_query=27015
-dod|Day of Defeat|valve|port=27015
-dods|Day of Defeat: Source|valve|port=27015
-doi|Day of Infamy|valve|port=27015
-doom3|Doom 3|doom3|port=27666
-dota2|DOTA 2|valve|port=27015
-drakan|Drakan|gamespy1|port=27045,port_query_offset=1
-etqw|Enemy Territory Quake Wars|doom3|port=3074,port_query=27733
-fear|F.E.A.R.|gamespy2|port_query=27888
-f12002|F1 2002|gamespy1|port_query=3297
-f1c9902|F1 Challenge 99-02|gamespy1|port_query=34397
-farcry|Far Cry|ase|port=49001,port_query_offset=123
-farcry2|Far Cry|ase|port_query=14001
-fortressforever|Fortress Forever|valve|port=27015
-flashpoint|Flashpoint|gamespy1|port=2302,port_query_offset=1
+daikatana|Daikatana (2000)|quake2|port=27982,port_query_offset=10
+dmomam|Dark Messiah of Might and Magic (2006)|valve|port=27015
+darkesthour|Darkest Hour: Europe '44-'45 (2008)|unreal2|port=7757,port_query_offset=1
+dayz|DayZ (2018)|valve|port=2302,port_query_offset=24714|doc_notes=dayz
+dayzmod|DayZ Mod (2013)|valve|port=2302,port_query_offset=1
+deadlydozenpt|Deadly Dozen: Pacific Theater (2002)|gamespy1|port_query=25300
+dh2005|Deer Hunter 2005 (2004)|gamespy2|port=23459,port_query=34567
+descent3|Descent 3 (1999)|gamespy1|port=2092,port_query=20142
+deusex|Deus Ex (2000)|gamespy2|port=7791,port_query_offset=1
+devastation|Devastation (2003)|unreal2|port=7777,port_query_offset=1
+dinodday|Dino D-Day (2011)|valve|port=27015
+dirttrackracing2|Dirt Track Racing 2 (2002)|gamespy1|port=32240,port_query_offset=-100
+dnl|Dark and Light (2017)|valve|port=7777,port_query=27015
+dod|Day of Defeat (2003)|valve|port=27015
+dods|Day of Defeat: Source (2005)|valve|port=27015
+doi|Day of Infamy (2017)|valve|port=27015
+doom3|Doom 3 (2004)|doom3|port=27666
+dota2|Dota 2 (2013)|valve|port=27015
+drakan|Drakan: Order of the Flame (1999)|gamespy1|port=27045,port_query_offset=1
+etqw|Enemy Territory: Quake Wars (2007)|doom3|port=3074,port_query=27733
+fear|F.E.A.R. (2005)|gamespy2|port_query=27888
+f12002|Formula One 2002 (2002)|gamespy1|port_query=3297
+f1c9902|F1 Challenge '99-'02 (2002)|gamespy1|port_query=34397
+farcry|Far Cry (2004)|ase|port=49001,port_query_offset=123
+farcry2|Far Cry 2 (2008)|ase|port_query=14001
+fortressforever|Fortress Forever (2007)|valve|port=27015
+flashpoint|Operation Flashpoint: Cold War Crisis (2001)|gamespy1|port=2302,port_query_offset=1
+flashpointresistance|Operation Flashpoint: Resistance (2002)|gamespy1|port=2302,port_query_offset=1
 ffow|Frontlines: Fuel of War|ffow|port=5476,port_query_offset=2
 fivem|FiveM|fivem|port=30120
 garrysmod|Garry's Mod|valve|port=27015
@@ -237,6 +241,7 @@ swat4|SWAT 4|gamespy2|port=10480,port_query_offset=2
 svencoop|Sven Coop|valve|port=27015
 synergy|Synergy|valve|port=27015
 tacticalops|Tactical Ops|gamespy1|port=7777,port_query_offset=1
+takeonhelicopters|Take On Helicopters (2011)|gamespy1|port=2302,port_query_offset=1
 teamfactor|Team Factor|gamespy1|port_query=57778
 tfc|Team Fortress Classic|valve|port=27015
 tf2|Team Fortress 2|valve|port=27015

@@ -78,7 +78,7 @@ Games List
 ### Supported
 <!--- BEGIN GENERATED GAMES -->
 
-| Type ID | Name | Notes
+| GameDig Type ID | Name | Notes
 |---|---|---
 | `7d2d`     | 7 Days to Die (2013)
 | `ageofchivalry` | Age of Chivalry (2007)
@@ -96,6 +96,9 @@ Games List
 | `arcasimracing` | Arca Sim Racing (2008)
 | `arma`     | ARMA: Armed Assault (2007)
 | `arma2`    | ARMA 2 (2009)
+| `arma2oa`  | ARMA 2: Operation Arrowhead (2010)
+| `armacwa`  | ARMA: Cold War Assault (2011)
+| `armar`    | ARMA: Resistance (2011)
 | `arma3`    | ARMA 3 (2013)
 | `armagetron` | Armagetron Advanced (2001)
 | `baldursgate` | Baldur's Gate (1998)
@@ -120,51 +123,52 @@ Games List
 | `codwaw`   | Call of Duty: World at War (2008)
 | `codmw2`   | Call of Duty: Modern Warfare 2 (2009)
 | `codmw3`   | Call of Duty: Modern Warfare 3 (2011)
-| `callofjuarez` | Call of Juarez
-| `chaser`   | Chaser
-| `chrome`   | Chrome
-| `codenameeagle` | Codename Eagle
-| `commandos3` | Commandos 3: Destination Berlin
-| `cacrenegade` | Command and Conquer: Renegade
-| `conanexiles` | Conan Exiles
-| `contactjack` | Contract J.A.C.K.
-| `cs15`     | Counter-Strike 1.5
-| `cs16`     | Counter-Strike 1.6
-| `cs2d`     | Counter-Strike: 2D
-| `cscz`     | Counter-Strike: Condition Zero
-| `css`      | Counter-Strike: Source
-| `csgo`     | Counter-Strike: Global Offensive | [Notes](#csgo)
-| `crossracing` | Cross Racing Championship
-| `crysis`   | Crysis
-| `crysiswars` | Crysis Wars
-| `crysis2`  | Crysis 2
-| `daikatana` | Daikatana
-| `dmomam`   | Dark Messiah of Might and Magic
-| `darkesthour` | Darkest Hour
-| `dayz`     | DayZ | [Notes](#dayz)
-| `dayzmod`  | DayZ Mod
-| `deadlydozenpt` | Deadly Dozen: Pacific Theater
-| `dh2005`   | Deer Hunter 2005
-| `descent3` | Descent 3
-| `deusex`   | Deus Ex
-| `devastation` | Devastation
-| `dinodday` | Dino D-Day
-| `dirttrackracing2` | Dirt Track Racing 2
-| `dnl`      | Dark and Light
-| `dod`      | Day of Defeat
-| `dods`     | Day of Defeat: Source
-| `doi`      | Day of Infamy
-| `doom3`    | Doom 3
-| `dota2`    | DOTA 2
-| `drakan`   | Drakan
-| `etqw`     | Enemy Territory Quake Wars
-| `fear`     | F.E.A.R.
-| `f12002`   | F1 2002
-| `f1c9902`  | F1 Challenge 99-02
-| `farcry`   | Far Cry
-| `farcry2`  | Far Cry
-| `fortressforever` | Fortress Forever
-| `flashpoint` | Flashpoint
+| `callofjuarez` | Call of Juarez (2006)
+| `chaser`   | Chaser (2003)
+| `chrome`   | Chrome (2003)
+| `codenameeagle` | Codename Eagle (2000)
+| `commandos3` | Commandos 3: Destination Berlin (2003)
+| `cacrenegade` | Command and Conquer: Renegade (2002)
+| `conanexiles` | Conan Exiles (2018)
+| `contactjack` | Contract J.A.C.K. (2003)
+| `cs15`     | Counter-Strike 1.5 (2002)
+| `cs16`     | Counter-Strike 1.6 (2003)
+| `cs2d`     | Counter-Strike: 2D (2004)
+| `cscz`     | Counter-Strike: Condition Zero (2004)
+| `css`      | Counter-Strike: Source (2004)
+| `csgo`     | Counter-Strike: Global Offensive (2012) | [Notes](#csgo)
+| `crossracing` | Cross Racing Championship Extreme 2005 (2005)
+| `crysis`   | Crysis (2007)
+| `crysiswars` | Crysis Wars (2008)
+| `crysis2`  | Crysis 2 (2011)
+| `daikatana` | Daikatana (2000)
+| `dmomam`   | Dark Messiah of Might and Magic (2006)
+| `darkesthour` | Darkest Hour: Europe '44-'45 (2008)
+| `dayz`     | DayZ (2018) | [Notes](#dayz)
+| `dayzmod`  | DayZ Mod (2013)
+| `deadlydozenpt` | Deadly Dozen: Pacific Theater (2002)
+| `dh2005`   | Deer Hunter 2005 (2004)
+| `descent3` | Descent 3 (1999)
+| `deusex`   | Deus Ex (2000)
+| `devastation` | Devastation (2003)
+| `dinodday` | Dino D-Day (2011)
+| `dirttrackracing2` | Dirt Track Racing 2 (2002)
+| `dnl`      | Dark and Light (2017)
+| `dod`      | Day of Defeat (2003)
+| `dods`     | Day of Defeat: Source (2005)
+| `doi`      | Day of Infamy (2017)
+| `doom3`    | Doom 3 (2004)
+| `dota2`    | Dota 2 (2013)
+| `drakan`   | Drakan: Order of the Flame (1999)
+| `etqw`     | Enemy Territory: Quake Wars (2007)
+| `fear`     | F.E.A.R. (2005)
+| `f12002`   | Formula One 2002 (2002)
+| `f1c9902`  | F1 Challenge '99-'02 (2002)
+| `farcry`   | Far Cry (2004)
+| `farcry2`  | Far Cry 2 (2008)
+| `fortressforever` | Fortress Forever (2007)
+| `flashpoint` | Operation Flashpoint: Cold War Crisis (2001)
+| `flashpointresistance` | Operation Flashpoint: Resistance (2002)
 | `ffow`     | Frontlines: Fuel of War
 | `fivem`    | FiveM
 | `garrysmod` | Garry's Mod
@@ -291,6 +295,7 @@ Games List
 | `svencoop` | Sven Coop
 | `synergy`  | Synergy
 | `tacticalops` | Tactical Ops
+| `takeonhelicopters` | Take On Helicopters (2011)
 | `teamfactor` | Team Factor
 | `tfc`      | Team Fortress Classic
 | `tf2`      | Team Fortress 2
