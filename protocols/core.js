@@ -7,6 +7,8 @@ const EventEmitter = require('events').EventEmitter,
     Logger = require('../lib/Logger'),
     DnsResolver = require('../lib/DnsResolver');
 
+let uid = 0;
+
 class Core extends EventEmitter {
     constructor() {
         super();
@@ -26,31 +28,15 @@ class Core extends EventEmitter {
         this.usedTcp = false;
     }
 
-    async runAllAttempts() {
+    // Runs a single attempt with a timeout and cleans up afterward
+    async runOnceSafe() {
         if (this.options.debug) {
             this.logger.debugEnabled = true;
         }
+        this.logger.prefix = 'Q#' + (uid++);
 
-        let result = null;
-        let lastError = null;
-        for (let attempt = 1; attempt <= this.options.maxAttempts; attempt++) {
-            try {
-                result = await this.runOnceSafe();
-                result.query.attempts = attempt;
-                break;
-            } catch (e) {
-                lastError = e;
-            }
-        }
+        this.logger.debug("Query is running with options:", this.options);
 
-        if (result === null) {
-            throw lastError;
-        }
-        return result;
-    }
-
-    // Runs a single attempt with a timeout and cleans up afterward
-    async runOnceSafe() {
         let abortCall = null;
         this.abortedPromise = new Promise((resolve,reject) => {
             abortCall = () => reject("Query is finished -- cancelling outstanding promises");
@@ -63,13 +49,18 @@ class Core extends EventEmitter {
         try {
             const promise = this.runOnce();
             timeout = Promises.createTimeout(this.options.attemptTimeout, "Attempt");
-            return await Promise.race([promise,timeout]);
+            const result = await Promise.race([promise, timeout]);
+            this.logger.debug("Query was successful");
+            return result;
+        } catch(e) {
+            this.logger.debug("Query failed with error", e);
+            throw e;
         } finally {
             timeout && timeout.cancel();
             try {
                 abortCall();
             } catch(e) {
-                this.debugLog("Error during abort cleanup: " + e.stack);
+                this.logger.debug("Error during abort cleanup: " + e.stack);
             }
         }
     }
