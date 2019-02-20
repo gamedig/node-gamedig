@@ -9,7 +9,7 @@ class BuildAndShoot extends Core {
 
         let m;
 
-        m = body.match(/status server for (.*?)\.?(\r|\n)/);
+        m = body.match(/status server for (.*?)\.?[\r\n]/);
         if(m) state.name = m[1];
 
         m = body.match(/Current uptime: (\d+)/);

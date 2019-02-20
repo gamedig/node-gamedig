@@ -4,10 +4,6 @@ class Doom3 extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';
-        this.isEtqw = false;
-        this.hasSpaceBeforeClanTag = false;
-        this.hasClanTag = false;
-        this.hasTypeFlag = false;
     }
     async run(state) {
         const body = await this.udpSend('\xff\xffgetInfo\x00PiNGPoNg\x00', packet => {

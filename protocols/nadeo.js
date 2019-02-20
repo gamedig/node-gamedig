@@ -1,5 +1,6 @@
 const gbxremote = require('gbxremote'),
-    Core = require('./core');
+    Core = require('./core'),
+    Promises = require('../lib/Promises');
 
 class Nadeo extends Core {
     async run(state) {
@@ -59,20 +60,16 @@ class Nadeo extends Core {
 
     async withClient(fn) {
         const socket = gbxremote.createClient(this.options.port, this.options.host);
-        const cancelAsyncLeak = this.addCleanup(() => socket.terminate());
         try {
-            await this.timedPromise(
-                new Promise((resolve,reject) => {
-                    socket.on('connect', resolve);
-                    socket.on('error', e => reject(new Error('GBX Remote Connection Error: ' + e)));
-                    socket.on('close', () => reject(new Error('GBX Remote Connection Refused')));
-                }),
-                this.options.socketTimeout,
-                'GBX Remote Opening'
-            );
+            const connectPromise = new Promise((resolve,reject) => {
+                socket.on('connect', resolve);
+                socket.on('error', e => reject(new Error('GBX Remote Connection Error: ' + e)));
+                socket.on('close', () => reject(new Error('GBX Remote Connection Refused')));
+            });
+            const timeoutPromise = Promises.createTimeout(this.options.socketTimeout, 'GBX Remote Opening');
+            const socket = await Promise.race([connectPromise, timeoutPromise, this.abortedPromise]);
             return await fn(socket);
         } finally {
-            cancelAsyncLeak();
             socket.terminate();
         }
     }
@@ -80,16 +77,15 @@ class Nadeo extends Core {
     async methodCall(client, ...cmdset) {
         const cmd = cmdset[0];
         const params = cmdset.slice(1);
-        return await this.timedPromise(
-            new Promise(async (resolve,reject) => {
-                client.methodCall(cmd, params, (err, value) => {
-                    if (err) reject('XMLRPC error ' + JSON.stringify(err));
-                    resolve(value);
-                });
-            }),
-            this.options.socketTimeout,
-            'GBX Method Call'
-        );
+
+        const sentPromise = new Promise(async (resolve,reject) => {
+            client.methodCall(cmd, params, (err, value) => {
+                if (err) reject('XMLRPC error ' + JSON.stringify(err));
+                resolve(value);
+            });
+        });
+        const timeoutPromise = Promises.createTimeout(this.options.socketTimeout, 'GBX Method Call');
+        return await Promise.race([sentPromise, timeoutPromise, this.abortedPromise]);
     }
 
     stripColors(str) {

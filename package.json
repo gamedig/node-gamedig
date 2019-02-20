@@ -27,7 +27,7 @@
 		"cheerio": "^1.0.0-rc.2",
 		"compressjs": "^1.0.2",
 		"gbxremote": "^0.1.4",
-		"iconv-lite": "^0.4.18",
+		"iconv-lite": "^0.4.24",
 		"long": "^2.4.0",
 		"minimist": "^1.2.0",
 		"moment": "^2.21.0",
@@ -46,5 +46,9 @@
 		"games.txt",
 		"LICENSE",
 		"README.md"
-	]
+	],
+	"devDependencies": {
+		"@types/cheerio": "^0.22.10",
+		"@types/node": "^8.0.0"
+	}
 }

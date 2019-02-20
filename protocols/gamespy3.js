@@ -1,5 +1,4 @@
-const Core = require('./core'),
-    HexUtil = require('../lib/HexUtil');
+const Core = require('./core');
 
 class Gamespy3 extends Core {
     constructor() {

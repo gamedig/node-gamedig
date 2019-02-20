@@ -182,7 +182,8 @@ class Core extends EventEmitter {
 
     /**
      * @template T
-     * @param {function(Socket):Promise<T>} fn
+     * @param {function(NodeJS.Socket):Promise<T>} fn
+     * @param {number=} port
      * @returns {Promise<T>}
      */
     async withTcp(fn, port) {
@@ -236,7 +237,7 @@ class Core extends EventEmitter {
 
     /**
      * @template T
-     * @param {Socket} socket
+     * @param {NodeJS.Socket} socket
      * @param {Buffer|string} buffer
      * @param {function(Buffer):T} ondata
      * @returns Promise<T>
@@ -250,7 +251,7 @@ class Core extends EventEmitter {
                     received = Buffer.concat([received, data]);
                     const result = ondata(received);
                     if (result !== undefined) {
-                        socket.off('data', onData);
+                        socket.removeListener('data', onData);
                         resolve(result);
                     }
                 };
