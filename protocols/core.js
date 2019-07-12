@@ -39,7 +39,7 @@ class Core extends EventEmitter {
 
         let abortCall = null;
         this.abortedPromise = new Promise((resolve,reject) => {
-            abortCall = () => reject("Query is finished -- cancelling outstanding promises");
+            abortCall = () => reject(new Error("Query is finished -- cancelling outstanding promises"));
         });
 
         // Make sure that if this promise isn't attached to, it doesn't throw a unhandled promise rejection
@@ -311,7 +311,7 @@ class Core extends EventEmitter {
                             resolve(result);
                         }
                     } catch(e) {
-                        reject(e);
+                        reject(new Error(e));
                     }
                 };
                 socket.addCallback(socketCallback, this.options.debug);
@@ -329,10 +329,10 @@ class Core extends EventEmitter {
                                 return;
                             }
                         } catch(e) {
-                            reject(e);
+                            reject(new Error(e));
                         }
                     }
-                    reject(e);
+                    reject(new Error(e));
                 });
             });
             return await Promise.race([promise, wrappedTimeout, this.abortedPromise]);
