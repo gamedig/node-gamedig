@@ -120,6 +120,7 @@ halo2|Halo 2 (2007)|gamespy2|port=2302
 heretic2|Heretic II (1998)|gamespy1|port=27900,port_query_offset=1
 hexen2|Hexen II (1997)|hexen2|port=26900,port_query_offset=50
 hidden|The Hidden (2005)|valve|port=27015
+hll|Hell Let Loose|valve|port=27015
 had2|Hidden & Dangerous 2 (2003)|gamespy1|port=11001,port_query_offset=3
 homefront|Homefront (2011)|valve|port=27015
 homeworld2|Homeworld 2 (2003)|gamespy1|port_query=6500
@@ -201,6 +202,7 @@ rtcw|Return to Castle Wolfenstein|quake3|port_query=27960
 rfactor|rFactor|rfactor|port=34397,port_query_offset=-100
 ricochet|Ricochet|valve|port=27015
 riseofnations|Rise of Nations|gamespy1|port_query=6501
+rs2|Rising Storm 2: Vietnam|valve|port=27015
 rune|Rune|gamespy1|port=7777,port_query_offset=1
 rust|Rust|valve|port=28015
 samp|San Andreas Multiplayer|samp|port=7777
