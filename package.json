@@ -24,17 +24,17 @@
         "node": ">=8.0.0"
     },
     "dependencies": {
-        "cheerio": "^1.0.0-rc.2",
+        "cheerio": "^1.0.0-rc.3",
         "compressjs": "^1.0.2",
-        "gbxremote": "^0.1.4",
-        "iconv-lite": "^0.4.24",
-        "long": "^2.4.0",
+        "gbxremote": "^0.2.1",
+        "iconv-lite": "^0.5.0",
+        "long": "^4.0.0",
         "minimist": "^1.2.0",
-        "moment": "^2.21.0",
+        "moment": "^2.24.0",
         "punycode": "^2.1.1",
         "request": "^2.88.0",
-        "request-promise": "^4.2.2",
-        "varint": "^4.0.1"
+        "request-promise": "^4.2.4",
+        "varint": "^5.0.0"
     },
     "bin": {
         "gamedig": "bin/gamedig.js"
@@ -48,7 +48,7 @@
         "README.md"
     ],
     "devDependencies": {
-        "@types/cheerio": "^0.22.10",
-        "@types/node": "^8.0.0"
+        "@types/cheerio": "^0.22.13",
+        "@types/node": "^8.10.54"
     }
 }
