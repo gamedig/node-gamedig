@@ -80,7 +80,7 @@ class Nadeo extends Core {
 
         const sentPromise = new Promise(async (resolve,reject) => {
             client.methodCall(cmd, params, (err, value) => {
-                if (err) reject('XMLRPC error ' + JSON.stringify(err));
+                if (err) reject(new Error('XMLRPC error ' + JSON.stringify(err)));
                 resolve(value);
             });
         });
