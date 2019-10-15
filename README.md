@@ -183,6 +183,7 @@ Games List
 | `hldms`    | Half-Life Deathmatch: Source (2005)
 | `halo`     | Halo (2003)
 | `halo2`    | Halo 2 (2007)
+| `hll`      | Hell Let Loose
 | `heretic2` | Heretic II (1998)
 | `hexen2`   | Hexen II (1997)
 | `had2`     | Hidden & Dangerous 2 (2003)
@@ -258,6 +259,7 @@ Games List
 | `rfactor`  | rFactor
 | `ricochet` | Ricochet
 | `riseofnations` | Rise of Nations
+| `rs2`      | Rising Storm 2: Vietnam
 | `rune`     | Rune
 | `rust`     | Rust
 | `stalker`  | S.T.A.L.K.E.R.
@@ -373,7 +375,6 @@ Games List
 * Quake Live
 * Red Eclipse
 * Red Faction
-* Rising Storm 2
 * S.T.A.L.K.E.R. Clear Sky
 * Savage: The Battle For Newerth
 * Savage 2: A Tortured Soul
