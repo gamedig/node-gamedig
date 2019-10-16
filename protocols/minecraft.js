@@ -1,5 +1,6 @@
 const Core = require('./core'),
-    Varint = require('varint');
+    MinecraftVanilla = require('./minecraftvanilla'),
+    Gamespy3 = require('./gamespy3');
 
 class Minecraft extends Core {
     constructor() {
@@ -7,72 +8,57 @@ class Minecraft extends Core {
         this.srvRecord = "_minecraft._tcp";
     }
     async run(state) {
-        const portBuf = Buffer.alloc(2);
-        portBuf.writeUInt16BE(this.options.port,0);
+        const promises = [];
 
-        const addressBuf = Buffer.from(this.options.host,'utf8');
+        const vanillaResolver = new MinecraftVanilla();
+        vanillaResolver.options = this.options;
+        vanillaResolver.udpSocket = this.udpSocket;
+        promises.push((async () => {
+            try { return await vanillaResolver.runOnceSafe(); } catch(e) {}
+        })());
 
-        const bufs = [
-            this.varIntBuffer(4),
-            this.varIntBuffer(addressBuf.length),
-            addressBuf,
-            portBuf,
-            this.varIntBuffer(1)
-        ];
+        const bedrockResolver = new Gamespy3();
+        bedrockResolver.options = {
+            ...this.options,
+            encoding: 'utf8',
+        };
+        bedrockResolver.udpSocket = this.udpSocket;
+        promises.push((async () => {
+            try { return await bedrockResolver.runOnceSafe(); } catch(e) {}
+        })());
 
-        const outBuffer = Buffer.concat([
-            this.buildPacket(0,Buffer.concat(bufs)),
-            this.buildPacket(0)
-        ]);
+        const [ vanillaState, bedrockState ] = await Promise.all(promises);
 
-        const data = await this.withTcp(async socket => {
-            return await this.tcpSend(socket, outBuffer, data => {
-                if(data.length < 10) return;
-                const reader = this.reader(data);
-                const length = reader.varint();
-                if(data.length < length) return;
-                return reader.rest();
-            });
-        });
+        state.raw.vanilla = vanillaState;
+        state.raw.bedrock = bedrockState;
 
-        const reader = this.reader(data);
-
-        const packetId = reader.varint();
-        this.debugLog("Packet ID: "+packetId);
-
-        const strLen = reader.varint();
-        this.debugLog("String Length: "+strLen);
-
-        const str = reader.rest().toString('utf8');
-        this.debugLog(str);
-
-        const json = JSON.parse(str);
-        delete json.favicon;
-
-        state.raw = json;
-        state.maxplayers = json.players.max;
-        if(json.players.sample) {
-            for(const player of json.players.sample) {
-                state.players.push({
-                    id: player.id,
-                    name: player.name
-                });
-            }
+        if (vanillaState) {
+            try {
+                let name = '';
+                const description = vanillaState.raw.description;
+                if (typeof description === 'string') {
+                    name = description;
+                }
+                if (!name && typeof description === 'object' && description.text) {
+                    name = description.text;
+                }
+                if (!name && typeof description === 'object' && description.extra) {
+                    name = description.extra.map(part => part.text).join('');
+                }
+                state.name = name;
+            } catch(e) {}
+            if (vanillaState.maxplayers) state.maxplayers = vanillaState.maxplayers;
+            if (vanillaState.players) state.players = vanillaState.players;
         }
-        state.players = json.players.online;
-    }
-
-    varIntBuffer(num) {
-        return Buffer.from(Varint.encode(num));
-    }
-    buildPacket(id,data) {
-        if(!data) data = Buffer.from([]);
-        const idBuffer = this.varIntBuffer(id);
-        return Buffer.concat([
-            this.varIntBuffer(data.length+idBuffer.length),
-            idBuffer,
-            data
-        ]);
+        if (bedrockState) {
+            if (bedrockState.name) state.name = bedrockState.name;
+            if (bedrockState.maxplayers) state.maxplayers = bedrockState.maxplayers;
+            if (bedrockState.players) state.players = bedrockState.players;
+        }
+        // remove dupe spaces from name
+        state.name = state.name.replace(/\s+/g, ' ');
+        // remove color codes from name
+        state.name = state.name.replace(/\u00A7./g, '');
     }
 }
 

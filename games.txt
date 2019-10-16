@@ -152,9 +152,9 @@ mohab|Medal of Honor: Airborne (2007)|gamespy1|port=12203,port_query_offset=97
 moh2010|Medal of Honor (2010)|battlefield|port=7673,port_query=48888
 mohwf|Medal of Honor: Warfighter (2012)|battlefield|port=25200,port_query_offset=22000
 
-minecraft,minecraftping|Minecraft (2009)|minecraft|port=25565|doc_notes=minecraft
+minecraft,minecraftping|Minecraft (2009)|minecraft|port=25565
+minecraftpe,minecraftbe|Minecraft: Bedrock Edition (2011)|minecraft|port=19132
 
-minecraftpe,minecraftbe|Minecraft: Bedrock Edition (2011)|gamespy3|port=19132,maxAttempts=2
 mnc|Monday Night Combat (2011)|valve|port=7777,port_query=27016
 mtavc|Grand Theft Auto: Vice City - Multi Theft Auto (2002)|ase|port=22003,port_query_offset=123
 mtasa|Grand Theft Auto: San Andreas - Multi Theft Auto (2004)|ase|port=22003,port_query_offset=123

@@ -215,7 +215,7 @@ Games List
 | `mohpa`    | Medal of Honor: Pacific Assault (2004)
 | `mohwf`    | Medal of Honor: Warfighter (2012)
 | `medievalengineers` | Medieval Engineers (2015)
-| `minecraft`<br>`minecraftping` | Minecraft (2009) | [Notes](#minecraft)
+| `minecraft`<br>`minecraftping` | Minecraft (2009)
 | `minecraftpe`<br>`minecraftbe` | Minecraft: Bedrock Edition (2011)
 | `mnc`      | Monday Night Combat (2011)
 | `mumble`   | Mumble - GTmurmur Plugin (2005) | [Notes](#mumble)
