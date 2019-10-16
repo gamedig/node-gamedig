@@ -152,6 +152,7 @@ class Gamespy1 extends Core {
             }
             if (maxPartNum && parts.size === maxPartNum) {
                 this.logger.debug("Received all parts");
+                this.logger.debug(output);
                 return output;
             }
         });
