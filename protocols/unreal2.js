@@ -30,7 +30,7 @@ class Unreal2 extends Core {
                 const key = this.readUnrealString(reader,true);
                 const value = this.readUnrealString(reader,true);
                 if(key === 'Mutator') state.raw.mutators.push(value);
-                else state.raw.rules[key] = value;
+                else if (key || value) state.raw.rules[key] = value;
             }
             if('GamePassword' in state.raw.rules)
                 state.password = state.raw.rules.GamePassword !== 'True';
@@ -86,19 +86,33 @@ class Unreal2 extends Core {
     }
 
     readUnrealString(reader, stripColor) {
-        let length = reader.uint(1);
-        let out;
-        if(length < 0x80) {
-            //out = reader.string(length);
-            out = '';
-            if(length > 0) out = reader.string();
-        } else {
+        let length = reader.uint(1), ucs2 = false;
+        if(length >= 0x80) {
             length = (length&0x7f)*2;
             this.debugLog(log => {
                 log("UCS2 STRING");
-                log(length,reader.buffer.slice(reader.i,reader.i+length));
+                log("UCS2 Length: " + length);
+                log(reader.buffer.slice(reader.i,reader.i+length));
             });
+            ucs2 = true;
+        }
+
+        // Killing floor sometimes injects 8 bytes of junk here
+        if (reader.remaining() >= 8 && length >= 8) {
+            const peek = reader.part(2);
+            reader.skip(-2);
+            if (peek[0] === 0x1b && peek[1] === 0x01) {
+                reader.skip(8);
+                length -= 8;
+            }
+        }
+
+        let out = '';
+        if (ucs2) {
             out = reader.string({encoding:'ucs2',length:length});
+            this.debugLog("UCS2 String decoded: " + out);
+        } else if (length > 0) {
+            out = reader.string();
         }
 
         if(out.charCodeAt(out.length-1) === 0)
