@@ -11,7 +11,7 @@ class Terraria extends Core {
         });
 
         const json = JSON.parse(body);
-        if(json.status !== 200) throw new Error('Invalid status');
+        if(json.status !== '200') throw new Error('Invalid status');
 
         for (const one of json.players) {
             state.players.push({name:one.nickname,team:one.team});
