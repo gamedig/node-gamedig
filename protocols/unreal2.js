@@ -76,35 +76,27 @@ class Unreal2 extends Core {
 
     readExtraInfo(reader,state) {
         this.debugLog(log => {
-            log("UNREAL2 EXTRA INFO:");
-            log(reader.uint(4));
-            log(reader.uint(4));
-            log(reader.uint(4));
-            log(reader.uint(4));
-            log(reader.buffer.slice(reader.i));
+            log("UNREAL2 EXTRA INFO", reader.buffer.slice(reader.i));
         });
     }
 
     readUnrealString(reader, stripColor) {
         let length = reader.uint(1), ucs2 = false;
         if(length >= 0x80) {
+            // This is flagged as a UCS-2 String
             length = (length&0x7f)*2;
+            ucs2 = true;
+
+            // For UCS-2 strings, some unreal 2 games randomly insert an extra 0x01 here,
+            // not included in the length. Skip it if present (hopefully this never happens legitimately)
+            const peek = reader.uint(1);
+            if (peek !== 1) reader.skip(-1);
+
             this.debugLog(log => {
                 log("UCS2 STRING");
                 log("UCS2 Length: " + length);
                 log(reader.buffer.slice(reader.i,reader.i+length));
             });
-            ucs2 = true;
-        }
-
-        // Killing floor sometimes injects 8 bytes of junk here
-        if (reader.remaining() >= 8 && length >= 8) {
-            const peek = reader.part(2);
-            reader.skip(-2);
-            if (peek[0] === 0x1b && peek[1] === 0x01) {
-                reader.skip(8);
-                length -= 8;
-            }
         }
 
         let out = '';
@@ -115,11 +107,15 @@ class Unreal2 extends Core {
             out = reader.string();
         }
 
-        if(out.charCodeAt(out.length-1) === 0)
-            out = out.substring(0,out.length-1);
+        // Sometimes the string has a null at the end (included with the length)
+        // Strip it if present
+        if(out.charCodeAt(out.length-1) === 0) {
+            out = out.substring(0, out.length - 1);
+        }
 
-        if(stripColor)
-            out = out.replace(/\x1b...|[\x00-\x1a]/g,'');
+        if(stripColor) {
+            out = out.replace(/\x1b...|[\x00-\x1a]/gus,'');
+        }
 
         return out;
     }
