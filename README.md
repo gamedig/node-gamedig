@@ -148,6 +148,7 @@ Games List
 | `dod`      | Day of Defeat (2003)
 | `dods`     | Day of Defeat: Source (2005)
 | `doi`      | Day of Infamy (2017)
+| `daysofwar` | Days of War (2017)
 | `dayz`     | DayZ (2018)
 | `dayzmod`  | DayZ Mod (2013)
 | `deadlydozenpt` | Deadly Dozen: Pacific Theater (2002)
@@ -197,6 +198,7 @@ Games List
 | `ironstorm` | Iron Storm (2002)
 | `jamesbondnightfire` | James Bond 007: Nightfire (2002)
 | `jc2mp`    | Just Cause 2 - Multiplayer (2010)
+| `jc3mp`    | Just Cause 3 - Multiplayer (2017)
 | `kspdmp`   | Kerbal Space Program - DMP Multiplayer (2015)
 | `killingfloor` | Killing Floor (2009)
 | `killingfloor2` | Killing Floor 2 (2016)
@@ -241,10 +243,12 @@ Games List
 | `postal2`  | Postal 2
 | `prey`     | Prey
 | `primalcarnage` | Primal Carnage: Extinction
-| `quake1`   | Quake 1: QuakeWorld
-| `quake2`   | Quake 2
-| `quake3`   | Quake 3: Arena
-| `quake4`   | Quake 4
+| `prbf2`    | Project Reality: Battlefield 2 (2005)
+| `quake1`   | Quake 1: QuakeWorld (1996)
+| `quake2`   | Quake 2 (1997)
+| `quake3`   | Quake 3: Arena (1999)
+| `quake4`   | Quake 4 (2005)
+| `quakelive` | Quake Live (2010)
 | `ragdollkungfu` | Rag Doll Kung Fu
 | `r6`       | Rainbow Six
 | `r6roguespear` | Rainbow Six 2: Rogue Spear
@@ -275,13 +279,14 @@ Games List
 | `sof`      | Soldier of Fortune
 | `sof2`     | Soldier of Fortune 2
 | `spaceengineers` | Space Engineers
+| `squad`    | Squad
 | `stbc`     | Star Trek: Bridge Commander
 | `stvef`    | Star Trek: Voyager - Elite Force
 | `stvef2`   | Star Trek: Voyager - Elite Force 2
+| `swjk2`    | Star Wars Jedi Knight II: Jedi Outcast (2002)
+| `swjk`     | Star Wars Jedi Knight: Jedi Academy (2003)
 | `swbf`     | Star Wars: Battlefront
 | `swbf2`    | Star Wars: Battlefront 2
-| `swjk`     | Star Wars: Jedi Knight
-| `swjk2`    | Star Wars: Jedi Knight 2
 | `swrc`     | Star Wars: Republic Commando
 | `starbound` | Starbound
 | `starmade` | StarMade
@@ -299,6 +304,7 @@ Games List
 | `teamspeak3` | Teamspeak 3 | [Notes](#teamspeak3)
 | `terminus` | Terminus
 | `terraria`<br>`tshock` | Terraria - TShock (2011) | [Notes](#terraria)
+| `forrest`  | The Forrest (2014)
 | `hidden`   | The Hidden (2005)
 | `nolf`     | The Operative: No One Lives Forever (2000)
 | `ship`     | The Ship
@@ -361,18 +367,15 @@ Games List
 * Freelancer
 * Ghost Recon
 * GRAV Online
-* GTA Network
+* GTA Network ([Ref](https://github.com/Austinb/GameQ/blob/v3/src/GameQ/Protocols/Gtan.php))
 * GTR 2
 * Haze
 * Hexen World
-* Just Cause 3 Multiplayer
 * Lost Heaven
 * Multi Theft Auto
 * Pariah
 * Plain Sight
-* Project Reality: Battlefield 2
 * Purge Jihad
-* Quake Live
 * Red Eclipse
 * Red Faction
 * S.T.A.L.K.E.R. Clear Sky
@@ -385,8 +388,7 @@ Games List
 * Star Wars: X-Wing Alliance
 * Sum of All Fears
 * Teeworlds
-* The Forrest
-* Tibia
+* Tibia ([Ref](https://github.com/Austinb/GameQ/blob/v3/src/GameQ/Protocols/Tibia.php))
 * Titanfall
 * Tribes 2
 * Unreal 2 XMP

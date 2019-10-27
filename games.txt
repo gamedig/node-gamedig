@@ -76,6 +76,7 @@ crysis2|Crysis 2 (2011)|gamespy3|port=64000
 daikatana|Daikatana (2000)|quake2|port=27982,port_query_offset=10
 dmomam|Dark Messiah of Might and Magic (2006)|valve|port=27015
 darkesthour|Darkest Hour: Europe '44-'45 (2008)|unreal2|port=7757,port_query_offset=1
+daysofwar|Days of War (2017)|valve|port=27015
 dayz|DayZ (2018)|valve|port=2302,port_query_offset=24714
 dayzmod|DayZ Mod (2013)|valve|port=2302,port_query_offset=1
 deadlydozenpt|Deadly Dozen: Pacific Theater (2002)|gamespy1|port_query=25300
@@ -103,6 +104,7 @@ operationflashpoint,flashpoint|Operation Flashpoint: Cold War Crisis (2001)|game
 flashpointresistance|Operation Flashpoint: Resistance (2002)|gamespy1|port=2302,port_query_offset=1
 ffow|Frontlines: Fuel of War (2008)|ffow|port=5476,port_query_offset=2
 fivem|Grand Theft Auto V - FiveM (2013)|fivem|port=30120
+forrest|The Forrest (2014)|valve|port=27015,port_query_offset=1
 garrysmod|Garry's Mod (2004)|valve|port=27015
 graw|Tom Clancy's Ghost Recon Advanced Warfighter (2006)|gamespy2|port_query=15250
 graw2|Tom Clancy's Ghost Recon Advanced Warfighter 2 (2007)|gamespy2|port_query=16250
@@ -132,6 +134,7 @@ insurgencysandstorm|Insurgency: Sandstorm (2018)|valve|port=27015,port_query_off
 ironstorm|Iron Storm (2002)|gamespy1|port_query=3505
 jamesbondnightfire|James Bond 007: Nightfire (2002)|gamespy1|port_query=6550
 jc2mp|Just Cause 2 - Multiplayer (2010)|jc2mp|port=7777
+jc3mp|Just Cause 3 - Multiplayer (2017)|valve|port=4200,port_query_offset=1
 killingfloor|Killing Floor (2009)|unreal2|port=7707,port_query_offset=1
 killingfloor2|Killing Floor 2 (2016)|valve|port=7777,port_query=27015
 kingpin|Kingpin: Life of Crime (1999)|gamespy1|port=31510,port_query_offset=-10
@@ -180,11 +183,13 @@ painkiller|Painkiller|ase|port=3455,port_query_offset=123
 postal2|Postal 2|gamespy1|port=7777,port_query_offset=1
 prey|Prey|doom3|port=27719
 primalcarnage|Primal Carnage: Extinction|valve|port=7777,port_query=27015
+prbf2|Project Reality: Battlefield 2 (2005)|gamespy3|port=16567,port_query=29900
 
-quake1|Quake 1: QuakeWorld|quake1|port=27500
-quake2|Quake 2|quake2|port=27910
-quake3|Quake 3: Arena|quake3|port=27960
-quake4|Quake 4|doom3|port=28004
+quake1|Quake 1: QuakeWorld (1996)|quake1|port=27500
+quake2|Quake 2 (1997)|quake2|port=27910
+quake3|Quake 3: Arena (1999)|quake3|port=27960
+quake4|Quake 4 (2005)|doom3|port=28004
+quakelive|Quake Live (2010)|valve|port=27960
 
 ragdollkungfu|Rag Doll Kung Fu|valve|port=27015
 
@@ -226,8 +231,8 @@ stvef2|Star Trek: Voyager - Elite Force 2|quake3|port_query=29253
 squad|Squad|valve|port=7787,port_query=27165
 swbf|Star Wars: Battlefront|gamespy2|port_query=3658
 swbf2|Star Wars: Battlefront 2|gamespy2|port_query=3658
-swjk|Star Wars: Jedi Knight|quake3|port_query=29070
-swjk2|Star Wars: Jedi Knight 2|quake3|port_query=28070
+swjk|Star Wars Jedi Knight: Jedi Academy (2003)|quake3|port_query=29070
+swjk2|Star Wars Jedi Knight II: Jedi Outcast (2002)|quake3|port_query=28070
 swrc|Star Wars: Republic Commando|gamespy2|port=7777,port_query=11138
 
 starbound|Starbound|valve|port=21025
