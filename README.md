@@ -472,6 +472,33 @@ as well: `--debug`, `--pretty`, `--socketTimeout 5000`, etc.
 Changelog
 ---
 
+### 2.0.19
+* Added Days of War (2017)
+* Added The Forrest (2014)
+* Added Just Cause 3 Multiplayer (2017)
+* Added Project Reality: Battlefield 2 (2005)
+* Added Quake Live (2010)
+* Added Contagion (2011)
+* Added Empyrion: Galactic Survival (2015)
+* Added PixARK (2018)
+
+### 2.0.16, 2.0.17, 2.0.18
+* Various improvements to killing floor / unreal2 protocol
+
+### 2.0.15
+* Added Hell Let Loose
+* Added Rising Storm 2: Vietnam
+* Added Squad
+* Fixed DNS lookup not working in some situations when dns.lookup unexpectedly returns a string
+* Improved minecraft protocol for non-vanilla server implementations (bedrock, waterfall, bungeecord)
+* Updated dependencies
+
+### 2.0.14
+* Node 8 compatibility fixes
+
+### 2.0.13
+* Improved logging
+
 ### 2.0.12
 * Servers are now limited to 10000 players to prevent OOM
 * Improvements to Starmade (2012)
