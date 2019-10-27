@@ -6,6 +6,7 @@ class Unreal2 extends Core {
         this.encoding = 'latin1';
     }
     async run(state) {
+        let extraInfoReader;
         {
             const b = await this.sendPacket(0, true);
             const reader = this.reader(b);
@@ -18,7 +19,10 @@ class Unreal2 extends Core {
             state.raw.gametype = this.readUnrealString(reader, true);
             state.raw.numplayers = reader.uint(4);
             state.maxplayers = reader.uint(4);
-            this.readExtraInfo(reader, state);
+            this.logger.debug(log => {
+                log("UNREAL2 EXTRA INFO", reader.buffer.slice(reader.i));
+            });
+            extraInfoReader = reader;
         }
 
         {
@@ -29,55 +33,63 @@ class Unreal2 extends Core {
             while(!reader.done()) {
                 const key = this.readUnrealString(reader,true);
                 const value = this.readUnrealString(reader,true);
-                if(key === 'Mutator') state.raw.mutators.push(value);
-                else if (key || value) state.raw.rules[key] = value;
+                this.logger.debug(key+'='+value);
+                if(key === 'Mutator' || key === 'mutator') {
+                    state.raw.mutators.push(value);
+                } else if (key || value) {
+                    if (state.raw.rules.hasOwnProperty(key)) {
+                        state.raw.rules[key] += ',' + value;
+                    } else {
+                        state.raw.rules[key] = value;
+                    }
+                }
             }
             if('GamePassword' in state.raw.rules)
                 state.password = state.raw.rules.GamePassword !== 'True';
+        }
+
+        if (state.raw.mutators.includes('KillingFloorMut')
+            || state.raw.rules['Num trader weapons']
+            || state.raw.rules['Server Version'] === '1065'
+        ) {
+            // Killing Floor
+            state.raw.wavecurrent = extraInfoReader.uint(4);
+            state.raw.wavetotal = extraInfoReader.uint(4);
+            state.raw.ping = extraInfoReader.uint(4);
+            state.raw.flags = extraInfoReader.uint(4);
+            state.raw.skillLevel = this.readUnrealString(extraInfoReader, true);
+        } else {
+            state.raw.ping = extraInfoReader.uint(4);
+            // These fields were added in later revisions of unreal engine
+            if (extraInfoReader.remaining() >= 8) {
+                state.raw.flags = extraInfoReader.uint(4);
+                state.raw.skill = this.readUnrealString(extraInfoReader, true);
+            }
         }
 
         {
             const b = await this.sendPacket(2,false);
             const reader = this.reader(b);
 
+            state.raw.scoreboard = {};
             while(!reader.done()) {
                 const player = {};
                 player.id = reader.uint(4);
-                if(!player.id) break;
-                if(player.id === 0) {
-                    // Unreal2XMP Player (ID is always 0)
-                    reader.skip(4);
-                }
                 player.name = this.readUnrealString(reader,true);
                 player.ping = reader.uint(4);
                 player.score = reader.int(4);
-                reader.skip(4); // stats ID
+                player.statsId = reader.uint(4);
+                this.logger.debug(player);
 
-                // Extra data for Unreal2XMP players
-                if(player.id === 0) {
-                    const count = reader.uint(1);
-                    for(let iField = 0; iField < count; iField++) {
-                        const key = this.readUnrealString(reader,true);
-                        const value = this.readUnrealString(reader,true);
-                        player[key] = value;
-                    }
+                if (!player.id) {
+                    state.raw.scoreboard[player.name] = player.score;
+                } else if (!player.ping) {
+                    state.bots.push(player);
+                } else {
+                    state.players.push(player);
                 }
-
-                if(player.id === 0 && player.name === 'Player') {
-                    // these show up in ut2004 queries, but aren't real
-                    // not even really sure why they're there
-                    continue;
-                }
-
-                (player.ping ? state.players : state.bots).push(player);
             }
         }
-    }
-
-    readExtraInfo(reader,state) {
-        this.debugLog(log => {
-            log("UNREAL2 EXTRA INFO", reader.buffer.slice(reader.i));
-        });
     }
 
     readUnrealString(reader, stripColor) {
