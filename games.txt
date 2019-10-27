@@ -58,6 +58,7 @@ codenameeagle|Codename Eagle (2000)|gamespy1|port_query=4711
 commandos3|Commandos 3: Destination Berlin (2003)|gamespy1|port_query=6500
 cacrenegade|Command and Conquer: Renegade (2002)|gamespy1|port=4848,port_query=25300
 conanexiles|Conan Exiles (2018)|valve|port=7777,port_query=27015
+contagion|Contagion (2011)|valve|port=27015
 contactjack|Contract J.A.C.K. (2003)|gamespy1|port_query=27888
 
 cs15|Counter-Strike 1.5 (2002)|valve|port=27015
@@ -93,6 +94,7 @@ doi|Day of Infamy (2017)|valve|port=27015
 doom3|Doom 3 (2004)|doom3|port=27666
 dota2|Dota 2 (2013)|valve|port=27015
 drakan|Drakan: Order of the Flame (1999)|gamespy1|port=27045,port_query_offset=1
+empyrion|Empyrion - Galactic Survival (2015)|valve|port=30000,port_query_offset=1
 etqw|Enemy Territory: Quake Wars (2007)|doom3|port=3074,port_query=27733
 fear|F.E.A.R. (2005)|gamespy2|port_query=27888
 f12002|Formula One 2002 (2002)|gamespy1|port_query=3297
@@ -180,6 +182,7 @@ nucleardawn|Nuclear Dawn (2011)|valve|port=27015
 openarena|OpenArena (2005)|quake3|port_query=27960
 openttd|OpenTTD (2004)|openttd|port=3979
 painkiller|Painkiller|ase|port=3455,port_query_offset=123
+pixark|PixARK (2018)|valve|port=7777,port_query=27015
 postal2|Postal 2|gamespy1|port=7777,port_query_offset=1
 prey|Prey|doom3|port=27719
 primalcarnage|Primal Carnage: Extinction|valve|port=7777,port_query=27015

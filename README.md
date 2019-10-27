@@ -130,6 +130,7 @@ Games List
 | `cacrenegade` | Command and Conquer: Renegade (2002)
 | `commandos3` | Commandos 3: Destination Berlin (2003)
 | `conanexiles` | Conan Exiles (2018)
+| `contagion` | Contagion (2011)
 | `contactjack` | Contract J.A.C.K. (2003)
 | `cs15`     | Counter-Strike 1.5 (2002)
 | `cs16`     | Counter-Strike 1.6 (2003)
@@ -161,6 +162,7 @@ Games List
 | `doom3`    | Doom 3 (2004)
 | `dota2`    | Dota 2 (2013)
 | `drakan`   | Drakan: Order of the Flame (1999)
+| `empyrion` | Empyrion - Galactic Survival (2015)
 | `etqw`     | Enemy Territory: Quake Wars (2007)
 | `fear`     | F.E.A.R. (2005)
 | `f1c9902`  | F1 Challenge '99-'02 (2002)
@@ -240,6 +242,7 @@ Games List
 | `operationflashpoint`<br>`flashpoint` | Operation Flashpoint: Cold War Crisis (2001)
 | `flashpointresistance` | Operation Flashpoint: Resistance (2002)
 | `painkiller` | Painkiller
+| `pixark`   | PixARK (2018)
 | `postal2`  | Postal 2
 | `prey`     | Prey
 | `primalcarnage` | Primal Carnage: Extinction
@@ -361,8 +364,7 @@ Games List
 * DirtyBomb
 * Doom - Skulltag
 * Doom - ZDaemon
-* ECO Global Survival
-* Empyrion - Galactic Survival
+* ECO Global Survival ([Ref](https://github.com/Austinb/GameQ/blob/v3/src/GameQ/Protocols/Eco.php))
 * Farming Simulator
 * Freelancer
 * Ghost Recon
