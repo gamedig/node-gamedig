@@ -385,7 +385,6 @@ Games List
 * Savage 2: A Tortured Soul
 * SiN 1 Multiplayer
 * South Park
-* Squad
 * Star Wars Jedi Knight: Dark Forces II
 * Star Wars: X-Wing Alliance
 * Sum of All Fears
