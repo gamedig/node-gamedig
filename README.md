@@ -471,6 +471,9 @@ as well: `--debug`, `--pretty`, `--socketTimeout 5000`, etc.
 Changelog
 ---
 
+### 2.0.20
+* Fixed minecraft protocol never throwing exceptions
+
 ### 2.0.19
 * Added Days of War (2017)
 * Added The Forrest (2014)
