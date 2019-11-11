@@ -32,6 +32,10 @@ class Minecraft extends Core {
         state.raw.vanilla = vanillaState;
         state.raw.bedrock = bedrockState;
 
+        if (!vanillaState && !bedrockState) {
+            throw new Error('No protocols succeeded');
+        }
+
         if (vanillaState) {
             try {
                 let name = '';
