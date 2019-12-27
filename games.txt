@@ -6,6 +6,7 @@ aoe2|Age of Empires 2 (1999)|ase|port_query=27224
 alienarena|Alien Arena (2004)|quake2|port_query=27910
 alienswarm|Alien Swarm (2010)|valve|port=27015
 arkse|Ark: Survival Evolved (2017)|valve|port=7777,port_query=27015
+assettocorsa|Assetto Corsa (2014)|assettocorsa|port=9610
 atlas|Atlas (2018)|valve|port=5761,port_query_offset=51800
 avp2|Aliens versus Predator 2 (2001)|gamespy1|port=27888
 avp2010|Aliens vs. Predator (2010)|valve|port=27015
