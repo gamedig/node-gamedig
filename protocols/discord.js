@@ -20,9 +20,7 @@ class Discord extends Core {
     }
     state.players = json.members.map(v => {
       return {
-        name: v.username + '#' + v.discriminator,
-        username: v.username,
-        discriminator: v.discriminator,
+        name: v.username,
         team: v.status
       }
     });
