@@ -7,9 +7,7 @@ class Discord extends Core {
   }
 
   async run(state) {
-    console.log('SENDING HTTP Request');
     this.usedTcp = true;
-    console.log(this.options);
     const raw = await this.request({
       uri: 'https://discordapp.com/api/guilds/' + this.options.address + '/widget.json',
     });
