@@ -159,6 +159,7 @@ Games List
 | `devastation` | Devastation (2003)
 | `dinodday` | Dino D-Day (2011)
 | `dirttrackracing2` | Dirt Track Racing 2 (2002)
+| `discord` | Discord | [Notes](#discord)
 | `doom3`    | Doom 3 (2004)
 | `dota2`    | Dota 2 (2013)
 | `drakan`   | Drakan: Order of the Flame (1999)
@@ -451,6 +452,10 @@ For teamspeak 3 queries to work correctly, the following permissions must be ava
 Requires tshock server mod, and a REST user token, which can be passed to GameDig with the
 additional option: token
 
+### Discord
+You must set host to the server's guild ID instead of IP, this can be found in server widget settings (Server ID) or by enabling developer mode in client settings and right-clicking the server's icon.
+In order to retrieve information from discord server's they must have the Enable server widget option enabled.
+
 Usage from Command Line
 ---
 
@@ -547,7 +552,7 @@ Changelog
 
 ##### Breaking API changes
 * **Node 8 is now required**
-* Removed the `port_query` option. You can now pass either the server's game port **or** query port in the `port` option, and 
+* Removed the `port_query` option. You can now pass either the server's game port **or** query port in the `port` option, and
 GameDig will automatically discover the proper port to query. Passing the query port is more likely be successful in
 unusual cases, as otherwise it must be automatically derived from the game port.
 * Removed `callback` parameter from Gamedig.query. Only promises are now supported. If you would like to continue
