@@ -26,6 +26,7 @@ class Discord extends Core {
         team: v.status
       }
     });
+    state.maxplayers = json.presence_count;
     state.raw = json;
   }
 }
