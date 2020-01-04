@@ -4,7 +4,8 @@ const Minimist = require('minimist'),
     Gamedig = require('..');
 
 const argv = Minimist(process.argv.slice(2), {
-    boolean: ['pretty','debug']
+    boolean: ['pretty','debug'],
+    string: ['_']
 });
 
 const debug = argv.debug;
