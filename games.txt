@@ -161,6 +161,7 @@ minecraft,minecraftping|Minecraft (2009)|minecraft|port=25565
 minecraftpe,minecraftbe|Minecraft: Bedrock Edition (2011)|minecraft|port=19132
 
 mnc|Monday Night Combat (2011)|valve|port=7777,port_query=27016
+mordhau|Mordhau (2019)|valve|port=7777,port_query=27015
 mtavc|Grand Theft Auto: Vice City - Multi Theft Auto (2002)|ase|port=22003,port_query_offset=123
 mtasa|Grand Theft Auto: San Andreas - Multi Theft Auto (2004)|ase|port=22003,port_query_offset=123
 mumble|Mumble - GTmurmur Plugin (2005)|mumble|port=64738,port_query=27800|doc_notes=mumble
