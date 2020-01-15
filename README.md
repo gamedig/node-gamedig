@@ -223,6 +223,7 @@ Games List
 | `minecraft`<br>`minecraftping` | Minecraft (2009)
 | `minecraftpe`<br>`minecraftbe` | Minecraft: Bedrock Edition (2011)
 | `mnc`      | Monday Night Combat (2011)
+| `mordhau`      | Mordhau (2019)
 | `mumble`   | Mumble - GTmurmur Plugin (2005) | [Notes](#mumble)
 | `mumbleping` | Mumble - Lightweight (2005) | [Notes](#mumble)
 | `nascarthunder2004` | NASCAR Thunder 2004 (2003)
