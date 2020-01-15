@@ -100,6 +100,7 @@ Games List
 | `armacwa`  | ARMA: Cold War Assault (2011)
 | `armar`    | ARMA: Resistance (2011)
 | `armagetron` | Armagetron Advanced (2001)
+| `assettocorsa` | Assetto Corsa (2014)
 | `atlas`    | Atlas (2018)
 | `baldursgate` | Baldur's Gate (1998)
 | `bat1944`  | Battalion 1944 (2018)
