@@ -54,9 +54,10 @@ class MinecraftVanilla extends Core {
                     name: player.name
                 });
             }
-        }
-        for (let i = 0; i < Math.min(json.players.online, 10000); i++) {
-            state.players.push({});
+        } else {
+            for (let i = 0; i < Math.min(json.players.online, 10000); i++) {
+                state.players.push({});
+            }
         }
     }
 
