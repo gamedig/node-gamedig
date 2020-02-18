@@ -57,7 +57,7 @@ class MinecraftVanilla extends Core {
             }
         }
 
-        // players.sample may not contain all players or no players at all, depending on how many players are only.
+        // players.sample may not contain all players or no players at all, depending on how many players are online.
         // Insert a dummy player object for every online player that is not listed in players.sample.
         // Limit player amount to 10.000 players for performance reasons.
         for (let i = state.players.length; i < Math.min(json.players.online, 10000); i++) {
