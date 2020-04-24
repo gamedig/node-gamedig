@@ -223,7 +223,7 @@ Games List
 | `minecraft`<br>`minecraftping` | Minecraft (2009)
 | `minecraftpe`<br>`minecraftbe` | Minecraft: Bedrock Edition (2011)
 | `mnc`      | Monday Night Combat (2011)
-| `mordhau`      | Mordhau (2019)
+| `mordhau`  | Mordhau (2019)
 | `mumble`   | Mumble - GTmurmur Plugin (2005) | [Notes](#mumble)
 | `mumbleping` | Mumble - Lightweight (2005) | [Notes](#mumble)
 | `nascarthunder2004` | NASCAR Thunder 2004 (2003)
@@ -245,6 +245,7 @@ Games List
 | `flashpointresistance` | Operation Flashpoint: Resistance (2002)
 | `painkiller` | Painkiller
 | `pixark`   | PixARK (2018)
+| `ps`       | Post Scriptum
 | `postal2`  | Postal 2
 | `prey`     | Prey
 | `primalcarnage` | Primal Carnage: Extinction
