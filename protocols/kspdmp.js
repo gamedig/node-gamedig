@@ -2,11 +2,11 @@ const Core = require('./core');
 
 class Kspdmp extends Core {
     async run(state) {
-        const body = await this.request({
-            uri: 'http://'+this.options.address+':'+this.options.port
+        const json = await this.request({
+            url: 'http://'+this.options.address+':'+this.options.port,
+            responseType: 'json'
         });
 
-        const json = JSON.parse(body);
         for (const one of json.players) {
             state.players.push({name:one.nickname,team:one.team});
         }

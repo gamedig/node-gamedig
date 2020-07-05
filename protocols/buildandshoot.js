@@ -4,7 +4,7 @@ const Core = require('./core'),
 class BuildAndShoot extends Core {
     async run(state) {
         const body = await this.request({
-            uri: 'http://'+this.options.address+':'+this.options.port+'/',
+            url: 'http://'+this.options.address+':'+this.options.port+'/',
         });
 
         let m;

@@ -3,12 +3,12 @@ const Core = require('./core');
 class AssettoCorsa extends Core {
     async run(state) {
         const serverInfo = await this.request({
-            json: true,
-            uri: `http://${this.options.address}:${this.options.port}/INFO`
+            url: `http://${this.options.address}:${this.options.port}/INFO`,
+            responseType: 'json'
         });
         const carInfo = await this.request({
-            json: true,
-            uri: `http://${this.options.address}:${this.options.port}/JSON|${parseInt(Math.random() * 999999999999999, 10)}`
+            url: `http://${this.options.address}:${this.options.port}/JSON|${parseInt(Math.random() * 999999999999999, 10)}`,
+            responseType: 'json'
         });
 
         if (!serverInfo || !carInfo || !carInfo.Cars) {

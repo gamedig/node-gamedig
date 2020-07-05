@@ -12,18 +12,18 @@ class FiveM extends Quake2 {
         await super.run(state);
 
         {
-            const raw = await this.request({
-                uri: 'http://' + this.options.address + ':' + this.options.port + '/info.json'
+            const json = await this.request({
+                url: 'http://' + this.options.address + ':' + this.options.port + '/info.json',
+                responseType: 'json'
             });
-            const json = JSON.parse(raw);
             state.raw.info = json;
         }
 
         {
-            const raw = await this.request({
-                uri: 'http://' + this.options.address + ':' + this.options.port + '/players.json'
+            const json = await this.request({
+                url: 'http://' + this.options.address + ':' + this.options.port + '/players.json',
+                responseType: 'json'
             });
-            const json = JSON.parse(raw);
             state.raw.players = json;
             state.players = [];
             for (const player of json) {

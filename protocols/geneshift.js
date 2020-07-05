@@ -2,8 +2,10 @@ const Core = require('./core');
 
 class GeneShift extends Core {
     async run(state) {
+        await this.tcpPing();
+
         const body = await this.request({
-            uri: 'http://geneshift.net/game/receiveLobby.php'
+            url: 'http://geneshift.net/game/receiveLobby.php'
         });
 
         const split = body.split('<br/>');

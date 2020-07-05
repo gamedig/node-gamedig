@@ -2,7 +2,7 @@ const EventEmitter = require('events').EventEmitter,
     net = require('net'),
     Reader = require('../lib/reader'),
     HexUtil = require('../lib/HexUtil'),
-    requestAsync = require('request-promise'),
+    got = require('got'),
     Promises = require('../lib/Promises'),
     Logger = require('../lib/Logger'),
     DnsResolver = require('../lib/DnsResolver');
@@ -40,10 +40,9 @@ class Core extends EventEmitter {
         let abortCall = null;
         this.abortedPromise = new Promise((resolve,reject) => {
             abortCall = () => reject(new Error("Query is finished -- cancelling outstanding promises"));
+        }).catch(() => {
+            // Make sure that if this promise isn't attached to, it doesn't throw a unhandled promise rejection
         });
-
-        // Make sure that if this promise isn't attached to, it doesn't throw a unhandled promise rejection
-        this.abortedPromise.catch(() => {});
 
         let timeout;
         try {
@@ -342,24 +341,26 @@ class Core extends EventEmitter {
         }
     }
 
-    async request(params) {
-        // If we haven't opened a raw tcp socket yet during this query, just open one and then immediately close it.
-        // This will give us a much more accurate RTT than using the rtt of the http request.
+    async tcpPing() {
+        // This will give a much more accurate RTT than using the rtt of an http request.
         if (!this.usedTcp) {
             await this.withTcp(() => {});
         }
+    }
+
+    async request(params) {
+        await this.tcpPing();
 
         let requestPromise;
         try {
-            requestPromise = requestAsync({
+            requestPromise = got({
                 ...params,
-                timeout: this.options.socketTimeout,
-                resolveWithFullResponse: true
+                timeout: this.options.socketTimeout
             });
             this.debugLog(log => {
-                log(() => params.uri + " HTTP-->");
+                log(() => params.url + " HTTP-->");
                 requestPromise
-                    .then((response) => log(params.uri + " <--HTTP " + response.statusCode))
+                    .then((response) => log(params.url + " <--HTTP " + response.statusCode))
                     .catch(() => {});
             });
             const wrappedPromise = requestPromise.then(response => {
