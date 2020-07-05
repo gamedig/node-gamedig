@@ -10,14 +10,14 @@
         "server"
     ],
     "main": "lib/index.js",
-    "author": "Michael Morrison",
+    "author": "GameDig Contributors",
     "version": "2.0.20",
     "repository": {
         "type": "git",
-        "url": "https://github.com/sonicsnes/node-gamedig.git"
+        "url": "https://github.com/gamedig/node-gamedig.git"
     },
     "bugs": {
-        "url": "https://github.com/sonicsnes/node-gamedig/issues"
+        "url": "https://github.com/gamedig/node-gamedig/issues"
     },
     "license": "MIT",
     "engines": {

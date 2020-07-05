@@ -401,7 +401,7 @@ Games List
 
 > Want support for one of these games? Please open an issue to show your interest!
 > __Know how to code?__ Protocol details for many of the games above are documented
-> at https://github.com/sonicsnes/legacy-query-library-archive
+> at https://github.com/gamedig/legacy-query-library-archive
 > , ready for you to develop into GameDig!
 
 > Don't see your game listed here?
