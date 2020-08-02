@@ -1,3 +1,6 @@
+### 2.0.22
+* Updated dependencies
+
 ### 2.0.21
 * Added Assetto Corsa (2014)
 * Fixed password flag for Squad

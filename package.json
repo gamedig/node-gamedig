@@ -7,11 +7,24 @@
         "game",
         "utility",
         "util",
-        "server"
+        "server",
+        "gameserver",
+        "node",
+        "nodejs",
+        "game-server-query",
+        "game server query",
+        "server query",
+        "game server",
+        "gameserverquery",
+        "serverquery",
+        "terraria",
+        "counter strike",
+        "csgo",
+        "minecraft"
     ],
     "main": "lib/index.js",
     "author": "GameDig Contributors",
-    "version": "2.0.21",
+    "version": "2.0.22",
     "repository": {
         "type": "git",
         "url": "https://github.com/gamedig/node-gamedig.git"
@@ -27,8 +40,8 @@
         "cheerio": "^1.0.0-rc.3",
         "compressjs": "^1.0.2",
         "gbxremote": "^0.2.1",
-        "got": "^11.4.0",
-        "iconv-lite": "^0.6.1",
+        "got": "^11.5.1",
+        "iconv-lite": "^0.6.2",
         "long": "^4.0.0",
         "minimist": "^1.2.5",
         "moment": "^2.27.0",
@@ -47,7 +60,7 @@
         "README.md"
     ],
     "devDependencies": {
-        "@types/cheerio": "^0.22.18",
+        "@types/cheerio": "^0.22.21",
         "@types/node": "^8.10.61"
     }
 }
