@@ -43,6 +43,7 @@ this query port may work instead. (defaults to protocol default port)
  will cause many queries to take longer even if the server is online. (default 2000)
 * **attemptTimeout**: number - Milliseconds allowed for an entire query attempt. This timeout is not commonly hit,
  as the socketTimeout typically fires first. (default 10000)
+* **givenPortOnly**: boolean - Only attempt to query server on given port. (default false)
 * **debug**: boolean - Enables massive amounts of debug logging to stdout. (default false)
 
 ### Return Value

@@ -4,13 +4,15 @@ const Minimist = require('minimist'),
     Gamedig = require('..');
 
 const argv = Minimist(process.argv.slice(2), {
-    boolean: ['pretty','debug']
+    boolean: ['pretty','debug','givenPortOnly']
 });
 
 const debug = argv.debug;
 delete argv.debug;
 const pretty = !!argv.pretty || debug;
 delete argv.pretty;
+const givenPortOnly = argv.givenPortOnly;
+delete argv.givenPortOnly;
 
 const options = {};
 for(const key of Object.keys(argv)) {
@@ -33,6 +35,9 @@ if (argv._.length >= 1) {
 }
 if (debug) {
     options.debug = true;
+}
+if (givenPortOnly) {
+    options.givenPortOnly = true;
 }
 
 Gamedig.query(options)
