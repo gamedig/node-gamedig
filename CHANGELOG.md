@@ -1,3 +1,7 @@
+### 2.0.23
+* Fix Conan Exiles and other games which don't respond to the valve player query
+* Add givenPortOnly query option for users that require extreme optimization
+
 ### 2.0.22
 * Updated dependencies
 

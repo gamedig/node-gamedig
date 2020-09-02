@@ -113,10 +113,9 @@ class Valve extends Core {
         ) {
             this._skipSizeInSplitHeader = true;
         }
-        this.debugLog("STEAM APPID: "+state.raw.steamappid);
-        this.debugLog("PROTOCOL: "+state.raw.protocol);
+        this.logger.debug("INFO: ", state.raw);
         if(state.raw.protocol === 48) {
-            this.debugLog("GOLDSRC DETECTED - USING MODIFIED SPLIT FORMAT");
+            this.logger.debug("GOLDSRC DETECTED - USING MODIFIED SPLIT FORMAT");
             this.goldsrcSplits = true;
         }
     }
@@ -139,19 +138,22 @@ class Valve extends Core {
     async queryPlayers(state) {
         state.raw.players = [];
 
-        // CSGO doesn't even respond sometimes if host_players_show is not 2
-        // Ignore timeouts in only this case
-        const allowTimeout = state.raw.steamappid === 730;
-
         this.debugLog("Requesting player list ...");
         const b = await this.sendPacket(
             0x55,
             true,
             null,
             0x44,
-            allowTimeout
+            true
         );
-        if (b === null) return; // timed out
+
+        if (b === null) {
+            // Player query timed out
+            // CSGO doesn't respond to player query if host_players_show is not 2
+            // Conan Exiles never responds to player query
+            // Just skip it, and we'll fill with dummy objects in cleanup()
+            return;
+        }
 
         const reader = this.reader(b);
         const num = reader.uint(1);
@@ -179,7 +181,7 @@ class Valve extends Core {
         state.raw.rules = {};
         this.debugLog("Requesting rules ...");
         const b = await this.sendPacket(0x56,true,null,0x45,true);
-        if (b === null) return; // timed out - the server probably just has rules disabled
+        if (b === null) return; // timed out - the server probably has rules disabled
 
         const reader = this.reader(b);
         const num = reader.uint(2);
