@@ -224,7 +224,7 @@ Games List
 | `minecraft`<br>`minecraftping` | Minecraft (2009)
 | `minecraftpe`<br>`minecraftbe` | Minecraft: Bedrock Edition (2011)
 | `mnc`      | Monday Night Combat (2011)
-| `mordhau`      | Mordhau (2019)
+| `mordhau`  | Mordhau (2019)
 | `mumble`   | Mumble - GTmurmur Plugin (2005) | [Notes](#mumble)
 | `mumbleping` | Mumble - Lightweight (2005) | [Notes](#mumble)
 | `nascarthunder2004` | NASCAR Thunder 2004 (2003)
@@ -274,6 +274,7 @@ Games List
 | `rust`     | Rust
 | `stalker`  | S.T.A.L.K.E.R.
 | `samp`     | San Andreas Multiplayer
+| `savage2`  | Savage 2: A Tortured Soul (2008)
 | `ss`       | Serious Sam
 | `ss2`      | Serious Sam 2
 | `shatteredhorizon` | Shattered Horizon
@@ -385,7 +386,6 @@ Games List
 * Red Faction
 * S.T.A.L.K.E.R. Clear Sky
 * Savage: The Battle For Newerth
-* Savage 2: A Tortured Soul
 * SiN 1 Multiplayer
 * South Park
 * Star Wars Jedi Knight: Dark Forces II

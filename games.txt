@@ -216,6 +216,7 @@ rs2|Rising Storm 2: Vietnam|valve|port=27015
 rune|Rune|gamespy1|port=7777,port_query_offset=1
 rust|Rust|valve|port=28015
 samp|San Andreas Multiplayer|samp|port=7777
+savage2|Savage 2: A Tortured Soul (2008)|savage2|port_query=11235
 spaceengineers|Space Engineers|valve|port=27015
 ss|Serious Sam|gamespy1|port=25600,port_query_offset=1
 ss2|Serious Sam 2|gamespy2|port=25600
