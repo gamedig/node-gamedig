@@ -1,3 +1,6 @@
+### 2.0.25
+* Support challenges in A2S_INFO (upcoming change to valve protocol)
+
 ### 2.0.24
 * Add Savage 2: A Tortured Soul (2008)
 

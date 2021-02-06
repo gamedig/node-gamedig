@@ -38,7 +38,6 @@ class Valve extends Core {
         this.debugLog("Requesting info ...");
         const b = await this.sendPacket(
             0x54,
-            false,
             'Source Engine Query\0',
             this.goldsrcInfo ? 0x6D : 0x49,
             false
@@ -127,7 +126,6 @@ class Valve extends Core {
             this.debugLog("Requesting legacy challenge key ...");
             await this.sendPacket(
                 0x57,
-                false,
                 null,
                 0x41,
                 false
@@ -141,7 +139,6 @@ class Valve extends Core {
         this.debugLog("Requesting player list ...");
         const b = await this.sendPacket(
             0x55,
-            true,
             null,
             0x44,
             true
@@ -180,7 +177,7 @@ class Valve extends Core {
     async queryRules(state) {
         state.raw.rules = {};
         this.debugLog("Requesting rules ...");
-        const b = await this.sendPacket(0x56,true,null,0x45,true);
+        const b = await this.sendPacket(0x56,null,0x45,true);
         if (b === null) return; // timed out - the server probably has rules disabled
 
         const reader = this.reader(b);
@@ -245,33 +242,29 @@ class Valve extends Core {
      **/
     async sendPacket(
         type,
-        sendChallenge,
         payload,
         expect,
         allowTimeout
     ) {
         for (let keyRetry = 0; keyRetry < 3; keyRetry++) {
-            let requestKeyChanged = false;
+            let receivedNewChallengeKey = false;
             const response = await this.sendPacketRaw(
-                type, sendChallenge, payload,
+                type, payload,
                 (payload) => {
                     const reader = this.reader(payload);
                     const type = reader.uint(1);
-                    this.debugLog(() => "Received " + type.toString(16) + " expected " + expect.toString(16));
+                    this.debugLog(() => "Received 0x" + type.toString(16) + " expected 0x" + expect.toString(16));
                     if (type === 0x41) {
                         const key = reader.uint(4);
                         if (this._challenge !== key) {
-                            this.debugLog('Received new challenge key: ' + key);
+                            this.debugLog('Received new challenge key: 0x' + key.toString(16));
                             this._challenge = key;
-                            if (sendChallenge) {
-                                this.debugLog('Challenge key changed -- allowing query retry if needed');
-                                requestKeyChanged = true;
-                            }
+                            receivedNewChallengeKey = true;
                         }
                     }
                     if (type === expect) {
                         return reader.rest();
-                    } else if (requestKeyChanged) {
+                    } else if (receivedNewChallengeKey) {
                         return null;
                     }
                 },
@@ -279,7 +272,7 @@ class Valve extends Core {
                     if (allowTimeout) return null;
                 }
             );
-            if (!requestKeyChanged) {
+            if (!receivedNewChallengeKey) {
                 return response;
             }
         }
@@ -296,26 +289,47 @@ class Valve extends Core {
      **/
     async sendPacketRaw(
         type,
-        sendChallenge,
         payload,
         onResponse,
         onTimeout
     ) {
+        const challengeAtBeginning = type === 0x55 || type === 0x56;
+        const challengeAtEnd = type === 0x54 && !!this._challenge;
+
         if (typeof payload === 'string') payload = Buffer.from(payload, 'binary');
-        const challengeLength = sendChallenge ? 4 : 0;
-        const payloadLength = payload ? payload.length : 0;
 
-        const b = Buffer.alloc(5 + challengeLength + payloadLength);
-        b.writeInt32LE(-1, 0);
-        b.writeUInt8(type, 4);
+        const b = Buffer.alloc(5
+            + (challengeAtBeginning ? 4 : 0)
+            + (challengeAtEnd ? 4 : 0)
+            + (payload ? payload.length : 0)
+        );
+        let offset = 0;
 
-        if (sendChallenge) {
-            let challenge = this._challenge;
-            if (!challenge) challenge = 0xffffffff;
-            if (this.byteorder === 'le') b.writeUInt32LE(challenge, 5);
-            else b.writeUInt32BE(challenge, 5);
+        let challenge = this._challenge;
+        if (!challenge) challenge = 0xffffffff;
+
+        b.writeInt32LE(-1, offset);
+        offset += 4;
+
+        b.writeUInt8(type, offset);
+        offset += 1;
+
+        if (challengeAtBeginning) {
+            if (this.byteorder === 'le') b.writeUInt32LE(challenge, offset);
+            else b.writeUInt32BE(challenge, offset);
+            offset += 4;
         }
-        if (payloadLength) payload.copy(b, 5 + challengeLength);
+
+        if (payload) {
+            payload.copy(b, offset);
+            offset += payload.length;
+        }
+
+        if (challengeAtEnd) {
+            if (this.byteorder === 'le') b.writeUInt32LE(challenge, offset);
+            else b.writeUInt32BE(challenge, offset);
+            offset += 4;
+        }
 
         const packetStorage = {};
         return await this.udpSend(
@@ -353,7 +367,7 @@ class Valve extends Core {
 
                     packets[packetNum] = payload;
 
-                    this.debugLog(() => "Received partial packet uid:"+uid+" num:"+packetNum);
+                    this.debugLog(() => "Received partial packet uid: 0x"+uid.toString(16)+" num: "+packetNum);
                     this.debugLog(() => "Received "+Object.keys(packets).length+'/'+numPackets+" packets for this UID");
 
                     if(Object.keys(packets).length !== numPackets) return;
