@@ -25,7 +25,8 @@ class MinecraftBedrock extends Core {
             const nonce = reader.part(8).toString('hex'); // should match the nonce we sent
             this.logger.debug('Nonce: ' + nonce);
 
-            state.raw.guid = reader.part(8).toString('hex');
+            // These 8 bytes are identical to the serverId string we receive in decimal below
+            reader.skip(8);
 
             const magic = reader.part(16).toString('hex');
             this.logger.debug('Magic value: ' + magic);
