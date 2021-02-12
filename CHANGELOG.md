@@ -1,3 +1,7 @@
+### 2.0.26
+* Added support for the native minecraft bedrock protocol, since some
+bedrock servers apparently do not respond to the gamespy3 protocol.
+
 ### 2.0.25
 * Support challenges in A2S_INFO (upcoming change to valve protocol)
 

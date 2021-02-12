@@ -1,6 +1,15 @@
 const Core = require('./core'),
     MinecraftVanilla = require('./minecraftvanilla'),
+    MinecraftBedrock = require('./minecraftbedrock'),
     Gamespy3 = require('./gamespy3');
+
+/*
+Vanilla servers respond to minecraftvanilla only
+Some modded vanilla servers respond to minecraftvanilla and gamespy3, or gamespy3 only
+Some bedrock servers respond to gamespy3 only
+Some bedrock servers respond to minecraftbedrock only
+Unsure if any bedrock servers respond to gamespy3 and minecraftbedrock
+ */
 
 class Minecraft extends Core {
     constructor() {
@@ -17,25 +26,40 @@ class Minecraft extends Core {
             try { return await vanillaResolver.runOnceSafe(); } catch(e) {}
         })());
 
-        const bedrockResolver = new Gamespy3();
-        bedrockResolver.options = {
+        const gamespyResolver = new Gamespy3();
+        gamespyResolver.options = {
             ...this.options,
             encoding: 'utf8',
         };
+        gamespyResolver.udpSocket = this.udpSocket;
+        promises.push((async () => {
+            try { return await gamespyResolver.runOnceSafe(); } catch(e) {}
+        })());
+
+        const bedrockResolver = new MinecraftBedrock();
+        bedrockResolver.options = this.options;
         bedrockResolver.udpSocket = this.udpSocket;
         promises.push((async () => {
             try { return await bedrockResolver.runOnceSafe(); } catch(e) {}
         })());
 
-        const [ vanillaState, bedrockState ] = await Promise.all(promises);
+        const [ vanillaState, gamespyState, bedrockState ] = await Promise.all(promises);
 
         state.raw.vanilla = vanillaState;
+        state.raw.gamespy = gamespyState;
         state.raw.bedrock = bedrockState;
 
-        if (!vanillaState && !bedrockState) {
+        if (!vanillaState && !gamespyState && !bedrockState) {
             throw new Error('No protocols succeeded');
         }
 
+        // Ordered from least worth to most worth (player names / etc)
+        if (bedrockState) {
+            if (bedrockState.name) state.name = bedrockState.name;
+            if (bedrockState.maxplayers) state.maxplayers = bedrockState.maxplayers;
+            if (bedrockState.players) state.players = bedrockState.players;
+            if (bedrockState.map) state.map = bedrockState.map;
+        }
         if (vanillaState) {
             try {
                 let name = '';
@@ -54,10 +78,10 @@ class Minecraft extends Core {
             if (vanillaState.maxplayers) state.maxplayers = vanillaState.maxplayers;
             if (vanillaState.players) state.players = vanillaState.players;
         }
-        if (bedrockState) {
-            if (bedrockState.name) state.name = bedrockState.name;
-            if (bedrockState.maxplayers) state.maxplayers = bedrockState.maxplayers;
-            if (bedrockState.players) state.players = bedrockState.players;
+        if (gamespyState) {
+            if (gamespyState.name) state.name = gamespyState.name;
+            if (gamespyState.maxplayers) state.maxplayers = gamespyState.maxplayers;
+            if (gamespyState.players) state.players = gamespyState.players;
         }
         // remove dupe spaces from name
         state.name = state.name.replace(/\s+/g, ' ');
