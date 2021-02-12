@@ -35,7 +35,9 @@ class Core extends EventEmitter {
         }
         this.logger.prefix = 'Q#' + (uid++);
 
-        this.logger.debug("Query is running with options:", this.options);
+        this.logger.debug("Starting");
+        this.logger.debug("Protocol: " + this.constructor.name);
+        this.logger.debug("Options:", this.options);
 
         let abortCall = null;
         this.abortedPromise = new Promise((resolve,reject) => {

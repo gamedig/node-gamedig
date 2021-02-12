@@ -1,3 +1,6 @@
+### 2.0.27
+* Reduced chance of protocol collisions between gamespy3 and minecraftbedrock
+
 ### 2.0.26
 * Added support for the native minecraft bedrock protocol, since some
 bedrock servers apparently do not respond to the gamespy3 protocol.
