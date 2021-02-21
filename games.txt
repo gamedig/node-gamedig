@@ -279,6 +279,7 @@ ut3|Unreal Tournament 3|ut3|port=7777,port_query_offset=-1277
 
 urbanterror|Urban Terror|quake3|port_query=27960
 v8supercar|V8 Supercar Challenge|gamespy1|port_query=16700
+valheim|Valheim|valve|port=2456,port_query_offset=1
 vcmp|Vice City Multiplayer|vcmp|port=8192
 ventrilo|Ventrilo|ventrilo|port=3784
 vietcong|Vietcong|gamespy1|port=5425,port_query=15425
