@@ -1,3 +1,6 @@
+### 2.0.28
+* Added Valheim (2021)
+
 ### 2.0.27
 * Reduced chance of protocol collisions between gamespy3 and minecraftbedrock
 
