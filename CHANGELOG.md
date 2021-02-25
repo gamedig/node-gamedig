@@ -1,3 +1,13 @@
+### 3.0.0
+Major Changes:
+* The `name` field is now guaranteed to exist on all player objects. If a player's name is unknown, the `name` will be an empty string.
+* All non-`name` player fields have been moved into a `raw` sub-field. This means that, like the `raw` subobject of the parent
+  response, all non-`name` fields are now considered to be unstable and may be changed during minor releases of GameDig.
+* "Rules" are no longer queried for `valve` protocol games by default. Many games do not respond to this query anyways (meaning we have to wait
+  for timeout), and its contents is often not even used since it only exists in the raw subfield. If you depend on rules,
+  you may pass the `requestRules: true` option to re-enable them.
+* The `raw.steamappid` and `raw.gameid` fields for valve games have been consolidated into `raw.appId`.
+
 ### 2.0.28
 * Added Valheim (2021)
 
