@@ -234,7 +234,7 @@ stalker|S.T.A.L.K.E.R.|gamespy3|port=5445,port_query_offset=2
 stbc|Star Trek: Bridge Commander|gamespy1|port_query=22101
 stvef|Star Trek: Voyager - Elite Force|quake3|port_query=27960
 stvef2|Star Trek: Voyager - Elite Force 2|quake3|port_query=29253
-squad|Squad|squad|port=7787,port_query=27165
+squad|Squad|valve|port=7787,port_query=27165
 swbf|Star Wars: Battlefront|gamespy2|port_query=3658
 swbf2|Star Wars: Battlefront 2|gamespy2|port_query=3658
 swjk|Star Wars Jedi Knight: Jedi Academy (2003)|quake3|port_query=29070

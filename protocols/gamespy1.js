@@ -35,37 +35,20 @@ class Gamespy1 extends Core {
                     teamNamesById[id] = value;
                 } else {
                     if (!(id in playersById)) playersById[id] = {};
-                    if (key === 'playername') key = 'name';
-                    else if (key === 'team') value = parseInt(value);
-                    else if (key === 'score' || key === 'ping' || key === 'deaths' || key === 'kills') value = parseInt(value);
+                    if (key === 'playername') {
+                        key = 'name';
+                    } else if (key === 'team' && !isNaN(parseInt(value))) {
+                        key = 'teamId';
+                        value = parseInt(value);
+                    } else if (key === 'score' || key === 'ping' || key === 'deaths' || key === 'kills') {
+                        value = parseInt(value);
+                    }
                     playersById[id][key] = value;
                 }
             }
             state.raw.teams = teamNamesById;
 
             const players = Object.values(playersById);
-
-            // Determine which team id might be for spectators
-            let specTeamId = null;
-            for (const player of players) {
-                if (!player.team) {
-                    continue;
-                } else if (teamNamesById[player.team]) {
-                    continue;
-                } else if (teamNamesById[player.team-1] && (specTeamId === null || specTeamId === player.team)) {
-                    specTeamId = player.team;
-                } else {
-                    specTeamId = null;
-                    break;
-                }
-            }
-            this.logger.debug(log => {
-                if (specTeamId === null) {
-                    log("Could not detect a team ID for spectators");
-                } else {
-                    log("Detected that team ID " + specTeamId + " is probably for spectators");
-                }
-            });
 
             const seenHashes = new Set();
             for (const player of players) {
@@ -81,11 +64,12 @@ class Gamespy1 extends Core {
                 }
 
                 // Convert player's team ID to team name if possible
-                if (player.team) {
-                    if (teamNamesById[player.team]) {
-                        player.team = teamNamesById[player.team];
-                    } else if (player.team === specTeamId) {
-                        player.team = "spec";
+                if (player.hasOwnProperty('teamId')) {
+                    if (Object.keys(teamNamesById).length) {
+                        player.team = teamNamesById[player.teamId - 1] || '';
+                    } else {
+                        player.team = player.teamId;
+                        delete player.teamId;
                     }
                 }
 

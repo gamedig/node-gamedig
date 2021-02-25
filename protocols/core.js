@@ -5,7 +5,8 @@ const EventEmitter = require('events').EventEmitter,
     got = require('got'),
     Promises = require('../lib/Promises'),
     Logger = require('../lib/Logger'),
-    DnsResolver = require('../lib/DnsResolver');
+    DnsResolver = require('../lib/DnsResolver'),
+    Results = require('../lib/Results');
 
 let uid = 0;
 
@@ -74,43 +75,12 @@ class Core extends EventEmitter {
             if (resolved.port) options.port = resolved.port;
         }
 
-        const state = {
-            name: '',
-            map: '',
-            password: false,
-
-            raw: {},
-
-            maxplayers: 0,
-            players: [],
-            bots: []
-        };
+        const state = new Results();
 
         await this.run(state);
 
         // because lots of servers prefix with spaces to try to appear first
         state.name = (state.name || '').trim();
-
-        if (typeof state.players === 'number') {
-            const num = state.players;
-            state.players = [];
-            state.raw.rcvNumPlayers = num;
-            if (num < 10000) {
-                for (let i = 0; i < num; i++) {
-                    state.players.push({});
-                }
-            }
-        }
-        if (typeof state.bots === 'number') {
-            const num = state.bots;
-            state.bots = [];
-            state.raw.rcvNumBots = num;
-            if (num < 10000) {
-                for (let i = 0; i < num; i++) {
-                    state.bots.push({});
-                }
-            }
-        }
 
         if (!('connect' in state)) {
             state.connect = ''
@@ -130,7 +100,7 @@ class Core extends EventEmitter {
         return state;
     }
 
-    async run(state) {}
+    async run(/** Results */ state) {}
 
     /** Param can be a time in ms, or a promise (which will be timed) */
     registerRtt(param) {

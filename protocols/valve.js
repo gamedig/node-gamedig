@@ -1,5 +1,12 @@
 const Bzip2 = require('compressjs').Bzip2,
-    Core = require('./core');
+    Core = require('./core'),
+    Results = require('../lib/Results');
+
+const AppId = {
+    Squad: 393380,
+    Bat1944: 489940,
+    Ship: 2400
+};
 
 class Valve extends Core {
     constructor() {
@@ -34,7 +41,7 @@ class Valve extends Core {
         await this.cleanup(state);
     }
 
-    async queryInfo(state) {
+    async queryInfo(/** Results */ state) {
         this.debugLog("Requesting info ...");
         const b = await this.sendPacket(
             0x54,
@@ -52,7 +59,7 @@ class Valve extends Core {
         state.map = reader.string();
         state.raw.folder = reader.string();
         state.raw.game = reader.string();
-        state.raw.steamappid = reader.uint(2);
+        state.raw.appId = reader.uint(2);
         state.raw.numplayers = reader.uint(1);
         state.maxplayers = reader.uint(1);
 
@@ -84,7 +91,7 @@ class Valve extends Core {
         if(this.goldsrcInfo) {
             state.raw.numbots = reader.uint(1);
         } else {
-            if(state.raw.folder === 'ship') {
+            if(state.raw.appId === AppId.Ship) {
                 state.raw.shipmode = reader.uint(1);
                 state.raw.shipwitnesses = reader.uint(1);
                 state.raw.shipduration = reader.uint(1);
@@ -92,22 +99,28 @@ class Valve extends Core {
             state.raw.version = reader.string();
             const extraFlag = reader.uint(1);
             if(extraFlag & 0x80) state.gamePort = reader.uint(2);
-            if(extraFlag & 0x10) state.raw.steamid = reader.uint(8);
+            if(extraFlag & 0x10) state.raw.steamid = reader.uint(8).toString();
             if(extraFlag & 0x40) {
                 state.raw.sourcetvport = reader.uint(2);
                 state.raw.sourcetvname = reader.string();
             }
             if(extraFlag & 0x20) state.raw.tags = reader.string();
-            if(extraFlag & 0x01) state.raw.gameid = reader.uint(8);
+            if(extraFlag & 0x01) {
+                const gameId = reader.uint(8);
+                const betterAppId = gameId.getLowBitsUnsigned() & 0xffffff;
+                if (betterAppId) {
+                    state.raw.appId = betterAppId;
+                }
+            }
         }
 
         // from https://developer.valvesoftware.com/wiki/Server_queries
         if(
             state.raw.protocol === 7 && (
-                state.raw.steamappid === 215
-                || state.raw.steamappid === 17550
-                || state.raw.steamappid === 17700
-                || state.raw.steamappid === 240
+                state.raw.appId === 215
+                || state.raw.appId === 17550
+                || state.raw.appId === 17700
+                || state.raw.appId === 240
             )
         ) {
             this._skipSizeInSplitHeader = true;
@@ -133,7 +146,7 @@ class Valve extends Core {
         }
     }
 
-    async queryPlayers(state) {
+    async queryPlayers(/** Results */ state) {
         state.raw.players = [];
 
         this.debugLog("Requesting player list ...");
@@ -174,8 +187,18 @@ class Valve extends Core {
         }
     }
 
-    async queryRules(state) {
-        state.raw.rules = {};
+    async queryRules(/** Results */ state) {
+        const appId = state.raw.appId;
+        if (appId === AppId.Squad
+            || appId === AppId.Bat1944
+            || this.options.requestRules) {
+            // let's get 'em
+        } else {
+            return;
+        }
+
+        const rules = {};
+        state.raw.rules = rules;
         this.debugLog("Requesting rules ...");
         const b = await this.sendPacket(0x56,null,0x45,true);
         if (b === null) return; // timed out - the server probably has rules disabled
@@ -185,31 +208,40 @@ class Valve extends Core {
         for(let i = 0; i < num; i++) {
             const key = reader.string();
             const value = reader.string();
-            state.raw.rules[key] = value;
+            rules[key] = value;
+        }
+
+        // Battalion 1944 puts its info into rules fields for some reason
+        if (appId === AppId.Bat1944) {
+            if ('bat_name_s' in rules) {
+                state.name = rules.bat_name_s;
+                delete rules.bat_name_s;
+                if ('bat_player_count_s' in rules) {
+                    state.raw.numplayers = parseInt(rules.bat_player_count_s);
+                    delete rules.bat_player_count_s;
+                }
+                if ('bat_max_players_i' in rules) {
+                    state.maxplayers = parseInt(rules.bat_max_players_i);
+                    delete rules.bat_max_players_i;
+                }
+                if ('bat_has_password_s' in rules) {
+                    state.password = rules.bat_has_password_s === 'Y';
+                    delete rules.bat_has_password_s;
+                }
+                // apparently map is already right, and this var is often wrong
+                delete rules.bat_map_s;
+            }
+        }
+
+        // Squad keeps its password in a separate field
+        if (appId === AppId.Squad) {
+            if (rules.Password_b === "true") {
+                state.password = true;
+            }
         }
     }
 
-    async cleanup(state) {
-        // Battalion 1944 puts its info into rules fields for some reason
-        if ('bat_name_s' in state.raw.rules) {
-            state.name = state.raw.rules.bat_name_s;
-            delete state.raw.rules.bat_name_s;
-            if ('bat_player_count_s' in state.raw.rules) {
-                state.raw.numplayers = parseInt(state.raw.rules.bat_player_count_s);
-                delete state.raw.rules.bat_player_count_s;
-            }
-            if ('bat_max_players_i' in state.raw.rules) {
-                state.maxplayers = parseInt(state.raw.rules.bat_max_players_i);
-                delete state.raw.rules.bat_max_players_i;
-            }
-            if ('bat_has_password_s' in state.raw.rules) {
-                state.password = state.raw.rules.bat_has_password_s === 'Y';
-                delete state.raw.rules.bat_has_password_s;
-            }
-            // apparently map is already right, and this var is often wrong
-            delete state.raw.rules.bat_map_s;
-        }
-
+    async cleanup(/** Results */ state) {
         // Organize players / hidden players into player / bot arrays
         const botProbability = (p) => {
             if (p.time === -1) return Number.MAX_VALUE;
