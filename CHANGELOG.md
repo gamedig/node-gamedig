@@ -1,5 +1,10 @@
+### 3.0.1
+* Clarified that nodejs 12 is now required for gamedig 3
+* Fixed misc player fields not going into `raw` subobject in `assettocorsa`, `fivem`, and `gamespy2`
+
 ### 3.0.0
 Major Changes:
+* **NodeJS 12 is now required**
 * The `name` field is now guaranteed to exist on all player objects. If a player's name is unknown, the `name` will be an empty string.
 * All non-`name` player fields have been moved into a `raw` sub-field. This means that, like the `raw` subobject of the parent
   response, all non-`name` fields are now considered to be unstable and may be changed during minor releases of GameDig.

@@ -23,18 +23,17 @@ class AssettoCorsa extends Core {
         state.raw.carInfo = carInfo.Cars;
         state.raw.serverInfo = serverInfo;
 
-        state.players = carInfo.Cars.reduce((r, e) => {
-            if (e.IsConnected) {
-                r.push({
-                    name: e.DriverName,
-                    car: e.Model,
-                    skin: e.Skin,
-                    nation: e.DriverNation,
-                    team: e.DriverTeam
+        for (const car of carInfo.Cars) {
+            if (car.IsConnected) {
+                state.players.push({
+                    name: car.DriverName,
+                    car: car.Model,
+                    skin: car.Skin,
+                    nation: car.DriverNation,
+                    team: car.DriverTeam
                 });
             }
-            return r;
-        }, state.players);
+        }
     }
 }
 

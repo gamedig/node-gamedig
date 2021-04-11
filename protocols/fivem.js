@@ -25,7 +25,6 @@ class FiveM extends Quake2 {
                 responseType: 'json'
             });
             state.raw.players = json;
-            state.players = [];
             for (const player of json) {
                 state.players.push({name: player.name, ping: player.ping});
             }

@@ -29,7 +29,9 @@ class Gamespy2 extends Core {
         {
             const body = await this.sendPacket([0, 0xff, 0]);
             const reader = this.reader(body);
-            state.players = this.readFieldData(reader);
+            for (const rawPlayer of this.readFieldData(reader)) {
+                state.players.push(rawPlayer);
+            }
         }
 
         // Parse teams
