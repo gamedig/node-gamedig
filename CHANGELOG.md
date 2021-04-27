@@ -1,3 +1,7 @@
+### 3.0.2
+* Fix player name extraction for Unreal Tournament (1999) and possibly
+  other gamespy1 games.
+
 ### 3.0.1
 * Clarified that nodejs 12 is now required for gamedig 3
 * Fixed misc player fields not going into `raw` subobject in `assettocorsa`, `fivem`, and `gamespy2`

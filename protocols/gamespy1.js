@@ -37,10 +37,12 @@ class Gamespy1 extends Core {
                     if (!(id in playersById)) playersById[id] = {};
                     if (key === 'playername') {
                         key = 'name';
+                    } else if (key === 'player') {
+                        key = 'name';
                     } else if (key === 'team' && !isNaN(parseInt(value))) {
                         key = 'teamId';
                         value = parseInt(value);
-                    } else if (key === 'score' || key === 'ping' || key === 'deaths' || key === 'kills') {
+                    } else if (key === 'score' || key === 'ping' || key === 'deaths' || key === 'kills' || key === 'frags') {
                         value = parseInt(value);
                     }
                     playersById[id][key] = value;
