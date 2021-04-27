@@ -1,3 +1,6 @@
+### 3.0.3
+* Greatly improve gamespy1 protocol, with additional error handling and xserverquery support.
+
 ### 3.0.2
 * Fix player name extraction for Unreal Tournament (1999) and possibly
   other gamespy1 games.
