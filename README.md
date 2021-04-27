@@ -336,7 +336,7 @@ Games List
 | `unturned` | unturned | [Valve Protocol](#valve)
 | `urbanterror` | Urban Terror
 | `v8supercar` | V8 Supercar Challenge
-| `valheim`  | Valheim (2021) | [Valve Protocol](#valve)
+| `valheim`  | Valheim (2021) | [Notes](#valheim), [Valve Protocol](#valve)
 | `ventrilo` | Ventrilo
 | `vcmp`     | Vice City Multiplayer
 | `vietcong` | Vietcong
@@ -453,6 +453,9 @@ For teamspeak 3 queries to work correctly, the following permissions must be ava
 ### Terraria
 Requires tshock server mod, and a REST user token, which can be passed to GameDig with the
 additional option: `token`
+
+### Valheim
+Valheim servers will only respond to queries if they are started in public mode (`-public 1`).
 
 ### <a name="valve"></a>Valve Protocol
 For many valve games, additional 'rules' may be fetched into the unstable `raw` field by passing the additional
