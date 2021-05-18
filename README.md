@@ -467,11 +467,11 @@ Most game query protocols require a UDP request and response. This means that in
 
 Some examples include:
 * Docker containers
- * You may need to run the container in `--network host` mode so that gamedig can bind a UDP listen port
+  * You may need to run the container in `--network host` mode so that gamedig can bind a UDP listen port
 * replit
- * Most online IDEs run in an isolated container, which will never receive UDP responses from outside networks.
+  * Most online IDEs run in an isolated container, which will never receive UDP responses from outside networks.
 * Various VPS / server providers
- * Even if your server provider doesn't explicitly block incoming UDP packets, some server hosts block other server hosts from connecting to them for DDOS-mitigation and anti-botting purposes.
+  * Even if your server provider doesn't explicitly block incoming UDP packets, some server hosts block other server hosts from connecting to them for DDOS-mitigation and anti-botting purposes.
 
 Important note about gamedig in the browser
 ---
