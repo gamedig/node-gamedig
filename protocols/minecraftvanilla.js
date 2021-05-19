@@ -47,6 +47,7 @@ class MinecraftVanilla extends Core {
 
         state.raw = json;
         state.maxplayers = json.players.max;
+
         if(json.players.sample) {
             for(const player of json.players.sample) {
                 state.players.push({
@@ -55,7 +56,11 @@ class MinecraftVanilla extends Core {
                 });
             }
         }
-        for (let i = 0; i < Math.min(json.players.online, 10000); i++) {
+
+        // players.sample may not contain all players or no players at all, depending on how many players are online.
+        // Insert a dummy player object for every online player that is not listed in players.sample.
+        // Limit player amount to 10.000 players for performance reasons.
+        for (let i = state.players.length; i < Math.min(json.players.online, 10000); i++) {
             state.players.push({});
         }
     }

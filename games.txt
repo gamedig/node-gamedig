@@ -6,6 +6,7 @@ aoe2|Age of Empires 2 (1999)|ase|port_query=27224
 alienarena|Alien Arena (2004)|quake2|port_query=27910
 alienswarm|Alien Swarm (2010)|valve|port=27015
 arkse|Ark: Survival Evolved (2017)|valve|port=7777,port_query=27015
+assettocorsa|Assetto Corsa (2014)|assettocorsa|port=9610
 atlas|Atlas (2018)|valve|port=5761,port_query_offset=51800
 avp2|Aliens versus Predator 2 (2001)|gamespy1|port=27888
 avp2010|Aliens vs. Predator (2010)|valve|port=27015
@@ -162,6 +163,7 @@ minecraft,minecraftping|Minecraft (2009)|minecraft|port=25565
 minecraftpe,minecraftbe|Minecraft: Bedrock Edition (2011)|minecraft|port=19132
 
 mnc|Monday Night Combat (2011)|valve|port=7777,port_query=27016
+mordhau|Mordhau (2019)|valve|port=7777,port_query=27015
 mtavc|Grand Theft Auto: Vice City - Multi Theft Auto (2002)|ase|port=22003,port_query_offset=123
 mtasa|Grand Theft Auto: San Andreas - Multi Theft Auto (2004)|ase|port=22003,port_query_offset=123
 mumble|Mumble - GTmurmur Plugin (2005)|mumble|port=64738,port_query=27800|doc_notes=mumble
@@ -215,6 +217,7 @@ rs2|Rising Storm 2: Vietnam|valve|port=27015
 rune|Rune|gamespy1|port=7777,port_query_offset=1
 rust|Rust|valve|port=28015
 samp|San Andreas Multiplayer|samp|port=7777
+savage2|Savage 2: A Tortured Soul (2008)|savage2|port_query=11235
 spaceengineers|Space Engineers|valve|port=27015
 ss|Serious Sam|gamespy1|port=25600,port_query_offset=1
 ss2|Serious Sam 2|gamespy2|port=25600
@@ -277,6 +280,7 @@ ut3|Unreal Tournament 3|ut3|port=7777,port_query_offset=-1277
 
 urbanterror|Urban Terror|quake3|port_query=27960
 v8supercar|V8 Supercar Challenge|gamespy1|port_query=16700
+valheim|Valheim (2021)|valve|port=2456,port_query_offset=1|doc_notes=valheim
 vcmp|Vice City Multiplayer|vcmp|port=8192
 ventrilo|Ventrilo|ventrilo|port=3784
 vietcong|Vietcong|gamespy1|port=5425,port_query=15425

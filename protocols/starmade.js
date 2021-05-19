@@ -16,7 +16,7 @@ class Starmade extends Core {
                 const reader = this.reader(buffer);
                 const packetLength = reader.uint(4);
                 this.logger.debug("Received packet length: " + packetLength);
-                const timestamp = reader.uint(8);
+                const timestamp = reader.uint(8).toString();
                 this.logger.debug("Received timestamp: " + timestamp);
                 if (reader.remaining() < packetLength || reader.remaining() < 5) return;
 

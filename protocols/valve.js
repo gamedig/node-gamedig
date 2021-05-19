@@ -1,5 +1,12 @@
 const Bzip2 = require('compressjs').Bzip2,
-    Core = require('./core');
+    Core = require('./core'),
+    Results = require('../lib/Results');
+
+const AppId = {
+    Squad: 393380,
+    Bat1944: 489940,
+    Ship: 2400
+};
 
 class Valve extends Core {
     constructor() {
@@ -34,11 +41,10 @@ class Valve extends Core {
         await this.cleanup(state);
     }
 
-    async queryInfo(state) {
+    async queryInfo(/** Results */ state) {
         this.debugLog("Requesting info ...");
         const b = await this.sendPacket(
             0x54,
-            false,
             'Source Engine Query\0',
             this.goldsrcInfo ? 0x6D : 0x49,
             false
@@ -53,7 +59,7 @@ class Valve extends Core {
         state.map = reader.string();
         state.raw.folder = reader.string();
         state.raw.game = reader.string();
-        state.raw.steamappid = reader.uint(2);
+        state.raw.appId = reader.uint(2);
         state.raw.numplayers = reader.uint(1);
         state.maxplayers = reader.uint(1);
 
@@ -85,7 +91,7 @@ class Valve extends Core {
         if(this.goldsrcInfo) {
             state.raw.numbots = reader.uint(1);
         } else {
-            if(state.raw.folder === 'ship') {
+            if(state.raw.appId === AppId.Ship) {
                 state.raw.shipmode = reader.uint(1);
                 state.raw.shipwitnesses = reader.uint(1);
                 state.raw.shipduration = reader.uint(1);
@@ -93,30 +99,35 @@ class Valve extends Core {
             state.raw.version = reader.string();
             const extraFlag = reader.uint(1);
             if(extraFlag & 0x80) state.gamePort = reader.uint(2);
-            if(extraFlag & 0x10) state.raw.steamid = reader.uint(8);
+            if(extraFlag & 0x10) state.raw.steamid = reader.uint(8).toString();
             if(extraFlag & 0x40) {
                 state.raw.sourcetvport = reader.uint(2);
                 state.raw.sourcetvname = reader.string();
             }
             if(extraFlag & 0x20) state.raw.tags = reader.string();
-            if(extraFlag & 0x01) state.raw.gameid = reader.uint(8);
+            if(extraFlag & 0x01) {
+                const gameId = reader.uint(8);
+                const betterAppId = gameId.getLowBitsUnsigned() & 0xffffff;
+                if (betterAppId) {
+                    state.raw.appId = betterAppId;
+                }
+            }
         }
 
         // from https://developer.valvesoftware.com/wiki/Server_queries
         if(
             state.raw.protocol === 7 && (
-                state.raw.steamappid === 215
-                || state.raw.steamappid === 17550
-                || state.raw.steamappid === 17700
-                || state.raw.steamappid === 240
+                state.raw.appId === 215
+                || state.raw.appId === 17550
+                || state.raw.appId === 17700
+                || state.raw.appId === 240
             )
         ) {
             this._skipSizeInSplitHeader = true;
         }
-        this.debugLog("STEAM APPID: "+state.raw.steamappid);
-        this.debugLog("PROTOCOL: "+state.raw.protocol);
+        this.logger.debug("INFO: ", state.raw);
         if(state.raw.protocol === 48) {
-            this.debugLog("GOLDSRC DETECTED - USING MODIFIED SPLIT FORMAT");
+            this.logger.debug("GOLDSRC DETECTED - USING MODIFIED SPLIT FORMAT");
             this.goldsrcSplits = true;
         }
     }
@@ -128,7 +139,6 @@ class Valve extends Core {
             this.debugLog("Requesting legacy challenge key ...");
             await this.sendPacket(
                 0x57,
-                false,
                 null,
                 0x41,
                 false
@@ -136,22 +146,24 @@ class Valve extends Core {
         }
     }
 
-    async queryPlayers(state) {
+    async queryPlayers(/** Results */ state) {
         state.raw.players = [];
-
-        // CSGO doesn't even respond sometimes if host_players_show is not 2
-        // Ignore timeouts in only this case
-        const allowTimeout = state.raw.steamappid === 730;
 
         this.debugLog("Requesting player list ...");
         const b = await this.sendPacket(
             0x55,
-            true,
             null,
             0x44,
-            allowTimeout
+            true
         );
-        if (b === null) return; // timed out
+
+        if (b === null) {
+            // Player query timed out
+            // CSGO doesn't respond to player query if host_players_show is not 2
+            // Conan Exiles never responds to player query
+            // Just skip it, and we'll fill with dummy objects in cleanup()
+            return;
+        }
 
         const reader = this.reader(b);
         const num = reader.uint(1);
@@ -175,42 +187,61 @@ class Valve extends Core {
         }
     }
 
-    async queryRules(state) {
-        state.raw.rules = {};
+    async queryRules(/** Results */ state) {
+        const appId = state.raw.appId;
+        if (appId === AppId.Squad
+            || appId === AppId.Bat1944
+            || this.options.requestRules) {
+            // let's get 'em
+        } else {
+            return;
+        }
+
+        const rules = {};
+        state.raw.rules = rules;
         this.debugLog("Requesting rules ...");
-        const b = await this.sendPacket(0x56,true,null,0x45,true);
-        if (b === null) return; // timed out - the server probably just has rules disabled
+        const b = await this.sendPacket(0x56,null,0x45,true);
+        if (b === null) return; // timed out - the server probably has rules disabled
 
         const reader = this.reader(b);
         const num = reader.uint(2);
         for(let i = 0; i < num; i++) {
             const key = reader.string();
             const value = reader.string();
-            state.raw.rules[key] = value;
+            rules[key] = value;
+        }
+
+        // Battalion 1944 puts its info into rules fields for some reason
+        if (appId === AppId.Bat1944) {
+            if ('bat_name_s' in rules) {
+                state.name = rules.bat_name_s;
+                delete rules.bat_name_s;
+                if ('bat_player_count_s' in rules) {
+                    state.raw.numplayers = parseInt(rules.bat_player_count_s);
+                    delete rules.bat_player_count_s;
+                }
+                if ('bat_max_players_i' in rules) {
+                    state.maxplayers = parseInt(rules.bat_max_players_i);
+                    delete rules.bat_max_players_i;
+                }
+                if ('bat_has_password_s' in rules) {
+                    state.password = rules.bat_has_password_s === 'Y';
+                    delete rules.bat_has_password_s;
+                }
+                // apparently map is already right, and this var is often wrong
+                delete rules.bat_map_s;
+            }
+        }
+
+        // Squad keeps its password in a separate field
+        if (appId === AppId.Squad) {
+            if (rules.Password_b === "true") {
+                state.password = true;
+            }
         }
     }
 
-    async cleanup(state) {
-        // Battalion 1944 puts its info into rules fields for some reason
-        if ('bat_name_s' in state.raw.rules) {
-            state.name = state.raw.rules.bat_name_s;
-            delete state.raw.rules.bat_name_s;
-            if ('bat_player_count_s' in state.raw.rules) {
-                state.raw.numplayers = parseInt(state.raw.rules.bat_player_count_s);
-                delete state.raw.rules.bat_player_count_s;
-            }
-            if ('bat_max_players_i' in state.raw.rules) {
-                state.maxplayers = parseInt(state.raw.rules.bat_max_players_i);
-                delete state.raw.rules.bat_max_players_i;
-            }
-            if ('bat_has_password_s' in state.raw.rules) {
-                state.password = state.raw.rules.bat_has_password_s === 'Y';
-                delete state.raw.rules.bat_has_password_s;
-            }
-            // apparently map is already right, and this var is often wrong
-            delete state.raw.rules.bat_map_s;
-        }
-
+    async cleanup(/** Results */ state) {
         // Organize players / hidden players into player / bot arrays
         const botProbability = (p) => {
             if (p.time === -1) return Number.MAX_VALUE;
@@ -243,33 +274,29 @@ class Valve extends Core {
      **/
     async sendPacket(
         type,
-        sendChallenge,
         payload,
         expect,
         allowTimeout
     ) {
         for (let keyRetry = 0; keyRetry < 3; keyRetry++) {
-            let requestKeyChanged = false;
+            let receivedNewChallengeKey = false;
             const response = await this.sendPacketRaw(
-                type, sendChallenge, payload,
+                type, payload,
                 (payload) => {
                     const reader = this.reader(payload);
                     const type = reader.uint(1);
-                    this.debugLog(() => "Received " + type.toString(16) + " expected " + expect.toString(16));
+                    this.debugLog(() => "Received 0x" + type.toString(16) + " expected 0x" + expect.toString(16));
                     if (type === 0x41) {
                         const key = reader.uint(4);
                         if (this._challenge !== key) {
-                            this.debugLog('Received new challenge key: ' + key);
+                            this.debugLog('Received new challenge key: 0x' + key.toString(16));
                             this._challenge = key;
-                            if (sendChallenge) {
-                                this.debugLog('Challenge key changed -- allowing query retry if needed');
-                                requestKeyChanged = true;
-                            }
+                            receivedNewChallengeKey = true;
                         }
                     }
                     if (type === expect) {
                         return reader.rest();
-                    } else if (requestKeyChanged) {
+                    } else if (receivedNewChallengeKey) {
                         return null;
                     }
                 },
@@ -277,7 +304,7 @@ class Valve extends Core {
                     if (allowTimeout) return null;
                 }
             );
-            if (!requestKeyChanged) {
+            if (!receivedNewChallengeKey) {
                 return response;
             }
         }
@@ -294,26 +321,47 @@ class Valve extends Core {
      **/
     async sendPacketRaw(
         type,
-        sendChallenge,
         payload,
         onResponse,
         onTimeout
     ) {
+        const challengeAtBeginning = type === 0x55 || type === 0x56;
+        const challengeAtEnd = type === 0x54 && !!this._challenge;
+
         if (typeof payload === 'string') payload = Buffer.from(payload, 'binary');
-        const challengeLength = sendChallenge ? 4 : 0;
-        const payloadLength = payload ? payload.length : 0;
 
-        const b = Buffer.alloc(5 + challengeLength + payloadLength);
-        b.writeInt32LE(-1, 0);
-        b.writeUInt8(type, 4);
+        const b = Buffer.alloc(5
+            + (challengeAtBeginning ? 4 : 0)
+            + (challengeAtEnd ? 4 : 0)
+            + (payload ? payload.length : 0)
+        );
+        let offset = 0;
 
-        if (sendChallenge) {
-            let challenge = this._challenge;
-            if (!challenge) challenge = 0xffffffff;
-            if (this.byteorder === 'le') b.writeUInt32LE(challenge, 5);
-            else b.writeUInt32BE(challenge, 5);
+        let challenge = this._challenge;
+        if (!challenge) challenge = 0xffffffff;
+
+        b.writeInt32LE(-1, offset);
+        offset += 4;
+
+        b.writeUInt8(type, offset);
+        offset += 1;
+
+        if (challengeAtBeginning) {
+            if (this.byteorder === 'le') b.writeUInt32LE(challenge, offset);
+            else b.writeUInt32BE(challenge, offset);
+            offset += 4;
         }
-        if (payloadLength) payload.copy(b, 5 + challengeLength);
+
+        if (payload) {
+            payload.copy(b, offset);
+            offset += payload.length;
+        }
+
+        if (challengeAtEnd) {
+            if (this.byteorder === 'le') b.writeUInt32LE(challenge, offset);
+            else b.writeUInt32BE(challenge, offset);
+            offset += 4;
+        }
 
         const packetStorage = {};
         return await this.udpSend(
@@ -351,7 +399,7 @@ class Valve extends Core {
 
                     packets[packetNum] = payload;
 
-                    this.debugLog(() => "Received partial packet uid:"+uid+" num:"+packetNum);
+                    this.debugLog(() => "Received partial packet uid: 0x"+uid.toString(16)+" num: "+packetNum);
                     this.debugLog(() => "Received "+Object.keys(packets).length+'/'+numPackets+" packets for this UID");
 
                     if(Object.keys(packets).length !== numPackets) return;
