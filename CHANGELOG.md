@@ -1,3 +1,6 @@
+### 3.0.4
+* Add support for Discord widget
+
 ### 3.0.3
 * Greatly improve gamespy1 protocol, with additional error handling and xserverquery support.
 
