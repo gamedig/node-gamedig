@@ -4,7 +4,8 @@ const Minimist = require('minimist'),
     Gamedig = require('..');
 
 const argv = Minimist(process.argv.slice(2), {
-    boolean: ['pretty','debug','givenPortOnly']
+    boolean: ['pretty','debug','givenPortOnly'],
+    string: ['guildId']
 });
 
 const debug = argv.debug;
