@@ -252,13 +252,9 @@ class Core extends EventEmitter {
         this.assertValidPort(port);
 
         if(typeof buffer === 'string') buffer = Buffer.from(buffer,'binary');
-        this.debugLog(log => {
-            log(address+':'+port+" UDP-->");
-            log(HexUtil.debugDump(buffer));
-        });
 
         const socket = this.udpSocket;
-        socket.send(buffer, address, port);
+        await socket.send(buffer, address, port, this.options.debug);
 
         if (!onPacket && !onTimeout) {
             return null;

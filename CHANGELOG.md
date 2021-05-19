@@ -1,3 +1,7 @@
+### 3.0.5
+* Add support for `listenUdpPort` to specify a fixed bind port.
+* Improved udp bind failure detection.
+
 ### 3.0.4
 * Add support for Discord widget
 

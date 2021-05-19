@@ -467,24 +467,40 @@ Valheim servers will only respond to queries if they are started in public mode 
 For many valve games, additional 'rules' may be fetched into the unstable `raw` field by passing the additional
 option: `requestRules: true`. Beware that this may increase query time.
 
-Important note about Firewalls (replit / docker / some VPS providers)
+Common Issues
 ---
+
+### Firewalls block incoming UDP
+*(replit / docker / some VPS providers)*
+
 Most game query protocols require a UDP request and response. This means that in some environments, gamedig may not be able to receive the reponse required due to environmental restrictions.
 
 Some examples include:
 * Docker containers
-  * You may need to run the container in `--network host` mode so that gamedig can bind a UDP listen port
+  * You may need to run the container in `--network host` mode so that gamedig can bind a UDP listen port.
+  * Alternatively, you can forward a single UDP port to your container, and force gamedig to listen on that port using the
+  instructions in the section down below.
 * replit
   * Most online IDEs run in an isolated container, which will never receive UDP responses from outside networks.
 * Various VPS / server providers
   * Even if your server provider doesn't explicitly block incoming UDP packets, some server hosts block other server hosts from connecting to them for DDOS-mitigation and anti-botting purposes.
 
-Important note about gamedig in the browser
----
+### Gamedig doesn't work in the browser
 Gamedig cannot operate within a browser. This means you cannot package it as part of your webpack / browserify / rollup / parcel package.
 Even if you were able to get it packaged into a bundle, unfortunately no browsers support the UDP protocols required to query server status
 from most game servers. As an alternative, we'd recommend using gamedig on your server-side, then expose your own API to your webapp's frontend
 displaying the status information. If your application is thin (with no constant server component), you may wish to investigate a server-less lambda provider.
+
+### Specifying a listen UDP port override
+In some very rare scenarios, you may need to bind / listen on a fixed local UDP port. The is usually not needed except behind
+some extremely strict firewalls, or within a docker container (where you only wish to forward a single UDP port).
+To use a fixed listen udp port, construct a new Gamedig object like this:
+```
+const gamedig = new Gamedig({
+    listenUdpPort: 13337
+});
+gamedig.query(...)
+```
 
 Usage from Command Line
 ---
