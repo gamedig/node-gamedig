@@ -160,6 +160,7 @@ Games List
 | `devastation` | Devastation (2003)
 | `dinodday` | Dino D-Day (2011) | [Valve Protocol](#valve)
 | `dirttrackracing2` | Dirt Track Racing 2 (2002)
+| `discord`  | Discord | [Notes](#discord)
 | `doom3`    | Doom 3 (2004)
 | `dota2`    | Dota 2 (2013) | [Valve Protocol](#valve)
 | `drakan`   | Drakan: Order of the Flame (1999)
@@ -427,6 +428,11 @@ Games with Additional Notes
 ### <a name="csgo"></a>Counter-Strike: Global Offensive
 To receive a full player list response from CS:GO servers, the server must
 have set the cvar: host_players_show 2
+
+### Discord
+You must set the `guildId` request field to the server's guild ID. Do not provide an IP.
+The Guild ID can be found in server widget settings (Server ID) or by enabling developer mode in client settings and right-clicking the server's icon.
+In order to retrieve information from discord server's they must have the `Enable server widget` option enabled.
 
 ### Mumble
 For full query results from Mumble, you must be running the

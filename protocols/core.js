@@ -146,7 +146,10 @@ class Core extends EventEmitter {
     }
 
     assertValidPort(port) {
-        if (!port || port < 1 || port > 65535) {
+        if (!port) {
+            throw new Error("Could not determine port to query. Did you provide a port?");
+        }
+        if (port < 1 || port > 65535) {
             throw new Error("Invalid tcp/ip port: " + port);
         }
     }
