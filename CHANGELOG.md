@@ -1,3 +1,6 @@
+### 3.0.7
+* Fixes corrupted dayzMods when packet overflow is present
+
 ### 3.0.6
 * raw.tags for valve servers is now an array rather than a string
 * The special mod list for dayz servers is now parsed into raw.dayzMods is requestRules is set to true

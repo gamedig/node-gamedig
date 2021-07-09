@@ -298,7 +298,14 @@ class Valve extends Core {
         this.logger.debug(buffer);
 
         const reader = this.reader(buffer);
-        reader.skip(8); // always 01 01 01 02 01 02 01 02
+        const version = this.readDayzByte(reader);
+        const overflow = this.readDayzByte(reader);
+        const dlc1 = this.readDayzByte(reader);
+        const dlc2 = this.readDayzByte(reader);
+        this.logger.debug("version " + version);
+        this.logger.debug("overflow " + overflow);
+        this.logger.debug("dlc1 " + dlc1);
+        this.logger.debug("dlc2 " + dlc2);
         const mods = [];
         mods.push(...this.readDayzModsSection(reader, true));
         mods.push(...this.readDayzModsSection(reader, false));
@@ -306,30 +313,31 @@ class Valve extends Core {
     }
     readDayzModsSection(reader, withHeader) {
         const out = [];
-        const count = reader.uint(1);
+        const count = this.readDayzByte(reader);
         for(let i = 0; i < count; i++) {
             const mod = {};
             if (withHeader) {
-                mod.unknown = this.readDayzNum(reader);
+                const unknown = this.readDayzUint(reader, 4); // mod hash?
                 if (i !== count - 1) {
                     // For some reason this is 4 on all of them, but doesn't exist on the last one?
-                    reader.skip(1);
+                    const flag = this.readDayzByte(reader);
+                    //mod.flag = flag;
                 }
-                mod.workshopId = this.readDayzNum(reader);
+                mod.workshopId = this.readDayzUint(reader, 4);
             }
-            mod.title = reader.pascalString(1);
+            mod.title = this.readDayzString(reader);
             out.push(mod);
         }
         return out;
     }
-    readDayzNum(reader) {
+    readDayzUint(reader, bytes) {
         const out = [];
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < bytes; i++) {
             out.push(this.readDayzByte(reader));
         }
         const buf = Buffer.from(out);
         const r2 = this.reader(buf);
-        return r2.uint(4);
+        return r2.uint(bytes);
     }
     readDayzByte(reader) {
         const byte = reader.uint(1);
@@ -337,9 +345,18 @@ class Valve extends Core {
             const byte2 = reader.uint(1);
             if (byte2 === 1) return 1;
             if (byte2 === 2) return 0;
+            if (byte2 === 3) return 0xff;
             return 0; // ?
         }
         return byte;
+    }
+    readDayzString(reader) {
+        const length = this.readDayzByte(reader);
+        const out = [];
+        for (let i = 0; i < length; i++) {
+            out.push(this.readDayzByte(reader));
+        }
+        return Buffer.from(out).toString('utf8');
     }
 
     async cleanup(/** Results */ state) {
