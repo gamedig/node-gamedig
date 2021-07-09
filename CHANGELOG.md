@@ -1,3 +1,8 @@
+### 3.0.6
+* raw.tags for valve servers is now an array rather than a string
+* The special mod list for dayz servers is now parsed into raw.dayzMods is requestRules is set to true
+* DayZ queue length, day and night acceleration are now parsed into raw as well
+
 ### 3.0.5
 * Add support for `listenUdpPort` to specify a fixed bind port.
 * Improved udp bind failure detection.

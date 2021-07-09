@@ -5,7 +5,8 @@ const Bzip2 = require('compressjs').Bzip2,
 const AppId = {
     Squad: 393380,
     Bat1944: 489940,
-    Ship: 2400
+    Ship: 2400,
+    DayZ: 221100
 };
 
 class Valve extends Core {
@@ -104,7 +105,7 @@ class Valve extends Core {
                 state.raw.sourcetvport = reader.uint(2);
                 state.raw.sourcetvname = reader.string();
             }
-            if(extraFlag & 0x20) state.raw.tags = reader.string();
+            if(extraFlag & 0x20) state.raw.tags = reader.string().split(',');
             if(extraFlag & 0x01) {
                 const gameId = reader.uint(8);
                 const betterAppId = gameId.getLowBitsUnsigned() & 0xffffff;
@@ -203,9 +204,29 @@ class Valve extends Core {
         const b = await this.sendPacket(0x56,null,0x45,true);
         if (b === null) return; // timed out - the server probably has rules disabled
 
+        const dayZPayload = [];
+        let dayZPayloadEnded = false;
+
         const reader = this.reader(b);
         const num = reader.uint(2);
         for(let i = 0; i < num; i++) {
+            if (appId === AppId.DayZ && !dayZPayloadEnded) {
+                const one = reader.uint(1);
+                const two = reader.uint(1);
+                const three = reader.uint(1);
+                if (one !== 0 && two !== 0 && three === 0) {
+                    while (true) {
+                        const byte = reader.uint(1);
+                        if (byte === 0) break;
+                        dayZPayload.push(byte);
+                    }
+                    continue;
+                } else {
+                    reader.skip(-3);
+                    dayZPayloadEnded = true;
+                }
+            }
+
             const key = reader.string();
             const value = reader.string();
             rules[key] = value;
@@ -239,6 +260,86 @@ class Valve extends Core {
                 state.password = true;
             }
         }
+
+        if (appId === AppId.DayZ) {
+            state.raw.dayzMods = this.readDayzMods(Buffer.from(dayZPayload));
+
+            if (state.raw.tags) {
+                for (const tag of state.raw.tags) {
+                    if (tag.startsWith('lqs')) {
+                        const value = parseInt(tag.replace('lqs', ''));
+                        if (!isNaN(value)) {
+                            state.raw.queue = value;
+                        }
+                    }
+                    if (tag.startsWith('etm')) {
+                        const value = parseInt(tag.replace('etm', ''));
+                        if (!isNaN(value)) {
+                            state.raw.dayAcceleration = value;
+                        }
+                    }
+                    if (tag.startsWith('entm')) {
+                        const value = parseInt(tag.replace('entm', ''));
+                        if (!isNaN(value)) {
+                            state.raw.nightAcceleration = value;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    readDayzMods(/** Buffer */ buffer) {
+        if (!buffer.length) {
+            return {};
+        }
+
+        this.logger.debug("DAYZ BUFFER");
+        this.logger.debug(buffer);
+
+        const reader = this.reader(buffer);
+        reader.skip(8); // always 01 01 01 02 01 02 01 02
+        const mods = [];
+        mods.push(...this.readDayzModsSection(reader, true));
+        mods.push(...this.readDayzModsSection(reader, false));
+        return mods;
+    }
+    readDayzModsSection(reader, withHeader) {
+        const out = [];
+        const count = reader.uint(1);
+        for(let i = 0; i < count; i++) {
+            const mod = {};
+            if (withHeader) {
+                mod.unknown = this.readDayzNum(reader);
+                if (i !== count - 1) {
+                    // For some reason this is 4 on all of them, but doesn't exist on the last one?
+                    reader.skip(1);
+                }
+                mod.workshopId = this.readDayzNum(reader);
+            }
+            mod.title = reader.pascalString(1);
+            out.push(mod);
+        }
+        return out;
+    }
+    readDayzNum(reader) {
+        const out = [];
+        for (let i = 0; i < 4; i++) {
+            out.push(this.readDayzByte(reader));
+        }
+        const buf = Buffer.from(out);
+        const r2 = this.reader(buf);
+        return r2.uint(4);
+    }
+    readDayzByte(reader) {
+        const byte = reader.uint(1);
+        if (byte === 1) {
+            const byte2 = reader.uint(1);
+            if (byte2 === 1) return 1;
+            if (byte2 === 2) return 0;
+            return 0; // ?
+        }
+        return byte;
     }
 
     async cleanup(/** Results */ state) {
