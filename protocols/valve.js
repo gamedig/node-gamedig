@@ -261,16 +261,26 @@ class Valve extends Core {
             }
         }
 
+        // DayZ embeds some of the server information inside the tags attribute
         if (appId === AppId.DayZ) {
-            state.raw.dayzMods = this.readDayzMods(Buffer.from(dayZPayload));
-
             if (state.raw.tags) {
+                state.raw.dlcEnabled = false
+                state.raw.firstPerson = false
                 for (const tag of state.raw.tags) {
                     if (tag.startsWith('lqs')) {
                         const value = parseInt(tag.replace('lqs', ''));
                         if (!isNaN(value)) {
                             state.raw.queue = value;
                         }
+                    }
+                    if (tag.includes('no3rd')) {
+                        state.raw.firstPerson = true;
+                    }
+                    if (tag.includes('isDLC')) {
+                        state.raw.dlcEnabled = true;
+                    }
+                    if (tag.includes(':')) {
+                        state.raw.time = tag;
                     }
                     if (tag.startsWith('etm')) {
                         const value = parseInt(tag.replace('etm', ''));
@@ -286,6 +296,8 @@ class Valve extends Core {
                     }
                 }
             }
+
+            state.raw.dayzMods = this.readDayzMods(Buffer.from(dayZPayload));
         }
     }
 
