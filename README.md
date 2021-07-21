@@ -45,6 +45,7 @@ this query port may work instead. (defaults to protocol default port)
  as the socketTimeout typically fires first. (default 10000)
 * **givenPortOnly**: boolean - Only attempt to query server on given port. (default false)
 * **debug**: boolean - Enables massive amounts of debug logging to stdout. (default false)
+* **requestRules**: boolean - Valve games only. Additional 'rules' may be fetched into the `raw` field. (default false)
 
 ### Return Value
 
@@ -517,4 +518,4 @@ gamedig --type minecraft mc.example.com:11234
 ```
 
 The output of the command will be in JSON format. Additional advanced parameters can be passed in
-as well: `--debug`, `--pretty`, `--socketTimeout 5000`, etc.
+as well: `--debug`, `--pretty`, `--socketTimeout 5000`, `--requestRules` etc.
