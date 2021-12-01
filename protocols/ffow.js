@@ -10,7 +10,6 @@ class Ffow extends Valve {
         this.debugLog("Requesting ffow info ...");
         const b = await this.sendPacket(
             0x46,
-            false,
             'LSQ',
             0x49
         );

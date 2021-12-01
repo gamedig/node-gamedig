@@ -148,9 +148,15 @@ class Gamespy3 extends Core {
         return await this.udpSend(b,(buffer) => {
             const reader = this.reader(buffer);
             const iType = reader.uint(1);
-            if(iType !== type) return;
+            if(iType !== type) {
+                this.logger.debug('Skipping packet, type mismatch');
+                return;
+            }
             const iSessionId = reader.uint(4);
-            if(iSessionId !== this.sessionId) return;
+            if(iSessionId !== this.sessionId) {
+                this.logger.debug('Skipping packet, session id mismatch');
+                return;
+            }
 
             if(!assemble) {
                 return reader.rest();

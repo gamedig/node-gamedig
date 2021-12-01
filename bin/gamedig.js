@@ -4,7 +4,8 @@ const Minimist = require('minimist'),
     Gamedig = require('..');
 
 const argv = Minimist(process.argv.slice(2), {
-    boolean: ['pretty','debug','givenPortOnly']
+    boolean: ['pretty','debug','givenPortOnly','requestRules'],
+    string: ['guildId','listenUdpPort']
 });
 
 const debug = argv.debug;
@@ -40,7 +41,8 @@ if (givenPortOnly) {
     options.givenPortOnly = true;
 }
 
-Gamedig.query(options)
+const gamedig = new Gamedig(options);
+gamedig.query(options)
     .then((state) => {
         if(pretty) {
             console.log(JSON.stringify(state,null,'  '));

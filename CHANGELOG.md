@@ -1,3 +1,56 @@
+### 3.0.7
+* Fixes corrupted dayzMods when packet overflow is present
+
+### 3.0.6
+* raw.tags for valve servers is now an array rather than a string
+* The special mod list for dayz servers is now parsed into raw.dayzMods is requestRules is set to true
+* DayZ queue length, day and night acceleration are now parsed into raw as well
+
+### 3.0.5
+* Add support for `listenUdpPort` to specify a fixed bind port.
+* Improved udp bind failure detection.
+
+### 3.0.4
+* Add support for Discord widget
+
+### 3.0.3
+* Greatly improve gamespy1 protocol, with additional error handling and xserverquery support.
+
+### 3.0.2
+* Fix player name extraction for Unreal Tournament (1999) and possibly
+  other gamespy1 games.
+
+### 3.0.1
+* Clarified that nodejs 12 is now required for gamedig 3
+* Fixed misc player fields not going into `raw` subobject in `assettocorsa`, `fivem`, and `gamespy2`
+
+### 3.0.0
+Major Changes:
+* **NodeJS 12 is now required**
+* The `name` field is now guaranteed to exist on all player objects. If a player's name is unknown, the `name` will be an empty string.
+* All non-`name` player fields have been moved into a `raw` sub-field. This means that, like the `raw` subobject of the parent
+  response, all non-`name` fields are now considered to be unstable and may be changed during minor releases of GameDig.
+* "Rules" are no longer queried for `valve` protocol games by default. Many games do not respond to this query anyways (meaning we have to wait
+  for timeout), and its contents is often not even used since it only exists in the raw subfield. If you depend on rules,
+  you may pass the `requestRules: true` option to re-enable them.
+* The `raw.steamappid` and `raw.gameid` fields for valve games have been consolidated into `raw.appId`.
+
+### 2.0.28
+* Added Valheim (2021)
+
+### 2.0.27
+* Reduced chance of protocol collisions between gamespy3 and minecraftbedrock
+
+### 2.0.26
+* Added support for the native minecraft bedrock protocol, since some
+bedrock servers apparently do not respond to the gamespy3 protocol.
+
+### 2.0.25
+* Support challenges in A2S_INFO (upcoming change to valve protocol)
+
+### 2.0.24
+* Add Savage 2: A Tortured Soul (2008)
+
 ### 2.0.23
 * Fix Conan Exiles and other games which don't respond to the valve player query
 * Add givenPortOnly query option for users that require extreme optimization
