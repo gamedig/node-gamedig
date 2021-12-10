@@ -57,7 +57,7 @@ class MinecraftBedrock extends Core {
             state.name = split.shift();
             state.raw.protocolVersion = split.shift();
             state.raw.mcVersion = split.shift();
-            state.players = parseInt(split.shift());
+            state.players.setNum(parseInt(split.shift()));
             state.maxplayers = parseInt(split.shift());
             if (split.length) state.raw.serverId = split.shift();
             if (split.length) state.map = split.shift();

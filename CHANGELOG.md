@@ -1,3 +1,7 @@
+### 3.0.8
+* Fixes player array corruption on some protocols which only report player counts without names (Thanks to a-sync)
+* Fixes minecraft protocol not using player list from bedrock protocol in some cases
+
 ### 3.0.7
 * Fixes corrupted dayzMods when packet overflow is present
 

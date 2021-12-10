@@ -28,7 +28,7 @@ class GeneShift extends Core {
         state.raw.country = found[1];
         state.name = found[4];
         state.map = found[5];
-        state.players = parseInt(found[6]);
+        state.players.setNum(parseInt(found[6]));
         state.maxplayers = parseInt(found[7]);
         // fields[8] is unknown?
         state.raw.rules = found[9];

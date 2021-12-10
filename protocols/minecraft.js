@@ -1,7 +1,8 @@
-const Core = require('./core'),
-    MinecraftVanilla = require('./minecraftvanilla'),
-    MinecraftBedrock = require('./minecraftbedrock'),
-    Gamespy3 = require('./gamespy3');
+const Core = require('./core');
+const MinecraftVanilla = require('./minecraftvanilla');
+const MinecraftBedrock = require('./minecraftbedrock');
+const Gamespy3 = require('./gamespy3');
+const Results = require('../lib/Results');
 
 /*
 Vanilla servers respond to minecraftvanilla only
@@ -17,6 +18,7 @@ class Minecraft extends Core {
         this.srvRecord = "_minecraft._tcp";
     }
     async run(state) {
+        /** @type {Promise<Results>[]} */
         const promises = [];
 
         const vanillaResolver = new MinecraftVanilla();
@@ -57,7 +59,7 @@ class Minecraft extends Core {
         if (bedrockState) {
             if (bedrockState.name) state.name = bedrockState.name;
             if (bedrockState.maxplayers) state.maxplayers = bedrockState.maxplayers;
-            if (bedrockState.players) state.players = bedrockState.players;
+            if (bedrockState.players.length) state.players = bedrockState.players;
             if (bedrockState.map) state.map = bedrockState.map;
         }
         if (vanillaState) {
@@ -76,13 +78,13 @@ class Minecraft extends Core {
                 state.name = name;
             } catch(e) {}
             if (vanillaState.maxplayers) state.maxplayers = vanillaState.maxplayers;
-            if (vanillaState.players) state.players = vanillaState.players;
+            if (vanillaState.players.length) state.players = vanillaState.players;
         }
         if (gamespyState) {
             if (gamespyState.name) state.name = gamespyState.name;
             if (gamespyState.maxplayers) state.maxplayers = gamespyState.maxplayers;
             if (gamespyState.players.length) state.players = gamespyState.players;
-            else if (gamespyState.raw.numplayers) state.players = parseInt(gamespyState.raw.numplayers);
+            else if (gamespyState.raw.numplayers) state.players.setNum(parseInt(gamespyState.raw.numplayers));
         }
         // remove dupe spaces from name
         state.name = state.name.replace(/\s+/g, ' ');

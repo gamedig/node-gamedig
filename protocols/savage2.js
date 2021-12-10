@@ -11,7 +11,7 @@ class Savage2 extends Core {
 
         reader.skip(12);
         state.name = this.stripColorCodes(reader.string());
-        state.players = reader.uint(1);
+        state.players.setNum(reader.uint(1));
         state.maxplayers = reader.uint(1);
         state.raw.time = reader.string();
         state.map = reader.string();
