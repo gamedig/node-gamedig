@@ -190,6 +190,7 @@ postal2|Postal 2|gamespy1|port=7777,port_query_offset=1
 prey|Prey|doom3|port=27719
 primalcarnage|Primal Carnage: Extinction|valve|port=7777,port_query=27015
 prbf2|Project Reality: Battlefield 2 (2005)|gamespy3|port=16567,port_query=29900
+przomboid|Project Zomboid|valve|port=16261
 
 quake1|Quake 1: QuakeWorld (1996)|quake1|port=27500
 quake2|Quake 2 (1997)|quake2|port=27910
