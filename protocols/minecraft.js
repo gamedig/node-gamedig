@@ -61,6 +61,7 @@ class Minecraft extends Core {
             if (bedrockState.maxplayers) state.maxplayers = bedrockState.maxplayers;
             if (bedrockState.players.length) state.players = bedrockState.players;
             if (bedrockState.map) state.map = bedrockState.map;
+            if (bedrockState.ping) state.ping = bedrockState.ping;
         }
         if (vanillaState) {
             try {
@@ -79,12 +80,14 @@ class Minecraft extends Core {
             } catch(e) {}
             if (vanillaState.maxplayers) state.maxplayers = vanillaState.maxplayers;
             if (vanillaState.players.length) state.players = vanillaState.players;
+            if (vanillaState.ping) state.ping = vanillaState.ping;
         }
         if (gamespyState) {
             if (gamespyState.name) state.name = gamespyState.name;
             if (gamespyState.maxplayers) state.maxplayers = gamespyState.maxplayers;
             if (gamespyState.players.length) state.players = gamespyState.players;
             else if (gamespyState.raw.numplayers) state.players.setNum(parseInt(gamespyState.raw.numplayers));
+            if (gamespyState.ping) state.ping = gamespyState.ping;
         }
         // remove dupe spaces from name
         state.name = state.name.replace(/\s+/g, ' ');
