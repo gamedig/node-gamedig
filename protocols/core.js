@@ -1,12 +1,11 @@
-const EventEmitter = require('events').EventEmitter,
-    net = require('net'),
-    Reader = require('../lib/reader'),
-    HexUtil = require('../lib/HexUtil'),
-    got = require('got'),
-    Promises = require('../lib/Promises'),
-    Logger = require('../lib/Logger'),
-    DnsResolver = require('../lib/DnsResolver'),
-    Results = require('../lib/Results');
+const EventEmitter = require('events').EventEmitter;
+const net = require('net');
+const Reader = require('../lib/reader');
+const HexUtil = require('../lib/HexUtil');
+const Promises = require('../lib/Promises');
+const Logger = require('../lib/Logger');
+const DnsResolver = require('../lib/DnsResolver');
+const Results = require('../lib/Results');
 
 let uid = 0;
 
@@ -322,11 +321,15 @@ class Core extends EventEmitter {
     async request(params) {
         await this.tcpPing();
 
+        const got = (await import('got')).got;
+
         let requestPromise;
         try {
             requestPromise = got({
                 ...params,
-                timeout: this.options.socketTimeout
+                timeout: {
+                    request: this.options.socketTimeout
+                }
             });
             this.debugLog(log => {
                 log(() => params.url + " HTTP-->");
