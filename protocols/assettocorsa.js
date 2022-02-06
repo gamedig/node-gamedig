@@ -3,12 +3,12 @@ const Core = require('./core');
 class AssettoCorsa extends Core {
     async run(state) {
         const serverInfo = await this.request({
-            json: true,
-            uri: `http://${this.options.address}:${this.options.port}/INFO`
+            url: `http://${this.options.address}:${this.options.port}/INFO`,
+            responseType: 'json'
         });
         const carInfo = await this.request({
-            json: true,
-            uri: `http://${this.options.address}:${this.options.port}/JSON|${parseInt(Math.random() * 999999999999999, 10)}`
+            url: `http://${this.options.address}:${this.options.port}/JSON|${parseInt(Math.random() * 999999999999999, 10)}`,
+            responseType: 'json'
         });
 
         if (!serverInfo || !carInfo || !carInfo.Cars) {
@@ -23,18 +23,17 @@ class AssettoCorsa extends Core {
         state.raw.carInfo = carInfo.Cars;
         state.raw.serverInfo = serverInfo;
 
-        state.players = carInfo.Cars.reduce((r, e) => {
-            if (e.IsConnected) {
-                r.push({
-                    name: e.DriverName,
-                    car: e.Model,
-                    skin: e.Skin,
-                    nation: e.DriverNation,
-                    team: e.DriverTeam
+        for (const car of carInfo.Cars) {
+            if (car.IsConnected) {
+                state.players.push({
+                    name: car.DriverName,
+                    car: car.Model,
+                    skin: car.Skin,
+                    nation: car.DriverNation,
+                    team: car.DriverTeam
                 });
             }
-            return r;
-        }, state.players);
+        }
     }
 }
 

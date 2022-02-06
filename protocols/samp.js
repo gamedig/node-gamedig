@@ -69,7 +69,7 @@ class Samp extends Core {
             }
         }
         if (!gotPlayerData) {
-            state.players = state.raw.numplayers;
+            state.players.setNum(state.raw.numplayers);
         }
     }
     async sendPacket(type,allowTimeout) {

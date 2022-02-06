@@ -2,8 +2,10 @@ const Core = require('./core');
 
 class GeneShift extends Core {
     async run(state) {
+        await this.tcpPing();
+
         const body = await this.request({
-            uri: 'http://geneshift.net/game/receiveLobby.php'
+            url: 'http://geneshift.net/game/receiveLobby.php'
         });
 
         const split = body.split('<br/>');
@@ -26,7 +28,7 @@ class GeneShift extends Core {
         state.raw.country = found[1];
         state.name = found[4];
         state.map = found[5];
-        state.players = parseInt(found[6]);
+        state.players.setNum(parseInt(found[6]));
         state.maxplayers = parseInt(found[7]);
         // fields[8] is unknown?
         state.raw.rules = found[9];

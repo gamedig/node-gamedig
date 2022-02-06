@@ -35,7 +35,7 @@ class OpenTtd extends Core {
 
             state.password = !!reader.uint(1);
             state.maxplayers = reader.uint(1);
-            state.players = reader.uint(1);
+            state.players.setNum(reader.uint(1));
             state.raw.numspectators = reader.uint(1);
             state.map = reader.string();
             state.raw.map_width = reader.uint(2);
@@ -60,9 +60,9 @@ class OpenTtd extends Core {
                     company.id = reader.uint(1);
                     company.name = reader.string();
                     company.year_start = reader.uint(4);
-                    company.value = reader.uint(8);
-                    company.money = reader.uint(8);
-                    company.income = reader.uint(8);
+                    company.value = reader.uint(8).toString();
+                    company.money = reader.uint(8).toString();
+                    company.income = reader.uint(8).toString();
                     company.performance = reader.uint(2);
                     company.password = !!reader.uint(1);
 

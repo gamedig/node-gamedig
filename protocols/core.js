@@ -2,10 +2,11 @@ const EventEmitter = require('events').EventEmitter,
     net = require('net'),
     Reader = require('../lib/reader'),
     HexUtil = require('../lib/HexUtil'),
-    requestAsync = require('request-promise'),
+    got = require('got'),
     Promises = require('../lib/Promises'),
     Logger = require('../lib/Logger'),
-    DnsResolver = require('../lib/DnsResolver');
+    DnsResolver = require('../lib/DnsResolver'),
+    Results = require('../lib/Results');
 
 let uid = 0;
 
@@ -35,15 +36,16 @@ class Core extends EventEmitter {
         }
         this.logger.prefix = 'Q#' + (uid++);
 
-        this.logger.debug("Query is running with options:", this.options);
+        this.logger.debug("Starting");
+        this.logger.debug("Protocol: " + this.constructor.name);
+        this.logger.debug("Options:", this.options);
 
         let abortCall = null;
         this.abortedPromise = new Promise((resolve,reject) => {
             abortCall = () => reject(new Error("Query is finished -- cancelling outstanding promises"));
+        }).catch(() => {
+            // Make sure that if this promise isn't attached to, it doesn't throw a unhandled promise rejection
         });
-
-        // Make sure that if this promise isn't attached to, it doesn't throw a unhandled promise rejection
-        this.abortedPromise.catch(() => {});
 
         let timeout;
         try {
@@ -73,43 +75,12 @@ class Core extends EventEmitter {
             if (resolved.port) options.port = resolved.port;
         }
 
-        const state = {
-            name: '',
-            map: '',
-            password: false,
-
-            raw: {},
-
-            maxplayers: 0,
-            players: [],
-            bots: []
-        };
+        const state = new Results();
 
         await this.run(state);
 
         // because lots of servers prefix with spaces to try to appear first
         state.name = (state.name || '').trim();
-
-        if (typeof state.players === 'number') {
-            const num = state.players;
-            state.players = [];
-            state.raw.rcvNumPlayers = num;
-            if (num < 10000) {
-                for (let i = 0; i < num; i++) {
-                    state.players.push({});
-                }
-            }
-        }
-        if (typeof state.bots === 'number') {
-            const num = state.bots;
-            state.bots = [];
-            state.raw.rcvNumBots = num;
-            if (num < 10000) {
-                for (let i = 0; i < num; i++) {
-                    state.bots.push({});
-                }
-            }
-        }
 
         if (!('connect' in state)) {
             state.connect = ''
@@ -129,7 +100,7 @@ class Core extends EventEmitter {
         return state;
     }
 
-    async run(state) {}
+    async run(/** Results */ state) {}
 
     /** Param can be a time in ms, or a promise (which will be timed) */
     registerRtt(param) {
@@ -175,7 +146,10 @@ class Core extends EventEmitter {
     }
 
     assertValidPort(port) {
-        if (!port || port < 1 || port > 65535) {
+        if (!port) {
+            throw new Error("Could not determine port to query. Did you provide a port?");
+        }
+        if (port < 1 || port > 65535) {
             throw new Error("Invalid tcp/ip port: " + port);
         }
     }
@@ -278,13 +252,9 @@ class Core extends EventEmitter {
         this.assertValidPort(port);
 
         if(typeof buffer === 'string') buffer = Buffer.from(buffer,'binary');
-        this.debugLog(log => {
-            log(address+':'+port+" UDP-->");
-            log(HexUtil.debugDump(buffer));
-        });
 
         const socket = this.udpSocket;
-        socket.send(buffer, address, port);
+        await socket.send(buffer, address, port, this.options.debug);
 
         if (!onPacket && !onTimeout) {
             return null;
@@ -342,24 +312,26 @@ class Core extends EventEmitter {
         }
     }
 
-    async request(params) {
-        // If we haven't opened a raw tcp socket yet during this query, just open one and then immediately close it.
-        // This will give us a much more accurate RTT than using the rtt of the http request.
+    async tcpPing() {
+        // This will give a much more accurate RTT than using the rtt of an http request.
         if (!this.usedTcp) {
             await this.withTcp(() => {});
         }
+    }
+
+    async request(params) {
+        await this.tcpPing();
 
         let requestPromise;
         try {
-            requestPromise = requestAsync({
+            requestPromise = got({
                 ...params,
-                timeout: this.options.socketTimeout,
-                resolveWithFullResponse: true
+                timeout: this.options.socketTimeout
             });
             this.debugLog(log => {
-                log(() => params.uri + " HTTP-->");
+                log(() => params.url + " HTTP-->");
                 requestPromise
-                    .then((response) => log(params.uri + " <--HTTP " + response.statusCode))
+                    .then((response) => log(params.url + " <--HTTP " + response.statusCode))
                     .catch(() => {});
             });
             const wrappedPromise = requestPromise.then(response => {

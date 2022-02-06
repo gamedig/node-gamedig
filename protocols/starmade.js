@@ -16,7 +16,7 @@ class Starmade extends Core {
                 const reader = this.reader(buffer);
                 const packetLength = reader.uint(4);
                 this.logger.debug("Received packet length: " + packetLength);
-                const timestamp = reader.uint(8);
+                const timestamp = reader.uint(8).toString();
                 this.logger.debug("Received timestamp: " + timestamp);
                 if (reader.remaining() < packetLength || reader.remaining() < 5) return;
 
@@ -61,7 +61,7 @@ class Starmade extends Core {
         if(typeof data[2] === 'string') state.name = data[2];
         if(typeof data[3] === 'string') state.raw.description = data[3];
         if(typeof data[4] === 'number') state.raw.startTime = data[4];
-        if(typeof data[5] === 'number') state.players = data[5];
+        if(typeof data[5] === 'number') state.players.setNum(data[5]);
         if(typeof data[6] === 'number') state.maxplayers = data[6];
     }
 }
