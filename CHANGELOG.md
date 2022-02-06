@@ -1,3 +1,12 @@
+### 4.0.0
+
+#### Breaking Changes
+* NodeJS 14 is now required
+
+#### Other changes
+* Dependencies are updated
+* Node 14 is now required due to new requirement in `got` dependency
+
 ### 3.0.9
 * Fixes player info parsing issues on bf1942-based mods (Thanks cetteup)
 * Adds Project Zomboid support (Thanks xhip)
