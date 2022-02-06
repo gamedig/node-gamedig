@@ -1,6 +1,7 @@
-const Bzip2 = require('compressjs').Bzip2,
-    Core = require('./core'),
-    Results = require('../lib/Results');
+const Bzip2 = require('compressjs').Bzip2;
+const Core = require('./core');
+const Results = require('../lib/Results');
+const Reader = require('../lib/reader');
 
 const AppId = {
     Squad: 393380,
@@ -318,26 +319,39 @@ class Valve extends Core {
         this.logger.debug("overflow " + overflow);
         this.logger.debug("dlc1 " + dlc1);
         this.logger.debug("dlc2 " + dlc2);
+        if (dlc1) {
+            const unknown = this.readDayzUint(reader, 4); // ?
+            this.logger.debug("unknown " + unknown);
+        }
+        if (dlc2) {
+            const unknown = this.readDayzUint(reader, 4); // ?
+            this.logger.debug("unknown " + unknown);
+        }
         const mods = [];
         mods.push(...this.readDayzModsSection(reader, true));
         mods.push(...this.readDayzModsSection(reader, false));
+        this.logger.debug("dayz buffer rest:", reader.rest());
         return mods;
     }
-    readDayzModsSection(reader, withHeader) {
+    readDayzModsSection(/** Reader */ reader, withHeader) {
         const out = [];
         const count = this.readDayzByte(reader);
+        this.logger.debug("dayz mod section withHeader:" + withHeader + " count:" + count);
         for(let i = 0; i < count; i++) {
+            if (reader.done()) break;
             const mod = {};
             if (withHeader) {
-                const unknown = this.readDayzUint(reader, 4); // mod hash?
-                if (i !== count - 1) {
-                    // For some reason this is 4 on all of them, but doesn't exist on the last one?
-                    const flag = this.readDayzByte(reader);
-                    //mod.flag = flag;
-                }
+                mod.unknown = this.readDayzUint(reader, 4); // ?
+
+                // For some reason this is 4 on all of them, but doesn't exist on the last one? but only sometimes?
+                const offset = reader.offset();
+                const flag = this.readDayzByte(reader);
+                if (flag !== 4) reader.setOffset(offset);
+
                 mod.workshopId = this.readDayzUint(reader, 4);
             }
             mod.title = this.readDayzString(reader);
+            this.logger.debug(mod);
             out.push(mod);
         }
         return out;
