@@ -1,3 +1,13 @@
+### 3.0.9
+* Fixes player info parsing issues on bf1942-based mods (Thanks cetteup)
+* Adds Project Zomboid support (Thanks xhip)
+* Adds Post Scriptum support (Thanks arkuar)
+* Adds some more DayZ info to state.raw (Thanks podrivo)
+* Updates to README regarding DayZ (Thanks podrivo)
+* Improvements to DayZ mod parsing from additional more recent reverse engineering (probably still buggy)
+* Fixes ping always being 0 for minecraft servers
+* Adds README documentation about teamspeakQueryPort
+
 ### 3.0.8
 * Fixes player array corruption on some protocols which only report player counts without names (Thanks to a-sync)
 * Fixes minecraft protocol not using player list from bedrock protocol in some cases
