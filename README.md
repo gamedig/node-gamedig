@@ -45,6 +45,7 @@ this query port may work instead. (defaults to protocol default port)
  as the socketTimeout typically fires first. (default 10000)
 * **givenPortOnly**: boolean - Only attempt to query server on given port. (default false)
 * **debug**: boolean - Enables massive amounts of debug logging to stdout. (default false)
+* **requestRules**: boolean - Valve games only. Additional 'rules' may be fetched into the `raw` field. (default false)
 
 ### Return Value
 
@@ -465,6 +466,9 @@ additional option: `token`
 ### Valheim
 Valheim servers will only respond to queries if they are started in public mode (`-public 1`).
 
+### DayZ
+DayZ stores some of it's servers information inside the `tags` attribute. Make sure to set `requestRules: true` to access it. Some data inside `dayzMods` attribute may be fuzzy, due to how mods are loaded into the servers. Alternatively, some servers may have a [third party tool](https://dayzsalauncher.com/#/tools) that you can use to get the mods information. If it's installed, you can access it via browser with the game servers IP:PORT, but add up 10 to the port. (eg. if game port is 2302 then use 2312).
+
 ### <a name="valve"></a>Valve Protocol
 For many valve games, additional 'rules' may be fetched into the unstable `raw` field by passing the additional
 option: `requestRules: true`. Beware that this may increase query time.
@@ -519,4 +523,4 @@ gamedig --type minecraft mc.example.com:11234
 ```
 
 The output of the command will be in JSON format. Additional advanced parameters can be passed in
-as well: `--debug`, `--pretty`, `--socketTimeout 5000`, etc.
+as well: `--debug`, `--pretty`, `--socketTimeout 5000`, `--requestRules` etc.
