@@ -246,6 +246,7 @@ Games List
 | `flashpointresistance` | Operation Flashpoint: Resistance (2002)
 | `painkiller` | Painkiller
 | `pixark`   | PixARK (2018) | [Valve Protocol](#valve)
+| `ps`       | Post Scriptum
 | `postal2`  | Postal 2
 | `prey`     | Prey
 | `primalcarnage` | Primal Carnage: Extinction | [Valve Protocol](#valve)
