@@ -46,7 +46,7 @@ class Gamespy1 extends Core {
         if ('maxplayers' in data) state.maxplayers = parseInt(data.maxplayers);
         if ('hostport' in data) state.gamePort = parseInt(data.hostport);
 
-        const teamOffByOne = data.gameid === 'bf1942';
+        const teamOffByOne = data.gamename === 'bfield1942';
         const playersById = {};
         const teamNamesById = {};
         for (const ident of Object.keys(data)) {
