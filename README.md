@@ -250,6 +250,7 @@ Games List
 | `prey`     | Prey
 | `primalcarnage` | Primal Carnage: Extinction | [Valve Protocol](#valve)
 | `prbf2`    | Project Reality: Battlefield 2 (2005)
+| `przomboid` | Project Zomboid (2013) | [Valve Protocol](#valve)
 | `quake1`   | Quake 1: QuakeWorld (1996)
 | `quake2`   | Quake 2 (1997)
 | `quake3`   | Quake 3: Arena (1999)
