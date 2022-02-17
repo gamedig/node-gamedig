@@ -1,3 +1,7 @@
+### 4.0.1
+* Rust - Fixed maxplayers >255
+* dayZ - Fixed tag info not parsing when queryRules wasn't set
+
 ### 4.0.0
 
 #### Breaking Changes

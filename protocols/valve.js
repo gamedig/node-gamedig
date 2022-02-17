@@ -7,7 +7,8 @@ const AppId = {
     Squad: 393380,
     Bat1944: 489940,
     Ship: 2400,
-    DayZ: 221100
+    DayZ: 221100,
+    Rust: 252490
 };
 
 class Valve extends Core {
@@ -116,6 +117,8 @@ class Valve extends Core {
             }
         }
 
+        const appId = state.raw.appId;
+
         // from https://developer.valvesoftware.com/wiki/Server_queries
         if(
             state.raw.protocol === 7 && (
@@ -131,6 +134,56 @@ class Valve extends Core {
         if(state.raw.protocol === 48) {
             this.logger.debug("GOLDSRC DETECTED - USING MODIFIED SPLIT FORMAT");
             this.goldsrcSplits = true;
+        }
+
+        // DayZ embeds some of the server information inside the tags attribute
+        if (appId === AppId.DayZ) {
+            if (state.raw.tags) {
+                state.raw.dlcEnabled = false
+                state.raw.firstPerson = false
+                for (const tag of state.raw.tags) {
+                    if (tag.startsWith('lqs')) {
+                        const value = parseInt(tag.replace('lqs', ''));
+                        if (!isNaN(value)) {
+                            state.raw.queue = value;
+                        }
+                    }
+                    if (tag.includes('no3rd')) {
+                        state.raw.firstPerson = true;
+                    }
+                    if (tag.includes('isDLC')) {
+                        state.raw.dlcEnabled = true;
+                    }
+                    if (tag.includes(':')) {
+                        state.raw.time = tag;
+                    }
+                    if (tag.startsWith('etm')) {
+                        const value = parseInt(tag.replace('etm', ''));
+                        if (!isNaN(value)) {
+                            state.raw.dayAcceleration = value;
+                        }
+                    }
+                    if (tag.startsWith('entm')) {
+                        const value = parseInt(tag.replace('entm', ''));
+                        if (!isNaN(value)) {
+                            state.raw.nightAcceleration = value;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (appId === AppId.Rust) {
+            if (state.raw.tags) {
+                for (const tag of state.raw.tags) {
+                    if (tag.startsWith('mp')) {
+                        const value = parseInt(tag.replace('mp', ''));
+                        if (!isNaN(value)) {
+                            state.maxplayers = value;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -262,42 +315,7 @@ class Valve extends Core {
             }
         }
 
-        // DayZ embeds some of the server information inside the tags attribute
         if (appId === AppId.DayZ) {
-            if (state.raw.tags) {
-                state.raw.dlcEnabled = false
-                state.raw.firstPerson = false
-                for (const tag of state.raw.tags) {
-                    if (tag.startsWith('lqs')) {
-                        const value = parseInt(tag.replace('lqs', ''));
-                        if (!isNaN(value)) {
-                            state.raw.queue = value;
-                        }
-                    }
-                    if (tag.includes('no3rd')) {
-                        state.raw.firstPerson = true;
-                    }
-                    if (tag.includes('isDLC')) {
-                        state.raw.dlcEnabled = true;
-                    }
-                    if (tag.includes(':')) {
-                        state.raw.time = tag;
-                    }
-                    if (tag.startsWith('etm')) {
-                        const value = parseInt(tag.replace('etm', ''));
-                        if (!isNaN(value)) {
-                            state.raw.dayAcceleration = value;
-                        }
-                    }
-                    if (tag.startsWith('entm')) {
-                        const value = parseInt(tag.replace('entm', ''));
-                        if (!isNaN(value)) {
-                            state.raw.nightAcceleration = value;
-                        }
-                    }
-                }
-            }
-
             state.raw.dayzMods = this.readDayzMods(Buffer.from(dayZPayload));
         }
     }
