@@ -62,7 +62,7 @@ conanexiles|Conan Exiles (2018)|valve|port=7777,port_query=27015
 contagion|Contagion (2011)|valve|port=27015
 contactjack|Contract J.A.C.K. (2003)|gamespy1|port_query=27888
 
-cs15|Counter-Strike 1.5 (2002)|valve|port=27015
+cs15|Counter-Strike 1.5 (2002)|goldsrc|port=27015
 cs16|Counter-Strike 1.6 (2003)|valve|port=27015
 cs2d|Counter-Strike: 2D (2004)|cs2d|port=36963
 cscz|Counter-Strike: Condition Zero (2004)|valve|port=27015

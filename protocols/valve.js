@@ -47,8 +47,8 @@ class Valve extends Core {
     async queryInfo(/** Results */ state) {
         this.debugLog("Requesting info ...");
         const b = await this.sendPacket(
-            0x54,
-            'Source Engine Query\0',
+            this.goldsrcInfo ? undefined : 0x54,
+            this.goldsrcInfo ? 'details' : 'Source Engine Query\0',
             this.goldsrcInfo ? 0x6D : 0x49,
             false
         );
@@ -62,19 +62,15 @@ class Valve extends Core {
         state.map = reader.string();
         state.raw.folder = reader.string();
         state.raw.game = reader.string();
-        state.raw.appId = reader.uint(2);
+        if(!this.goldsrcInfo) state.raw.appId = reader.uint(2);
         state.raw.numplayers = reader.uint(1);
         state.maxplayers = reader.uint(1);
 
         if(this.goldsrcInfo) state.raw.protocol = reader.uint(1);
         else state.raw.numbots = reader.uint(1);
 
-        state.raw.listentype = reader.uint(1);
-        state.raw.environment = reader.uint(1);
-        if(!this.goldsrcInfo) {
-            state.raw.listentype = String.fromCharCode(state.raw.listentype);
-            state.raw.environment = String.fromCharCode(state.raw.environment);
-        }
+        state.raw.listentype = String.fromCharCode(reader.uint(1));
+        state.raw.environment = String.fromCharCode(reader.uint(1));
 
         state.password = !!reader.uint(1);
         if(this.goldsrcInfo) {
@@ -88,12 +84,8 @@ class Valve extends Core {
                 state.raw.modtype = reader.uint(1);
                 state.raw.moddll = reader.uint(1);
             }
-        }
-        state.raw.secure = reader.uint(1);
-
-        if(this.goldsrcInfo) {
-            state.raw.numbots = reader.uint(1);
         } else {
+            state.raw.secure = reader.uint(1);
             if(state.raw.appId === AppId.Ship) {
                 state.raw.shipmode = reader.uint(1);
                 state.raw.shipwitnesses = reader.uint(1);
@@ -206,8 +198,8 @@ class Valve extends Core {
 
         this.debugLog("Requesting player list ...");
         const b = await this.sendPacket(
-            0x55,
-            null,
+            this.goldsrcInfo ? undefined : 0x55,
+            this.goldsrcInfo ? 'players' : null,
             0x44,
             true
         );
@@ -254,36 +246,49 @@ class Valve extends Core {
 
         const rules = {};
         state.raw.rules = rules;
-        this.debugLog("Requesting rules ...");
-        const b = await this.sendPacket(0x56,null,0x45,true);
-        if (b === null) return; // timed out - the server probably has rules disabled
-
         const dayZPayload = [];
-        let dayZPayloadEnded = false;
 
-        const reader = this.reader(b);
-        const num = reader.uint(2);
-        for(let i = 0; i < num; i++) {
-            if (appId === AppId.DayZ && !dayZPayloadEnded) {
-                const one = reader.uint(1);
-                const two = reader.uint(1);
-                const three = reader.uint(1);
-                if (one !== 0 && two !== 0 && three === 0) {
-                    while (true) {
-                        const byte = reader.uint(1);
-                        if (byte === 0) break;
-                        dayZPayload.push(byte);
-                    }
-                    continue;
-                } else {
-                    reader.skip(-3);
-                    dayZPayloadEnded = true;
-                }
+        this.debugLog("Requesting rules ...");
+
+        if (this.goldsrcInfo) {
+            const b = await this.udpSend('\xff\xff\xff\xffrules', b=>b, ()=>null);
+            if (b === null) return; // timed out - the server probably has rules disabled
+            const reader = this.reader(b);
+            while (!reader.done()) {
+                const key = reader.string();
+                const value = reader.string();
+                rules[key] = value;
             }
+        } else {
+            const b = await this.sendPacket(0x56,null,0x45,true);
+            if (b === null) return; // timed out - the server probably has rules disabled
 
-            const key = reader.string();
-            const value = reader.string();
-            rules[key] = value;
+            let dayZPayloadEnded = false;
+
+            const reader = this.reader(b);
+            const num = reader.uint(2);
+            for (let i = 0; i < num; i++) {
+                if (appId === AppId.DayZ && !dayZPayloadEnded) {
+                    const one = reader.uint(1);
+                    const two = reader.uint(1);
+                    const three = reader.uint(1);
+                    if (one !== 0 && two !== 0 && three === 0) {
+                        while (true) {
+                            const byte = reader.uint(1);
+                            if (byte === 0) break;
+                            dayZPayload.push(byte);
+                        }
+                        continue;
+                    } else {
+                        reader.skip(-3);
+                        dayZPayloadEnded = true;
+                    }
+                }
+
+                const key = reader.string();
+                const value = reader.string();
+                rules[key] = value;
+            }
         }
 
         // Battalion 1944 puts its info into rules fields for some reason
@@ -413,7 +418,7 @@ class Valve extends Core {
             return botProbability(a) - botProbability(b);
         });
         delete state.raw.players;
-        const numBots = state.raw.numbots;
+        const numBots = state.raw.numbots || 0;
         const numPlayers = state.raw.numplayers - numBots;
         while(state.bots.length < numBots) {
             if (sortedPlayers.length) state.bots.push(sortedPlayers.pop());
@@ -492,7 +497,8 @@ class Valve extends Core {
 
         if (typeof payload === 'string') payload = Buffer.from(payload, 'binary');
 
-        const b = Buffer.alloc(5
+        const b = Buffer.alloc(4
+            + (type !== undefined ? 1 : 0)
             + (challengeAtBeginning ? 4 : 0)
             + (challengeAtEnd ? 4 : 0)
             + (payload ? payload.length : 0)
@@ -505,8 +511,10 @@ class Valve extends Core {
         b.writeInt32LE(-1, offset);
         offset += 4;
 
-        b.writeUInt8(type, offset);
-        offset += 1;
+        if (type !== undefined) {
+            b.writeUInt8(type, offset);
+            offset += 1;
+        }
 
         if (challengeAtBeginning) {
             if (this.byteorder === 'le') b.writeUInt32LE(challenge, offset);
