@@ -1,3 +1,6 @@
+### 4.0.4
+* Updated dependencies
+
 ### 4.0.3
 * Fixed nodejs version requirement in package.json (node 14 has been required since gamedig 4)
 * Ground Breach (2018) - Added support
