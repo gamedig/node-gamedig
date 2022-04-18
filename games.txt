@@ -117,6 +117,7 @@ globaloperations|Global Operations (2002)|gamespy1|port_query=28672
 geneshift,mutantfactions|Geneshift (2017)|geneshift|port=11235
 ges|GoldenEye: Source (2010)|valve|port=27015
 gore|Gore: Ultimate Soldier (2002)|gamespy1|port=27777,port_query_offset=1
+groundbreach|Ground Breach (2018)|valve|port=27015
 gunmanchronicles|Gunman Chronicles (2000)|valve|port=27015
 hldm|Half-Life Deathmatch (1998)|valve|port=27015
 hldms|Half-Life Deathmatch: Source (2005)|valve|port=27015
