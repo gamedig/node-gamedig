@@ -1,3 +1,9 @@
+### 4.0.3
+* Fixed nodejs version requirement in package.json (node 14 has been required since gamedig 4)
+* Ground Breach (2018) - Added support
+* Minecraft (All Versions) - Fixed character encoding for strings returned by servers using Geyser
+* Barotrauma (2019) - Added support
+
 ### 4.0.2
 * Counter-Strike 1.5 - Fixed support
 
