@@ -527,5 +527,10 @@ After installing gamedig globally, you can call gamedig via the command line:
 gamedig --type minecraft mc.example.com:11234
 ```
 
+Alternatively, if you don't want to install gamedig globally, you can run it with npx:
+```shell
+npx gamedig --type minecraft mc.example.com:11234
+```
+
 The output of the command will be in JSON format. Additional advanced parameters can be passed in
 as well: `--debug`, `--pretty`, `--socketTimeout 5000`, `--requestRules` etc.
