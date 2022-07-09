@@ -1,4 +1,4 @@
-const moment = require('moment'),
+const { format } = require('date-fns'),
     Core = require('./core');
 
 class OpenTtd extends Core {
@@ -116,7 +116,7 @@ class OpenTtd extends Core {
         const temp = new Date(0,0,1);
         temp.setFullYear(0);
         temp.setDate(daysSinceZero+1);
-        return moment(temp).format('YYYY-MM-DD');
+        return format(temp, 'YYYY-MM-DD');
     }
 
     decode(num,arr) {
