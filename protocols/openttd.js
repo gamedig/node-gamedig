@@ -115,7 +115,7 @@ class OpenTtd extends Core {
         const temp = new Date(0,0,1);
         temp.setFullYear(0);
         temp.setDate(daysSinceZero+1);
-        return date.toISOString().split('T')[0];
+        return temp.toISOString().split('T')[0];
     }
 
     decode(num,arr) {
