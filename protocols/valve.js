@@ -8,7 +8,8 @@ const AppId = {
     Bat1944: 489940,
     Ship: 2400,
     DayZ: 221100,
-    Rust: 252490
+    Rust: 252490,
+    CSGO: 730
 };
 
 class Valve extends Core {
@@ -226,7 +227,7 @@ class Valve extends Core {
             if(!name) continue;
 
             // CSGO sometimes adds a bot named 'Max Players' if host_players_show is not 2
-            if (state.raw.appId === 730 && name === 'Max Players') continue;
+            if (state.raw.appId === AppId.CSGO && name === 'Max Players') continue;
 
             state.raw.players.push({
                 name:name, score:score, time:time
