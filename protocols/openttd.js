@@ -1,5 +1,4 @@
-const moment = require('moment'),
-    Core = require('./core');
+const Core = require('./core');
 
 class OpenTtd extends Core {
     async run(state) {
@@ -116,7 +115,7 @@ class OpenTtd extends Core {
         const temp = new Date(0,0,1);
         temp.setFullYear(0);
         temp.setDate(daysSinceZero+1);
-        return moment(temp).format('YYYY-MM-DD');
+        return temp.toISOString().split('T')[0];
     }
 
     decode(num,arr) {
