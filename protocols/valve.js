@@ -9,7 +9,11 @@ const AppId = {
     Ship: 2400,
     DayZ: 221100,
     Rust: 252490,
-    CSGO: 730
+    CSGO: 730,
+    CS_Source: 240,
+    EternalSilence: 17550,
+    Insurgency_MIC: 17700,
+    Source_SDK_Base_2006: 215
 };
 
 class Valve extends Core {
@@ -115,10 +119,10 @@ class Valve extends Core {
         // from https://developer.valvesoftware.com/wiki/Server_queries
         if(
             state.raw.protocol === 7 && (
-                state.raw.appId === 215
-                || state.raw.appId === 17550
-                || state.raw.appId === 17700
-                || state.raw.appId === 240
+                state.raw.appId === AppId.Source_SDK_Base_2006
+                || state.raw.appId === AppId.EternalSilence
+                || state.raw.appId === AppId.Insurgency_MIC
+                || state.raw.appId === AppId.CS_Source
             )
         ) {
             this._skipSizeInSplitHeader = true;
