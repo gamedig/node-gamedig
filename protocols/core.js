@@ -69,7 +69,7 @@ class Core extends EventEmitter {
     async runOnce() {
         const options = this.options;
         if (('host' in options) && !('address' in options)) {
-            const resolved = await this.dnsResolver.resolve(options.host, this.srvRecord);
+            const resolved = await this.dnsResolver.resolve(options.host, options.ipFamily, this.srvRecord);
             options.address = resolved.address;
             if (resolved.port) options.port = resolved.port;
         }
