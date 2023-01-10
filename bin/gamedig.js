@@ -5,7 +5,7 @@ const Minimist = require('minimist'),
 
 const argv = Minimist(process.argv.slice(2), {
     boolean: ['pretty','debug','givenPortOnly','requestRules'],
-    string: ['guildId','listenUdpPort']
+    string: ['guildId','listenUdpPort','ipFamily']
 });
 
 const debug = argv.debug;
