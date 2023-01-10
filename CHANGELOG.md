@@ -1,3 +1,11 @@
+### 4.0.6
+* Fixed ping returned by minecraft queries
+* Added ipFamily option to query only ipv4 or only ipv6 dns records
+
+### 4.0.5
+* Fixed filtering out fake "Max Players" player on CSGO
+* Removed moment dependency
+
 ### 4.0.4
 * Updated dependencies
 
