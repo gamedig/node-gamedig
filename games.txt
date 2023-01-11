@@ -289,6 +289,7 @@ vcmp|Vice City Multiplayer|vcmp|port=8192
 ventrilo|Ventrilo|ventrilo|port=3784
 vietcong|Vietcong|gamespy1|port=5425,port_query=15425
 vietcong2|Vietcong 2|gamespy2|port=5001,port_query=19967
+vrising|V Rising (2022)|valve|port=27015,port_query_offset=1
 warsow|Warsow|warsow|port=44400
 wheeloftime|Wheel of Time|gamespy1|port=7777,port_query_offset=1
 wolfenstein2009|Wolfenstein 2009|doom3|port=27666

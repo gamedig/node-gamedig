@@ -342,6 +342,7 @@ Games List
 | `ut3`      | Unreal Tournament 3
 | `unturned` | unturned | [Valve Protocol](#valve)
 | `urbanterror` | Urban Terror
+| `vrising`  | V Rising (2022) | [Valve Protocol](#valve)
 | `v8supercar` | V8 Supercar Challenge
 | `valheim`  | Valheim (2021) | [Notes](#valheim), [Valve Protocol](#valve)
 | `ventrilo` | Ventrilo
