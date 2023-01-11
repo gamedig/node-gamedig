@@ -305,6 +305,7 @@ Games List
 | `starmade` | StarMade
 | `starsiege` | Starsiege (2009)
 | `suicidesurvival` | Suicide Survival | [Valve Protocol](#valve)
+| `stn`      | Survive the Nights (2017) | [Valve Protocol](#valve)
 | `svencoop` | Sven Coop | [Valve Protocol](#valve)
 | `swat4`    | SWAT 4
 | `synergy`  | Synergy | [Valve Protocol](#valve)
