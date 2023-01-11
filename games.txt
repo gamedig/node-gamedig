@@ -79,6 +79,7 @@ crysis2|Crysis 2 (2011)|gamespy3|port=64000
 daikatana|Daikatana (2000)|quake2|port=27982,port_query_offset=10
 dmomam|Dark Messiah of Might and Magic (2006)|valve|port=27015
 darkesthour|Darkest Hour: Europe '44-'45 (2008)|unreal2|port=7757,port_query_offset=1
+dayofdragons|Day of Dragons (2019)|valve|port=7777,port_query=27015
 daysofwar|Days of War (2017)|valve|port=27015
 dayz|DayZ (2018)|valve|port=2302,port_query_offset=24714
 dayzmod|DayZ Mod (2013)|valve|port=2302,port_query_offset=1
