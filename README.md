@@ -276,6 +276,7 @@ Games List
 | `ricochet` | Ricochet | [Valve Protocol](#valve)
 | `riseofnations` | Rise of Nations
 | `rs2`      | Rising Storm 2: Vietnam | [Valve Protocol](#valve)
+| `ror2`     | Risk of Rain 2 (2020) | [Valve Protocol](#valve)
 | `rune`     | Rune
 | `rust`     | Rust | [Valve Protocol](#valve)
 | `stalker`  | S.T.A.L.K.E.R.
