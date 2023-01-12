@@ -236,6 +236,7 @@ soldat|Soldat|ase|port=13073,port_query_offset=123
 sof|Soldier of Fortune|quake1|port_query=28910
 sof2|Soldier of Fortune 2|quake3|port_query=20100
 stalker|S.T.A.L.K.E.R.|gamespy3|port=5445,port_query_offset=2
+stn|Survive the Nights (2017)|valve|port=7950,port_query_offset=1
 
 stbc|Star Trek: Bridge Commander|gamespy1|port_query=22101
 stvef|Star Trek: Voyager - Elite Force|quake3|port_query=27960
