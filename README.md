@@ -152,6 +152,7 @@ Games List
 | `darkesthour` | Darkest Hour: Europe '44-'45 (2008)
 | `dod`      | Day of Defeat (2003) | [Valve Protocol](#valve)
 | `dods`     | Day of Defeat: Source (2005) | [Valve Protocol](#valve)
+| `dayofdragons` | Day of Dragons (2019) | [Valve Protocol](#valve)
 | `doi`      | Day of Infamy (2017) | [Valve Protocol](#valve)
 | `daysofwar` | Days of War (2017) | [Valve Protocol](#valve)
 | `dayz`     | DayZ (2018) | [Valve Protocol](#valve)
