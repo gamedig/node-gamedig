@@ -165,6 +165,7 @@ Games List
 | `dinodday` | Dino D-Day (2011) | [Valve Protocol](#valve)
 | `dirttrackracing2` | Dirt Track Racing 2 (2002)
 | `discord`  | Discord | [Notes](#discord)
+| `dst`      | Don't Starve Together (2016) | [Valve Protocol](#valve)
 | `doom3`    | Doom 3 (2004)
 | `dota2`    | Dota 2 (2013) | [Valve Protocol](#valve)
 | `drakan`   | Drakan: Order of the Flame (1999)
