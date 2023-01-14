@@ -57,6 +57,7 @@ callofjuarez|Call of Juarez (2006)|ase|port_query=26000
 chaser|Chaser (2003)|ase|port=3000,port_query_offset=123
 chrome|Chrome (2003)|ase|port=27015,port_query_offset=123
 codenameeagle|Codename Eagle (2000)|gamespy1|port_query=4711
+colonysurvival|Colony Survival (2017)|valve|port=27004
 commandos3|Commandos 3: Destination Berlin (2003)|gamespy1|port_query=6500
 cacrenegade|Command and Conquer: Renegade (2002)|gamespy1|port=4848,port_query=25300
 conanexiles|Conan Exiles (2018)|valve|port=7777,port_query=27015

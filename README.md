@@ -131,6 +131,7 @@ Games List
 | `chaser`   | Chaser (2003)
 | `chrome`   | Chrome (2003)
 | `codenameeagle` | Codename Eagle (2000)
+| `colonysurvival` | Colony Survival (2017) | [Valve Protocol](#valve)
 | `cacrenegade` | Command and Conquer: Renegade (2002)
 | `commandos3` | Commandos 3: Destination Berlin (2003)
 | `conanexiles` | Conan Exiles (2018) | [Valve Protocol](#valve)
