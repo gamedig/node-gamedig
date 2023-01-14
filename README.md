@@ -129,6 +129,7 @@ Games List
 | `codwaw`   | Call of Duty: World at War (2008)
 | `callofjuarez` | Call of Juarez (2006)
 | `chaser`   | Chaser (2003)
+| `chivalry` | Chivalry: Medieval Warfare (2012) | [Valve Protocol](#valve)
 | `chrome`   | Chrome (2003)
 | `codenameeagle` | Codename Eagle (2000)
 | `cacrenegade` | Command and Conquer: Renegade (2002)
