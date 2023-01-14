@@ -42,6 +42,7 @@ bf4|Battlefield 4 (2013)|battlefield|port=25200,port_query_offset=22000
 bfh|Battlefield Hardline (2015)|battlefield|port=25200,port_query_offset=22000
 
 blackmesa|Black Mesa (2020)|valve|port=27015
+brainbread2|BrainBread 2 (2022)|valve|port=27015
 breach|Breach (2011)|valve|port=27016
 breed|Breed (2004)|gamespy2|port=7649
 brink|Brink (2011)|valve|port_query_offset=1
