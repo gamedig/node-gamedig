@@ -510,12 +510,32 @@ displaying the status information. If your application is thin (with no constant
 In some very rare scenarios, you may need to bind / listen on a fixed local UDP port. The is usually not needed except behind
 some extremely strict firewalls, or within a docker container (where you only wish to forward a single UDP port).
 To use a fixed listen udp port, construct a new Gamedig object like this:
-```
+```js
 const gamedig = new Gamedig({
     listenUdpPort: 13337
 });
 gamedig.query(...)
 ```
+
+### ValveProtocol - Timeout Error
+If you have some "Timeout" error using gamedig and game using ValveProtocol, you just have to add this little configuration to prevent it :
+```js
+return new Promise((resolve, reject) => {
+        Gamedig.query({
+            type: 'garrysmod',
+            host: 'XXXXX',
+            port: "XXXX",
+            maxAttempts: 5,
+            socketTimeout:10000
+        }).then((state) => {
+            resolve(state);
+        }).catch(error=>{
+            reject(error)
+        });
+    })
+```
+
+So with "socketTimeout", you shouldn't have any "timeout" error.
 
 Usage from Command Line
 ---
