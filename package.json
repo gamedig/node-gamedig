@@ -1,65 +1,50 @@
 {
-    "name": "gamedig",
-    "description": "Query for the status of any game server in Node.JS",
-    "tags": [
-        "srcds",
-        "query",
-        "game",
-        "utility",
-        "util",
-        "server",
-        "gameserver",
-        "node",
-        "nodejs",
-        "game-server-query",
-        "game server query",
-        "server query",
-        "game server",
-        "gameserverquery",
-        "serverquery",
-        "terraria",
-        "counter strike",
-        "csgo",
-        "minecraft"
-    ],
-    "main": "lib/index.js",
-    "author": "GameDig Contributors",
-    "version": "4.0.6",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/gamedig/node-gamedig.git"
-    },
-    "bugs": {
-        "url": "https://github.com/gamedig/node-gamedig/issues"
-    },
-    "license": "MIT",
-    "engines": {
-        "node": ">=14.0.0"
-    },
-    "dependencies": {
-        "cheerio": "^1.0.0-rc.10",
-        "compressjs": "^1.0.2",
-        "gbxremote": "^0.2.1",
-        "got": "^12.0.3",
-        "iconv-lite": "^0.6.3",
-        "long": "^5.2.0",
-        "minimist": "^1.2.6",
-        "punycode": "^2.1.1",
-        "varint": "^6.0.0"
-    },
-    "bin": {
-        "gamedig": "bin/gamedig.js"
-    },
-    "files": [
-        "bin/gamedig.js",
-        "lib/",
-        "protocols/",
-        "games.txt",
-        "LICENSE",
-        "README.md"
-    ],
-    "devDependencies": {
-        "@types/cheerio": "^0.22.31",
-        "@types/node": "^14.18.13"
-    }
+  "name": "gamedig",
+  "description": "Query for the status of any game server in Node.JS",
+  "author": "GameDig Contributors",
+  "license": "MIT",
+  "version": "5.0.0.next.1",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "bin": {
+    "gamedig": "dist/bin.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gamedig/node-gamedig.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gamedig/node-gamedig/issues"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "dist/",
+    "LICENSE",
+    "README.md"
+  ],
+  "dependencies": {},
+  "devDependencies": {},
+  "tags": [
+    "srcds",
+    "query",
+    "game",
+    "utility",
+    "util",
+    "server",
+    "gameserver",
+    "node",
+    "nodejs",
+    "game-server-query",
+    "game server query",
+    "server query",
+    "game server",
+    "gameserverquery",
+    "serverquery",
+    "terraria",
+    "counter strike",
+    "csgo",
+    "minecraft"
+  ]
 }
