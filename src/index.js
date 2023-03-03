@@ -1,4 +1,4 @@
-import QueryRunner from "./lib/QueryRunner";
+import QueryRunner from "./network/QueryRunner";
 
 let singleton = null;
 

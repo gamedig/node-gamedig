@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { readFileSync, writeFileSync } from "fs";
-import GameResolver from "../src/lib/GameResolver";
+import GameResolver from "../src/utils/GameResolver";
 const gameResolver = new GameResolver();
 
 const generated = gameResolver.printReadme();

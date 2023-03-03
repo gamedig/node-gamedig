@@ -1,11 +1,11 @@
 import { EventEmitter } from "events";
 import { connect } from "net";
-import Reader from "../lib/reader";
-import { debugDump } from "../lib/HexUtil";
-import Promises from "../lib/Promises";
-import Logger from "../lib/Logger";
-import DnsResolver from "../lib/DnsResolver";
-import Results from "../lib/Results";
+import Reader from "../utils/reader";
+import { debugDump } from "../utils/HexUtil";
+import Promises from "../utils/Promises";
+import Logger from "../utils/Logger";
+import DnsResolver from "../network/DnsResolver";
+import Results from "../utils/Results";
 
 let uid = 0;
 
