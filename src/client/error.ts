@@ -26,9 +26,8 @@ type KeyOfObj<T> = T[keyof T];
 
 /**
  * Errors that are thrown by the network.
- *
  */
-enum NetworkError {
+export enum NetworkError {
   UNKNOWN_NETWORK_DNS_ERROR = "UNKNOWN_NETWORK_DNS_ERROR",
   UNKNOWN_NETWORK_RCON_ERROR = "UNKNOWN_NETWORK_RCON_ERROR",
   UNKNOWN_NETWORK_TCP_ERROR = "UNKNOWN_NETWORK_TCP_ERROR",
@@ -36,9 +35,8 @@ enum NetworkError {
 }
 /**
  * Errors that are thrown by the client.
- *
  */
-enum ClientError {
+export enum ClientError {
   UNKNOWN_CLIENT_BUILDER_ERROR = "UNKNOWN_CLIENT_BUILDER_ERROR",
   UNKNOWN_CLIENT_GAMEDIG_ERROR = "UNKNOWN_CLIENT_GAMEDIG_ERROR",
   UNKNOWN_CLIENT_LOGGER_ERROR = "UNKNOWN_CLIENT_LOGGER_ERROR",
@@ -46,18 +44,16 @@ enum ClientError {
 }
 /**
  * Errors that are thrown by the protocol.
- *
  */
-enum ProtocolError {
+export enum ProtocolError {
   UNKNOWN_PROTOCOL_ENGINE_ERROR = "UNKNOWN_PROTOCOL_ENGINE_ERROR",
   UNKNOWN_PROTOCOL_GAME_ERROR = "UNKNOWN_PROTOCOL_GAME_ERROR",
   UNKNOWN_PROTOCOL_BASE_ERROR = "UNKNOWN_PROTOCOL_BASE_ERROR",
 }
 /**
  * Errors that are thrown by the bin.
- *
  */
-enum BinError {
+export enum BinError {
   UNKNOWN_BIN_ERROR = "UNKNOWN_BIN_ERROR",
 }
 
@@ -66,7 +62,7 @@ enum BinError {
  * @param enums The enums to merge.
  * @returns The merged enum.
  */
-export const mergeEnums = <T extends object>(enums: T[]) => {
+const mergeEnums = <T extends object>(enums: T[]) => {
   return enums.reduce((a, v) => ({ ...a, ...v }), {}) as UnionToIntersection<T>;
 };
 
@@ -82,7 +78,7 @@ export const libError = Object.freeze(
  * @param enumValue The error to get the message for.
  * @returns The error message.
  */
-export const errorMessage = <T extends KeyOfObj<typeof libError>>(
+const errorMessage = <T extends KeyOfObj<typeof libError>>(
   error: T,
   ...args: any[]
 ): string => {
