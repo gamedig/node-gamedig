@@ -6,8 +6,16 @@
   "version": "5.0.0.next.1",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
   "bin": {
-    "gamedig": "dist/bin.js"
+    "gamedig-js": "dist/bin.js",
+    "gamedig-mjs": "dist/bin.mjs"
   },
   "repository": {
     "type": "git",
@@ -17,15 +25,18 @@
     "url": "https://github.com/gamedig/node-gamedig/issues"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=14.0.0"
   },
   "files": [
     "dist/",
     "LICENSE",
     "README.md"
   ],
-  "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/node": "^18.14.6",
+    "tsup": "^6.6.3",
+    "typescript": "^4.9.5"
+  },
   "tags": [
     "srcds",
     "query",
