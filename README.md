@@ -7,6 +7,8 @@ GameDig can fetch it for you.
 GameDig is available as a node.js module, as well as a
 [command line executable](#usage-from-command-line).
 
+Support is available on the [GameDig Discord](https://discord.gg/NVCMn3tnxH) (for questions), or [GitHub Issues](https://github.com/gamedig/node-gamedig/issues) (for bugs).
+
 Usage from Node.js
 ---
 
