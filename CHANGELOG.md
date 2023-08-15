@@ -1,3 +1,10 @@
+
+### To Be Released
+* Risk of Rain 2 (2019) - Added support
+* Survive the Nights (2017) - Added support
+* V Rising (2022) - Added support
+* Day of Dragons (2019) - Added support
+
 ### 4.0.6
 * Fixed ping returned by minecraft queries
 * Added ipFamily option to query only ipv4 or only ipv6 dns records
