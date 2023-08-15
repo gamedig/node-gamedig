@@ -1,5 +1,5 @@
 
-### To Be Released
+### 4.0.7
 * Updated some dependencies to solve vulnerabilities
 * Fixed an issue regarding GameSpy 1 not correctly checking and parsing for numbers.
 * Risk of Rain 2 (2019) - Added support
