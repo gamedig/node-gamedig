@@ -16,12 +16,12 @@ function normalizeEntry([key,value]) {
         keyType = split[0];
     }
 
-    if (!stringKeys.has(keyType) && !keyType.includes('name')) {
+    if (!stringKeys.has(keyType) && !keyType.includes('name')) { // todo! the latter check might be problematic, fails on key "name_tag_distance_scope"
         if (value.toLowerCase() === 'true') {
             value = true;
         } else if (value.toLowerCase() === 'false') {
             value = false;
-        } else if (!isNaN(Number(value))) {
+        } else if (value.length && !isNaN(Number(value))) {
             value = Number(value);
         }
     }
@@ -68,21 +68,17 @@ class Gamespy1 extends Core {
                     // other team info which we don't track
                 }
             } else {
-                const asNumber = Number(value);
-                const isNumberNan = isNaN(asNumber);
-
                 // Info about a player
                 if (!(id in playersById)) playersById[id] = {};
+
                 if (key === 'playername' || key === 'player') {
                     key = 'name';
                 }
-                if (key === 'team' && !isNumberNan) {
+                if (key === 'team' && !isNaN(value)) { // todo! technically, this NaN check isn't needed.
                     key = 'teamId';
-                    value = Math.floor(asNumber) + (teamOffByOne ? -1 : 0);
+                    value += teamOffByOne ? -1 : 0;
                 }
-                if (key !== 'name') {
-                    value = isNumberNan ? value : asNumber;
-                }
+
                 playersById[id][key] = value;
             }
         }
