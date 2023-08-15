@@ -57,6 +57,8 @@ class Gamespy1 extends Core {
             if (isNaN(id)) continue;
             let value = data[ident];
 
+            console.log(ident, value);
+
             delete data[ident];
 
             if (key !== 'team' && key.startsWith('team')) {
@@ -67,17 +69,20 @@ class Gamespy1 extends Core {
                     // other team info which we don't track
                 }
             } else {
+                const asNumber = Number(value);
+                const isNumberNan = isNaN(asNumber);
+
                 // Info about a player
                 if (!(id in playersById)) playersById[id] = {};
                 if (key === 'playername' || key === 'player') {
                     key = 'name';
                 }
-                if (key === 'team' && !isNaN(parseInt(value))) {
+                if (key === 'team' && !isNumberNan) {
                     key = 'teamId';
-                    value = parseInt(value) + (teamOffByOne ? -1 : 0);
+                    value = Math.floor(asNumber) + (teamOffByOne ? -1 : 0);
                 }
-                if (key !== 'name' && !isNaN(parseInt(value))) {
-                    value = parseInt(value);
+                if (key !== 'name') {
+                    value = isNumberNan ? value : asNumber;
                 }
                 playersById[id][key] = value;
             }
