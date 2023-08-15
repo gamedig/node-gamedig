@@ -118,6 +118,7 @@ Games List
 | `bfh`      | Battlefield Hardline (2015)
 | `bfv`      | Battlefield Vietnam (2004)
 | `bfbc2`    | Battlefield: Bad Company 2 (2010)
+| `blackmesa` | Black Mesa (2020) | [Valve Protocol](#valve)
 | `breach`   | Breach (2011) | [Valve Protocol](#valve)
 | `breed`    | Breed (2004)
 | `brink`    | Brink (2011) | [Valve Protocol](#valve)
