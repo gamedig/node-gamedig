@@ -108,6 +108,7 @@ Games List
 | `atlas`    | Atlas (2018) | [Valve Protocol](#valve)
 | `avorion`  | Avorion (2020) | [Valve Protocol](#valve)
 | `baldursgate` | Baldur's Gate (1998)
+| `ballisticoverkill` | Ballistic Overkill (2017) | [Valve Protocol](#valve)
 | `barotrauma` | Barotrauma (2019) | [Valve Protocol](#valve)
 | `bat1944`  | Battalion 1944 (2018) | [Valve Protocol](#valve)
 | `bf1942`   | Battlefield 1942 (2002)

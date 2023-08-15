@@ -28,6 +28,7 @@ arma3|ARMA 3 (2013)|valve|port=2302,port_query_offset=1
 
 armagetron|Armagetron Advanced (2001)|armagetron|port=4534
 baldursgate|Baldur's Gate (1998)|gamespy1|port=6073,port_query=1470
+ballisticoverkill|Ballistic Overkill (2017)|valve|port=27015,port_query_offset=1
 barotrauma|Barotrauma (2019)|valve|port=27015,port_query_offset=1
 bat1944|Battalion 1944 (2018)|valve|port=7777,port_query_offset=3
 
