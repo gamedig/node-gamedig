@@ -1,5 +1,7 @@
 
 ### To Be Released
+* Updated some dependencies to solve vulnerabilities
+* Fixed an issue regarding GameSpy 1 not correctly checking and parsing for numbers.
 * Risk of Rain 2 (2019) - Added support
 * Survive the Nights (2017) - Added support
 * V Rising (2022) - Added support
@@ -12,7 +14,8 @@
 * Ballistic Overkill (2017) - Added support
 * Codename CURE (2017) - Added support
 * Colony Survival (2017) - Added support
-* Updated some dependencies to solve vulnerabilities
+* Rising World (2014) - Added support
+* BrainBread 2 (2016) - Added support
 
 ### 4.0.6
 * Fixed ping returned by minecraft queries
