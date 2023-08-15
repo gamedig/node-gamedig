@@ -218,6 +218,7 @@ rtcw|Return to Castle Wolfenstein|quake3|port_query=27960
 rfactor|rFactor|rfactor|port=34397,port_query_offset=-100
 ricochet|Ricochet|valve|port=27015
 riseofnations|Rise of Nations|gamespy1|port_query=6501
+ror2|Risk of Rain 2 (2020)|valve|port=27015,port_query_offset=1
 rs2|Rising Storm 2: Vietnam|valve|port=27015
 rune|Rune|gamespy1|port=7777,port_query_offset=1
 rust|Rust|valve|port=28015
