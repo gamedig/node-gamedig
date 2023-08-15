@@ -55,6 +55,7 @@ codmw3|Call of Duty: Modern Warfare 3 (2011)|valve|port_query_offset=2
 
 callofjuarez|Call of Juarez (2006)|ase|port_query=26000
 chaser|Chaser (2003)|ase|port=3000,port_query_offset=123
+chivalry|Chivalry: Medieval Warfare (2012)|valve|port=7777,port_query_offset=2
 chrome|Chrome (2003)|ase|port=27015,port_query_offset=123
 codenameeagle|Codename Eagle (2000)|gamespy1|port_query=4711
 commandos3|Commandos 3: Destination Berlin (2003)|gamespy1|port_query=6500
