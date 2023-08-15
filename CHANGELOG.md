@@ -4,6 +4,15 @@
 * Survive the Nights (2017) - Added support
 * V Rising (2022) - Added support
 * Day of Dragons (2019) - Added support
+* Onset (2019) - Added support
+* Don't Starve Together (2016) - Added support
+* Chivalry: Medieval Warfare (2012) - Added support
+* Avorion (2020) - Added support
+* Black Mesa (2020) - Added support
+* Ballistic Overkill (2017) - Added support
+* Codename CURE (2017) - Added support
+* Colony Survival (2017) - Added support
+* Updated some dependencies to solve vulnerabilities
 
 ### 4.0.6
 * Fixed ping returned by minecraft queries
