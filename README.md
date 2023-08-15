@@ -136,6 +136,7 @@ Games List
 | `chaser`   | Chaser (2003)
 | `chivalry` | Chivalry: Medieval Warfare (2012) | [Valve Protocol](#valve)
 | `chrome`   | Chrome (2003)
+| `codenamecure` | Codename CURE (2017) | [Valve Protocol](#valve)
 | `codenameeagle` | Codename Eagle (2000)
 | `cacrenegade` | Command and Conquer: Renegade (2002)
 | `commandos3` | Commandos 3: Destination Berlin (2003)
