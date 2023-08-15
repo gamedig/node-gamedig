@@ -138,6 +138,7 @@ Games List
 | `chrome`   | Chrome (2003)
 | `codenamecure` | Codename CURE (2017) | [Valve Protocol](#valve)
 | `codenameeagle` | Codename Eagle (2000)
+| `colonysurvival` | Colony Survival (2017) | [Valve Protocol](#valve)
 | `cacrenegade` | Command and Conquer: Renegade (2002)
 | `commandos3` | Commandos 3: Destination Berlin (2003)
 | `conanexiles` | Conan Exiles (2018) | [Valve Protocol](#valve)
