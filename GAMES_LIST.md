@@ -222,6 +222,7 @@
 | `soldat`                              | Soldat                                                  |                                             |
 | `sof`                                 | Soldier of Fortune                                      |                                             |
 | `sof2`                                | Soldier of Fortune 2                                    |                                             |
+| `sonsoftheforest`                     | Sons Of The Forest                                      | [Valve Protocol](#valve)                    |
 | `spaceengineers`                      | Space Engineers                                         | [Valve Protocol](#valve)                    |
 | `squad`                               | Squad                                                   | [Valve Protocol](#valve)                    |
 | `stbc`                                | Star Trek: Bridge Commander                             |                                             |

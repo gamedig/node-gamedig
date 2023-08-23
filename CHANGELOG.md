@@ -1,4 +1,7 @@
 
+### To Be Released...
+* Sons Of The Forest - Added support
+
 ### 4.0.7
 * Updated some dependencies to solve vulnerabilities
 * Fixed an issue regarding GameSpy 1 not correctly checking and parsing for numbers.
