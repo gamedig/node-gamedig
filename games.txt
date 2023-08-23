@@ -8,6 +8,7 @@ alienswarm|Alien Swarm (2010)|valve|port=27015
 arkse|Ark: Survival Evolved (2017)|valve|port=7777,port_query=27015
 assettocorsa|Assetto Corsa (2014)|assettocorsa|port=9610
 atlas|Atlas (2018)|valve|port=5761,port_query_offset=51800
+avorion|Avorion (2020)|valve|port=27000,port_query_offset=20
 avp2|Aliens versus Predator 2 (2001)|gamespy1|port=27888
 avp2010|Aliens vs. Predator (2010)|valve|port=27015
 
@@ -27,6 +28,7 @@ arma3|ARMA 3 (2013)|valve|port=2302,port_query_offset=1
 
 armagetron|Armagetron Advanced (2001)|armagetron|port=4534
 baldursgate|Baldur's Gate (1998)|gamespy1|port=6073,port_query=1470
+ballisticoverkill|Ballistic Overkill (2017)|valve|port=27015,port_query_offset=1
 barotrauma|Barotrauma (2019)|valve|port=27015,port_query_offset=1
 bat1944|Battalion 1944 (2018)|valve|port=7777,port_query_offset=3
 
@@ -39,6 +41,8 @@ bf3|Battlefield 3 (2011)|battlefield|port=25200,port_query_offset=22000
 bf4|Battlefield 4 (2013)|battlefield|port=25200,port_query_offset=22000
 bfh|Battlefield Hardline (2015)|battlefield|port=25200,port_query_offset=22000
 
+blackmesa|Black Mesa (2020)|valve|port=27015
+brainbread2|BrainBread 2 (2022)|valve|port=27015
 breach|Breach (2011)|valve|port=27016
 breed|Breed (2004)|gamespy2|port=7649
 brink|Brink (2011)|valve|port_query_offset=1
@@ -55,8 +59,11 @@ codmw3|Call of Duty: Modern Warfare 3 (2011)|valve|port_query_offset=2
 
 callofjuarez|Call of Juarez (2006)|ase|port_query=26000
 chaser|Chaser (2003)|ase|port=3000,port_query_offset=123
+chivalry|Chivalry: Medieval Warfare (2012)|valve|port=7777,port_query_offset=2
 chrome|Chrome (2003)|ase|port=27015,port_query_offset=123
+codenamecure|Codename CURE (2017)|valve|port=27015
 codenameeagle|Codename Eagle (2000)|gamespy1|port_query=4711
+colonysurvival|Colony Survival (2017)|valve|port=27004
 commandos3|Commandos 3: Destination Berlin (2003)|gamespy1|port_query=6500
 cacrenegade|Command and Conquer: Renegade (2002)|gamespy1|port=4848,port_query=25300
 conanexiles|Conan Exiles (2018)|valve|port=7777,port_query=27015
@@ -98,6 +105,7 @@ doi|Day of Infamy (2017)|valve|port=27015
 doom3|Doom 3 (2004)|doom3|port=27666
 dota2|Dota 2 (2013)|valve|port=27015
 drakan|Drakan: Order of the Flame (1999)|gamespy1|port=27045,port_query_offset=1
+dst|Don't Starve Together (2016)|valve|port=10999,port_query=27016
 empyrion|Empyrion - Galactic Survival (2015)|valve|port=30000,port_query_offset=1
 etqw|Enemy Territory: Quake Wars (2007)|doom3|port=3074,port_query=27733
 fear|F.E.A.R. (2005)|gamespy2|port_query=27888
@@ -185,6 +193,7 @@ nitrofamily|Nitro Family (2004)|gamespy1|port_query=25601
 nolf|The Operative: No One Lives Forever (2000)|gamespy1|port_query=27888
 nolf2|No One Lives Forever 2: A Spy in H.A.R.M.'s Way (2002)|gamespy1|port_query=27890
 nucleardawn|Nuclear Dawn (2011)|valve|port=27015
+onset|Onset (2019)|valve|port=7777,port_query_offset=-1
 openarena|OpenArena (2005)|quake3|port_query=27960
 openttd|OpenTTD (2004)|openttd|port=3979
 painkiller|Painkiller|ase|port=3455,port_query_offset=123
@@ -219,6 +228,8 @@ rtcw|Return to Castle Wolfenstein|quake3|port_query=27960
 rfactor|rFactor|rfactor|port=34397,port_query_offset=-100
 ricochet|Ricochet|valve|port=27015
 riseofnations|Rise of Nations|gamespy1|port_query=6501
+risingworld|Rising World (2014)|valve|port=4255
+ror2|Risk of Rain 2 (2020)|valve|port=27015,port_query_offset=1
 rs2|Rising Storm 2: Vietnam|valve|port=27015
 rune|Rune|gamespy1|port=7777,port_query_offset=1
 rust|Rust|valve|port=28015
@@ -236,6 +247,7 @@ sinep|SiN Episodes|valve|port=27015
 soldat|Soldat|ase|port=13073,port_query_offset=123
 sof|Soldier of Fortune|quake1|port_query=28910
 sof2|Soldier of Fortune 2|quake3|port_query=20100
+sonsoftheforest|Sons Of The Forest|valve|port=8766,port_query=27016
 stalker|S.T.A.L.K.E.R.|gamespy3|port=5445,port_query_offset=2
 stn|Survive the Nights (2017)|valve|port=7950,port_query_offset=1
 

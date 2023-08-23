@@ -10,21 +10,22 @@ const stringKeys = new Set([
 function normalizeEntry([key,value]) {
     key = key.toLowerCase();
     const split = key.split('_');
-    let keyType;
-    if (split.length === 2 && !isNaN(parseInt(split[1]))) {
+    let keyType = key;
+
+    if (split.length === 2 && !isNaN(Number(split[1]))) {
         keyType = split[0];
-    } else {
-        keyType = key;
     }
-    if (!stringKeys.has(keyType) && !keyType.includes('name')) {
+
+    if (!stringKeys.has(keyType) && !keyType.includes('name')) { // todo! the latter check might be problematic, fails on key "name_tag_distance_scope"
         if (value.toLowerCase() === 'true') {
             value = true;
         } else if (value.toLowerCase() === 'false') {
             value = false;
-        } else if (!isNaN(parseInt(value))) {
-            value = parseInt(value);
+        } else if (value.length && !isNaN(Number(value))) {
+            value = Number(value);
         }
     }
+
     return [key,value];
 }
 
@@ -43,8 +44,8 @@ class Gamespy1 extends Core {
         if ('hostname' in data) state.name = data.hostname;
         if ('mapname' in data) state.map = data.mapname;
         if (this.trueTest(data.password)) state.password = true;
-        if ('maxplayers' in data) state.maxplayers = parseInt(data.maxplayers);
-        if ('hostport' in data) state.gamePort = parseInt(data.hostport);
+        if ('maxplayers' in data) state.maxplayers = Number(data.maxplayers);
+        if ('hostport' in data) state.gamePort = Number(data.hostport);
 
         const teamOffByOne = data.gamename === 'bfield1942';
         const playersById = {};
@@ -53,7 +54,7 @@ class Gamespy1 extends Core {
             const split = ident.split('_');
             if (split.length !== 2) continue;
             let key = split[0].toLowerCase();
-            const id = parseInt(split[1]);
+            const id = Number(split[1]);
             if (isNaN(id)) continue;
             let value = data[ident];
 
@@ -69,16 +70,15 @@ class Gamespy1 extends Core {
             } else {
                 // Info about a player
                 if (!(id in playersById)) playersById[id] = {};
+
                 if (key === 'playername' || key === 'player') {
                     key = 'name';
                 }
-                if (key === 'team' && !isNaN(parseInt(value))) {
+                if (key === 'team' && !isNaN(value)) { // todo! technically, this NaN check isn't needed.
                     key = 'teamId';
-                    value = parseInt(value) + (teamOffByOne ? -1 : 0);
+                    value += teamOffByOne ? -1 : 0;
                 }
-                if (key !== 'name' && !isNaN(parseInt(value))) {
-                    value = parseInt(value);
-                }
+
                 playersById[id][key] = value;
             }
         }
@@ -136,7 +136,7 @@ class Gamespy1 extends Core {
             if (data.queryid) {
                 const split = data.queryid.split('.');
                 if (split.length >= 2) {
-                    partNum = parseInt(split[1]);
+                    partNum = Number(split[1]);
                 }
                 queryId = split[0];
             }

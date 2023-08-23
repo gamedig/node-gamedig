@@ -1,3 +1,25 @@
+
+### To Be Released...
+* Sons Of The Forest - Added support
+
+### 4.0.7
+* Updated some dependencies to solve vulnerabilities
+* Fixed an issue regarding GameSpy 1 not correctly checking and parsing for numbers.
+* Risk of Rain 2 (2019) - Added support
+* Survive the Nights (2017) - Added support
+* V Rising (2022) - Added support
+* Day of Dragons (2019) - Added support
+* Onset (2019) - Added support
+* Don't Starve Together (2016) - Added support
+* Chivalry: Medieval Warfare (2012) - Added support
+* Avorion (2020) - Added support
+* Black Mesa (2020) - Added support
+* Ballistic Overkill (2017) - Added support
+* Codename CURE (2017) - Added support
+* Colony Survival (2017) - Added support
+* Rising World (2014) - Added support
+* BrainBread 2 (2016) - Added support
+
 ### 4.0.6
 * Fixed ping returned by minecraft queries
 * Added ipFamily option to query only ipv4 or only ipv6 dns records
