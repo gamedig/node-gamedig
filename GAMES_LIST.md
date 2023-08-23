@@ -200,6 +200,7 @@
 | `redorchestra2`                       | Red Orchestra 2                                         | [Valve Protocol](#valve)                    |
 | `redorchestraost`                     | Red Orchestra: Ostfront 41-45                           |                                             |
 | `redline`                             | Redline                                                 |                                             |
+| `redm`                                | Red Dead Redemption 2 - RedM (2018)                     |                                             |
 | `rtcw`                                | Return to Castle Wolfenstein                            |                                             |
 | `rfactor`                             | rFactor                                                 |                                             |
 | `ricochet`                            | Ricochet                                                | [Valve Protocol](#valve)                    |
