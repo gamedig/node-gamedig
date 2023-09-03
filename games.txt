@@ -77,6 +77,8 @@ cscz|Counter-Strike: Condition Zero (2004)|valve|port=27015
 css|Counter-Strike: Source (2004)|valve|port=27015
 csgo|Counter-Strike: Global Offensive (2012)|valve|port=27015|doc_notes=csgo
 
+creativerse|Creativerse (2017)|valve|port=26900,port_query_offset=1
+
 crossracing|Cross Racing Championship Extreme 2005 (2005)|ase|port=12321,port_query_offset=123
 
 crysis|Crysis (2007)|gamespy3|port=64087

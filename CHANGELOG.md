@@ -2,6 +2,7 @@
 ### To Be Released...
 * Sons Of The Forest - Added support
 * Red Dead Redemption 2 - RedM (2018) - Added support
+* Creativerse (2017) - Added support
 
 ### 4.0.7
 * Updated some dependencies to solve vulnerabilities

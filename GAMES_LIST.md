@@ -68,6 +68,7 @@
 | `cscz`                                | Counter-Strike: Condition Zero (2004)                   | [Valve Protocol](#valve)                    |
 | `csgo`                                | Counter-Strike: Global Offensive (2012)                 | [Notes](#csgo), [Valve Protocol](#valve)    |
 | `css`                                 | Counter-Strike: Source (2004)                           | [Valve Protocol](#valve)                    |
+| `creativerse`                         | Creativerse (2017)                                      | [Valve Protocol](#valve)                    |
 | `crossracing`                         | Cross Racing Championship Extreme 2005 (2005)           |                                             |
 | `crysis`                              | Crysis (2007)                                           |                                             |
 | `crysis2`                             | Crysis 2 (2011)                                         |                                             |
