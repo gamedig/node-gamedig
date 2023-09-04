@@ -38,13 +38,13 @@
     },
     "dependencies": {
         "cheerio": "^1.0.0-rc.10",
-        "compressjs": "^1.0.2",
         "gbxremote": "^0.2.1",
         "got": "^12.1.0",
         "iconv-lite": "^0.6.3",
         "long": "^5.2.0",
         "minimist": "^1.2.6",
         "punycode": "^2.1.1",
+        "seek-bzip": "^2.0.0",
         "varint": "^6.0.0"
     },
     "bin": {

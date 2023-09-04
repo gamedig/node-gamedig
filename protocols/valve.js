@@ -1,4 +1,4 @@
-const Bzip2 = require('compressjs').Bzip2;
+const Bzip2 = require('seek-bzip');
 const Core = require('./core');
 const Results = require('../lib/Results');
 const Reader = require('../lib/reader');
@@ -592,7 +592,7 @@ class Valve extends Core {
                     if(bzip) {
                         this.debugLog("BZIP DETECTED - Extracing packet...");
                         try {
-                            assembled = Buffer.from(Bzip2.decompressFile(assembled));
+                            assembled = Bzip2.decode(assembled);
                         } catch(e) {
                             throw new Error('Invalid bzip packet');
                         }
