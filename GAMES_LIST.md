@@ -142,6 +142,7 @@
 | `kingpin`                             | Kingpin: Life of Crime (1999)                           |                                             |
 | `kisspc`                              | Kiss: Psycho Circus: The Nightmare Child (2000)         |                                             |
 | `kzmod`                               | Kreedz Climbing (2017)                                  | [Valve Protocol](#valve)                    |
+| `lastoasis`                           | Last Oasis (2020)                                       | [Valve Protocol](#valve)                    |
 | `left4dead`                           | Left 4 Dead (2008)                                      | [Valve Protocol](#valve)                    |
 | `left4dead2`                          | Left 4 Dead 2 (2009)                                    | [Valve Protocol](#valve)                    |
 | `m2mp`                                | Mafia II - Multiplayer (2010)                           |                                             |

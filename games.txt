@@ -158,6 +158,7 @@ kingpin|Kingpin: Life of Crime (1999)|gamespy1|port=31510,port_query_offset=-10
 kisspc|Kiss: Psycho Circus: The Nightmare Child (2000)|gamespy1|port=7777,port_query_offset=1
 kspdmp|Kerbal Space Program - DMP Multiplayer (2015)|kspdmp|port=6702,port_query_offset=1
 kzmod|Kreedz Climbing (2017)|valve|port=27015
+lastoasis|Last Oasis (2020|valve|port=27015
 left4dead|Left 4 Dead (2008)|valve|port=27015
 left4dead2|Left 4 Dead 2 (2009)|valve|port=27015
 m2mp|Mafia II - Multiplayer (2010)|mafia2mp|port=27016,port_query_offset=1
