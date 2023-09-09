@@ -1,7 +1,7 @@
 
 ### To Be Released...
 * Replace `compressjs` dependency by `seek-bzip` to solve some possible import issues.
-* Sons Of The Forest - Added support
+* Sons Of The Forest (2023) - Added support
 * Red Dead Redemption 2 - RedM (2018) - Added support
 * Creativerse (2017) - Added support
 
