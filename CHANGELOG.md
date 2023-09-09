@@ -4,6 +4,7 @@
 * Sons Of The Forest (2023) - Added support
 * Red Dead Redemption 2 - RedM (2018) - Added support
 * Creativerse (2017) - Added support
+* The Isle (2015) - Added support
 
 ### 4.0.7
 * Updated some dependencies to solve vulnerabilities
