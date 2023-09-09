@@ -133,6 +133,7 @@
 | `insurgency`                          | Insurgency (2014)                                       | [Valve Protocol](#valve)                    |
 | `insurgencysandstorm`                 | Insurgency: Sandstorm (2018)                            | [Valve Protocol](#valve)                    |
 | `ironstorm`                           | Iron Storm (2002)                                       |                                             |
+| `isle`                                | The Isle (2015)                                         | [Valve Protocol](#valve)                    |
 | `jamesbondnightfire`                  | James Bond 007: Nightfire (2002)                        |                                             |
 | `jc2mp`                               | Just Cause 2 - Multiplayer (2010)                       |                                             |
 | `jc3mp`                               | Just Cause 3 - Multiplayer (2017)                       | [Valve Protocol](#valve)                    |
