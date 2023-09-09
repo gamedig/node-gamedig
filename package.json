@@ -1,7 +1,7 @@
 {
     "name": "gamedig",
     "description": "Query for the status of any game server in Node.JS",
-    "tags": [
+    "keywords": [
         "srcds",
         "query",
         "game",
@@ -9,8 +9,6 @@
         "util",
         "server",
         "gameserver",
-        "node",
-        "nodejs",
         "game-server-query",
         "game server query",
         "server query",
@@ -24,7 +22,7 @@
     ],
     "main": "lib/index.js",
     "author": "GameDig Contributors",
-    "version": "4.0.7",
+    "version": "4.1.0",
     "repository": {
         "type": "git",
         "url": "https://github.com/gamedig/node-gamedig.git"
@@ -56,6 +54,7 @@
         "protocols/",
         "games.txt",
         "LICENSE",
+        "GAMES_LIST.md",
         "README.md"
     ],
     "devDependencies": {
