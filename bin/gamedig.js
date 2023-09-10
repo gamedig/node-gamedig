@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-const Minimist = require('minimist'),
-    Gamedig = require('..');
+const Minimist = require('minimist');
+const GameDig = require('..');
 
 const argv = Minimist(process.argv.slice(2), {
     boolean: ['pretty','debug','givenPortOnly','requestRules'],
@@ -15,14 +15,13 @@ delete argv.pretty;
 const givenPortOnly = argv.givenPortOnly;
 delete argv.givenPortOnly;
 
-const options = {};
+let options = {};
 for(const key of Object.keys(argv)) {
     const value = argv[key];
-    if(
-        key === '_'
-        || key.charAt(0) === '$'
-    )
+
+    if(key === '_' || key.charAt(0) === '$')
         continue;
+
     options[key] = value;
 }
 
@@ -41,15 +40,17 @@ if (givenPortOnly) {
     options.givenPortOnly = true;
 }
 
-const gamedig = new Gamedig(options);
+const printOnPretty = (object) => {
+    if(pretty) {
+        console.log(JSON.stringify(object,null,'  '));
+    } else {
+        console.log(JSON.stringify(object));
+    }
+}
+
+const gamedig = new GameDig(options);
 gamedig.query(options)
-    .then((state) => {
-        if(pretty) {
-            console.log(JSON.stringify(state,null,'  '));
-        } else {
-            console.log(JSON.stringify(state));
-        }
-    })
+    .then(printOnPretty)
     .catch((error) => {
         if (debug) {
             if (error instanceof Error) {
@@ -61,10 +62,7 @@ gamedig.query(options)
             if (error instanceof Error) {
                 error = error.message;
             }
-            if (pretty) {
-                console.log(JSON.stringify({error: error}, null, '  '));
-            } else {
-                console.log(JSON.stringify({error: error}));
-            }
+
+            printOnPretty({error: error});
         }
     });
