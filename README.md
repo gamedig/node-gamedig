@@ -16,8 +16,8 @@ npm install gamedig
 ```
 
 ```javascript
-const Gamedig = require('gamedig');
-Gamedig.query({
+const GameDig = require('gamedig');
+GameDig.query({
     type: 'minecraft',
     host: 'mc.example.com'
 }).then((state) => {
@@ -128,7 +128,7 @@ In some very rare scenarios, you may need to bind / listen on a fixed local UDP 
 some extremely strict firewalls, or within a docker container (where you only wish to forward a single UDP port).  
 To use a fixed listen udp port, construct a new Gamedig object like this:
 ```
-const gamedig = new Gamedig({
+const gamedig = new GameDig({
     listenUdpPort: 13337
 });
 gamedig.query(...)
