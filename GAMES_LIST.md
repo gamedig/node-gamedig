@@ -64,7 +64,7 @@
 | `contactjack`                         | Contract J.A.C.K. (2003)                                |                                             |
 | `cs15`                                | Counter-Strike 1.5 (2002)                               |                                             |
 | `cs16`                                | Counter-Strike 1.6 (2003)                               | [Valve Protocol](#valve)                    |
-| `cs2d`                                | CS2D (2004)                               |                                             |
+| `cs2d`                                | CS2D (2004)                                             |                                             |
 | `cscz`                                | Counter-Strike: Condition Zero (2004)                   | [Valve Protocol](#valve)                    |
 | `csgo`                                | Counter-Strike: Global Offensive (2012)                 | [Notes](#csgo), [Valve Protocol](#valve)    |
 | `css`                                 | Counter-Strike: Source (2004)                           | [Valve Protocol](#valve)                    |
