@@ -64,9 +64,9 @@ function splitFields(str,subMode) {
     }
     for (const one of split) {
         const equal = one.indexOf(splitter);
-        const key = equal === -1 ? one : one.substr(0,equal);
+        const key = equal === -1 ? one : one.substring(0,equal);
         if(!key || key === '\0') continue;
-        const value = equal === -1 ? '' : one.substr(equal+splitter.length);
+        const value = equal === -1 ? '' : one.substring(equal+splitter.length);
         if(!subMode && key === 'CHANNEL') out.CHANNELS.push(splitFields(value,true));
         else if(!subMode && key === 'CLIENT') out.CLIENTS.push(splitFields(value,true));
         else out[key] = value;

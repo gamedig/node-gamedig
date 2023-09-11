@@ -53,8 +53,8 @@ class Teamspeak3 extends Core {
                 const unit = {};
                 for (const field of split) {
                     const equals = field.indexOf('=');
-                    const key = equals === -1 ? field : field.substr(0,equals);
-                    const value = equals === -1 ? '' : field.substr(equals+1)
+                    const key = equals === -1 ? field : field.substring(0, equals);
+                    const value = equals === -1 ? '' : field.substring(equals + 1)
                         .replace(/\\s/g,' ').replace(/\\\//g,'/');
                     unit[key] = value;
                 }

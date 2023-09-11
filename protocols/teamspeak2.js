@@ -14,8 +14,8 @@ class Teamspeak2 extends Core {
                 const data = await this.sendCommand(socket, 'si');
                 for (const line of data.split('\r\n')) {
                     const equals = line.indexOf('=');
-                    const key = equals === -1 ? line : line.substr(0,equals);
-                    const value = equals === -1 ? '' : line.substr(equals+1);
+                    const key = equals === -1 ? line : line.substring(0,equals);
+                    const value = equals === -1 ? '' : line.substring(equals+1);
                     state.raw[key] = value;
                 }
             }
