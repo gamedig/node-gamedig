@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core';
 
-class Rfactor extends Core {
+export class Rfactor extends Core {
     constructor() {
         super();
         //this.byteorder = 'be';
@@ -72,5 +72,3 @@ class Rfactor extends Core {
         return this.reader(consumed).string();
     }
 }
-
-module.exports = Rfactor;

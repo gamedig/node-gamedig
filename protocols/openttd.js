@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core';
 
-class OpenTtd extends Core {
+export class OpenTtd extends Core {
     async run(state) {
         {
             const [reader, version] = await this.query(0, 1, 1, 4);
@@ -125,5 +125,3 @@ class OpenTtd extends Core {
         return arr[num];
     }
 }
-
-module.exports = OpenTtd;

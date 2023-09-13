@@ -1,4 +1,4 @@
-const Core = require('./core');
+import Core from './core';
 
 const stringKeys = new Set([
     'website',
@@ -29,7 +29,7 @@ function normalizeEntry([key,value]) {
     return [key,value];
 }
 
-class Gamespy1 extends Core {
+export class Gamespy1 extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';
@@ -177,5 +177,3 @@ class Gamespy1 extends Core {
         });
     }
 }
-
-module.exports = Gamespy1;

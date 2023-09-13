@@ -1,6 +1,6 @@
-const Samp = require('./samp');
+import Samp from './samp';
 
-class Vcmp extends Samp {
+export class Vcmp extends Samp {
     constructor() {
         super();
         this.magicHeader = 'VCMP';
@@ -8,5 +8,3 @@ class Vcmp extends Samp {
         this.isVcmp = true;
     }
 }
-
-module.exports = Vcmp;

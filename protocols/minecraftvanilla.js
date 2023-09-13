@@ -1,7 +1,7 @@
-const Core = require('./core'),
-    Varint = require('varint');
+import Core from './core';
+import Varint from "varint";
 
-class MinecraftVanilla extends Core {
+export class MinecraftVanilla extends Core {
     async run(state) {
         const portBuf = Buffer.alloc(2);
         portBuf.writeUInt16BE(this.options.port,0);
@@ -78,5 +78,3 @@ class MinecraftVanilla extends Core {
         ]);
     }
 }
-
-module.exports = MinecraftVanilla;

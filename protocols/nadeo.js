@@ -1,6 +1,6 @@
-const gbxremote = require('gbxremote'),
-    Core = require('./core'),
-    Promises = require('../lib/Promises');
+import Core from './core';
+import { Promises} from "../lib/Promises";
+import * as gbxremote from 'gbxremote';
 
 class Nadeo extends Core {
     async run(state) {

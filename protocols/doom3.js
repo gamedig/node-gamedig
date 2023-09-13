@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core';
 
-class Doom3 extends Core {
+export class Doom3 extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';
@@ -147,5 +147,3 @@ class Doom3 extends Core {
         return str.replace(/\^(X.{6}|.)/g,'');
     }
 }
-
-module.exports = Doom3;

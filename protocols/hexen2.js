@@ -1,6 +1,6 @@
-const Quake1 = require('./quake1');
+import Quake1 from './quake1';
 
-class Hexen2 extends Quake1 {
+export class Hexen2 extends Quake1 {
     constructor() {
         super();
         this.sendHeader = '\xFFstatus\x0a';
@@ -11,5 +11,3 @@ class Hexen2 extends Quake1 {
         state.gamePort = this.options.port - 50;
     }
 }
-
-module.exports = Hexen2;

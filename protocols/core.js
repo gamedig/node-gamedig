@@ -352,5 +352,3 @@ class Core extends EventEmitter {
         this.logger.debug(...args);
     }
 }
-
-module.exports = Core;

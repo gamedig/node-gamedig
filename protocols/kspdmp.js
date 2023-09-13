@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core';
 
-class Kspdmp extends Core {
+export class Kspdmp extends Core {
     async run(state) {
         const json = await this.request({
             url: 'http://'+this.options.address+':'+this.options.port,
@@ -25,5 +25,3 @@ class Kspdmp extends Core {
         }
     }
 }
-
-module.exports = Kspdmp;

@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core';
 
-class Savage2 extends Core {
+export class Savage2 extends Core {
     constructor() {
         super();
     }
@@ -27,5 +27,3 @@ class Savage2 extends Core {
         return str.replace(/\^./g,'');
     }
 }
-
-module.exports = Savage2;

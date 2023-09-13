@@ -1,7 +1,7 @@
-const Bzip2 = require('seek-bzip');
-const Core = require('./core');
-const Results = require('../lib/Results');
-const Reader = require('../lib/reader');
+import Bzip2 from 'seek-bzip';
+import Core from './core';
+import {Results} from "../lib/Results";
+import {Reader} from '../lib/reader'
 
 const AppId = {
     Squad: 393380,
@@ -16,7 +16,7 @@ const AppId = {
     Source_SDK_Base_2006: 215
 };
 
-class Valve extends Core {
+export class Valve extends Core {
     constructor() {
         super();
 
@@ -606,5 +606,3 @@ class Valve extends Core {
         );
     }
 }
-
-module.exports = Valve;

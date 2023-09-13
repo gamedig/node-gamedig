@@ -1,6 +1,6 @@
-const Valve = require('./valve');
+import Valve from './valve';
 
-class Ffow extends Valve {
+export class Ffow extends Valve {
     constructor() {
         super();
         this.byteorder = 'be';
@@ -35,5 +35,3 @@ class Ffow extends Valve {
         state.raw.timeleft = reader.uint(2);
     }
 }
-
-module.exports = Ffow;

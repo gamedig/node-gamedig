@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core';
 
-class Cs2d extends Core {
+export class Cs2d extends Core {
     async run(state) {
         {
             const reader = await this.sendQuery(
@@ -69,5 +69,3 @@ class Cs2d extends Core {
         return reader.pascalString(1);
     }
 }
-
-module.exports = Cs2d;

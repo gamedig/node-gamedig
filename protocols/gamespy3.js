@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core';
 
-class Gamespy3 extends Core {
+export class Gamespy3 extends Core {
     constructor() {
         super();
         this.sessionId = 1;
@@ -194,5 +194,3 @@ class Gamespy3 extends Core {
         });
     }
 }
-
-module.exports = Gamespy3;

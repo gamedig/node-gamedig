@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core';
 
-class AssettoCorsa extends Core {
+export class AssettoCorsa extends Core {
     async run(state) {
         const serverInfo = await this.request({
             url: `http://${this.options.address}:${this.options.port}/INFO`,
@@ -36,5 +36,3 @@ class AssettoCorsa extends Core {
         }
     }
 }
-
-module.exports = AssettoCorsa;

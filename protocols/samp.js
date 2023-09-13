@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core';
 
-class Samp extends Core {
+export class Samp extends Core {
     constructor() {
         super();
         this.encoding = 'win1252';
@@ -105,5 +105,3 @@ class Samp extends Core {
         );
     }
 }
-
-module.exports = Samp;

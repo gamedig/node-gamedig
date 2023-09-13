@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core';
 
-class Unreal2 extends Core {
+export class Unreal2 extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';
@@ -148,5 +148,3 @@ class Unreal2 extends Core {
         });
     }
 }
-
-module.exports = Unreal2;

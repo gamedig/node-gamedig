@@ -1,8 +1,8 @@
-const Core = require('./core');
+import Core from './core';
 
 /** Unsupported -- use at your own risk!! */
 
-class Tribes1Master extends Core {
+export class Tribes1Master extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';
@@ -77,5 +77,3 @@ class Tribes1Master extends Core {
         return reader.pascalString(1);
     }
 }
-
-module.exports = Tribes1Master;

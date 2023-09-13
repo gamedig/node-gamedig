@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core';
 
-class Teamspeak2 extends Core {
+export class Teamspeak2 extends Core {
     async run(state) {
         const queryPort = this.options.teamspeakQueryPort || 51234;
 
@@ -68,5 +68,3 @@ class Teamspeak2 extends Core {
         });
     }
 }
-
-module.exports = Teamspeak2;

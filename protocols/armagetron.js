@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core';
 
-class Armagetron extends Core {
+export class Armagetron extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';
@@ -61,5 +61,3 @@ class Armagetron extends Core {
         return str.replace(/0x[0-9a-f]{6}/g,'');
     }
 }
-
-module.exports = Armagetron;

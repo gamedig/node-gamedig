@@ -1,4 +1,4 @@
-const Mafia2Multiplayer = require('./mafia2mp');
+import Mafia2Multiplayer from './mafia2mp';
 
 class Mafia2Online extends Mafia2Multiplayer {
     constructor() {

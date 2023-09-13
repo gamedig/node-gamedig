@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core';
 
-class Battlefield extends Core {
+export class Battlefield extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';
@@ -159,5 +159,3 @@ class Battlefield extends Core {
         return params;
     }
 }
-
-module.exports = Battlefield;

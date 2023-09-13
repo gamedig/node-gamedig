@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core';
 
-class Mafia2Multiplayer extends Core {
+export class Mafia2Multiplayer extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';
@@ -39,5 +39,3 @@ class Mafia2Multiplayer extends Core {
         return reader.pascalString(1,-1);
     }
 }
-
-module.exports = Mafia2Multiplayer;
