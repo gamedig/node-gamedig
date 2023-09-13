@@ -133,7 +133,7 @@ class Tribes1 extends Core {
         if (!str) return [];
         return ('?'+str)
             .split('\t')
-            .map((a) => a.substr(1).trim().toLowerCase())
+            .map((a) => a.substring(1).trim().toLowerCase())
             .map((a) => a === 'team name' ? 'name' : a)
             .map((a) => a === 'player name' ? 'name' : a);
     }

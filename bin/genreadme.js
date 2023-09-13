@@ -16,5 +16,5 @@ let start = readme.indexOf(marker_top);
 start += marker_top.length;
 const end = readme.indexOf(marker_bottom);
 
-const updated = readme.substr(0,start)+"\n\n"+generated+"\n"+readme.substr(end);
+const updated = readme.substring(0,start)+"\n\n"+generated+"\n"+readme.substring(end);
 fs.writeFileSync(readmeFilename, updated);
