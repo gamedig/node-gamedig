@@ -1,6 +1,6 @@
 
 ### To Be Released...
-* (changelog)
+* Replaced usage of deprecated `substr` with `substring`.
 
 ### 4.1.0
 * Replace `compressjs` dependency by `seek-bzip` to solve some possible import issues.

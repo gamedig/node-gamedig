@@ -349,7 +349,7 @@
 
 > Don't see your game listed here?
 >
-> First, let us know so we can fix it. Then, you can try using some common query
+> First, let us know, so we can fix it. Then, you can try using some common query
 > protocols directly by using one of these server types:
 > * protocol-ase
 > * protocol-battlefield
