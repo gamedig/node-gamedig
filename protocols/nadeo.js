@@ -2,7 +2,7 @@ import Core from './core';
 import { Promises} from "../lib/Promises";
 import * as gbxremote from 'gbxremote';
 
-class Nadeo extends Core {
+export class Nadeo extends Core {
     async run(state) {
         await this.withClient(async client => {
             const start = Date.now();
@@ -82,7 +82,4 @@ class Nadeo extends Core {
     stripColors(str) {
         return str.replace(/\$([0-9a-f]{3}|[a-z])/gi,'');
     }
-
 }
-
-module.exports = Nadeo;
