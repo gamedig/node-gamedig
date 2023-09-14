@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import Minimist from 'minimist';
-import GameDig from '..';
+import GameDig from './../lib/index.js';
 
 const argv = Minimist(process.argv.slice(2), {
     boolean: ['pretty','debug','givenPortOnly','requestRules'],
