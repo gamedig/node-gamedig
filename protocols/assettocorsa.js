@@ -1,6 +1,6 @@
 import Core from './core.js';
 
-export default class AssettoCorsa extends Core {
+export default class assettocorsa extends Core {
     async run(state) {
         const serverInfo = await this.request({
             url: `http://${this.options.address}:${this.options.port}/INFO`,

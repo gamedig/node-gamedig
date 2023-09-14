@@ -1,6 +1,6 @@
 import Core from './core.js';
 
-export default class Rfactor extends Core {
+export default class rfactor extends Core {
     constructor() {
         super();
         //this.byteorder = 'be';

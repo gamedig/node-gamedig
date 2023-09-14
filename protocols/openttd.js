@@ -1,6 +1,6 @@
 import Core from './core.js';
 
-export default class OpenTtd extends Core {
+export default class openttd extends Core {
     async run(state) {
         {
             const [reader, version] = await this.query(0, 1, 1, 4);

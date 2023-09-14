@@ -2,7 +2,7 @@ import Core from './core.js';
 
 /** Unsupported -- use at your own risk!! */
 
-export default class Tribes1Master extends Core {
+export default class tribes1master extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';

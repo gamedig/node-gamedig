@@ -1,6 +1,6 @@
 import Core from './core.js';
 
-export default class MumblePing extends Core {
+export default class mumbleping extends Core {
     constructor() {
         super();
         this.byteorder = 'be';

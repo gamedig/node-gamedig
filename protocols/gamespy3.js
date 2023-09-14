@@ -1,6 +1,6 @@
 import Core from './core.js';
 
-export default class Gamespy3 extends Core {
+export default class gamespy3 extends Core {
     constructor() {
         super();
         this.sessionId = 1;

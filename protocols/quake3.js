@@ -1,6 +1,6 @@
-import Quake2 from './quake2.js';
+import quake2 from './quake2.js';
 
-export default class Quake3 extends Quake2 {
+export default class quake3 extends quake2 {
     constructor() {
         super();
         this.sendHeader = 'getstatus';

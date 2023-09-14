@@ -1,6 +1,6 @@
 import Core from './core.js';
 
-export default class Unreal2 extends Core {
+export default class unreal2 extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';

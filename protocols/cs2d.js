@@ -1,6 +1,6 @@
 import Core from './core.js';
 
-export default class Cs2d extends Core {
+export default class cs2d extends Core {
     async run(state) {
         {
             const reader = await this.sendQuery(

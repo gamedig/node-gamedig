@@ -1,6 +1,6 @@
 import Core from './core.js';
 
-export default class GeneShift extends Core {
+export default class geneshift extends Core {
     async run(state) {
         await this.tcpPing();
 

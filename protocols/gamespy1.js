@@ -29,7 +29,7 @@ function normalizeEntry([key,value]) {
     return [key,value];
 }
 
-export default class Gamespy1 extends Core {
+export default class gamespy1 extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';

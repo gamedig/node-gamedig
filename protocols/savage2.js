@@ -1,6 +1,6 @@
 import Core from './core.js';
 
-export default class Savage2 extends Core {
+export default class savage2 extends Core {
     constructor() {
         super();
     }

@@ -1,6 +1,6 @@
-import Tribes1 from "./tribes1.js";
+import tribes1 from "./tribes1.js";
 
-export default class Starsiege extends Tribes1 {
+export default class starsiege extends tribes1 {
     constructor() {
         super();
         this.encoding = 'latin1';

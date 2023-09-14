@@ -1,6 +1,6 @@
-import Valve from './valve.js';
+import valve from './valve.js';
 
-export default class GoldSrc extends Valve {
+export default class goldsrc extends valve {
     constructor() {
         super();
         this.goldsrcInfo = true;

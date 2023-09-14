@@ -1,6 +1,6 @@
 import Core from './core.js';
 
-export default class Tribes1 extends Core {
+export default class tribes1 extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';

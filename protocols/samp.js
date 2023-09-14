@@ -1,6 +1,6 @@
 import Core from './core.js';
 
-export default class Samp extends Core {
+export default class samp extends Core {
     constructor() {
         super();
         this.encoding = 'win1252';

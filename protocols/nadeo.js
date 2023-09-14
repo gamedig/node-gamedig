@@ -2,7 +2,7 @@ import Core from './core.js';
 import { Promises} from "../lib/Promises.js";
 import * as gbxremote from 'gbxremote';
 
-export default class Nadeo extends Core {
+export default class nadeo extends Core {
     async run(state) {
         await this.withClient(async client => {
             const start = Date.now();

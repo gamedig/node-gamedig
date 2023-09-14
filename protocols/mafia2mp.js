@@ -1,6 +1,6 @@
 import Core from './core.js';
 
-export default class Mafia2Multiplayer extends Core {
+export default class mafia2mp extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';

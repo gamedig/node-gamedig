@@ -1,6 +1,6 @@
-import Valve from './valve.js';
+import valve from './valve.js';
 
-export default class Ffow extends Valve {
+export default class ffow extends valve {
     constructor() {
         super();
         this.byteorder = 'be';

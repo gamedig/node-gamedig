@@ -1,6 +1,6 @@
 import Core from './core.js';
 
-export default class Battlefield extends Core {
+export default class battlefield extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';

@@ -1,6 +1,6 @@
 import Core from './core.js';
 
-export default class Teamspeak3 extends Core {
+export default class teamspeak3 extends Core {
     async run(state) {
         const queryPort = this.options.teamspeakQueryPort || 10011;
 

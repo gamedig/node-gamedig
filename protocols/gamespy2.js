@@ -1,6 +1,6 @@
 import Core from './core.js';
 
-export default class Gamespy2 extends Core {
+export default class gamespy2 extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';
