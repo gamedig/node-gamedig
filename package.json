@@ -33,7 +33,7 @@
     },
     "license": "MIT",
     "engines": {
-        "node": ">=14.0.0"
+        "node": ">=14.17.0"
     },
     "dependencies": {
         "cheerio": "^1.0.0-rc.10",

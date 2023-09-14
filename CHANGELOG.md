@@ -1,5 +1,9 @@
 
 ### To Be Released...
+#### Breaking Changes
+* NodeJS 14.17 is now required (from 14).
+
+#### Other changes
 * Replaced usage of deprecated `substr` with `substring`.
 * Moved the library a `module`.
 * CLI: Resolved incorrect error message when querying with a non-existent protocol name.
