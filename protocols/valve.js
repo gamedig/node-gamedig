@@ -1,7 +1,5 @@
 import Bzip2 from 'seek-bzip';
 import Core from './core.js';
-import {Results} from "../lib/Results.js";
-import Reader from '../lib/reader.js'
 
 const AppId = {
     Squad: 393380,
