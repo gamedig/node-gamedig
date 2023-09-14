@@ -42,7 +42,7 @@
         "iconv-lite": "^0.6.3",
         "long": "^5.2.0",
         "minimist": "^1.2.6",
-        "punycode": "^2.1.1",
+        "punycode": "^2.3.0",
         "seek-bzip": "^2.0.0",
         "varint": "^6.0.0"
     },
