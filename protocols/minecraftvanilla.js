@@ -1,4 +1,4 @@
-import Core from './core';
+import Core from './core.js';
 import Varint from "varint";
 
 export default class MinecraftVanilla extends Core {

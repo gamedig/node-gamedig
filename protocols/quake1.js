@@ -1,4 +1,4 @@
-import Quake2 from './quake2';
+import Quake2 from './quake2.js';
 
 export default class Quake1 extends Quake2 {
     constructor() {

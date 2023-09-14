@@ -1,4 +1,4 @@
-import Valve from './valve';
+import Valve from './valve.js';
 
 export default class Ffow extends Valve {
     constructor() {

@@ -1,4 +1,4 @@
-import Core from './core';
+import Core from './core.js';
 
 export default class Kspdmp extends Core {
     async run(state) {

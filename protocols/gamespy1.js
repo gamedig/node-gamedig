@@ -1,4 +1,4 @@
-import Core from './core';
+import Core from './core.js';
 
 const stringKeys = new Set([
     'website',

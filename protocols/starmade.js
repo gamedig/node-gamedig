@@ -1,4 +1,4 @@
-import Core from './core';
+import Core from './core.js';
 
 export default class Starmade extends Core {
     constructor() {

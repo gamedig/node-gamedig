@@ -1,8 +1,8 @@
-import Core from './core';
-import MinecraftBedrock from "./minecraftbedrock";
-import MinecraftVanilla from "./minecraftvanilla";
-import Gamespy3 from "./gamespy3";
-import {Results} from "../lib/Results";
+import Core from './core.js';
+import MinecraftBedrock from "./minecraftbedrock.js";
+import MinecraftVanilla from "./minecraftvanilla.js";
+import Gamespy3 from "./gamespy3.js";
+import {Results} from "../lib/Results.js";
 
 /*
 Vanilla servers respond to minecraftvanilla only

@@ -1,4 +1,4 @@
-import Samp from './samp';
+import Samp from './samp.js';
 
 export default class Vcmp extends Samp {
     constructor() {

@@ -1,4 +1,4 @@
-import Core from './core';
+import Core from './core.js';
 import * as cheerio from "cheerio";
 
 export default class BuildAndShoot extends Core {

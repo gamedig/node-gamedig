@@ -1,4 +1,4 @@
-import Quake3 from './quake3';
+import Quake3 from './quake3.js';
 
 export default class Warsow extends Quake3 {
     async run(state) {

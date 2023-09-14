@@ -1,4 +1,4 @@
-import Mafia2Multiplayer from './mafia2mp';
+import Mafia2Multiplayer from './mafia2mp.js';
 
 export default class Mafia2Online extends Mafia2Multiplayer {
     constructor() {

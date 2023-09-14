@@ -1,4 +1,4 @@
-import Core from './core';
+import Core from './core.js';
 
 /** Unsupported -- use at your own risk!! */
 

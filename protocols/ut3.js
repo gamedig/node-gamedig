@@ -1,4 +1,4 @@
-import Gamespy3 from './gamespy3';
+import Gamespy3 from './gamespy3.js';
 
 export default class Ut3 extends Gamespy3 {
     async run(state) {

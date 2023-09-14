@@ -1,4 +1,4 @@
-import Gamespy3 from './gamespy3';
+import Gamespy3 from './gamespy3.js';
 
 // supposedly, gamespy3 is the "official" query protocol for jcmp,
 // but it's broken (requires useOnlySingleSplit), and may not include some player names

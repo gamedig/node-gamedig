@@ -1,4 +1,4 @@
-import Core from './core';
+import Core from './core.js';
 
 export default class Teamspeak2 extends Core {
     async run(state) {

@@ -1,4 +1,4 @@
-import {Tribes1} from "./tribes1";
+import Tribes1 from "./tribes1.js";
 
 export default class Starsiege extends Tribes1 {
     constructor() {
