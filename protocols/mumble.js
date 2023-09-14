@@ -1,6 +1,6 @@
 import Core from './core';
 
-export class Mumble extends Core {
+export default class Mumble extends Core {
     async run(state) {
         const json = await this.withTcp(async socket => {
             return await this.tcpSend(socket, 'json', (buffer) => {

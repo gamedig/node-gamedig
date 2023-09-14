@@ -1,7 +1,7 @@
 import Core from './core';
 import * as cheerio from "cheerio";
 
-export class BuildAndShoot extends Core {
+export default class BuildAndShoot extends Core {
     async run(state) {
         const body = await this.request({
             url: 'http://'+this.options.address+':'+this.options.port+'/',

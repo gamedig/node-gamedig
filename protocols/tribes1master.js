@@ -2,7 +2,7 @@ import Core from './core';
 
 /** Unsupported -- use at your own risk!! */
 
-export class Tribes1Master extends Core {
+export default class Tribes1Master extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';

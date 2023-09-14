@@ -1,6 +1,6 @@
 import {Tribes1} from "./tribes1";
 
-export class Starsiege extends Tribes1 {
+export default class Starsiege extends Tribes1 {
     constructor() {
         super();
         this.encoding = 'latin1';

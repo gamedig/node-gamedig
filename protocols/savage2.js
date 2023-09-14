@@ -1,6 +1,6 @@
 import Core from './core';
 
-export class Savage2 extends Core {
+export default class Savage2 extends Core {
     constructor() {
         super();
     }

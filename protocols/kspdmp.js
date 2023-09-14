@@ -1,6 +1,6 @@
 import Core from './core';
 
-export class Kspdmp extends Core {
+export default class Kspdmp extends Core {
     async run(state) {
         const json = await this.request({
             url: 'http://'+this.options.address+':'+this.options.port,

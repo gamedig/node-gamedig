@@ -1,6 +1,6 @@
 import Core from './core';
 
-export class Samp extends Core {
+export default class Samp extends Core {
     constructor() {
         super();
         this.encoding = 'win1252';

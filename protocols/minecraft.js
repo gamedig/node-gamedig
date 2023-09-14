@@ -12,7 +12,7 @@ Some bedrock servers respond to minecraftbedrock only
 Unsure if any bedrock servers respond to gamespy3 and minecraftbedrock
  */
 
-export class Minecraft extends Core {
+export default class Minecraft extends Core {
     constructor() {
         super();
         this.srvRecord = "_minecraft._tcp";

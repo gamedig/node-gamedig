@@ -1,6 +1,6 @@
 import Quake2 from './quake2';
 
-export class FiveM extends Quake2 {
+export default class FiveM extends Quake2 {
     constructor() {
         super();
         this.sendHeader = 'getinfo xxx';

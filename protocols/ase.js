@@ -1,6 +1,6 @@
 import Core from './core';
 
-export class Ase extends Core {
+export default class Ase extends Core {
     async run(state) {
         const buffer = await this.udpSend('s',(buffer) => {
             const reader = this.reader(buffer);

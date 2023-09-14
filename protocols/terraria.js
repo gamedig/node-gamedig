@@ -1,6 +1,6 @@
 import Core from './core';
 
-export class Terraria extends Core {
+export default class Terraria extends Core {
     async run(state) {
         const json = await this.request({
             url: 'http://'+this.options.address+':'+this.options.port+'/v2/server/status',

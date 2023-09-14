@@ -1,6 +1,6 @@
 import Gamespy3 from './gamespy3';
 
-export class Ut3 extends Gamespy3 {
+export default class Ut3 extends Gamespy3 {
     async run(state) {
         await super.run(state);
 

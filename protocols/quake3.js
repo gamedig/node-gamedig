@@ -1,6 +1,6 @@
 import Quake2 from './quake2';
 
-export class Quake3 extends Quake2 {
+export default class Quake3 extends Quake2 {
     constructor() {
         super();
         this.sendHeader = 'getstatus';

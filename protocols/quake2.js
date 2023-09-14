@@ -1,6 +1,6 @@
 import Core from './core';
 
-export class Quake2 extends Core {
+export default class Quake2 extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';

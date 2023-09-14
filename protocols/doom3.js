@@ -1,6 +1,6 @@
 import Core from './core';
 
-export class Doom3 extends Core {
+export default class Doom3 extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';

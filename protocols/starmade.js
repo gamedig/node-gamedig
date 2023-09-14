@@ -1,6 +1,6 @@
 import Core from './core';
 
-export class Starmade extends Core {
+export default class Starmade extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';

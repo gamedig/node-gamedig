@@ -1,7 +1,7 @@
 import Core from './core';
 import Varint from "varint";
 
-export class MinecraftVanilla extends Core {
+export default class MinecraftVanilla extends Core {
     async run(state) {
         const portBuf = Buffer.alloc(2);
         portBuf.writeUInt16BE(this.options.port,0);

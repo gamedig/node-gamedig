@@ -1,6 +1,6 @@
 import Core from './core';
 
-export class Ventrilo extends Core {
+export default class Ventrilo extends Core {
     constructor() {
         super();
         this.byteorder = 'be';

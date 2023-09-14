@@ -16,7 +16,7 @@ const AppId = {
     Source_SDK_Base_2006: 215
 };
 
-export class Valve extends Core {
+export default class Valve extends Core {
     constructor() {
         super();
 

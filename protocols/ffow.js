@@ -1,6 +1,6 @@
 import Valve from './valve';
 
-export class Ffow extends Valve {
+export default class Ffow extends Valve {
     constructor() {
         super();
         this.byteorder = 'be';

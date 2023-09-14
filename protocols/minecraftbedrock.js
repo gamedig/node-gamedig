@@ -1,6 +1,6 @@
 import Core from './core';
 
-export class MinecraftBedrock extends Core {
+export default class MinecraftBedrock extends Core {
     constructor() {
         super();
         this.byteorder = 'be';

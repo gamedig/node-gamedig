@@ -1,6 +1,6 @@
 import Core from './core';
 
-export class Discord extends Core {
+export default class Discord extends Core {
     async run(state) {
         const guildId = this.options.guildId;
         if (typeof guildId !== 'string') {

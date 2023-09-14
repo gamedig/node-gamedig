@@ -9,7 +9,7 @@ const Results = require('../lib/Results');
 
 let uid = 0;
 
-class Core extends EventEmitter {
+export default class Core extends EventEmitter {
     constructor() {
         super();
         this.encoding = 'utf8';

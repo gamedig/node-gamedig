@@ -1,6 +1,6 @@
 import Core from './core';
 
-export class AssettoCorsa extends Core {
+export default class AssettoCorsa extends Core {
     async run(state) {
         const serverInfo = await this.request({
             url: `http://${this.options.address}:${this.options.port}/INFO`,
@@ -14,7 +14,7 @@ export class AssettoCorsa extends Core {
         if (!serverInfo || !carInfo || !carInfo.Cars) {
             throw new Error('Query not successful');
         }
-        
+
         state.maxplayers = serverInfo.maxclients;
         state.name = serverInfo.name;
         state.map = serverInfo.track;

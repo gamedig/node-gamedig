@@ -1,6 +1,6 @@
 import Core from './core';
 
-export class MumblePing extends Core {
+export default class MumblePing extends Core {
     constructor() {
         super();
         this.byteorder = 'be';

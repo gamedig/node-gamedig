@@ -1,6 +1,6 @@
 import Core from './core';
 
-export class Teamspeak2 extends Core {
+export default class Teamspeak2 extends Core {
     async run(state) {
         const queryPort = this.options.teamspeakQueryPort || 51234;
 

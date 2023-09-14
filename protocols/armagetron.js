@@ -1,6 +1,6 @@
 import Core from './core';
 
-export class Armagetron extends Core {
+export default class Armagetron extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';

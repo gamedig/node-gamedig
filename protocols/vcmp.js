@@ -1,6 +1,6 @@
 import Samp from './samp';
 
-export class Vcmp extends Samp {
+export default class Vcmp extends Samp {
     constructor() {
         super();
         this.magicHeader = 'VCMP';
