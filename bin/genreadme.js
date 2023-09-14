@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import * as fs from 'fs';
-import {GameResolver} from "../lib/GameResolver";
+import GameResolver from "../lib/GameResolver";
 
 const gameResolver = new GameResolver();
 
