@@ -1,7 +1,7 @@
 import Core from './core';
-import {MinecraftBedrock} from "./minecraftbedrock";
-import {MinecraftVanilla} from "./minecraftvanilla";
-import {Gamespy3} from "./gamespy3";
+import MinecraftBedrock from "./minecraftbedrock";
+import MinecraftVanilla from "./minecraftvanilla";
+import Gamespy3 from "./gamespy3";
 import {Results} from "../lib/Results";
 
 /*
