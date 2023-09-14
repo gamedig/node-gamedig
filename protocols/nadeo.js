@@ -1,5 +1,5 @@
 import Core from './core.js';
-import { Promises} from "../lib/Promises.js";
+import Promises from "../lib/Promises.js";
 import * as gbxremote from 'gbxremote';
 
 export default class nadeo extends Core {

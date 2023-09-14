@@ -5,7 +5,7 @@ import {debugDump} from '../lib/HexUtil.js';
 import Logger from "../lib/Logger.js";
 import DnsResolver from "../lib/DnsResolver.js";
 import {Results} from "../lib/Results.js";
-import {Promises} from "../lib/Promises.js";
+import Promises from "../lib/Promises.js";
 
 let uid = 0;
 
