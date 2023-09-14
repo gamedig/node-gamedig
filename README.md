@@ -11,13 +11,14 @@ Support is available on the [GameDig Discord](https://discord.gg/NVCMn3tnxH) (fo
 See the [GAMES_LIST.md](GAMES_LIST.md) file for the currently supported titles, not yet supported ones and notes about some of them.
 
 ## Usage from Node.js
-
+Install...
 ```shell
 npm install gamedig
 ```
+... then use!
+```js
+import GameDig from 'gamedig';
 
-```javascript
-const GameDig = require('gamedig');
 GameDig.query({
     type: 'minecraft',
     host: 'mc.example.com'
