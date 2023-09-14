@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core.js';
 
-class Mumble extends Core {
+export default class mumble extends Core {
     async run(state) {
         const json = await this.withTcp(async socket => {
             return await this.tcpSend(socket, 'json', (buffer) => {
@@ -37,5 +37,3 @@ class Mumble extends Core {
         return str.replace(/<.*>/g,'');
     }
 }
-
-module.exports = Mumble;

@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core.js';
 
-class MumblePing extends Core {
+export default class mumbleping extends Core {
     constructor() {
         super();
         this.byteorder = 'be';
@@ -22,5 +22,3 @@ class MumblePing extends Core {
         state.raw.allowedbandwidth = reader.uint(4);
     }
 }
-
-module.exports = MumblePing;

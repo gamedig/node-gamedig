@@ -1,10 +1,8 @@
-const Valve = require('./valve');
+import valve from './valve.js';
 
-class GoldSrc extends Valve {
+export default class goldsrc extends valve {
     constructor() {
         super();
         this.goldsrcInfo = true;
     }
 }
-
-module.exports = GoldSrc;

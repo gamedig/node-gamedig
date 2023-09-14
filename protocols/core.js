@@ -1,15 +1,15 @@
-const EventEmitter = require('events').EventEmitter;
-const net = require('net');
-const Reader = require('../lib/reader');
-const HexUtil = require('../lib/HexUtil');
-const Promises = require('../lib/Promises');
-const Logger = require('../lib/Logger');
-const DnsResolver = require('../lib/DnsResolver');
-const Results = require('../lib/Results');
+import {EventEmitter} from "events";
+import * as net from "net";
+import Reader from "../lib/reader.js";
+import {debugDump} from '../lib/HexUtil.js';
+import Logger from "../lib/Logger.js";
+import DnsResolver from "../lib/DnsResolver.js";
+import {Results} from "../lib/Results.js";
+import Promises from "../lib/Promises.js";
 
 let uid = 0;
 
-class Core extends EventEmitter {
+export default class Core extends EventEmitter {
     constructor() {
         super();
         this.encoding = 'utf8';
@@ -178,7 +178,7 @@ class Core extends EventEmitter {
                 const writeHook = socket.write;
                 socket.write = (...args) => {
                     log(address+':'+port+" TCP-->");
-                    log(HexUtil.debugDump(args[0]));
+                    log(debugDump(args[0]));
                     writeHook.apply(socket,args);
                 };
                 socket.on('error', e => log('TCP Error:', e));
@@ -352,5 +352,3 @@ class Core extends EventEmitter {
         this.logger.debug(...args);
     }
 }
-
-module.exports = Core;

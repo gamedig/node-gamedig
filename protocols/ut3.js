@@ -1,6 +1,6 @@
-const Gamespy3 = require('./gamespy3');
+import gamespy3 from './gamespy3.js';
 
-class Ut3 extends Gamespy3 {
+export default class ut3 extends gamespy3 {
     async run(state) {
         await super.run(state);
 
@@ -43,5 +43,3 @@ class Ut3 extends Gamespy3 {
         if('map' in state.raw) state.map = state.raw.map;
     }
 }
-
-module.exports = Ut3;

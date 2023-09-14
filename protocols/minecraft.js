@@ -1,8 +1,8 @@
-const Core = require('./core');
-const MinecraftVanilla = require('./minecraftvanilla');
-const MinecraftBedrock = require('./minecraftbedrock');
-const Gamespy3 = require('./gamespy3');
-const Results = require('../lib/Results');
+import Core from './core.js';
+import minecraftbedrock from "./minecraftbedrock.js";
+import minecraftvanilla from "./minecraftvanilla.js";
+import Gamespy3 from "./gamespy3.js";
+import {Results} from "../lib/Results.js";
 
 /*
 Vanilla servers respond to minecraftvanilla only
@@ -12,7 +12,7 @@ Some bedrock servers respond to minecraftbedrock only
 Unsure if any bedrock servers respond to gamespy3 and minecraftbedrock
  */
 
-class Minecraft extends Core {
+export default class minecraft extends Core {
     constructor() {
         super();
         this.srvRecord = "_minecraft._tcp";
@@ -21,7 +21,7 @@ class Minecraft extends Core {
         /** @type {Promise<Results>[]} */
         const promises = [];
 
-        const vanillaResolver = new MinecraftVanilla();
+        const vanillaResolver = new minecraftvanilla();
         vanillaResolver.options = this.options;
         vanillaResolver.udpSocket = this.udpSocket;
         promises.push((async () => {
@@ -38,7 +38,7 @@ class Minecraft extends Core {
             try { return await gamespyResolver.runOnceSafe(); } catch(e) {}
         })());
 
-        const bedrockResolver = new MinecraftBedrock();
+        const bedrockResolver = new minecraftbedrock();
         bedrockResolver.options = this.options;
         bedrockResolver.udpSocket = this.udpSocket;
         promises.push((async () => {
@@ -97,5 +97,3 @@ class Minecraft extends Core {
         state.name = state.name.replace(/\u00A7./g, '');
     }
 }
-
-module.exports = Minecraft;

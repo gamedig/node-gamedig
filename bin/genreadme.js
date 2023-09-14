@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
-const fs = require('fs'),
-    GameResolver = require('../lib/GameResolver'),
-    gameResolver = new GameResolver();
+import * as fs from 'fs';
+import GameResolver from "../lib/GameResolver";
+
+const gameResolver = new GameResolver();
 
 const generated = gameResolver.printReadme();
 

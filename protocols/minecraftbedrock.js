@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core.js';
 
-class MinecraftBedrock extends Core {
+export default class minecraftbedrock extends Core {
     constructor() {
         super();
         this.byteorder = 'be';
@@ -68,9 +68,5 @@ class MinecraftBedrock extends Core {
 
             return true;
         });
-
     }
-
 }
-
-module.exports = MinecraftBedrock;

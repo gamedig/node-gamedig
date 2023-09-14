@@ -1,6 +1,6 @@
-const Quake3 = require('./quake3');
+import quake3 from './quake3.js';
 
-class Warsow extends Quake3 {
+export default class warsow extends quake3 {
     async run(state) {
         await super.run(state);
         if(state.players) {
@@ -11,5 +11,3 @@ class Warsow extends Quake3 {
         }
     }
 }
-
-module.exports = Warsow;

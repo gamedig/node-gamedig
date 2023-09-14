@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core.js';
 
-class Gamespy2 extends Core {
+export default class gamespy2 extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';
@@ -138,5 +138,3 @@ class Gamespy2 extends Core {
         return units;
     }
 }
-
-module.exports = Gamespy2;

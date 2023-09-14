@@ -1,8 +1,8 @@
-const Gamespy3 = require('./gamespy3');
+import gamespy3 from './gamespy3.js';
 
 // supposedly, gamespy3 is the "official" query protocol for jcmp,
 // but it's broken (requires useOnlySingleSplit), and may not include some player names
-class Jc2mp extends Gamespy3 {
+export default class jc2mp extends gamespy3 {
     constructor() {
         super();
         this.useOnlySingleSplit = true;
@@ -16,5 +16,3 @@ class Jc2mp extends Gamespy3 {
         }
     }
 }
-
-module.exports = Jc2mp;

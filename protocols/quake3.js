@@ -1,6 +1,6 @@
-const Quake2 = require('./quake2');
+import quake2 from './quake2.js';
 
-class Quake3 extends Quake2 {
+export default class quake3 extends quake2 {
     constructor() {
         super();
         this.sendHeader = 'getstatus';
@@ -20,5 +20,3 @@ class Quake3 extends Quake2 {
         return str.replace(/\^(X.{6}|.)/g,'');
     }
 }
-
-module.exports = Quake3;

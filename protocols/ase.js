@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core.js';
 
-class Ase extends Core {
+export default class ase extends Core {
     async run(state) {
         const buffer = await this.udpSend('s',(buffer) => {
             const reader = this.reader(buffer);
@@ -43,5 +43,3 @@ class Ase extends Core {
         return reader.pascalString(1, -1);
     }
 }
-
-module.exports = Ase;

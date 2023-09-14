@@ -20,6 +20,7 @@
         "csgo",
         "minecraft"
     ],
+    "type": "module",
     "main": "lib/index.js",
     "author": "GameDig Contributors",
     "version": "4.1.0",

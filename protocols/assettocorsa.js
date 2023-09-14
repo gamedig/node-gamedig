@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core.js';
 
-class AssettoCorsa extends Core {
+export default class assettocorsa extends Core {
     async run(state) {
         const serverInfo = await this.request({
             url: `http://${this.options.address}:${this.options.port}/INFO`,
@@ -14,7 +14,7 @@ class AssettoCorsa extends Core {
         if (!serverInfo || !carInfo || !carInfo.Cars) {
             throw new Error('Query not successful');
         }
-        
+
         state.maxplayers = serverInfo.maxclients;
         state.name = serverInfo.name;
         state.map = serverInfo.track;
@@ -36,5 +36,3 @@ class AssettoCorsa extends Core {
         }
     }
 }
-
-module.exports = AssettoCorsa;

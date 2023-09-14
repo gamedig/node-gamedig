@@ -1,6 +1,6 @@
-const Quake2 = require('./quake2');
+import quake2 from './quake2.js';
 
-class FiveM extends Quake2 {
+export default class fivem extends quake2 {
     constructor() {
         super();
         this.sendHeader = 'getinfo xxx';
@@ -31,5 +31,3 @@ class FiveM extends Quake2 {
         }
     }
 }
-
-module.exports = FiveM;

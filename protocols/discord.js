@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core.js';
 
-class Discord extends Core {
+export default class discord extends Core {
     async run(state) {
         const guildId = this.options.guildId;
         if (typeof guildId !== 'string') {
@@ -27,5 +27,3 @@ class Discord extends Core {
         state.raw = json;
     }
 }
-
-module.exports = Discord;

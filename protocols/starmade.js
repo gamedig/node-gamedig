@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core.js';
 
-class Starmade extends Core {
+export default class starmade extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';
@@ -65,5 +65,3 @@ class Starmade extends Core {
         if(typeof data[6] === 'number') state.maxplayers = data[6];
     }
 }
-
-module.exports = Starmade;

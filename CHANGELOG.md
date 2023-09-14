@@ -1,6 +1,8 @@
 
 ### To Be Released...
 * Replaced usage of deprecated `substr` with `substring`.
+* Moved the library a `module`.
+* CLI: Resolved incorrect error message when querying with a non-existent protocol name.
 
 ### 4.1.0
 * Replace `compressjs` dependency by `seek-bzip` to solve some possible import issues.

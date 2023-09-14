@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core.js';
 
-class GeneShift extends Core {
+export default class geneshift extends Core {
     async run(state) {
         await this.tcpPing();
 
@@ -44,5 +44,3 @@ class GeneShift extends Core {
         state.raw.version = found[19];
     }
 }
-
-module.exports = GeneShift;

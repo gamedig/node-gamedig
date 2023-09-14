@@ -1,11 +1,9 @@
-const Mafia2Multiplayer = require('./mafia2mp');
+import mafia2mp from './mafia2mp.js';
 
-class Mafia2Online extends Mafia2Multiplayer {
+export default class mafia2online extends mafia2mp {
     constructor() {
         super();
         this.header = 'M2Online';
         this.isMafia2Online = true;
     }
 }
-
-module.exports = Mafia2Online;

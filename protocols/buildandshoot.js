@@ -1,7 +1,7 @@
-const Core = require('./core'),
-    cheerio = require('cheerio');
+import Core from './core.js';
+import * as cheerio from "cheerio";
 
-class BuildAndShoot extends Core {
+export default class buildandshoot extends Core {
     async run(state) {
         const body = await this.request({
             url: 'http://'+this.options.address+':'+this.options.port+'/',
@@ -53,5 +53,3 @@ class BuildAndShoot extends Core {
         */
     }
 }
-
-module.exports = BuildAndShoot;

@@ -1,6 +1,6 @@
-const Core = require('./core');
+import Core from './core.js';
 
-class Quake2 extends Core {
+export default class quake2 extends Core {
     constructor() {
         super();
         this.encoding = 'latin1';
@@ -84,5 +84,3 @@ class Quake2 extends Core {
         if('hostname' in state.raw) state.name = state.raw.hostname;
     }
 }
-
-module.exports = Quake2;
