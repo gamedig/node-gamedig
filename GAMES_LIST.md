@@ -96,6 +96,7 @@
 | `doom3`                               | Doom 3 (2004)                                           |                                             |
 | `dota2`                               | Dota 2 (2013)                                           | [Valve Protocol](#valve)                    |
 | `drakan`                              | Drakan: Order of the Flame (1999)                       |                                             |
+| `eco`                                 | Eco (2018)                                              |                                             |
 | `empyrion`                            | Empyrion - Galactic Survival (2015)                     | [Valve Protocol](#valve)                    |
 | `etqw`                                | Enemy Territory: Quake Wars (2007)                      |                                             |
 | `fear`                                | F.E.A.R. (2005)                                         |                                             |
