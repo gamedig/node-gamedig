@@ -4,18 +4,15 @@ export default class eco extends Core {
     async run(state) {
         if (!this.options.port) this.options.port = 3001;
 
-        const serverInfo = await this.request({
+        const serverInfo = (await this.request({
             url: `http://${this.options.address}:${this.options.port}/frontpage`,
             responseType: 'json'
-        });
-
-        for (const key of Object.keys(serverInfo)) {
-            state.raw[key] = serverInfo[key];
-        }
+        })).Info;
 
         state.name = serverInfo.Description;
         state.maxplayers = serverInfo.TotalPlayers;
         state.password = serverInfo.HasPassword;
         state.gamePort = serverInfo.GamePort;
+        state.raw = serverInfo;
     }
 }
