@@ -65,7 +65,7 @@
 | `corekeeper`                          | Core Keeper (2022)                                      | [Valve Protocol](#valve)                    |
 | `cs15`                                | Counter-Strike 1.5 (2002)                               |                                             |
 | `cs16`                                | Counter-Strike 1.6 (2003)                               | [Valve Protocol](#valve)                    |
-| `cs2d`                                | Counter-Strike: 2D (2004)                               |                                             |
+| `cs2d`                                | CS2D (2004)                                             |                                             |
 | `cscz`                                | Counter-Strike: Condition Zero (2004)                   | [Valve Protocol](#valve)                    |
 | `csgo`                                | Counter-Strike: Global Offensive (2012)                 | [Notes](#csgo), [Valve Protocol](#valve)    |
 | `css`                                 | Counter-Strike: Source (2004)                           | [Valve Protocol](#valve)                    |
