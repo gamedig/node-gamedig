@@ -2,6 +2,8 @@
 ### To Be Released...
 #### Breaking Changes
 * NodeJS 14.17 is now required (from 14).
+* Renamed `Counter Strike: 2D` to `CS2D` in [games.txt](games.txt) (why? see [this](https://cs2d.com/faq.php?show=misc_name#misc_name)).
+* Updated `CS2D` protocol (by @ernestpasnik)
 
 #### Other changes
 * Replaced usage of deprecated `substr` with `substring`.
