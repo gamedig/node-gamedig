@@ -28,9 +28,9 @@ export default class cs2d extends Core {
             state.raw.numbots = reader.uint(1);
             const flags2 = reader.uint(1);
             state.raw.flags2 = flags2;
-            state.raw.recoil = this.readFlag(flags, 0);
-            state.raw.offScreenDamage = this.readFlag(flags, 1);
-            state.raw.hasDownloads = this.readFlag(flags, 2);
+            state.raw.recoil = this.readFlag(flags2, 0);
+            state.raw.offScreenDamage = this.readFlag(flags2, 1);
+            state.raw.hasDownloads = this.readFlag(flags2, 2);
             reader.skip(2);
             const players = reader.uint(1);
             for (let i = 0; i < players; i++) {
