@@ -7,7 +7,8 @@ class Cs2d extends Core {
                 Buffer.from('\x01\x00\xFB\x01\xF5\x03\xFB\x05', 'binary'),
                 Buffer.from('\x01\x00\xFB\x01', 'binary')
             );
-            let flags = reader.uint(1);
+            const flags = reader.uint(1);
+            state.raw.flags = flags;
             state.password = this.readFlag(flags, 0);
             state.raw.registeredOnly = this.readFlag(flags, 1);
             state.raw.fogOfWar = this.readFlag(flags, 2);
@@ -25,7 +26,8 @@ class Cs2d extends Core {
                 state.raw.gamemode = 0;
             }
             state.raw.numbots = reader.uint(1);
-            flags = reader.uint(1);
+            const flags2 = reader.uint(1);
+            state.raw.flags2 = flags2;
             state.raw.recoil = this.readFlag(flags, 0);
             state.raw.offScreenDamage = this.readFlag(flags, 1);
             state.raw.hasDownloads = this.readFlag(flags, 2);
