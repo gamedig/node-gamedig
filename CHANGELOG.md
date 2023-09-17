@@ -1,5 +1,6 @@
 
 ### To Be Released...
+* Core Keeper (2022) - Added support (by @dgibbs64).
 #### Breaking Changes
 * NodeJS 14.17 is now required (from 14).
 
@@ -226,7 +227,7 @@ bedrock servers apparently do not respond to the gamespy3 protocol.
 
 ##### Breaking API changes
 * **Node 8 is now required**
-* Removed the `port_query` option. You can now pass either the server's game port **or** query port in the `port` option, and 
+* Removed the `port_query` option. You can now pass either the server's game port **or** query port in the `port` option, and
 GameDig will automatically discover the proper port to query. Passing the query port is more likely be successful in
 unusual cases, as otherwise it must be automatically derived from the game port.
 * Removed `callback` parameter from Gamedig.query. Only promises are now supported. If you would like to continue

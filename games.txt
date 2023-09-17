@@ -69,6 +69,7 @@ cacrenegade|Command and Conquer: Renegade (2002)|gamespy1|port=4848,port_query=2
 conanexiles|Conan Exiles (2018)|valve|port=7777,port_query=27015
 contagion|Contagion (2011)|valve|port=27015
 contactjack|Contract J.A.C.K. (2003)|gamespy1|port_query=27888
+corekeeper|Core Keeper (2022)|valve|port=1234,port_query_offset=1
 
 cs15|Counter-Strike 1.5 (2002)|goldsrc|port=27015
 cs16|Counter-Strike 1.6 (2003)|valve|port=27015
