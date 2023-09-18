@@ -100,7 +100,7 @@ export default class gamespy1 extends Core {
       }
 
       // Convert player's team ID to team name if possible
-      if (player.hasOwnProperty('teamId')) {
+      if (Object.prototype.hasOwnProperty.call(player, 'teamId')) {
         if (Object.keys(teamNamesById).length) {
           player.team = teamNamesById[player.teamId] || ''
         } else {

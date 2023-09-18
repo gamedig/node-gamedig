@@ -79,7 +79,7 @@ export default class gamespy2 extends Core {
   }
 
   readFieldData (reader) {
-    const zero = reader.uint(1) // always 0
+    reader.uint(1) // always 0
     const count = reader.uint(1) // number of rows in this data
 
     // some games omit the count byte entirely if it's 0 or at random (like americas army)

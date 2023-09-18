@@ -219,7 +219,7 @@ export default class Core extends EventEmitter {
   async tcpSend (socket, buffer, ondata) {
     let timeout
     try {
-      const promise = new Promise(async (resolve, reject) => {
+      const promise = new Promise((resolve, reject) => {
         let received = Buffer.from([])
         const onData = (data) => {
           received = Buffer.concat([received, data])

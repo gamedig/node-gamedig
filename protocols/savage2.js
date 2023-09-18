@@ -1,10 +1,6 @@
 import Core from './core.js'
 
 export default class savage2 extends Core {
-  constructor () {
-    super()
-  }
-
   async run (state) {
     const buffer = await this.udpSend('\x01', b => b)
     const reader = this.reader(buffer)

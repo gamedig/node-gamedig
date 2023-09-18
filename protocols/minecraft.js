@@ -2,7 +2,6 @@ import Core from './core.js'
 import minecraftbedrock from './minecraftbedrock.js'
 import minecraftvanilla from './minecraftvanilla.js'
 import Gamespy3 from './gamespy3.js'
-import { Results } from '../lib/Results.js'
 
 /*
 Vanilla servers respond to minecraftvanilla only

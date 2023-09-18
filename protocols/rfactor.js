@@ -1,11 +1,6 @@
 import Core from './core.js'
 
 export default class rfactor extends Core {
-  constructor () {
-    super()
-    // this.byteorder = 'be';
-  }
-
   async run (state) {
     const buffer = await this.udpSend('rF_S', b => b)
     const reader = this.reader(buffer)

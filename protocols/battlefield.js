@@ -146,7 +146,7 @@ export default class battlefield extends Core {
   decodePacket (buffer) {
     if (buffer.length < 8) return false
     const reader = this.reader(buffer)
-    const header = reader.uint(4)
+    reader.uint(4) // header
     const totalLength = reader.uint(4)
     if (buffer.length < totalLength) return false
     this.logger.debug('Expected ' + totalLength + ' bytes, have ' + buffer.length)
@@ -155,7 +155,7 @@ export default class battlefield extends Core {
     const params = []
     for (let i = 0; i < paramCount; i++) {
       params.push(reader.pascalString(4))
-      const strNull = reader.uint(1)
+      reader.uint(1) // strNull
     }
     return params
   }

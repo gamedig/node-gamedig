@@ -73,7 +73,6 @@ export default class gamespy3 extends Core {
           state.players.push(player)
         }
       } else {
-        let firstMode = true
         while (!reader.done()) {
           if (reader.uint(1) <= 2) continue
           reader.skip(-1)
@@ -89,7 +88,6 @@ export default class gamespy3 extends Core {
           const items = state.raw.playerTeamInfo[itemType]
 
           let offset = reader.uint(1)
-          firstMode = false
 
           this.logger.debug(() => 'Parsing new field: itemType=' + itemType + ' fieldName=' + fieldName + ' startOffset=' + offset)
 

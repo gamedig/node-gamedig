@@ -65,15 +65,15 @@ export default class openttd extends Core {
           company.performance = reader.uint(2)
           company.password = !!reader.uint(1)
 
-          const vehicle_types = ['train', 'truck', 'bus', 'aircraft', 'ship']
-          const station_types = ['station', 'truckbay', 'busstation', 'airport', 'dock']
+          const vehicleTypes = ['train', 'truck', 'bus', 'aircraft', 'ship']
+          const stationTypes = ['station', 'truckbay', 'busstation', 'airport', 'dock']
 
           company.vehicles = {}
-          for (const type of vehicle_types) {
+          for (const type of vehicleTypes) {
             company.vehicles[type] = reader.uint(2)
           }
           company.stations = {}
-          for (const type of station_types) {
+          for (const type of stationTypes) {
             company.stations[type] = reader.uint(2)
           }
 

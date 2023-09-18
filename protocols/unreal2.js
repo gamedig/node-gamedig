@@ -38,7 +38,7 @@ export default class unreal2 extends Core {
         if (key === 'Mutator' || key === 'mutator') {
           state.raw.mutators.push(value)
         } else if (key || value) {
-          if (state.raw.rules.hasOwnProperty(key)) {
+          if (Object.prototype.hasOwnProperty.call(state.raw.rules, key)) {
             state.raw.rules[key] += ',' + value
           } else {
             state.raw.rules[key] = value
@@ -138,7 +138,7 @@ export default class unreal2 extends Core {
     const packets = []
     return await this.udpSend(outbuffer, (buffer) => {
       const reader = this.reader(buffer)
-      const header = reader.uint(4)
+      reader.uint(4) // header
       const iType = reader.uint(1)
       if (iType !== type) return
       packets.push(reader.rest())
