@@ -1,6 +1,12 @@
 {
     "name": "gamedig",
     "description": "Query for the status of any game server in Node.JS",
+    "scripts": {
+        "format:check": "prettier --check .",
+        "format:write": "prettier --write .",
+        "lint:check": "eslint .",
+        "lint:fix": "eslint --fix ."
+    },
     "keywords": [
         "srcds",
         "query",
@@ -35,17 +41,6 @@
     "engines": {
         "node": ">=14.17.0"
     },
-    "dependencies": {
-        "cheerio": "^1.0.0-rc.10",
-        "gbxremote": "^0.2.1",
-        "got": "^12.1.0",
-        "iconv-lite": "^0.6.3",
-        "long": "^5.2.0",
-        "minimist": "^1.2.6",
-        "punycode": "^2.3.0",
-        "seek-bzip": "^2.0.0",
-        "varint": "^6.0.0"
-    },
     "bin": {
         "gamedig": "bin/gamedig.js"
     },
@@ -58,8 +53,22 @@
         "GAMES_LIST.md",
         "README.md"
     ],
+    "dependencies": {
+        "cheerio": "^1.0.0-rc.10",
+        "gbxremote": "^0.2.1",
+        "got": "^12.1.0",
+        "iconv-lite": "^0.6.3",
+        "long": "^5.2.0",
+        "minimist": "^1.2.6",
+        "punycode": "^2.3.0",
+        "seek-bzip": "^2.0.0",
+        "varint": "^6.0.0"
+    },
     "devDependencies": {
         "@types/cheerio": "^0.22.31",
-        "@types/node": "^14.18.13"
+        "@types/node": "^14.18.13",
+        "eslint": "^8.49.0",
+        "eslint-config-prettier": "^9.0.0",
+        "prettier": "^3.0.3"
     }
 }
