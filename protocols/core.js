@@ -111,7 +111,7 @@ export default class Core extends EventEmitter {
                 this.registerRtt(rtt);
             }).catch(() => {});
         } else {
-            this.debugLog("Registered RTT: " + param + "ms");
+            this.logger.debug("Registered RTT: " + param + "ms");
             if (this.shortestRTT === 0 || param < this.shortestRTT) {
                 this.shortestRTT = param;
             }
@@ -173,8 +173,8 @@ export default class Core extends EventEmitter {
             // Prevent unhandled 'error' events from dumping straight to console
             socket.on('error', () => {});
 
-            this.debugLog(log => {
-                this.debugLog(address+':'+port+" TCP Connecting");
+            this.logger.debug(log => {
+                this.logger.debug(address+':'+port+" TCP Connecting");
                 const writeHook = socket.write;
                 socket.write = (...args) => {
                     log(address+':'+port+" TCP-->");
@@ -276,7 +276,7 @@ export default class Core extends EventEmitter {
                         }
                         const result = onPacket(buffer);
                         if (result !== undefined) {
-                            this.debugLog("UDP send finished by callback");
+                            this.logger.debug("UDP send finished by callback");
                             resolve(result);
                         }
                     } catch(e) {
@@ -288,12 +288,12 @@ export default class Core extends EventEmitter {
             timeout = Promises.createTimeout(this.options.socketTimeout, 'UDP');
             const wrappedTimeout = new Promise((resolve, reject) => {
                 timeout.catch((e) => {
-                    this.debugLog("UDP timeout detected");
+                    this.logger.debug("UDP timeout detected");
                     if (onTimeout) {
                         try {
                             const result = onTimeout();
                             if (result !== undefined) {
-                                this.debugLog("UDP timeout resolved by callback");
+                                this.logger.debug("UDP timeout resolved by callback");
                                 resolve(result);
                                 return;
                             }
@@ -331,7 +331,7 @@ export default class Core extends EventEmitter {
                     request: this.options.socketTimeout
                 }
             });
-            this.debugLog(log => {
+            this.logger.debug(log => {
                 log(() => params.url + " HTTP-->");
                 requestPromise
                     .then((response) => log(params.url + " <--HTTP " + response.statusCode))
@@ -345,10 +345,5 @@ export default class Core extends EventEmitter {
         } finally {
             requestPromise && requestPromise.cancel();
         }
-    }
-
-    /** @deprecated */
-    debugLog(...args) {
-        this.logger.debug(...args);
     }
 }

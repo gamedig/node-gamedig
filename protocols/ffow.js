@@ -7,7 +7,7 @@ export default class ffow extends valve {
         this.legacyChallenge = true;
     }
     async queryInfo(state) {
-        this.debugLog("Requesting ffow info ...");
+        this.logger.debug("Requesting ffow info ...");
         const b = await this.sendPacket(
             0x46,
             'LSQ',

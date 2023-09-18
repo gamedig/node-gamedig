@@ -48,7 +48,7 @@ export default class valve extends Core {
     }
 
     async queryInfo(/** Results */ state) {
-        this.debugLog("Requesting info ...");
+        this.logger.debug("Requesting info ...");
         const b = await this.sendPacket(
             this.goldsrcInfo ? undefined : 0x54,
             this.goldsrcInfo ? 'details' : 'Source Engine Query\0',
@@ -186,7 +186,7 @@ export default class valve extends Core {
         if(this.legacyChallenge) {
             // sendPacket will catch the response packet and
             // save the challenge for us
-            this.debugLog("Requesting legacy challenge key ...");
+            this.logger.debug("Requesting legacy challenge key ...");
             await this.sendPacket(
                 0x57,
                 null,
@@ -199,7 +199,7 @@ export default class valve extends Core {
     async queryPlayers(/** Results */ state) {
         state.raw.players = [];
 
-        this.debugLog("Requesting player list ...");
+        this.logger.debug("Requesting player list ...");
         const b = await this.sendPacket(
             this.goldsrcInfo ? undefined : 0x55,
             this.goldsrcInfo ? 'players' : null,
@@ -223,7 +223,7 @@ export default class valve extends Core {
             const score = reader.int(4);
             const time = reader.float();
 
-            this.debugLog("Found player: "+name+" "+score+" "+time);
+            this.logger.debug("Found player: "+name+" "+score+" "+time);
 
             // connecting players don't count as players.
             if(!name) continue;
@@ -251,7 +251,7 @@ export default class valve extends Core {
         state.raw.rules = rules;
         const dayZPayload = [];
 
-        this.debugLog("Requesting rules ...");
+        this.logger.debug("Requesting rules ...");
 
         if (this.goldsrcInfo) {
             const b = await this.udpSend('\xff\xff\xff\xffrules', b=>b, ()=>null);
@@ -455,11 +455,11 @@ export default class valve extends Core {
                 (payload) => {
                     const reader = this.reader(payload);
                     const type = reader.uint(1);
-                    this.debugLog(() => "Received 0x" + type.toString(16) + " expected 0x" + expect.toString(16));
+                    this.logger.debug(() => "Received 0x" + type.toString(16) + " expected 0x" + expect.toString(16));
                     if (type === 0x41) {
                         const key = reader.uint(4);
                         if (this._challenge !== key) {
-                            this.debugLog('Received new challenge key: 0x' + key.toString(16));
+                            this.logger.debug('Received new challenge key: 0x' + key.toString(16));
                             this._challenge = key;
                             receivedNewChallengeKey = true;
                         }
@@ -544,7 +544,7 @@ export default class valve extends Core {
                 const header = reader.int(4);
                 if(header === -1) {
                     // full package
-                    this.debugLog("Received full packet");
+                    this.logger.debug("Received full packet");
                     return onResponse(reader.rest());
                 }
                 if(header === -2) {
@@ -572,8 +572,8 @@ export default class valve extends Core {
 
                     packets[packetNum] = payload;
 
-                    this.debugLog(() => "Received partial packet uid: 0x"+uid.toString(16)+" num: "+packetNum);
-                    this.debugLog(() => "Received "+Object.keys(packets).length+'/'+numPackets+" packets for this UID");
+                    this.logger.debug(() => "Received partial packet uid: 0x"+uid.toString(16)+" num: "+packetNum);
+                    this.logger.debug(() => "Received "+Object.keys(packets).length+'/'+numPackets+" packets for this UID");
 
                     if(Object.keys(packets).length !== numPackets) return;
 
@@ -588,7 +588,7 @@ export default class valve extends Core {
 
                     let assembled = Buffer.concat(list);
                     if(bzip) {
-                        this.debugLog("BZIP DETECTED - Extracing packet...");
+                        this.logger.debug("BZIP DETECTED - Extracing packet...");
                         try {
                             assembled = Bzip2.decode(assembled);
                         } catch(e) {

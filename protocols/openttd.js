@@ -91,13 +91,13 @@ export default class openttd extends Core {
 
             const packetLen = reader.uint(2);
             if(packetLen !== buffer.length) {
-                this.debugLog('Invalid reported packet length: '+packetLen+' '+buffer.length);
+                this.logger.debug('Invalid reported packet length: '+packetLen+' '+buffer.length);
                 return;
             }
 
             const packetType = reader.uint(1);
             if(packetType !== expected) {
-                this.debugLog('Unexpected response packet type: '+packetType);
+                this.logger.debug('Unexpected response packet type: '+packetType);
                 return;
             }
 

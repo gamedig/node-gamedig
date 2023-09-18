@@ -34,13 +34,13 @@ export default class minecraftvanilla extends Core {
         const reader = this.reader(data);
 
         const packetId = reader.varint();
-        this.debugLog("Packet ID: "+packetId);
+        this.logger.debug("Packet ID: "+packetId);
 
         const strLen = reader.varint();
-        this.debugLog("String Length: "+strLen);
+        this.logger.debug("String Length: "+strLen);
 
         const str = reader.rest().toString('utf8');
-        this.debugLog(str);
+        this.logger.debug(str);
 
         const json = JSON.parse(str);
         delete json.favicon;

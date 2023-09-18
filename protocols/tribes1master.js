@@ -23,7 +23,7 @@ export default class tribes1master extends Core {
             const reader = this.reader(buffer);
             const header = reader.uint(2);
             if (header !== 0x0610) {
-                this.debugLog('Header response does not match: ' + header.toString(16));
+                this.logger.debug('Header response does not match: ' + header.toString(16));
                 return;
             }
             const num = reader.uint(1);
@@ -34,11 +34,11 @@ export default class tribes1master extends Core {
             total = t;
 
             if (num < 1 || num > total) {
-                this.debugLog('Invalid packet number: ' + num + ' ' + total);
+                this.logger.debug('Invalid packet number: ' + num + ' ' + total);
                 return;
             }
             if (parts.has(num)) {
-                this.debugLog('Duplicate part: ' + num);
+                this.logger.debug('Duplicate part: ' + num);
                 return;
             }
 

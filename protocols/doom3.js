@@ -32,7 +32,7 @@ export default class doom3 extends Core {
 
         if (packetContainsSize) {
             const size = reader.uint(4);
-            this.debugLog("Received packet size: " + size);
+            this.logger.debug("Received packet size: " + size);
         }
 
         while(!reader.done()) {
@@ -44,7 +44,7 @@ export default class doom3 extends Core {
             }
             if(!key) break;
             state.raw[key] = value;
-            this.debugLog(key + "=" + value);
+            this.logger.debug(key + "=" + value);
         }
 
         const isEtqw = state.raw.gamename && state.raw.gamename.toLowerCase().includes('etqw');
@@ -91,51 +91,51 @@ export default class doom3 extends Core {
     }
 
     attemptPlayerParse(rest, isEtqw, hasClanTag, hasClanTagPos, hasTypeFlag) {
-        this.debugLog("starting player parse attempt:");
-        this.debugLog("isEtqw: " + isEtqw);
-        this.debugLog("hasClanTag: " + hasClanTag);
-        this.debugLog("hasClanTagPos: " + hasClanTagPos);
-        this.debugLog("hasTypeFlag: " + hasTypeFlag);
+        this.logger.debug("starting player parse attempt:");
+        this.logger.debug("isEtqw: " + isEtqw);
+        this.logger.debug("hasClanTag: " + hasClanTag);
+        this.logger.debug("hasClanTagPos: " + hasClanTagPos);
+        this.logger.debug("hasTypeFlag: " + hasTypeFlag);
         const reader = this.reader(rest);
         let lastId = -1;
         const players = [];
         while(true) {
-            this.debugLog("---");
+            this.logger.debug("---");
             if (reader.done()) {
-                this.debugLog("* aborting attempt, overran buffer *");
+                this.logger.debug("* aborting attempt, overran buffer *");
                 return null;
             }
             const player = {};
             player.id = reader.uint(1);
-            this.debugLog("id: " + player.id);
+            this.logger.debug("id: " + player.id);
             if (player.id <= lastId || player.id > 0x20) {
-                this.debugLog("* aborting attempt, invalid player id *");
+                this.logger.debug("* aborting attempt, invalid player id *");
                 return null;
             }
             lastId = player.id;
             if(player.id === 0x20) {
-                this.debugLog("* player parse successful *");
+                this.logger.debug("* player parse successful *");
                 break;
             }
             player.ping = reader.uint(2);
-            this.debugLog("ping: " + player.ping);
+            this.logger.debug("ping: " + player.ping);
             if(!isEtqw) {
                 player.rate = reader.uint(4);
-                this.debugLog("rate: " + player.rate);
+                this.logger.debug("rate: " + player.rate);
             }
             player.name = this.stripColors(reader.string());
-            this.debugLog("name: " + player.name);
+            this.logger.debug("name: " + player.name);
             if(hasClanTag) {
                 if(hasClanTagPos) {
                     const clanTagPos = reader.uint(1);
-                    this.debugLog("clanTagPos: " + clanTagPos);
+                    this.logger.debug("clanTagPos: " + clanTagPos);
                 }
                 player.clantag = this.stripColors(reader.string());
-                this.debugLog("clan tag: " + player.clantag);
+                this.logger.debug("clan tag: " + player.clantag);
             }
             if(hasTypeFlag) {
                 player.typeflag = reader.uint(1);
-                this.debugLog("type flag: " + player.typeflag);
+                this.logger.debug("type flag: " + player.typeflag);
             }
             players.push(player);
         }

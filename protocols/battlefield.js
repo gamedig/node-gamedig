@@ -111,7 +111,7 @@ export default class battlefield extends Core {
         return await this.tcpSend(socket, outPacket, (data) => {
             const decoded = this.decodePacket(data);
             if(decoded) {
-                this.debugLog(decoded);
+                this.logger.debug(decoded);
                 if(decoded.shift() !== 'OK') throw new Error('Missing OK');
                 return decoded;
             }
@@ -148,7 +148,7 @@ export default class battlefield extends Core {
         const header = reader.uint(4);
         const totalLength = reader.uint(4);
         if(buffer.length < totalLength) return false;
-        this.debugLog("Expected " + totalLength + " bytes, have " + buffer.length);
+        this.logger.debug("Expected " + totalLength + " bytes, have " + buffer.length);
 
         const paramCount = reader.uint(4);
         const params = [];

@@ -17,17 +17,17 @@ export default class tribes1 extends Core {
             const reader = this.reader(buffer);
             const responseByte = reader.uint(1);
             if (responseByte !== this.responseByte) {
-                this.debugLog('Unexpected response byte');
+                this.logger.debug('Unexpected response byte');
                 return;
             }
             const challenge = reader.uint(2);
             if (challenge !== this.challenge) {
-                this.debugLog('Unexpected challenge');
+                this.logger.debug('Unexpected challenge');
                 return;
             }
             const requestByte = reader.uint(1);
             if (requestByte !== this.requestByte) {
-                this.debugLog('Unexpected request byte');
+                this.logger.debug('Unexpected request byte');
                 return;
             }
             return reader;

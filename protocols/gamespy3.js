@@ -14,7 +14,7 @@ export default class gamespy3 extends Core {
         const buffer = await this.sendPacket(9, false, false, false);
         const reader = this.reader(buffer);
         let challenge = parseInt(reader.string());
-        this.debugLog("Received challenge key: " + challenge);
+        this.logger.debug("Received challenge key: " + challenge);
         if (challenge === 0) {
             // Some servers send us a 0 if they don't want a challenge key used
             // BF2 does this.
@@ -40,8 +40,8 @@ export default class gamespy3 extends Core {
             const packet = packets[iPacket];
             const reader = this.reader(packet);
 
-            this.debugLog("Parsing packet #" + iPacket);
-            this.debugLog(packet);
+            this.logger.debug("Parsing packet #" + iPacket);
+            this.logger.debug(packet);
 
             // Parse raw server key/values
 
@@ -57,7 +57,7 @@ export default class gamespy3 extends Core {
                     }
 
                     state.raw[key] = value;
-                    this.debugLog(key + " = " + value);
+                    this.logger.debug(key + " = " + value);
                 }
             }
 
@@ -91,7 +91,7 @@ export default class gamespy3 extends Core {
                     let offset = reader.uint(1);
                     firstMode = false;
 
-                    this.debugLog(() => "Parsing new field: itemType=" + itemType + " fieldName=" + fieldName + " startOffset=" + offset);
+                    this.logger.debug(() => "Parsing new field: itemType=" + itemType + " fieldName=" + fieldName + " startOffset=" + offset);
 
                     while(!reader.done()) {
                         const item = reader.string();
@@ -99,7 +99,7 @@ export default class gamespy3 extends Core {
 
                         while(items.length <= offset) { items.push({}); }
                         items[offset][fieldName] = item;
-                        this.debugLog("* " + item);
+                        this.logger.debug("* " + item);
                         offset++;
                     }
                 }
@@ -177,7 +177,7 @@ export default class gamespy3 extends Core {
 
             packets[id] = reader.rest();
             if(this.debug) {
-                this.debugLog("Received packet #"+id + (last ? " (last)" : ""));
+                this.logger.debug("Received packet #"+id + (last ? " (last)" : ""));
             }
 
             if(!numPackets || Object.keys(packets).length !== numPackets) return;

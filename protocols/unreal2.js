@@ -104,7 +104,7 @@ export default class unreal2 extends Core {
             const peek = reader.uint(1);
             if (peek !== 1) reader.skip(-1);
 
-            this.debugLog(log => {
+            this.logger.debug(log => {
                 log("UCS2 STRING");
                 log("UCS2 Length: " + length);
                 log(reader.buffer.slice(reader.i,reader.i+length));
@@ -114,7 +114,7 @@ export default class unreal2 extends Core {
         let out = '';
         if (ucs2) {
             out = reader.string({encoding:'ucs2',length:length});
-            this.debugLog("UCS2 String decoded: " + out);
+            this.logger.debug("UCS2 String decoded: " + out);
         } else if (length > 0) {
             out = reader.string();
         }
