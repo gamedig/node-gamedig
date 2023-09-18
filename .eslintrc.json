@@ -1,15 +1,13 @@
 {
-    "root": true,
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": "standard",
     "parserOptions": {
-        "ecmaVersion": 11,
+        "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "extends": ["eslint:recommended", "prettier"],
-    "env": {
-        "es2020": true,
-        "node": true
-    },
     "rules": {
-        "no-console": "error"
     }
 }
