@@ -2,17 +2,17 @@
 ### To Be Released...
 #### Breaking Changes
 * NodeJS 14.17 is now required (from 14).
+* Made the library a `module`.
 * Renamed `Counter Strike: 2D` to `CS2D` in [games.txt](games.txt) (why? see [this](https://cs2d.com/faq.php?show=misc_name#misc_name)).
-* Updated `CS2D` protocol (by @ernestpasnik)
+* Updated `CS2D` protocol (by @ernestpasnik).
 
 #### Other changes
 * Replaced usage of deprecated `substr` with `substring`.
-* Moved the library a `module`.
-* CLI: Resolved incorrect error message when querying with a non-existent protocol name.
 * Replaced deprecated internal `punycode` with the [punycode](https://www.npmjs.com/package/punycode) package.
+* Added eslint which spotted some unused variables and other lints.
+* CLI: Resolved incorrect error message when querying with a non-existent protocol name.
 * Eco (2018) - Added support (requested by @dgibbs64).
 * Core Keeper (2022) - Added support (by @dgibbs64).
-* Added eslint which spotted some unused variables and other lints.
 
 ### 4.1.0
 * Replace `compressjs` dependency by `seek-bzip` to solve some possible import issues.
