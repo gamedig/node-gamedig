@@ -105,12 +105,13 @@ export default class gamespy2 extends Core {
     if (!fields.length) return []
 
     const units = []
-    outer: while (!reader.done()) {
+    while (!reader.done()) {
       const unit = {}
       for (let iField = 0; iField < fields.length; iField++) {
         let key = fields[iField]
         let value = reader.string()
-        if (!value && iField === 0) break outer
+        if (!value && iField === 0) return units
+
         this.logger.debug('value:' + value)
         if (key === 'player_') key = 'name'
         else if (key === 'score_') key = 'score'
