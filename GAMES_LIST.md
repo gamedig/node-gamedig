@@ -134,7 +134,7 @@
 | `igi2`                                | I.G.I.-2: Covert Strike (2003)                          |                                             |
 | `il2`                                 | IL-2 Sturmovik (2001)                                   |                                             |
 | `insurgency`                          | Insurgency (2014)                                       | [Valve Protocol](#valve)                    |
-| `insurgencymic`                       | INSURGENCY: Modern Infantry Combat (2007)               | [Valve Protocol](#valve)                    |
+| `insurgencymic`                       | Insurgency: Modern Infantry Combat (2007)               | [Valve Protocol](#valve)                    |
 | `insurgencysandstorm`                 | Insurgency: Sandstorm (2018)                            | [Valve Protocol](#valve)                    |
 | `ironstorm`                           | Iron Storm (2002)                                       |                                             |
 | `isle`                                | The Isle (2015)                                         | [Valve Protocol](#valve)                    |

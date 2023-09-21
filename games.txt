@@ -150,7 +150,7 @@ hurtworld|Hurtworld (2015)|valve|port=12871,port_query=12881
 igi2|I.G.I.-2: Covert Strike (2003)|gamespy1|port_query=26001
 il2|IL-2 Sturmovik (2001)|gamespy1|port_query=21000
 insurgency|Insurgency (2014)|valve|port=27015
-insurgencymic|INSURGENCY: Modern Infantry Combat (2007)|valve|port_query=27015
+insurgencymic|Insurgency: Modern Infantry Combat (2007)|valve|port_query=27015
 insurgencysandstorm|Insurgency: Sandstorm (2018)|valve|port=27015,port_query_offset=1
 ironstorm|Iron Storm (2002)|gamespy1|port_query=3505
 isle|The Isle (2015)|valve|port=7707,port_query_offset=1
