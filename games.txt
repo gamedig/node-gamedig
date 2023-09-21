@@ -283,6 +283,7 @@ teamspeak2|Teamspeak 2|teamspeak2|port=8767
 teamspeak3|Teamspeak 3|teamspeak3|port=9987|doc_notes=teamspeak3
 terminus|Terminus|gamespy1|port_query=12286
 terraria,tshock|Terraria - TShock (2011)|terraria|port=7777,port_query_offset=101|doc_notes=terraria
+theforest|The Forest (2014)|valve|port=27015,port_query_offset=1
 thps3|Tony Hawk's Pro Skater 3|gamespy1|port_query=6500
 thps4|Tony Hawk's Pro Skater 4|gamespy1|port_query=6500
 thu2|Tony Hawk's Underground 2|gamespy1|port_query=5153
