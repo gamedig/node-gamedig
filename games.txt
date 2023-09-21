@@ -199,6 +199,7 @@ nitrofamily|Nitro Family (2004)|gamespy1|port_query=25601
 nolf|The Operative: No One Lives Forever (2000)|gamespy1|port_query=27888
 nolf2|No One Lives Forever 2: A Spy in H.A.R.M.'s Way (2002)|gamespy1|port_query=27890
 nucleardawn|Nuclear Dawn (2011)|valve|port=27015
+ohd|Operation: Harsh Doorstop (2023)|valve|port=7777,port_query=27005
 onset|Onset (2019)|valve|port=7777,port_query_offset=-1
 openarena|OpenArena (2005)|quake3|port_query=27960
 openttd|OpenTTD (2004)|openttd|port=3979
