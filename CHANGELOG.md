@@ -25,7 +25,6 @@
 * Empires Mod (2008) - Added support (by @dgibbs64).
 * Fistful of Frags (2014) - Added support (by @dgibbs64).
 * Half-Life: Opposing Force (1999) - Added support (by @dgibbs64).
-* Operation Harsh Doorstop (2023) - Added support (by @dgibbs64).
 * Pirates, Vikings, and Knights II (2007) - Added support (by @dgibbs64).
 * Project Cars (2015) - Added support (by @dgibbs64).
 * Project Cars 2 (2017) - Added support (by @dgibbs64).
@@ -33,6 +32,9 @@
 * Vampire Slayer - Added support (by @dgibbs64).
 * Warfork (2018) - Added support (by @dgibbs64).
 * Wurm Unlimited (2015) - Added support (by @dgibbs64).
+* The Forest (2014) - Added support.
+* Operation: Harsh Doorstop (2023) - Added support.
+* Insurgency: Modern Infantry Combat (2007) - Added support.
 
 ### 4.1.0
 * Replace `compressjs` dependency by `seek-bzip` to solve some possible import issues.

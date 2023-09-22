@@ -145,6 +145,7 @@
 | `igi2`                                | I.G.I.-2: Covert Strike (2003)                          |                                             |
 | `il2`                                 | IL-2 Sturmovik (2001)                                   |                                             |
 | `insurgency`                          | Insurgency (2014)                                       | [Valve Protocol](#valve)                    |
+| `insurgencymic`                       | Insurgency: Modern Infantry Combat (2007)               | [Valve Protocol](#valve)                    |
 | `insurgencysandstorm`                 | Insurgency: Sandstorm (2018)                            | [Valve Protocol](#valve)                    |
 | `ironstorm`                           | Iron Storm (2002)                                       |                                             |
 | `isle`                                | The Isle (2015)                                         | [Valve Protocol](#valve)                    |
@@ -188,6 +189,7 @@
 | `nmrih`                               | No More Room in Hell (2011)                             | [Valve Protocol](#valve)                    |
 | `nolf2`                               | No One Lives Forever 2: A Spy in H.A.R.M.'s Way (2002)  |                                             |
 | `nucleardawn`                         | Nuclear Dawn (2011)                                     | [Valve Protocol](#valve)                    |
+| `ohd`                                 | Operation: Harsh Doorstop (2023)                        | [Valve Protocol](#valve)                    |
 | `onset`                               | Onset (2019)                                            | [Valve Protocol](#valve)                    |
 | `ohd`                                 | Operation: Harsh Doorstop (2023)                        | [Valve Protocol](#valve)                    |
 | `openarena`                           | OpenArena (2005)                                        |                                             |
@@ -278,6 +280,7 @@
 | `ts`                                  | The Specialists                                         | [Valve Protocol](#valve)                    |
 | `graw`                                | Tom Clancy's Ghost Recon Advanced Warfighter (2006)     |                                             |
 | `graw2`                               | Tom Clancy's Ghost Recon Advanced Warfighter 2 (2007)   |                                             |
+| `theforest`                           | The Forest (2014)                                       | [Valve Protocol](#valve)                    |
 | `thps3`                               | Tony Hawk's Pro Skater 3                                |                                             |
 | `thps4`                               | Tony Hawk's Pro Skater 4                                |                                             |
 | `thu2`                                | Tony Hawk's Underground 2                               |                                             |

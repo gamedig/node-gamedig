@@ -161,6 +161,7 @@ hurtworld|Hurtworld (2015)|valve|port=12871,port_query=12881
 igi2|I.G.I.-2: Covert Strike (2003)|gamespy1|port_query=26001
 il2|IL-2 Sturmovik (2001)|gamespy1|port_query=21000
 insurgency|Insurgency (2014)|valve|port=27015
+insurgencymic|Insurgency: Modern Infantry Combat (2007)|valve|port=27015
 insurgencysandstorm|Insurgency: Sandstorm (2018)|valve|port=27015,port_query_offset=1
 ironstorm|Iron Storm (2002)|gamespy1|port_query=3505
 isle|The Isle (2015)|valve|port=7707,port_query_offset=1
@@ -210,7 +211,7 @@ nitrofamily|Nitro Family (2004)|gamespy1|port_query=25601
 nolf|The Operative: No One Lives Forever (2000)|gamespy1|port_query=27888
 nolf2|No One Lives Forever 2: A Spy in H.A.R.M.'s Way (2002)|gamespy1|port_query=27890
 nucleardawn|Nuclear Dawn (2011)|valve|port=27015
-ohd|Operation: Harsh Doorstep (2023)|valve|port=7777,port_query=27005
+ohd|Operation: Harsh Doorstop (2023)|valve|port=7777,port_query=27005
 onset|Onset (2019)|valve|port=7777,port_query_offset=-1
 openarena|OpenArena (2005)|quake3|port_query=27960
 openttd|OpenTTD (2004)|openttd|port=3979
@@ -298,6 +299,7 @@ teamspeak2|Teamspeak 2|teamspeak2|port=8767
 teamspeak3|Teamspeak 3|teamspeak3|port=9987|doc_notes=teamspeak3
 terminus|Terminus|gamespy1|port_query=12286
 terraria,tshock|Terraria - TShock (2011)|terraria|port=7777,port_query_offset=101|doc_notes=terraria
+theforest|The Forest (2014)|valve|port=27015,port_query_offset=1
 thps3|Tony Hawk's Pro Skater 3|gamespy1|port_query=6500
 thps4|Tony Hawk's Pro Skater 4|gamespy1|port_query=6500
 thu2|Tony Hawk's Underground 2|gamespy1|port_query=5153
