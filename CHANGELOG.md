@@ -14,6 +14,25 @@
 * Eco (2018) - Added support (requested by @dgibbs64).
 * Core Keeper (2022) - Added support (by @dgibbs64).
 * ARMA: Reforger (2022) - Added support (by @dgibbs64).
+* Action Half-Life - Added support (by @dgibbs64).
+* Action: Source (2019) - Added support (by @dgibbs64).
+* Base Defense (2017) - Added support (by @dgibbs64).
+* Blade Symphony (2014) - Added support (by @dgibbs64).
+* Brainbread - Added support (by @dgibbs64).
+* Deathmatch Classic (2001) - Added support (by @dgibbs64).
+* Double Action: Boogaloo (2014) - Added support (by @dgibbs64).
+* Dystopia (2005) - Added support (by @dgibbs64).
+* Empires Mod (2008) - Added support (by @dgibbs64).
+* Fistful of Frags (2014) - Added support (by @dgibbs64).
+* Half-Life: Opposing Force (1999) - Added support (by @dgibbs64).
+* Operation Harsh Doorstop (2023) - Added support (by @dgibbs64).
+* Pirates, Vikings, and Knights II (2007) - Added support (by @dgibbs64).
+* Project Cars (2015) - Added support (by @dgibbs64).
+* Project Cars 2 (2017) - Added support (by @dgibbs64).
+* The Specialists - Added support (by @dgibbs64).
+* Vampire Slayer - Added support (by @dgibbs64).
+* Warfork (2018) - Added support (by @dgibbs64).
+* Wurm Unlimited (2015) - Added support (by @dgibbs64).
 
 ### 4.1.0
 * Replace `compressjs` dependency by `seek-bzip` to solve some possible import issues.

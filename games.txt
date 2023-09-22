@@ -1,6 +1,8 @@
 # id | pretty name for readme | protocol | options | extra
 
 7d2d|7 Days to Die (2013)|valve|port=26900,port_query_offset=1
+as|Action: Source (2019)|valve|port=27015
+ahl|Action Half-Life|valve|port=27015
 ageofchivalry|Age of Chivalry (2007)|valve|port=27015
 aoe2|Age of Empires 2 (1999)|ase|port_query=27224
 alienarena|Alien Arena (2004)|quake2|port_query=27910
@@ -44,9 +46,12 @@ bfh|Battlefield Hardline (2015)|battlefield|port=25200,port_query_offset=22000
 
 blackmesa|Black Mesa (2020)|valve|port=27015
 brainbread2|BrainBread 2 (2022)|valve|port=27015
+brainbread|BrainBread|valve|port=27015
 breach|Breach (2011)|valve|port=27016
 breed|Breed (2004)|gamespy2|port=7649
 brink|Brink (2011)|valve|port_query_offset=1
+bd|Base Defense (2017)|valve|port=27015
+bs|Blade Symphony (2014)|valve|port=27015
 buildandshoot|Build and Shoot / Ace of Spades Classic (2012)|buildandshoot|port=32887,port_query_offset=-1
 
 cod|Call of Duty (2003)|quake3|port=28960
@@ -87,6 +92,7 @@ crysis|Crysis (2007)|gamespy3|port=64087
 crysiswars|Crysis Wars (2008)|gamespy3|port=64100
 crysis2|Crysis 2 (2011)|gamespy3|port=64000
 
+dab|Double Action: Boogaloo (2014)|valve|port=27015
 daikatana|Daikatana (2000)|quake2|port=27982,port_query_offset=10
 dmomam|Dark Messiah of Might and Magic (2006)|valve|port=27015
 darkesthour|Darkest Hour: Europe '44-'45 (2008)|unreal2|port=7757,port_query_offset=1
@@ -102,6 +108,7 @@ devastation|Devastation (2003)|unreal2|port=7777,port_query_offset=1
 dinodday|Dino D-Day (2011)|valve|port=27015
 dirttrackracing2|Dirt Track Racing 2 (2002)|gamespy1|port=32240,port_query_offset=-100
 discord|Discord|discord||doc_notes=discord
+dmc|Deathmatch Classic (2001)|valve|port=27015
 dnl|Dark and Light (2017)|valve|port=7777,port_query=27015
 dod|Day of Defeat (2003)|valve|port=27015
 dods|Day of Defeat: Source (2005)|valve|port=27015
@@ -110,7 +117,9 @@ doom3|Doom 3 (2004)|doom3|port=27666
 dota2|Dota 2 (2013)|valve|port=27015
 drakan|Drakan: Order of the Flame (1999)|gamespy1|port=27045,port_query_offset=1
 dst|Don't Starve Together (2016)|valve|port=10999,port_query=27016
+dys|Dystopia (2005)|valve|port=27015
 eco|Eco (2018)|eco|port=3000,port_query_offset=1
+em|Empires Mod (2008)|valve|port=27015
 empyrion|Empyrion - Galactic Survival (2015)|valve|port=30000,port_query_offset=1
 etqw|Enemy Territory: Quake Wars (2007)|doom3|port=3074,port_query=27733
 fear|F.E.A.R. (2005)|gamespy2|port_query=27888
@@ -118,6 +127,7 @@ f12002|Formula One 2002 (2002)|gamespy1|port_query=3297
 f1c9902|F1 Challenge '99-'02 (2002)|gamespy1|port_query=34397
 farcry|Far Cry (2004)|ase|port=49001,port_query_offset=123
 farcry2|Far Cry 2 (2008)|ase|port_query=14001
+fof|Fistful of Frags (2014)|valve|port=27015
 fortressforever|Fortress Forever (2007)|valve|port=27015
 operationflashpoint,flashpoint|Operation Flashpoint: Cold War Crisis (2001)|gamespy1|port=2302,port_query_offset=1
 flashpointresistance|Operation Flashpoint: Resistance (2002)|gamespy1|port=2302,port_query_offset=1
@@ -136,6 +146,7 @@ groundbreach|Ground Breach (2018)|valve|port=27015
 gunmanchronicles|Gunman Chronicles (2000)|valve|port=27015
 hldm|Half-Life Deathmatch (1998)|valve|port=27015
 hldms|Half-Life Deathmatch: Source (2005)|valve|port=27015
+hlopfor|Half-Life: Opposing Force (1999)|valve|port=27015
 hl2dm|Half-Life 2: Deathmatch (2004)|valve|port=27015
 halo|Halo (2003)|gamespy2|port=2302
 halo2|Halo 2 (2007)|gamespy2|port=2302
@@ -199,15 +210,19 @@ nitrofamily|Nitro Family (2004)|gamespy1|port_query=25601
 nolf|The Operative: No One Lives Forever (2000)|gamespy1|port_query=27888
 nolf2|No One Lives Forever 2: A Spy in H.A.R.M.'s Way (2002)|gamespy1|port_query=27890
 nucleardawn|Nuclear Dawn (2011)|valve|port=27015
+ohd|Operation: Harsh Doorstep (2023)|valve|port=7777,port_query=27005
 onset|Onset (2019)|valve|port=7777,port_query_offset=-1
 openarena|OpenArena (2005)|quake3|port_query=27960
 openttd|OpenTTD (2004)|openttd|port=3979
 painkiller|Painkiller|ase|port=3455,port_query_offset=123
+pvkii|Pirates, Vikings, and Knights II (2007)|valve|port=27015
 pixark|PixARK (2018)|valve|port=7777,port_query=27015
 ps|Post Scriptum|squad|port=10037
 postal2|Postal 2|gamespy1|port=7777,port_query_offset=1
 prey|Prey|doom3|port=27719
 primalcarnage|Primal Carnage: Extinction|valve|port=7777,port_query=27015
+pc|Project Cars (2015)|valve|port=27015,query_port=1
+pc2|Project Cars 2 (2017)|valve|port=27015,query_port=1
 prbf2|Project Reality: Battlefield 2 (2005)|gamespy3|port=16567,port_query=29900
 przomboid|Project Zomboid|valve|port=16261
 
@@ -293,6 +308,7 @@ tremulous|Tremulous|quake3|port_query=30720
 tribes1|Tribes 1: Starsiege|tribes1|port=28001
 tribesvengeance|Tribes: Vengeance|gamespy2|port=7777,port_query_offset=1
 tron20|Tron 2.0|gamespy2|port_query=27888
+ts|The Specalists|valve|port=27015
 turok2|Turok 2|gamespy1|port_query=12880
 universalcombat|Universal Combat|ase|port=1135,port_query_offset=123
 
@@ -311,10 +327,13 @@ ventrilo|Ventrilo|ventrilo|port=3784
 vietcong|Vietcong|gamespy1|port=5425,port_query=15425
 vietcong2|Vietcong 2|gamespy2|port=5001,port_query=19967
 vrising|V Rising (2022)|valve|port=27015,port_query_offset=1
+vs|Vampire Slayer|valve|port=27015
 warsow|Warsow|warsow|port=44400
+warfork|Warfork|warsow|port_query=44400
 wheeloftime|Wheel of Time|gamespy1|port=7777,port_query_offset=1
 wolfenstein2009|Wolfenstein 2009|doom3|port=27666
 wolfensteinet|Wolfenstein: Enemy Territory|quake3|port_query=27960
+wurm|Wurm Unlimited|valve|port=3724,query_port=27016
 xpandrally|Xpand Rally|ase|port=28015,port_query_offset=123
 zombiemaster|Zombie Master|valve|port=27015
 zps|Zombie Panic: Source|valve|port=27015
