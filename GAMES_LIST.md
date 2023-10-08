@@ -189,7 +189,6 @@
 | `nmrih`                               | No More Room in Hell (2011)                             | [Valve Protocol](#valve)                    |
 | `nolf2`                               | No One Lives Forever 2: A Spy in H.A.R.M.'s Way (2002)  |                                             |
 | `nucleardawn`                         | Nuclear Dawn (2011)                                     | [Valve Protocol](#valve)                    |
-| `ohd`                                 | Operation: Harsh Doorstop (2023)                        | [Valve Protocol](#valve)                    |
 | `onset`                               | Onset (2019)                                            | [Valve Protocol](#valve)                    |
 | `ohd`                                 | Operation: Harsh Doorstop (2023)                        | [Valve Protocol](#valve)                    |
 | `openarena`                           | OpenArena (2005)                                        |                                             |
