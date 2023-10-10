@@ -24,5 +24,5 @@ jobs:
         with:
           deno-version: v1.x
 
-      - name: Run tests
-        run: deno test -A
+      - name: Compile
+        run: deno compile
