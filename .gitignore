@@ -2,3 +2,5 @@
 /npm-debug.log
 /*.iml
 /.idea
+# Deno bin/gamedig executable
+gamedig
