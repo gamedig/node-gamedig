@@ -2,7 +2,6 @@
     "name": "gamedig",
     "description": "Query for the status of any game server in Node.JS",
     "scripts": {
-        "test": "",
         "lint:check": "eslint .",
         "lint:fix": "eslint --fix ."
     },
