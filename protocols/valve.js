@@ -1,5 +1,6 @@
 import Bzip2 from 'seek-bzip'
 import Core from './core.js'
+import { Buffer } from 'node:buffer'
 
 const AppId = {
   Squad: 393380,
