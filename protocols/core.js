@@ -1,5 +1,5 @@
-import { EventEmitter } from 'events'
-import * as net from 'net'
+import { EventEmitter } from 'node:events'
+import * as net from 'node:net'
 import Reader from '../lib/reader.js'
 import { debugDump } from '../lib/HexUtil.js'
 import Logger from '../lib/Logger.js'

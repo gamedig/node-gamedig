@@ -36,6 +36,8 @@
 * Operation: Harsh Doorstop (2023) - Added support.
 * Insurgency: Modern Infantry Combat (2007) - Added support.
 * Capatilzed Unturned in game.txt
+* Added Deno support: the library and CLI can now be experimentally used with the [Deno runtime](https://deno.com)
+    * `deno run --allow-net --allow-read=. bin/gamedig.js --type tf2 127.0.0.1`
 
 ### 4.1.0
 * Replace `compressjs` dependency by `seek-bzip` to solve some possible import issues.

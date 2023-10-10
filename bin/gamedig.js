@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import * as process from "node:process";
+
 import Minimist from 'minimist'
 import GameDig from './../lib/index.js'
 
