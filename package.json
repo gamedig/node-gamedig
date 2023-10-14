@@ -56,7 +56,7 @@
         "gbxremote": "^0.2.1",
         "got": "^13.0.0",
         "iconv-lite": "^0.6.3",
-        "long": "^5.2.0",
+        "long": "^5.2.3",
         "minimist": "^1.2.8",
         "punycode": "^2.3.0",
         "seek-bzip": "^2.0.0",
