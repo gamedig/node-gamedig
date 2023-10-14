@@ -1,5 +1,6 @@
 import { EventEmitter } from 'node:events'
 import * as net from 'node:net'
+import got from 'got'
 import Reader from '../lib/reader.js'
 import { debugDump } from '../lib/HexUtil.js'
 import Logger from '../lib/Logger.js'
@@ -321,8 +322,6 @@ export default class Core extends EventEmitter {
 
   async request (params) {
     await this.tcpPing()
-
-    const got = (await import('got')).got
 
     let requestPromise
     try {
