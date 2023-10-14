@@ -1,44 +1,33 @@
 
-### To Be Released...
-#### Breaking Changes
+## To Be Released...
+### Breaking Changes
+#### Package
 * Node.js 16.20 is now required (from 14).
 * Made the library a `module`.
+
+#### Games
 * Renamed `Counter Strike: 2D` to `CS2D` in [games.txt](games.txt) (why? see [this](https://cs2d.com/faq.php?show=misc_name#misc_name)).
 * Updated `CS2D` protocol (by @ernestpasnik).
 
-#### Other changes
+### Other changes
+#### Package
 * Replaced usage of deprecated `substr` with `substring`.
 * Replaced deprecated internal `punycode` with the [punycode](https://www.npmjs.com/package/punycode) package.
 * Updated [got](https://github.com/sindresorhus/got) from 12.1 to 13.
 * Added eslint which spotted some unused variables and other lints.
 * CLI: Resolved incorrect error message when querying with a non-existent protocol name.
-* Eco (2018) - Added support (requested by @dgibbs64).
-* Core Keeper (2022) - Added support (by @dgibbs64).
-* ARMA: Reforger (2022) - Added support (by @dgibbs64).
-* Action Half-Life - Added support (by @dgibbs64).
-* Action: Source (2019) - Added support (by @dgibbs64).
-* Base Defense (2017) - Added support (by @dgibbs64).
-* Blade Symphony (2014) - Added support (by @dgibbs64).
-* Brainbread - Added support (by @dgibbs64).
-* Deathmatch Classic (2001) - Added support (by @dgibbs64).
-* Double Action: Boogaloo (2014) - Added support (by @dgibbs64).
-* Dystopia (2005) - Added support (by @dgibbs64).
-* Empires Mod (2008) - Added support (by @dgibbs64).
-* Fistful of Frags (2014) - Added support (by @dgibbs64).
-* Half-Life: Opposing Force (1999) - Added support (by @dgibbs64).
-* Pirates, Vikings, and Knights II (2007) - Added support (by @dgibbs64).
-* Project Cars (2015) - Added support (by @dgibbs64).
-* Project Cars 2 (2017) - Added support (by @dgibbs64).
-* The Specialists - Added support (by @dgibbs64).
-* Vampire Slayer - Added support (by @dgibbs64).
-* Warfork (2018) - Added support (by @dgibbs64).
-* Wurm Unlimited (2015) - Added support (by @dgibbs64).
-* The Forest (2014) - Added support.
-* Operation: Harsh Doorstop (2023) - Added support.
-* Insurgency: Modern Infantry Combat (2007) - Added support.
-* Capatilzed Unturned in game.txt
 * Added Deno support: the library and CLI can now be experimentally used with the [Deno runtime](https://deno.com)
-    * `deno run --allow-net --allow-read=. bin/gamedig.js --type tf2 127.0.0.1`
+  * `deno run --allow-net --allow-read=. bin/gamedig.js --type tf2 127.0.0.1`
+#### Games
+* Added support by @dgibbs64: Eco (2018), Core Keeper (2022), ARMA: Reforger (2022),
+Action Half-Life, Action: Source (2019), Base Defense (2017), Blade Symphony (2014),
+Brainbread, Deathmatch Classic (2001), Double Action: Boogaloo (2014), Dystopia (2005),
+Empires Mod (2008), Fistful of Frags (2014), alf-Life: Opposing Force (1999),
+Pirates, Vikings, and Knights II (2007), Project Cars (2015), Project Cars 2 (2017),
+The Specialists, Vampire Slayer, Warfork (2018), Wurm Unlimited (2015).
+* Also added support: The Forest (2014), Operation: Harsh Doorstop (2023),
+Insurgency: Modern Infantry Combat (2007)
+* Capatilzed 'Unturned' in game.txt
 
 ### 4.1.0
 * Replace `compressjs` dependency by `seek-bzip` to solve some possible import issues.
