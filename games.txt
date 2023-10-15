@@ -83,6 +83,7 @@ cs2d|CS2D (2004)|cs2d|port=36963
 cscz|Counter-Strike: Condition Zero (2004)|valve|port=27015
 css|Counter-Strike: Source (2004)|valve|port=27015
 csgo|Counter-Strike: Global Offensive (2012)|valve|port=27015|doc_notes=csgo
+cs2|Counter-Strike 2 (2023)|valve|port=27015
 
 creativerse|Creativerse (2017)|valve|port=26900,port_query_offset=1
 
