@@ -109,7 +109,7 @@
 | `dystopia`                            | Dystopia (2005)                                         | [Valve Protocol](#valve)                    |
 | `eco`                                 | Eco (2018)                                              |                                             |
 | `empyrion`                            | Empyrion - Galactic Survival (2015)                     | [Valve Protocol](#valve)                    |
- `empiresmod`                          | Empires Mod (2008)                                      | [Valve Protocol](#valve)                    |
+| `empiresmod`                          | Empires Mod (2008)                                      | [Valve Protocol](#valve)                    |
 | `etqw`                                | Enemy Territory: Quake Wars (2007)                      |                                             |
 | `fear`                                | F.E.A.R. (2005)                                         |                                             |
 | `f1c9902`                             | F1 Challenge '99-'02 (2002)                             |                                             |
