@@ -64,7 +64,7 @@
     },
     "devDependencies": {
         "@types/cheerio": "^0.22.31",
-        "@types/node": "^14.18.13",
+        "@types/node": "^16.18.58",
         "eslint": "^8.49.0",
         "eslint-config-standard": "^17.1.0",
         "eslint-plugin-import": "^2.28.1",
