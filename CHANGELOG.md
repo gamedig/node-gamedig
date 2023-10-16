@@ -17,6 +17,7 @@
 * Updated [minimist](https://github.com/minimistjs/minimist) from 1.2.6 to 1.2.8.
 * Updated [long](https://github.com/dcodeIO/long.js) from 5.2.0 to 5.2.3.
 * Updated @types/node from 14.18.13 to 16.18.58.
+* Updated [cheerio](https://github.com/cheeriojs/cheerio) from 1.0.0-rc.10 to 1.0.0-rc.12.
 * Added eslint which spotted some unused variables and other lints.
 * CLI: Resolved incorrect error message when querying with a non-existent protocol name.
 * Added Deno support: the library and CLI can now be experimentally used with the [Deno runtime](https://deno.com)
