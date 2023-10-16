@@ -52,7 +52,7 @@
         "README.md"
     ],
     "dependencies": {
-        "cheerio": "^1.0.0-rc.10",
+        "cheerio": "^1.0.0-rc.12",
         "gbxremote": "^0.2.1",
         "got": "^13.0.0",
         "iconv-lite": "^0.6.3",
