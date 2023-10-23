@@ -63,7 +63,7 @@
         "varint": "^6.0.0"
     },
     "devDependencies": {
-        "@types/cheerio": "^0.22.31",
+        "@types/cheerio": "^0.22.33",
         "@types/node": "^16.18.58",
         "eslint": "^8.49.0",
         "eslint-config-standard": "^17.1.0",
