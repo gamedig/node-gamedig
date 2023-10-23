@@ -436,6 +436,7 @@ export default class valve extends Core {
       if (sortedPlayers.length) state.players.push(sortedPlayers.pop())
       else state.players.push({})
     }
+    state.numplayers = numPlayers
   }
 
   /**

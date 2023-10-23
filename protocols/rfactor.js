@@ -22,7 +22,7 @@ export default class rfactor extends Core {
     state.raw.ping = reader.uint(2)
     state.raw.packedFlags = reader.uint(1)
     state.raw.rate = reader.uint(1)
-    state.players.setNum(reader.uint(1))
+    state.numplayers = reader.uint(1)
     state.maxplayers = reader.uint(1)
     state.raw.bots = reader.uint(1)
     state.raw.packedSpecial = reader.uint(1)

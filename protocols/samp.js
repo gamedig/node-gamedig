@@ -69,7 +69,7 @@ export default class samp extends Core {
       }
     }
     if (!gotPlayerData) {
-      state.players.setNum(state.raw.numplayers)
+      state.numplayers = state.raw.numplayers
     }
   }
 

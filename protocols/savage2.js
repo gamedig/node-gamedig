@@ -7,7 +7,7 @@ export default class savage2 extends Core {
 
     reader.skip(12)
     state.name = this.stripColorCodes(reader.string())
-    state.players.setNum(reader.uint(1))
+    state.numplayers = reader.uint(1)
     state.maxplayers = reader.uint(1)
     state.raw.time = reader.string()
     state.map = reader.string()

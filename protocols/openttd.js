@@ -34,7 +34,7 @@ export default class openttd extends Core {
 
       state.password = !!reader.uint(1)
       state.maxplayers = reader.uint(1)
-      state.players.setNum(reader.uint(1))
+      state.numplayers = reader.uint(1)
       state.raw.numspectators = reader.uint(1)
       state.map = reader.string()
       state.raw.map_width = reader.uint(2)

@@ -13,7 +13,7 @@ export default class jc2mp extends gamespy3 {
   async run (state) {
     await super.run(state)
     if (!state.players.length && parseInt(state.raw.numplayers)) {
-      state.players.setNum(parseInt(state.raw.numplayers))
+      state.numplayers = parseInt(state.raw.numplayers);
     }
   }
 }

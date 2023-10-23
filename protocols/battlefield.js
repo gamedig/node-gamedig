@@ -102,6 +102,7 @@ export default class battlefield extends Core {
           }
           state.players.push(player)
         }
+        state.numplayers = numplayers
       }
     })
   }

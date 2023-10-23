@@ -61,7 +61,7 @@ export default class starmade extends Core {
     if (typeof data[2] === 'string') state.name = data[2]
     if (typeof data[3] === 'string') state.raw.description = data[3]
     if (typeof data[4] === 'number') state.raw.startTime = data[4]
-    if (typeof data[5] === 'number') state.players.setNum(data[5])
+    if (typeof data[5] === 'number') state.numplayers = data[5]
     if (typeof data[6] === 'number') state.maxplayers = data[6]
   }
 }
