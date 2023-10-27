@@ -111,6 +111,8 @@ export default class gamespy1 extends Core {
 
       state.players.push(player)
     }
+
+    state.numplayers = state.players.length
   }
 
   async sendPacket (type) {
