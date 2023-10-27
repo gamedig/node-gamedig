@@ -37,6 +37,7 @@ export default class teamspeak2 extends Core {
           })
           state.players.push(player)
         }
+        state.numplayers = state.players.length
       }
 
       {
