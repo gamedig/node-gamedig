@@ -84,7 +84,7 @@ export default class minecraft extends Core {
       if (gamespyState.numplayers) state.numplayers = gamespyState.numplayers
       if (gamespyState.maxplayers) state.maxplayers = gamespyState.maxplayers
       if (gamespyState.players.length) state.players = gamespyState.players
-      else if (gamespyState.raw.numplayers) state.numplayers = parseInt(gamespyState.raw.numplayers)
+      else if (gamespyState.numplayers) state.numplayers = gamespyState.numplayers
       if (gamespyState.ping) this.registerRtt(gamespyState.ping)
     }
     if (bedrockState) {
