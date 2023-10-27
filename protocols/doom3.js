@@ -60,6 +60,7 @@ export default class doom3 extends Core {
     let players;
     [players, reader] = playerResult
 
+    state.numplayers = players.length
     for (const player of players) {
       if (!player.ping || player.typeflag) { state.bots.push(player) } else { state.players.push(player) }
     }
