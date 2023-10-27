@@ -16,6 +16,7 @@ export default class teamspeak3 extends Core {
         state.raw = data[0]
         if ('virtualserver_name' in state.raw) state.name = state.raw.virtualserver_name
         if ('virtualserver_maxclients' in state.raw) state.maxplayers = state.raw.virtualserver_maxclients
+        if ('virtualserver_clientsonline' in state.raw) state.numplayers = state.raw.virtualserver_clientsonline
       }
 
       {
