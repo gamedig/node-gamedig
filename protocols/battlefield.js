@@ -11,7 +11,7 @@ export default class battlefield extends Core {
       {
         const data = await this.query(socket, ['serverInfo'])
         state.name = data.shift()
-        state.raw.numplayers = parseInt(data.shift())
+        state.numplayers = parseInt(data.shift())
         state.maxplayers = parseInt(data.shift())
         state.raw.gametype = data.shift()
         state.map = data.shift()

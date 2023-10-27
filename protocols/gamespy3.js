@@ -127,6 +127,9 @@ export default class gamespy3 extends Core {
         state.players.push(player)
       }
     }
+
+    if ('numplayers' in state.raw) state.numplayers = parseInt(state.raw.numplayers)
+    else state.numplayers = state.players.length
   }
 
   async sendPacket (type, challenge, payload, assemble) {

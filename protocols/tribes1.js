@@ -43,7 +43,7 @@ export default class tribes1 extends Core {
       state.raw.dedicated = !!reader.uint(1)
       state.raw.dropInProgress = !!reader.uint(1)
       state.raw.gameInProgress = !!reader.uint(1)
-      state.raw.playerCount = reader.uint(4)
+      state.numplayers = reader.uint(4)
       state.maxplayers = reader.uint(4)
       state.raw.teamPlay = reader.uint(1)
       state.map = this.readString(reader)

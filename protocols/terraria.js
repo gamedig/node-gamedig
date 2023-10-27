@@ -19,6 +19,6 @@ export default class terraria extends Core {
 
     state.name = json.name
     state.gamePort = json.port
-    state.raw.numplayers = json.playercount
+    state.numplayers = json.playercount
   }
 }

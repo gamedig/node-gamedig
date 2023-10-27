@@ -17,7 +17,7 @@ export default class cs2d extends Core {
     state.raw.forceLight = this.readFlag(flags, 7)
     state.name = this.readString(reader)
     state.map = this.readString(reader)
-    state.raw.numplayers = reader.uint(1)
+    state.numplayers = reader.uint(1)
     state.maxplayers = reader.uint(1)
     if (flags & 32) {
       state.raw.gamemode = reader.uint(1)

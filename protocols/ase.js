@@ -16,7 +16,7 @@ export default class ase extends Core {
     state.map = this.readString(reader)
     state.raw.version = this.readString(reader)
     state.password = this.readString(reader) === '1'
-    state.raw.numplayers = parseInt(this.readString(reader))
+    state.numplayers = parseInt(this.readString(reader))
     state.maxplayers = parseInt(this.readString(reader))
 
     while (!reader.done()) {

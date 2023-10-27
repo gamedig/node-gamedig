@@ -59,6 +59,7 @@ The returned state object will contain the following keys:
 * **name**: string - Server name
 * **map**: string - Current server game map
 * **password**: boolean - If a password is required
+* **numplayers**: number
 * **maxplayers**: number
 * **players**: array of objects
   * **name**: string - If the player's name is unknown, the string will be empty.

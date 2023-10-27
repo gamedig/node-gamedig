@@ -24,7 +24,7 @@ export default class ffow extends valve {
     state.raw.description = reader.string()
     state.raw.version = reader.string()
     state.gamePort = reader.uint(2)
-    state.raw.numplayers = reader.uint(1)
+    state.numplayers = reader.uint(1)
     state.maxplayers = reader.uint(1)
     state.raw.listentype = String.fromCharCode(reader.uint(1))
     state.raw.environment = String.fromCharCode(reader.uint(1))

@@ -18,7 +18,7 @@ export default class armagetron extends Core {
     state.gamePort = this.readUInt(reader)
     state.raw.hostname = this.readString(reader)
     state.name = this.stripColorCodes(this.readString(reader))
-    state.raw.numplayers = this.readUInt(reader)
+    state.numplayers = this.readUInt(reader)
     state.raw.versionmin = this.readUInt(reader)
     state.raw.versionmax = this.readUInt(reader)
     state.raw.version = this.readString(reader)

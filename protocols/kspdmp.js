@@ -23,5 +23,6 @@ export default class kspdmp extends Core {
         state.players.push({ name })
       }
     }
+    state.numplayers = state.players.length
   }
 }

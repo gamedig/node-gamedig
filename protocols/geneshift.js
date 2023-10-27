@@ -28,7 +28,7 @@ export default class geneshift extends Core {
     state.raw.country = found[1]
     state.name = found[4]
     state.map = found[5]
-    state.players.setNum(parseInt(found[6]))
+    state.numplayers = parseInt(found[6])
     state.maxplayers = parseInt(found[7])
     // fields[8] is unknown?
     state.raw.rules = found[9]

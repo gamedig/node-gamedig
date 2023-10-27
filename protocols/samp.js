@@ -18,7 +18,7 @@ export default class samp extends Core {
         state.raw.version = this.reader(consumed).string()
       }
       state.password = !!reader.uint(1)
-      state.raw.numplayers = reader.uint(2)
+      state.numplayers = reader.uint(2)
       state.maxplayers = reader.uint(2)
       state.name = reader.pascalString(4)
       state.raw.gamemode = reader.pascalString(4)
@@ -39,12 +39,10 @@ export default class samp extends Core {
 
     // read players
     // don't even bother if > 100 players, because the server won't respond
-    let gotPlayerData = false
-    if (state.raw.numplayers < 100) {
+    if (state.numplayers < 100) {
       if (this.isVcmp) {
         const reader = await this.sendPacket('c', true)
         if (reader !== null) {
-          gotPlayerData = true
           const playerCount = reader.uint(2)
           for (let i = 0; i < playerCount; i++) {
             const player = {}
@@ -55,7 +53,6 @@ export default class samp extends Core {
       } else {
         const reader = await this.sendPacket('d', true)
         if (reader !== null) {
-          gotPlayerData = true
           const playerCount = reader.uint(2)
           for (let i = 0; i < playerCount; i++) {
             const player = {}
@@ -67,9 +64,6 @@ export default class samp extends Core {
           }
         }
       }
-    }
-    if (!gotPlayerData) {
-      state.players.setNum(state.raw.numplayers)
     }
   }
 

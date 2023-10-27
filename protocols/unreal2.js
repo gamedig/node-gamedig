@@ -18,7 +18,7 @@ export default class unreal2 extends Core {
       state.name = this.readUnrealString(reader, true)
       state.map = this.readUnrealString(reader, true)
       state.raw.gametype = this.readUnrealString(reader, true)
-      state.raw.numplayers = reader.uint(4)
+      state.numplayers = reader.uint(4)
       state.maxplayers = reader.uint(4)
       this.logger.debug(log => {
         log('UNREAL2 EXTRA INFO', reader.buffer.slice(reader.i))

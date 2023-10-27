@@ -17,6 +17,7 @@ export default class ventrilo extends Core {
       state.players.push(client)
     }
     delete state.raw.CLIENTS
+    state.numplayers = state.players.length
 
     if ('NAME' in state.raw) state.name = state.raw.NAME
     if ('MAXCLIENTS' in state.raw) state.maxplayers = state.raw.MAXCLIENTS

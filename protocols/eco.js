@@ -11,6 +11,7 @@ export default class eco extends Core {
     const serverInfo = request.Info
 
     state.name = serverInfo.Description
+    state.numplayers = serverInfo.OnlinePlayers;
     state.maxplayers = serverInfo.TotalPlayers
     state.password = serverInfo.HasPassword
     state.gamePort = serverInfo.GamePort

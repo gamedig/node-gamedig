@@ -32,6 +32,9 @@ export default class gamespy2 extends Core {
       for (const rawPlayer of this.readFieldData(reader)) {
         state.players.push(rawPlayer)
       }
+
+      if ('numplayers' in state.raw) state.numplayers = parseInt(state.raw.numplayers)
+      else state.numplayers = state.players.length
     }
 
     // Parse teams
