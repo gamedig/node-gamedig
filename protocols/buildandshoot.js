@@ -20,7 +20,7 @@ export default class buildandshoot extends Core {
 
     m = body.match(/Current players: (\d+)\/(\d+)/)
     if (m) {
-      state.raw.numplayers = m[1]
+      state.numplayers = parseInt(m[1])
       state.maxplayers = m[2]
     }
 
