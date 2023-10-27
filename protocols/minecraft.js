@@ -74,12 +74,14 @@ export default class minecraft extends Core {
         }
         state.name = name
       } catch (e) {}
+      if (vanillaState.numplayers) state.numplayers = vanillaState.numplayers
       if (vanillaState.maxplayers) state.maxplayers = vanillaState.maxplayers
       if (vanillaState.players.length) state.players = vanillaState.players
       if (vanillaState.ping) this.registerRtt(vanillaState.ping)
     }
     if (gamespyState) {
       if (gamespyState.name) state.name = gamespyState.name
+      if (gamespyState.numplayers) state.numplayers = gamespyState.numplayers
       if (gamespyState.maxplayers) state.maxplayers = gamespyState.maxplayers
       if (gamespyState.players.length) state.players = gamespyState.players
       else if (gamespyState.raw.numplayers) state.numplayers = parseInt(gamespyState.raw.numplayers)
@@ -87,6 +89,7 @@ export default class minecraft extends Core {
     }
     if (bedrockState) {
       if (bedrockState.name) state.name = bedrockState.name
+      if (bedrockState.numplayers) state.numplayers = bedrockState.numplayers
       if (bedrockState.maxplayers) state.maxplayers = bedrockState.maxplayers
       if (bedrockState.map) state.map = bedrockState.map
       if (bedrockState.ping) this.registerRtt(bedrockState.ping)
