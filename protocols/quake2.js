@@ -82,5 +82,7 @@ export default class quake2 extends Core {
     if ('maxclients' in state.raw) state.maxplayers = state.raw.maxclients
     if ('sv_hostname' in state.raw) state.name = state.raw.sv_hostname
     if ('hostname' in state.raw) state.name = state.raw.hostname
+    if ('clients' in state.raw) state.numplayers = state.raw.clients
+    else state.numplayers = state.players.length + state.bots.length
   }
 }
