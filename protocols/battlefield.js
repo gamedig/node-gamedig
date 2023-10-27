@@ -76,8 +76,8 @@ export default class battlefield extends Core {
         for (let i = 0; i < fieldCount; i++) {
           fields.push(data.shift())
         }
-        const numplayers = data.shift()
-        for (let i = 0; i < numplayers; i++) {
+        state.numplayers = data.shift()
+        for (let i = 0; i < state.numplayers; i++) {
           const player = {}
           for (let key of fields) {
             let value = data.shift()
@@ -102,7 +102,6 @@ export default class battlefield extends Core {
           }
           state.players.push(player)
         }
-        state.numplayers = numplayers
       }
     })
   }
