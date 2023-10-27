@@ -55,6 +55,7 @@ export default class nadeo extends Core {
           name: this.stripColors(player.Name || player.NickName)
         })
       }
+      state.numplayers = state.players.length
     })
   }
 
