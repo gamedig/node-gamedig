@@ -32,6 +32,8 @@ The Specialists, Vampire Slayer, Warfork (2018), Wurm Unlimited (2015).
 * Also added support: The Forest (2014), Operation: Harsh Doorstop (2023),
 Insurgency: Modern Infantry Combat (2007), Counter-Strike 2 (2023).
 * Capitalized 'Unturned' in game.txt
+* Fixed wrong field being parsed for the `maxplayers` on Doom3.
+* Stabilized field `numplayers`.
 
 ### 4.1.0
 * Replace `compressjs` dependency by `seek-bzip` to solve some possible import issues.
