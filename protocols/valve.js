@@ -67,7 +67,7 @@ export default class valve extends Core {
     state.raw.folder = reader.string()
     state.raw.game = reader.string()
     if (!this.goldsrcInfo) state.raw.appId = reader.uint(2)
-    state.raw.numplayers = reader.uint(1)
+    state.numplayers = reader.uint(1)
     state.maxplayers = reader.uint(1)
 
     if (this.goldsrcInfo) state.raw.protocol = reader.uint(1)
@@ -301,7 +301,7 @@ export default class valve extends Core {
         state.name = rules.bat_name_s
         delete rules.bat_name_s
         if ('bat_player_count_s' in rules) {
-          state.raw.numplayers = parseInt(rules.bat_player_count_s)
+          state.numplayers = parseInt(rules.bat_player_count_s)
           delete rules.bat_player_count_s
         }
         if ('bat_max_players_i' in rules) {
@@ -427,16 +427,14 @@ export default class valve extends Core {
     })
     delete state.raw.players
     const numBots = state.raw.numbots || 0
-    const numPlayers = state.raw.numplayers - numBots
     while (state.bots.length < numBots) {
       if (sortedPlayers.length) state.bots.push(sortedPlayers.pop())
       else state.bots.push({})
     }
-    while (state.players.length < numPlayers || sortedPlayers.length) {
+    while (state.players.length < state.numplayers - numBots || sortedPlayers.length) {
       if (sortedPlayers.length) state.players.push(sortedPlayers.pop())
       else state.players.push({})
     }
-    state.numplayers = numPlayers
   }
 
   /**
