@@ -32,7 +32,9 @@ The Specialists, Vampire Slayer, Warfork (2018), Wurm Unlimited (2015).
 * Also added support: The Forest (2014), Operation: Harsh Doorstop (2023),
 Insurgency: Modern Infantry Combat (2007), Counter-Strike 2 (2023).
 * Capitalized 'Unturned' in game.txt
-* Fixed wrong field being parsed for the `maxplayers` on Doom3.
+* Removed the players::setNum method, the library will no longer add empty players as 
+a placeholder in the `players` field.
+* Fixed wrong field being parsed for `maxplayers` on Doom3.
 * Stabilized field `numplayers`.
 
 ### 4.1.0
