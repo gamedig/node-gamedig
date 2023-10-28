@@ -30,7 +30,8 @@ Empires Mod (2008), Fistful of Frags (2014), alf-Life: Opposing Force (1999),
 Pirates, Vikings, and Knights II (2007), Project Cars (2015), Project Cars 2 (2017),
 The Specialists, Vampire Slayer, Warfork (2018), Wurm Unlimited (2015).
 * Also added support: The Forest (2014), Operation: Harsh Doorstop (2023),
-Insurgency: Modern Infantry Combat (2007), Counter-Strike 2 (2023), The Front (2023).
+Insurgency: Modern Infantry Combat (2007), Counter-Strike 2 (2023), The Front (2023),
+San Andreas OpenMP.
 * Capitalized 'Unturned' in game.txt
 * Removed the players::setNum method, the library will no longer add empty players as 
 a placeholder in the `players` field.
