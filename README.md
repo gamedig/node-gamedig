@@ -11,11 +11,7 @@ Support is available on the [GameDig Discord](https://discord.gg/NVCMn3tnxH) (fo
 See the [GAMES_LIST.md](GAMES_LIST.md) file for the currently supported titles, not yet supported ones and notes about some of them.
 
 ## Usage from Node.js
-Install...
-```shell
-npm install gamedig
-```
-... then use!
+Install using your favorite package manager:`npm install gamedig`, then use!
 ```js
 import GameDig from 'gamedig';
 
@@ -28,6 +24,7 @@ GameDig.query({
     console.log("Server is offline");
 });
 ```
+Confused on how this works, or you want to see more? Checkout the [examples](/examples) folder!
 
 ## Query Options
 
