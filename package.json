@@ -58,7 +58,7 @@
         "iconv-lite": "^0.6.3",
         "long": "^5.2.3",
         "minimist": "^1.2.8",
-        "punycode": "^2.3.0",
+        "punycode": "^2.3.1",
         "seek-bzip": "^2.0.0",
         "varint": "^6.0.0"
     },
