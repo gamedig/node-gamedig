@@ -22,6 +22,8 @@
 * CLI: Resolved incorrect error message when querying with a non-existent protocol name.
 * Added Deno support: the library and CLI can now be experimentally used with the [Deno runtime](https://deno.com)
   * `deno run --allow-net --allow-read=. bin/gamedig.js --type tf2 127.0.0.1`
+* Added code examples.
+
 #### Games
 * Added support by @dgibbs64: Eco (2018), Core Keeper (2022), ARMA: Reforger (2022),
 Action Half-Life, Action: Source (2019), Base Defense (2017), Blade Symphony (2014),
