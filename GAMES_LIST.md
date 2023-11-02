@@ -234,6 +234,7 @@
 | `rust`                                | Rust                                                    | [Valve Protocol](#valve)                         |
 | `stalker`                             | S.T.A.L.K.E.R.                                          |                                                  |
 | `samp`                                | San Andreas Multiplayer                                 |                                                  |
+| `saomp`                               | San Andreas OpenMP                                      |                                                  |
 | `savage2`                             | Savage 2: A Tortured Soul (2008)                        |                                                  |
 | `ss`                                  | Serious Sam                                             |                                                  |
 | `ss2`                                 | Serious Sam 2                                           |                                                  |
