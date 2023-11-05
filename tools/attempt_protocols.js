@@ -17,17 +17,20 @@ const gamedig = new GameDig(options)
 
 const protocols = ['valve', 'gamespy1', 'gamespy2', 'gamespy3', 'goldsrc', 'minecraft', 'quake1', 'quake2', 'quake3', 'unreal2', 'valve']
 
-protocols.forEach(protocol => {
-  gamedig.query({
-    ...options,
-    debug: true,
-    type: `protocol-${protocol}`
-  })
-    .then(data => {
-      console.log(data)
+const run = async () => {
+  for (const protocol of protocols) {
+    try {
+      const response = await gamedig.query({
+        ...options,
+        debug: true,
+        type: `protocol-${protocol}`
+      })
+      console.log(response)
       process.exit()
-    })
-    .catch(error => {
-      console.log(`Error on '${protocol}': ${error}`)
-    })
-})
+    } catch (e) {
+      console.log(`Error on '${protocol}': ${e}`)
+    }
+  }
+}
+
+run().then(() => {})
