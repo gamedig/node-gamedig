@@ -1,5 +1,6 @@
 import armagetron from './armagetron.js'
 import ase from './ase.js'
+import asa from './asa.js'
 import assettocorsa from './assettocorsa.js'
 import battlefield from './battlefield.js'
 import buildandshoot from './buildandshoot.js'
@@ -48,7 +49,7 @@ import ventrilo from './ventrilo.js'
 import warsow from './warsow.js'
 
 export {
-  armagetron, ase, assettocorsa, battlefield, buildandshoot, cs2d, discord, doom3, eco, epic, ffow, fivem, gamespy1,
+  armagetron, ase, asa, assettocorsa, battlefield, buildandshoot, cs2d, discord, doom3, eco, epic, ffow, fivem, gamespy1,
   gamespy2, gamespy3, geneshift, goldsrc, hexen2, jc2mp, kspdmp, mafia2mp, mafia2online, minecraft,
   minecraftbedrock, minecraftvanilla, mumble, mumbleping, nadeo, openttd, quake1, quake2, quake3, rfactor, samp,
   savage2, starmade, starsiege, teamspeak2, teamspeak3, terraria, tribes1, tribes1master, unreal2, ut3, valve,
