@@ -58,9 +58,9 @@ The returned state object will contain the following keys:
 * **password**: boolean - If a password is required
 * **numplayers**: number
 * **maxplayers**: number
-* **players**: array of objects
+* **players**: array of objects - note that this could be of a different length compared to **numplayers**
   * **name**: string - If the player's name is unknown, the string will be empty.
-  * **raw**: object - Additional information about the player if available (**unstable**).
+  * **raw**: object - Additional information about the player if available.
 * **bots**: array of objects - Same schema as `players`
 * **connect**: string
   * This will typically include the game's `ip:port`
@@ -71,7 +71,7 @@ The returned state object will contain the following keys:
   * Note that this is not the RTT of an ICMP echo, as ICMP packets are often blocked by NATs and node
     has poor support for raw sockets.
   * This value is derived from the RTT of one of the query packets, which is usually quite accurate, but may add a bit due to server lag.
-* **raw**: freeform object (**unstable**)
+* **raw**: object
   * Contains all information received from the server in a disorganized format.
 
 Note that `raw` (or **unstable**) objects contents MAY change on a per-protocol basis between GameDig patch releases (although not typical).
