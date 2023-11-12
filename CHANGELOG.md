@@ -23,6 +23,7 @@
 * Added Deno support: the library and CLI can now be experimentally used with the [Deno runtime](https://deno.com)
   * `deno run --allow-net --allow-read=. bin/gamedig.js --type tf2 127.0.0.1`
 * Added code examples.
+* Added Epic Online Services protocol.
 
 #### Games
 * Added support by @dgibbs64: Eco (2018), Core Keeper (2022), ARMA: Reforger (2022),
@@ -39,6 +40,7 @@ San Andreas OpenMP.
 a placeholder in the `players` field.
 * Fixed wrong field being parsed for `maxplayers` on Doom3.
 * Stabilized field `numplayers`.
+* Added support by @GuilhermeWerner: ARK: Survival Ascended (2023).
 
 ### 4.1.0
 * Replace `compressjs` dependency by `seek-bzip` to solve some possible import issues.

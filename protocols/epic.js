@@ -5,7 +5,13 @@ export default class Epic extends Core {
   constructor () {
     super()
 
-    // EOS game credentials
+    /**
+     * To get information about game servers using Epic's EOS, you need some credentials to authenticate using OAuth2.
+     *
+     * https://dev.epicgames.com/docs/web-api-ref/authentication
+     *
+     * These credentials can be provided by the game developers or extracted from the game's files.
+     */
     this.clientId = null
     this.clientSecret = null
     this.deploymentId = null
