@@ -17,6 +17,7 @@ export default class Epic extends Core {
     this.epicApi = 'https://api.epicgames.dev'
     this.accessToken = null
 
+    // Don't use the tcp ping probing
     this.usedTcp = true
   }
 
