@@ -78,18 +78,11 @@ export default class Epic extends Core {
     state.password = desiredServer.attributes.SERVERPASSWORD_b
     state.maxplayers = desiredServer.settings.maxPublicPlayers
 
-    // If the game returns the player list, we can use it otherwise we use the total players.
-    if (desiredServer.totalPlayers === desiredServer.publicPlayers.length) {
-      for (const player of desiredServer.publicPlayers) {
-        state.players.push({
-          name: player.name,
-          raw: player
-        })
-      }
-    } else {
-      for (let i = 0; i < desiredServer.totalPlayers; i++) {
-        state.players.push('')
-      }
+    for (const player of desiredServer.publicPlayers) {
+      state.players.push({
+        name: player.name,
+        raw: player
+      })
     }
 
     state.raw = desiredServer
