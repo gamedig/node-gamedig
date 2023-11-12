@@ -1,5 +1,4 @@
 import Core from './core.js'
-import axios from 'axios'
 
 export default class Epic extends Core {
   constructor () {
