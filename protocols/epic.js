@@ -76,6 +76,7 @@ export default class Epic extends Core {
     state.name = desiredServer.attributes.CUSTOMSERVERNAME_s
     state.map = desiredServer.attributes.MAPNAME_s
     state.password = desiredServer.attributes.SERVERPASSWORD_b
+    state.numplayers = desiredServer.totalPlayers
     state.maxplayers = desiredServer.settings.maxPublicPlayers
 
     // If the game returns the player list, we can use it otherwise we use the total players.
