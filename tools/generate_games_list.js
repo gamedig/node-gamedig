@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+/*
 import * as fs from 'node:fs'
 import GameResolver from '../lib/GameResolver.js'
 import { fileURLToPath } from 'node:url'
@@ -24,3 +25,4 @@ const end = readme.indexOf(markerBottom)
 
 const updated = readme.substring(0, start) + '\n\n' + generated + '\n' + readme.substring(end)
 fs.writeFileSync(readmeFilename, updated)
+*/
