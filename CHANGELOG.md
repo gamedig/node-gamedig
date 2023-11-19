@@ -11,7 +11,9 @@
 * Removed the following alternative game ids: `minecraftping` (as it was deprecated and the same thing as `minecraft`),
 `minecraftpe` (deprecated, which is the same as `minecraftbe`), `flashpoint` (alternative was `operationflashpoint`, 
 see next point) and `tshock` (which is `terraria`).
-* Renamed the game id `operationflashpoint` to reference it by its full name, now is `ofcwc`.
+* Renamed following game ids:
+* * `operationflashpoint` to reference it by its full name, now is `ofcwc`.
+* * `7d2d` to standardize game ids as they won't being with a digit and this was the only one, now is `sdtd`.
 
 ### Other changes
 #### Package
