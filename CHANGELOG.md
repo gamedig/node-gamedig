@@ -8,6 +8,10 @@
 #### Games
 * Renamed `Counter Strike: 2D` to `CS2D` in [games.txt](games.txt) (why? see [this](https://cs2d.com/faq.php?show=misc_name#misc_name)).
 * Updated `CS2D` protocol (by @ernestpasnik).
+* Removed the following alternative game ids: `minecraftping` (as it was deprecated and the same thing as `minecraft`),
+`minecraftpe` (deprecated, which is the same as `minecraftbe`), `flashpoint` (alternative was `operationflashpoint`, 
+see next point) and `tshock` (which is `terraria`).
+* Renamed the game id `operationflashpoint` to reference it by its full name, now is `ofcwc`.
 
 ### Other changes
 #### Package
