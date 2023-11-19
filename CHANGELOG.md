@@ -4,6 +4,7 @@
 #### Package
 * Node.js 16.20 is now required (from 14).
 * Made the library a `module`.
+* Removed `GameResolver`.
 
 #### Games
 * Renamed `Counter Strike: 2D` to `CS2D` in [games.txt](games.txt) (why? see [this](https://cs2d.com/faq.php?show=misc_name#misc_name)).
