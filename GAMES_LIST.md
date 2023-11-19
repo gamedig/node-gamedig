@@ -23,6 +23,7 @@
 | `armar`                | ARMA: Resistance (2011)                                 |                                                  |
 | `armare`               | ARMA: Reforger (2022)                                   | [Valve Protocol](#valve)                         |
 | `armagetron`           | Armagetron Advanced (2001)                              |                                                  |
+| `asa`                  | Ark: Survival Ascended (2023)                           |                                                  |
 | `assettocorsa`         | Assetto Corsa (2014)                                    |                                                  |
 | `atlas`                | Atlas (2018)                                            | [Valve Protocol](#valve)                         |
 | `avorion`              | Avorion (2020)                                          | [Valve Protocol](#valve)                         |
