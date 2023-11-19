@@ -14,12 +14,18 @@ const readme = fs.readFileSync(readmeFilename, { encoding: 'utf8' })
 const markerTop = '<!--- BEGIN GENERATED GAMES -->'
 const markerBottom = '<!--- END GENERATED GAMES -->'
 
+const sortedGamesIds = Object.keys(games).sort()
+const sortedGames = {}
+sortedGamesIds.forEach(key => {
+  sortedGames[key] = games[key]
+})
+
 let generated = ''
 generated += '| GameDig Type ID | Name | See Also\n'
 generated += '|---|---|---\n'
 
-for (const id in games) {
-  const game = games[id]
+for (const id in sortedGames) {
+  const game = sortedGames[id]
   generated += '| ' + id.padEnd(10, ' ') + ' | ' + game.name
   const notes = []
   if (game?.extra?.doc_notes) {
