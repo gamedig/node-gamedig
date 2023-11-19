@@ -11,6 +11,7 @@
 
 ### Other changes
 #### Package
+* Removed the `games.txt` file, the games definitions are now stored in-code.
 * Replaced usage of deprecated `substr` with `substring`.
 * Replaced deprecated internal `punycode` with the [punycode](https://www.npmjs.com/package/punycode) package.
 * Updated [got](https://github.com/sindresorhus/got) from 12.1 to 13.
