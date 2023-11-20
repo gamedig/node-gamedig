@@ -1,4 +1,4 @@
-import GameDig from '../lib/index.js'
+import { GameDig } from '../lib/index.js'
 // Instead of '../lib/index.js' you would have here 'gamedig'.
 
 GameDig.query({
