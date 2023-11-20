@@ -1,5 +1,5 @@
 import Minimist from 'minimist'
-import GameDig from './../lib/index.js'
+import { GameDig } from './../lib/index.js'
 
 const argv = Minimist(process.argv.slice(2), {})
 
