@@ -237,7 +237,7 @@
 | `samp`                 | San Andreas Multiplayer                                 |                                                  |
 | `saomp`                | San Andreas OpenMP                                      |                                                  |
 | `savage2`              | Savage 2: A Tortured Soul (2008)                        |                                                  |
-| `sd2d`                 | 7 Days to Die (2013)                                    | [Valve Protocol](#valve)                         |
+| `sdtd`                 | 7 Days to Die (2013)                                    | [Valve Protocol](#valve)                         |
 | `ss`                   | Serious Sam                                             |                                                  |
 | `ss2`                  | Serious Sam 2                                           |                                                  |
 | `shatteredhorizon`     | Shattered Horizon                                       | [Valve Protocol](#valve)                         |
