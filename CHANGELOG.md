@@ -4,7 +4,8 @@
 #### Package
 * Node.js 16.20 is now required (from 14).
 * Made the library a `module`.
-* Removed `GameResolver`.
+* Removed `GameResolver`, moved the `GameDig` class in a separate file.
+* Modified exports, now the library exports `games` and `protocols` alongside the `GameDig` class.
 
 #### Games
 * Renamed `Counter Strike: 2D` to `CS2D` in [games.txt](games.txt) (why? see [this](https://cs2d.com/faq.php?show=misc_name#misc_name)).
