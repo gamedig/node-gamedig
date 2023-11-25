@@ -1,6 +1,6 @@
-import Epic from './epic.js'
+const Epic = require('./epic');
 
-export default class asa extends Epic {
+class Asa extends Epic {
   constructor () {
     super()
 
@@ -10,3 +10,5 @@ export default class asa extends Epic {
     this.deploymentId = 'ad9a8feffb3b4b2ca315546f038c3ae2'
   }
 }
+
+module.exports = Asa;
