@@ -25,6 +25,7 @@ arma2oa|ARMA 2: Operation Arrowhead (2010)|valve|port=2302,port_query_offset=1
 armacwa|ARMA: Cold War Assault (2011)|gamespy1|port=2302,port_query_offset=1
 armar|ARMA: Resistance (2011)|gamespy1|port=2302,port_query_offset=1
 arma3|ARMA 3 (2013)|valve|port=2302,port_query_offset=1
+armare|ARMA: Reforger (2022)|valve|port=2001,port_query=17777
 
 armagetron|Armagetron Advanced (2001)|armagetron|port=4534
 baldursgate|Baldur's Gate (1998)|gamespy1|port=6073,port_query=1470
