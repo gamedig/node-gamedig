@@ -2,6 +2,8 @@
 | GameDig Type ID                       | Name                                                    | See Also                                    |
 |---------------------------------------|---------------------------------------------------------|---------------------------------------------|
 | `7d2d`                                | 7 Days to Die (2013)                                    | [Valve Protocol](#valve)                    |
+| `as`                                  | Action: Source                                          | [Valve Protocol](#valve)                    |
+| `ahl`                                 | Action Half-Life                                        | [Valve Protocol](#valve)                    |
 | `ageofchivalry`                       | Age of Chivalry (2007)                                  | [Valve Protocol](#valve)                    |
 | `aoe2`                                | Age of Empires 2 (1999)                                 |                                             |
 | `alienarena`                          | Alien Arena (2004)                                      |                                             |
@@ -37,11 +39,14 @@
 | `bfh`                                 | Battlefield Hardline (2015)                             |                                             |
 | `bfv`                                 | Battlefield Vietnam (2004)                              |                                             |
 | `bfbc2`                               | Battlefield: Bad Company 2 (2010)                       |                                             |
+| `bd`                                  | Base Defense (2017)                                     | [Valve Protocol](#valve)                    |
 | `blackmesa`                           | Black Mesa (2020)                                       | [Valve Protocol](#valve)                    |
+| `brainbread`                          | BrainBread                                              | [Valve Protocol](#valve)                    |
 | `brainbread2`                         | BrainBread 2 (2022)                                     | [Valve Protocol](#valve)                    |
 | `breach`                              | Breach (2011)                                           | [Valve Protocol](#valve)                    |
 | `breed`                               | Breed (2004)                                            |                                             |
 | `brink`                               | Brink (2011)                                            | [Valve Protocol](#valve)                    |
+| `bs`                                  | Blade Symphony (2014)                                   | [Valve Protocol](#valve)                    |
 | `buildandshoot`                       | Build and Shoot / Ace of Spades Classic (2012)          |                                             |
 | `cod`                                 | Call of Duty (2003)                                     |                                             |
 | `cod2`                                | Call of Duty 2 (2005)                                   |                                             |
@@ -75,6 +80,7 @@
 | `crysis`                              | Crysis (2007)                                           |                                             |
 | `crysis2`                             | Crysis 2 (2011)                                         |                                             |
 | `crysiswars`                          | Crysis Wars (2008)                                      |                                             |
+| `dab`                                 | Double Action: Boogaloo (2014)                          | [Valve Protocol](#valve)                    |
 | `daikatana`                           | Daikatana (2000)                                        |                                             |
 | `dnl`                                 | Dark and Light (2017)                                   | [Valve Protocol](#valve)                    |
 | `dmomam`                              | Dark Messiah of Might and Magic (2006)                  | [Valve Protocol](#valve)                    |
@@ -94,18 +100,22 @@
 | `dinodday`                            | Dino D-Day (2011)                                       | [Valve Protocol](#valve)                    |
 | `dirttrackracing2`                    | Dirt Track Racing 2 (2002)                              |                                             |
 | `discord`                             | Discord                                                 | [Notes](#discord)                           |
+| `dmc`                                 | Deathmatch Classic (2001)                               | [Valve Protocol](#valve)                    |
 | `dst`                                 | Don't Starve Together (2016)                            | [Valve Protocol](#valve)                    |
 | `doom3`                               | Doom 3 (2004)                                           |                                             |
 | `dota2`                               | Dota 2 (2013)                                           | [Valve Protocol](#valve)                    |
 | `drakan`                              | Drakan: Order of the Flame (1999)                       |                                             |
+| `dystopia`                            | Dystopia (2005)                                         | [Valve Protocol](#valve)                    |
 | `eco`                                 | Eco (2018)                                              |                                             |
 | `empyrion`                            | Empyrion - Galactic Survival (2015)                     | [Valve Protocol](#valve)                    |
+  `empiresmod`                          | Empires Mod (2008)                                      | [Valve Protocol](#valve)                    |
 | `etqw`                                | Enemy Territory: Quake Wars (2007)                      |                                             |
 | `fear`                                | F.E.A.R. (2005)                                         |                                             |
 | `f1c9902`                             | F1 Challenge '99-'02 (2002)                             |                                             |
 | `farcry`                              | Far Cry (2004)                                          |                                             |
 | `farcry2`                             | Far Cry 2 (2008)                                        |                                             |
 | `f12002`                              | Formula One 2002 (2002)                                 |                                             |
+| `fof`                                 | Fistful of Frags (2014)                                 | [Valve Protocol](#valve)                    |
 | `fortressforever`                     | Fortress Forever (2007)                                 | [Valve Protocol](#valve)                    |
 | `ffow`                                | Frontlines: Fuel of War (2008)                          |                                             |
 | `garrysmod`                           | Garry's Mod (2004)                                      | [Valve Protocol](#valve)                    |
@@ -122,6 +132,7 @@
 | `hl2dm`                               | Half-Life 2: Deathmatch (2004)                          | [Valve Protocol](#valve)                    |
 | `hldm`                                | Half-Life Deathmatch (1998)                             | [Valve Protocol](#valve)                    |
 | `hldms`                               | Half-Life Deathmatch: Source (2005)                     | [Valve Protocol](#valve)                    |
+| `hlopfor`                             | Half-Life: Opposing Force (1999)                        | [Valve Protocol](#valve)                    |
 | `halo`                                | Halo (2003)                                             |                                             |
 | `halo2`                               | Halo 2 (2007)                                           |                                             |
 | `hll`                                 | Hell Let Loose                                          | [Valve Protocol](#valve)                    |
@@ -178,14 +189,17 @@
 | `nmrih`                               | No More Room in Hell (2011)                             | [Valve Protocol](#valve)                    |
 | `nolf2`                               | No One Lives Forever 2: A Spy in H.A.R.M.'s Way (2002)  |                                             |
 | `nucleardawn`                         | Nuclear Dawn (2011)                                     | [Valve Protocol](#valve)                    |
-| `ohd`                                 | Operation: Harsh Doorstop (2023)                        | [Valve Protocol](#valve)                    |
 | `onset`                               | Onset (2019)                                            | [Valve Protocol](#valve)                    |
+| `ohd`                                 | Operation: Harsh Doorstop (2023)                        | [Valve Protocol](#valve)                    |
 | `openarena`                           | OpenArena (2005)                                        |                                             |
 | `openttd`                             | OpenTTD (2004)                                          |                                             |
 | `operationflashpoint`<br>`flashpoint` | Operation Flashpoint: Cold War Crisis (2001)            |                                             |
 | `flashpointresistance`                | Operation Flashpoint: Resistance (2002)                 |                                             |
 | `painkiller`                          | Painkiller                                              |                                             |
+| `pc`                                  | Project Cars (2015)                                     | [Valve Protocol](#valve)                    |
+| `pc2`                                 | Project Cars 2 (2017)                                   | [Valve Protocol](#valve)                    |
 | `pixark`                              | PixARK (2018)                                           | [Valve Protocol](#valve)                    |
+| `pvkii`                               | Pirates, Vikings, and Knights II (2007)                 | [Valve Protocol](#valve)                    |
 | `ps`                                  | Post Scriptum                                           |                                             |
 | `postal2`                             | Postal 2                                                |                                             |
 | `prey`                                | Prey                                                    |                                             |
@@ -262,6 +276,7 @@
 | `hidden`                              | The Hidden (2005)                                       | [Valve Protocol](#valve)                    |
 | `nolf`                                | The Operative: No One Lives Forever (2000)              |                                             |
 | `ship`                                | The Ship                                                | [Valve Protocol](#valve)                    |
+| `ts`                                  | The Specialists                                         | [Valve Protocol](#valve)                    |
 | `graw`                                | Tom Clancy's Ghost Recon Advanced Warfighter (2006)     |                                             |
 | `graw2`                               | Tom Clancy's Ghost Recon Advanced Warfighter 2 (2007)   |                                             |
 | `theforest`                           | The Forest (2014)                                       | [Valve Protocol](#valve)                    |
@@ -282,19 +297,22 @@
 | `ut2003`                              | Unreal Tournament 2003                                  |                                             |
 | `ut2004`                              | Unreal Tournament 2004                                  |                                             |
 | `ut3`                                 | Unreal Tournament 3                                     |                                             |
-| `unturned`                            | unturned                                                | [Valve Protocol](#valve)                    |
+| `unturned`                            | Unturned                                                | [Valve Protocol](#valve)                    |
 | `urbanterror`                         | Urban Terror                                            |                                             |
 | `vrising`                             | V Rising (2022)                                         | [Valve Protocol](#valve)                    |
 | `v8supercar`                          | V8 Supercar Challenge                                   |                                             |
+| `vs`                                  | Vampire Slayer                                          | [Valve Protocol](#valve)                    |
 | `valheim`                             | Valheim (2021)                                          | [Notes](#valheim), [Valve Protocol](#valve) |
 | `ventrilo`                            | Ventrilo                                                |                                             |
 | `vcmp`                                | Vice City Multiplayer                                   |                                             |
 | `vietcong`                            | Vietcong                                                |                                             |
 | `vietcong2`                           | Vietcong 2                                              |                                             |
+| `warfork`                             | Warfork                                                 |                                             |
 | `warsow`                              | Warsow                                                  |                                             |
 | `wheeloftime`                         | Wheel of Time                                           |                                             |
 | `wolfenstein2009`                     | Wolfenstein 2009                                        |                                             |
 | `wolfensteinet`                       | Wolfenstein: Enemy Territory                            |                                             |
+| `wurm`                                | Wurm: Unlimited                                         | [Valve Protocol](#valve)                    |
 | `xpandrally`                          | Xpand Rally                                             |                                             |
 | `zombiemaster`                        | Zombie Master                                           | [Valve Protocol](#valve)                    |
 | `zps`                                 | Zombie Panic: Source                                    | [Valve Protocol](#valve)                    |
