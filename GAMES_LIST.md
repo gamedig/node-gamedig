@@ -274,6 +274,7 @@
 | `terminus`                            | Terminus                                                |                                             |
 | `terraria`<br>`tshock`                | Terraria - TShock (2011)                                | [Notes](#terraria)                          |
 | `forrest`                             | The Forrest (2014)                                      | [Valve Protocol](#valve)                    |
+| `thefront`                            | The Front (2023)                                        | [Valve Protocol](#valve)                    |
 | `hidden`                              | The Hidden (2005)                                       | [Valve Protocol](#valve)                    |
 | `nolf`                                | The Operative: No One Lives Forever (2000)              |                                             |
 | `ship`                                | The Ship                                                | [Valve Protocol](#valve)                    |
