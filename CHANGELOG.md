@@ -7,6 +7,8 @@
 * None
 
 ### 4.2.0
+* Renamed `Counter Strike: 2D` to `CS2D` in [games.txt](games.txt) (why? see [this](https://cs2d.com/faq.php?show=misc_name#misc_name)).
+* Updated `CS2D` protocol (by @ernestpasnik)
 * Eco (2018) - Added support (requested by @dgibbs64)
 * Core Keeper (2022) - Added support (by @dgibbs64)
 * ARMA: Reforger (2022) - Added support (by @dgibbs64)
