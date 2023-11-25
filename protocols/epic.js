@@ -1,6 +1,6 @@
-import Core from './core.js'
+const Core = require('./core');
 
-export default class Epic extends Core {
+class Epic extends Core {
   constructor () {
     super()
 
@@ -100,3 +100,5 @@ export default class Epic extends Core {
     this.accessToken = null
   }
 }
+
+module.exports = Epic;
