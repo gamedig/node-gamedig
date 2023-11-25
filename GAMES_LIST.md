@@ -262,6 +262,7 @@
 | `ship`                                | The Ship                                                | [Valve Protocol](#valve)                    |
 | `graw`                                | Tom Clancy's Ghost Recon Advanced Warfighter (2006)     |                                             |
 | `graw2`                               | Tom Clancy's Ghost Recon Advanced Warfighter 2 (2007)   |                                             |
+| `theforest`                           | The Forest (2014)                                       | [Valve Protocol](#valve)                    |
 | `thps3`                               | Tony Hawk's Pro Skater 3                                |                                             |
 | `thps4`                               | Tony Hawk's Pro Skater 4                                |                                             |
 | `thu2`                                | Tony Hawk's Underground 2                               |                                             |

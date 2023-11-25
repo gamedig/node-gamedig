@@ -10,6 +10,7 @@
 * Eco (2018) - Added support (requested by @dgibbs64)
 * Core Keeper (2022) - Added support (by @dgibbs64)
 * ARMA: Reforger (2022) - Added support (by @dgibbs64)
+* The Forest (2014) - Added support.
 
 ### 4.1.0
 * Replace `compressjs` dependency by `seek-bzip` to solve some possible import issues.
