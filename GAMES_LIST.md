@@ -75,6 +75,7 @@
 | `cscz`                                | Counter-Strike: Condition Zero (2004)                   | [Valve Protocol](#valve)                    |
 | `csgo`                                | Counter-Strike: Global Offensive (2012)                 | [Notes](#csgo), [Valve Protocol](#valve)    |
 | `css`                                 | Counter-Strike: Source (2004)                           | [Valve Protocol](#valve)                    |
+| `cs2`                                 | Counter-Strike 2 (2023)                                 | [Valve Protocol](#valve)                    |
 | `creativerse`                         | Creativerse (2017)                                      | [Valve Protocol](#valve)                    |
 | `crossracing`                         | Cross Racing Championship Extreme 2005 (2005)           |                                             |
 | `crysis`                              | Crysis (2007)                                           |                                             |
@@ -108,7 +109,7 @@
 | `dystopia`                            | Dystopia (2005)                                         | [Valve Protocol](#valve)                    |
 | `eco`                                 | Eco (2018)                                              |                                             |
 | `empyrion`                            | Empyrion - Galactic Survival (2015)                     | [Valve Protocol](#valve)                    |
-  `empiresmod`                          | Empires Mod (2008)                                      | [Valve Protocol](#valve)                    |
+ `empiresmod`                          | Empires Mod (2008)                                      | [Valve Protocol](#valve)                    |
 | `etqw`                                | Enemy Territory: Quake Wars (2007)                      |                                             |
 | `fear`                                | F.E.A.R. (2005)                                         |                                             |
 | `f1c9902`                             | F1 Challenge '99-'02 (2002)                             |                                             |

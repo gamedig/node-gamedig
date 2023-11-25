@@ -31,6 +31,7 @@
 * The Forest (2014) - Added support.
 * Operation: Harsh Doorstop (2023) - Added support.
 * Insurgency: Modern Infantry Combat (2007) - Added support.
+* Counter-Strike 2 (2023) - Added support.
 
 ### 4.1.0
 * Replace `compressjs` dependency by `seek-bzip` to solve some possible import issues.
