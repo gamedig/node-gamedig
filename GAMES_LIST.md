@@ -439,3 +439,6 @@ DayZ stores some of it's servers information inside the `tags` attribute. Make s
 ### <a name="valve"></a>Valve Protocol
 For many valve games, additional 'rules' may be fetched into the unstable `raw` field by passing the additional
 option: `requestRules: true`. Beware that this may increase query time.
+
+### <a name="thefront"></a>The Front
+Responses with wrong `name` (gives out a steamid instead of the server name) and `maxplayers` (always 200, whatever the config would be) field values.
