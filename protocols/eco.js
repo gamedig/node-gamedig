@@ -1,6 +1,6 @@
-import Core from './core.js';
+const Core = require('./core');
 
-export default class eco extends Core {
+class Eco extends Core {
     async run(state) {
         if (!this.options.port) this.options.port = 3001;
 
@@ -17,3 +17,5 @@ export default class eco extends Core {
         state.raw = serverInfo;
     }
 }
+
+module.exports = Eco;
