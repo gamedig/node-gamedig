@@ -62,6 +62,7 @@
 | `conanexiles`                         | Conan Exiles (2018)                                     | [Valve Protocol](#valve)                    |
 | `contagion`                           | Contagion (2011)                                        | [Valve Protocol](#valve)                    |
 | `contactjack`                         | Contract J.A.C.K. (2003)                                |                                             |
+| `corekeeper`                          | Core Keeper (2022)                                      | [Valve Protocol](#valve)                    |
 | `cs15`                                | Counter-Strike 1.5 (2002)                               |                                             |
 | `cs16`                                | Counter-Strike 1.6 (2003)                               | [Valve Protocol](#valve)                    |
 | `cs2d`                                | Counter-Strike: 2D (2004)                               |                                             |
