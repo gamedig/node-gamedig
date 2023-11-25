@@ -34,6 +34,8 @@
 * Counter-Strike 2 (2023) - Added support.
 * The Front (2023) - Added support.
 * San Andreas OpenMP - Added support.
+* ARK: Survival Ascended (2023) - Added support (by @GuilhermeWerner).
+
 ### 4.1.0
 * Replace `compressjs` dependency by `seek-bzip` to solve some possible import issues.
 * Sons Of The Forest (2023) - Added support
