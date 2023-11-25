@@ -8,8 +8,6 @@
 * Modified exports, now the library exports `games` and `protocols` alongside the `GameDig` class.
 
 #### Games
-* Renamed `Counter Strike: 2D` to `CS2D` in [games.txt](games.txt) (why? see [this](https://cs2d.com/faq.php?show=misc_name#misc_name)).
-* Updated `CS2D` protocol (by @ernestpasnik).
 * Removed the following alternative game ids: `minecraftping` (as it was deprecated and the same thing as `minecraft`),
 `minecraftpe` (deprecated, which is the same as `minecraftbe`), `flashpoint` (alternative was `operationflashpoint`, 
 see next point) and `tshock` (which is `terraria`).
@@ -22,34 +20,56 @@ see next point) and `tshock` (which is `terraria`).
 * Removed the `games.txt` file, the games definitions are now stored in-code.
 * Replaced usage of deprecated `substr` with `substring`.
 * Replaced deprecated internal `punycode` with the [punycode](https://www.npmjs.com/package/punycode) package.
-* Updated [got](https://github.com/sindresorhus/got) from 12.1 to 13.
-* Updated [minimist](https://github.com/minimistjs/minimist) from 1.2.6 to 1.2.8.
-* Updated [long](https://github.com/dcodeIO/long.js) from 5.2.0 to 5.2.3.
-* Updated @types/node from 14.18.13 to 16.18.58.
-* Updated [cheerio](https://github.com/cheeriojs/cheerio) from 1.0.0-rc.10 to 1.0.0-rc.12.
+* Updated dependencies:
+* * [got](https://github.com/sindresorhus/got) from 12.1 to 13.
+* * [minimist](https://github.com/minimistjs/minimist) from 1.2.6 to 1.2.8.
+* * [long](https://github.com/dcodeIO/long.js) from 5.2.0 to 5.2.3.
+* * @types/node from 14.18.13 to 16.18.58.
+* * [cheerio](https://github.com/cheeriojs/cheerio) from 1.0.0-rc.10 to 1.0.0-rc.12.
 * Added eslint which spotted some unused variables and other lints.
 * CLI: Resolved incorrect error message when querying with a non-existent protocol name.
 * Added Deno support: the library and CLI can now be experimentally used with the [Deno runtime](https://deno.com)
   * `deno run --allow-net --allow-read=. bin/gamedig.js --type tf2 127.0.0.1`
 * Added code examples.
-* Added Epic Online Services protocol.
 
 #### Games
-* Added support by @dgibbs64: Eco (2018), Core Keeper (2022), ARMA: Reforger (2022),
-Action Half-Life, Action: Source (2019), Base Defense (2017), Blade Symphony (2014),
-Brainbread, Deathmatch Classic (2001), Double Action: Boogaloo (2014), Dystopia (2005),
-Empires Mod (2008), Fistful of Frags (2014), alf-Life: Opposing Force (1999),
-Pirates, Vikings, and Knights II (2007), Project Cars (2015), Project Cars 2 (2017),
-The Specialists, Vampire Slayer, Warfork (2018), Wurm Unlimited (2015).
-* Also added support: The Forest (2014), Operation: Harsh Doorstop (2023),
-Insurgency: Modern Infantry Combat (2007), Counter-Strike 2 (2023), The Front (2023),
-San Andreas OpenMP.
-* Capitalized 'Unturned' in game.txt
 * Removed the players::setNum method, the library will no longer add empty players as 
-a placeholder in the `players` field.
-* Fixed wrong field being parsed for `maxplayers` on Doom3.
+a placeholder in the `players` fields.
 * Stabilized field `numplayers`.
-* Added support by @GuilhermeWerner: ARK: Survival Ascended (2023).
+
+### 4.2.0
+* Renamed `Counter Strike: 2D` to `CS2D` in [games.txt](games.txt) (why? see [this](https://cs2d.com/faq.php?show=misc_name#misc_name)).
+* Updated `CS2D` protocol (by @ernestpasnik)
+* Capitalize `Unturned` name in `games.txt`.
+* Fix an edge-case of the `Doom3` protocol that did not parse the correct field for max players.
+* Eco (2018) - Added support (requested by @dgibbs64)
+* Core Keeper (2022) - Added support (by @dgibbs64)
+* ARMA: Reforger (2022) - Added support (by @dgibbs64)
+* Action Half-Life - Added support (by @dgibbs64).
+* Action: Source (2019) - Added support (by @dgibbs64).
+* Base Defense (2017) - Added support (by @dgibbs64).
+* Blade Symphony (2014) - Added support (by @dgibbs64).
+* Brainbread - Added support (by @dgibbs64).
+* Deathmatch Classic (2001) - Added support (by @dgibbs64).
+* Double Action: Boogaloo (2014) - Added support (by @dgibbs64).
+* Dystopia (2005) - Added support (by @dgibbs64).
+* Empires Mod (2008) - Added support (by @dgibbs64).
+* Fistful of Frags (2014) - Added support (by @dgibbs64).
+* Half-Life: Opposing Force (1999) - Added support (by @dgibbs64).
+* Pirates, Vikings, and Knights II (2007) - Added support (by @dgibbs64).
+* Project Cars (2015) - Added support (by @dgibbs64).
+* Project Cars 2 (2017) - Added support (by @dgibbs64).
+* The Specialists - Added support (by @dgibbs64).
+* Vampire Slayer - Added support (by @dgibbs64).
+* Warfork (2018) - Added support (by @dgibbs64).
+* Wurm Unlimited (2015) - Added support (by @dgibbs64).
+* The Forest (2014) - Added support.
+* Operation: Harsh Doorstop (2023) - Added support.
+* Insurgency: Modern Infantry Combat (2007) - Added support.
+* Counter-Strike 2 (2023) - Added support.
+* The Front (2023) - Added support.
+* San Andreas OpenMP - Added support.
+* ARK: Survival Ascended (2023) - Added support (by @GuilhermeWerner).
 
 ### 4.1.0
 * Replace `compressjs` dependency by `seek-bzip` to solve some possible import issues.
