@@ -2,6 +2,15 @@
 ### To Be Released...
 * (changelog)
 
+#### Other changes
+* Replaced usage of deprecated `substr` with `substring`.
+* Moved the library a `module`.
+* CLI: Resolved incorrect error message when querying with a non-existent protocol name.
+* Replaced deprecated internal `punycode` with the [punycode](https://www.npmjs.com/package/punycode) package.
+
+### 4.2.0
+* Eco (2018) - Added support (requested by @dgibbs64)
+
 ### 4.1.0
 * Replace `compressjs` dependency by `seek-bzip` to solve some possible import issues.
 * Sons Of The Forest (2023) - Added support

@@ -108,6 +108,7 @@ doom3|Doom 3 (2004)|doom3|port=27666
 dota2|Dota 2 (2013)|valve|port=27015
 drakan|Drakan: Order of the Flame (1999)|gamespy1|port=27045,port_query_offset=1
 dst|Don't Starve Together (2016)|valve|port=10999,port_query=27016
+eco|Eco (2018)|eco|port=3000,port_query_offset=1
 empyrion|Empyrion - Galactic Survival (2015)|valve|port=30000,port_query_offset=1
 etqw|Enemy Territory: Quake Wars (2007)|doom3|port=3074,port_query=27733
 fear|F.E.A.R. (2005)|gamespy2|port_query=27888
