@@ -1,5 +1,4 @@
 import Core from './core.js'
-import axios from 'axios'
 
 export default class Epic extends Core {
   constructor () {
@@ -17,6 +16,9 @@ export default class Epic extends Core {
     this.deploymentId = null
     this.epicApi = 'https://api.epicgames.dev'
     this.accessToken = null
+
+    // Don't use the tcp ping probing
+    this.usedTcp = true
   }
 
   async run (state) {
@@ -36,12 +38,9 @@ export default class Epic extends Core {
     }
 
     this.logger.debug(`POST: ${url}`)
-    const response = await axios.post(url, body, { headers })
-    if (response.status !== 200) {
-      throw new Error('Failed to get OAuth token')
-    }
+    const response = await this.request({ url, body, headers, method: 'POST', responseType: 'json' })
 
-    this.accessToken = response.data.access_token
+    this.accessToken = response.access_token
   }
 
   async queryInfo (state) {
@@ -62,18 +61,13 @@ export default class Epic extends Core {
     }
 
     this.logger.debug(`POST: ${url}`)
-    const response = await axios.post(url, body, { headers })
-    if (response.status !== 200) {
-      throw new Error('Failed to get server info')
-    }
-
-    const reader = response.data
+    const response = await this.request({ url, json: body, headers, method: 'POST', responseType: 'json' })
 
     // Epic returns a list of sessions, we need to find the one with the desired port.
     const hasDesiredPort = (session) => session.attributes.ADDRESSBOUND_s === `0.0.0.0:${this.options.port}` ||
       session.attributes.ADDRESSBOUND_s === `${this.options.address}:${this.options.port}`
 
-    const desiredServer = reader.sessions.find(hasDesiredPort)
+    const desiredServer = response.sessions.find(hasDesiredPort)
 
     if (!desiredServer) {
       throw new Error('Server not found')
