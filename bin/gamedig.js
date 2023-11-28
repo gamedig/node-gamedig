@@ -3,7 +3,7 @@
 import * as process from "node:process";
 
 import Minimist from 'minimist'
-import GameDig from './../lib/index.js'
+import { GameDig } from './../lib/index.js'
 
 const argv = Minimist(process.argv.slice(2), {
   boolean: ['pretty', 'debug', 'givenPortOnly', 'requestRules'],
