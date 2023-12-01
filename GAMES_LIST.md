@@ -275,6 +275,7 @@
 | `teamspeak2`           | Teamspeak 2                                             |                                                  |
 | `teamspeak3`           | Teamspeak 3                                             | [Notes](#teamspeak3)                             |
 | `terminus`             | Terminus                                                |                                                  |
+| `eldewrito`            | Halo Online (ElDewrito)                                 |                                                  |
 | `terraria`             | Terraria - TShock (2011)                                | [Notes](#terraria)                               |
 | `forrest`              | The Forrest (2014)                                      | [Valve Protocol](#valve)                         |
 | `thefront`             | The Front (2023)                                        | [The Front](#thefront), [Valve Protocol](#valve) |
