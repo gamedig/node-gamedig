@@ -42,7 +42,7 @@ class MinecraftVanilla extends Core {
         const str = reader.rest().toString('utf8');
         this.debugLog(str);
 
-        const json = JSON.parse(str);
+        const json = JSON.parse(str.substring(0, strLen));
         delete json.favicon;
 
         state.raw = json;
@@ -63,6 +63,16 @@ class MinecraftVanilla extends Core {
         for (let i = state.players.length; i < Math.min(json.players.online, 10000); i++) {
             state.players.push({});
         }
+
+        // Better Compatibility Checker mod support
+        let bccJson = {}
+
+        if (str.length > strLen) {
+            const bccStr = str.substring(strLen + 1);
+            bccJson = JSON.parse(bccStr);
+        }
+
+        state.raw.bcc = bccJson;
     }
 
     varIntBuffer(num) {
