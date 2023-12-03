@@ -35,4 +35,4 @@ jobs:
           deno-version: v1.x
 
       - name: Compile
-        run: deno compile --allow-read bin/gamedig.js
+        run: deno compile --allow-net bin/gamedig.js
