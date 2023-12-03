@@ -108,6 +108,7 @@
 | `drakan`               | Drakan: Order of the Flame (1999)                       |                                                  |
 | `dystopia`             | Dystopia (2005)                                         | [Valve Protocol](#valve)                         |
 | `eco`                  | Eco (2018)                                              |                                                  |
+| `eldewrito`            | Halo Online - ElDewrito (2007)                          |                                                  |
 | `empyrion`             | Empyrion - Galactic Survival (2015)                     | [Valve Protocol](#valve)                         |
 | `empiresmod`           | Empires Mod (2008)                                      | [Valve Protocol](#valve)                         |
 | `etqw`                 | Enemy Territory: Quake Wars (2007)                      |                                                  |

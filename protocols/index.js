@@ -8,6 +8,7 @@ import cs2d from './cs2d.js'
 import discord from './discord.js'
 import doom3 from './doom3.js'
 import eco from './eco.js'
+import eldewrito from './eldewrito.js'
 import epic from './epic.js'
 import ffow from './ffow.js'
 import fivem from './fivem.js'
@@ -53,5 +54,5 @@ export {
   gamespy2, gamespy3, geneshift, goldsrc, hexen2, jc2mp, kspdmp, mafia2mp, mafia2online, minecraft,
   minecraftbedrock, minecraftvanilla, mumble, mumbleping, nadeo, openttd, quake1, quake2, quake3, rfactor, samp,
   savage2, starmade, starsiege, teamspeak2, teamspeak3, terraria, tribes1, tribes1master, unreal2, ut3, valve,
-  vcmp, ventrilo, warsow
+  vcmp, ventrilo, warsow, eldewrito
 }

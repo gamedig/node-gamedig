@@ -37,6 +37,11 @@ see next point) and `tshock` (which is `terraria`).
 a placeholder in the `players` fields.
 * Stabilized field `numplayers`.
 
+### 4.3.0
+* Fix `Post Scriptum` not being on the valve protocol.
+* Added support for the Minecraft [Better Compatibility Checker](https://www.curseforge.com/minecraft/mc-mods/better-compatibility-checker) Mod.
+* Halo Online (ElDewrito) - Added support (by @Sphyrna-029)
+
 ### 4.2.0
 * Renamed `Counter Strike: 2D` to `CS2D` in [games.txt](games.txt) (why? see [this](https://cs2d.com/faq.php?show=misc_name#misc_name)).
 * Updated `CS2D` protocol (by @ernestpasnik)
