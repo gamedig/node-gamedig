@@ -8,6 +8,7 @@
 
 ### 4.3.0
 * Fix `Post Scriptum` not being on the valve protocol.
+* Fix `Epic` protocol's `numplayers` not being in the `raw` field.
 
 ### 4.2.0
 * Renamed `Counter Strike: 2D` to `CS2D` in [games.txt](games.txt) (why? see [this](https://cs2d.com/faq.php?show=misc_name#misc_name)).
