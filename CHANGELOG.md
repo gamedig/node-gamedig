@@ -39,7 +39,6 @@ a placeholder in the `players` fields.
 
 ### 4.3.0
 * Fix `Post Scriptum` not being on the valve protocol.
-* Fix `Epic` protocol's `numplayers` not being in the `raw` field.
 * Added support for the Minecraft [Better Compatibility Checker](https://www.curseforge.com/minecraft/mc-mods/better-compatibility-checker) Mod.
 * Halo Online (ElDewrito) - Added support (by @Sphyrna-029)
 
