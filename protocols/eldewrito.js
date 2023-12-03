@@ -13,9 +13,7 @@ class Eldewrito extends Core {
     
     state.name = json.name
     state.map = json.map
-    state.password = false
     state.maxplayers = json.maxPlayers
-    state.bots = [];
     state.connect = this.options.address + ":" + json.port
   
     state.raw = json
