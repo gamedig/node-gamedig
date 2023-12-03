@@ -36,6 +36,7 @@ see next point) and `tshock` (which is `terraria`).
 * Removed the players::setNum method, the library will no longer add empty players as 
 a placeholder in the `players` fields.
 * Stabilized field `numplayers`.
+* Added support for monitoring Halo Online (ElDewrito)
 
 ### 4.2.0
 * Renamed `Counter Strike: 2D` to `CS2D` in [games.txt](games.txt) (why? see [this](https://cs2d.com/faq.php?show=misc_name#misc_name)).
