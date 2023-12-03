@@ -220,7 +220,7 @@ openttd|OpenTTD (2004)|openttd|port=3979
 painkiller|Painkiller|ase|port=3455,port_query_offset=123
 pvkii|Pirates, Vikings, and Knights II (2007)|valve|port=27015
 pixark|PixARK (2018)|valve|port=7777,port_query=27015
-ps|Post Scriptum|squad|port=10037
+ps|Post Scriptum|valve|port=10037
 postal2|Postal 2|gamespy1|port=7777,port_query_offset=1
 prey|Prey|doom3|port=27719
 primalcarnage|Primal Carnage: Extinction|valve|port=7777,port_query=27015

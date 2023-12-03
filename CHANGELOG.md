@@ -7,7 +7,7 @@
 * None
 
 ### 4.3.0
-Nothing... yet...
+* Fix `Post Scriptum` not being on the valve protocol.
 
 ### 4.2.0
 * Renamed `Counter Strike: 2D` to `CS2D` in [games.txt](games.txt) (why? see [this](https://cs2d.com/faq.php?show=misc_name#misc_name)).
