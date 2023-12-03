@@ -9,6 +9,7 @@
 ### 4.3.0
 * Fix `Post Scriptum` not being on the valve protocol.
 * Fix `Epic` protocol's `numplayers` not being in the `raw` field.
+* Added support for the Minecraft [Better Compatibility Checker](https://www.curseforge.com/minecraft/mc-mods/better-compatibility-checker) Mod.
 
 ### 4.2.0
 * Renamed `Counter Strike: 2D` to `CS2D` in [games.txt](games.txt) (why? see [this](https://cs2d.com/faq.php?show=misc_name#misc_name)).
