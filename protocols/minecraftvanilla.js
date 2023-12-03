@@ -42,7 +42,7 @@ export default class minecraftvanilla extends Core {
     const str = reader.rest().toString('utf8')
     this.logger.debug(str)
 
-    const json = JSON.parse(str)
+    const json = JSON.parse(str.substring(0, strLen))
     delete json.favicon
 
     state.raw = json
@@ -57,6 +57,16 @@ export default class minecraftvanilla extends Core {
         })
       }
     }
+
+    // Better Compatibility Checker mod support
+    let bccJson = {}
+
+    if (str.length > strLen) {
+      const bccStr = str.substring(strLen + 1)
+      bccJson = JSON.parse(bccStr)
+    }
+
+    state.raw.bcc = bccJson
   }
 
   varIntBuffer (num) {
