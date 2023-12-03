@@ -9,6 +9,7 @@
 ### 4.3.0
 * Fix `Post Scriptum` not being on the valve protocol.
 * Fix `Epic` protocol's `numplayers` not being in the `raw` field.
+* Added support for the Minecraft [Better Compatibility Checker](https://www.curseforge.com/minecraft/mc-mods/better-compatibility-checker) Mod.
 * ElDewrito (2007) - Added support (by @Sphyrna-029)
 
 ### 4.2.0
