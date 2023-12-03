@@ -121,6 +121,7 @@ drakan|Drakan: Order of the Flame (1999)|gamespy1|port=27045,port_query_offset=1
 dst|Don't Starve Together (2016)|valve|port=10999,port_query=27016
 dys|Dystopia (2005)|valve|port=27015
 eco|Eco (2018)|eco|port=3000,port_query_offset=1
+eldewrito|Halo Online (ElDewrito)|eldewrito|port=11775
 em|Empires Mod (2008)|valve|port=27015
 empyrion|Empyrion - Galactic Survival (2015)|valve|port=30000,port_query_offset=1
 etqw|Enemy Territory: Quake Wars (2007)|doom3|port=3074,port_query=27733
