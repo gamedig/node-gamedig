@@ -39,7 +39,9 @@ export default class minecraftvanilla extends Core {
     const strLen = reader.varint()
     this.logger.debug('String Length: ' + strLen)
 
-    const str = reader.rest().toString('utf8')
+    const rest = reader.rest()
+
+    const str = rest.toString('utf8', 0, strLen)
     this.logger.debug(str)
 
     const json = JSON.parse(str.substring(0, strLen))
@@ -61,8 +63,8 @@ export default class minecraftvanilla extends Core {
     // Better Compatibility Checker mod support
     let bccJson = {}
 
-    if (str.length > strLen) {
-      const bccStr = str.substring(strLen + 1)
+    if (rest.length > strLen) {
+      const bccStr = rest.toString('utf8', strLen + 1)
       bccJson = JSON.parse(bccStr)
     }
 
