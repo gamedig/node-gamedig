@@ -427,13 +427,12 @@ export default class valve extends Core {
     })
     delete state.raw.players
     const numBots = state.raw.numbots || 0
-    while (state.bots.length < numBots) {
-      if (sortedPlayers.length) state.bots.push(sortedPlayers.pop())
-      else state.bots.push({})
+
+    while (state.bots.length < numBots && sortedPlayers.length) {
+      state.bots.push(sortedPlayers.pop())
     }
-    while (state.players.length < state.numplayers - numBots || sortedPlayers.length) {
-      if (sortedPlayers.length) state.players.push(sortedPlayers.pop())
-      else state.players.push({})
+    while ((state.players.length < state.numplayers - numBots || sortedPlayers.length) && sortedPlayers.length) {
+      state.players.push(sortedPlayers.pop())
     }
   }
 
