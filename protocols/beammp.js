@@ -26,6 +26,7 @@ export default class beammp extends Core {
     players.forEach(player => {
       state.players.push({ name: player })
     })
+
     state.raw = server
   }
 }
