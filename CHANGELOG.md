@@ -37,6 +37,10 @@ see next point) and `tshock` (which is `terraria`).
 a placeholder in the `players` fields.
 * Stabilized field `numplayers`.
 
+### 4.3.1
+* Fixed support for the Minecraft [Better Compatibility Checker](https://www.curseforge.com/minecraft/mc-mods/better-compatibility-checker) Mod (By @Douile, #436).
+* Added a -1 query port offset for Rising World (#441).
+
 ### 4.3.0
 * Fix `Post Scriptum` not being on the valve protocol.
 * Added support for the Minecraft [Better Compatibility Checker](https://www.curseforge.com/minecraft/mc-mods/better-compatibility-checker) Mod.
