@@ -13,7 +13,7 @@ export default class beammp extends Core {
       throw new Error('Server not found in the master list')
     }
 
-    state.name = server.sname
+    state.name = server.sname.replace(/\^./g, '')
     state.map = server.map
     state.password = server.password
     state.numplayers = parseInt(server.players)
