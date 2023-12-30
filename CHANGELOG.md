@@ -36,6 +36,7 @@ see next point) and `tshock` (which is `terraria`).
 * Removed the players::setNum method, the library will no longer add empty players as 
 a placeholder in the `players` fields.
 * Stabilized field `numplayers`.
+* BeamMP (2021) - Added support.
 
 ### 4.3.1
 * Fixed support for the Minecraft [Better Compatibility Checker](https://www.curseforge.com/minecraft/mc-mods/better-compatibility-checker) Mod (By @Douile, #436).

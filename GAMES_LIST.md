@@ -31,6 +31,7 @@
 | `ballisticoverkill`    | Ballistic Overkill (2017)                               | [Valve Protocol](#valve)                         |
 | `barotrauma`           | Barotrauma (2019)                                       | [Valve Protocol](#valve)                         |
 | `bat1944`              | Battalion 1944 (2018)                                   | [Valve Protocol](#valve)                         |
+| `beammp`               | BeamMP (2021)                                           |                                                  |
 | `bf1942`               | Battlefield 1942 (2002)                                 |                                                  |
 | `bf2`                  | Battlefield 2 (2005)                                    |                                                  |
 | `bf2142`               | Battlefield 2142 (2006)                                 |                                                  |
