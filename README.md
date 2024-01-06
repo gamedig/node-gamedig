@@ -1,10 +1,12 @@
-# node-GameDig - Game Server Query Library [![npmjs.com](https://img.shields.io/npm/dt/gamedig?color=purple)](https://www.npmjs.com/package/gamedig) ![deno compatibility](https://shield.deno.dev/deno/1.39.2)
+# node-GameDig - Game Server Query Library
+[![npmjs.com](https://img.shields.io/npm/dt/gamedig?color=purple)](https://www.npmjs.com/package/gamedig) ![deno compatibility](https://shield.deno.dev/deno/>=1.39.2) ![Static Badge](https://img.shields.io/badge/node-%3E%3D16.20.0-green?logo=node.js&logoColor=green)
 
 **node-GameDig** is a game server query Node.js module (as well as a [command line executable](#usage-from-command-line)), 
 capable of querying for the status of nearly any game or voice server.
+
 If a server makes its status publically available, GameDig can fetch it for you.
 
-Support is available on the [GameDig Discord](https://discord.gg/NVCMn3tnxH) (for questions), or [GitHub Issues](https://github.com/gamedig/node-gamedig/issues) (for bugs).
+Support is available on the [Discord server](https://discord.gg/NVCMn3tnxH) (for questions), or [GitHub Issues](https://github.com/gamedig/node-gamedig/issues) (for bugs).
 
 ## Games List
 **node-GameDig** can query over 310 games (+ a few services)!  
@@ -99,6 +101,9 @@ Additional advanced parameters can be passed in as well:
 * `--givenPortOnly`: Run the query with the specified port only (if any).
 * `--socketTimeout N`: Specifies socket timeout (where `N` is a number, eg. `5000`).
 * ... and the rest in the same format.
+
+## Deno
+The minimum supported deno version is `1.39.2` and the `--allow-net` permission is required.
 
 ## Common Issues
 
