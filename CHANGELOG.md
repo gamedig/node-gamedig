@@ -29,6 +29,7 @@ see next point) and `tshock` (which is `terraria`).
 * Added eslint which spotted some unused variables and other lints.
 * CLI: Resolved incorrect error message when querying with a non-existent protocol name.
 * Added Deno support: the library and CLI can now be experimentally used with the [Deno runtime](https://deno.com)
+  * Minimum Supported Deno Version: `1.39.2`.
   * `deno run --allow-net bin/gamedig.js --type tf2 127.0.0.1`
 * Added code examples.
 
