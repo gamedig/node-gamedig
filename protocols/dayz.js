@@ -62,6 +62,10 @@ export default class dayz extends valve {
 
     state.raw.dlcEnabled = false
     state.raw.firstPerson = false
+    state.raw.privateHive = false
+    state.raw.external = false
+    state.raw.official = false
+
     for (const tag of state.raw.tags) {
       if (tag.startsWith('lqs')) {
         const value = parseInt(tag.replace('lqs', ''))
@@ -74,6 +78,12 @@ export default class dayz extends valve {
       }
       if (tag.includes('isDLC')) {
         state.raw.dlcEnabled = true
+      }
+      if (tag.includes('privHive')) {
+        state.raw.privateHive = true;
+      }
+      if (tag.includes('external')) {
+        state.raw.external = true;
       }
       if (tag.includes(':')) {
         state.raw.time = tag
@@ -90,6 +100,10 @@ export default class dayz extends valve {
           state.raw.nightAcceleration = value
         }
       }
+    }
+
+    if (!state.raw.external && !state.raw.privateHive) {
+      state.raw.official = true
     }
   }
 
