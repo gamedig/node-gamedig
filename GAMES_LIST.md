@@ -15,19 +15,19 @@
 | aoc                  | Age of Chivalry                                  | [Valve Protocol](#valve)                    |
 | aoe2                 | Age of Empires 2                                 |                                             |
 | aosc                 | Ace of Spades Classic                            |                                             |
-| arcasimracing        | Arca Sim Racing '08                              |                                             |
-| arkse                | Ark: Survival Evolved                            | [Valve Protocol](#valve)                    |
 | arma2                | ARMA 2                                           | [Valve Protocol](#valve)                    |
 | arma3                | ARMA 3                                           | [Valve Protocol](#valve)                    |
 | armagetronadvanced   | Armagetron Advanced                              |                                             |
-| armar                | ARMA: Resistance                                 |                                             |
 | armareforger         | ARMA: Reforger                                   | [Valve Protocol](#valve)                    |
+| armaresistance       | ARMA: Resistance                                 |                                             |
 | asa                  | Ark: Survival Ascended                           |                                             |
+| ase                  | Ark: Survival Evolved                            | [Valve Protocol](#valve)                    |
+| asr08                | Arca Sim Racing '08                              |                                             |
 | assettocorsa         | Assetto Corsa                                    |                                             |
 | atlas                | Atlas                                            | [Valve Protocol](#valve)                    |
 | avorion              | Avorion                                          | [Valve Protocol](#valve)                    |
 | avp2                 | Aliens versus Predator 2                         |                                             |
-| avp2010              | Aliens vs. Predator                              | [Valve Protocol](#valve)                    |
+| avp2010              | Aliens vs. Predator 2010                         | [Valve Protocol](#valve)                    |
 | baldursgate          | Baldur's Gate                                    |                                             |
 | ballisticoverkill    | Ballistic Overkill                               | [Valve Protocol](#valve)                    |
 | barotrauma           | Barotrauma                                       | [Valve Protocol](#valve)                    |
@@ -57,7 +57,7 @@
 | cod                  | Call of Duty                                     |                                             |
 | cod2                 | Call of Duty 2                                   |                                             |
 | cod3                 | Call of Duty 3                                   |                                             |
-| cod4                 | Call of Duty 4: Modern Warfare                   |                                             |
+| cod4mw               | Call of Duty 4: Modern Warfare                   |                                             |
 | codenamecure         | Codename CURE                                    | [Valve Protocol](#valve)                    |
 | codenameeagle        | Codename Eagle                                   |                                             |
 | codmw2               | Call of Duty: Modern Warfare 2                   |                                             |
@@ -117,8 +117,8 @@
 | farcry2              | Far Cry 2                                        |                                             |
 | fear                 | F.E.A.R.                                         |                                             |
 | ffow                 | Frontlines: Fuel of War                          |                                             |
-| fo2002               | Formula One 2002                                 |                                             |
 | fof                  | Fistful of Frags                                 | [Valve Protocol](#valve)                    |
+| formulaone2002       | Formula One 2002                                 |                                             |
 | fortressforever      | Fortress Forever                                 | [Valve Protocol](#valve)                    |
 | garrysmod            | Garry's Mod                                      | [Valve Protocol](#valve)                    |
 | gck                  | Giants: Citizen Kabuto                           |                                             |
@@ -135,9 +135,9 @@
 | gus                  | Gore: Ultimate Soldier                           |                                             |
 | halo                 | Halo                                             |                                             |
 | halo2                | Halo 2                                           |                                             |
-| hd2                  | Hidden & Dangerous 2                             |                                             |
 | heretic2             | Heretic II                                       |                                             |
 | hexen2               | Hexen II                                         |                                             |
+| hiddendangerous2     | Hidden & Dangerous 2                             |                                             |
 | hl2d                 | Half-Life 2: Deathmatch                          | [Valve Protocol](#valve)                    |
 | hld                  | Half-Life Deathmatch                             | [Valve Protocol](#valve)                    |
 | hlds                 | Half-Life Deathmatch: Source                     | [Valve Protocol](#valve)                    |
@@ -263,8 +263,8 @@
 | swat4                | SWAT 4                                           |                                             |
 | swb                  | Star Wars: Battlefront                           |                                             |
 | swb2                 | Star Wars: Battlefront 2                         |                                             |
-| swjdja               | Star Wars Jedi Knight: Jedi Academy              |                                             |
-| swjk2jo              | Star Wars Jedi Knight II: Jedi Outcast           |                                             |
+| swjk2ja              | Star Wars Jedi Knight II: Jedi Outcast           |                                             |
+| swjkja               | Star Wars Jedi Knight: Jedi Academy              |                                             |
 | swrc                 | Star Wars: Republic Commando                     |                                             |
 | synergy              | Synergy                                          | [Valve Protocol](#valve)                    |
 | tacticalops          | Tactical Ops                                     |                                             |
@@ -299,8 +299,8 @@
 | turok2               | Turok 2                                          |                                             |
 | universalcombat      | Universal Combat                                 |                                             |
 | unreal               | Unreal                                           |                                             |
-| unrealtorunament2003 | Unreal Tournament 2003                           |                                             |
 | unrealtournament     | Unreal Tournament                                |                                             |
+| unrealtournament2003 | Unreal Tournament 2003                           |                                             |
 | unrealtournament2004 | Unreal Tournament 2004                           |                                             |
 | unrealtournament3    | Unreal Tournament 3                              |                                             |
 | unturned             | unturned                                         | [Valve Protocol](#valve)                    |
