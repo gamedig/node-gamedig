@@ -1,326 +1,327 @@
 ### Supported
-| GameDig Type ID        | Name                                                    | See Also                                         |
-|------------------------|---------------------------------------------------------|--------------------------------------------------|
-| `as`                   | Action: Source                                          | [Valve Protocol](#valve)                         |
-| `ahl`                  | Action Half-Life                                        | [Valve Protocol](#valve)                         |
-| `ageofchivalry`        | Age of Chivalry (2007)                                  | [Valve Protocol](#valve)                         |
-| `aoe2`                 | Age of Empires 2 (1999)                                 |                                                  |
-| `alienarena`           | Alien Arena (2004)                                      |                                                  |
-| `alienswarm`           | Alien Swarm (2010)                                      | [Valve Protocol](#valve)                         |
-| `avp2`                 | Aliens versus Predator 2 (2001)                         |                                                  |
-| `avp2010`              | Aliens vs. Predator (2010)                              | [Valve Protocol](#valve)                         |
-| `americasarmy`         | America's Army (2002)                                   |                                                  |
-| `americasarmy2`        | America's Army 2 (2003)                                 |                                                  |
-| `americasarmy3`        | America's Army 3 (2009)                                 | [Valve Protocol](#valve)                         |
-| `americasarmypg`       | America's Army: Proving Grounds (2015)                  | [Valve Protocol](#valve)                         |
-| `arcasimracing`        | Arca Sim Racing (2008)                                  |                                                  |
-| `arkse`                | Ark: Survival Evolved (2017)                            | [Valve Protocol](#valve)                         |
-| `arma2`                | ARMA 2 (2009)                                           | [Valve Protocol](#valve)                         |
-| `arma2oa`              | ARMA 2: Operation Arrowhead (2010)                      | [Valve Protocol](#valve)                         |
-| `arma3`                | ARMA 3 (2013)                                           | [Valve Protocol](#valve)                         |
-| `arma`                 | ARMA: Armed Assault (2007)                              |                                                  |
-| `armacwa`              | ARMA: Cold War Assault (2011)                           |                                                  |
-| `armar`                | ARMA: Resistance (2011)                                 |                                                  |
-| `armare`               | ARMA: Reforger (2022)                                   | [Valve Protocol](#valve)                         |
-| `armagetron`           | Armagetron Advanced (2001)                              |                                                  |
-| `asa`                  | Ark: Survival Ascended (2023)                           |                                                  |
-| `assettocorsa`         | Assetto Corsa (2014)                                    |                                                  |
-| `atlas`                | Atlas (2018)                                            | [Valve Protocol](#valve)                         |
-| `avorion`              | Avorion (2020)                                          | [Valve Protocol](#valve)                         |
-| `baldursgate`          | Baldur's Gate (1998)                                    |                                                  |
-| `ballisticoverkill`    | Ballistic Overkill (2017)                               | [Valve Protocol](#valve)                         |
-| `barotrauma`           | Barotrauma (2019)                                       | [Valve Protocol](#valve)                         |
-| `bat1944`              | Battalion 1944 (2018)                                   | [Valve Protocol](#valve)                         |
-| `bf1942`               | Battlefield 1942 (2002)                                 |                                                  |
-| `bf2`                  | Battlefield 2 (2005)                                    |                                                  |
-| `bf2142`               | Battlefield 2142 (2006)                                 |                                                  |
-| `bf3`                  | Battlefield 3 (2011)                                    |                                                  |
-| `bf4`                  | Battlefield 4 (2013)                                    |                                                  |
-| `bfh`                  | Battlefield Hardline (2015)                             |                                                  |
-| `bfv`                  | Battlefield Vietnam (2004)                              |                                                  |
-| `bfbc2`                | Battlefield: Bad Company 2 (2010)                       |                                                  |
-| `bd`                   | Base Defense (2017)                                     | [Valve Protocol](#valve)                         |
-| `blackmesa`            | Black Mesa (2020)                                       | [Valve Protocol](#valve)                         |
-| `brainbread`           | BrainBread                                              | [Valve Protocol](#valve)                         |
-| `brainbread2`          | BrainBread 2 (2022)                                     | [Valve Protocol](#valve)                         |
-| `breach`               | Breach (2011)                                           | [Valve Protocol](#valve)                         |
-| `breed`                | Breed (2004)                                            |                                                  |
-| `brink`                | Brink (2011)                                            | [Valve Protocol](#valve)                         |
-| `bs`                   | Blade Symphony (2014)                                   | [Valve Protocol](#valve)                         |
-| `buildandshoot`        | Build and Shoot / Ace of Spades Classic (2012)          |                                                  |
-| `cod`                  | Call of Duty (2003)                                     |                                                  |
-| `cod2`                 | Call of Duty 2 (2005)                                   |                                                  |
-| `cod3`                 | Call of Duty 3 (2006)                                   |                                                  |
-| `cod4`                 | Call of Duty 4: Modern Warfare (2007)                   |                                                  |
-| `codmw2`               | Call of Duty: Modern Warfare 2 (2009)                   |                                                  |
-| `codmw3`               | Call of Duty: Modern Warfare 3 (2011)                   | [Valve Protocol](#valve)                         |
-| `coduo`                | Call of Duty: United Offensive (2004)                   |                                                  |
-| `codwaw`               | Call of Duty: World at War (2008)                       |                                                  |
-| `callofjuarez`         | Call of Juarez (2006)                                   |                                                  |
-| `chaser`               | Chaser (2003)                                           |                                                  |
-| `chivalry`             | Chivalry: Medieval Warfare (2012)                       | [Valve Protocol](#valve)                         |
-| `chrome`               | Chrome (2003)                                           |                                                  |
-| `codenamecure`         | Codename CURE (2017)                                    | [Valve Protocol](#valve)                         |
-| `codenameeagle`        | Codename Eagle (2000)                                   |                                                  |
-| `colonysurvival`       | Colony Survival (2017)                                  | [Valve Protocol](#valve)                         |
-| `cacrenegade`          | Command and Conquer: Renegade (2002)                    |                                                  |
-| `commandos3`           | Commandos 3: Destination Berlin (2003)                  |                                                  |
-| `conanexiles`          | Conan Exiles (2018)                                     | [Valve Protocol](#valve)                         |
-| `contagion`            | Contagion (2011)                                        | [Valve Protocol](#valve)                         |
-| `contactjack`          | Contract J.A.C.K. (2003)                                |                                                  |
-| `corekeeper`           | Core Keeper (2022)                                      | [Valve Protocol](#valve)                         |
-| `cs15`                 | Counter-Strike 1.5 (2002)                               |                                                  |
-| `cs16`                 | Counter-Strike 1.6 (2003)                               | [Valve Protocol](#valve)                         |
-| `cs2d`                 | CS2D (2004)                                             |                                                  |
-| `cscz`                 | Counter-Strike: Condition Zero (2004)                   | [Valve Protocol](#valve)                         |
-| `csgo`                 | Counter-Strike: Global Offensive (2012)                 | [Notes](#csgo), [Valve Protocol](#valve)         |
-| `css`                  | Counter-Strike: Source (2004)                           | [Valve Protocol](#valve)                         |
-| `cs2`                  | Counter-Strike 2 (2023)                                 | [Valve Protocol](#valve)                         |
-| `creativerse`          | Creativerse (2017)                                      | [Valve Protocol](#valve)                         |
-| `crossracing`          | Cross Racing Championship Extreme 2005 (2005)           |                                                  |
-| `crysis`               | Crysis (2007)                                           |                                                  |
-| `crysis2`              | Crysis 2 (2011)                                         |                                                  |
-| `crysiswars`           | Crysis Wars (2008)                                      |                                                  |
-| `dab`                  | Double Action: Boogaloo (2014)                          | [Valve Protocol](#valve)                         |
-| `daikatana`            | Daikatana (2000)                                        |                                                  |
-| `dnl`                  | Dark and Light (2017)                                   | [Valve Protocol](#valve)                         |
-| `dmomam`               | Dark Messiah of Might and Magic (2006)                  | [Valve Protocol](#valve)                         |
-| `darkesthour`          | Darkest Hour: Europe '44-'45 (2008)                     |                                                  |
-| `dod`                  | Day of Defeat (2003)                                    | [Valve Protocol](#valve)                         |
-| `dods`                 | Day of Defeat: Source (2005)                            | [Valve Protocol](#valve)                         |
-| `dayofdragons`         | Day of Dragons (2019)                                   | [Valve Protocol](#valve)                         |
-| `doi`                  | Day of Infamy (2017)                                    | [Valve Protocol](#valve)                         |
-| `daysofwar`            | Days of War (2017)                                      | [Valve Protocol](#valve)                         |
-| `dayz`                 | DayZ (2018)                                             | [Valve Protocol](#valve)                         |
-| `dayzmod`              | DayZ Mod (2013)                                         | [Valve Protocol](#valve)                         |
-| `deadlydozenpt`        | Deadly Dozen: Pacific Theater (2002)                    |                                                  |
-| `dh2005`               | Deer Hunter 2005 (2004)                                 |                                                  |
-| `descent3`             | Descent 3 (1999)                                        |                                                  |
-| `deusex`               | Deus Ex (2000)                                          |                                                  |
-| `devastation`          | Devastation (2003)                                      |                                                  |
-| `dinodday`             | Dino D-Day (2011)                                       | [Valve Protocol](#valve)                         |
-| `dirttrackracing2`     | Dirt Track Racing 2 (2002)                              |                                                  |
-| `discord`              | Discord                                                 | [Notes](#discord)                                |
-| `dmc`                  | Deathmatch Classic (2001)                               | [Valve Protocol](#valve)                         |
-| `dst`                  | Don't Starve Together (2016)                            | [Valve Protocol](#valve)                         |
-| `doom3`                | Doom 3 (2004)                                           |                                                  |
-| `dota2`                | Dota 2 (2013)                                           | [Valve Protocol](#valve)                         |
-| `drakan`               | Drakan: Order of the Flame (1999)                       |                                                  |
-| `dystopia`             | Dystopia (2005)                                         | [Valve Protocol](#valve)                         |
-| `eco`                  | Eco (2018)                                              |                                                  |
-| `empyrion`             | Empyrion - Galactic Survival (2015)                     | [Valve Protocol](#valve)                         |
-| `empiresmod`           | Empires Mod (2008)                                      | [Valve Protocol](#valve)                         |
-| `etqw`                 | Enemy Territory: Quake Wars (2007)                      |                                                  |
-| `fear`                 | F.E.A.R. (2005)                                         |                                                  |
-| `f1c9902`              | F1 Challenge '99-'02 (2002)                             |                                                  |
-| `farcry`               | Far Cry (2004)                                          |                                                  |
-| `farcry2`              | Far Cry 2 (2008)                                        |                                                  |
-| `f12002`               | Formula One 2002 (2002)                                 |                                                  |
-| `fof`                  | Fistful of Frags (2014)                                 | [Valve Protocol](#valve)                         |
-| `fortressforever`      | Fortress Forever (2007)                                 | [Valve Protocol](#valve)                         |
-| `ffow`                 | Frontlines: Fuel of War (2008)                          |                                                  |
-| `garrysmod`            | Garry's Mod (2004)                                      | [Valve Protocol](#valve)                         |
-| `geneshift`            | Geneshift (2017)                                        |                                                  |
-| `mutantfactions`       | Mutant Factions (2009)                                  |                                                  |
-| `giantscitizenkabuto`  | Giants: Citizen Kabuto (2000)                           |                                                  |
-| `globaloperations`     | Global Operations (2002)                                |                                                  |
-| `ges`                  | GoldenEye: Source (2010)                                | [Valve Protocol](#valve)                         |
-| `gore`                 | Gore: Ultimate Soldier (2002)                           |                                                  |
-| `fivem`                | Grand Theft Auto V - FiveM (2013)                       |                                                  |
-| `mtasa`                | Grand Theft Auto: San Andreas - Multi Theft Auto (2004) |                                                  |
-| `mtavc`                | Grand Theft Auto: Vice City - Multi Theft Auto (2002)   |                                                  |
-| `groundbreach`         | Ground Breach (2018)                                    | [Valve Protocol](#valve)                         |
-| `gunmanchronicles`     | Gunman Chronicles (2000)                                | [Valve Protocol](#valve)                         |
-| `hl2dm`                | Half-Life 2: Deathmatch (2004)                          | [Valve Protocol](#valve)                         |
-| `hldm`                 | Half-Life Deathmatch (1998)                             | [Valve Protocol](#valve)                         |
-| `hldms`                | Half-Life Deathmatch: Source (2005)                     | [Valve Protocol](#valve)                         |
-| `hlopfor`              | Half-Life: Opposing Force (1999)                        | [Valve Protocol](#valve)                         |
-| `halo`                 | Halo (2003)                                             |                                                  |
-| `halo2`                | Halo 2 (2007)                                           |                                                  |
-| `hll`                  | Hell Let Loose                                          | [Valve Protocol](#valve)                         |
-| `heretic2`             | Heretic II (1998)                                       |                                                  |
-| `hexen2`               | Hexen II (1997)                                         |                                                  |
-| `had2`                 | Hidden & Dangerous 2 (2003)                             |                                                  |
-| `homefront`            | Homefront (2011)                                        | [Valve Protocol](#valve)                         |
-| `homeworld2`           | Homeworld 2 (2003)                                      |                                                  |
-| `hurtworld`            | Hurtworld (2015)                                        | [Valve Protocol](#valve)                         |
-| `igi2`                 | I.G.I.-2: Covert Strike (2003)                          |                                                  |
-| `il2`                  | IL-2 Sturmovik (2001)                                   |                                                  |
-| `insurgency`           | Insurgency (2014)                                       | [Valve Protocol](#valve)                         |
-| `insurgencymic`        | Insurgency: Modern Infantry Combat (2007)               | [Valve Protocol](#valve)                         |
-| `insurgencysandstorm`  | Insurgency: Sandstorm (2018)                            | [Valve Protocol](#valve)                         |
-| `ironstorm`            | Iron Storm (2002)                                       |                                                  |
-| `isle`                 | The Isle (2015)                                         | [Valve Protocol](#valve)                         |
-| `jamesbondnightfire`   | James Bond 007: Nightfire (2002)                        |                                                  |
-| `jc2mp`                | Just Cause 2 - Multiplayer (2010)                       |                                                  |
-| `jc3mp`                | Just Cause 3 - Multiplayer (2017)                       | [Valve Protocol](#valve)                         |
-| `kspdmp`               | Kerbal Space Program - DMP Multiplayer (2015)           |                                                  |
-| `killingfloor`         | Killing Floor (2009)                                    |                                                  |
-| `killingfloor2`        | Killing Floor 2 (2016)                                  | [Valve Protocol](#valve)                         |
-| `kingpin`              | Kingpin: Life of Crime (1999)                           |                                                  |
-| `kisspc`               | Kiss: Psycho Circus: The Nightmare Child (2000)         |                                                  |
-| `kzmod`                | Kreedz Climbing (2017)                                  | [Valve Protocol](#valve)                         |
-| `left4dead`            | Left 4 Dead (2008)                                      | [Valve Protocol](#valve)                         |
-| `left4dead2`           | Left 4 Dead 2 (2009)                                    | [Valve Protocol](#valve)                         |
-| `m2mp`                 | Mafia II - Multiplayer (2010)                           |                                                  |
-| `m2o`                  | Mafia II - Online (2010)                                |                                                  |
-| `moh2010`              | Medal of Honor (2010)                                   |                                                  |
-| `mohab`                | Medal of Honor: Airborne (2007)                         |                                                  |
-| `mohaa`                | Medal of Honor: Allied Assault (2002)                   |                                                  |
-| `mohbt`                | Medal of Honor: Allied Assault Breakthrough (2003)      |                                                  |
-| `mohsh`                | Medal of Honor: Allied Assault Spearhead (2002)         |                                                  |
-| `mohpa`                | Medal of Honor: Pacific Assault (2004)                  |                                                  |
-| `mohwf`                | Medal of Honor: Warfighter (2012)                       |                                                  |
-| `medievalengineers`    | Medieval Engineers (2015)                               | [Valve Protocol](#valve)                         |
-| `minecraft`            | Minecraft (2009)                                        |                                                  |
-| `minecraftbe`          | Minecraft: Bedrock Edition (2011)                       |                                                  |
-| `mnc`                  | Monday Night Combat (2011)                              | [Valve Protocol](#valve)                         |
-| `mordhau`              | Mordhau (2019)                                          | [Valve Protocol](#valve)                         |
-| `mumble`               | Mumble - GTmurmur Plugin (2005)                         | [Notes](#mumble)                                 |
-| `mumbleping`           | Mumble - Lightweight (2005)                             | [Notes](#mumble)                                 |
-| `nascarthunder2004`    | NASCAR Thunder 2004 (2003)                              |                                                  |
-| `ns`                   | Natural Selection (2002)                                | [Valve Protocol](#valve)                         |
-| `ns2`                  | Natural Selection 2 (2012)                              | [Valve Protocol](#valve)                         |
-| `nfshp2`               | Need for Speed: Hot Pursuit 2 (2002)                    |                                                  |
-| `nab`                  | Nerf Arena Blast (1999)                                 |                                                  |
-| `netpanzer`            | netPanzer (2002)                                        |                                                  |
-| `nwn`                  | Neverwinter Nights (2002)                               |                                                  |
-| `nwn2`                 | Neverwinter Nights 2 (2006)                             |                                                  |
-| `nexuiz`               | Nexuiz (2005)                                           |                                                  |
-| `nitrofamily`          | Nitro Family (2004)                                     |                                                  |
-| `nmrih`                | No More Room in Hell (2011)                             | [Valve Protocol](#valve)                         |
-| `nolf2`                | No One Lives Forever 2: A Spy in H.A.R.M.'s Way (2002)  |                                                  |
-| `nucleardawn`          | Nuclear Dawn (2011)                                     | [Valve Protocol](#valve)                         |
-| `onset`                | Onset (2019)                                            | [Valve Protocol](#valve)                         |
-| `ohd`                  | Operation: Harsh Doorstop (2023)                        | [Valve Protocol](#valve)                         |
-| `openarena`            | OpenArena (2005)                                        |                                                  |
-| `openttd`              | OpenTTD (2004)                                          |                                                  |
-| `ofcwc`                | Operation Flashpoint: Cold War Crisis (2001)            |                                                  |
-| `flashpointresistance` | Operation Flashpoint: Resistance (2002)                 |                                                  |
-| `painkiller`           | Painkiller                                              |                                                  |
-| `pc`                   | Project Cars (2015)                                     | [Valve Protocol](#valve)                         |
-| `pc2`                  | Project Cars 2 (2017)                                   | [Valve Protocol](#valve)                         |
-| `pixark`               | PixARK (2018)                                           | [Valve Protocol](#valve)                         |
-| `pvkii`                | Pirates, Vikings, and Knights II (2007)                 | [Valve Protocol](#valve)                         |
-| `ps`                   | Post Scriptum                                           |                                                  |
-| `postal2`              | Postal 2                                                |                                                  |
-| `prey`                 | Prey                                                    |                                                  |
-| `primalcarnage`        | Primal Carnage: Extinction                              | [Valve Protocol](#valve)                         |
-| `prbf2`                | Project Reality: Battlefield 2 (2005)                   |                                                  |
-| `przomboid`            | Project Zomboid                                         | [Valve Protocol](#valve)                         |
-| `quake1`               | Quake 1: QuakeWorld (1996)                              |                                                  |
-| `quake2`               | Quake 2 (1997)                                          |                                                  |
-| `quake3`               | Quake 3: Arena (1999)                                   |                                                  |
-| `quake4`               | Quake 4 (2005)                                          |                                                  |
-| `quakelive`            | Quake Live (2010)                                       | [Valve Protocol](#valve)                         |
-| `ragdollkungfu`        | Rag Doll Kung Fu                                        | [Valve Protocol](#valve)                         |
-| `r6`                   | Rainbow Six                                             |                                                  |
-| `r6roguespear`         | Rainbow Six 2: Rogue Spear                              |                                                  |
-| `r6ravenshield`        | Rainbow Six 3: Raven Shield                             |                                                  |
-| `rallisportchallenge`  | RalliSport Challenge                                    |                                                  |
-| `rallymasters`         | Rally Masters                                           |                                                  |
-| `redorchestra`         | Red Orchestra                                           |                                                  |
-| `redorchestra2`        | Red Orchestra 2                                         | [Valve Protocol](#valve)                         |
-| `redorchestraost`      | Red Orchestra: Ostfront 41-45                           |                                                  |
-| `redline`              | Redline                                                 |                                                  |
-| `redm`                 | Red Dead Redemption 2 - RedM (2018)                     |                                                  |
-| `rtcw`                 | Return to Castle Wolfenstein                            |                                                  |
-| `rfactor`              | rFactor                                                 |                                                  |
-| `ricochet`             | Ricochet                                                | [Valve Protocol](#valve)                         |
-| `riseofnations`        | Rise of Nations                                         |                                                  |
-| `rs2`                  | Rising Storm 2: Vietnam                                 | [Valve Protocol](#valve)                         |
-| `risingworld`          | Rising World (2014)                                     | [Valve Protocol](#valve)                         |
-| `ror2`                 | Risk of Rain 2 (2020)                                   | [Valve Protocol](#valve)                         |
-| `rune`                 | Rune                                                    |                                                  |
-| `rust`                 | Rust                                                    | [Valve Protocol](#valve)                         |
-| `stalker`              | S.T.A.L.K.E.R.                                          |                                                  |
-| `samp`                 | San Andreas Multiplayer                                 |                                                  |
-| `saomp`                | San Andreas OpenMP                                      |                                                  |
-| `savage2`              | Savage 2: A Tortured Soul (2008)                        |                                                  |
-| `sdtd`                 | 7 Days to Die (2013)                                    | [Valve Protocol](#valve)                         |
-| `ss`                   | Serious Sam                                             |                                                  |
-| `ss2`                  | Serious Sam 2                                           |                                                  |
-| `shatteredhorizon`     | Shattered Horizon                                       | [Valve Protocol](#valve)                         |
-| `shogo`                | Shogo                                                   |                                                  |
-| `shootmania`           | Shootmania                                              | [Notes](#nadeo-shootmania--trackmania--etc)      |
-| `sin`                  | SiN                                                     |                                                  |
-| `sinep`                | SiN Episodes                                            | [Valve Protocol](#valve)                         |
-| `soldat`               | Soldat                                                  |                                                  |
-| `sof`                  | Soldier of Fortune                                      |                                                  |
-| `sof2`                 | Soldier of Fortune 2                                    |                                                  |
-| `sonsoftheforest`      | Sons Of The Forest                                      | [Valve Protocol](#valve)                         |
-| `spaceengineers`       | Space Engineers                                         | [Valve Protocol](#valve)                         |
-| `squad`                | Squad                                                   | [Valve Protocol](#valve)                         |
-| `stbc`                 | Star Trek: Bridge Commander                             |                                                  |
-| `stvef`                | Star Trek: Voyager - Elite Force                        |                                                  |
-| `stvef2`               | Star Trek: Voyager - Elite Force 2                      |                                                  |
-| `swjk2`                | Star Wars Jedi Knight II: Jedi Outcast (2002)           |                                                  |
-| `swjk`                 | Star Wars Jedi Knight: Jedi Academy (2003)              |                                                  |
-| `swbf`                 | Star Wars: Battlefront                                  |                                                  |
-| `swbf2`                | Star Wars: Battlefront 2                                |                                                  |
-| `swrc`                 | Star Wars: Republic Commando                            |                                                  |
-| `starbound`            | Starbound                                               | [Valve Protocol](#valve)                         |
-| `starmade`             | StarMade                                                |                                                  |
-| `starsiege`            | Starsiege (2009)                                        |                                                  |
-| `suicidesurvival`      | Suicide Survival                                        | [Valve Protocol](#valve)                         |
-| `stn`                  | Survive the Nights (2017)                               | [Valve Protocol](#valve)                         |
-| `svencoop`             | Sven Coop                                               | [Valve Protocol](#valve)                         |
-| `swat4`                | SWAT 4                                                  |                                                  |
-| `synergy`              | Synergy                                                 | [Valve Protocol](#valve)                         |
-| `tacticalops`          | Tactical Ops                                            |                                                  |
-| `takeonhelicopters`    | Take On Helicopters (2011)                              |                                                  |
-| `teamfactor`           | Team Factor                                             |                                                  |
-| `tf2`                  | Team Fortress 2                                         | [Valve Protocol](#valve)                         |
-| `tfc`                  | Team Fortress Classic                                   | [Valve Protocol](#valve)                         |
-| `teamspeak2`           | Teamspeak 2                                             |                                                  |
-| `teamspeak3`           | Teamspeak 3                                             | [Notes](#teamspeak3)                             |
-| `terminus`             | Terminus                                                |                                                  |
-| `terraria`             | Terraria - TShock (2011)                                | [Notes](#terraria)                               |
-| `forrest`              | The Forrest (2014)                                      | [Valve Protocol](#valve)                         |
-| `thefront`             | The Front (2023)                                        | [The Front](#thefront), [Valve Protocol](#valve) |
-| `hidden`               | The Hidden (2005)                                       | [Valve Protocol](#valve)                         |
-| `nolf`                 | The Operative: No One Lives Forever (2000)              |                                                  |
-| `ship`                 | The Ship                                                | [Valve Protocol](#valve)                         |
-| `ts`                   | The Specialists                                         | [Valve Protocol](#valve)                         |
-| `graw`                 | Tom Clancy's Ghost Recon Advanced Warfighter (2006)     |                                                  |
-| `graw2`                | Tom Clancy's Ghost Recon Advanced Warfighter 2 (2007)   |                                                  |
-| `theforest`            | The Forest (2014)                                       | [Valve Protocol](#valve)                         |
-| `thps3`                | Tony Hawk's Pro Skater 3                                |                                                  |
-| `thps4`                | Tony Hawk's Pro Skater 4                                |                                                  |
-| `thu2`                 | Tony Hawk's Underground 2                               |                                                  |
-| `towerunite`           | Tower Unite                                             | [Valve Protocol](#valve)                         |
-| `trackmania2`          | Trackmania 2                                            | [Notes](#nadeo-shootmania--trackmania--etc)      |
-| `trackmaniaforever`    | Trackmania Forever                                      | [Notes](#nadeo-shootmania--trackmania--etc)      |
-| `tremulous`            | Tremulous                                               |                                                  |
-| `tribes1`              | Tribes 1: Starsiege                                     |                                                  |
-| `tribesvengeance`      | Tribes: Vengeance                                       |                                                  |
-| `tron20`               | Tron 2.0                                                |                                                  |
-| `turok2`               | Turok 2                                                 |                                                  |
-| `universalcombat`      | Universal Combat                                        |                                                  |
-| `unreal`               | Unreal                                                  |                                                  |
-| `ut`                   | Unreal Tournament                                       |                                                  |
-| `ut2003`               | Unreal Tournament 2003                                  |                                                  |
-| `ut2004`               | Unreal Tournament 2004                                  |                                                  |
-| `ut3`                  | Unreal Tournament 3                                     |                                                  |
-| `unturned`             | Unturned                                                | [Valve Protocol](#valve)                         |
-| `urbanterror`          | Urban Terror                                            |                                                  |
-| `vrising`              | V Rising (2022)                                         | [Valve Protocol](#valve)                         |
-| `v8supercar`           | V8 Supercar Challenge                                   |                                                  |
-| `vs`                   | Vampire Slayer                                          | [Valve Protocol](#valve)                         |
-| `valheim`              | Valheim (2021)                                          | [Notes](#valheim), [Valve Protocol](#valve)      |
-| `ventrilo`             | Ventrilo                                                |                                                  |
-| `vcmp`                 | Vice City Multiplayer                                   |                                                  |
-| `vietcong`             | Vietcong                                                |                                                  |
-| `vietcong2`            | Vietcong 2                                              |                                                  |
-| `warfork`              | Warfork                                                 |                                                  |
-| `warsow`               | Warsow                                                  |                                                  |
-| `wheeloftime`          | Wheel of Time                                           |                                                  |
-| `wolfenstein2009`      | Wolfenstein 2009                                        |                                                  |
-| `wolfensteinet`        | Wolfenstein: Enemy Territory                            |                                                  |
-| `wurm`                 | Wurm: Unlimited                                         | [Valve Protocol](#valve)                         |
-| `xpandrally`           | Xpand Rally                                             |                                                  |
-| `zombiemaster`         | Zombie Master                                           | [Valve Protocol](#valve)                         |
-| `zps`                  | Zombie Panic: Source                                    | [Valve Protocol](#valve)                         |
+| GameDig Type ID      | Name                                             | See Also                                    |
+|----------------------|--------------------------------------------------|---------------------------------------------|
+| a2oa                 | ARMA 2: Operation Arrowhead                      | [Valve Protocol](#valve)                    |
+| aaa                  | ARMA: Armed Assault                              |                                             |
+| aapg                 | America's Army: Proving Grounds                  | [Valve Protocol](#valve)                    |
+| actionsource         | Action: Source                                   | [Valve Protocol](#valve)                    |
+| acwa                 | ARMA: Cold War Assault                           |                                             |
+| ahl                  | Action Half-Life                                 | [Valve Protocol](#valve)                    |
+| alienarena           | Alien Arena                                      |                                             |
+| alienswarm           | Alien Swarm                                      | [Valve Protocol](#valve)                    |
+| americasarmy         | America's Army                                   |                                             |
+| americasarmy2        | America's Army 2                                 |                                             |
+| americasarmy3        | America's Army 3                                 | [Valve Protocol](#valve)                    |
+| aoc                  | Age of Chivalry                                  | [Valve Protocol](#valve)                    |
+| aoe2                 | Age of Empires 2                                 |                                             |
+| aosc                 | Ace of Spades Classic                            |                                             |
+| arcasimracing        | Arca Sim Racing '08                              |                                             |
+| arkse                | Ark: Survival Evolved                            | [Valve Protocol](#valve)                    |
+| arma2                | ARMA 2                                           | [Valve Protocol](#valve)                    |
+| arma3                | ARMA 3                                           | [Valve Protocol](#valve)                    |
+| armagetronadvanced   | Armagetron Advanced                              |                                             |
+| armar                | ARMA: Resistance                                 |                                             |
+| armareforger         | ARMA: Reforger                                   | [Valve Protocol](#valve)                    |
+| asa                  | Ark: Survival Ascended                           |                                             |
+| assettocorsa         | Assetto Corsa                                    |                                             |
+| atlas                | Atlas                                            | [Valve Protocol](#valve)                    |
+| avorion              | Avorion                                          | [Valve Protocol](#valve)                    |
+| avp2                 | Aliens versus Predator 2                         |                                             |
+| avp2010              | Aliens vs. Predator                              | [Valve Protocol](#valve)                    |
+| baldursgate          | Baldur's Gate                                    |                                             |
+| ballisticoverkill    | Ballistic Overkill                               | [Valve Protocol](#valve)                    |
+| barotrauma           | Barotrauma                                       | [Valve Protocol](#valve)                    |
+| bas                  | Build and Shoot                                  |                                             |
+| basedefense          | Base Defense                                     | [Valve Protocol](#valve)                    |
+| battalion1944        | Battalion 1944                                   | [Valve Protocol](#valve)                    |
+| battlefield1942      | Battlefield 1942                                 |                                             |
+| battlefield2         | Battlefield 2                                    |                                             |
+| battlefield2142      | Battlefield 2142                                 |                                             |
+| battlefield3         | Battlefield 3                                    |                                             |
+| battlefield4         | Battlefield 4                                    |                                             |
+| battlefieldhardline  | Battlefield Hardline                             |                                             |
+| battlefieldvietnam   | Battlefield Vietnam                              |                                             |
+| bbc2                 | Battlefield: Bad Company 2                       |                                             |
+| blackmesa            | Black Mesa                                       | [Valve Protocol](#valve)                    |
+| bladesymphony        | Blade Symphony                                   | [Valve Protocol](#valve)                    |
+| brainbread           | BrainBread                                       | [Valve Protocol](#valve)                    |
+| brainbread2          | BrainBread 2                                     | [Valve Protocol](#valve)                    |
+| breach               | Breach                                           | [Valve Protocol](#valve)                    |
+| breed                | Breed                                            |                                             |
+| brink                | Brink                                            | [Valve Protocol](#valve)                    |
+| c3db                 | Commandos 3: Destination Berlin                  |                                             |
+| cacr                 | Command and Conquer: Renegade                    |                                             |
+| chaser               | Chaser                                           |                                             |
+| chrome               | Chrome                                           |                                             |
+| cmw                  | Chivalry: Medieval Warfare                       | [Valve Protocol](#valve)                    |
+| cod                  | Call of Duty                                     |                                             |
+| cod2                 | Call of Duty 2                                   |                                             |
+| cod3                 | Call of Duty 3                                   |                                             |
+| cod4                 | Call of Duty 4: Modern Warfare                   |                                             |
+| codenamecure         | Codename CURE                                    | [Valve Protocol](#valve)                    |
+| codenameeagle        | Codename Eagle                                   |                                             |
+| codmw2               | Call of Duty: Modern Warfare 2                   |                                             |
+| codmw3               | Call of Duty: Modern Warfare 3                   | [Valve Protocol](#valve)                    |
+| coduo                | Call of Duty: United Offensive                   |                                             |
+| codwaw               | Call of Duty: World at War                       |                                             |
+| coj                  | Call of Juarez                                   |                                             |
+| colonysurvival       | Colony Survival                                  | [Valve Protocol](#valve)                    |
+| conanexiles          | Conan Exiles                                     | [Valve Protocol](#valve)                    |
+| contagion            | Contagion                                        | [Valve Protocol](#valve)                    |
+| contractjack         | Contract J.A.C.K.                                |                                             |
+| corekeeper           | Core Keeper                                      | [Valve Protocol](#valve)                    |
+| counterstrike15      | Counter-Strike 1.5                               |                                             |
+| counterstrike16      | Counter-Strike 1.6                               | [Valve Protocol](#valve)                    |
+| counterstrike2       | Counter-Strike 2                                 | [Valve Protocol](#valve)                    |
+| crce                 | Cross Racing Championship Extreme                |                                             |
+| creativerse          | Creativerse                                      | [Valve Protocol](#valve)                    |
+| crysis               | Crysis                                           |                                             |
+| crysis2              | Crysis 2                                         |                                             |
+| crysiswars           | Crysis Wars                                      |                                             |
+| cs2d                 | CS2D                                             |                                             |
+| cscz                 | Counter-Strike: Condition Zero                   | [Valve Protocol](#valve)                    |
+| csgo                 | Counter-Strike: Global Offensive                 | [Notes](#csgo), [Valve Protocol](#valve)    |
+| css                  | Counter-Strike: Source                           | [Valve Protocol](#valve)                    |
+| dab                  | Double Action: Boogaloo                          | [Valve Protocol](#valve)                    |
+| daikatana            | Daikatana                                        |                                             |
+| dal                  | Dark and Light                                   | [Valve Protocol](#valve)                    |
+| dayofdragons         | Day of Dragons                                   | [Valve Protocol](#valve)                    |
+| dayz                 | DayZ                                             | [Valve Protocol](#valve)                    |
+| dayzmod              | DayZ Mod                                         | [Valve Protocol](#valve)                    |
+| ddd                  | Dino D-Day                                       | [Valve Protocol](#valve)                    |
+| ddpt                 | Deadly Dozen: Pacific Theater                    |                                             |
+| deathmatchclassic    | Deathmatch Classic                               | [Valve Protocol](#valve)                    |
+| deerhunter2005       | Deer Hunter 2005                                 |                                             |
+| descent3             | Descent 3                                        |                                             |
+| deusex               | Deus Ex                                          |                                             |
+| devastation          | Devastation                                      |                                             |
+| dhe4445              | Darkest Hour: Europe '44-'45                     |                                             |
+| discord              | Discord                                          | [Notes](#discord)                           |
+| dmomam               | Dark Messiah of Might and Magic                  | [Valve Protocol](#valve)                    |
+| dod                  | Day of Defeat                                    | [Valve Protocol](#valve)                    |
+| dods                 | Day of Defeat: Source                            | [Valve Protocol](#valve)                    |
+| doi                  | Day of Infamy                                    | [Valve Protocol](#valve)                    |
+| doom3                | Doom 3                                           |                                             |
+| dootf                | Drakan: Order of the Flame                       |                                             |
+| dota2                | Dota 2                                           | [Valve Protocol](#valve)                    |
+| dow                  | Days of War                                      | [Valve Protocol](#valve)                    |
+| dst                  | Don't Starve Together                            | [Valve Protocol](#valve)                    |
+| dtr2                 | Dirt Track Racing 2                              |                                             |
+| dystopia             | Dystopia                                         | [Valve Protocol](#valve)                    |
+| eco                  | Eco                                              |                                             |
+| egs                  | Empyrion - Galactic Survival                     | [Valve Protocol](#valve)                    |
+| empiresmod           | Empires Mod                                      | [Valve Protocol](#valve)                    |
+| etqw                 | Enemy Territory: Quake Wars                      |                                             |
+| f1c9902              | F1 Challenge '99-'02                             |                                             |
+| farcry               | Far Cry                                          |                                             |
+| farcry2              | Far Cry 2                                        |                                             |
+| fear                 | F.E.A.R.                                         |                                             |
+| ffow                 | Frontlines: Fuel of War                          |                                             |
+| fo2002               | Formula One 2002                                 |                                             |
+| fof                  | Fistful of Frags                                 | [Valve Protocol](#valve)                    |
+| fortressforever      | Fortress Forever                                 | [Valve Protocol](#valve)                    |
+| garrysmod            | Garry's Mod                                      | [Valve Protocol](#valve)                    |
+| gck                  | Giants: Citizen Kabuto                           |                                             |
+| geneshift            | Geneshift                                        |                                             |
+| globaloperations     | Global Operations                                |                                             |
+| goldeneyesource      | GoldenEye: Source                                | [Valve Protocol](#valve)                    |
+| groundbreach         | Ground Breach                                    | [Valve Protocol](#valve)                    |
+| gta5f                | Grand Theft Auto V - FiveM                       |                                             |
+| gtasam               | Grand Theft Auto: San Andreas Multiplayer        |                                             |
+| gtasamta             | Grand Theft Auto: San Andreas - Multi Theft Auto |                                             |
+| gtasao               | Grand Theft Auto: San Andreas OpenMP             |                                             |
+| gtavcmta             | Grand Theft Auto: Vice City - Multi Theft Auto   |                                             |
+| gunmanchronicles     | Gunman Chronicles                                | [Valve Protocol](#valve)                    |
+| gus                  | Gore: Ultimate Soldier                           |                                             |
+| halo                 | Halo                                             |                                             |
+| halo2                | Halo 2                                           |                                             |
+| hd2                  | Hidden & Dangerous 2                             |                                             |
+| heretic2             | Heretic II                                       |                                             |
+| hexen2               | Hexen II                                         |                                             |
+| hl2d                 | Half-Life 2: Deathmatch                          | [Valve Protocol](#valve)                    |
+| hld                  | Half-Life Deathmatch                             | [Valve Protocol](#valve)                    |
+| hlds                 | Half-Life Deathmatch: Source                     | [Valve Protocol](#valve)                    |
+| hll                  | Hell Let Loose                                   | [Valve Protocol](#valve)                    |
+| hlof                 | Half-Life: Opposing Force                        | [Valve Protocol](#valve)                    |
+| homefront            | Homefront                                        | [Valve Protocol](#valve)                    |
+| homeworld2           | Homeworld 2                                      |                                             |
+| hurtworld            | Hurtworld                                        | [Valve Protocol](#valve)                    |
+| i2cs                 | IGI 2: Covert Strike                             |                                             |
+| il2sturmovik         | IL-2 Sturmovik                                   |                                             |
+| imic                 | Insurgency: Modern Infantry Combat               | [Valve Protocol](#valve)                    |
+| insurgency           | Insurgency                                       | [Valve Protocol](#valve)                    |
+| insurgencysandstorm  | Insurgency: Sandstorm                            | [Valve Protocol](#valve)                    |
+| ironstorm            | Iron Storm                                       |                                             |
+| jb007n               | James Bond 007: Nightfire                        |                                             |
+| jc2m                 | Just Cause 2 - Multiplayer                       |                                             |
+| jc3m                 | Just Cause 3 - Multiplayer                       | [Valve Protocol](#valve)                    |
+| killingfloor         | Killing Floor                                    |                                             |
+| killingfloor2        | Killing Floor 2                                  | [Valve Protocol](#valve)                    |
+| kloc                 | Kingpin: Life of Crime                           |                                             |
+| kpctnc               | Kiss: Psycho Circus: The Nightmare Child         |                                             |
+| kreedzclimbing       | Kreedz Climbing                                  | [Valve Protocol](#valve)                    |
+| kspd                 | Kerbal Space Program - DMP                       |                                             |
+| left4dead            | Left 4 Dead                                      | [Valve Protocol](#valve)                    |
+| left4dead2           | Left 4 Dead 2                                    | [Valve Protocol](#valve)                    |
+| m2m                  | Mafia II - Multiplayer                           |                                             |
+| m2o                  | Mafia II - Online                                |                                             |
+| mbe                  | Minecraft: Bedrock Edition                       |                                             |
+| medievalengineers    | Medieval Engineers                               | [Valve Protocol](#valve)                    |
+| mgm                  | Mumble - GT Murmur                               | [Notes](#mumble)                            |
+| minecraft            | Minecraft                                        |                                             |
+| mnc                  | Monday Night Combat                              | [Valve Protocol](#valve)                    |
+| moh                  | Medal of Honor                                   |                                             |
+| moha                 | Medal of Honor: Airborne                         |                                             |
+| mohaa                | Medal of Honor: Allied Assault                   |                                             |
+| mohaab               | Medal of Honor: Allied Assault Breakthrough      |                                             |
+| mohaas               | Medal of Honor: Allied Assault Spearhead         |                                             |
+| mohpa                | Medal of Honor: Pacific Assault                  |                                             |
+| mohw                 | Medal of Honor: Warfighter                       |                                             |
+| mordhau              | Mordhau                                          | [Valve Protocol](#valve)                    |
+| mumble               | Mumble                                           | [Notes](#mumble)                            |
+| mutantfactions       | Mutant Factions                                  |                                             |
+| nab                  | Nerf Arena Blast                                 |                                             |
+| nascarthunder2004    | NASCAR Thunder 2004                              |                                             |
+| naturalselection     | Natural Selection                                | [Valve Protocol](#valve)                    |
+| naturalselection2    | Natural Selection 2                              | [Valve Protocol](#valve)                    |
+| netpanzer            | netPanzer                                        |                                             |
+| neverwinternights    | Neverwinter Nights                               |                                             |
+| neverwinternights2   | Neverwinter Nights 2                             |                                             |
+| nexuiz               | Nexuiz                                           |                                             |
+| nfshp2               | Need for Speed: Hot Pursuit 2                    |                                             |
+| nitrofamily          | Nitro Family                                     |                                             |
+| nmrih                | No More Room in Hell                             | [Valve Protocol](#valve)                    |
+| nolf2asihw           | No One Lives Forever 2: A Spy in H.A.R.M.'s Way  |                                             |
+| nucleardawn          | Nuclear Dawn                                     | [Valve Protocol](#valve)                    |
+| ofcwc                | Operation Flashpoint: Cold War Crisis            |                                             |
+| ofr                  | Operation Flashpoint: Resistance                 |                                             |
+| ohd                  | Operation: Harsh Doorstop                        | [Valve Protocol](#valve)                    |
+| onset                | Onset                                            | [Valve Protocol](#valve)                    |
+| openarena            | OpenArena                                        |                                             |
+| openttd              | OpenTTD                                          |                                             |
+| painkiller           | Painkiller                                       |                                             |
+| pce                  | Primal Carnage: Extinction                       | [Valve Protocol](#valve)                    |
+| pixark               | PixARK                                           | [Valve Protocol](#valve)                    |
+| postal2              | Postal 2                                         |                                             |
+| postscriptum         | Post Scriptum                                    |                                             |
+| prb2                 | Project Reality: Battlefield 2                   |                                             |
+| prey                 | Prey                                             |                                             |
+| projectcars          | Project Cars                                     | [Valve Protocol](#valve)                    |
+| projectcars2         | Project Cars 2                                   | [Valve Protocol](#valve)                    |
+| projectzomboid       | Project Zomboid                                  | [Valve Protocol](#valve)                    |
+| pvak2                | Pirates, Vikings, and Knights II                 | [Valve Protocol](#valve)                    |
+| q3a                  | Quake 3: Arena                                   |                                             |
+| quake                | Quake                                            |                                             |
+| quake2               | Quake 2                                          |                                             |
+| quake4               | Quake 4                                          |                                             |
+| quakelive            | Quake Live                                       | [Valve Protocol](#valve)                    |
+| rainbowsix           | Rainbow Six                                      |                                             |
+| rallisportchallenge  | RalliSport Challenge                             |                                             |
+| rallymasters         | Rally Masters                                    |                                             |
+| rdkf                 | Rag Doll Kung Fu                                 | [Valve Protocol](#valve)                    |
+| rdr2r                | Red Dead Redemption 2 - RedM                     |                                             |
+| redline              | Redline                                          |                                             |
+| redorchestra         | Red Orchestra                                    |                                             |
+| redorchestra2        | Red Orchestra 2                                  | [Valve Protocol](#valve)                    |
+| rfactor              | rFactor                                          |                                             |
+| ricochet             | Ricochet                                         | [Valve Protocol](#valve)                    |
+| risingworld          | Rising World                                     | [Valve Protocol](#valve)                    |
+| ron                  | Rise of Nations                                  |                                             |
+| roo4145              | Red Orchestra: Ostfront 41-45                    |                                             |
+| ror2                 | Risk of Rain 2                                   | [Valve Protocol](#valve)                    |
+| rs2rs                | Rainbow Six 2: Rogue Spear                       |                                             |
+| rs2v                 | Rising Storm 2: Vietnam                          | [Valve Protocol](#valve)                    |
+| rs3rs                | Rainbow Six 3: Raven Shield                      |                                             |
+| rtcw                 | Return to Castle Wolfenstein                     |                                             |
+| rune                 | Rune                                             |                                             |
+| rust                 | Rust                                             | [Valve Protocol](#valve)                    |
+| s2ats                | Savage 2: A Tortured Soul                        |                                             |
+| sdtd                 | 7 Days to Die                                    | [Valve Protocol](#valve)                    |
+| serioussam           | Serious Sam                                      |                                             |
+| serioussam2          | Serious Sam 2                                    |                                             |
+| shatteredhorizon     | Shattered Horizon                                | [Valve Protocol](#valve)                    |
+| shogo                | Shogo                                            |                                             |
+| shootmania           | Shootmania                                       | [Notes](#nadeo-shootmania--trackmania--etc) |
+| sin                  | SiN                                              |                                             |
+| sinepisodes          | SiN Episodes                                     | [Valve Protocol](#valve)                    |
+| sof                  | Soldier of Fortune                               |                                             |
+| sof2                 | Soldier of Fortune 2                             |                                             |
+| soldat               | Soldat                                           |                                             |
+| sotf                 | Sons Of The Forest                               | [Valve Protocol](#valve)                    |
+| spaceengineers       | Space Engineers                                  | [Valve Protocol](#valve)                    |
+| squad                | Squad                                            | [Valve Protocol](#valve)                    |
+| stalker              | S.T.A.L.K.E.R.                                   |                                             |
+| starbound            | Starbound                                        | [Valve Protocol](#valve)                    |
+| starmade             | StarMade                                         |                                             |
+| starsiege            | Starsiege                                        |                                             |
+| stbc                 | Star Trek: Bridge Commander                      |                                             |
+| stn                  | Survive the Nights                               | [Valve Protocol](#valve)                    |
+| stvef                | Star Trek: Voyager - Elite Force                 |                                             |
+| stvef2               | Star Trek: Voyager - Elite Force 2               |                                             |
+| suicidesurvival      | Suicide Survival                                 | [Valve Protocol](#valve)                    |
+| svencoop             | Sven Coop                                        | [Valve Protocol](#valve)                    |
+| swat4                | SWAT 4                                           |                                             |
+| swb                  | Star Wars: Battlefront                           |                                             |
+| swb2                 | Star Wars: Battlefront 2                         |                                             |
+| swjdja               | Star Wars Jedi Knight: Jedi Academy              |                                             |
+| swjk2jo              | Star Wars Jedi Knight II: Jedi Outcast           |                                             |
+| swrc                 | Star Wars: Republic Commando                     |                                             |
+| synergy              | Synergy                                          | [Valve Protocol](#valve)                    |
+| tacticalops          | Tactical Ops                                     |                                             |
+| tcgraw               | Tom Clancy's Ghost Recon Advanced Warfighter     |                                             |
+| tcgraw2              | Tom Clancy's Ghost Recon Advanced Warfighter 2   |                                             |
+| teamfactor           | Team Factor                                      |                                             |
+| teamfortress2        | Team Fortress 2                                  | [Valve Protocol](#valve)                    |
+| teamspeak2           | Teamspeak 2                                      |                                             |
+| teamspeak3           | Teamspeak 3                                      | [Notes](#teamspeak3)                        |
+| terminus             | Terminus                                         |                                             |
+| terrariatshosck      | Terraria - TShock                                | [Notes](#terraria)                          |
+| tfc                  | Team Fortress Classic                            | [Valve Protocol](#valve)                    |
+| theforest            | The Forest                                       | [Valve Protocol](#valve)                    |
+| theforrest           | The Forrest                                      | [Valve Protocol](#valve)                    |
+| thefront             | The Front                                        | [Valve Protocol](#valve)                    |
+| thehidden            | The Hidden                                       | [Valve Protocol](#valve)                    |
+| theisle              | The Isle                                         | [Valve Protocol](#valve)                    |
+| theship              | The Ship                                         | [Valve Protocol](#valve)                    |
+| thespecialists       | The Specialists                                  | [Valve Protocol](#valve)                    |
+| thps3                | Tony Hawk's Pro Skater 3                         |                                             |
+| thps4                | Tony Hawk's Pro Skater 4                         |                                             |
+| thu2                 | Tony Hawk's Underground 2                        |                                             |
+| toh                  | Take On Helicopters                              |                                             |
+| tonolf               | The Operative: No One Lives Forever              |                                             |
+| towerunite           | Tower Unite                                      | [Valve Protocol](#valve)                    |
+| trackmania2          | Trackmania 2                                     | [Notes](#nadeo-shootmania--trackmania--etc) |
+| trackmaniaforever    | Trackmania Forever                               | [Notes](#nadeo-shootmania--trackmania--etc) |
+| tremulous            | Tremulous                                        |                                             |
+| tribes1starsiege     | Tribes 1: Starsiege                              |                                             |
+| tribesvengeance      | Tribes: Vengeance                                |                                             |
+| tron20               | Tron 2.0                                         |                                             |
+| turok2               | Turok 2                                          |                                             |
+| universalcombat      | Universal Combat                                 |                                             |
+| unreal               | Unreal                                           |                                             |
+| unrealtorunament2003 | Unreal Tournament 2003                           |                                             |
+| unrealtournament     | Unreal Tournament                                |                                             |
+| unrealtournament2004 | Unreal Tournament 2004                           |                                             |
+| unrealtournament3    | Unreal Tournament 3                              |                                             |
+| unturned             | unturned                                         | [Valve Protocol](#valve)                    |
+| urbanterror          | Urban Terror                                     |                                             |
+| v8sc                 | V8 Supercar Challenge                            |                                             |
+| valheim              | Valheim                                          | [Notes](#valheim), [Valve Protocol](#valve) |
+| vampireslayer        | Vampire Slayer                                   | [Valve Protocol](#valve)                    |
+| vcm                  | Vice City Multiplayer                            |                                             |
+| ventrilo             | Ventrilo                                         |                                             |
+| vietcong             | Vietcong                                         |                                             |
+| vietcong2            | Vietcong 2                                       |                                             |
+| vrising              | V Rising                                         | [Valve Protocol](#valve)                    |
+| warfork              | Warfork                                          |                                             |
+| warsow               | Warsow                                           |                                             |
+| wet                  | Wolfenstein: Enemy Territory                     |                                             |
+| wolfenstein          | Wolfenstein                                      |                                             |
+| wot                  | Wheel of Time                                    |                                             |
+| wurmunlimited        | Wurm Unlimited                                   | [Valve Protocol](#valve)                    |
+| xpandrally           | Xpand Rally                                      |                                             |
+| zombiemaster         | Zombie Master                                    | [Valve Protocol](#valve)                    |
+| zps                  | Zombie Panic: Source                             | [Valve Protocol](#valve)                    |
 
 ### Not supported (yet)
 
