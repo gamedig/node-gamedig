@@ -263,7 +263,7 @@
 | swat4                | SWAT 4                                           |                                             |
 | swb                  | Star Wars: Battlefront                           |                                             |
 | swb2                 | Star Wars: Battlefront 2                         |                                             |
-| swjk2ja              | Star Wars Jedi Knight II: Jedi Outcast           |                                             |
+| swjk2jo              | Star Wars Jedi Knight II: Jedi Outcast           |                                             |
 | swjkja               | Star Wars Jedi Knight: Jedi Academy              |                                             |
 | swrc                 | Star Wars: Republic Commando                     |                                             |
 | synergy              | Synergy                                          | [Valve Protocol](#valve)                    |
