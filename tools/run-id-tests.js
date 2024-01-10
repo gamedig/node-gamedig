@@ -1,7 +1,8 @@
 import { spawnSync } from 'node:child_process';
 import process from 'node:process';
 
-import { games } from './../lib/index.js';
+// Import directly from file so that this script works without dependencies installed.
+import { games } from './../lib/games.js';
 
 const ID_TEST_BIN = process.env["GAMEDIG_ID_TESTER"] || "gamedig-id-tests";
 
