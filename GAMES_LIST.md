@@ -42,6 +42,7 @@
 | battlefieldhardline  | Battlefield Hardline                             |                                             |
 | battlefieldvietnam   | Battlefield Vietnam                              |                                             |
 | bbc2                 | Battlefield: Bad Company 2                       |                                             |
+| beammp               | BeamMP (2021)                                    |                                             |
 | blackmesa            | Black Mesa                                       | [Valve Protocol](#valve)                    |
 | bladesymphony        | Blade Symphony                                   | [Valve Protocol](#valve)                    |
 | brainbread           | BrainBread                                       | [Valve Protocol](#valve)                    |
@@ -86,7 +87,7 @@
 | daikatana            | Daikatana                                        |                                             |
 | dal                  | Dark and Light                                   | [Valve Protocol](#valve)                    |
 | dayofdragons         | Day of Dragons                                   | [Valve Protocol](#valve)                    |
-| dayz                 | DayZ                                             | [Valve Protocol](#valve)                    |
+| dayz                 | DayZ                                             |                                             |
 | dayzmod              | DayZ Mod                                         | [Valve Protocol](#valve)                    |
 | ddd                  | Dino D-Day                                       | [Valve Protocol](#valve)                    |
 | ddpt                 | Deadly Dozen: Pacific Theater                    |                                             |
@@ -110,6 +111,7 @@
 | dystopia             | Dystopia                                         | [Valve Protocol](#valve)                    |
 | eco                  | Eco                                              |                                             |
 | egs                  | Empyrion - Galactic Survival                     | [Valve Protocol](#valve)                    |
+| eldewrito            | Halo Online (ElDewrito)                          |                                             |
 | empiresmod           | Empires Mod                                      | [Valve Protocol](#valve)                    |
 | etqw                 | Enemy Territory: Quake Wars                      |                                             |
 | f1c9902              | F1 Challenge '99-'02                             |                                             |
@@ -203,7 +205,7 @@
 | pce                  | Primal Carnage: Extinction                       | [Valve Protocol](#valve)                    |
 | pixark               | PixARK                                           | [Valve Protocol](#valve)                    |
 | postal2              | Postal 2                                         |                                             |
-| postscriptum         | Post Scriptum                                    |                                             |
+| postscriptum         | Post Scriptum                                    | [Valve Protocol](#valve)                    |
 | prb2                 | Project Reality: Battlefield 2                   |                                             |
 | prey                 | Prey                                             |                                             |
 | projectcars          | Project Cars                                     | [Valve Protocol](#valve)                    |
