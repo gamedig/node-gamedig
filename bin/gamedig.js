@@ -6,7 +6,7 @@ import Minimist from 'minimist'
 import { GameDig } from './../lib/index.js'
 
 const argv = Minimist(process.argv.slice(2), {
-  boolean: ['pretty', 'debug', 'givenPortOnly', 'requestRules'],
+  boolean: ['pretty', 'debug', 'givenPortOnly', 'requestRules', 'requestRulesRequired'],
   string: ['guildId', 'listenUdpPort', 'ipFamily']
 })
 
@@ -16,6 +16,7 @@ const pretty = !!argv.pretty || debug
 delete argv.pretty
 const givenPortOnly = argv.givenPortOnly
 delete argv.givenPortOnly
+const requestRulesRequired = argv.requestRulesRequired
 
 const options = {}
 for (const key of Object.keys(argv)) {
@@ -39,6 +40,9 @@ if (debug) {
 }
 if (givenPortOnly) {
   options.givenPortOnly = true
+}
+if (requestRulesRequired) {
+  options.requestRulesRequired = true
 }
 
 const printOnPretty = (object) => {
