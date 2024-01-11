@@ -170,7 +170,7 @@ export default class valve extends Core {
       true
     )
 
-    if (b === null) {
+    if (b === null && !this.options.requestPlayersRequired) {
       // Player query timed out
       // CSGO doesn't respond to player query if host_players_show is not 2
       // Conan Exiles never responds to player query
