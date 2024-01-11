@@ -25,7 +25,7 @@ export default class dayz extends valve {
     this.logger.debug('Requesting rules ...')
 
     const b = await this.sendPacket(0x56, null, 0x45, true)
-    if (b === null) return // timed out - the server probably has rules disabled
+    if (b === null && !this.options.requestRulesRequired) return // timed out - the server probably has rules disabled
 
     let dayZPayloadEnded = false
 
