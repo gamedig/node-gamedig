@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import * as process from "node:process";
+import * as process from 'node:process'
 
 import Minimist from 'minimist'
 import { GameDig } from './../lib/index.js'
@@ -9,17 +9,6 @@ const argv = Minimist(process.argv.slice(2), {
   boolean: ['pretty', 'debug', 'givenPortOnly', 'requestRules', 'requestRulesRequired', 'requestPlayersRequired'],
   string: ['guildId', 'listenUdpPort', 'ipFamily']
 })
-
-const debug = argv.debug
-delete argv.debug
-const pretty = !!argv.pretty || debug
-delete argv.pretty
-const givenPortOnly = argv.givenPortOnly
-delete argv.givenPortOnly
-const requestRulesRequired = argv.requestRulesRequired
-delete argv.requestRulesRequired
-const requestPlayersRequired = argv.requestPlayersRequired
-delete argv.requestPlayersRequired
 
 const options = {}
 for (const key of Object.keys(argv)) {
@@ -30,6 +19,7 @@ for (const key of Object.keys(argv)) {
   options[key] = value
 }
 
+// Separate host and port
 if (argv._.length >= 1) {
   const target = argv._[0]
   const split = target.split(':')
@@ -38,18 +28,23 @@ if (argv._.length >= 1) {
     options.port = split[1]
   }
 }
-if (debug) {
-  options.debug = true
+
+const applyBoolean = (value, fieldName, defaultValue = true) => {
+  if (value) {
+    options[fieldName] = defaultValue
+  }
 }
-if (givenPortOnly) {
-  options.givenPortOnly = true
-}
-if (requestRulesRequired) {
-  options.requestRulesRequired = true
-}
-if (requestPlayersRequired) {
-  options.requestPlayersRequired = true
-}
+
+const debug = argv.debug
+const pretty = !!argv.pretty || debug
+const givenPortOnly = argv.givenPortOnly
+const requestRulesRequired = argv.requestRulesRequired
+const requestPlayersRequired = argv.requestPlayersRequired
+
+applyBoolean(debug, 'debug')
+applyBoolean(givenPortOnly, 'givenPortOnly')
+applyBoolean(requestRulesRequired, 'requestRulesRequired')
+applyBoolean(requestPlayersRequired, 'requestPlayersRequired')
 
 const printOnPretty = (object) => {
   if (pretty) {
