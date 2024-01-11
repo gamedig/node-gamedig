@@ -34,7 +34,8 @@ see next point) and `tshock` (which is `terraria`).
 
 #### Games
 * Removed the players::setNum method, the library will no longer add empty players as 
-a placeholder in the `players` fields.
+placeholders in the `players` fields.
+* Valve: dont skip players with no name and keep state.raw.players.
 * Stabilized field `numplayers`.
 * BeamMP (2021) - Added support.
 
