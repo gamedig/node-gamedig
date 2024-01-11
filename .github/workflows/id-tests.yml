@@ -23,7 +23,6 @@ jobs:
       with:
         node-version: 18.x
     - uses: Swatinem/rust-cache@v2
-    # TODO: Change to official repo once merged
-    - run: cargo install --git https://github.com/Douile/rust-gamedig.git --branch feat/id-test-cli gamedig-id-tests
+    - run: cargo install --git https://github.com/gamedig/rust-gamedig.git gamedig-id-tests
     - name: Run ID tests
       run: node tools/run-id-tests.js
