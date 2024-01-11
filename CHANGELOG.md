@@ -6,6 +6,7 @@
 * Made the library a `module`.
 * Removed `GameResolver`, moved the `GameDig` class in a separate file.
 * Modified exports, now the library exports `games` and `protocols` alongside the `GameDig` class.
+* The user-given port is always attempted as the first once.
 
 #### Games
 * Removed the following alternative game ids: `minecraftping` (as it was deprecated and the same thing as `minecraft`),
