@@ -50,6 +50,8 @@ These fields are all optional.
 * **ipFamily**: number - IP family/version returned when looking up hostnames via DNS, can be 0 (IPv4 and IPv6), 4 (IPv4 only) or 6 (IPv6 only). (default 0)
 * **debug**: boolean - Enables massive amounts of debug logging to stdout. (default false)
 * **requestRules**: boolean - Valve games only. Additional 'rules' may be fetched into the `raw` field. (default false)
+* **requestRulesRequired**: boolean - Valve games only. `requestRules` is always required to have a response or the query will timeout. (default false)
+* **requestPlayersRequired**: boolean - Valve games only. Querying players is always required to have a response or the query will timeout. Some [games](GAMES_LIST.md) may not provide a players response. (default false)
 
 ## Return Value
 
