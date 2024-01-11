@@ -17,6 +17,7 @@ delete argv.pretty
 const givenPortOnly = argv.givenPortOnly
 delete argv.givenPortOnly
 const requestRulesRequired = argv.requestRulesRequired
+delete argv.requestRulesRequired
 
 const options = {}
 for (const key of Object.keys(argv)) {
