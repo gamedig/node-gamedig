@@ -35,11 +35,7 @@ const applyBoolean = (value, fieldName, defaultValue = true) => {
   }
 }
 
-const debug = argv.debug
-const pretty = !!argv.pretty || debug
-const givenPortOnly = argv.givenPortOnly
-const requestRulesRequired = argv.requestRulesRequired
-const requestPlayersRequired = argv.requestPlayersRequired
+const { debug, pretty, givenPortOnly, requestRulesRequired, requestPlayersRequired } = argv
 
 applyBoolean(debug, 'debug')
 applyBoolean(givenPortOnly, 'givenPortOnly')
@@ -47,7 +43,7 @@ applyBoolean(requestRulesRequired, 'requestRulesRequired')
 applyBoolean(requestPlayersRequired, 'requestPlayersRequired')
 
 const printOnPretty = (object) => {
-  if (pretty) {
+  if (!!pretty || debug) {
     console.log(JSON.stringify(object, null, '  '))
   } else {
     console.log(JSON.stringify(object))
