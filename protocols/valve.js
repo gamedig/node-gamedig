@@ -188,9 +188,6 @@ export default class valve extends Core {
 
       this.logger.debug('Found player: ' + name + ' ' + score + ' ' + time)
 
-      // connecting players don't count as players.
-      if (!name) continue
-
       // CSGO sometimes adds a bot named 'Max Players' if host_players_show is not 2
       if (state.raw.appId === AppId.CSGO && name === 'Max Players') continue
 
@@ -274,7 +271,7 @@ export default class valve extends Core {
     const sortedPlayers = state.raw.players.sort((a, b) => {
       return botProbability(a) - botProbability(b)
     })
-    delete state.raw.players
+
     const numBots = state.raw.numbots || 0
 
     while (state.bots.length < numBots && sortedPlayers.length) {
