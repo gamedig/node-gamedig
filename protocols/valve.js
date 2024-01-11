@@ -271,7 +271,7 @@ export default class valve extends Core {
     const sortedPlayers = state.raw.players.sort((a, b) => {
       return botProbability(a) - botProbability(b)
     })
-    delete state.raw.players
+
     const numBots = state.raw.numbots || 0
 
     while (state.bots.length < numBots && sortedPlayers.length) {
