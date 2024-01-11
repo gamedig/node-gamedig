@@ -23,6 +23,8 @@ jobs:
       with:
         node-version: 18.x
     - uses: Swatinem/rust-cache@v2
+      with:
+        cache-on-failure: 'true'
     - run: cargo install --git https://github.com/gamedig/rust-gamedig.git gamedig-id-tests
     - name: Run ID tests
       run: node tools/run-id-tests.js
