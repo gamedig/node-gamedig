@@ -6,11 +6,11 @@ capable of querying for the status of nearly any game or voice server.
 
 If a server makes its status publically available, GameDig can fetch it for you.
 
-Support is available on the [Discord server](https://discord.gg/NVCMn3tnxH) (for questions), or [GitHub Issues](https://github.com/gamedig/node-gamedig/issues) (for bugs).
+Support is available on the [Discord](https://discord.gg/NVCMn3tnxH) for questions, or [GitHub](https://github.com/gamedig/node-gamedig/issues) for bugs.
 
 ## Games List
-**node-GameDig** can query over 310 games (+ a few services)!  
-See the [GAMES_LIST.md](GAMES_LIST.md) file for the currently supported titles, not yet supported ones and notes about some of them.
+**node-GameDig** can query over 310 games + a few services!  
+See the [GAMES_LIST.md](GAMES_LIST.md) file for the currently supported titles, not yet supported titles and notes about some of them.
 
 ## Usage from Node.js
 Install using your favorite package manager: `npm install gamedig`, then use!
@@ -28,59 +28,50 @@ GameDig.query({
 ```
 Confused on how this works, or you want to see more? Checkout the [examples](/examples) folder!
 
-## Query Options
+## Required Fields
 
-**Typical**
+| Field | Type | Description |
+|:---|:---|:---|
+| **type** | string | One of the game IDs listed in the [games list](GAMES_LIST.md). |
+| **host** | string | Hostname or IP of the game server. |
 
-* **type**: string - One of the game IDs listed in the game list below
-* **host**: string - Hostname or IP of the game server
-* **port**: number (optional) - Connection port or query port for the game server. Some
-games utilize a separate "query" port. If specifying the game port does not seem to work as expected, passing in
-this query port may work instead. (defaults to protocol default port)
+## Optional Fields
 
-**Advanced**
+| Field | Type | Default | Description |
+|:---|:---|:---|:---|
+| **port** | number | Game port | Connection port or query port for the game server. Some games utilize a separate "query" port. If specifying the game port does not seem to work as expected, passing in this query port may work instead. |
+| **maxAttempts** | number | 1 | Number of attempts to query server in case of failure. |
+| **socketTimeout** | number | 2000 | Milliseconds to wait for a single packet. Beware that increasing this will cause many queries to take longer even if the server is online. |
+| **attemptTimeout** | number | 10000 | Milliseconds allowed for an entire query attempt. This timeout is not commonly hit, as the socketTimeout typically fires first. |
+| **givenPortOnly** | boolean | false | Only attempt to query server on given port. It will ignore the game's default port. |
+| **ipFamily** | number | 0 | IP family/version returned when looking up hostnames via DNS, can be 0 (IPv4 and IPv6), 4 (IPv4 only) or 6 (IPv6 only). |
+| **debug** | boolean | false | Enables massive amounts of debug logging to stdout. |
+| **requestRules** | boolean | false | Valve games only. Additional 'rules' may be fetched into the `raw` key. |
+| **requestRulesRequired** | boolean | false | Valve games only. `requestRules` is always required to have a response or the query will timeout. |
+| **requestPlayersRequired** | boolean | false | Valve games only. Querying players is always required to have a response or the query will timeout. Some [games](GAMES_LIST.md) may not provide a players response. |
 
-These fields are all optional.
-* **maxAttempts**: number - Number of attempts to query server in case of failure. (default 1)
-* **socketTimeout**: number - Milliseconds to wait for a single packet. Beware that increasing this
- will cause many queries to take longer even if the server is online. (default 2000)
-* **attemptTimeout**: number - Milliseconds allowed for an entire query attempt. This timeout is not commonly hit,
- as the socketTimeout typically fires first. (default 10000)
-* **givenPortOnly**: boolean - Only attempt to query server on given port. (default false)
-* **ipFamily**: number - IP family/version returned when looking up hostnames via DNS, can be 0 (IPv4 and IPv6), 4 (IPv4 only) or 6 (IPv6 only). (default 0)
-* **debug**: boolean - Enables massive amounts of debug logging to stdout. (default false)
-* **requestRules**: boolean - Valve games only. Additional 'rules' may be fetched into the `raw` field. (default false)
-* **requestRulesRequired**: boolean - Valve games only. `requestRules` is always required to have a response or the query will timeout. (default false)
-* **requestPlayersRequired**: boolean - Valve games only. Querying players is always required to have a response or the query will timeout. Some [games](GAMES_LIST.md) may not provide a players response. (default false)
-
-## Return Value
+## Query Response
 
 The returned state object will contain the following keys:
 
-* **name**: string - Server name
-* **map**: string - Current server game map
-* **password**: boolean - If a password is required
-* **numplayers**: number
-* **maxplayers**: number
-* **players**: array of objects - note that this could be of a different length compared to **numplayers**
-  * **name**: string - If the player's name is unknown, the string will be empty.
-  * **raw**: object - Additional information about the player if available.
-* **bots**: array of objects - Same schema as `players`
-* **connect**: string
-  * This will typically include the game's `ip:port`
-  * The port will reflect the server's game port, even if your request specified the game's query port in the request.
-  * For some games, this may be a server ID or connection url if an IP:Port is not appropriate for end-users.
-* **ping**: number
-  * Round trip time to the server (in milliseconds).
-  * Note that this is not the RTT of an ICMP echo, as ICMP packets are often blocked by NATs and node
-    has poor support for raw sockets.
-  * This value is derived from the RTT of one of the query packets, which is usually quite accurate, but may add a bit due to server lag.
-* **raw**: object
-  * Contains all information received from the server in a disorganized format.
+| Key |   | Type | Description |
+|:---|:---|:---|:---|
+| **name** |   | string | Server name. |
+| **map** |   | string | Server map. |
+| **password** |   | boolean | If a password is required. |
+| **numplayers** |   | number | Number of players connected, via [A2S_INFO](https://developer.valvesoftware.com/wiki/Server_queries#A2S_INFO). |
+| **maxplayers** |   | number | Maximum number of connected players. |
+| **players** |   | array of objects | Note that this could be of a different length compared to **numplayers**. Via [A2S_PLAYER](https://developer.valvesoftware.com/wiki/Server_queries#A2S_PLAYER). |
+| **players** | **name** | string | If the player's name is unknown, the string will be empty. |
+| **players** | **raw** | object | Additional information about the player if available. |
+| **bots** |   | array of objects | Same schema as `players`. |
+| **connect** |   | string | This will typically include the game's `IP:PORT`. The port will reflect the server's game port, even if your request specified the game's query port in the request. For some games, this may be a server ID or connection URL if an IP:PORT is not appropriate for end-users. |
+| **ping** |   | number | Round trip time to the server (in milliseconds). Note that this is not the RTT of an ICMP echo, as ICMP packets are often blocked by NATs and node has poor support for raw sockets. This value is derived from the RTT of one of the query packets, which is usually quite accurate, but may add a bit due to server lag. |
+| **raw** |   | object | Contains all information received from the server in a disorganized format. |
 
 Note that `raw` (or **unstable**) objects contents MAY change on a per-protocol basis between GameDig patch releases (although not typical).
 
-### Usage from Command Line
+## Usage from Command Line
 
 Want to integrate server queries from a batch script or other programming language?
 You'll still need npm to install gamedig:
