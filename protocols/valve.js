@@ -268,7 +268,9 @@ export default class valve extends Core {
       if (p.time === -1) return Number.MAX_VALUE
       return p.time
     }
-    const sortedPlayers = state.raw.players.sort((a, b) => {
+
+    const rawPlayers = [...state.raw.players]
+    const sortedPlayers = rawPlayers.sort((a, b) => {
       return botProbability(a) - botProbability(b)
     })
 
