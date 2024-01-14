@@ -54,20 +54,20 @@ Confused on how this works, or you want to see more? Checkout the [examples](/ex
 
 The returned state object will contain the following keys:
 
-| Key |   | Type | Description |
-|:---|:---|:---|:---|
-| **name** |   | string | Server name. |
-| **map** |   | string | Server map. |
-| **password** |   | boolean | If a password is required. |
-| **numplayers** |   | number | Number of players connected, via [A2S_INFO](https://developer.valvesoftware.com/wiki/Server_queries#A2S_INFO). |
-| **maxplayers** |   | number | Maximum number of connected players. |
-| **players** |   | array of objects | Note that this could be of a different length compared to **numplayers**. Via [A2S_PLAYER](https://developer.valvesoftware.com/wiki/Server_queries#A2S_PLAYER). |
-| **players** | **name** | string | If the player's name is unknown, the string will be empty. |
-| **players** | **raw** | object | Additional information about the player if available. |
-| **bots** |   | array of objects | Same schema as `players`. |
-| **connect** |   | string | This will typically include the game's `IP:PORT`. The port will reflect the server's game port, even if your request specified the game's query port in the request. For some games, this may be a server ID or connection URL if an IP:PORT is not appropriate for end-users. |
-| **ping** |   | number | Round trip time to the server (in milliseconds). Note that this is not the RTT of an ICMP echo, as ICMP packets are often blocked by NATs and node has poor support for raw sockets. This value is derived from the RTT of one of the query packets, which is usually quite accurate, but may add a bit due to server lag. |
-| **raw** |   | object | Contains all information received from the server in a disorganized format. |
+| Key | Type | Description |
+|:---|:---|:---|
+| **name** | string | Server name. |
+| **map** | string | Server map. |
+| **password** | boolean | If a password is required. |
+| **numplayers** | number | Number of players connected. Data via [A2S_INFO](https://developer.valvesoftware.com/wiki/Server_queries#A2S_INFO). |
+| **maxplayers** | number | Maximum number of connected players. |
+| **players** | array of objects | Note that this could be of a different length compared to **numplayers**. Data via [A2S_PLAYER](https://developer.valvesoftware.com/wiki/Server_queries#A2S_PLAYER). |
+| **players.name** | string | If the player's name is unknown, the string will be empty. |
+| **players.raw** | object | Additional information about the player if available. |
+| **bots** | array of objects | Same schema as `players`. |
+| **connect** | string | This will typically include the game's `IP:PORT`. The port will reflect the server's game port, even if your request specified the game's query port in the request. For some games, this may be a server ID or connection URL if an IP:PORT is not appropriate for end-users. |
+| **ping** | number | Round trip time to the server (in milliseconds). Note that this is not the RTT of an ICMP echo, as ICMP packets are often blocked by NATs and node has poor support for raw sockets. This value is derived from the RTT of one of the query packets, which is usually quite accurate, but may add a bit due to server lag. |
+| **raw** | object | Contains all information received from the server in a disorganized format. |
 
 Note that `raw` (or **unstable**) objects contents MAY change on a per-protocol basis between GameDig patch releases (although not typical).
 
