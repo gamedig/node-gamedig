@@ -31,7 +31,7 @@ for (const id in sortedGames) {
   if (game?.extra?.doc_notes) {
     notes.push('[Notes](#' + game.extra.doc_notes + ')')
   }
-  if (game.options.protocol === 'valve') {
+  if (game.options.protocol === 'valve' || game.options.protocol === 'dayz') {
     notes.push('[Valve Protocol](#valve)')
   }
   if (notes.length) {
