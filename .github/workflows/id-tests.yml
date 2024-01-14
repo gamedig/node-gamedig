@@ -1,0 +1,36 @@
+name: ID tests
+
+on:
+  push:
+    paths:
+      - "lib/games.js"
+      - ".github/workflows/id-tests.yml" # This action
+  pull_request:
+    paths:
+      - "lib/games.js"
+      - ".github/workflows/id-tests.yml" # This action
+  workflow_dispatch:
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+
+    - name: Cache rust dependencies
+      uses: Swatinem/rust-cache@v2
+      with:
+        cache-on-failure: 'true'
+
+    - name: Install ID tester
+      run: cargo install --git https://github.com/gamedig/rust-gamedig.git gamedig-id-tests
+
+    - name: Run ID tests
+      run: node tools/run-id-tests.js
