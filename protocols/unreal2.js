@@ -125,7 +125,7 @@ export default class unreal2 extends Core {
       out = out.substring(0, out.length - 1)
     }
 
-    if (stripColor) {
+    if (stripColor && this.options.stripColors) {
       out = out.replace(/\x1b...|[\x00-\x1a]/gus, '')
     }
 

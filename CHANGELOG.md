@@ -32,6 +32,7 @@ see next point) and `tshock` (which is `terraria`).
   * Minimum Supported Deno Version: `1.39.2`.
   * `deno run --allow-net bin/gamedig.js --type tf2 127.0.0.1`
 * Added code examples.
+* New option: `stripColors` (defaults to `true`) for protocols that strips colors: unreal2, savage2, quake3, nadeo, gamespy2, doom3, armagetron.
 
 #### Games
 * Removed the players::setNum method, the library will no longer add empty players as 

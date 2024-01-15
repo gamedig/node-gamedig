@@ -20,6 +20,6 @@ export default class savage2 extends Core {
   }
 
   stripColorCodes (str) {
-    return str.replace(/\^./g, '')
+    return this.options.stripColors ? str.replace(/\^./g, '') : str
   }
 }

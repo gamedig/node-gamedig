@@ -143,6 +143,6 @@ export default class doom3 extends Core {
 
   stripColors (str) {
     // uses quake 3 color codes
-    return str.replace(/\^(X.{6}|.)/g, '')
+    return this.options.stripColors ? str.replace(/\^(X.{6}|.)/g, '') : str
   }
 }
