@@ -81,6 +81,6 @@ export default class nadeo extends Core {
   }
 
   stripColors (str) {
-    return str.replace(/\$([0-9a-f]{3}|[a-z])/gi, '')
+    return this.options.stripColors ? str.replace(/\$([0-9a-f]{3}|[a-z])/gi, '') : str
   }
 }

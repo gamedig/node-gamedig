@@ -16,9 +16,12 @@ export default class quake3 extends quake2 {
     for (const player of state.players) {
       player.name = this.stripColors(player.name)
     }
+    for (const bot of state.bots) {
+      bot.name = this.stripColors(bot.name)
+    }
   }
 
   stripColors (str) {
-    return str.replace(/\^(X.{6}|.)/g, '')
+    return this.options.stripColors ? str.replace(/\^(X.{6}|.)/g, '') : str
   }
 }

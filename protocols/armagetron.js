@@ -60,6 +60,6 @@ export default class armagetron extends Core {
   }
 
   stripColorCodes (str) {
-    return str.replace(/0x[0-9a-f]{6}/g, '')
+    return this.options.stripColors ? str.replace(/0x[0-9a-f]{6}/g, '') : str
   }
 }
