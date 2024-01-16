@@ -78,6 +78,7 @@ export default class Core extends EventEmitter {
     const state = new Results()
 
     await this.run(state)
+    state.queryPort = options.port
 
     // because lots of servers prefix with spaces to try to appear first
     state.name = (state.name || '').trim()
