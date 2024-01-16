@@ -51,6 +51,7 @@ Confused on how this works, or you want to see more? Checkout the [examples](/ex
 | **requestRulesRequired**   | boolean | false     | Valve games only. `requestRules` is always required to have a response or the query will timeout.                                                                                                                             |
 | **requestPlayersRequired** | boolean | false     | Valve games only. Querying players is always required to have a response or the query will timeout. Some [games](GAMES_LIST.md) may not provide a players response.                                                           |
 | **stripColors**            | boolean | true      | Enables stripping colors for protocols: unreal2, savage2, quake3, nadeo, gamespy2, doom3, armagetron.                                                                                                                         |
+| **portCache**              | boolean | true      | After you queried a server, the second time you query that exact server (identified by specified ip and port), first add an attempt to query with the last successful port.                                                   |
 
 ## Query Response
 

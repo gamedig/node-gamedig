@@ -6,10 +6,11 @@ import Minimist from 'minimist'
 import { GameDig } from './../lib/index.js'
 
 const argv = Minimist(process.argv.slice(2), {
-  boolean: ['pretty', 'debug', 'givenPortOnly', 'requestRules', 'requestRulesRequired', 'requestPlayersRequired', 'stripColors'],
+  boolean: ['pretty', 'debug', 'givenPortOnly', 'requestRules', 'requestRulesRequired', 'requestPlayersRequired', 'stripColors', 'portCache'],
   string: ['guildId', 'listenUdpPort', 'ipFamily'],
   default: {
-    stripColors: true
+    stripColors: true,
+    portCache: true
   }
 })
 
