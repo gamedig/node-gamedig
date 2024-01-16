@@ -47,6 +47,7 @@ placeholders in the `players` fields.
 * Stabilized field `numplayers`.
 * V Rising (2022) - Updated `options.port_query_offset` to `[1, 15]` (#438).
 * BeamMP (2021) - Added support.
+* Xonotic (2011) - Added support.
 * Call of Duty: Black Ops 3 (2015) - Added support.
 * Unreal 2: The Awakening - XMP - Added support.
 
