@@ -16,11 +16,8 @@ if (argv._.length >= 1) {
 
 const gamedig = new GameDig(options)
 
-let protocolList = []
-Object.keys(protocols).forEach((key) => protocolList.push(key))
-
 const run = async () => {
-  for (const protocol of protocolList) {
+  for (const protocol of Object.keys(protocols)) {
     try {
       const response = await gamedig.query({
         ...options,
