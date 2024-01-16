@@ -8,12 +8,9 @@
 * Modified exports, now the library exports `games` and `protocols` alongside the `GameDig` class.
 
 #### Games
-* Removed the following alternative game ids: `minecraftping` (as it was deprecated and the same thing as `minecraft`),
-`minecraftpe` (deprecated, which is the same as `minecraftbe`), `flashpoint` (alternative was `operationflashpoint`, 
-see next point) and `tshock` (which is `terraria`).
-* Renamed following game ids:
-* * `operationflashpoint` to reference it by its full name, now is `ofcwc`.
-* * `7d2d` to standardize game ids as they won't being with a digit and this was the only one, now is `sdtd`.
+* Almost all games ids have been changed to follow a standard, see [CONTRIBUTING.md#naming](https://github.com/gamedig/node-gamedig/blob/5ae12dd494c927abcbe43352609d9aa34a54753c/CONTRIBUTING.md?plain=1#L27C3-L27C3).
+* Removed `minecraftping` (as it was deprecated and the same thing as `minecraft`) and 
+`minecraftpe` (deprecated, which is now the same as `mbe` (Minecraft Bedrock Edition)).
 
 ### Other changes
 #### Package
