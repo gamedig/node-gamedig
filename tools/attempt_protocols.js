@@ -1,5 +1,6 @@
 import Minimist from 'minimist'
 import { GameDig } from './../lib/index.js'
+import * as protocols from './../protocols/index.js'
 
 const argv = Minimist(process.argv.slice(2), {})
 
@@ -15,10 +16,11 @@ if (argv._.length >= 1) {
 
 const gamedig = new GameDig(options)
 
-const protocols = ['valve', 'gamespy1', 'gamespy2', 'gamespy3', 'goldsrc', 'minecraft', 'quake1', 'quake2', 'quake3', 'unreal2', 'valve']
+let protocolList = []
+Object.keys(protocols).forEach((key) => protocolList.push(key))
 
 const run = async () => {
-  for (const protocol of protocols) {
+  for (const protocol of protocolList) {
     try {
       const response = await gamedig.query({
         ...options,
