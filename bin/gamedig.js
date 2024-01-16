@@ -27,23 +27,12 @@ if (argv._.length >= 1) {
   const target = argv._[0]
   const split = target.split(':')
   options.host = split[0]
-  if (split.length >= 2) {
+  if (split.length > 1) {
     options.port = split[1]
   }
 }
 
-const applyBoolean = (value, fieldName, defaultValue = true) => {
-  if (value) {
-    options[fieldName] = defaultValue
-  }
-}
-
-const { debug, pretty, givenPortOnly, requestRulesRequired, requestPlayersRequired } = argv
-
-applyBoolean(debug, 'debug')
-applyBoolean(givenPortOnly, 'givenPortOnly')
-applyBoolean(requestRulesRequired, 'requestRulesRequired')
-applyBoolean(requestPlayersRequired, 'requestPlayersRequired')
+const { debug, pretty } = options
 
 const printOnPretty = (object) => {
   if (!!pretty || debug) {
