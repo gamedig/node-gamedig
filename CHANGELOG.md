@@ -39,6 +39,7 @@ placeholders in the `players` fields.
 * Valve: dont skip players with no name and keep state.raw.players.
 * Stabilized field `numplayers`.
 * BeamMP (2021) - Added support.
+* Call of Duty: Black Ops 3 (2015) - Added support.
 
 ### 4.3.1
 * Fixed support for the Minecraft [Better Compatibility Checker](https://www.curseforge.com/minecraft/mc-mods/better-compatibility-checker) Mod (By @Douile, #436).

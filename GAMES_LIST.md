@@ -61,6 +61,7 @@
 | cod4mw               | Call of Duty 4: Modern Warfare                   |                                             |
 | codenamecure         | Codename CURE                                    | [Valve Protocol](#valve)                    |
 | codenameeagle        | Codename Eagle                                   |                                             |
+| codbo3               | Call of Duty: Call of Duty: Black Ops 3          |                                             |
 | codmw2               | Call of Duty: Modern Warfare 2                   |                                             |
 | codmw3               | Call of Duty: Modern Warfare 3                   | [Valve Protocol](#valve)                    |
 | coduo                | Call of Duty: United Offensive                   |                                             |
