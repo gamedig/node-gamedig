@@ -29,8 +29,8 @@
   * Minimum Supported Deno Version: `1.39.2`.
   * `deno run --allow-net bin/gamedig.js --type tf2 127.0.0.1`
 * Added code examples.
-* Fixed `numplayers` not having a default value.
 * New stable field: `queryPort` - this number indicates what was the port that the query was done on, 0 indicates none if not applicable.
+* Fixed `numplayers` not having a default value.
 * New option: `stripColors` (defaults to `true`) for protocols that strips colors: unreal2, savage2, quake3, nadeo, gamespy2, doom3, armagetron.
 * New option: `requestRulesRequired` (defaults to `false`) Valve games only. `requestRules` is always required to have a response or the query will timeout.
 * New option: `requestPlayersRequired` (defaults to `false`) Valve games only. Querying players is always required to have a response or the query will timeout. Some [games](GAMES_LIST.md) may not provide a players response.
