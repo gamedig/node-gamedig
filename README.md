@@ -32,7 +32,7 @@ Confused on how this works, or you want to see more? Checkout the [examples](/ex
 
 | Field    | Type   | Description                                                    |
 |:---------|:-------|:---------------------------------------------------------------|
-| **type** | string | One of the game IDs listed in the [games list](GAMES_LIST.md). |
+| **type** | string | One of the game type IDs listed in the [games list](GAMES_LIST.md). Or you can use `protocol-[name]` to select a specific protocol. Protocols are listed [here](protocols/index.js). |
 | **host** | string | Hostname or IP of the game server.                             |
 
 ## Optional Fields
