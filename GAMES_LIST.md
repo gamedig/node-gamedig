@@ -440,7 +440,7 @@ additional option: `token`
 ### Valheim
 Valheim servers will only respond to queries if they are started in public mode (`-public 1`).
 
-### DayZ
+### <a name="dayz"></a>DayZ
 DayZ stores some of it's servers information inside the `tags` attribute. Make sure to set `requestRules: true` to access it. Some data inside `dayzMods` attribute may be fuzzy, due to how mods are loaded into the servers. Players can be fetched, but will not show ingame names. Alternatively, some servers may have a [third party tool](https://dayzsalauncher.com/#/tools) that you can use to get the mods information. If it's installed, you can access it via browser with the game servers IP:PORT, but add up 10 to the port. (eg. if game port is 2302 then use 2312).
 
 ### <a name="valve"></a>Valve Protocol
@@ -450,5 +450,5 @@ option: `requestRules: true`. Beware that this may increase query time.
 ### <a name="thefront"></a>The Front
 Responses with wrong `name` (gives out a steamid instead of the server name) and `maxplayers` (always 200, whatever the config would be) field values.
 
-### Conan Exiles
+### <a name="conanexiles">Conan Exiles
 Conan Exiles never responds to player query.
