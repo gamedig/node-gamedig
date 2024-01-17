@@ -36,7 +36,8 @@
   * `stripColors` (defaults to `true`) for protocols that strips colors: unreal2, savage2, quake3, nadeo, gamespy2, doom3, armagetron.
   * `requestRulesRequired` (defaults to `false`) Valve games only. `requestRules` is always required to have a response or the query will timeout.
   * `requestPlayersRequired` (defaults to `false`) Valve games only. Querying players is always required to have a response or the query will timeout. Some [games](GAMES_LIST.md) may not provide a players response.
-  * `address` (defaults to `undefined`) Override the IP address of the server skipping DNS resolution. When set, host will not be resolved, instead address will be connected to. However, some protocols still use host for other reasons e.g. as part of the query.
+* Now documented: `address` (defaults to `undefined`) Override the IP address of the server skipping DNS resolution. When set, host will not be resolved, instead address will be connected to. However, some protocols still use host for other reasons e.g. as part of the query.
+* `maxAttempts` has been renamed to `maxRetries`.
 
 #### Games
 * Removed the players::setNum method, the library will no longer add empty players as 
