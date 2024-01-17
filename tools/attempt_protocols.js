@@ -12,6 +12,7 @@ if (argv._.length >= 1) {
   if (split.length >= 2) {
     options.port = split[1]
   }
+  options.debug = argv._[1] === 'debug'
 }
 
 const gamedig = new GameDig(options)
@@ -28,7 +29,6 @@ const run = async () => {
     try {
       const response = await gamedig.query({
         ...options,
-        debug: true,
         type: `protocol-${protocol}`
       })
       console.log(response)
