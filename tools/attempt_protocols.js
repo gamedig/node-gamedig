@@ -16,8 +16,15 @@ if (argv._.length >= 1) {
 
 const gamedig = new GameDig(options)
 
+let protocolList = []
+Object.keys(protocols).forEach((key) => protocolList.push(key))
+
+const services = ['discord', 'beammpmaster', 'beammp', 'teamspeak2', 'teamspeak3']
+const protocolListFiltered = protocolList.filter((protocol) => !services.includes(protocol))
+
+
 const run = async () => {
-  for (const protocol of Object.keys(protocols)) {
+  for (const protocol of protocolListFiltered) {
     try {
       const response = await gamedig.query({
         ...options,
