@@ -323,6 +323,7 @@
 | wolfenstein          | Wolfenstein                                      |                                                 |
 | wot                  | Wheel of Time                                    |                                                 |
 | wurmunlimited        | Wurm Unlimited                                   | [Valve Protocol](#valve)                        |
+| xonotic              | Xonotic                                          |                                                 |
 | xpandrally           | Xpand Rally                                      |                                                 |
 | zombiemaster         | Zombie Master                                    | [Valve Protocol](#valve)                        |
 | zps                  | Zombie Panic: Source                             | [Valve Protocol](#valve)                        |
