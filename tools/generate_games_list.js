@@ -34,6 +34,9 @@ for (const id in sortedGames) {
   if (game.options.protocol === 'valve' || game.options.protocol === 'dayz') {
     notes.push('[Valve Protocol](#valve)')
   }
+  if (game.options.protocol === 'epic' || game.options.protocol === 'asa') {
+    notes.push('[EOS Protocol](#epic)')
+  }
   if (notes.length) {
     generated += ' | ' + notes.join(', ')
   }
