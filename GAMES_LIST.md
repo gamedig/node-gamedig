@@ -20,7 +20,7 @@
 | armagetronadvanced   | Armagetron Advanced                              |                                                 |
 | armareforger         | ARMA: Reforger                                   | [Valve Protocol](#valve)                        |
 | armaresistance       | ARMA: Resistance                                 |                                                 |
-| asa                  | Ark: Survival Ascended                           |                                                 |
+| asa                  | Ark: Survival Ascended                           | [EOS Protocol](#eos)                            |
 | ase                  | Ark: Survival Evolved                            | [Valve Protocol](#valve)                        |
 | asr08                | Arca Sim Racing '08                              |                                                 |
 | assettocorsa         | Assetto Corsa                                    |                                                 |
@@ -443,12 +443,19 @@ Valheim servers will only respond to queries if they are started in public mode 
 ### <a name="dayz"></a>DayZ
 DayZ stores some of it's servers information inside the `tags` attribute. Make sure to set `requestRules: true` to access it. Some data inside `dayzMods` attribute may be fuzzy, due to how mods are loaded into the servers. Players can be fetched, but will not show ingame names. Alternatively, some servers may have a [third party tool](https://dayzsalauncher.com/#/tools) that you can use to get the mods information. If it's installed, you can access it via browser with the game servers IP:PORT, but add up 10 to the port. (eg. if game port is 2302 then use 2312).
 
-### <a name="valve"></a>Valve Protocol
-For many valve games, additional 'rules' may be fetched into the unstable `raw` field by passing the additional
-option: `requestRules: true`. Beware that this may increase query time.
-
 ### <a name="thefront"></a>The Front
 Responses with wrong `name` (gives out a steamid instead of the server name) and `maxplayers` (always 200, whatever the config would be) field values.
 
 ### <a name="conanexiles">Conan Exiles
 Conan Exiles never responds to player query.
+
+
+Protocols with Additional Notes
+---
+
+### <a name="valve"></a>Valve Protocol
+For many valve games, additional 'rules' may be fetched into the unstable `raw` field by passing the additional
+option: `requestRules: true`. Beware that this may increase query time.
+
+### <a name="eos"></a>Epic Online Services (EOS) Protocol
+EOS does not provide players data.
