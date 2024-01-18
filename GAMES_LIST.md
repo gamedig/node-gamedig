@@ -300,6 +300,7 @@
 | tribesvengeance      | Tribes: Vengeance                                |                                                 |
 | tron20               | Tron 2.0                                         |                                                 |
 | turok2               | Turok 2                                          |                                                 |
+| u2tax                | Unreal 2: The Awakening (XMP)                    |                                                 |
 | universalcombat      | Universal Combat                                 |                                                 |
 | unreal               | Unreal                                           |                                                 |
 | unrealtournament     | Unreal Tournament                                |                                                 |

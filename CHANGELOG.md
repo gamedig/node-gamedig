@@ -48,6 +48,7 @@ placeholders in the `players` fields.
 * V Rising (2022) - Updated `options.port_query_offset` to `[1, 15]` (#438).
 * BeamMP (2021) - Added support.
 * Call of Duty: Black Ops 3 (2015) - Added support.
+* Unreal 2: The Awakening (XMP) - Added support.
 
 ### 4.3.1
 * Fixed support for the Minecraft [Better Compatibility Checker](https://www.curseforge.com/minecraft/mc-mods/better-compatibility-checker) Mod (By @Douile, #436).
