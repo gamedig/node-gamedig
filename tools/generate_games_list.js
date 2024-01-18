@@ -21,12 +21,16 @@ sortedGamesIds.forEach(key => {
 })
 
 let generated = ''
-generated += '| GameDig Type ID | Name | See Also\n'
-generated += '|---|---|---\n'
+generated += '| GameDig Type ID | Alias | Name | See Also\n'
+generated += '|---|---|---|---\n'
 
 for (const id in sortedGames) {
   const game = sortedGames[id]
-  generated += '| ' + id.padEnd(10, ' ') + ' | ' + game.name
+  if (!game.alias) {
+    game.alias = ' '
+  }
+  generated += '| ' + id.padEnd(10, ' ') + ' | ' + game.alias + ' | ' + game.name
+
   const notes = []
   if (game?.extra?.doc_notes) {
     notes.push('[Notes](#' + game.extra.doc_notes + ')')
