@@ -59,9 +59,9 @@
 | cod2                 | Call of Duty 2                                   |                                                 |
 | cod3                 | Call of Duty 3                                   |                                                 |
 | cod4mw               | Call of Duty 4: Modern Warfare                   |                                                 |
+| codbo3               | Call of Duty: Black Ops 3                        | [Valve Protocol](#valve)                        |
 | codenamecure         | Codename CURE                                    | [Valve Protocol](#valve)                        |
 | codenameeagle        | Codename Eagle                                   |                                                 |
-| codbo3               | Call of Duty: Black Ops 3                        |                                                 |
 | codmw2               | Call of Duty: Modern Warfare 2                   |                                                 |
 | codmw3               | Call of Duty: Modern Warfare 3                   | [Valve Protocol](#valve)                        |
 | coduo                | Call of Duty: United Offensive                   |                                                 |
@@ -164,8 +164,8 @@
 | kpctnc               | Kiss: Psycho Circus: The Nightmare Child         |                                                 |
 | kreedzclimbing       | Kreedz Climbing                                  | [Valve Protocol](#valve)                        |
 | kspd                 | Kerbal Space Program - DMP                       |                                                 |
-| left4dead            | Left 4 Dead                                      | [Valve Protocol](#valve)                        |
-| left4dead2           | Left 4 Dead 2                                    | [Valve Protocol](#valve)                        |
+| l4d                  | Left 4 Dead                                      | [Valve Protocol](#valve)                        |
+| l4d2                 | Left 4 Dead 2                                    | [Valve Protocol](#valve)                        |
 | m2m                  | Mafia II - Multiplayer                           |                                                 |
 | m2o                  | Mafia II - Online                                |                                                 |
 | mbe                  | Minecraft: Bedrock Edition                       |                                                 |
@@ -270,6 +270,7 @@
 | swjkja               | Star Wars Jedi Knight: Jedi Academy              |                                                 |
 | swrc                 | Star Wars: Republic Commando                     |                                                 |
 | synergy              | Synergy                                          | [Valve Protocol](#valve)                        |
+| t1s                  | Tribes 1: Starsiege                              |                                                 |
 | tacticalops          | Tactical Ops                                     |                                                 |
 | tcgraw               | Tom Clancy's Ghost Recon Advanced Warfighter     |                                                 |
 | tcgraw2              | Tom Clancy's Ghost Recon Advanced Warfighter 2   |                                                 |
@@ -296,7 +297,6 @@
 | trackmania2          | Trackmania 2                                     | [Notes](#nadeo-shootmania--trackmania--etc)     |
 | trackmaniaforever    | Trackmania Forever                               | [Notes](#nadeo-shootmania--trackmania--etc)     |
 | tremulous            | Tremulous                                        |                                                 |
-| tribes1starsiege     | Tribes 1: Starsiege                              |                                                 |
 | tribesvengeance      | Tribes: Vengeance                                |                                                 |
 | tron20               | Tron 2.0                                         |                                                 |
 | turok2               | Turok 2                                          |                                                 |
