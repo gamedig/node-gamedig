@@ -43,6 +43,7 @@
 placeholders in the `players` fields.
 * Valve: dont skip players with no name and keep state.raw.players.
 * Stabilized field `numplayers`.
+* V Rising (2022) - Updated query ports offset to [1, 15] (#438).
 * BeamMP (2021) - Added support.
 * Call of Duty: Black Ops 3 (2015) - Added support.
 
