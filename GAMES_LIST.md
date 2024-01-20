@@ -20,7 +20,7 @@
 | armagetronadvanced   | Armagetron Advanced                              |                                                 |
 | armareforger         | ARMA: Reforger                                   | [Valve Protocol](#valve)                        |
 | armaresistance       | ARMA: Resistance                                 |                                                 |
-| asa                  | Ark: Survival Ascended                           | [EOS Protocol](#eos)                            |
+| asa                  | Ark: Survival Ascended                           | [EOS Protocol](#epic)                           |
 | ase                  | Ark: Survival Evolved                            | [Valve Protocol](#valve)                        |
 | asr08                | Arca Sim Racing '08                              |                                                 |
 | assettocorsa         | Assetto Corsa                                    |                                                 |
@@ -203,7 +203,7 @@
 | openarena            | OpenArena                                        |                                                 |
 | openttd              | OpenTTD                                          |                                                 |
 | painkiller           | Painkiller                                       |                                                 |
-| palworld             | Palworld                                         | [EOS Protocol](#eos)                            |
+| palworld             | Palworld                                         |                                                 |
 | pce                  | Primal Carnage: Extinction                       | [Valve Protocol](#valve)                        |
 | pixark               | PixARK                                           | [Valve Protocol](#valve)                        |
 | postal2              | Postal 2                                         |                                                 |
@@ -462,5 +462,5 @@ Protocols with Additional Notes
 For many valve games, additional 'rules' may be fetched into the unstable `raw` field by passing the additional
 option: `requestRules: true`. Beware that this may increase query time.
 
-### <a name="eos"></a>Epic Online Services (EOS) Protocol
+### <a name="epic"></a>Epic Online Services (EOS) Protocol
 EOS does not provide players data.
