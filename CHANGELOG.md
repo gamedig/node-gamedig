@@ -6,6 +6,9 @@
 * Made the library a `module`.
 * Removed `GameResolver`, moved the `GameDig` class in a separate file.
 * Modified exports, now the library exports `games` and `protocols` alongside the `GameDig` class.
+  * A game always has these fields: `name`, `release_year` and `options` (which always contains `port`/`port_query`/`port_query_offset` and `protocol`).
+* Removed the `games.txt` file, the games definitions are now stored in-code (exported on `games`).
+* `maxAttempts` has been renamed to `maxRetries`.
 
 #### Games
 * Almost all games ids have been changed to follow a standard, see [CONTRIBUTING.md#naming](https://github.com/gamedig/node-gamedig/blob/5ae12dd494c927abcbe43352609d9aa34a54753c/CONTRIBUTING.md?plain=1#L27C3-L27C3).
@@ -14,7 +17,6 @@
 
 ### Other changes
 #### Package
-* Removed the `games.txt` file, the games definitions are now stored in-code.
 * Replaced usage of deprecated `substr` with `substring`.
 * Replaced deprecated internal `punycode` with the [punycode](https://www.npmjs.com/package/punycode) package.
 * Updated dependencies:
@@ -38,7 +40,6 @@
   * `requestPlayersRequired` (defaults to `false`) Valve games only. Querying players is always required to have a response or the query will timeout. Some [games](GAMES_LIST.md) may not provide a players response.
   * `noBreadthOrder` (defaults to `false`). If multiple attempts are to be made, disable doing one of each type until reaching the retry count.  
 * Now documented: `address` (defaults to `undefined`) Override the IP address of the server skipping DNS resolution. When set, host will not be resolved, instead address will be connected to. However, some protocols still use host for other reasons e.g. as part of the query.
-* `maxAttempts` has been renamed to `maxRetries`.
 
 #### Games
 * Removed the players::setNum method, the library will no longer add empty players as 
