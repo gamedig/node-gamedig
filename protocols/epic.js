@@ -15,7 +15,7 @@ export default class Epic extends Core {
     this.clientSecret = null
     this.deploymentId = null
     this.epicApi = 'https://api.epicgames.dev'
-    this.alternativeAuth = false // Some games require a client access token to POST to the matchmaking endpoint.
+    this.authByExternalToken = false // Some games require a client access token to POST to the matchmaking endpoint.
 
     this.deviceIdAccessToken = null
     this.accessToken = null
@@ -25,7 +25,7 @@ export default class Epic extends Core {
   }
 
   async run (state) {
-    if (this.alternativeAuth) {
+    if (this.authByExternalToken) {
       await this.getExternalAccessToken()
     } else {
       await this.getClientAccessToken()
