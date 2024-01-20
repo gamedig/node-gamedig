@@ -15,6 +15,9 @@ export default class Epic extends Core {
     this.clientSecret = null
     this.deploymentId = null
     this.epicApi = 'https://api.epicgames.dev'
+    this.authByExternalToken = false // Some games require a client access token to POST to the matchmaking endpoint.
+
+    this.deviceIdAccessToken = null
     this.accessToken = null
 
     // Don't use the tcp ping probing
@@ -22,16 +25,65 @@ export default class Epic extends Core {
   }
 
   async run (state) {
-    await this.getAccessToken()
+    if (this.authByExternalToken) {
+      await this.getExternalAccessToken()
+    } else {
+      await this.getClientAccessToken()
+    }
+
     await this.queryInfo(state)
     await this.cleanup(state)
   }
 
-  async getAccessToken () {
-    this.logger.debug('Requesting acess token ...')
+  async getClientAccessToken () {
+    this.logger.debug('Requesting client access token ...')
 
     const url = `${this.epicApi}/auth/v1/oauth/token`
     const body = `grant_type=client_credentials&deployment_id=${this.deploymentId}`
+    const headers = {
+      Authorization: `Basic ${Buffer.from(`${this.clientId}:${this.clientSecret}`).toString('base64')}`,
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+
+    this.logger.debug(`POST: ${url}`)
+    const response = await this.request({ url, body, headers, method: 'POST', responseType: 'json' })
+
+    this.accessToken = response.access_token
+  }
+
+  async _getDeviceIdToken () {
+    this.logger.debug('Requesting deviceId access token ...')
+
+    const url = `${this.epicApi}/auth/v1/accounts/deviceid`
+    const body = 'deviceModel=PC'
+    const headers = {
+      Authorization: `Basic ${Buffer.from(`${this.clientId}:${this.clientSecret}`).toString('base64')}`,
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+
+    this.logger.debug(`POST: ${url}`)
+    const response = await this.request({ url, body, headers, method: 'POST', responseType: 'json' })
+
+    return response.access_token
+  }
+
+  async getExternalAccessToken () {
+    this.logger.debug('Requesting external access token ...')
+
+    const deviceIdToken = await this._getDeviceIdToken()
+
+    const url = `${this.epicApi}/auth/v1/oauth/token`
+
+    const bodyParts = [
+      'grant_type=external_auth',
+      'external_auth_type=deviceid_access_token',
+      `external_auth_token=${deviceIdToken}`,
+      'nonce=ABCHFA3qgUCJ1XTPAoGDEF', // This is required but can be set to anything
+      `deployment_id=${this.deploymentId}`,
+      'display_name=User'
+    ]
+
+    const body = bodyParts.join('&')
     const headers = {
       Authorization: `Basic ${Buffer.from(`${this.clientId}:${this.clientSecret}`).toString('base64')}`,
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -65,7 +117,8 @@ export default class Epic extends Core {
 
     // Epic returns a list of sessions, we need to find the one with the desired port.
     const hasDesiredPort = (session) => session.attributes.ADDRESSBOUND_s === `0.0.0.0:${this.options.port}` ||
-      session.attributes.ADDRESSBOUND_s === `${this.options.address}:${this.options.port}`
+      session.attributes.ADDRESSBOUND_s === `${this.options.address}:${this.options.port}` ||
+      session.attributes.GAMESERVER_PORT_l === this.options.port
 
     const desiredServer = response.sessions.find(hasDesiredPort)
 
