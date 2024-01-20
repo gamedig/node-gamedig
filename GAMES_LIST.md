@@ -171,7 +171,7 @@
 | mbe                  | Minecraft: Bedrock Edition                       |                                                 |
 | medievalengineers    | Medieval Engineers                               | [Valve Protocol](#valve)                        |
 | mgm                  | Mumble - GT Murmur                               | [Notes](#mumble)                                |
-| minecraft            | Minecraft                                        |                                                 |
+| minecraft            | Minecraft                                        | [Notes](#minecraft)                             |
 | mnc                  | Monday Night Combat                              | [Valve Protocol](#valve)                        |
 | moh                  | Medal of Honor                                   |                                                 |
 | moha                 | Medal of Honor: Airborne                         |                                                 |
@@ -451,6 +451,8 @@ Responses with wrong `name` (gives out a steamid instead of the server name) and
 ### <a name="conanexiles">Conan Exiles
 Conan Exiles never responds to player query.
 
+### <a name="minecraft">Minecraft
+Many Minecraft servers do not respond with players data.
 
 Protocols with Additional Notes
 ---
