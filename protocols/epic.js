@@ -15,7 +15,8 @@ export default class Epic extends Core {
     this.clientSecret = null
     this.deploymentId = null
     this.epicApi = 'https://api.epicgames.dev'
-    this.clientAccessToken = null
+    this.alternativeAuth = false // Some games require a client access token to POST to the matchmaking endpoint.
+
     this.deviceIdAccessToken = null
     this.accessToken = null
 
@@ -24,15 +25,18 @@ export default class Epic extends Core {
   }
 
   async run (state) {
-    await this.getClientAccessToken()
-    await this.getDeviceIdToken()
-    await this.getAuthAccessToken()
+    if (this.alternativeAuth) {
+      await this.getExternalAccessToken()
+    } else {
+      await this.getClientAccessToken()
+    }
+
     await this.queryInfo(state)
     await this.cleanup(state)
   }
 
   async getClientAccessToken () {
-    this.logger.debug('Requesting acess token ...')
+    this.logger.debug('Requesting client access token ...')
 
     const url = `${this.epicApi}/auth/v1/oauth/token`
     const body = `grant_type=client_credentials&deployment_id=${this.deploymentId}`
@@ -44,11 +48,11 @@ export default class Epic extends Core {
     this.logger.debug(`POST: ${url}`)
     const response = await this.request({ url, body, headers, method: 'POST', responseType: 'json' })
 
-    this.clientAccessToken = response.access_token
+    this.accessToken = response.access_token
   }
 
-  async getDeviceIdToken () {
-    this.logger.debug('Requesting acess token ...')
+  async _getDeviceIdToken () {
+    this.logger.debug('Requesting deviceId access token ...')
 
     const url = `${this.epicApi}/auth/v1/accounts/deviceid`
     const body = 'deviceModel=PC'
@@ -60,14 +64,26 @@ export default class Epic extends Core {
     this.logger.debug(`POST: ${url}`)
     const response = await this.request({ url, body, headers, method: 'POST', responseType: 'json' })
 
-    this.deviceIdAccessToken = response.access_token
+    return response.access_token
   }
 
-  async getAuthAccessToken () {
-    this.logger.debug('Requesting acess token ...')
+  async getExternalAccessToken () {
+    this.logger.debug('Requesting external access token ...')
+
+    const deviceIdToken = await this._getDeviceIdToken()
 
     const url = `${this.epicApi}/auth/v1/oauth/token`
-    const body = `grant_type=external_auth&external_auth_type=deviceid_access_token&external_auth_token=${this.deviceIdAccessToken}&nonce=ABCHFA3qgUCJ1XTPAoGDEF&deployment_id=${this.deploymentId}&display_name=User`
+
+    const bodyParts = [
+      'grant_type=external_auth',
+      'external_auth_type=deviceid_access_token',
+      `external_auth_token=${deviceIdToken}`,
+      'nonce=ABCHFA3qgUCJ1XTPAoGDEF', // This is required but can be set to anything
+      `deployment_id=${this.deploymentId}`,
+      'display_name=User'
+    ]
+
+    const body = bodyParts.join('&')
     const headers = {
       Authorization: `Basic ${Buffer.from(`${this.clientId}:${this.clientSecret}`).toString('base64')}`,
       'Content-Type': 'application/x-www-form-urlencoded'
