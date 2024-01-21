@@ -378,7 +378,6 @@ Not supported (yet)
 * Tibia ([Ref](https://github.com/Austinb/GameQ/blob/v3/src/GameQ/Protocols/Tibia.php))
 * Titanfall
 * Tribes 2
-* Unreal 2 XMP
 * World in Conflict
 * World Opponent Network
 * Wurm Unlimited
