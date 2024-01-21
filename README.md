@@ -53,6 +53,7 @@ Confused on how this works, or you want to see more? Checkout the [examples](/ex
 | **stripColors**            | boolean | true      | Enables stripping colors for protocols: unreal2, savage2, quake3, nadeo, gamespy2, doom3, armagetron.                                                                                                                         |
 | **portCache**              | boolean | true      | After you queried a server, the second time you query that exact server (identified by specified ip and port), first add an attempt to query with the last successful port.                                                   |
 | **noBreadthOrder**         | boolean | false     | Enable the behaviour of retrying an attempt X times followed by the next attempt X times, otherwise try attempt A, then B, then A, then B until reaching the X retry count of each.                                           |
+| **skipOldIDs**         | boolean | false     | Query will skip checking for older game type IDs.                                             |
 
 ## Query Response
 
