@@ -70,7 +70,7 @@
 | codwaw               |                      | Call of Duty: World at War
 | coj                  | callofjuarez         | Call of Juarez
 | colonysurvival       |                      | Colony Survival | [Valve Protocol](#valve)
-| conanexiles          |                      | Conan Exiles | [Valve Protocol](#valve)
+| conanexiles          |                      | Conan Exiles | [Notes](#conanexiles), [Valve Protocol](#valve)
 | contagion            |                      | Contagion | [Valve Protocol](#valve)
 | contractjack         | contactjack          | Contract J.A.C.K.
 | corekeeper           |                      | Core Keeper | [Valve Protocol](#valve)
@@ -84,13 +84,13 @@
 | crysiswars           |                      | Crysis Wars
 | cs2d                 |                      | CS2D
 | cscz                 |                      | Counter-Strike: Condition Zero | [Valve Protocol](#valve)
-| csgo                 |                      | Counter-Strike: Global Offensive | [Valve Protocol](#valve)
+| csgo                 |                      | Counter-Strike: Global Offensive | [Notes](#csgo), [Valve Protocol](#valve)
 | css                  |                      | Counter-Strike: Source | [Valve Protocol](#valve)
 | dab                  |                      | Double Action: Boogaloo | [Valve Protocol](#valve)
 | daikatana            |                      | Daikatana
 | dal                  | dnl                  | Dark and Light | [Valve Protocol](#valve)
 | dayofdragons         |                      | Day of Dragons | [Valve Protocol](#valve)
-| dayz                 |                      | DayZ | [Valve Protocol](#valve)
+| dayz                 |                      | DayZ | [Notes](#dayz), [Valve Protocol](#valve)
 | dayzmod              |                      | DayZ Mod | [Valve Protocol](#valve)
 | ddd                  | dinodday             | Dino D-Day | [Valve Protocol](#valve)
 | ddpt                 | deadlydozenpt        | Deadly Dozen: Pacific Theater
@@ -100,7 +100,7 @@
 | deusex               |                      | Deus Ex
 | devastation          |                      | Devastation
 | dhe4445              | darkesthour          | Darkest Hour: Europe '44-'45
-| discord              |                      | Discord
+| discord              |                      | Discord | [Notes](#discord)
 | dmomam               |                      | Dark Messiah of Might and Magic | [Valve Protocol](#valve)
 | dod                  |                      | Day of Defeat | [Valve Protocol](#valve)
 | dods                 |                      | Day of Defeat: Source | [Valve Protocol](#valve)
@@ -172,8 +172,8 @@
 | m2o                  |                      | Mafia II - Online
 | mbe                  | minecraftbe          | Minecraft: Bedrock Edition
 | medievalengineers    |                      | Medieval Engineers | [Valve Protocol](#valve)
-| mgm                  |                      | Mumble - GT Murmur
-| minecraft            |                      | Minecraft
+| mgm                  |                      | Mumble - GT Murmur | [Notes](#mumble)
+| minecraft            |                      | Minecraft | [Notes](#minecraft)
 | mnc                  |                      | Monday Night Combat | [Valve Protocol](#valve)
 | moh                  | moh2010              | Medal of Honor
 | moha                 | mohab                | Medal of Honor: Airborne
@@ -183,7 +183,7 @@
 | mohpa                |                      | Medal of Honor: Pacific Assault
 | mohw                 | mohwf                | Medal of Honor: Warfighter
 | mordhau              |                      | Mordhau | [Valve Protocol](#valve)
-| mumble               |                      | Mumble
+| mumble               |                      | Mumble | [Notes](#mumble)
 | mutantfactions       |                      | Mutant Factions
 | nab                  |                      | Nerf Arena Blast
 | nascarthunder2004    |                      | NASCAR Thunder 2004
@@ -247,7 +247,7 @@
 | serioussam2          | ss2                  | Serious Sam 2
 | shatteredhorizon     |                      | Shattered Horizon | [Valve Protocol](#valve)
 | shogo                |                      | Shogo
-| shootmania           |                      | Shootmania
+| shootmania           |                      | Shootmania | [Notes](#nadeo-shootmania--trackmania--etc)
 | sin                  |                      | SiN
 | sinepisodes          | sinep                | SiN Episodes | [Valve Protocol](#valve)
 | sof                  |                      | Soldier of Fortune
@@ -280,7 +280,7 @@
 | teamfactor           |                      | Team Factor
 | teamfortress2        | tf2                  | Team Fortress 2 | [Valve Protocol](#valve)
 | teamspeak2           |                      | Teamspeak 2
-| teamspeak3           |                      | Teamspeak 3
+| teamspeak3           |                      | Teamspeak 3 | [Notes](#teamspeak3)
 | terminus             |                      | Terminus
 | terrariatshosck      | terraria             | Terraria - TShock | [Notes](#terraria)
 | tfc                  |                      | Team Fortress Classic | [Valve Protocol](#valve)
@@ -297,8 +297,8 @@
 | toh                  | takeonhelicopters    | Take On Helicopters
 | tonolf               | nolf                 | The Operative: No One Lives Forever
 | towerunite           |                      | Tower Unite | [Valve Protocol](#valve)
-| trackmania2          |                      | Trackmania 2
-| trackmaniaforever    |                      | Trackmania Forever
+| trackmania2          |                      | Trackmania 2 | [Notes](#nadeo-shootmania--trackmania--etc)
+| trackmaniaforever    |                      | Trackmania Forever | [Notes](#nadeo-shootmania--trackmania--etc)
 | tremulous            |                      | Tremulous
 | tribesvengeance      |                      | Tribes: Vengeance
 | tron20               |                      | Tron 2.0
@@ -313,7 +313,7 @@
 | unturned             |                      | unturned | [Valve Protocol](#valve)
 | urbanterror          |                      | Urban Terror
 | v8sc                 | v8supercar           | V8 Supercar Challenge
-| valheim              |                      | Valheim | [Valve Protocol](#valve)
+| valheim              |                      | Valheim | [Notes](#valheim), [Valve Protocol](#valve)
 | vampireslayer        | vs                   | Vampire Slayer | [Valve Protocol](#valve)
 | vcm                  | vcmp                 | Vice City Multiplayer
 | ventrilo             |                      | Ventrilo

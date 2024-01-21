@@ -26,11 +26,11 @@ generated += '|:---|:---|:---|:---\n'
 
 for (const id in sortedGames) {
   const game = sortedGames[id]
-  if (!game?.extra?.old_id) {
-    game.extra = {}
-    game.extra.old_id = ' '
+  if (game?.extra?.old_id) {
+    generated += '| ' + id.padEnd(20, ' ') + ' | ' + game.extra.old_id.padEnd(20, ' ') + ' | ' + game.name;
+  } else {
+    generated += '| ' + id.padEnd(20, ' ') + ' | ' + ' '.repeat(20) + ' | ' + game.name;
   }
-  generated += '| ' + id.padEnd(20, ' ') + ' | ' + game.extra.old_id.padEnd(20, ' ') + ' | ' + game.name
 
   const notes = []
   if (game?.extra?.doc_notes) {
