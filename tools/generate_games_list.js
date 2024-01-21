@@ -21,16 +21,12 @@ sortedGamesIds.forEach(key => {
 })
 
 let generated = ''
-generated += '| GameDig Type ID | Old ID | Name | See Also\n'
-generated += '|:---|:---|:---|:---\n'
+generated += '| GameDig Type ID | Name | See Also\n'
+generated += '|:---|:---|:---\n'
 
 for (const id in sortedGames) {
   const game = sortedGames[id]
-  if (game?.extra?.old_id) {
-    generated += '| ' + id.padEnd(20, ' ') + ' | ' + game.extra.old_id.padEnd(20, ' ') + ' | ' + game.name;
-  } else {
-    generated += '| ' + id.padEnd(20, ' ') + ' | ' + ' '.repeat(20) + ' | ' + game.name;
-  }
+  generated += '| ' + id.padEnd(20, ' ') + ' | ' + game.name.padEnd(50, ' ') + ' |'
 
   const notes = []
   if (game?.extra?.doc_notes) {
@@ -43,7 +39,7 @@ for (const id in sortedGames) {
     notes.push('[EOS Protocol](#epic)')
   }
   if (notes.length) {
-    generated += ' | ' + notes.join(', ')
+    generated += ' ' + notes.join(', ')
   }
   generated += '\n'
 }
@@ -52,5 +48,5 @@ let start = readme.indexOf(markerTop)
 start += markerTop.length
 const end = readme.indexOf(markerBottom)
 
-const updated = readme.substring(0, start) + '\n' + generated + readme.substring(end)
+const updated = readme.substring(0, start) + '\n\n' + generated + '\n' + readme.substring(end)
 fs.writeFileSync(readmeFilename, updated)
