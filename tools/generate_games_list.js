@@ -22,11 +22,11 @@ sortedGamesIds.forEach(key => {
 
 let generated = ''
 generated += '| GameDig Type ID | Name | See Also\n'
-generated += '|:---|:---|:---\n'
+generated += '|---|---|---\n'
 
 for (const id in sortedGames) {
   const game = sortedGames[id]
-  generated += '| ' + id.padEnd(20, ' ') + ' | ' + game.name.padEnd(50, ' ') + ' |'
+  generated += '| ' + id.padEnd(10, ' ') + ' | ' + game.name
 
   const notes = []
   if (game?.extra?.doc_notes) {
@@ -39,7 +39,7 @@ for (const id in sortedGames) {
     notes.push('[EOS Protocol](#epic)')
   }
   if (notes.length) {
-    generated += ' ' + notes.join(', ')
+    generated += ' | ' + notes.join(', ')
   }
   generated += '\n'
 }
