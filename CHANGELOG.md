@@ -54,6 +54,7 @@ placeholders in the `players` fields.
 * Call of Duty: Black Ops 3 (2015) - Added support.
 * Unreal 2: The Awakening - XMP - Added support.
 * Palworld - Added support (By @jonathanprl, #495).
+* The Isle Evrima - Added support (By @GuilhermeWerner, #501).
 
 ### 4.3.1
 * Fixed support for the Minecraft [Better Compatibility Checker](https://www.curseforge.com/minecraft/mc-mods/better-compatibility-checker) Mod (By @Douile, #436).
