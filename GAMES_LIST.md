@@ -383,6 +383,7 @@
 > __Know how to code?__ Protocol details for many of the games above are documented
 > at https://github.com/gamedig/legacy-query-library-archive
 > , ready for you to develop into GameDig!
+>
 > Don't see your game listed here?
 >
 > First, let us know, so we can fix it. Then, you can try using some common query
