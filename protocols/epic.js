@@ -126,18 +126,13 @@ export default class Epic extends Core {
       throw new Error('Server not found')
     }
 
-    if (
-      desiredServer.attributes.NAME_s !== undefined &&
-      desiredServer.attributes.NAME_s !== null &&
-      desiredServer.attributes.NAME_s !== ''
-    ) {
-      state.name = desiredServer.attributes.NAME_s;
-    } else if (
-      desiredServer.attributes.CUSTOMSERVERNAME_s !== undefined &&
-      desiredServer.attributes.CUSTOMSERVERNAME_s !== null &&
-      desiredServer.attributes.CUSTOMSERVERNAME_s !== ''
-    ) {
-      state.name = desiredServer.attributes.CUSTOMSERVERNAME_s;
+    const name = desiredServer.attributes.NAME_s
+    const customName = desiredServer.attributes.CUSTOMSERVERNAME_s
+
+    if (name && name !== '') {
+      state.name = name;
+    } else if (customName && customName !== '') {
+      state.name = customName;
     } else {
       state.name = '';
     }
