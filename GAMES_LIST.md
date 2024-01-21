@@ -409,18 +409,18 @@ Games with Additional Notes
 To receive a full player list response from CS:GO servers, the server must
 have set the cvar: host_players_show 2
 
-### Discord
+### <a name="discord"></a>Discord
 You must set the `guildId` request field to the server's guild ID. Do not provide an IP.
 The Guild ID can be found in server widget settings (Server ID) or by enabling developer mode in client settings and right-clicking the server's icon.
 In order to retrieve information from discord server's they must have the `Enable server widget` option enabled.
 
-### Mumble
+### <a name="mumble"></a>Mumble
 For full query results from Mumble, you must be running the
 [GTmurmur plugin](http://www.gametracker.com/downloads/gtmurmurplugin.php).
 If you do not wish to run the plugin, or do not require details such as channel and user lists,
 you can use the 'mumbleping' server type instead, which uses a less accurate but more reliable solution
 
-### Nadeo (ShootMania / TrackMania / etc)
+### <a name="nadeo-shootmania--trackmania--etc"></a>Nadeo (ShootMania / TrackMania / etc)
 The server must have xmlrpc enabled, and you must pass the xmlrpc port to GameDig, not the connection port.
 You must have a user account on the server with access level User or higher.
 Pass the login into to GameDig with the additional options: login, password
@@ -439,11 +439,11 @@ For teamspeak 3 queries to work correctly, the following permissions must be ava
 In the extremely unusual case that your server host responds to queries on a non-default port (the default is 10011),
 you can specify their host query port using the teamspeakQueryPort option.
 
-### Terraria
+### <a name="terraria"></a>Terraria
 Requires tshock server mod, and a REST user token, which can be passed to GameDig with the
 additional option: `token`
 
-### Valheim
+### <a name="valheim"></a>Valheim
 Valheim servers will only respond to queries if they are started in public mode (`-public 1`).
 
 ### <a name="dayz"></a>DayZ
