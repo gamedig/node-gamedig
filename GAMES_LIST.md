@@ -1,4 +1,5 @@
-### Supported
+Supported Games
+---
 
 <!--- BEGIN GENERATED GAMES -->
 | GameDig Type ID | Old ID | Name | See Also
@@ -332,7 +333,8 @@
 | zps                  |                      | Zombie Panic: Source | [Valve Protocol](#valve)
 <!--- END GENERATED GAMES -->
 
-### Not supported (yet)
+Not supported (yet)
+---
 
 * Cube Engine (cube):
     * Cube 1
