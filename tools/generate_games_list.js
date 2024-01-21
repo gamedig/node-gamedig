@@ -27,7 +27,6 @@ generated += '|---|---|---\n'
 for (const id in sortedGames) {
   const game = sortedGames[id]
   generated += '| ' + id.padEnd(10, ' ') + ' | ' + game.name
-
   const notes = []
   if (game?.extra?.doc_notes) {
     notes.push('[Notes](#' + game.extra.doc_notes + ')')
