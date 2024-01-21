@@ -22,7 +22,7 @@ sortedGamesIds.forEach(key => {
 
 let generated = ''
 generated += '| GameDig Type ID | Old ID | Name | See Also\n'
-generated += '|---|---|---|---\n'
+generated += '|:---|:---|:---|:---\n'
 
 for (const id in sortedGames) {
   const game = sortedGames[id]
@@ -30,7 +30,7 @@ for (const id in sortedGames) {
     game.extra = {}
     game.extra.old_id = ' '
   }
-  generated += '| ' + id.padEnd(10, ' ') + ' | ' + game.extra.old_id + ' | ' + game.name
+  generated += '| ' + id.padEnd(20, ' ') + ' | ' + game.extra.old_id.padEnd(20, ' ') + ' | ' + game.name
 
   const notes = []
   if (game?.extra?.doc_notes) {
@@ -52,5 +52,5 @@ let start = readme.indexOf(markerTop)
 start += markerTop.length
 const end = readme.indexOf(markerBottom)
 
-const updated = readme.substring(0, start) + '\n\n' + generated + '\n' + readme.substring(end)
+const updated = readme.substring(0, start) + '\n' + generated + readme.substring(end)
 fs.writeFileSync(readmeFilename, updated)
