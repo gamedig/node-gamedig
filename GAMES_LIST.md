@@ -287,6 +287,7 @@
 | thefront             | The Front                                        | [Valve Protocol](#valve)                        |
 | thehidden            | The Hidden                                       | [Valve Protocol](#valve)                        |
 | theisle              | The Isle                                         | [Valve Protocol](#valve)                        |
+| theisleevrima        | The Isle Evrima                                  |                                                 |
 | theship              | The Ship                                         | [Valve Protocol](#valve)                        |
 | thespecialists       | The Specialists                                  | [Valve Protocol](#valve)                        |
 | thps3                | Tony Hawk's Pro Skater 3                         |                                                 |
