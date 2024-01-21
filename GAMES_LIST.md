@@ -334,7 +334,43 @@
 
 * Cube Engine (cube):
     * Cube 1
-	@@ -374,7 +381,6 @@
+    * Assault Cube
+    * Cube 2: Sauerbraten
+    * Blood Frontier
+* Alien vs Predator
+* Armed Assault 2: Operation Arrowhead
+* Battlefield Bad Company 2: Vietnam
+* BFRIS
+* Call of Duty: Black Ops 1 and 2 (no documentation, may require rcon)
+* Crysis Warhead
+* Days of War
+* DirtyBomb
+* Doom - Skulltag
+* Doom - ZDaemon
+* ECO Global Survival ([Ref](https://github.com/Austinb/GameQ/blob/v3/src/GameQ/Protocols/Eco.php))
+* Farming Simulator
+* Freelancer
+* Ghost Recon
+* GRAV Online
+* GTA Network ([Ref](https://github.com/Austinb/GameQ/blob/v3/src/GameQ/Protocols/Gtan.php))
+* GTR 2
+* Haze
+* Hexen World
+* Lost Heaven
+* Multi Theft Auto
+* Pariah
+* Plain Sight
+* Purge Jihad
+* Red Eclipse
+* Red Faction
+* S.T.A.L.K.E.R. Clear Sky
+* Savage: The Battle For Newerth
+* SiN 1 Multiplayer
+* South Park
+* Star Wars Jedi Knight: Dark Forces II
+* Star Wars: X-Wing Alliance
+* Sum of All Fears
+* Teeworlds
 * Tibia ([Ref](https://github.com/Austinb/GameQ/blob/v3/src/GameQ/Protocols/Tibia.php))
 * Titanfall
 * Tribes 2
@@ -361,7 +397,18 @@ you can use the 'mumbleping' server type instead, which uses a less accurate but
 The server must have xmlrpc enabled, and you must pass the xmlrpc port to GameDig, not the connection port.
 You must have a user account on the server with access level User or higher.
 Pass the login into to GameDig with the additional options: login, password
-	@@ -437,11 +443,11 @@ For teamspeak 3 queries to work correctly, the following permissions must be ava
+
+### <a name="teamspeak3"></a>TeamSpeak 3
+For teamspeak 3 queries to work correctly, the following permissions must be available for the guest server group:
+
+* Virtual Server
+* b_virtualserver_info_view
+* b_virtualserver_channel_list
+* b_virtualserver_client_list
+* Group
+* b_virtualserver_servergroup_list
+* b_virtualserver_channelgroup_list
+
 In the extremely unusual case that your server host responds to queries on a non-default port (the default is 10011),
 you can specify their host query port using the teamspeakQueryPort option.
 
@@ -374,16 +421,22 @@ Valheim servers will only respond to queries if they are started in public mode 
 
 ### <a name="dayz"></a>DayZ
 DayZ stores some of it's servers information inside the `tags` attribute. Make sure to set `requestRules: true` to access it. Some data inside `dayzMods` attribute may be fuzzy, due to how mods are loaded into the servers. Players can be fetched, but will not show ingame names. Alternatively, some servers may have a [third party tool](https://dayzsalauncher.com/#/tools) that you can use to get the mods information. If it's installed, you can access it via browser with the game servers IP:PORT, but add up 10 to the port. (eg. if game port is 2302 then use 2312).
+
 ### <a name="thefront"></a>The Front
 Responses with wrong `name` (gives out a steamid instead of the server name) and `maxplayers` (always 200, whatever the config would be) field values.
+
 ### <a name="conanexiles">Conan Exiles
 Conan Exiles never responds to player query.
+
 ### <a name="minecraft">Minecraft
 Many Minecraft servers do not respond with players data.
+
 Protocols with Additional Notes
 ---
+
 ### <a name="valve"></a>Valve Protocol
 For many valve games, additional 'rules' may be fetched into the unstable `raw` field by passing the additional
 option: `requestRules: true`. Beware that this may increase query time.
+
 ### <a name="epic"></a>Epic Online Services (EOS) Protocol
 EOS does not provide players data.
