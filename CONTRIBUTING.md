@@ -35,9 +35,6 @@ queries for the game), its name should be composed of the game name, a separatin
 **bracket**, the mod name and the release year as specified previously
 (e.g. `Grand Theft Auto V - FiveM`).
 
-Older IDs exist because of a naming system update. Having them as an option, 
-guarantees that other softwares will still function after a library update.
-
 A game's **identification** is a unique lowercase alphanumeric string will and be forged
 following these rules:
 
