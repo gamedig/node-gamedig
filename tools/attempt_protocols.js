@@ -31,7 +31,7 @@ const run = async () => {
         ...options,
         type: `protocol-${protocol}`
       })
-      console.log(response)
+      console.log(`Success on '${protocol}':`, response)
       process.exit()
     } catch (e) {
       console.log(`Error on '${protocol}': ${e}`)

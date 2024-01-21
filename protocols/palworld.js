@@ -10,4 +10,9 @@ export default class palworld extends Epic {
     this.deploymentId = '0a18471f93d448e2a1f60e47e03d3413'
     this.authByExternalToken = true
   }
+
+  async run (state) {
+    await super.run(state)
+    state.name = state.raw.attributes.NAME_s
+  }
 }
