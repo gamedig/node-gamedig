@@ -126,7 +126,21 @@ export default class Epic extends Core {
       throw new Error('Server not found')
     }
 
-    state.name = desiredServer.attributes.CUSTOMSERVERNAME_s
+    if (
+      desiredServer.attributes.NAME_s !== undefined &&
+      desiredServer.attributes.NAME_s !== null &&
+      desiredServer.attributes.NAME_s !== ''
+    ) {
+      state.name = desiredServer.attributes.NAME_s;
+    } else if (
+      desiredServer.attributes.CUSTOMSERVERNAME_s !== undefined &&
+      desiredServer.attributes.CUSTOMSERVERNAME_s !== null &&
+      desiredServer.attributes.CUSTOMSERVERNAME_s !== ''
+    ) {
+      state.name = desiredServer.attributes.CUSTOMSERVERNAME_s;
+    } else {
+      state.name = '';
+    }
     state.map = desiredServer.attributes.MAPNAME_s
     state.password = desiredServer.attributes.SERVERPASSWORD_b
     state.numplayers = desiredServer.totalPlayers
