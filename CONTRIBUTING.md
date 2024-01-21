@@ -76,6 +76,24 @@ following these rules:
 8. If its actually about a mod that adds the ability for queries to be performed,
    process only the mod name.
 
+### Game Object Example
+
+```js
+terrariatshosck: {
+   name: 'Terraria - TShock',
+   release_year: 2011,
+   options: {
+      port: 7777,
+      port_query_offset: 101,
+      protocol: 'terraria'
+   },
+   extra: {
+      old_id: 'terraria',
+      doc_notes: 'terraria'
+   }
+}
+```
+
 ### Priorities
 Game suggestions will be prioritized by maintainers based on whether the game
 uses a protocol already implemented in the library (games that use already
