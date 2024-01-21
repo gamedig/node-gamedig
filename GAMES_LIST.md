@@ -296,6 +296,7 @@ Supported Games
 | thps3                | Tony Hawk's Pro Skater 3                           |
 | thps4                | Tony Hawk's Pro Skater 4                           |
 | thu2                 | Tony Hawk's Underground 2                          |
+| tie                  | The Isle Evrima                                    |
 | toh                  | Take On Helicopters                                |
 | tonolf               | The Operative: No One Lives Forever                |
 | towerunite           | Tower Unite                                        | [Valve Protocol](#valve)
