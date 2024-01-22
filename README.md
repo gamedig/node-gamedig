@@ -8,8 +8,8 @@ If a server makes its status publically available, GameDig can fetch it for you.
 
 Support is available on the [Discord](https://discord.gg/NVCMn3tnxH) for questions, or [GitHub](https://github.com/gamedig/node-gamedig/issues) for bugs.
 
-## Migration from v4 to v5
-Game Type IDs have been updated in GameDig v5. Make sure to check if your game's ID is in the [migration document](MIGRATION.md).
+**Are you updating from v4 to v5?** Many game ids have changed.  
+Make sure to check if your game's ID is in the [id migration document](MIGRATE_IDS.md) and don't forget to check the [changelog](CHANGELOG.md) file.
 
 ## Games List
 **node-GameDig** can query over 310 games + a few services!  

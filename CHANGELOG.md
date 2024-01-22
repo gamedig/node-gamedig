@@ -6,9 +6,9 @@
 * Made the library a `module`.
 * Removed `GameResolver`, moved the `GameDig` class in a separate file.
 * Modified exports, now the library exports `games` and `protocols` alongside the `GameDig` class.
-  * A game always has these fields: `name`, `release_year` and `options` (which always contains `port`/`port_query`/`port_query_offset` and `protocol`).
+  * Many game ids have changed, see the [migrate ids](MIGRATE_IDS.md) file for more info regarding this.
+  * A game always has these fields: `name`, `release_year` and `options` (which always contains `port`/`port_query`/`port_query_offset` and `protocol`) and could contain `extra.old_id`.
 * `maxAttempts` has been renamed to `maxRetries`.
-* Updated `games` with new naming system, with new option field `options.extra.old_id` with the older ID
 
 #### Games
 * Almost all games ids have been changed to follow a standard, see [CONTRIBUTING.md#naming](https://github.com/gamedig/node-gamedig/blob/5ae12dd494c927abcbe43352609d9aa34a54753c/CONTRIBUTING.md?plain=1#L27C3-L27C3).
