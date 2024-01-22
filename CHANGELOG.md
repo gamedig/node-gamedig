@@ -40,7 +40,7 @@
   * `requestRulesRequired` (defaults to `false`) Valve games only. `requestRules` is always required to have a response or the query will timeout.
   * `requestPlayersRequired` (defaults to `false`) Valve games only. Querying players is always required to have a response or the query will timeout. Some [games](GAMES_LIST.md) may not provide a players response.
   * `noBreadthOrder` (defaults to `false`). If multiple attempts are to be made, disable doing one of each type until reaching the retry count.
-  * `skipOldIDs` (defaults to `false`). Query will skip checking for older game type IDs.
+  * `checkOldIDs` (defaults to `false`). Query will check for older game type IDs. See [migration](MIGRATION.md) document.
 * Now documented: `address` (defaults to `undefined`) Override the IP address of the server skipping DNS resolution. When set, host will not be resolved, instead address will be connected to. However, some protocols still use host for other reasons e.g. as part of the query.
 
 #### Games

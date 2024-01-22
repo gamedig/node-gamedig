@@ -6,7 +6,13 @@ The naming system used to determine the Game Type IDs have been updated in GameD
 
 Make sure you check if your ID is in the table below. If not, then nothing to worry about. If it is, make sure to update. You can still use the older ID for now, but we strongly recommend that you update your queries, as older IDs will eventually not be supported anymore.
 
-### IDs table
+## Optional Field
+
+| Field                      | Type    | Default   | Description                               |
+|:---------------------------|:--------|:----------|:------------------------------------------|
+| **checkOldIDs**            | boolean | false     | Query will check for older game type IDs. |
+
+### Old IDs Table
 
 | v4 |  | v5
 |:---|:---|:---
