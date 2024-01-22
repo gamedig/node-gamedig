@@ -12,7 +12,7 @@ Support is available on the [Discord](https://discord.gg/NVCMn3tnxH) for questio
 Make sure to check if your game's ID is in the [id migration document](MIGRATE_IDS.md) and don't forget to check the [changelog](CHANGELOG.md) file.
 
 ## Games List
-**node-GameDig** can query over 310 games + a few services!  
+**node-GameDig** can query over 320 games + a few services!  
 See the [GAMES_LIST.md](GAMES_LIST.md) file for the currently supported titles, not yet supported titles and notes about some of them.
 
 ## Usage from Node.js
