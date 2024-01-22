@@ -4,7 +4,7 @@
 
 The naming system used to determine the Game Type IDs have been updated in GameDig v5 and some IDs have been changed. This means you should also update your queries.
 
-Make sure you check if your ID is in the table below. If not, then nothing to worry about. If it is, make sure to update. You can still use the older ID for now, but we strongly recommend that you update your queries, as older IDs will eventually not be supported anymore.
+Make sure you check if your game's ID is in the table below. If not, then nothing to worry about. If it is, make sure to update. You can still use the older ID for now, but we strongly recommend that you update your queries, as older IDs will eventually not be supported anymore.
 
 ## Optional Field
 
