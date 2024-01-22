@@ -18,11 +18,11 @@ See the [GAMES_LIST.md](GAMES_LIST.md) file for the currently supported titles, 
 ## Usage from Node.js
 Install using your favorite package manager: `npm install gamedig`, then use!
 ```js
-import GameDig from 'gamedig';
+import { GameDig } from 'gamedig';
 
 GameDig.query({
     type: 'minecraft',
-    host: 'mc.example.com'
+    host: 'mc.hypixel.net'
 }).then((state) => {
     console.log(state);
 }).catch((error) => {
