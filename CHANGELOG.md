@@ -50,7 +50,9 @@ placeholders in the `players` fields.
 * Stabilized field `numplayers`.
 * Add note about EOS Protocol not providing players data.
 * V Rising (2022) - Updated `options.port_query_offset` to `[1, 15]` (#438).
-* Minecraft (2009) - Add note about players data
+* Minecraft (2009) - Add note about players data.
+* Fixed Project Cars and Project Cars 2 port offsets.
+* Fixed Wurm Unlimited port_query being missnamed.
 * BeamMP (2021) - Added support.
 * Xonotic (2011) - Added support.
 * Call of Duty: Black Ops 3 (2015) - Added support.
