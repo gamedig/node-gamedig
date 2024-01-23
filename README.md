@@ -8,22 +8,25 @@ If a server makes its status publically available, GameDig can fetch it for you.
 
 Support is available on the [Discord](https://discord.gg/NVCMn3tnxH) for questions, or [GitHub](https://github.com/gamedig/node-gamedig/issues) for bugs.
 
+**Are you updating from v4 to v5?** Many game ids have changed.  
+Make sure to check if your game's ID is in the [id migration document](MIGRATE_IDS.md) and don't forget to check the [changelog](CHANGELOG.md) file.
+
 ## Games List
-**node-GameDig** can query over 310 games + a few services!  
+**node-GameDig** can query over 320 games + a few services!  
 See the [GAMES_LIST.md](GAMES_LIST.md) file for the currently supported titles, not yet supported titles and notes about some of them.
 
 ## Usage from Node.js
 Install using your favorite package manager: `npm install gamedig`, then use!
 ```js
-import GameDig from 'gamedig';
+import { GameDig } from 'gamedig';
 
 GameDig.query({
     type: 'minecraft',
-    host: 'mc.example.com'
+    host: 'mc.hypixel.net'
 }).then((state) => {
     console.log(state);
 }).catch((error) => {
-    console.log("Server is offline");
+    console.log(`Server is offline, error: ${error}`);
 });
 ```
 Confused on how this works, or you want to see more? Checkout the [examples](/examples) folder!
@@ -53,6 +56,7 @@ Confused on how this works, or you want to see more? Checkout the [examples](/ex
 | **stripColors**            | boolean | true      | Enables stripping colors for protocols: unreal2, savage2, quake3, nadeo, gamespy2, doom3, armagetron.                                                                                                                         |
 | **portCache**              | boolean | true      | After you queried a server, the second time you query that exact server (identified by specified ip and port), first add an attempt to query with the last successful port.                                                   |
 | **noBreadthOrder**         | boolean | false     | Enable the behaviour of retrying an attempt X times followed by the next attempt X times, otherwise try attempt A, then B, then A, then B until reaching the X retry count of each.                                           |
+| **checkOldIDs**            | boolean | false     | Also checks the old ids amongst the current ones.                                                                                                                                                                             |
 
 ## Query Response
 
@@ -63,9 +67,9 @@ The returned state object will contain the following keys:
 | **name**         | string           | Server name.                                                                                                                                                                                                                                                                                                               |
 | **map**          | string           | Server map.                                                                                                                                                                                                                                                                                                                |
 | **password**     | boolean          | If a password is required.                                                                                                                                                                                                                                                                                                 |
-| **numplayers**   | number           | Number of players connected. Data via [A2S_INFO](https://developer.valvesoftware.com/wiki/Server_queries#A2S_INFO).                                                                                                                                                                                                        |
+| **numplayers**   | number           | Number of players connected.                                                                                                                                                                                                                                                                                               |
 | **maxplayers**   | number           | Maximum number of connected players.                                                                                                                                                                                                                                                                                       |
-| **players**      | array of objects | Note that this could be of a different length compared to **numplayers**. Data via [A2S_PLAYER](https://developer.valvesoftware.com/wiki/Server_queries#A2S_PLAYER).                                                                                                                                                       |
+| **players**      | array of objects | Note that this could be of a different length compared to **numplayers**.                                                                                                                                                                                                                                                  |
 | **players.name** | string           | If the player's name is unknown, the string will be empty.                                                                                                                                                                                                                                                                 |
 | **players.raw**  | object           | Additional information about the player if available.                                                                                                                                                                                                                                                                      |
 | **bots**         | array of objects | Same schema as `players`.                                                                                                                                                                                                                                                                                                  |

@@ -1,12 +1,15 @@
 
 ## To Be Released...
+
+## 5.0.0-beta.0
 ### Breaking Changes
 #### Package
 * Node.js 16.20 is now required (from 14).
 * Made the library a `module`.
 * Removed `GameResolver`, moved the `GameDig` class in a separate file.
 * Modified exports, now the library exports `games` and `protocols` alongside the `GameDig` class.
-  * A game always has these fields: `name`, `release_year` and `options` (which always contains `port`/`port_query`/`port_query_offset` and `protocol`).
+  * Many game ids have changed, see the [migrate ids](MIGRATE_IDS.md) file for more info regarding this.
+  * A game always has these fields: `name`, `release_year` and `options` (which always contains `port`/`port_query`/`port_query_offset` and `protocol`) and could contain `extra.old_id`.
 * `maxAttempts` has been renamed to `maxRetries`.
 
 #### Games
@@ -38,7 +41,8 @@
   * `stripColors` (defaults to `true`) for protocols that strips colors: unreal2, savage2, quake3, nadeo, gamespy2, doom3, armagetron.
   * `requestRulesRequired` (defaults to `false`) Valve games only. `requestRules` is always required to have a response or the query will timeout.
   * `requestPlayersRequired` (defaults to `false`) Valve games only. Querying players is always required to have a response or the query will timeout. Some [games](GAMES_LIST.md) may not provide a players response.
-  * `noBreadthOrder` (defaults to `false`). If multiple attempts are to be made, disable doing one of each type until reaching the retry count.  
+  * `noBreadthOrder` (defaults to `false`). If multiple attempts are to be made, disable doing one of each type until reaching the retry count.
+  * `checkOldIDs` (defaults to `false`). Query will check for older game type IDs. See [migration](MIGRATION.md) document.
 * Now documented: `address` (defaults to `undefined`) Override the IP address of the server skipping DNS resolution. When set, host will not be resolved, instead address will be connected to. However, some protocols still use host for other reasons e.g. as part of the query.
 
 #### Games
@@ -48,12 +52,15 @@ placeholders in the `players` fields.
 * Stabilized field `numplayers`.
 * Add note about EOS Protocol not providing players data.
 * V Rising (2022) - Updated `options.port_query_offset` to `[1, 15]` (#438).
-* Minecraft (2009) - Add note about players data
+* Minecraft (2009) - Add note about players data.
+* Fixed Project Cars and Project Cars 2 port offsets.
+* Fixed Wurm Unlimited port_query being missnamed.
 * BeamMP (2021) - Added support.
 * Xonotic (2011) - Added support.
 * Call of Duty: Black Ops 3 (2015) - Added support.
 * Unreal 2: The Awakening - XMP - Added support.
 * Palworld - Added support (By @jonathanprl, #495).
+* The Isle Evrima - Added support (By @GuilhermeWerner, #501).
 
 ### 4.3.1
 * Fixed support for the Minecraft [Better Compatibility Checker](https://www.curseforge.com/minecraft/mc-mods/better-compatibility-checker) Mod (By @Douile, #436).
