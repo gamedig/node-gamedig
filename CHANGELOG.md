@@ -1,5 +1,7 @@
 
 ## To Be Released...
+## 5.0.0-beta.1
+* Fixed numplayers on Palworld not beeing accurate
 
 ## 5.0.0-beta.0
 ### Breaking Changes
