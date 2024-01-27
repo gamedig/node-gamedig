@@ -3,6 +3,7 @@
 ## 5.0.0-beta.1
 * Fixed numplayers on Palworld not beeing accurate
 * Enshrouded - Added support (By @GuilhermeWerner #512).
+* Fixed typo in standard port on Palworld (By jammsen #515)
 
 ## 5.0.0-beta.0
 ### Breaking Changes
