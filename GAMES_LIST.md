@@ -114,6 +114,7 @@
 | egs                  | Empyrion - Galactic Survival                     | [Valve Protocol](#valve)                        |
 | eldewrito            | Halo Online (ElDewrito)                          |                                                 |
 | empiresmod           | Empires Mod                                      | [Valve Protocol](#valve)                        |
+| enshrouded           | Enshrouded                                       | [Valve Protocol](#valve)                        |
 | etqw                 | Enemy Territory: Quake Wars                      |                                                 |
 | f1c9902              | F1 Challenge '99-'02                             |                                                 |
 | farcry               | Far Cry                                          |                                                 |

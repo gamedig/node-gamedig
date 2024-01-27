@@ -2,6 +2,7 @@
 ## To Be Released...
 ## 5.0.0-beta.1
 * Fixed numplayers on Palworld not beeing accurate
+* Enshrouded - Added support (By @GuilhermeWerner #512).
 
 ## 5.0.0-beta.0
 ### Breaking Changes
