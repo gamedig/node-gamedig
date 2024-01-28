@@ -4,7 +4,7 @@
     "scripts": {
         "lint:check": "eslint .",
         "lint:fix": "eslint --fix .",
-        "prepare ": "npm run build",
+        "prepare": "npm run build",
         "build": "node tools/esbuild.js"
     },
     "keywords": [

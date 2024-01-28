@@ -4,7 +4,7 @@ import { nodeExternalsPlugin } from 'esbuild-node-externals'
 const buildConfig = {
   entryPoints: ['lib/index.js'],
   platform: 'node',
-  target: 'node14',
+  target: 'node16',
   bundle: true,
   outfile: 'dist/index.cjs',
   format: 'cjs',

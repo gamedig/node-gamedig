@@ -1,5 +1,5 @@
 const { GameDig } = require('../dist/index.cjs')
-// Instead of '../lib/index.js' you would have here 'gamedig'.
+// Instead of '../dist/index.cjs' you would have here 'gamedig'.
 
 GameDig.query({
   type: 'minecraft',
