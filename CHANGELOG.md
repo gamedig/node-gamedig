@@ -4,6 +4,7 @@
 * Fixed numplayers on Palworld not beeing accurate
 * Enshrouded - Added support (By @GuilhermeWerner #512).
 * Fixed typo in standard port on Palworld (By jammsen #515)
+* Duke Nukem Forever 2001 (2022) - Added support (By @podrivo #499)
 
 ## 5.0.0-beta.0
 ### Breaking Changes
