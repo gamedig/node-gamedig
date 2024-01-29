@@ -19,6 +19,8 @@ See the [GAMES_LIST.md](GAMES_LIST.md) file for the currently supported titles, 
 Install using your favorite package manager: `npm install gamedig`, then use!
 ```js
 import { GameDig } from 'gamedig';
+// Or if you're using CommonJS:
+// const { GameDig } = require('gamedig'); 
 
 GameDig.query({
     type: 'minecraft',
