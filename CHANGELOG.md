@@ -1,6 +1,6 @@
 
 ## To Be Released...
-## 5.0.0-beta.2
+## 5.0.0-beta.2 / 5.0.0-beta.3
 * *Soon to come!*
 
 ## 5.0.0-beta.1
