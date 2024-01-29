@@ -1,7 +1,10 @@
 
 ## To Be Released...
-## 5.0.0-beta.2 / 5.0.0-beta.3
+## 5.0.0-beta.3
 * *Soon to come!*
+
+## 5.0.0-beta.2
+* Fixed support for projects using `require`.
 
 ## 5.0.0-beta.1
 * Fixed numplayers on Palworld not beeing accurate
