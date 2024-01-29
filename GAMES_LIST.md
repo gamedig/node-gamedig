@@ -115,6 +115,7 @@
 | egs                  | Empyrion - Galactic Survival                     | [Valve Protocol](#valve)                        |
 | eldewrito            | Halo Online (ElDewrito)                          |                                                 |
 | empiresmod           | Empires Mod                                      | [Valve Protocol](#valve)                        |
+| enshrouded           | Enshrouded                                       | [Valve Protocol](#valve)                        |
 | etqw                 | Enemy Territory: Quake Wars                      |                                                 |
 | f1c9902              | F1 Challenge '99-'02                             |                                                 |
 | farcry               | Far Cry                                          |                                                 |
@@ -281,13 +282,14 @@
 | teamspeak2           | Teamspeak 2                                      |                                                 |
 | teamspeak3           | Teamspeak 3                                      | [Notes](#teamspeak3)                            |
 | terminus             | Terminus                                         |                                                 |
-| terrariatshosck      | Terraria - TShock                                | [Notes](#terraria)                              |
+| terrariatshock       | Terraria - TShock                                | [Notes](#terraria)                              |
 | tfc                  | Team Fortress Classic                            | [Valve Protocol](#valve)                        |
 | theforest            | The Forest                                       | [Valve Protocol](#valve)                        |
 | theforrest           | The Forrest                                      | [Valve Protocol](#valve)                        |
 | thefront             | The Front                                        | [Valve Protocol](#valve)                        |
 | thehidden            | The Hidden                                       | [Valve Protocol](#valve)                        |
 | theisle              | The Isle                                         | [Valve Protocol](#valve)                        |
+| tie                  | The Isle Evrima                                  |                                                 |
 | theship              | The Ship                                         | [Valve Protocol](#valve)                        |
 | thespecialists       | The Specialists                                  | [Valve Protocol](#valve)                        |
 | thps3                | Tony Hawk's Pro Skater 3                         |                                                 |
