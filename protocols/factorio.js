@@ -20,6 +20,6 @@ export default class factorio extends Core {
     state.maxplayers = serverInfo.max_players
     state.players = serverInfo.players?.map(player => ({ name: player, raw: {} })) || []
     
-    //state.raw = serverInfo
+    state.raw = serverInfo
   }
 }
