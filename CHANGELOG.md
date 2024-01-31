@@ -2,6 +2,7 @@
 ## To Be Released...
 ## 5.0.0-beta.3
 * Euro Truck Simulator 2 (2012) - Added support (By @podrivo #523)
+* Eco - Added support for Eco servers that require connection from a domain (By @Vito0912)
 
 ## 5.0.0-beta.2
 * Fixed support for projects using `require`.
