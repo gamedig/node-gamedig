@@ -15,7 +15,7 @@ export default class eco extends Core {
     state.maxplayers = serverInfo.TotalPlayers
     state.password = serverInfo.HasPassword
     state.gamePort = serverInfo.GamePort
-    state.players = serverInfo.OnlinePlayersNames ? serverInfo.OnlinePlayersNames.map(name => ({ name, raw: {} })) : []
+    state.players = serverInfo.OnlinePlayersNames?.map(name => ({ name, raw: {} })) || []
     state.raw = serverInfo
   }
 }
