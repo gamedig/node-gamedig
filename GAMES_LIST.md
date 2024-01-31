@@ -117,6 +117,7 @@
 | empiresmod           | Empires Mod                                      | [Valve Protocol](#valve)                        |
 | enshrouded           | Enshrouded                                       | [Valve Protocol](#valve)                        |
 | etqw                 | Enemy Territory: Quake Wars                      |                                                 |
+| ets2                 | Euro Truck Simulator 2                           | [Valve Protocol](#valve)                        |
 | f1c9902              | F1 Challenge '99-'02                             |                                                 |
 | farcry               | Far Cry                                          |                                                 |
 | farcry2              | Far Cry 2                                        |                                                 |
