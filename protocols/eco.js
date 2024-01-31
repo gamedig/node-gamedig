@@ -5,16 +5,17 @@ export default class eco extends Core {
     if (!this.options.port) this.options.port = 3001
 
     const request = await this.request({
-      url: `http://${this.options.address}:${this.options.port}/frontpage`,
+      url: `http://${this.options.host}:${this.options.port}/frontpage`,
       responseType: 'json'
     })
     const serverInfo = request.Info
 
     state.name = serverInfo.Description
-    state.numplayers = serverInfo.OnlinePlayers;
+    state.numplayers = serverInfo.OnlinePlayers
     state.maxplayers = serverInfo.TotalPlayers
     state.password = serverInfo.HasPassword
     state.gamePort = serverInfo.GamePort
+    state.players = serverInfo.OnlinePlayersNames ? serverInfo.OnlinePlayersNames.map(name => ({ name, raw: {} })) : []
     state.raw = serverInfo
   }
 }
