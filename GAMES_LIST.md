@@ -341,17 +341,12 @@
     * Assault Cube
     * Cube 2: Sauerbraten
     * Blood Frontier
-* Alien vs Predator
-* Armed Assault 2: Operation Arrowhead
-* Battlefield Bad Company 2: Vietnam
 * BFRIS
 * Call of Duty: Black Ops 1 and 2 (no documentation, may require rcon)
 * Crysis Warhead
-* Days of War
 * DirtyBomb
 * Doom - Skulltag
 * Doom - ZDaemon
-* ECO Global Survival ([Ref](https://github.com/Austinb/GameQ/blob/v3/src/GameQ/Protocols/Eco.php))
 * Farming Simulator
 * Freelancer
 * Ghost Recon
@@ -378,10 +373,8 @@
 * Tibia ([Ref](https://github.com/Austinb/GameQ/blob/v3/src/GameQ/Protocols/Tibia.php))
 * Titanfall
 * Tribes 2
-* Unreal 2 XMP
 * World in Conflict
 * World Opponent Network
-* Wurm Unlimited
 
 > Want support for one of these games? Please open an issue to show your interest!
 > __Know how to code?__ Protocol details for many of the games above are documented
@@ -391,18 +384,8 @@
 > Don't see your game listed here?
 >
 > First, let us know, so we can fix it. Then, you can try using some common query
-> protocols directly by using one of these server types:
-> * protocol-ase
-> * protocol-battlefield
-> * protocol-doom3
-> * protocol-gamespy1
-> * protocol-gamespy2
-> * protocol-gamespy3
-> * protocol-nadeo
-> * protocol-quake2
-> * protocol-quake3
-> * protocol-unreal2
-> * protocol-valve
+> protocols directly from the [protocols folder](/protocols). We also have a little tool
+> that could come in handy, [attempt protocols](/tools/attempt_protocols.js)
 
 Games with Additional Notes
 ---
