@@ -122,6 +122,7 @@
 | factorio             | Factorio                                         |                                                 |
 | farcry               | Far Cry                                          |                                                 |
 | farcry2              | Far Cry 2                                        |                                                 |
+| farmingsimulator2019 | Farming Simulator 2019                           | [Notes](#farmingsimulator)                      |
 | farmingsimulator2022 | Farming Simulator 2022                           | [Notes](#farmingsimulator)                      |
 | fear                 | F.E.A.R.                                         |                                                 |
 | ffow                 | Frontlines: Fuel of War                          |                                                 |
