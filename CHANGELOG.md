@@ -4,6 +4,7 @@
 * Euro Truck Simulator 2 (2012) - Added support (By @podrivo #523)
 * Eco - Fixed querying servers using reverse queries and player names (By @Vito0912 #526)
 * Factorio (2016) - Added support (By @Vito0912 #527)
+* Farming Simulator 22 (2021) - Added support (By @Vito0912)
 
 ## 5.0.0-beta.2
 * Fixed support for projects using `require`.

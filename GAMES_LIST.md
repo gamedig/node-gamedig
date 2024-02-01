@@ -120,6 +120,7 @@
 | ets2                 | Euro Truck Simulator 2                           | [Valve Protocol](#valve)                        |
 | f1c9902              | F1 Challenge '99-'02                             |                                                 |
 | factorio             | Factorio                                         |                                                 |
+| farmingsimulator2022 | Farming Simulator 2022                           | [Notes](#farmingsimulator)                      |
 | farcry               | Far Cry                                          |                                                 |
 | farcry2              | Far Cry 2                                        |                                                 |
 | fear                 | F.E.A.R.                                         |                                                 |
@@ -352,7 +353,6 @@
 * Doom - Skulltag
 * Doom - ZDaemon
 * ECO Global Survival ([Ref](https://github.com/Austinb/GameQ/blob/v3/src/GameQ/Protocols/Eco.php))
-* Farming Simulator
 * Freelancer
 * Ghost Recon
 * GRAV Online
@@ -459,6 +459,10 @@ Conan Exiles never responds to player query.
 
 ### <a name="minecraft">Minecraft
 Many Minecraft servers do not respond with players data.
+
+### <a name='farmingsimulator'>Farming Simulator
+Farming Simulator 2022 servers need a token (reffered as code in the game). It can be obtained at your server's web interface (http://ip:port/settings.html). It can be passed to GameDig with the additional option: `token`
+The response includes much information about the server. Currently, only the fields about server information (name, map, version, etc.), players and mods are parsed.
 
 Protocols with Additional Notes
 ---
