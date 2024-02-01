@@ -35,10 +35,10 @@ export default class farmingsimulator extends Core {
       }
     });
 
-    state.mods = [];
+    state.raw.mods = [];
     $('Mod').each(function () {
       if ($(this).attr('name') !== undefined) {
-        state.mods.push({
+        state.raw.mods.push({
           name: $(this).text(),
           short_name: $(this).attr('name'),
           author: $(this).attr('author'),
