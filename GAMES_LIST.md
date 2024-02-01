@@ -120,9 +120,9 @@
 | ets2                 | Euro Truck Simulator 2                           | [Valve Protocol](#valve)                        |
 | f1c9902              | F1 Challenge '99-'02                             |                                                 |
 | factorio             | Factorio                                         |                                                 |
-| farmingsimulator2022 | Farming Simulator 2022                           | [Notes](#farmingsimulator)                      |
 | farcry               | Far Cry                                          |                                                 |
 | farcry2              | Far Cry 2                                        |                                                 |
+| farmingsimulator2022 | Farming Simulator 2022                           | [Notes](#farmingsimulator)                      |
 | fear                 | F.E.A.R.                                         |                                                 |
 | ffow                 | Frontlines: Fuel of War                          |                                                 |
 | fof                  | Fistful of Frags                                 | [Valve Protocol](#valve)                        |
