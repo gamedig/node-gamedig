@@ -122,8 +122,8 @@
 | factorio             | Factorio                                         |                                                 |
 | farcry               | Far Cry                                          |                                                 |
 | farcry2              | Far Cry 2                                        |                                                 |
-| farmingsimulator2019 | Farming Simulator 2019                           | [Notes](#farmingsimulator)                      |
-| farmingsimulator2022 | Farming Simulator 2022                           | [Notes](#farmingsimulator)                      |
+| farmingsimulator19 | Farming Simulator 19                               | [Notes](#farmingsimulator)                      |
+| farmingsimulator22 | Farming Simulator 22                               | [Notes](#farmingsimulator)                      |
 | fear                 | F.E.A.R.                                         |                                                 |
 | ffow                 | Frontlines: Fuel of War                          |                                                 |
 | fof                  | Fistful of Frags                                 | [Valve Protocol](#valve)                        |
