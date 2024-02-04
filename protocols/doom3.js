@@ -24,6 +24,7 @@ export default class doom3 extends Core {
     let reader = this.reader(body)
     const protoVersion = reader.uint(4)
     state.raw.protocolVersion = (protoVersion >> 16) + '.' + (protoVersion & 0xffff)
+    state.version = state.raw.protocolVersion
 
     // some doom implementations send us a packet size here, some don't (etqw does this)
     // we can tell if this is a packet size, because the third and fourth byte will be 0 (no packets are that massive)

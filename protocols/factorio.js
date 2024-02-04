@@ -19,5 +19,6 @@ export default class factorio extends Core {
     state.players = players.map(player => ({ name: player, raw: {} }))
 
     state.raw = serverInfo
+    state.version = state.raw.application_version.game_version + '.' + state.raw.application_version.build_version
   }
 }
