@@ -15,5 +15,6 @@ export default class palworld extends Epic {
     await super.run(state)
     state.name = state.raw.attributes.NAME_s
     state.numplayers = state.raw.attributes.PLAYERS_l
+    state.version = state.raw.attributes.VERSION_S
   }
 }
