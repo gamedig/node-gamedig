@@ -17,6 +17,7 @@ export default class samp extends Core {
         const consumed = reader.part(12)
         state.raw.version = this.reader(consumed).string()
       }
+      state.version = state.raw.version
       state.password = !!reader.uint(1)
       state.numplayers = reader.uint(2)
       state.maxplayers = reader.uint(2)

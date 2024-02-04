@@ -67,6 +67,7 @@ export default class battlefield extends Core {
         const data = await this.query(socket, ['version'])
         data.shift()
         state.raw.version = data.shift()
+        state.version = state.raw.version
       }
 
       {

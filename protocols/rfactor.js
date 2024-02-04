@@ -11,6 +11,7 @@ export default class rfactor extends Core {
     state.raw.ip = reader.part(4)
     state.raw.size = reader.uint(2)
     state.raw.version = reader.uint(2)
+    state.version = state.raw.version
     state.raw.versionRaceCast = reader.uint(2)
     state.gamePort = reader.uint(2)
     state.raw.queryPort = reader.uint(2)

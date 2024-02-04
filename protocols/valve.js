@@ -95,6 +95,7 @@ export default class valve extends Core {
         state.raw.shipduration = reader.uint(1)
       }
       state.raw.version = reader.string()
+      state.version = state.raw.version
       const extraFlag = reader.uint(1)
       if (extraFlag & 0x80) state.gamePort = reader.uint(2)
       if (extraFlag & 0x10) state.raw.steamid = reader.uint(8).toString()
