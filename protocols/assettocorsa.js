@@ -22,6 +22,7 @@ export default class assettocorsa extends Core {
     state.gamePort = serverInfo.port
     state.raw.carInfo = carInfo.Cars
     state.raw.serverInfo = serverInfo
+    state.version = state.raw.serverInfo.poweredBy
 
     for (const car of carInfo.Cars) {
       if (car.IsConnected) {
