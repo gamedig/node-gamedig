@@ -113,6 +113,7 @@ export default class gamespy1 extends Core {
     }
 
     state.numplayers = state.players.length
+    state.version = state.raw.gamever
   }
 
   async sendPacket (type) {

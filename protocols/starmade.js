@@ -57,7 +57,7 @@ export default class starmade extends Core {
     this.logger.debug('Received raw data array', data)
 
     if (typeof data[0] === 'number') state.raw.infoVersion = data[0]
-    if (typeof data[1] === 'number') state.raw.version = data[1]
+    if (typeof data[1] === 'number') state.version = state.raw.version = data[1]
     if (typeof data[2] === 'string') state.name = data[2]
     if (typeof data[3] === 'string') state.raw.description = data[3]
     if (typeof data[4] === 'number') state.raw.startTime = data[4]
