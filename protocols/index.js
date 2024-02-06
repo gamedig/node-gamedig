@@ -11,6 +11,7 @@ import eco from './eco.js'
 import eldewrito from './eldewrito.js'
 import epic from './epic.js'
 import factorio from './factorio.js'
+import farmingsimulator from './farmingsimulator.js'
 import ffow from './ffow.js'
 import fivem from './fivem.js'
 import gamespy1 from './gamespy1.js'
@@ -56,8 +57,8 @@ import dayz from './dayz.js'
 import theisleevrima from './theisleevrima.js'
 
 export {
-  armagetron, ase, asa, assettocorsa, battlefield, buildandshoot, cs2d, discord, doom3, eco, epic, factorio, ffow, fivem, gamespy1,
-  gamespy2, gamespy3, geneshift, goldsrc, hexen2, jc2mp, kspdmp, mafia2mp, mafia2online, minecraft,
+  armagetron, ase, asa, assettocorsa, battlefield, buildandshoot, cs2d, discord, doom3, eco, epic, factorio, farmingsimulator, ffow, 
+  fivem, gamespy1, gamespy2, gamespy3, geneshift, goldsrc, hexen2, jc2mp, kspdmp, mafia2mp, mafia2online, minecraft,
   minecraftbedrock, minecraftvanilla, mumble, mumbleping, nadeo, openttd, palworld, quake1, quake2, quake3, rfactor, samp,
   savage2, starmade, starsiege, teamspeak2, teamspeak3, terraria, tribes1, tribes1master, unreal2, ut3, valve,
   vcmp, ventrilo, warsow, eldewrito, beammpmaster, beammp, dayz, theisleevrima

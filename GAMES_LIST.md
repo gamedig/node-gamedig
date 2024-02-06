@@ -122,6 +122,8 @@
 | factorio             | Factorio                                         |                                                 |
 | farcry               | Far Cry                                          |                                                 |
 | farcry2              | Far Cry 2                                        |                                                 |
+| farmingsimulator19 | Farming Simulator 19                               | [Notes](#farmingsimulator)                      |
+| farmingsimulator22 | Farming Simulator 22                               | [Notes](#farmingsimulator)                      |
 | fear                 | F.E.A.R.                                         |                                                 |
 | ffow                 | Frontlines: Fuel of War                          |                                                 |
 | fof                  | Fistful of Frags                                 | [Valve Protocol](#valve)                        |
@@ -347,7 +349,6 @@
 * DirtyBomb
 * Doom - Skulltag
 * Doom - ZDaemon
-* Farming Simulator
 * Freelancer
 * Ghost Recon
 * GRAV Online
@@ -442,6 +443,10 @@ Conan Exiles never responds to player query.
 
 ### <a name="minecraft">Minecraft
 Many Minecraft servers do not respond with players data.
+
+### <a name='farmingsimulator'>Farming Simulator
+Farming Simulator servers need a token (reffered as code in the game). It can be obtained at your server's web interface (http://ip:port/settings.html). It can be passed to GameDig with the additional option: `token`. It does only work for your own server.
+The response includes much information about the server. Currently, only the fields about server information (name, map, version, etc.), players and mods are parsed.
 
 Protocols with Additional Notes
 ---
