@@ -21,6 +21,7 @@ export default class mafia2mp extends Core {
     state.numplayers = parseInt(this.readString(reader))
     state.maxplayers = parseInt(this.readString(reader))
     state.raw.gamemode = this.readString(reader)
+    state.version = state.raw.gamemode
     state.password = !!reader.uint(1)
     state.gamePort = this.options.port - 1
 

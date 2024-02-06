@@ -112,6 +112,7 @@ export default class gamespy3 extends Core {
     if (state.raw.password === '1') state.password = true
     if ('maxplayers' in state.raw) state.maxplayers = parseInt(state.raw.maxplayers)
     if ('hostport' in state.raw) state.gamePort = parseInt(state.raw.hostport)
+    if ('gamever' in state.raw) state.version = state.raw.gamever
 
     if ('' in state.raw.playerTeamInfo) {
       for (const playerInfo of state.raw.playerTeamInfo['']) {
