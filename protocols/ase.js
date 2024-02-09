@@ -20,6 +20,8 @@ export default class ase extends Core {
     state.numplayers = parseInt(this.readString(reader))
     state.maxplayers = parseInt(this.readString(reader))
 
+    delete state.raw.version
+
     while (!reader.done()) {
       const key = this.readString(reader)
       if (!key) break

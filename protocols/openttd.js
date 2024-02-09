@@ -28,6 +28,8 @@ export default class openttd extends Core {
       state.raw.version = reader.string()
       state.version = state.raw.version
 
+      delete state.raw.version
+
       state.raw.language = this.decode(
         reader.uint(1),
         ['any', 'en', 'de', 'fr']

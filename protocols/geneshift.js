@@ -43,5 +43,7 @@ export default class geneshift extends Core {
     // fields[18] is unknown? listen server?
     state.raw.version = found[19]
     state.version = state.raw.version
+
+    delete state.raw.version
   }
 }

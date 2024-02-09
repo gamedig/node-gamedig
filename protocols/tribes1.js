@@ -39,6 +39,8 @@ export default class tribes1 extends Core {
     state.version = state.raw.version
     state.name = this.readString(reader)
 
+    delete state.raw.version
+
     if (isStarsiege2009) {
       state.password = !!reader.uint(1)
       state.raw.dedicated = !!reader.uint(1)

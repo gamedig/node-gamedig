@@ -68,6 +68,8 @@ export default class battlefield extends Core {
         data.shift()
         state.raw.version = data.shift()
         state.version = state.raw.version
+
+        delete state.raw.version
       }
 
       {

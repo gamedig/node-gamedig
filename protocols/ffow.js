@@ -35,5 +35,7 @@ export default class ffow extends valve {
     state.raw.round = reader.uint(1)
     state.raw.maxrounds = reader.uint(1)
     state.raw.timeleft = reader.uint(2)
+
+    delete state.raw.version
   }
 }

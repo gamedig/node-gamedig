@@ -37,6 +37,8 @@ export default class rfactor extends Core {
     reader.skip(3)
     state.raw.vehicles = reader.string()
 
+    delete state.raw.version
+
     state.password = !!(state.raw.packedSpecial & 2)
     state.raw.raceCast = !!(state.raw.packedSpecial & 4)
     state.raw.fixedSetups = !!(state.raw.packedSpecial & 16)
