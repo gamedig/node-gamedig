@@ -94,10 +94,7 @@ export default class valve extends Core {
         state.raw.shipwitnesses = reader.uint(1)
         state.raw.shipduration = reader.uint(1)
       }
-      state.raw.version = reader.string()
-      state.version = state.raw.version
-
-      delete state.raw.version
+      state.version = reader.string()
 
       const extraFlag = reader.uint(1)
       if (extraFlag & 0x80) state.gamePort = reader.uint(2)

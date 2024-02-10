@@ -41,9 +41,6 @@ export default class geneshift extends Core {
     state.raw.friendlyfire = !!parseInt(found[16])
     state.raw.mercs = !!parseInt(found[17])
     // fields[18] is unknown? listen server?
-    state.raw.version = found[19]
-    state.version = state.raw.version
-
-    delete state.raw.version
+    state.version = found[19]
   }
 }

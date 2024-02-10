@@ -22,8 +22,7 @@ export default class ffow extends valve {
     state.raw.mod = reader.string()
     state.raw.gamemode = reader.string()
     state.raw.description = reader.string()
-    state.raw.version = reader.string()
-    state.version = state.raw.version
+    state.version = reader.string()
     state.gamePort = reader.uint(2)
     state.numplayers = reader.uint(1)
     state.maxplayers = reader.uint(1)
@@ -35,7 +34,5 @@ export default class ffow extends valve {
     state.raw.round = reader.uint(1)
     state.raw.maxrounds = reader.uint(1)
     state.raw.timeleft = reader.uint(2)
-
-    delete state.raw.version
   }
 }

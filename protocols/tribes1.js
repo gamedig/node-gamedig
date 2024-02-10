@@ -35,11 +35,8 @@ export default class tribes1 extends Core {
 
     state.raw.gametype = this.readString(reader)
     const isStarsiege2009 = state.raw.gametype === 'Starsiege'
-    state.raw.version = this.readString(reader)
-    state.version = state.raw.version
+    state.version = this.readString(reader)
     state.name = this.readString(reader)
-
-    delete state.raw.version
 
     if (isStarsiege2009) {
       state.password = !!reader.uint(1)

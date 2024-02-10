@@ -10,8 +10,7 @@ export default class rfactor extends Core {
     state.raw.region = reader.uint(2)
     state.raw.ip = reader.part(4)
     state.raw.size = reader.uint(2)
-    state.raw.version = reader.uint(2)
-    state.version = state.raw.version
+    state.version = reader.uint(2)
     state.raw.versionRaceCast = reader.uint(2)
     state.gamePort = reader.uint(2)
     state.raw.queryPort = reader.uint(2)
@@ -36,8 +35,6 @@ export default class rfactor extends Core {
     state.raw.laps = reader.uint(2) / 16
     reader.skip(3)
     state.raw.vehicles = reader.string()
-
-    delete state.raw.version
 
     state.password = !!(state.raw.packedSpecial & 2)
     state.raw.raceCast = !!(state.raw.packedSpecial & 4)

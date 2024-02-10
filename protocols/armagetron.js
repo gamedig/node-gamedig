@@ -21,11 +21,8 @@ export default class armagetron extends Core {
     state.numplayers = this.readUInt(reader)
     state.raw.versionmin = this.readUInt(reader)
     state.raw.versionmax = this.readUInt(reader)
-    state.raw.version = this.readString(reader)
-    state.version = state.raw.version
+    state.version = this.readString(reader)
     state.maxplayers = this.readUInt(reader)
-
-    delete state.raw.version
 
     const players = this.readString(reader)
     const list = players.split('\n')

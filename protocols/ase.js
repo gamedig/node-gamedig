@@ -14,13 +14,10 @@ export default class ase extends Core {
     state.name = this.readString(reader)
     state.raw.gametype = this.readString(reader)
     state.map = this.readString(reader)
-    state.raw.version = this.readString(reader)
-    state.version = state.raw.version
+    state.version = this.readString(reader)
     state.password = this.readString(reader) === '1'
     state.numplayers = parseInt(this.readString(reader))
     state.maxplayers = parseInt(this.readString(reader))
-
-    delete state.raw.version
 
     while (!reader.done()) {
       const key = this.readString(reader)
