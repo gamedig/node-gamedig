@@ -1,6 +1,7 @@
 
 ## To Be Released...
 ## 5.0.0-beta.3
+* Added a top level `state.version` in the query response (By @podrivo #532)
 * Euro Truck Simulator 2 (2012) - Added support (By @podrivo #523)
 * Eco - Fixed querying servers using reverse queries and player names (By @Vito0912 #526)
 * Factorio (2016) - Added support (By @Vito0912 #527)
