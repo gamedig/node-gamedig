@@ -3,7 +3,9 @@
     "description": "Query for the status of any game server in Node.JS",
     "scripts": {
         "lint:check": "eslint .",
-        "lint:fix": "eslint --fix ."
+        "lint:fix": "eslint --fix .",
+        "prepare": "npm run build",
+        "build": "node tools/esbuild.js"
     },
     "keywords": [
         "srcds",
@@ -25,9 +27,12 @@
         "minecraft"
     ],
     "type": "module",
-    "main": "lib/index.js",
+    "exports": {
+        "import": "./lib/index.js",
+        "require": "./dist/index.cjs"
+    },
     "author": "GameDig Contributors",
-    "version": "4.1.0",
+    "version": "5.0.0-beta.2",
     "repository": {
         "type": "git",
         "url": "https://github.com/gamedig/node-gamedig.git"
@@ -43,6 +48,7 @@
         "gamedig": "bin/gamedig.js"
     },
     "files": [
+        "dist/index.cjs",
         "bin/gamedig.js",
         "lib/",
         "protocols/",
@@ -65,6 +71,8 @@
     "devDependencies": {
         "@types/cheerio": "^0.22.31",
         "@types/node": "^16.18.58",
+        "esbuild": "^0.19.10",
+        "esbuild-node-externals": "^1.12.0",
         "eslint": "^8.49.0",
         "eslint-config-standard": "^17.1.0",
         "eslint-plugin-import": "^2.28.1",

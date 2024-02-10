@@ -20,7 +20,7 @@
 | armagetronadvanced   | Armagetron Advanced                              |                                                 |
 | armareforger         | ARMA: Reforger                                   | [Valve Protocol](#valve)                        |
 | armaresistance       | ARMA: Resistance                                 |                                                 |
-| asa                  | Ark: Survival Ascended                           |                                                 |
+| asa                  | Ark: Survival Ascended                           | [EOS Protocol](#epic)                           |
 | ase                  | Ark: Survival Evolved                            | [Valve Protocol](#valve)                        |
 | asr08                | Arca Sim Racing '08                              |                                                 |
 | assettocorsa         | Assetto Corsa                                    |                                                 |
@@ -59,9 +59,9 @@
 | cod2                 | Call of Duty 2                                   |                                                 |
 | cod3                 | Call of Duty 3                                   |                                                 |
 | cod4mw               | Call of Duty 4: Modern Warfare                   |                                                 |
+| codbo3               | Call of Duty: Black Ops 3                        | [Valve Protocol](#valve)                        |
 | codenamecure         | Codename CURE                                    | [Valve Protocol](#valve)                        |
 | codenameeagle        | Codename Eagle                                   |                                                 |
-| codbo3               | Call of Duty: Black Ops 3                        |                                                 |
 | codmw2               | Call of Duty: Modern Warfare 2                   |                                                 |
 | codmw3               | Call of Duty: Modern Warfare 3                   | [Valve Protocol](#valve)                        |
 | coduo                | Call of Duty: United Offensive                   |                                                 |
@@ -101,6 +101,7 @@
 | discord              | Discord                                          | [Notes](#discord)                               |
 | dmomam               | Dark Messiah of Might and Magic                  | [Valve Protocol](#valve)                        |
 | dod                  | Day of Defeat                                    | [Valve Protocol](#valve)                        |
+| dnf2001              | Duke Nukem Forever 2001                          |                                                 |
 | dods                 | Day of Defeat: Source                            | [Valve Protocol](#valve)                        |
 | doi                  | Day of Infamy                                    | [Valve Protocol](#valve)                        |
 | doom3                | Doom 3                                           |                                                 |
@@ -114,10 +115,15 @@
 | egs                  | Empyrion - Galactic Survival                     | [Valve Protocol](#valve)                        |
 | eldewrito            | Halo Online (ElDewrito)                          |                                                 |
 | empiresmod           | Empires Mod                                      | [Valve Protocol](#valve)                        |
+| enshrouded           | Enshrouded                                       | [Valve Protocol](#valve)                        |
 | etqw                 | Enemy Territory: Quake Wars                      |                                                 |
+| ets2                 | Euro Truck Simulator 2                           | [Valve Protocol](#valve)                        |
 | f1c9902              | F1 Challenge '99-'02                             |                                                 |
+| factorio             | Factorio                                         |                                                 |
 | farcry               | Far Cry                                          |                                                 |
 | farcry2              | Far Cry 2                                        |                                                 |
+| farmingsimulator19 | Farming Simulator 19                               | [Notes](#farmingsimulator)                      |
+| farmingsimulator22 | Farming Simulator 22                               | [Notes](#farmingsimulator)                      |
 | fear                 | F.E.A.R.                                         |                                                 |
 | ffow                 | Frontlines: Fuel of War                          |                                                 |
 | fof                  | Fistful of Frags                                 | [Valve Protocol](#valve)                        |
@@ -164,14 +170,14 @@
 | kpctnc               | Kiss: Psycho Circus: The Nightmare Child         |                                                 |
 | kreedzclimbing       | Kreedz Climbing                                  | [Valve Protocol](#valve)                        |
 | kspd                 | Kerbal Space Program - DMP                       |                                                 |
-| left4dead            | Left 4 Dead                                      | [Valve Protocol](#valve)                        |
-| left4dead2           | Left 4 Dead 2                                    | [Valve Protocol](#valve)                        |
+| l4d                  | Left 4 Dead                                      | [Valve Protocol](#valve)                        |
+| l4d2                 | Left 4 Dead 2                                    | [Valve Protocol](#valve)                        |
 | m2m                  | Mafia II - Multiplayer                           |                                                 |
 | m2o                  | Mafia II - Online                                |                                                 |
 | mbe                  | Minecraft: Bedrock Edition                       |                                                 |
 | medievalengineers    | Medieval Engineers                               | [Valve Protocol](#valve)                        |
 | mgm                  | Mumble - GT Murmur                               | [Notes](#mumble)                                |
-| minecraft            | Minecraft                                        |                                                 |
+| minecraft            | Minecraft                                        | [Notes](#minecraft)                             |
 | mnc                  | Monday Night Combat                              | [Valve Protocol](#valve)                        |
 | moh                  | Medal of Honor                                   |                                                 |
 | moha                 | Medal of Honor: Airborne                         |                                                 |
@@ -203,6 +209,7 @@
 | openarena            | OpenArena                                        |                                                 |
 | openttd              | OpenTTD                                          |                                                 |
 | painkiller           | Painkiller                                       |                                                 |
+| palworld             | Palworld                                         | [EOS Protocol](#epic)                           |
 | pce                  | Primal Carnage: Extinction                       | [Valve Protocol](#valve)                        |
 | pixark               | PixARK                                           | [Valve Protocol](#valve)                        |
 | postal2              | Postal 2                                         |                                                 |
@@ -270,6 +277,7 @@
 | swjkja               | Star Wars Jedi Knight: Jedi Academy              |                                                 |
 | swrc                 | Star Wars: Republic Commando                     |                                                 |
 | synergy              | Synergy                                          | [Valve Protocol](#valve)                        |
+| t1s                  | Tribes 1: Starsiege                              |                                                 |
 | tacticalops          | Tactical Ops                                     |                                                 |
 | tcgraw               | Tom Clancy's Ghost Recon Advanced Warfighter     |                                                 |
 | tcgraw2              | Tom Clancy's Ghost Recon Advanced Warfighter 2   |                                                 |
@@ -278,13 +286,14 @@
 | teamspeak2           | Teamspeak 2                                      |                                                 |
 | teamspeak3           | Teamspeak 3                                      | [Notes](#teamspeak3)                            |
 | terminus             | Terminus                                         |                                                 |
-| terrariatshosck      | Terraria - TShock                                | [Notes](#terraria)                              |
+| terrariatshock       | Terraria - TShock                                | [Notes](#terraria)                              |
 | tfc                  | Team Fortress Classic                            | [Valve Protocol](#valve)                        |
 | theforest            | The Forest                                       | [Valve Protocol](#valve)                        |
 | theforrest           | The Forrest                                      | [Valve Protocol](#valve)                        |
 | thefront             | The Front                                        | [Valve Protocol](#valve)                        |
 | thehidden            | The Hidden                                       | [Valve Protocol](#valve)                        |
 | theisle              | The Isle                                         | [Valve Protocol](#valve)                        |
+| tie                  | The Isle Evrima                                  | [EOS Protocol](#epic)                           |
 | theship              | The Ship                                         | [Valve Protocol](#valve)                        |
 | thespecialists       | The Specialists                                  | [Valve Protocol](#valve)                        |
 | thps3                | Tony Hawk's Pro Skater 3                         |                                                 |
@@ -296,10 +305,10 @@
 | trackmania2          | Trackmania 2                                     | [Notes](#nadeo-shootmania--trackmania--etc)     |
 | trackmaniaforever    | Trackmania Forever                               | [Notes](#nadeo-shootmania--trackmania--etc)     |
 | tremulous            | Tremulous                                        |                                                 |
-| tribes1starsiege     | Tribes 1: Starsiege                              |                                                 |
 | tribesvengeance      | Tribes: Vengeance                                |                                                 |
 | tron20               | Tron 2.0                                         |                                                 |
 | turok2               | Turok 2                                          |                                                 |
+| u2tax                | Unreal 2: The Awakening - XMP                    |                                                 |
 | universalcombat      | Universal Combat                                 |                                                 |
 | unreal               | Unreal                                           |                                                 |
 | unrealtournament     | Unreal Tournament                                |                                                 |
@@ -322,6 +331,7 @@
 | wolfenstein          | Wolfenstein                                      |                                                 |
 | wot                  | Wheel of Time                                    |                                                 |
 | wurmunlimited        | Wurm Unlimited                                   | [Valve Protocol](#valve)                        |
+| xonotic              | Xonotic                                          |                                                 |
 | xpandrally           | Xpand Rally                                      |                                                 |
 | zombiemaster         | Zombie Master                                    | [Valve Protocol](#valve)                        |
 | zps                  | Zombie Panic: Source                             | [Valve Protocol](#valve)                        |
@@ -333,18 +343,12 @@
     * Assault Cube
     * Cube 2: Sauerbraten
     * Blood Frontier
-* Alien vs Predator
-* Armed Assault 2: Operation Arrowhead
-* Battlefield Bad Company 2: Vietnam
 * BFRIS
 * Call of Duty: Black Ops 1 and 2 (no documentation, may require rcon)
 * Crysis Warhead
-* Days of War
 * DirtyBomb
 * Doom - Skulltag
 * Doom - ZDaemon
-* ECO Global Survival ([Ref](https://github.com/Austinb/GameQ/blob/v3/src/GameQ/Protocols/Eco.php))
-* Farming Simulator
 * Freelancer
 * Ghost Recon
 * GRAV Online
@@ -370,10 +374,8 @@
 * Tibia ([Ref](https://github.com/Austinb/GameQ/blob/v3/src/GameQ/Protocols/Tibia.php))
 * Titanfall
 * Tribes 2
-* Unreal 2 XMP
 * World in Conflict
 * World Opponent Network
-* Wurm Unlimited
 
 > Want support for one of these games? Please open an issue to show your interest!
 > __Know how to code?__ Protocol details for many of the games above are documented
@@ -383,18 +385,8 @@
 > Don't see your game listed here?
 >
 > First, let us know, so we can fix it. Then, you can try using some common query
-> protocols directly by using one of these server types:
-> * protocol-ase
-> * protocol-battlefield
-> * protocol-doom3
-> * protocol-gamespy1
-> * protocol-gamespy2
-> * protocol-gamespy3
-> * protocol-nadeo
-> * protocol-quake2
-> * protocol-quake3
-> * protocol-unreal2
-> * protocol-valve
+> protocols directly from the [protocols folder](/protocols). We also have a little tool
+> that could come in handy, [attempt protocols](/tools/attempt_protocols.js)
 
 Games with Additional Notes
 ---
@@ -443,12 +435,25 @@ Valheim servers will only respond to queries if they are started in public mode 
 ### <a name="dayz"></a>DayZ
 DayZ stores some of it's servers information inside the `tags` attribute. Make sure to set `requestRules: true` to access it. Some data inside `dayzMods` attribute may be fuzzy, due to how mods are loaded into the servers. Players can be fetched, but will not show ingame names. Alternatively, some servers may have a [third party tool](https://dayzsalauncher.com/#/tools) that you can use to get the mods information. If it's installed, you can access it via browser with the game servers IP:PORT, but add up 10 to the port. (eg. if game port is 2302 then use 2312).
 
-### <a name="valve"></a>Valve Protocol
-For many valve games, additional 'rules' may be fetched into the unstable `raw` field by passing the additional
-option: `requestRules: true`. Beware that this may increase query time.
-
 ### <a name="thefront"></a>The Front
 Responses with wrong `name` (gives out a steamid instead of the server name) and `maxplayers` (always 200, whatever the config would be) field values.
 
 ### <a name="conanexiles">Conan Exiles
 Conan Exiles never responds to player query.
+
+### <a name="minecraft">Minecraft
+Many Minecraft servers do not respond with players data.
+
+### <a name='farmingsimulator'>Farming Simulator
+Farming Simulator servers need a token (reffered as code in the game). It can be obtained at your server's web interface (http://ip:port/settings.html). It can be passed to GameDig with the additional option: `token`. It does only work for your own server.
+The response includes much information about the server. Currently, only the fields about server information (name, map, version, etc.), players and mods are parsed.
+
+Protocols with Additional Notes
+---
+
+### <a name="valve"></a>Valve Protocol
+For many valve games, additional 'rules' may be fetched into the unstable `raw` field by passing the additional
+option: `requestRules: true`. Beware that this may increase query time.
+
+### <a name="epic"></a>Epic Online Services (EOS) Protocol
+EOS does not provide players data.
