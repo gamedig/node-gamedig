@@ -26,7 +26,7 @@ generated += '|---|---|---|---\n'
 
 for (const id in sortedGames) {
   const game = sortedGames[id]
-  if (!game.alias) {
+  if (!game?.extra?.alias) {
     game.alias = ' '
   }
   generated += '| ' + id.padEnd(10, ' ') + ' | ' + game.alias + ' | ' + game.name
