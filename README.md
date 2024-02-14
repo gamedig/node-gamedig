@@ -59,6 +59,7 @@ Confused on how this works, or you want to see more? Checkout the [examples](/ex
 | **portCache**              | boolean | true      | After you queried a server, the second time you query that exact server (identified by specified ip and port), first add an attempt to query with the last successful port.                                                   |
 | **noBreadthOrder**         | boolean | false     | Enable the behaviour of retrying an attempt X times followed by the next attempt X times, otherwise try attempt A, then B, then A, then B until reaching the X retry count of each.                                           |
 | **checkOldIDs**            | boolean | false     | Also checks the old ids amongst the current ones.                                                                                                                                                                             |
+| **checkAlias**             | boolean | false     | Also checks for alternative game ids.                                                                                                                                                                             |
 
 ## Query Response
 
