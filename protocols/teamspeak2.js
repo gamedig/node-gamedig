@@ -18,6 +18,7 @@ export default class teamspeak2 extends Core {
           const value = equals === -1 ? '' : line.substring(equals + 1)
           state.raw[key] = value
         }
+        if ('server_name' in state.raw) state.name = state.raw.server_name
       }
 
       {
