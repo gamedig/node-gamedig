@@ -21,6 +21,7 @@ export default class ventrilo extends Core {
 
     if ('NAME' in state.raw) state.name = state.raw.NAME
     if ('MAXCLIENTS' in state.raw) state.maxplayers = state.raw.MAXCLIENTS
+    if ('VERSION' in state.raw) state.version = state.raw.VERSION
     if (this.trueTest(state.raw.AUTH)) state.password = true
   }
 
