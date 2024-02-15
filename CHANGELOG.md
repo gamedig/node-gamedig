@@ -7,6 +7,7 @@
 * Farming Simulator 22 (2021) - Added support (By @Vito0912 #531)
 * Farming Simulator 19 (2018) - Added support (By @Vito0912 #531)
 * Assetto Corsa - Fixed how `state.numplayers` is set (By @podrivo #538)
+* TeamSpeak 2 - Fixed how `state.name` is set (By @podrivo #544)
 
 ## 5.0.0-beta.2
 * Fixed support for projects using `require`.
