@@ -7,6 +7,7 @@ export default class samp extends Core {
     this.magicHeader = 'SAMP'
     this.responseMagicHeader = null
     this.isVcmp = false
+    this.isOmp = false
   }
 
   async run (state) {
@@ -40,13 +41,14 @@ export default class samp extends Core {
     // read players
     // don't even bother if > 100 players, because the server won't respond
     if (state.numplayers < 100) {
-      if (this.isVcmp) {
+      if (this.isVcmp || this.isOmp) {
         const reader = await this.sendPacket('c', true)
         if (reader !== null) {
           const playerCount = reader.uint(2)
           for (let i = 0; i < playerCount; i++) {
             const player = {}
             player.name = reader.pascalString(1)
+            player.score = reader.int(4)
             state.players.push(player)
           }
         }
