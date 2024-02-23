@@ -109,13 +109,13 @@ export default class Core extends EventEmitter {
         await param
         await this.registerRtt(Date.now() - start)
       } else {
-        this.logger.debug('Registered RTT: ' + param + 'ms')
+        this.logger.debug(`Registered RTT: ${param}ms`)
         if (this.shortestRTT === 0 || param < this.shortestRTT) {
           this.shortestRTT = param
         }
       }
     } catch (error) {
-      this.logger.debug('Error in promise:', error)
+      this.logger.debug(`Error in promise: ${error}`)
     }
   }
 
