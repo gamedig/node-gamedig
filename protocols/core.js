@@ -102,10 +102,9 @@ export default class Core extends EventEmitter {
 
   /** Param can be a time in ms, or a promise (which will be timed) */
   async registerRtt (param) {
-    const start = Date.now()
-
     try {
       if (param instanceof Promise) {
+        const start = Date.now()
         await param
         await this.registerRtt(Date.now() - start)
       } else {
