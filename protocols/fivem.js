@@ -17,6 +17,7 @@ export default class fivem extends quake2 {
         responseType: 'json'
       })
       state.raw.info = json
+      if ('version' in state.raw.info) state.version = state.raw.info.version
     }
 
     {

@@ -25,7 +25,7 @@ export default class openttd extends Core {
       }
 
       state.name = reader.string()
-      state.raw.version = reader.string()
+      state.version = reader.string()
 
       state.raw.language = this.decode(
         reader.uint(1),

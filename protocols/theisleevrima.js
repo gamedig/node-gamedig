@@ -14,5 +14,6 @@ export default class theisleevrima extends Epic {
     await super.run(state)
     state.name = state.raw.attributes.SERVERNAME_s
     state.map = state.raw.attributes.MAP_NAME_s
+    state.version = state.raw.attributes.SERVER_VERSION_s
   }
 }

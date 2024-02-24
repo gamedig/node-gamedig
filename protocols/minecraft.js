@@ -78,6 +78,7 @@ export default class minecraft extends Core {
       if (vanillaState.maxplayers) state.maxplayers = vanillaState.maxplayers
       if (vanillaState.players.length) state.players = vanillaState.players
       if (vanillaState.ping) this.registerRtt(vanillaState.ping)
+      if (vanillaState.raw.version) state.version = vanillaState.raw.version.name
     }
     if (gamespyState) {
       if (gamespyState.name) state.name = gamespyState.name
@@ -93,6 +94,7 @@ export default class minecraft extends Core {
       if (bedrockState.maxplayers) state.maxplayers = bedrockState.maxplayers
       if (bedrockState.map) state.map = bedrockState.map
       if (bedrockState.ping) this.registerRtt(bedrockState.ping)
+      if (bedrockState.raw.mcVersion) state.version = bedrockState.raw.mcVersion
     }
     // remove dupe spaces from name
     state.name = state.name.replace(/\s+/g, ' ')

@@ -12,5 +12,7 @@ export default class jc2mp extends gamespy3 {
 
   async run (state) {
     await super.run(state)
+
+    state.version = state.raw.version
   }
 }

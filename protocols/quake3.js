@@ -12,6 +12,7 @@ export default class quake3 extends quake2 {
     state.name = this.stripColors(state.name)
     for (const key of Object.keys(state.raw)) {
       state.raw[key] = this.stripColors(state.raw[key])
+      if ('version' in state.raw) state.version = state.raw.version
     }
     for (const player of state.players) {
       player.name = this.stripColors(player.name)

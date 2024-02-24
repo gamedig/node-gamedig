@@ -46,6 +46,7 @@ export default class unreal2 extends Core {
         }
       }
       if ('GamePassword' in state.raw.rules) { state.password = state.raw.rules.GamePassword !== 'True' }
+      if ('UTComp_Version' in state.raw.rules) { state.version = state.raw.rules.UTComp_Version }
     }
 
     if (state.raw.mutators.includes('KillingFloorMut') ||

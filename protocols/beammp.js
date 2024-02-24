@@ -28,5 +28,6 @@ export default class beammp extends Core {
     })
 
     state.raw = server
+    if ('version' in state.raw) state.version = state.raw.version
   }
 }

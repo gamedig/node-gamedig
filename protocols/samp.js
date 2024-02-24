@@ -16,7 +16,7 @@ export default class samp extends Core {
       const reader = await this.sendPacket('i')
       if (this.isVcmp) {
         const consumed = reader.part(12)
-        state.raw.version = this.reader(consumed).string()
+        state.version = this.reader(consumed).string()
       }
       state.password = !!reader.uint(1)
       state.numplayers = reader.uint(2)
@@ -35,6 +35,7 @@ export default class samp extends Core {
         const key = reader.pascalString(1)
         const value = reader.pascalString(1)
         state.raw.rules[key] = value
+        if ('version' in state.raw.rules) state.version = state.raw.rules.version
       }
     }
 

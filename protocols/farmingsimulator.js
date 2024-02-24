@@ -48,7 +48,7 @@ export default class farmingsimulator extends Core {
       }
     })
 
-    state.raw.version = serverInfo.attr('version')
+    state.version = serverInfo.attr('version')
 
     // TODO: Add state.raw
   }

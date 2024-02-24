@@ -15,7 +15,7 @@ export default class savage2 extends Core {
     state.raw.location = reader.string()
     state.raw.minplayers = reader.uint(1)
     state.raw.gametype = reader.string()
-    state.raw.version = reader.string()
+    state.version = reader.string()
     state.raw.minlevel = reader.uint(1)
   }
 

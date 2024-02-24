@@ -17,5 +17,6 @@ export default class eldewrito extends Core {
     state.connect = this.options.address + ':' + json.port
 
     state.raw = json
+    if ('eldewritoVersion' in state.raw) state.version = state.raw.eldewritoVersion
   }
 }

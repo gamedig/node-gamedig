@@ -23,6 +23,7 @@ export default class gamespy2 extends Core {
       if (this.trueTest(state.raw.password)) state.password = true
       if ('maxplayers' in state.raw) state.maxplayers = parseInt(state.raw.maxplayers)
       if ('hostport' in state.raw) state.gamePort = parseInt(state.raw.hostport)
+      if ('gamever' in state.raw) state.version = state.raw.gamever
     }
 
     // Parse players

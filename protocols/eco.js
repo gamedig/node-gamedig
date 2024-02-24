@@ -17,5 +17,6 @@ export default class eco extends Core {
     state.gamePort = serverInfo.GamePort
     state.players = serverInfo.OnlinePlayersNames?.map(name => ({ name, raw: {} })) || []
     state.raw = serverInfo
+    state.version = state.raw.Version
   }
 }
