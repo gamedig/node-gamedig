@@ -239,7 +239,7 @@ export default class Core extends EventEmitter {
       timeout = Promises.createTimeout(this.options.socketTimeout, 'TCP')
       return await Promise.race([promise, timeout, this.abortedPromise])
     } finally {
-      timeout && timeout.cancel()
+      timeout?.cancel()
     }
   }
 
