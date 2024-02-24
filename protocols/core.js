@@ -105,7 +105,7 @@ export default class Core extends EventEmitter {
     const start = Date.now()
 
     try {
-      if (param.then) {
+      if (param instanceof Promise) {
         await param
         await this.registerRtt(Date.now() - start)
       } else {
