@@ -9,6 +9,7 @@
 * Assetto Corsa - Fixed how `state.numplayers` is set (By @podrivo #538)
 * TeamSpeak 2 - Fixed how `state.name` is set (By @podrivo #544)
 * Grand Theft Auto: San Andreas OpenMP - Fixed `state.players` returning an empty array (By @Focus04 #547) 
+* Perf: Re-write of the `core` class.
 
 ## 5.0.0-beta.2
 * Fixed support for projects using `require`.
