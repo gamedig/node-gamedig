@@ -46,7 +46,7 @@ export default class Core extends EventEmitter {
     this.abortedPromise = new Promise((_resolve, reject) => {
       abortCall = () => reject(new Error('Query is finished -- cancelling outstanding promises'))
     }).catch(() => {
-      // Make sure that if this promise isn't attached to, it doesn't throw a unhandled promise rejection
+      // Make sure that if this promise isn't attached to, it doesn't throw an unhandled promise rejection
     })
 
     let timeout
