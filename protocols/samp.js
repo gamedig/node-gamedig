@@ -35,6 +35,7 @@ export default class samp extends Core {
         const key = reader.pascalString(1)
         const value = reader.pascalString(1)
         state.raw.rules[key] = value
+        if ('version' in state.raw.rules) state.version = state.raw.rules.version
       }
     }
 
