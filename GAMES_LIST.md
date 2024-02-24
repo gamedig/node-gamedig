@@ -356,6 +356,7 @@
 * GTR 2
 * Haze
 * Hexen World
+* Last Oasis (#248, #446, #352)
 * Lost Heaven
 * Multi Theft Auto
 * Pariah

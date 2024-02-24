@@ -7,6 +7,11 @@
 * Factorio (2016) - Added support (By @Vito0912 #527)
 * Farming Simulator 22 (2021) - Added support (By @Vito0912 #531)
 * Farming Simulator 19 (2018) - Added support (By @Vito0912 #531)
+* Assetto Corsa - Fixed how `state.numplayers` is set (By @podrivo #538)
+* TeamSpeak 2 - Fixed how `state.name` is set (By @podrivo #544)
+* Grand Theft Auto: San Andreas OpenMP - Fixed `state.players` returning an empty array (By @Focus04 #547) 
+* Perf: Re-write of the `core` class.
+* Perf: Remove many if statements from `GameSpy2`.
 
 ## 5.0.0-beta.2
 * Fixed support for projects using `require`.

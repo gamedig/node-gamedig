@@ -36,6 +36,6 @@ export default class assettocorsa extends Core {
       }
     }
 
-    state.numplayers = carInfo.Cars.length
+    state.numplayers = serverInfo.clients
   }
 }
