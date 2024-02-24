@@ -70,7 +70,7 @@ export default class Core extends EventEmitter {
   }
 
   async runOnce () {
-    const { options, dnsResolver, shortestRTT } = this
+    const { options, dnsResolver } = this
 
     if (('host' in options) && !('address' in options)) {
       const resolved = await dnsResolver.resolve(options.host, options.ipFamily, this.srvRecord)
@@ -85,7 +85,7 @@ export default class Core extends EventEmitter {
     // because lots of servers prefix with spaces to try to appear first
     state.name = (state.name || '').trim()
     state.connect = `${state.gameHost || options.host || options.address}:${state.gamePort || options.port}`
-    state.ping = shortestRTT
+    state.ping = this.shortestRTT
 
     delete state.gameHost
     delete state.gamePort
