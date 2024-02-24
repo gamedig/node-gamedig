@@ -110,26 +110,23 @@ export default class gamespy2 extends Core {
     const units = []
     while (!reader.done()) {
       const unit = {}
-      for (let iField = 0; iField < fields.length; iField++) {
-        let key = fields[iField]
+      for (let index = 0; index < fields.length; index++) {
+        let key = fields[index]
         let value = reader.string()
-        if (!value && iField === 0) return units
+        if (!value && index === 0) return units
 
         this.logger.debug('value:' + value)
-        if (key === 'player_') key = 'name'
-        else if (key === 'score_') key = 'score'
-        else if (key === 'deaths_') key = 'deaths'
-        else if (key === 'ping_') key = 'ping'
-        else if (key === 'team_') key = 'team'
-        else if (key === 'kills_') key = 'kills'
+
+        // many fields end with "_"
+        if (key.endsWith('_')) {
+          key = key.slice(0, -1)
+        }
+
+        if (key === 'player') key = 'name'
         else if (key === 'team_t') key = 'name'
         else if (key === 'tickets_t') key = 'tickets'
 
-        if (
-          key === 'score' || key === 'deaths' ||
-                    key === 'ping' || key === 'team' ||
-                    key === 'kills' || key === 'tickets'
-        ) {
+        if (['score', 'deaths', 'ping', 'team', 'kills', 'tickets'].includes(key)) {
           if (value === '') continue
           value = parseInt(value)
         }
