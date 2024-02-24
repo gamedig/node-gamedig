@@ -29,6 +29,7 @@ export default class farmingsimulator extends Core {
           name: $(this).text(),
           raw: {
             isAdmin: $(this).attr('isAdmin') === 'true',
+            time: parseInt($(this).attr('uptime'), 10),
             uptime: parseInt($(this).attr('uptime'), 10)
           }
         })
