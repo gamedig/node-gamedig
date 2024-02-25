@@ -20,9 +20,11 @@ export default class assettocorsa extends Core {
     state.map = serverInfo.track
     state.password = serverInfo.pass
     state.gamePort = serverInfo.port
+    state.numplayers = serverInfo.clients
+    state.version = state.raw.serverInfo.poweredBy
+
     state.raw.carInfo = carInfo.Cars
     state.raw.serverInfo = serverInfo
-    state.version = state.raw.serverInfo.poweredBy
 
     for (const car of carInfo.Cars) {
       if (car.IsConnected) {
@@ -35,7 +37,5 @@ export default class assettocorsa extends Core {
         })
       }
     }
-
-    state.numplayers = serverInfo.clients
   }
 }
