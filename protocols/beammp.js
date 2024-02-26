@@ -17,7 +17,7 @@ export default class beammp extends Core {
     state.map = server.map
     state.password = server.password
     state.numplayers = parseInt(server.players)
-    state.maxplayers = parseInt(server.players)
+    state.maxplayers = parseInt(server.maxplayers)
 
     const players = server.playerslist.split(';')
     if (players[players.length - 1] === '') {
