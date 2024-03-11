@@ -50,6 +50,7 @@
 | breach               | Breach                                           | [Valve Protocol](#valve)                        |
 | breed                | Breed                                            |                                                 |
 | brink                | Brink                                            | [Valve Protocol](#valve)                        |
+| c2d                  | CS2D                                             |                                                 |
 | c3db                 | Commandos 3: Destination Berlin                  |                                                 |
 | cacr                 | Command and Conquer: Renegade                    |                                                 |
 | chaser               | Chaser                                           |                                                 |
@@ -80,7 +81,6 @@
 | crysis               | Crysis                                           |                                                 |
 | crysis2              | Crysis 2                                         |                                                 |
 | crysiswars           | Crysis Wars                                      |                                                 |
-| cs2d                 | CS2D                                             |                                                 |
 | cscz                 | Counter-Strike: Condition Zero                   | [Valve Protocol](#valve)                        |
 | csgo                 | Counter-Strike: Global Offensive                 | [Notes](#csgo), [Valve Protocol](#valve)        |
 | css                  | Counter-Strike: Source                           | [Valve Protocol](#valve)                        |
@@ -100,8 +100,8 @@
 | dhe4445              | Darkest Hour: Europe '44-'45                     |                                                 |
 | discord              | Discord                                          | [Notes](#discord)                               |
 | dmomam               | Dark Messiah of Might and Magic                  | [Valve Protocol](#valve)                        |
-| dod                  | Day of Defeat                                    | [Valve Protocol](#valve)                        |
 | dnf2001              | Duke Nukem Forever 2001                          |                                                 |
+| dod                  | Day of Defeat                                    | [Valve Protocol](#valve)                        |
 | dods                 | Day of Defeat: Source                            | [Valve Protocol](#valve)                        |
 | doi                  | Day of Infamy                                    | [Valve Protocol](#valve)                        |
 | doom3                | Doom 3                                           |                                                 |
@@ -113,17 +113,17 @@
 | dystopia             | Dystopia                                         | [Valve Protocol](#valve)                        |
 | eco                  | Eco                                              |                                                 |
 | egs                  | Empyrion - Galactic Survival                     | [Valve Protocol](#valve)                        |
-| eldewrito            | Halo Online (ElDewrito)                          |                                                 |
+| eldewrito            | Halo Online - ElDewrito                          |                                                 |
 | empiresmod           | Empires Mod                                      | [Valve Protocol](#valve)                        |
-| enshrouded           | Enshrouded                                       | [Valve Protocol](#valve)                        |
+| enshrouded           | enshrouded                                       | [Valve Protocol](#valve)                        |
 | etqw                 | Enemy Territory: Quake Wars                      |                                                 |
 | ets2                 | Euro Truck Simulator 2                           | [Valve Protocol](#valve)                        |
 | f1c9902              | F1 Challenge '99-'02                             |                                                 |
 | factorio             | Factorio                                         |                                                 |
 | farcry               | Far Cry                                          |                                                 |
 | farcry2              | Far Cry 2                                        |                                                 |
-| farmingsimulator19 | Farming Simulator 19                               | [Notes](#farmingsimulator)                      |
-| farmingsimulator22 | Farming Simulator 22                               | [Notes](#farmingsimulator)                      |
+| farmingsimulator19   | Farming Simulator 19                             |                                                 |
+| farmingsimulator22   | Farming Simulator 22                             |                                                 |
 | fear                 | F.E.A.R.                                         |                                                 |
 | ffow                 | Frontlines: Fuel of War                          |                                                 |
 | fof                  | Fistful of Frags                                 | [Valve Protocol](#valve)                        |
@@ -156,12 +156,12 @@
 | homeworld2           | Homeworld 2                                      |                                                 |
 | hurtworld            | Hurtworld                                        | [Valve Protocol](#valve)                        |
 | i2cs                 | IGI 2: Covert Strike                             |                                                 |
-| il2sturmovik         | IL-2 Sturmovik                                   |                                                 |
+| i2s                  | IL-2 Sturmovik                                   |                                                 |
 | imic                 | Insurgency: Modern Infantry Combat               | [Valve Protocol](#valve)                        |
 | insurgency           | Insurgency                                       | [Valve Protocol](#valve)                        |
 | insurgencysandstorm  | Insurgency: Sandstorm                            | [Valve Protocol](#valve)                        |
 | ironstorm            | Iron Storm                                       |                                                 |
-| jb007n               | James Bond 007: Nightfire                        |                                                 |
+| jb0n                 | James Bond 007: Nightfire                        |                                                 |
 | jc2m                 | Just Cause 2 - Multiplayer                       |                                                 |
 | jc3m                 | Just Cause 3 - Multiplayer                       | [Valve Protocol](#valve)                        |
 | killingfloor         | Killing Floor                                    |                                                 |
@@ -179,6 +179,7 @@
 | mgm                  | Mumble - GT Murmur                               | [Notes](#mumble)                                |
 | minecraft            | Minecraft                                        | [Notes](#minecraft)                             |
 | mnc                  | Monday Night Combat                              | [Valve Protocol](#valve)                        |
+| moe                  | Myth of Empires                                  | [Valve Protocol](#valve)                        |
 | moh                  | Medal of Honor                                   |                                                 |
 | moha                 | Medal of Honor: Airborne                         |                                                 |
 | mohaa                | Medal of Honor: Allied Assault                   |                                                 |
@@ -293,12 +294,12 @@
 | thefront             | The Front                                        | [Valve Protocol](#valve)                        |
 | thehidden            | The Hidden                                       | [Valve Protocol](#valve)                        |
 | theisle              | The Isle                                         | [Valve Protocol](#valve)                        |
-| tie                  | The Isle Evrima                                  | [EOS Protocol](#epic)                           |
 | theship              | The Ship                                         | [Valve Protocol](#valve)                        |
 | thespecialists       | The Specialists                                  | [Valve Protocol](#valve)                        |
 | thps3                | Tony Hawk's Pro Skater 3                         |                                                 |
 | thps4                | Tony Hawk's Pro Skater 4                         |                                                 |
 | thu2                 | Tony Hawk's Underground 2                        |                                                 |
+| tie                  | The Isle Evrima                                  | [EOS Protocol](#epic)                           |
 | toh                  | Take On Helicopters                              |                                                 |
 | tonolf               | The Operative: No One Lives Forever              |                                                 |
 | towerunite           | Tower Unite                                      | [Valve Protocol](#valve)                        |

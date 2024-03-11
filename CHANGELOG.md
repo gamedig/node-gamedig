@@ -13,6 +13,7 @@
 * Perf: Re-write of the `core` class.
 * Perf: Remove many if statements from `GameSpy2`.
 * fix: BeamMP maxplayers that was displaying player count (By @dgibbs64 #551)
+* Myth of Empires - Added support.
 
 ## 5.0.0-beta.2
 * Fixed support for projects using `require`.
