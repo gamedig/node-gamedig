@@ -12,6 +12,7 @@
 * Grand Theft Auto: San Andreas OpenMP - Fixed `state.players` returning an empty array (By @Focus04 #547) 
 * Perf: Re-write of the `core` class.
 * Perf: Remove many if statements from `GameSpy2`.
+* Myth of Empires - Added support.
 * Fix: BeamMP maxplayers that was displaying player count (By @dgibbs64 #551)
 * Fix: BeamMP filter servers by address, not host (By @Rephot #558)
 
