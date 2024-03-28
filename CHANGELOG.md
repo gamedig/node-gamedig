@@ -12,7 +12,8 @@
 * Grand Theft Auto: San Andreas OpenMP - Fixed `state.players` returning an empty array (By @Focus04 #547) 
 * Perf: Re-write of the `core` class.
 * Perf: Remove many if statements from `GameSpy2`.
-* fix: BeamMP maxplayers that was displaying player count (By @dgibbs64 #551)
+* Fix: BeamMP maxplayers that was displaying player count (By @dgibbs64 #551)
+* Fix: BeamMP filter servers by address, not host (By @Rephot #558)
 
 ## 5.0.0-beta.2
 * Fixed support for projects using `require`.
