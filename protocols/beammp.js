@@ -7,7 +7,7 @@ export default class beammp extends Core {
     master.options = this.options
     const masterState = await master.runOnceSafe()
     const servers = masterState.raw.servers
-    const server = servers.find(s => s.ip === this.options.host)
+    const server = servers.find(s => s.ip === this.options.address)
 
     if (!server) {
       throw new Error('Server not found in the master list')
