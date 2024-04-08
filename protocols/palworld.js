@@ -8,8 +8,9 @@ export default class palworld extends Core {
       Accept: 'application/json'
     }
 
-    const response = await this.request({ url, headers, method: 'GET' })
-
-    console.log(response)
+    const serverInfo = await this.request({ url, headers, method: 'GET' })
+    state.version = serverInfo.version
+    state.name = serverInfo.servername
+    state.raw.serverInfo = serverInfo
   }
 }
