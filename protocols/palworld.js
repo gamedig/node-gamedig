@@ -1,20 +1,15 @@
-import Epic from './epic.js'
+import Core from './core.js'
 
-export default class palworld extends Epic {
-  constructor () {
-    super()
-
-    // OAuth2 credentials extracted from Palworld files.
-    this.clientId = 'xyza78916PZ5DF0fAahu4tnrKKyFpqRE'
-    this.clientSecret = 'j0NapLEPm3R3EOrlQiM8cRLKq3Rt02ZVVwT0SkZstSg'
-    this.deploymentId = '0a18471f93d448e2a1f60e47e03d3413'
-    this.authByExternalToken = true
-  }
-
+export default class palworld extends Core {
   async run (state) {
-    await super.run(state)
-    state.name = state.raw.attributes.NAME_s
-    state.numplayers = state.raw.attributes.PLAYERS_l
-    state.version = state.raw.attributes.VERSION_S
+    const url = `http://${this.options.host}:${this.options.port}/v1/api/info`
+    const headers = {
+      Authorization: `Basic ${Buffer.from(`${this.options.username}:${this.options.password}`).toString('base64')}`,
+      Accept: 'application/json'
+    }
+
+    const response = await this.request({ url, headers, method: 'GET' })
+
+    console.log(response)
   }
 }
