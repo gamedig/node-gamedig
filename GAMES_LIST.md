@@ -460,7 +460,7 @@ option: `requestRules: true`. Beware that this may increase query time.
 ### <a name="epic"></a>Epic Online Services (EOS) Protocol
 EOS does not provide players data.
 
-### <a name="valve"></a>Palworld
+### <a name="palworld"></a>Palworld
 Palworld support can be unstable, the devs mention the api is currently experimental.  
 To query palworld servers, the `RESTAPIEnabled` must be `True` in the configuration file, and you need to pass
 the `username` (currently always `admin`) and `password` (settings parameter) for it.
