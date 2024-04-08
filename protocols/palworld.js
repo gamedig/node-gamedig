@@ -1,20 +1,32 @@
-import Epic from './epic.js'
+import Core from './core.js'
 
-export default class palworld extends Epic {
-  constructor () {
-    super()
+export default class palworld extends Core {
+  async makeCall (endpoint) {
+    const url = `http://${this.options.host}:${this.options.port}/v1/api/${endpoint}`
+    const headers = {
+      Authorization: `Basic ${Buffer.from(`${this.options.username}:${this.options.password}`).toString('base64')}`,
+      Accept: 'application/json'
+    }
 
-    // OAuth2 credentials extracted from Palworld files.
-    this.clientId = 'xyza78916PZ5DF0fAahu4tnrKKyFpqRE'
-    this.clientSecret = 'j0NapLEPm3R3EOrlQiM8cRLKq3Rt02ZVVwT0SkZstSg'
-    this.deploymentId = '0a18471f93d448e2a1f60e47e03d3413'
-    this.authByExternalToken = true
+    return await this.request({ url, headers, method: 'GET', responseType: 'json' })
   }
 
   async run (state) {
-    await super.run(state)
-    state.name = state.raw.attributes.NAME_s
-    state.numplayers = state.raw.attributes.PLAYERS_l
-    state.version = state.raw.attributes.VERSION_S
+    const serverInfo = await this.makeCall('info')
+    state.version = serverInfo.version
+    state.name = serverInfo.servername
+    state.raw.serverInfo = serverInfo
+
+    const { players } = await this.makeCall('players')
+    state.numplayers = players.length
+    state.players = players.map(p => p.name)
+    state.raw.players = players
+
+    state.raw.settings = await this.makeCall('settings')
+
+    const metrics = await this.makeCall('metrics')
+    state.numplayers = metrics.currentplayernum
+    state.maxplayers = metrics.maxplayernum
+    state.raw.metrics = metrics
   }
 }
