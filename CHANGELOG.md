@@ -16,7 +16,6 @@
 * Fix: BeamMP maxplayers that was displaying player count (By @dgibbs64 #551)
 * Fix: BeamMP filter servers by address, not host (By @Rephot #558)
 * Palworld - Replace old and broken protocol with the new one (#560)
-* Updated some wordings around the new Palworld mechanic
 
 ## 5.0.0-beta.2
 * Fixed support for projects using `require`.
