@@ -16,7 +16,9 @@ Make sure to check if your game's ID is in the [id migration document](MIGRATE_I
 See the [GAMES_LIST.md](GAMES_LIST.md) file for the currently supported titles, not yet supported titles and notes about some of them.
 
 ## Usage from Node.js
-Install using your favorite package manager: `npm install gamedig`, then use!
+Install using your favorite package manager: `npm install gamedig`, then use!  
+**Tip**: Do you want to try and use the latest features? Install GameDig from this repository via `npm i git+https://github.com/gamedig/node-gamedig`!
+
 ```js
 import { GameDig } from 'gamedig';
 // Or if you're using CommonJS:
