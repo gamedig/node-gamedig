@@ -1,6 +1,12 @@
 import Core from './core.js'
 
 export default class palworld extends Core {
+  constructor () {
+    super()
+    // Don't use the tcp ping probing
+    this.usedTcp = true
+  }
+
   async makeCall (endpoint) {
     const url = `http://${this.options.host}:${this.options.port}/v1/api/${endpoint}`
     const headers = {
