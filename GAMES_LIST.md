@@ -462,5 +462,4 @@ EOS does not provide players data.
 
 ### <a name="palworld"></a>Palworld
 Palworld support can be unstable, the devs mention the api is currently experimental.  
-To query palworld servers, the `RESTAPIEnabled` must be `True` in the configuration file, and you need to pass
-the `username` (currently always `admin`) and `password` (settings parameter) for it.
+To query Palworld servers, the `RESTAPIEnabled` setting must be `True` in the configuration file, and you need to pass the `username` (currently always `admin`) and the `adminpassword` (from the server config) as the `password` parameter.
