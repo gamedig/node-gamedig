@@ -200,6 +200,7 @@
 | nexuiz               | Nexuiz                                           |                                                 |
 | nfshp2               | Need for Speed: Hot Pursuit 2                    |                                                 |
 | nitrofamily          | Nitro Family                                     |                                                 |
+| nla                  | Nova-Life: Amboise                               | [Valve Protocol](#valve)                        |
 | nmrih                | No More Room in Hell                             | [Valve Protocol](#valve)                        |
 | nolf2asihw           | No One Lives Forever 2: A Spy in H.A.R.M.'s Way  |                                                 |
 | nucleardawn          | Nuclear Dawn                                     | [Valve Protocol](#valve)                        |
@@ -210,7 +211,7 @@
 | openarena            | OpenArena                                        |                                                 |
 | openttd              | OpenTTD                                          |                                                 |
 | painkiller           | Painkiller                                       |                                                 |
-| palworld             | Palworld                                         | [Notes](#palworld)                              |
+| palworld             | Palworld                                         |                                                 |
 | pce                  | Primal Carnage: Extinction                       | [Valve Protocol](#valve)                        |
 | pixark               | PixARK                                           | [Valve Protocol](#valve)                        |
 | postal2              | Postal 2                                         |                                                 |
