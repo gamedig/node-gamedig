@@ -4,6 +4,7 @@
 | a2oa                 | ARMA 2: Operation Arrowhead                      | [Valve Protocol](#valve)                        |
 | aaa                  | ARMA: Armed Assault                              |                                                 |
 | aapg                 | America's Army: Proving Grounds                  | [Valve Protocol](#valve)                        |
+| abioticfactor        | Abiotic Factor                                   | [Valve Protocol](#valve)                        |
 | actionsource         | Action: Source                                   | [Valve Protocol](#valve)                        |
 | acwa                 | ARMA: Cold War Assault                           |                                                 |
 | ahl                  | Action Half-Life                                 | [Valve Protocol](#valve)                        |
