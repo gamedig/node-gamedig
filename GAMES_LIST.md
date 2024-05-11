@@ -395,22 +395,22 @@
 Games with Additional Notes
 ---
 
-### Counter-Strike: Global Offensive
+### <a name="csgo"></a>Counter-Strike: Global Offensive
 To receive a full player list response from CS:GO servers, the server must
 have set the cvar: host_players_show 2
 
-### Discord
+### <a name="discord"></a> Discord
 You must set the `guildId` request field to the server's guild ID. Do not provide an IP.
 The Guild ID can be found in server widget settings (Server ID) or by enabling developer mode in client settings and right-clicking the server's icon.
 In order to retrieve information from discord server's they must have the `Enable server widget` option enabled.
 
-### Mumble
+### <a name="mumble"></a> Mumble
 For full query results from Mumble, you must be running the
 [GTmurmur plugin](http://www.gametracker.com/downloads/gtmurmurplugin.php).
 If you do not wish to run the plugin, or do not require details such as channel and user lists,
 you can use the 'mumbleping' server type instead, which uses a less accurate but more reliable solution
 
-### Nadeo (ShootMania / TrackMania / etc)
+### <a name="nadeo"></a> Nadeo (ShootMania / TrackMania / etc)
 The server must have xmlrpc enabled, and you must pass the xmlrpc port to GameDig, not the connection port.
 You must have a user account on the server with access level User or higher.
 Pass the login into to GameDig with the additional options: login, password
@@ -429,41 +429,41 @@ For teamspeak 3 queries to work correctly, the following permissions must be ava
 In the extremely unusual case that your server host responds to queries on a non-default port (the default is 10011),
 you can specify their host query port using the teamspeakQueryPort option.
 
-### Terraria
+### <a name="terraria"></a>Terraria
 Requires tshock server mod, and a REST user token, which can be passed to GameDig with the
 additional option: `token`
 
-### Valheim
+### <a name="valheim"></a>Valheim
 Valheim servers will only respond to queries if they are started in public mode (`-public 1`).
 
-### DayZ
-DayZ stores some of its servers information inside the `tags` attribute. Make sure to set `requestRules: true` to access it. Some data inside `dayzMods` attribute may be fuzzy, due to how mods are loaded into the servers. Players can be fetched, but will not show ingame names. Alternatively, some servers may have a [third party tool](https://dayzsalauncher.com/#/tools) that you can use to get the mods information. If it's installed, you can access it via browser with the game servers IP:PORT, but add up 10 to the port. (eg. if game port is 2302 then use 2312).
+### <a name="dayz"></a>DayZ
+DayZ stores some of it's servers information inside the `tags` attribute. Make sure to set `requestRules: true` to access it. Some data inside `dayzMods` attribute may be fuzzy, due to how mods are loaded into the servers. Players can be fetched, but will not show ingame names. Alternatively, some servers may have a [third party tool](https://dayzsalauncher.com/#/tools) that you can use to get the mods information. If it's installed, you can access it via browser with the game servers IP:PORT, but add up 10 to the port. (eg. if game port is 2302 then use 2312).
 
-### The Front
+### <a name="thefront"></a>The Front
 Responses with wrong `name` (gives out a steamid instead of the server name) and `maxplayers` (always 200, whatever the config would be) field values.
 
-### Conan Exiles
+### <a name="conanexiles"></a>Conan Exiles
 Conan Exiles never responds to player query.
 
-### Minecraft
+### <a name="minecraft"></a>Minecraft
 Many Minecraft servers do not respond with players data.  
 Beware that using this entry is quite slow as it attempts 3 protocols at a time (`minecraftvanilla`, `minecraftbedrock` and `gamespy3`) and waits for all the queries to finish.
 If you know your use case, it's better to use a single protocol or make your own logic for attempting multiple ones.
 
-### Farming Simulator
+### <a name='farmingsimulator'></a>Farming Simulator
 Farming Simulator servers need a token (reffered as code in the game). It can be obtained at your server's web interface (http://ip:port/settings.html). It can be passed to GameDig with the additional option: `token`. It does only work for your own server.
 The response includes much information about the server. Currently, only the fields about server information (name, map, version, etc.), players and mods are parsed.
 
 Protocols with Additional Notes
 ---
 
-### Valve Protocol
+### <a name="valve"></a>Valve Protocol
 For many valve games, additional 'rules' may be fetched into the unstable `raw` field by passing the additional
 option: `requestRules: true`. Beware that this may increase query time.
 
-### >Epic Online Services (EOS) Protocol
+### <a name="epic"></a>Epic Online Services (EOS) Protocol
 EOS does not provide players data.
 
-### Palworld
+### <a name="palworld"></a>Palworld
 Palworld support can be unstable, the devs mention the api is currently experimental.  
 To query Palworld servers, the `RESTAPIEnabled` setting must be `True` in the configuration file, and you need to pass the `username` (currently always `admin`) and the `adminpassword` (from the server config) as the `password` parameter.
