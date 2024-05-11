@@ -446,7 +446,9 @@ Responses with wrong `name` (gives out a steamid instead of the server name) and
 Conan Exiles never responds to player query.
 
 ### <a name="minecraft">Minecraft
-Many Minecraft servers do not respond with players data.
+Many Minecraft servers do not respond with players data.  
+Beware that using this entry is quite slow as it attempts 3 protocols at a time (`minecraftvanilla`, `minecraftbedrock` and `gamespy3`) and waits for all the queries to finish.
+If you know your use case, it's better to use a single protocol or make your own logic for attempting multiple ones.
 
 ### <a name='farmingsimulator'>Farming Simulator
 Farming Simulator servers need a token (reffered as code in the game). It can be obtained at your server's web interface (http://ip:port/settings.html). It can be passed to GameDig with the additional option: `token`. It does only work for your own server.
