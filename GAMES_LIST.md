@@ -395,7 +395,7 @@
 Games with Additional Notes
 ---
 
-### <a name="csgo"></a>Counter-Strike: Global Offensive
+### Counter-Strike: Global Offensive
 To receive a full player list response from CS:GO servers, the server must
 have set the cvar: host_players_show 2
 
@@ -436,34 +436,34 @@ additional option: `token`
 ### Valheim
 Valheim servers will only respond to queries if they are started in public mode (`-public 1`).
 
-### <a name="dayz"></a>DayZ
-DayZ stores some of it's servers information inside the `tags` attribute. Make sure to set `requestRules: true` to access it. Some data inside `dayzMods` attribute may be fuzzy, due to how mods are loaded into the servers. Players can be fetched, but will not show ingame names. Alternatively, some servers may have a [third party tool](https://dayzsalauncher.com/#/tools) that you can use to get the mods information. If it's installed, you can access it via browser with the game servers IP:PORT, but add up 10 to the port. (eg. if game port is 2302 then use 2312).
+### DayZ
+DayZ stores some of its servers information inside the `tags` attribute. Make sure to set `requestRules: true` to access it. Some data inside `dayzMods` attribute may be fuzzy, due to how mods are loaded into the servers. Players can be fetched, but will not show ingame names. Alternatively, some servers may have a [third party tool](https://dayzsalauncher.com/#/tools) that you can use to get the mods information. If it's installed, you can access it via browser with the game servers IP:PORT, but add up 10 to the port. (eg. if game port is 2302 then use 2312).
 
-### <a name="thefront"></a>The Front
+### The Front
 Responses with wrong `name` (gives out a steamid instead of the server name) and `maxplayers` (always 200, whatever the config would be) field values.
 
-### <a name="conanexiles">Conan Exiles
+### Conan Exiles
 Conan Exiles never responds to player query.
 
-### <a name="minecraft">Minecraft
+### Minecraft
 Many Minecraft servers do not respond with players data.  
 Beware that using this entry is quite slow as it attempts 3 protocols at a time (`minecraftvanilla`, `minecraftbedrock` and `gamespy3`) and waits for all the queries to finish.
 If you know your use case, it's better to use a single protocol or make your own logic for attempting multiple ones.
 
-### <a name='farmingsimulator'>Farming Simulator
+### Farming Simulator
 Farming Simulator servers need a token (reffered as code in the game). It can be obtained at your server's web interface (http://ip:port/settings.html). It can be passed to GameDig with the additional option: `token`. It does only work for your own server.
 The response includes much information about the server. Currently, only the fields about server information (name, map, version, etc.), players and mods are parsed.
 
 Protocols with Additional Notes
 ---
 
-### <a name="valve"></a>Valve Protocol
+### Valve Protocol
 For many valve games, additional 'rules' may be fetched into the unstable `raw` field by passing the additional
 option: `requestRules: true`. Beware that this may increase query time.
 
-### <a name="epic"></a>Epic Online Services (EOS) Protocol
+### >Epic Online Services (EOS) Protocol
 EOS does not provide players data.
 
-### <a name="palworld"></a>Palworld
+### Palworld
 Palworld support can be unstable, the devs mention the api is currently experimental.  
 To query Palworld servers, the `RESTAPIEnabled` setting must be `True` in the configuration file, and you need to pass the `username` (currently always `admin`) and the `adminpassword` (from the server config) as the `password` parameter.
