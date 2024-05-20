@@ -71,7 +71,7 @@
     "devDependencies": {
         "@types/cheerio": "^0.22.31",
         "@types/node": "^16.18.58",
-        "esbuild": "^0.19.10",
+        "esbuild": "^0.21.3",
         "esbuild-node-externals": "^1.12.0",
         "eslint": "^8.49.0",
         "eslint-config-standard": "^17.1.0",
