@@ -259,6 +259,7 @@
 | sof2                 | Soldier of Fortune 2                             |                                                 |
 | soldat               | Soldat                                           |                                                 |
 | sotf                 | Sons Of The Forest                               | [Valve Protocol](#valve)                        |
+| soulmask             | Soulmask                                         | [Valve Protocol](#valve)                        |
 | spaceengineers       | Space Engineers                                  | [Valve Protocol](#valve)                        |
 | squad                | Squad                                            | [Valve Protocol](#valve)                        |
 | stalker              | S.T.A.L.K.E.R.                                   |                                                 |
