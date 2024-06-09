@@ -4,6 +4,7 @@
 | a2oa                 | ARMA 2: Operation Arrowhead                      | [Valve Protocol](#valve)                        |
 | aaa                  | ARMA: Armed Assault                              |                                                 |
 | aapg                 | America's Army: Proving Grounds                  | [Valve Protocol](#valve)                        |
+| abioticfactor        | Abiotic Factor                                   | [Valve Protocol](#valve)                        |
 | actionsource         | Action: Source                                   | [Valve Protocol](#valve)                        |
 | acwa                 | ARMA: Cold War Assault                           |                                                 |
 | ahl                  | Action Half-Life                                 | [Valve Protocol](#valve)                        |
@@ -200,6 +201,7 @@
 | nexuiz               | Nexuiz                                           |                                                 |
 | nfshp2               | Need for Speed: Hot Pursuit 2                    |                                                 |
 | nitrofamily          | Nitro Family                                     |                                                 |
+| nla                  | Nova-Life: Amboise                               | [Valve Protocol](#valve)                        |
 | nmrih                | No More Room in Hell                             | [Valve Protocol](#valve)                        |
 | nolf2asihw           | No One Lives Forever 2: A Spy in H.A.R.M.'s Way  |                                                 |
 | nucleardawn          | Nuclear Dawn                                     | [Valve Protocol](#valve)                        |
@@ -210,7 +212,7 @@
 | openarena            | OpenArena                                        |                                                 |
 | openttd              | OpenTTD                                          |                                                 |
 | painkiller           | Painkiller                                       |                                                 |
-| palworld             | Palworld                                         | [Notes](#palworld)                              |
+| palworld             | Palworld                                         |                                                 |
 | pce                  | Primal Carnage: Extinction                       | [Valve Protocol](#valve)                        |
 | pixark               | PixARK                                           | [Valve Protocol](#valve)                        |
 | postal2              | Postal 2                                         |                                                 |
@@ -398,18 +400,18 @@ Games with Additional Notes
 To receive a full player list response from CS:GO servers, the server must
 have set the cvar: host_players_show 2
 
-### Discord
+### <a name="discord"></a> Discord
 You must set the `guildId` request field to the server's guild ID. Do not provide an IP.
 The Guild ID can be found in server widget settings (Server ID) or by enabling developer mode in client settings and right-clicking the server's icon.
 In order to retrieve information from discord server's they must have the `Enable server widget` option enabled.
 
-### Mumble
+### <a name="mumble"></a> Mumble
 For full query results from Mumble, you must be running the
 [GTmurmur plugin](http://www.gametracker.com/downloads/gtmurmurplugin.php).
 If you do not wish to run the plugin, or do not require details such as channel and user lists,
 you can use the 'mumbleping' server type instead, which uses a less accurate but more reliable solution
 
-### Nadeo (ShootMania / TrackMania / etc)
+### <a name="nadeo"></a> Nadeo (ShootMania / TrackMania / etc)
 The server must have xmlrpc enabled, and you must pass the xmlrpc port to GameDig, not the connection port.
 You must have a user account on the server with access level User or higher.
 Pass the login into to GameDig with the additional options: login, password
@@ -428,11 +430,11 @@ For teamspeak 3 queries to work correctly, the following permissions must be ava
 In the extremely unusual case that your server host responds to queries on a non-default port (the default is 10011),
 you can specify their host query port using the teamspeakQueryPort option.
 
-### Terraria
+### <a name="terraria"></a>Terraria
 Requires tshock server mod, and a REST user token, which can be passed to GameDig with the
 additional option: `token`
 
-### Valheim
+### <a name="valheim"></a>Valheim
 Valheim servers will only respond to queries if they are started in public mode (`-public 1`).
 
 ### <a name="dayz"></a>DayZ
@@ -441,13 +443,15 @@ DayZ stores some of it's servers information inside the `tags` attribute. Make s
 ### <a name="thefront"></a>The Front
 Responses with wrong `name` (gives out a steamid instead of the server name) and `maxplayers` (always 200, whatever the config would be) field values.
 
-### <a name="conanexiles">Conan Exiles
+### <a name="conanexiles"></a>Conan Exiles
 Conan Exiles never responds to player query.
 
-### <a name="minecraft">Minecraft
-Many Minecraft servers do not respond with players data.
+### <a name="minecraft"></a>Minecraft
+Many Minecraft servers do not respond with players data.  
+Beware that using this entry is quite slow as it attempts 3 protocols at a time (`minecraftvanilla`, `minecraftbedrock` and `gamespy3`) and waits for all the queries to finish.
+If you know your use case, it's better to use a single protocol or make your own logic for attempting multiple ones.
 
-### <a name='farmingsimulator'>Farming Simulator
+### <a name='farmingsimulator'></a>Farming Simulator
 Farming Simulator servers need a token (reffered as code in the game). It can be obtained at your server's web interface (http://ip:port/settings.html). It can be passed to GameDig with the additional option: `token`. It does only work for your own server.
 The response includes much information about the server. Currently, only the fields about server information (name, map, version, etc.), players and mods are parsed.
 
