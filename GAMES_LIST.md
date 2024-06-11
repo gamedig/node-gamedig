@@ -179,6 +179,7 @@
 | medievalengineers    | Medieval Engineers                               | [Valve Protocol](#valve)                        |
 | mgm                  | Mumble - GT Murmur                               | [Notes](#mumble)                                |
 | minecraft            | Minecraft                                        | [Notes](#minecraft)                             |
+| minetest             | Minetest                                         |                                                 |
 | mnc                  | Monday Night Combat                              | [Valve Protocol](#valve)                        |
 | moe                  | Myth of Empires                                  | [Valve Protocol](#valve)                        |
 | moh                  | Medal of Honor                                   |                                                 |

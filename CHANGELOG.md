@@ -1,6 +1,7 @@
 
 ## To Be Released...
 ## 5.X.Y
+* Minetest - Added support for minetest utilizing official server list (By @xCausxn #573)
 * Soulmask - Added support (By @xCausxn #572)
 
 ## 5.0.0
