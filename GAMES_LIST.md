@@ -295,7 +295,6 @@
 | terrariatshock       | Terraria - TShock                                | [Notes](#terraria)                              |
 | tfc                  | Team Fortress Classic                            | [Valve Protocol](#valve)                        |
 | theforest            | The Forest                                       | [Valve Protocol](#valve)                        |
-| theforrest           | The Forrest                                      | [Valve Protocol](#valve)                        |
 | thefront             | The Front                                        | [Valve Protocol](#valve)                        |
 | thehidden            | The Hidden                                       | [Valve Protocol](#valve)                        |
 | theisle              | The Isle                                         | [Valve Protocol](#valve)                        |
