@@ -2,10 +2,11 @@
 
 ## 5.X.Y
 
-- Minetest - Added support for minetest utilizing official server list (By @xCausxn #573)
-- Soulmask - Added support (By @xCausxn #572)
-- Restore Minecraft's favicon (#575)
-- Grand Theft Auto V: Rage MP - Added support (By @xCausxn #576)
+* Minetest - Added support for minetest utilizing official server list (By @xCausxn #573)
+* Soulmask - Added support (By @xCausxn #572)
+* Restore Minecraft's favicon (#575)
+* Grand Theft Auto V: Rage MP - Added support (By @xCausxn #576)
+* Fix duplicate game entry for The Forest (2014), add old id for backwards compatibility (By @xCausxn #579)
 
 ## 5.0.0
 
