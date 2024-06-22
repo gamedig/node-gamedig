@@ -1,7 +1,10 @@
 
 ## To Be Released...
 ## 5.X.Y
-In progress?
+* Minetest - Added support for minetest utilizing official server list (By @xCausxn #573)
+* Soulmask - Added support (By @xCausxn #572)
+* Restore Minecraft's favicon (#575)
+* Fix duplicate game entry for The Forest (2014), add old id for backwards compatibility (By @xCausxn #579)
 
 ## 5.0.0
 * Added a new stabilized field `version` in the query response (By @podrivo #532)
