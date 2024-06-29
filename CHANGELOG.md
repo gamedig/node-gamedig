@@ -6,6 +6,7 @@
 * Restore Minecraft's favicon (#575)
 * Grand Theft Auto V: Rage MP - Added support (By @xCausxn #576)
 * Fix duplicate game entry for The Forest (2014), add old id for backwards compatibility (By @xCausxn #579)
+* Fix Xonotic player's names being numbers and their names being in the "raw" field (#580)
 
 ## 5.0.0
 * Added a new stabilized field `version` in the query response (By @podrivo #532)
