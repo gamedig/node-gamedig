@@ -3,7 +3,7 @@
 ## 5.X.Y
 * Minetest - Added support for minetest utilizing official server list (By @xCausxn #573)
 * Soulmask - Added support (By @xCausxn #572)
-* Restore Minecraft's favicon (#575)
+* Fix Minecraft's missing favicon from response (#575)
 * Grand Theft Auto V: Rage MP - Added support (By @xCausxn #576)
 * Fix duplicate game entry for The Forest (2014), add old id for backwards compatibility (By @xCausxn #579)
 * Fix Xonotic player's names being numbers and their names being in the "raw" field (#580)
