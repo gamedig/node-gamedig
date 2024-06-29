@@ -10,7 +10,7 @@ export default class asa extends Epic {
     this.deploymentId = 'ad9a8feffb3b4b2ca315546f038c3ae2'
   }
 
-  async run(state) {
+  async run (state) {
     await super.run(state)
     state.version = state.raw.attributes.BUILDID_s + '.' + state.raw.attributes.MINORBUILDID_s
   }

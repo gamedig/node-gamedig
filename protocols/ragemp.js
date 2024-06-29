@@ -1,12 +1,12 @@
 import Core from './core.js'
 
 export default class ragemp extends Core {
-  constructor() {
+  constructor () {
     super()
     this.usedTcp = true
   }
 
-  async run(state) {
+  async run (state) {
     const results = await this.request({
       url: 'https://cdn.rage.mp/master/v2/',
       responseType: 'json'

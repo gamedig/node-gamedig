@@ -80,10 +80,10 @@ export default class dayz extends valve {
         state.raw.dlcEnabled = true
       }
       if (tag.includes('privHive')) {
-        state.raw.privateHive = true;
+        state.raw.privateHive = true
       }
       if (tag.includes('external')) {
-        state.raw.external = true;
+        state.raw.external = true
       }
       if (tag.includes(':')) {
         state.raw.time = tag

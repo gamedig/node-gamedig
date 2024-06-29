@@ -9,7 +9,7 @@ Object.keys(games).forEach((key) => {
   }
 })
 
-function hasDuplicates(obj) {
+function hasDuplicates (obj) {
   const uniqueSet = new Set()
 
   for (const item of obj) {
