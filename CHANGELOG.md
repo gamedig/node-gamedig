@@ -1,6 +1,9 @@
 
 ## To Be Released...
 ## 5.X.Y
+Changes to be made...
+
+## 5.0.1
 * Minetest - Added support for minetest utilizing official server list (By @xCausxn #573)
 * Soulmask - Added support (By @xCausxn #572)
 * Fix Minecraft's missing favicon from response (#575)
