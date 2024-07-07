@@ -130,6 +130,7 @@
 | fof                  | Fistful of Frags                                 | [Valve Protocol](#valve)                        |
 | formulaone2002       | Formula One 2002                                 |                                                 |
 | fortressforever      | Fortress Forever                                 | [Valve Protocol](#valve)                        |
+| foundry              | FOUNDRY                                          | [Valve Protocol](#valve)                        |
 | garrysmod            | Garry's Mod                                      | [Valve Protocol](#valve)                        |
 | gck                  | Giants: Citizen Kabuto                           |                                                 |
 | geneshift            | Geneshift                                        |                                                 |
