@@ -7,7 +7,7 @@ export default class assettocorsa extends Core {
       responseType: 'json'
     })
     const carInfo = await this.request({
-      url: `http://${this.options.address}:${this.options.port}/JSON|${parseInt(Math.random() * 999999999999999, 10)}`,
+      url: `http://${this.options.address}:${this.options.port}/JSON|${Math.floor(Math.random() * 999999999999999)}`,
       responseType: 'json'
     })
 
