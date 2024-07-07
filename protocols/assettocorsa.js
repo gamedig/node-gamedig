@@ -21,7 +21,7 @@ export default class assettocorsa extends Core {
     state.password = serverInfo.pass
     state.gamePort = serverInfo.port
     state.numplayers = serverInfo.clients
-    state.version = state.raw.serverInfo.poweredBy
+    state.version = serverInfo.poweredBy
 
     state.raw.carInfo = carInfo.Cars
     state.raw.serverInfo = serverInfo
