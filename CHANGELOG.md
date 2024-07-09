@@ -2,6 +2,7 @@
 ## To Be Released...
 ## 5.X.Y
 * FOUNDRY - Added support (#585)
+* Grand Theft Auto V: AltVMP - Added support (By @xCausxn #588)
 
 ## 5.0.1
 * Minetest - Added support for minetest utilizing official server list (By @xCausxn #573)
