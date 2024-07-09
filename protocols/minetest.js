@@ -1,12 +1,12 @@
 import Core from './core.js'
 
 export default class minetest extends Core {
-  constructor() {
+  constructor () {
     super()
     this.usedTcp = true
   }
 
-  async run(state) {
+  async run (state) {
     const servers = await this.request({
       url: 'https://servers.minetest.net/list',
       responseType: 'json'
