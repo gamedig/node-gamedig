@@ -84,7 +84,7 @@ export default class Core extends EventEmitter {
     state.queryPort = options.port
     // because lots of servers prefix with spaces to try to appear first
     state.name = (state.name || '').trim()
-    state.connect = `${state.gameHost || options.host || options.address}:${state.gamePort || options.port}`
+    state.connect = state.connect || `${state.gameHost || options.host || options.address}:${state.gamePort || options.port}`
     state.ping = this.shortestRTT
 
     delete state.gameHost
