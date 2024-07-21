@@ -1,6 +1,9 @@
 
 ## To Be Released...
-## 5.X.Y
+## 5.0.0
+* To be made...
+
+## 5.1.0
 * FOUNDRY - Added support (#585)
 * Grand Theft Auto V: AltVMP - Added support (By @xCausxn #588)
 * Fix ability to manual set `state.connect` (By @xCausxn #588)
