@@ -75,9 +75,7 @@ export default class minecraft extends Core {
             }
 
             if (Array.isArray(current.extra)) {
-              for (let i = current.extra.length - 1; i >= 0; i--) {
-                stack.push(current.extra[i]);
-              }
+              stack.push(...current.extra.reverse());
             }
           }
         }
