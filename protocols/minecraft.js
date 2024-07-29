@@ -65,7 +65,21 @@ export default class minecraft extends Core {
           name = description.text
         }
         if (!name && typeof description === 'object' && description.extra) {
-          name = description.extra.map(part => part.text).join('')
+          let stack = [description];
+
+          while (stack.length > 0) {
+            let current = stack.pop();
+
+            if (current.text) {
+              name += current.text;
+            }
+
+            if (Array.isArray(current.extra)) {
+              for (let i = current.extra.length - 1; i >= 0; i--) {
+                stack.push(current.extra[i]);
+              }
+            }
+          }
         }
         state.name = name
       } catch (e) {}
