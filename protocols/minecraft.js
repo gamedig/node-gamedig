@@ -67,7 +67,7 @@ export default class minecraft extends Core {
         if (!name && typeof description === 'object' && description.extra) {
           let stack = [description];
 
-          while (stack.length > 0) {
+          while (stack.length) {
             let current = stack.pop();
 
             if (current.text) {
