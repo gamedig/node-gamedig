@@ -1,7 +1,7 @@
 
 ## To Be Released...
-## 5.0.0
-* To be made...
+## 5.X.Y
+* Fix the `name` field on Minecraft servers running Velocity with multiple layers of color encoding (#595)
 
 ## 5.1.0
 * FOUNDRY - Added support (#585)
