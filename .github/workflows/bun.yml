@@ -36,4 +36,4 @@ jobs:
         run: bun install
 
       - name: Compile
-        run: bun build bin/gamedig.js
+        run: bun build bin/gamedig.js --target=bun
