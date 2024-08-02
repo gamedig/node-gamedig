@@ -1,5 +1,5 @@
 # node-GameDig - Game Server Query Library
-[![npmjs.com](https://img.shields.io/npm/dt/gamedig?color=purple)](https://www.npmjs.com/package/gamedig) ![deno compatibility](https://shield.deno.dev/deno/>=1.39.2) ![Static Badge](https://img.shields.io/badge/node-%3E%3D16.20.0-green?logo=node.js&logoColor=green)
+[![npmjs.com](https://img.shields.io/npm/dt/gamedig?color=purple)](https://www.npmjs.com/package/gamedig) ![Node](https://img.shields.io/badge/node-%3E%3D16.20.0-green?logo=node.js&logoColor=green) ![deno compatibility](https://shield.deno.dev/deno/>=1.39.2)  ![Bun](https://img.shields.io/badge/Bun-%3E%3D1.1.21-white?logo=bun)
 
 **node-GameDig** is a game server query Node.js module (as well as a [command line executable](#usage-from-command-line)), 
 capable of querying for the status of nearly any game or voice server.
