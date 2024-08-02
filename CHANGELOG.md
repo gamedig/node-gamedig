@@ -2,6 +2,7 @@
 ## To Be Released...
 ## 5.X.Y
 * Fix the `name` field on Minecraft servers running Velocity with multiple layers of color encoding (#595)
+* Added [Bun](https://bun.sh/) runtime support (#596)
 
 ## 5.1.0
 * FOUNDRY - Added support (#585)
