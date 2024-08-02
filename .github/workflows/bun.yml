@@ -4,8 +4,18 @@ name: Bun
 on:
   push:
     branches: ["master"]
+    paths:
+      - "**.js" # Any JS file
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/node.yml" # This action
   pull_request:
     branches: ["master"]
+    paths:
+      - "**.js" # Any JS file
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/node.yml" # This action
 
 permissions:
   contents: read
