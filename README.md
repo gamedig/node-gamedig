@@ -109,8 +109,12 @@ Additional advanced parameters can be passed in as well:
 * `--socketTimeout N`: Specifies socket timeout (where `N` is a number, eg. `5000`).
 * ... and the rest in the same format.
 
-## Deno
-The minimum supported deno version is `1.39.2` and the `--allow-net` permission is required.
+## Using with other runtimes
+While we still expect to be some minor issues with these, the library works, if any problems
+arises please open an issue and we'll look into it.
+
+* **Deno**: Minimum supported deno version is `1.39.2` and the `--allow-net` permission is required.  
+* **Bun**: Minimum supported version is `1.1.21`.
 
 ## Common Issues
 
