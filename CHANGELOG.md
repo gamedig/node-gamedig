@@ -1,6 +1,7 @@
 
 ## To Be Released...
 ## 5.X.Y
+* Fix branding for alt:V Multiplayer (By @xCausxn #600)
 * Fix the `name` field on Minecraft servers running Velocity with multiple layers of color encoding (#595)
 * Added [Bun](https://bun.sh/) runtime support (#596)
 * Added a rules bytes return for valve protocol (By @blackwaterbread #597)
