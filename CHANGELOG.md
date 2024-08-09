@@ -1,7 +1,9 @@
 
 ## To Be Released...
 ## 5.X.Y
-* Fix the `name` field on Minecraft servers running Velocity with multiple layers of color encoding (#595)
+* Fix the `name` field on Minecraft servers: 
+* * running Velocity with multiple layers of color encoding (#595)
+* * the top-level text of the description is a string composed of empty characters (#599)
 * Added [Bun](https://bun.sh/) runtime support (#596)
 * Added a rules bytes return for valve protocol (By @blackwaterbread #597)
 
