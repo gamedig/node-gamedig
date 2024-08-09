@@ -61,7 +61,7 @@ export default class minecraft extends Core {
         if (typeof description === 'string') {
           name = description
         }
-        if (!name && typeof description === 'object' && description.text) {
+        if (!name && typeof description === 'object' && description.text && description?.text?.trim()) {
           name = description.text
         }
         if (!name && typeof description === 'object' && description.extra) {
