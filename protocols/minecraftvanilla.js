@@ -45,7 +45,6 @@ export default class minecraftvanilla extends Core {
     this.logger.debug(str)
 
     const json = JSON.parse(str.substring(0, strLen))
-    delete json.favicon
 
     state.raw = json
     state.maxplayers = json.players.max

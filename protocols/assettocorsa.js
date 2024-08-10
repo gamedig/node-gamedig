@@ -7,7 +7,7 @@ export default class assettocorsa extends Core {
       responseType: 'json'
     })
     const carInfo = await this.request({
-      url: `http://${this.options.address}:${this.options.port}/JSON|${parseInt(Math.random() * 999999999999999, 10)}`,
+      url: `http://${this.options.address}:${this.options.port}/JSON|${Math.floor(Math.random() * 999999999999999)}`,
       responseType: 'json'
     })
 
@@ -21,7 +21,7 @@ export default class assettocorsa extends Core {
     state.password = serverInfo.pass
     state.gamePort = serverInfo.port
     state.numplayers = serverInfo.clients
-    state.version = state.raw.serverInfo.poweredBy
+    state.version = serverInfo.poweredBy
 
     state.raw.carInfo = carInfo.Cars
     state.raw.serverInfo = serverInfo

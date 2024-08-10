@@ -1,6 +1,24 @@
 
 ## To Be Released...
-## 5.0.0-beta.3
+## 5.X.Y
+* Fix the `name` field on Minecraft servers running Velocity with multiple layers of color encoding (#595)
+* Added [Bun](https://bun.sh/) runtime support (#596)
+* Added a rules bytes return for valve protocol (By @blackwaterbread #597)
+
+## 5.1.0
+* FOUNDRY - Added support (#585)
+* Grand Theft Auto V: AltVMP - Added support (By @xCausxn #588)
+* Fix ability to manual set `state.connect` (By @xCausxn #588)
+
+## 5.0.1
+* Minetest - Added support for minetest utilizing official server list (By @xCausxn #573)
+* Soulmask - Added support (By @xCausxn #572)
+* Fix Minecraft's missing favicon from response (#575)
+* Grand Theft Auto V: Rage MP - Added support (By @xCausxn #576)
+* Fix duplicate game entry for The Forest (2014), add old id for backwards compatibility (By @xCausxn #579)
+* Fix Xonotic player's names being numbers and their names being in the "raw" field (#580)
+
+## 5.0.0
 * Added a new stabilized field `version` in the query response (By @podrivo #532)
 * Euro Truck Simulator 2 (2012) - Added support (By @podrivo #523)
 * Eco - Fixed querying servers using reverse queries and player names (By @Vito0912 #526)
@@ -16,6 +34,8 @@
 * Fix: BeamMP maxplayers that was displaying player count (By @dgibbs64 #551)
 * Fix: BeamMP filter servers by address, not host (By @Rephot #558)
 * Palworld - Replace old and broken protocol with the new one (#560)
+* Nova-Life: Amboise - Added support.
+* Abiotic Factor - Added Support.
 
 ## 5.0.0-beta.2
 * Fixed support for projects using `require`.

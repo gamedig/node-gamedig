@@ -8,14 +8,14 @@ on:
       - "**.js" # Any JS file
       - "package.json"
       - "package-lock.json"
-      - ".github/workflows/node.yml" # This action
+      - ".github/workflows/deno.yml" # This action
   pull_request:
     branches: ["master"]
     paths:
       - "**.js" # Any JS file
       - "package.json"
       - "package-lock.json"
-      - ".github/workflows/node.yml" # This action
+      - ".github/workflows/deno.yml" # This action
 
 permissions:
   contents: read
