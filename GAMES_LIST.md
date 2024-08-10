@@ -423,7 +423,7 @@ Pass the login into to GameDig with the additional options: login, password
 If you are using a FQDN for your server, you will need to set the host parameter to be this domain e.g. rage2.mydomain.com
 This is due to how the Rage MP master server works with server ids as the ip is only used in the ID if no FQDN is provided.
 
-### <a name="gta5a"></a> Grand Theft Auto V - alt:V Multiplayer
+### <a name="gta5am"></a> Grand Theft Auto V - alt:V Multiplayer
 When querying a server on alt:V Multiplayer, you have two options for querying the server:
 1. Setting the `serverId` request field or `--serverId` when using the cli to the publicId of the server.
 2. Passing the `host` and `port` request fields or `--host` and `--port` when using the cli to the server.
