@@ -139,7 +139,7 @@
 | groundbreach         | Ground Breach                                    | [Valve Protocol](#valve)                        |
 | gta5f                | Grand Theft Auto V - FiveM                       |                                                 |
 | gta5r                | Grand Theft Auto V - RAGE MP                     | [Notes](#gta5r)                                 |
-| gta5a                | Grand Theft Auto V - alt:V Multiplayer           | [Notes](#gta5a)                                 |
+| gta5am                | Grand Theft Auto V - alt:V Multiplayer           | [Notes](#gta5am)                                 |
 | gtasam               | Grand Theft Auto: San Andreas Multiplayer        |                                                 |
 | gtasamta             | Grand Theft Auto: San Andreas - Multi Theft Auto |                                                 |
 | gtasao               | Grand Theft Auto: San Andreas OpenMP             |                                                 |
