@@ -1,5 +1,5 @@
 import Core from './core.js'
-import cheerio from 'cheerio'
+import * as cheerio from 'cheerio'
 
 export default class farmingsimulator extends Core {
   async run (state) {
