@@ -5,6 +5,8 @@
 * Fix the `name` field on Minecraft servers running Velocity with multiple layers of color encoding (#595)
 * Added [Bun](https://bun.sh/) runtime support (#596)
 * Added a rules bytes return for valve protocol (By @blackwaterbread #597)
+* Lock dependencies to fix problems with cheerio's `1.0.0` release and update punycode to `2.3.1` to mitigate
+a vulnerability (#604)
 
 ## 5.1.0
 * FOUNDRY - Added support (#585)
