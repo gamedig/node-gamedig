@@ -134,7 +134,7 @@ This means some ids will not work as they could have been changed to something e
 | swjk2                | → | swjk2jo              |
 | takeonhelicopters    | → | toh                  |
 | tf2                  | → | teamfortress2        |
-| terraria             | → | terrariatshosck      |
+| terraria             | → | terrariatshock       |
 | tribes1              | → | t1s                  |
 | ut                   | → | unrealtournament     |
 | ut2003               | → | unrealtournament2003 |
