@@ -2,6 +2,8 @@
 ## To Be Released...
 ## 5.X.Y
 
+## 4.3.2
+* Locked dependencies versions
 
 ## 5.1.1
 * Lock dependencies to fix problems with cheerio's `1.0.0` release and update punycode to `2.3.1` to mitigate
