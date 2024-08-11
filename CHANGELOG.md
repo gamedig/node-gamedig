@@ -1,6 +1,9 @@
 
 ## To Be Released...
 ## 5.X.Y
+
+
+## 5.1.1
 * Lock dependencies to fix problems with cheerio's `1.0.0` release and update punycode to `2.3.1` to mitigate
 a vulnerability (#604)
 * Fix the `name` field on Minecraft servers: 
