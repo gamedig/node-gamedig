@@ -6,6 +6,9 @@
 #### Other changes
 * None
 
+### 4.3.2
+* Locked dependencies versions
+
 ### 4.3.1
 * Fixed support for the Minecraft [Better Compatibility Checker](https://www.curseforge.com/minecraft/mc-mods/better-compatibility-checker) Mod (By @Douile, #436).
 * Added a -1 query port offset for Rising World (#441).

@@ -22,7 +22,7 @@
     ],
     "main": "lib/index.js",
     "author": "GameDig Contributors",
-    "version": "4.3.1",
+    "version": "4.3.2",
     "repository": {
         "type": "git",
         "url": "https://github.com/gamedig/node-gamedig.git"
@@ -35,15 +35,15 @@
         "node": ">=14.0.0"
     },
     "dependencies": {
-        "cheerio": "^1.0.0-rc.10",
-        "gbxremote": "^0.2.1",
-        "got": "^12.1.0",
-        "iconv-lite": "^0.6.3",
-        "long": "^5.2.0",
-        "minimist": "^1.2.6",
-        "punycode": "^2.1.1",
-        "seek-bzip": "^2.0.0",
-        "varint": "^6.0.0"
+        "cheerio": "1.0.0-rc.10",
+        "gbxremote": "0.2.1",
+        "got": "12.1.0",
+        "iconv-lite": "0.6.3",
+        "long": "5.2.0",
+        "minimist": "1.2.6",
+        "punycode": "2.1.1",
+        "seek-bzip": "2.0.0",
+        "varint": "6.0.0"
     },
     "bin": {
         "gamedig": "bin/gamedig.js"
