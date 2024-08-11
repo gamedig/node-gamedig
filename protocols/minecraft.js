@@ -60,22 +60,20 @@ export default class minecraft extends Core {
         const description = vanillaState.raw.description
         if (typeof description === 'string') {
           name = description
-        }
-        if (!name && typeof description === 'object' && description.text) {
-          name = description.text
-        }
-        if (!name && typeof description === 'object' && description.extra) {
-          let stack = [description];
+        } else if (typeof description === 'object') {
+          name = description?.text || ''
+
+          const stack = [description]
 
           while (stack.length) {
-            let current = stack.pop();
+            const current = stack.pop()
 
             if (current.text) {
-              name += current.text;
+              name += current.text
             }
 
             if (Array.isArray(current.extra)) {
-              stack.push(...current.extra.reverse());
+              stack.push(...current.extra.reverse())
             }
           }
         }
