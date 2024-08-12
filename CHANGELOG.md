@@ -1,6 +1,7 @@
 
 ## To Be Released...
 ## 5.X.Y
+* Added Vintage Story support via the master server (#606)
 
 ## 4.3.2
 * Locked dependencies versions

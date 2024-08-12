@@ -137,9 +137,9 @@
 | globaloperations     | Global Operations                                |                                                 |
 | goldeneyesource      | GoldenEye: Source                                | [Valve Protocol](#valve)                        |
 | groundbreach         | Ground Breach                                    | [Valve Protocol](#valve)                        |
+| gta5am               | Grand Theft Auto V - alt:V Multiplayer           | [Notes](#gta5am)                                |
 | gta5f                | Grand Theft Auto V - FiveM                       |                                                 |
-| gta5r                | Grand Theft Auto V - RAGE MP                     | [Notes](#gta5r)                                 |
-| gta5am                | Grand Theft Auto V - alt:V Multiplayer           | [Notes](#gta5am)                                 |
+| gta5r                | Grand Theft Auto V - RageMP                      | [Notes](#gta5r)                                 |
 | gtasam               | Grand Theft Auto: San Andreas Multiplayer        |                                                 |
 | gtasamta             | Grand Theft Auto: San Andreas - Multi Theft Auto |                                                 |
 | gtasao               | Grand Theft Auto: San Andreas OpenMP             |                                                 |
@@ -258,7 +258,7 @@
 | serioussam2          | Serious Sam 2                                    |                                                 |
 | shatteredhorizon     | Shattered Horizon                                | [Valve Protocol](#valve)                        |
 | shogo                | Shogo                                            |                                                 |
-| shootmania           | Shootmania                                       | [Notes](#nadeo-shootmania--trackmania--etc)     |
+| shootmania           | Shootmania                                       | [Notes](#nadeo)                                 |
 | sin                  | SiN                                              |                                                 |
 | sinepisodes          | SiN Episodes                                     | [Valve Protocol](#valve)                        |
 | sof                  | Soldier of Fortune                               |                                                 |
@@ -309,8 +309,8 @@
 | toh                  | Take On Helicopters                              |                                                 |
 | tonolf               | The Operative: No One Lives Forever              |                                                 |
 | towerunite           | Tower Unite                                      | [Valve Protocol](#valve)                        |
-| trackmania2          | Trackmania 2                                     | [Notes](#nadeo-shootmania--trackmania--etc)     |
-| trackmaniaforever    | Trackmania Forever                               | [Notes](#nadeo-shootmania--trackmania--etc)     |
+| trackmania2          | Trackmania 2                                     | [Notes](#nadeo)                                 |
+| trackmaniaforever    | Trackmania Forever                               | [Notes](#nadeo)                                 |
 | tremulous            | Tremulous                                        |                                                 |
 | tribesvengeance      | Tribes: Vengeance                                |                                                 |
 | tron20               | Tron 2.0                                         |                                                 |
@@ -331,6 +331,7 @@
 | ventrilo             | Ventrilo                                         |                                                 |
 | vietcong             | Vietcong                                         |                                                 |
 | vietcong2            | Vietcong 2                                       |                                                 |
+| vintagestory         | Vintage Story                                    |                                                 |
 | vrising              | V Rising                                         | [Valve Protocol](#valve)                        |
 | warfork              | Warfork                                          |                                                 |
 | warsow               | Warsow                                           |                                                 |
