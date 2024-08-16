@@ -24,7 +24,9 @@ export default class minecraft extends Core {
     const vanillaResolver = new minecraftvanilla()
     vanillaResolver.options = this.options
     vanillaResolver.udpSocket = this.udpSocket
-    promises.push(vanillaResolver)
+    promises.push((async () => {
+      try { return await vanillaResolver.runOnceSafe() } catch (e) {}
+    })())
 
     const gamespyResolver = new Gamespy3()
     gamespyResolver.options = {
@@ -32,15 +34,18 @@ export default class minecraft extends Core {
       encoding: 'utf8'
     }
     gamespyResolver.udpSocket = this.udpSocket
-    promises.push(gamespyResolver)
+    promises.push((async () => {
+      try { return await gamespyResolver.runOnceSafe() } catch (e) {}
+    })())
 
     const bedrockResolver = new minecraftbedrock()
     bedrockResolver.options = this.options
     bedrockResolver.udpSocket = this.udpSocket
-    promises.push(bedrockResolver)
+    promises.push((async () => {
+      try { return await bedrockResolver.runOnceSafe() } catch (e) {}
+    })())
 
-    const ranPromises = promises.map(p => p.runOnceSafe().catch(_ => undefined))
-    const [vanillaState, gamespyState, bedrockState] = await Promise.all(ranPromises)
+    const [vanillaState, gamespyState, bedrockState] = await Promise.all(promises)
 
     state.raw.vanilla = vanillaState
     state.raw.gamespy = gamespyState
