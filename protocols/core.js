@@ -101,20 +101,19 @@ export default class Core extends EventEmitter {
   async run (/** Results */ state) {}
 
   /** Param can be a time in ms, or a promise (which will be timed) */
-  async registerRtt (param) {
-    try {
-      if (param instanceof Promise) {
-        const start = Date.now()
-        await param
-        await this.registerRtt(Date.now() - start)
-      } else {
-        this.logger.debug(`Registered RTT: ${param}ms`)
-        if (this.shortestRTT === 0 || param < this.shortestRTT) {
-          this.shortestRTT = param
-        }
+  registerRtt (param) {
+    if (param.then) {
+      const start = Date.now()
+      param.then(() => {
+        const end = Date.now()
+        const rtt = end - start
+        this.registerRtt(rtt)
+      }).catch(() => {})
+    } else {
+      this.logger.debug('Registered RTT: ' + param + 'ms')
+      if (this.shortestRTT === 0 || param < this.shortestRTT) {
+        this.shortestRTT = param
       }
-    } catch (error) {
-      this.logger.debug(`Error in promise: ${error}`)
     }
   }
 
