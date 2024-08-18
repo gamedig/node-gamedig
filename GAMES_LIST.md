@@ -241,6 +241,7 @@
 | redorchestra         | Red Orchestra                                    |                                                 |
 | redorchestra2        | Red Orchestra 2                                  | [Valve Protocol](#valve)                        |
 | rfactor              | rFactor                                          |                                                 |
+| rfactor2             | rFactor 2                                        | [Valve Protocol](#valve)                        |
 | ricochet             | Ricochet                                         | [Valve Protocol](#valve)                        |
 | risingworld          | Rising World                                     | [Valve Protocol](#valve)                        |
 | ron                  | Rise of Nations                                  |                                                 |
