@@ -1,6 +1,8 @@
 
 ## To Be Released...
 ## 5.X.Y
+
+## 5.1.2
 * Added Vintage Story support via the master server (#606)
 * Fixed `registerRtt` breaking successful queries if it didn't respond in the query timeout (#610)
 * Added support for rFactor 2 (By @xCausxn #614)
