@@ -102,13 +102,11 @@ export default class Core extends EventEmitter {
 
   /** Param can be a time in ms, or a promise (which will be timed) */
   registerRtt (param) {
-    if (param.then) {
+    if (param instanceof Promise) {
       const start = Date.now()
       param.then(() => {
-        const end = Date.now()
-        const rtt = end - start
-        this.registerRtt(rtt)
-      }).catch(() => {})
+        this.registerRtt(Date.now() - start)
+      }).catch((_) => {})
     } else {
       this.logger.debug('Registered RTT: ' + param + 'ms')
       if (this.shortestRTT === 0 || param < this.shortestRTT) {
@@ -197,7 +195,7 @@ export default class Core extends EventEmitter {
         socket.on('ready', resolve)
         socket.on('close', () => reject(new Error('TCP Connection Refused')))
       })
-      await this.registerRtt(connectionPromise)
+      this.registerRtt(connectionPromise)
       connectionTimeout = Promises.createTimeout(this.options.socketTimeout, 'TCP Opening')
       await Promise.race([
         connectionPromise,
