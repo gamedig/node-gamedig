@@ -2,6 +2,7 @@
 ## To Be Released...
 ## 5.X.Y
 * Fix: `Deus Ex` using the wrong protocol (#621)
+* Fix: `Soldier ff Fortune` using the wrong protocol (#623)
 * Feat: For the Quake2 protocol `version`'s field, also look for `version` in the raw object
 
 ## 5.1.2
