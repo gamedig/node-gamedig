@@ -2,6 +2,7 @@
 ## To Be Released...
 ## 5.X.Y
 * Fix: `Deus Ex` using the wrong protocol (#621)
+* Feat: For the Quake2 protocol `version`'s field, also look for `version` in the raw object
 
 ## 5.1.2
 * Added Vintage Story support via the master server (#606)
