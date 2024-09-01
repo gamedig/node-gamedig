@@ -4,6 +4,7 @@
 * Fix: `Deus Ex` using the wrong protocol (#621)
 * Fix: `Soldier ff Fortune` using the wrong protocol (#623)
 * Feat: For the Quake2 protocol `version`'s field, also look for `version` in the raw object
+* Feat: Add option `requestPlayers`, defaults to `true`.
 
 ## 5.1.2
 * Added Vintage Story support via the master server (#606)

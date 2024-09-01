@@ -163,6 +163,10 @@ export default class valve extends Core {
   async queryPlayers (/** Results */ state) {
     state.raw.players = []
 
+    if (!this.options.requestPlayers) {
+      return
+    }
+
     this.logger.debug('Requesting player list ...')
     const b = await this.sendPacket(
       this.goldsrcInfo ? undefined : 0x55,
