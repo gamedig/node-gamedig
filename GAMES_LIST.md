@@ -161,6 +161,7 @@
 | hurtworld            | Hurtworld                                        | [Valve Protocol](#valve)                        |
 | i2cs                 | IGI 2: Covert Strike                             |                                                 |
 | i2s                  | IL-2 Sturmovik                                   |                                                 |
+| icarus               | Icarus                                           | [Valve Protocol](#valve)                        |
 | imic                 | Insurgency: Modern Infantry Combat               | [Valve Protocol](#valve)                        |
 | insurgency           | Insurgency                                       | [Valve Protocol](#valve)                        |
 | insurgencysandstorm  | Insurgency: Sandstorm                            | [Valve Protocol](#valve)                        |
