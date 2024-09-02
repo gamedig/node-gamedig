@@ -269,6 +269,7 @@
 | soulmask             | Soulmask                                         | [Valve Protocol](#valve)                        |
 | spaceengineers       | Space Engineers                                  | [Valve Protocol](#valve)                        |
 | squad                | Squad                                            | [Valve Protocol](#valve)                        |
+| sstse                | Serious Sam: The Second Encounter                |                                                 |
 | stalker              | S.T.A.L.K.E.R.                                   |                                                 |
 | starbound            | Starbound                                        | [Valve Protocol](#valve)                        |
 | starmade             | StarMade                                         |                                                 |
