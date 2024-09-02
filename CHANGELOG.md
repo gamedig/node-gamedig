@@ -5,6 +5,7 @@
 * Fix: `Soldier ff Fortune` using the wrong protocol (#623)
 * Feat: For the Quake2 protocol `version`'s field, also look for `version` in the raw object
 * Feat: Add option `requestPlayers`, defaults to `true`.
+* Added support for Icarus using valve protocol (By @xCausxn #626) 
 
 ## 5.1.2
 * Added Vintage Story support via the master server (#606)
