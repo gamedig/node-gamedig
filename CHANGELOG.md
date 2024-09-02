@@ -1,6 +1,8 @@
 
 ## To Be Released...
 ## 5.X.Y
+
+## 5.1.3
 * Fix: `Deus Ex` using the wrong protocol (#621)
 * Fix: `Soldier of Fortune` using the wrong protocol (#623)
 * Feat: Serious Sam: The Second Encounter (2002) - Added support (#625)
