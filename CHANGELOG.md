@@ -1,7 +1,14 @@
 
 ## To Be Released...
 ## 5.X.Y
+* Fix: `Deus Ex` using the wrong protocol (#621)
+* Fix: `Soldier ff Fortune` using the wrong protocol (#623)
+* Feat: For the Quake2 protocol `version`'s field, also look for `version` in the raw object
+* Feat: Add option `requestPlayers`, defaults to `true`.
+
+## 5.1.2
 * Added Vintage Story support via the master server (#606)
+* Fixed `registerRtt` breaking successful queries if it didn't respond in the query timeout (#610)
 * Added support for rFactor 2 (By @xCausxn #614)
 
 ## 4.3.2
