@@ -20,8 +20,8 @@ const gamedig = new GameDig(options)
 const protocolList = []
 Object.keys(protocols).forEach((key) => protocolList.push(key))
 
-const services = ['discord', 'beammpmaster', 'beammp', 'teamspeak2', 'teamspeak3']
-const protocolListFiltered = protocolList.filter((protocol) => !services.includes(protocol))
+const ignoredProtocols = ['discord', 'beammpmaster', 'beammp', 'teamspeak2', 'teamspeak3', 'vintagestorymaster']
+const protocolListFiltered = protocolList.filter((protocol) => !ignoredProtocols.includes(protocol))
 
 const run = async () => {
   for (const protocol of protocolListFiltered) {
