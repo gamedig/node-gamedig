@@ -3,6 +3,7 @@
 ## 5.X.Y
 * Fix: `Deus Ex` using the wrong protocol (#621)
 * Fix: `Soldier ff Fortune` using the wrong protocol (#623)
+* Feat: Serious Sam: The Second Encounter (2002) - Added support (#625)
 * Feat: For the Quake2 protocol `version`'s field, also look for `version` in the raw object
 * Feat: Add option `requestPlayers`, defaults to `true`.
 * Added support for Icarus using valve protocol (By @xCausxn #626) 
