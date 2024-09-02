@@ -1,5 +1,4 @@
 import Core from './core.js'
-import * as cheerio from 'cheerio'
 
 export default class buildandshoot extends Core {
   async run (state) {
@@ -29,27 +28,19 @@ export default class buildandshoot extends Core {
       state.connect = m[0]
     }
 
-    const $ = cheerio.load(body)
-    $('#playerlist tbody tr').each((i, tr) => {
-      if (!$(tr).find('td').first().attr('colspan')) {
+    const playerListRegex = /<tr>(.*?)<\/tr>/g
+    let playerMatch
+    while ((playerMatch = playerListRegex.exec(body)) !== null) {
+      const playerRow = playerMatch[1]
+      const cols = playerRow.match(/<td.*?>(.*?)<\/td>/g)
+      if (cols && cols.length > 1 && !cols[0].includes('colspan')) {
         state.players.push({
-          name: $(tr).find('td').eq(2).text(),
-          ping: $(tr).find('td').eq(3).text().trim(),
-          team: $(tr).find('td').eq(4).text().toLowerCase(),
-          score: parseInt($(tr).find('td').eq(5).text())
+          name: cols[2].replace(/<.*?>/g, '').trim(),
+          ping: cols[3].replace(/<.*?>/g, '').trim(),
+          team: cols[4].replace(/<.*?>/g, '').toLowerCase().trim(),
+          score: parseInt(cols[5].replace(/<.*?>/g, '').trim())
         })
       }
-    })
-    /*
-        var m = this.options.address.match(/(\d+)\.(\d+)\.(\d+)\.(\d+)/);
-        if(m) {
-            var o1 = parseInt(m[1]);
-            var o2 = parseInt(m[2]);
-            var o3 = parseInt(m[3]);
-            var o4 = parseInt(m[4]);
-            var addr = o1+(o2<<8)+(o3<<16)+(o4<<24);
-            state.raw.url = 'aos://'+addr;
-        }
-        */
+    }
   }
 }
