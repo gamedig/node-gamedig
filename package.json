@@ -52,7 +52,6 @@
         "bin/gamedig.js",
         "lib/",
         "protocols/",
-        "games.txt",
         "LICENSE",
         "GAMES_LIST.md",
         "README.md"
