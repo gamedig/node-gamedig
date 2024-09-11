@@ -18,6 +18,7 @@ export default class Core extends EventEmitter {
     this.delimiter = '\0'
     this.srvRecord = null
     this.abortedPromise = null
+    this.enabledBroadcast = null
     this.logger = new Logger()
     this.dnsResolver = new DnsResolver(this.logger)
 
@@ -253,7 +254,7 @@ export default class Core extends EventEmitter {
     if (typeof buffer === 'string') buffer = Buffer.from(buffer, 'binary')
 
     const socket = this.udpSocket
-    await socket.send(buffer, address, port, this.options.debug)
+    await socket.send(buffer, address, port, this.options.debug, this.enabledBroadcast)
 
     if (!onPacket && !onTimeout) {
       return null
@@ -261,18 +262,27 @@ export default class Core extends EventEmitter {
 
     let socketCallback
     let timeout
+    const results = []
+    const isBroadcast = !!this.enabledBroadcast && (address?.includes('255') ?? false)
 
     try {
       const promise = new Promise((resolve, reject) => {
         const start = Date.now()
         socketCallback = (fromAddress, fromPort, buffer) => {
           try {
-            if (fromAddress !== address || fromPort !== port) return
+            // in case of a configured broadcast address, the received response might come from the same "address"
+            // e.g. responses for UE3 lan queries might be sent as broadcast therefore the address can be the same
+            if ((fromAddress !== address && !isBroadcast) || fromPort !== port) return
+
             this.registerRtt(Date.now() - start)
             const result = onPacket(buffer)
             if (result !== undefined) {
-              this.logger.debug('UDP send finished by callback')
-              resolve(result)
+              // broadcasts may expect multiple respones, store packet and keep waiting for additional responses
+              results.push(result)
+              if (!isBroadcast) {
+                this.logger.debug('UDP send finished by callback')
+                resolve(result)
+              }
             }
           } catch (e) {
             reject(e)
@@ -282,6 +292,12 @@ export default class Core extends EventEmitter {
       })
       timeout = Promises.createTimeout(socketTimeout, 'UDP')
       const wrappedTimeout = Promise.resolve(timeout).catch((e) => {
+        // in case of broadcast query and received responses, don't return as timeout-error.
+        // consider the timeout out with at least one received response as valid
+        if (isBroadcast && !!results.length) {
+          return results
+        }
+
         this.logger.debug('UDP timeout detected')
         if (onTimeout) {
           const result = onTimeout()
