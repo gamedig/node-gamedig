@@ -49,6 +49,7 @@ import tribes1 from './tribes1.js'
 import tribes1master from './tribes1master.js'
 import unreal2 from './unreal2.js'
 import ut3 from './ut3.js'
+import ut3lan from './ut3lan.js'
 import valve from './valve.js'
 import vcmp from './vcmp.js'
 import ventrilo from './ventrilo.js'
@@ -67,7 +68,7 @@ export {
   armagetron, ase, asa, assettocorsa, battlefield, buildandshoot, cs2d, discord, doom3, eco, epic, factorio, farmingsimulator, ffow,
   fivem, gamespy1, gamespy2, gamespy3, geneshift, goldsrc, gtasao, hexen2, jc2mp, kspdmp, mafia2mp, mafia2online, minecraft,
   minecraftbedrock, minecraftvanilla, minetest, mumble, mumbleping, nadeo, openttd, palworld, quake1, quake2, quake3, rfactor, ragemp, samp,
-  savage2, starmade, starsiege, teamspeak2, teamspeak3, terraria, tribes1, tribes1master, unreal2, ut3, valve,
+  savage2, starmade, starsiege, teamspeak2, teamspeak3, terraria, tribes1, tribes1master, unreal2, ut3, ut3lan, valve,
   vcmp, ventrilo, warsow, eldewrito, beammpmaster, beammp, dayz, theisleevrima, xonotic, altvmp, vintagestorymaster,
   vintagestory
 }
