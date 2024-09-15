@@ -1,0 +1,31 @@
+name: Games List Markdown Validation
+
+on:
+  push:
+    paths:
+      - "lib/games.js"
+      - ".github/workflows/games_list.yml" # This action
+  pull_request:
+    paths:
+      - "lib/games.js"
+      - ".github/workflows/games_list.yml" # This action
+  workflow_dispatch:
+
+jobs:
+  check_file:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Run games list generation
+        run: node tools/generate_games_list.js
+
+      - name: Check for changes
+        run: git diff --exit-code GAMES_LIST.md
