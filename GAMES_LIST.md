@@ -295,7 +295,7 @@
 | tcgraw               | Tom Clancy's Ghost Recon Advanced Warfighter     |                                                 |
 | tcgraw2              | Tom Clancy's Ghost Recon Advanced Warfighter 2   |                                                 |
 | teamfactor           | Team Factor                                      |                                                 |
-| teamfortress2        | Team Fortress 2                                  | [Valve Protocol](#valve)                        |
+| teamfortress2        | Team Fortress 2   engineer gaming!               | [Valve Protocol](#valve)                        |
 | teamspeak2           | Teamspeak 2                                      |                                                 |
 | teamspeak3           | Teamspeak 3                                      | [Notes](#teamspeak3)                            |
 | terminus             | Terminus                                         |                                                 |
