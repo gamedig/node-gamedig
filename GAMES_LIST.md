@@ -342,6 +342,7 @@
 | warsow               | Warsow                                           |                                                 |
 | wet                  | Wolfenstein: Enemy Territory                     |                                                 |
 | wolfenstein          | Wolfenstein                                      |                                                 |
+| wop                  | World Of Padman                                  |                                                 |
 | wot                  | Wheel of Time                                    |                                                 |
 | wurmunlimited        | Wurm Unlimited                                   | [Valve Protocol](#valve)                        |
 | xonotic              | Xonotic                                          |                                                 |
