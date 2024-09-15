@@ -349,7 +349,7 @@
 | zombiemaster         | Zombie Master                                    | [Valve Protocol](#valve)                        |
 | zps                  | Zombie Panic: Source                             | [Valve Protocol](#valve)                        |
 <!--- END GENERATED GAMES -->
-hehe, engineer gaming, this isnt supposed to be here hehehehe
+
 ### Not supported (yet)
 
 * Cube Engine (cube):
