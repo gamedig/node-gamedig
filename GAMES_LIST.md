@@ -1,4 +1,6 @@
 ### Supported
+
+<!--- BEGIN GENERATED GAMES -->
 | GameDig Type ID      | Name                                             | See Also                                        |
 |----------------------|--------------------------------------------------|-------------------------------------------------|
 | a2oa                 | ARMA 2: Operation Arrowhead                      | [Valve Protocol](#valve)                        |
@@ -346,6 +348,7 @@
 | xpandrally           | Xpand Rally                                      |                                                 |
 | zombiemaster         | Zombie Master                                    | [Valve Protocol](#valve)                        |
 | zps                  | Zombie Panic: Source                             | [Valve Protocol](#valve)                        |
+<!--- END GENERATED GAMES -->
 
 ### Not supported (yet)
 
