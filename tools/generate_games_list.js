@@ -34,6 +34,7 @@ const HeaderNames = {
   [HeaderType.GameName]: { Name: 'Name' },
   [HeaderType.Notes]: { Name: 'See Also' }
 }
+// defines the order of columns
 const HeaderDefinition = [
   HeaderType.ID,
   HeaderType.GameName,
