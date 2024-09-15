@@ -1,6 +1,7 @@
 
 ## To Be Released...
 ## 5.X.Y
+* Feat: Replaced `punycode` package usage with `url.domainToASCII` (#630).
 
 ## 5.1.3
 * Fix: `Deus Ex` using the wrong protocol (#621)
