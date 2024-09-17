@@ -158,6 +158,35 @@ export default class unrealengine3 extends Core {
     if ('maxplayers' in state.raw) state.maxplayers = parseInt(state.raw.maxplayers)
     if ('hostport' in state.raw) state.gamePort = parseInt(state.raw.hostport)
     if ('gamever' in state.raw) state.version = state.raw.gamever
+
+    if (state.raw.playerTeamInfo && '' in state.raw.playerTeamInfo) {
+      for (const playerInfo of state.raw.playerTeamInfo['']) {
+        const player = {}
+        for (const from of Object.keys(playerInfo)) {
+          let key = from
+          let value = playerInfo[from]
+
+          if (key === 'player') key = 'name'
+          if (key === 'score' || key === 'ping' || key === 'team' || key === 'deaths' || key === 'pid') value = parseInt(value)
+          player[key] = value
+  }
+        state.players.push(player)
+      }
+    }
+
+    if ('numplayers' in state.raw) state.numplayers = parseInt(state.raw.numplayers)
+    else state.numplayers = state.players.length
+  }
+
+  /**
+   * Converts a UE3 unique id to a string
+   * @param {UniqueNetId} reader the unique net idenitifer
+   * @returns {string} a converted unique identifier
+   */
+  static UniqueNetIdToString (uniqueNetId) {
+    const bytes = ([...uniqueNetId]).reverse()
+    const value = bytes[0] << 24 | bytes[1] << 16 | bytes[2] << 8 | bytes[3]
+    return String(value)
   }
 
   /**

@@ -6,6 +6,13 @@ function parseNumber (str) {
   return number
 }
 
+function anyToString (obj) {
+  if (typeof obj === 'boolean') {
+    return obj ? 'True' : 'False'
+  }
+  return String(obj)
+}
+
 /**
  * Implements the LAN protocol for UnrealEngine3 based games (UE3)
  */
@@ -72,7 +79,21 @@ export default class unrealengine3lan extends CoreLAN {
     if (outputAsArray && Array.isArray(state)) {
       state.push(...resultStates)
     } else {
-      const firstPacket = resultStates.length ? { ...resultStates[0], $next: resultStates.slice(1).reduceRight((next, value) => ({ ...value, $next: next }), null) } : null
+      // add linker as state root
+      // const firstPacket = resultStates.length ? { ...resultStates[0], $next: resultStates.slice(1).reduceRight((next, value) => ({ ...value, $next: next }), null) } : null
+
+      // add linker into state.raw
+      const firstPacket = resultStates?.[0]
+      if (resultStates.length) {
+        const nextPacket = resultStates.slice(1).reduceRight((next, value) => {
+          // return { ...value, $next: next }
+          Object.assign(value.raw, { $next: next })
+          return value
+        }, null)
+
+        Object.assign(firstPacket.raw, { $next: nextPacket })
+      }
+
       Object.assign(state, firstPacket)
     }
   }
@@ -120,7 +141,9 @@ export default class unrealengine3lan extends CoreLAN {
   parsePacket (buffer) {
     // create default empty state
     const state = this.createState()
-    Object.assign(state, UE3.EmptyPayloadData)
+
+    // create empty game settings
+    const OnlineGameSettings = { ...UE3.EmptyPayloadData }
 
     const fullReader = this.reader(buffer)
     const packetVersion = fullReader.uint(1)
@@ -136,30 +159,31 @@ export default class unrealengine3lan extends CoreLAN {
     state.raw.hostaddress = ipStr
     state.raw.hostport = port
 
-    state.raw.NumOpenPublicConnections = reader.uint(4)
-    state.raw.NumOpenPrivateConnections = reader.uint(4)
-    state.raw.NumPublicConnections = reader.uint(4)
-    state.raw.NumPrivateConnections = reader.uint(4)
+    OnlineGameSettings.NumOpenPrivateConnections = 1
+    OnlineGameSettings.NumOpenPublicConnections = reader.uint(4)
+    OnlineGameSettings.NumOpenPrivateConnections = reader.uint(4)
+    OnlineGameSettings.NumPublicConnections = reader.uint(4)
+    OnlineGameSettings.NumPrivateConnections = reader.uint(4)
 
     // new packets seem to have an additional bool/byte field,
     // flags generally consist of 8 1-byte/bool values
-    state.raw.bShouldAdvertise = reader.uint(1) === 1
-    state.raw.bIsLanMatch = reader.uint(1) === 1
-    state.raw.bUsesStats = reader.uint(1) === 1
-    state.raw.bAllowJoinInProgress = reader.uint(1) === 1
-    state.raw.bAllowInvites = reader.uint(1) === 1
-    state.raw.bUsesPresence = reader.uint(1) === 1
-    state.raw.bAllowJoinViaPresence = reader.uint(1) === 1
-    state.raw.bUsesArbitration = reader.uint(1) === 1
+    OnlineGameSettings.bShouldAdvertise = reader.uint(1) === 1
+    OnlineGameSettings.bIsLanMatch = reader.uint(1) === 1
+    OnlineGameSettings.bUsesStats = reader.uint(1) === 1
+    OnlineGameSettings.bAllowJoinInProgress = reader.uint(1) === 1
+    OnlineGameSettings.bAllowInvites = reader.uint(1) === 1
+    OnlineGameSettings.bUsesPresence = reader.uint(1) === 1
+    OnlineGameSettings.bAllowJoinViaPresence = reader.uint(1) === 1
+    OnlineGameSettings.bUsesArbitration = reader.uint(1) === 1
     if (packetVersion >= 5) {
       // read additional flag for newer packets
-      state.raw.bAntiCheatProtected = reader.uint(1) === 1
+      OnlineGameSettings.bAntiCheatProtected = reader.uint(1) === 1
     }
 
     // Read the owning player id
-    state.raw.OwningPlayerId = unrealengine3.readUniqueNetId(reader)
+    OnlineGameSettings.OwningPlayerId = unrealengine3.readUniqueNetId(reader)
     // Read the owning player name
-    state.raw.OwningPlayerName = unrealengine3.readString(reader)
+    OnlineGameSettings.OwningPlayerName = unrealengine3.readString(reader)
 
     // properties from the advertised settings
     const localizedProperties = []
@@ -194,8 +218,8 @@ export default class unrealengine3lan extends CoreLAN {
     }
 
     // Turn all that raw state into something useful
+    state.raw.session = OnlineGameSettings
     this.populateProperties(state)
-    // DEBUG: delete state.raw
 
     return state
   }
@@ -205,46 +229,45 @@ export default class unrealengine3lan extends CoreLAN {
    * @param {Object} state Parsed data
    */
   populateProperties (state) {
+    const { session } = state.raw
+
     // pass raw data
     state.gameHost = state.raw.hostaddress
     state.gamePort = state.raw.hostport
 
-    state.name = state.raw.OwningPlayerName
-    state.maxplayers = state.raw.NumOpenPublicConnections
+    session.TotalOpenConnections = (session?.NumOpenPublicConnections || 0) + (session?.NumOpenPrivateConnections || 0)
+    session.TotalConnections = (session?.NumPublicConnections || 0) + (session?.NumPrivateConnections || 0)
 
-    state.NumOpenPublicConnections = state.raw.NumOpenPublicConnections
-    state.NumOpenPrivateConnections = state.raw.NumOpenPrivateConnections
-    state.NumPublicConnections = state.raw.NumPublicConnections
-    state.NumPrivateConnections = state.raw.NumPrivateConnections
+    state.name = session?.OwningPlayerName
+    state.raw.maxplayers = (session.TotalConnections).toString()
+    state.raw.numplayers = (session.TotalConnections - session.TotalOpenConnections).toString()
 
-    state.bShouldAdvertise = state.raw.bShouldAdvertise
-    state.bIsLanMatch = state.raw.bIsLanMatch
-    state.bUsesStats = state.raw.bUsesStats
-    state.bAllowJoinInProgress = state.raw.bAllowJoinInProgress
-    state.bAllowInvites = state.raw.bAllowInvites
-    state.bUsesPresence = state.raw.bUsesPresence
-    state.bAllowJoinViaPresence = state.raw.bAllowJoinViaPresence
-    state.bUsesArbitration = state.raw.bUsesArbitration
-    state.bAntiCheatProtected = state.raw.bAntiCheatProtected
+    // pass specific session fields
 
-    state.OwningPlayerId = Buffer.from(state.raw.OwningPlayerId).toString('hex')
-    state.OwningPlayerName = state.raw.OwningPlayerName
+    // replace uniqueid with stringified id
+    session.OwningPlayerId = unrealengine3.UniqueNetIdToString(session?.OwningPlayerId)
+    state.raw.OwningPlayerId = session.OwningPlayerId
+    state.raw.OwningPlayerName = session.OwningPlayerName
+    state.raw.bUsesStats = anyToString(session.bUsesStats || false)
+    state.raw.bIsDedicated = anyToString(session.bIsDedicated || false)
+    state.raw.NumPublicConnections = anyToString(session.NumPublicConnections)
 
     // manually transform serialized properties into known structure
     const props = state.raw.Properties?.reduce((acc, prop) => {
-      acc[`p${prop.PropertyId}`] = prop.Data.ValueRaw
+      acc[`p${prop.PropertyId}`] = String(prop.Data.ValueRaw) // force string
       return acc
     }, {})
 
     // manually transform serialized localized properties into known structure
     const propsLocalized = state.raw.LocalizedProperties?.reduce((acc, prop) => {
-      acc[`s${prop.Id}`] = prop.ValueIndex // TOOD: find actual value
+      acc[`s${prop.Id}`] = String(prop.ValueIndex) // force string
       return acc
     }, {})
 
     // translate properties
-    state.raw = { ...state.raw, ...props, ...propsLocalized }
-    this.translate(state.raw, this.translateMap)
+    const stateRaw = { ...state.raw, ...props, ...propsLocalized }
+    Object.assign(state.raw, stateRaw)
+    this.translate(state.raw, this.translateMap) // Note: Legacy handling of query values
 
     // Turn all that raw state into something useful
     unrealengine3.staticPopulateProperties(state)
