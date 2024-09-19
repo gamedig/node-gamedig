@@ -4,6 +4,7 @@
 * Feat: Replaced `punycode` package usage with `url.domainToASCII` (#630).
 * Feat: World of Padman (2007) - Added support (#636)
 * Feat: Update Soldat protocol (#642)
+* Feat: TOXIKK (2016) - Added support (#641)
 
 ## 5.1.3
 * Fix: `Deus Ex` using the wrong protocol (#621)
