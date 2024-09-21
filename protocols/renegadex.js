@@ -28,6 +28,15 @@ export default class renegadex extends Core {
       throw new Error('Server not found in master server list')
     }
 
+    // set state properties based on received server info
+    this.populateProperties(state, serverInfo)
+  }
+
+  /**
+   * Translates raw properties into known properties
+   * @param {Object} state Parsed data
+   */
+  populateProperties (state, serverInfo) {
     let emptyPrefix = ''
     if (serverInfo.NamePrefix) emptyPrefix = serverInfo.NamePrefix + ' '
     const servername = `${emptyPrefix}${serverInfo.Name}`
@@ -37,7 +46,7 @@ export default class renegadex extends Core {
 
     state.name = servername
     state.map = serverInfo['Current Map']
-    state.password = Math.abs(!!variables.bPassworded)
+    state.password = variables.bPassworded
 
     state.numplayers = numplayers
     state.maxplayers = variables['Player Limit'] || 0
