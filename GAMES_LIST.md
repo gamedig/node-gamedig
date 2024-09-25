@@ -267,7 +267,7 @@
 | sinepisodes          | SiN Episodes                                     | [Valve Protocol](#valve)                        |
 | sof                  | Soldier of Fortune                               |                                                 |
 | sof2                 | Soldier of Fortune 2                             |                                                 |
-| soldat               | Soldat                                           | [Soldat](#soldat)                               |
+| soldat               | Soldat                                           | [Notes](#soldat)                                |
 | sotf                 | Sons Of The Forest                               | [Valve Protocol](#valve)                        |
 | soulmask             | Soulmask                                         | [Valve Protocol](#valve)                        |
 | spaceengineers       | Space Engineers                                  | [Valve Protocol](#valve)                        |
