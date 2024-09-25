@@ -22,19 +22,21 @@ export default class soldat extends Core {
     state.numplayers = extractValue(string, /Players:\s*(\d+)/, 0, Number)
     state.map = extractValue(string, /Map:\s*(.+)/, '')
 
-    const lines = string.trim().split('\r\n')
+    const lines = string.trim().split('\n')
     const playersIndex = lines.findIndex(line => line.startsWith('Players list'))
 
-    for (let i = playersIndex + 1; i < lines.length - 1; i += 5) {
-      state.players.push({
-        name: lines[i].trim(),
-        raw: {
-          kills: parseInt(lines[i + 1].trim()),
-          deaths: parseInt(lines[i + 2].trim()),
-          team: parseInt(lines[i + 3].trim()),
-          ping: parseInt(lines[i + 4].trim())
-        }
-      })
+    if (playersIndex > -1) {
+      for (let i = playersIndex + 1; i < lines.length - 1; i += 5) {
+        state.players.push({
+          name: lines[i].trim(),
+          raw: {
+            kills: parseInt(lines[i + 1].trim()),
+            deaths: parseInt(lines[i + 2].trim()),
+            team: parseInt(lines[i + 3].trim()),
+            ping: parseInt(lines[i + 4].trim())
+          }
+        })
+      }
     }
 
     state.raw.response = string
