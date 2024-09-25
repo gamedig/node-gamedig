@@ -18,6 +18,7 @@ export default class soldat extends Core {
     })
 
     const string = data.toString()
+    console.log(string)
 
     state.numplayers = extractValue(string, /Players:\s*(\d+)/, 0, Number)
     state.map = extractValue(string, /Map:\s*(.+)/, '')
@@ -38,5 +39,6 @@ export default class soldat extends Core {
     }
 
     state.raw.response = string
+    state.raw.gamemode = extractValue(string, /Gamemode:\s*(.+)/, '')
   }
 }
