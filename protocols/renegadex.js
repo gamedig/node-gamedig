@@ -201,7 +201,6 @@ export default class renegadex extends Core {
     if (serverInfo.NamePrefix) emptyPrefix = serverInfo.NamePrefix + ' '
     const servername = `${emptyPrefix}${serverInfo.Name}`
     const numplayers = serverInfo.Players || 0
-    const numbots = serverInfo.Bots || 0
     const variables = serverInfo.Variables || {}
 
     state.name = servername
@@ -210,10 +209,6 @@ export default class renegadex extends Core {
 
     state.numplayers = numplayers
     state.maxplayers = variables['Player Limit'] || 0
-
-    // due to master server not providing bot/player list, and standard result has no bot count, add list with dummy values
-    state.players = Array.from(new Array(numplayers).keys(), (i) => ({ name: `Player #${i + 1}`, raw: {} }))
-    state.bots = Array.from(new Array(numbots).keys(), (i) => ({ name: `Bot #${i + 1}`, raw: {} }))
 
     state.raw = variables
     state.version = serverInfo['Game Version']
