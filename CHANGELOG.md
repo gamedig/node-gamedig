@@ -3,7 +3,7 @@
 ## 5.X.Y
 * Feat: Replaced `punycode` package usage with `url.domainToASCII` (#630).
 * Feat: World of Padman (2007) - Added support (#636)
-* Feat: Updated Soldat protocol (#642)
+* Feat: Update Soldat protocol (#642)
 
 ## 5.1.3
 * Fix: `Deus Ex` using the wrong protocol (#621)
