@@ -62,6 +62,7 @@ import xonotic from './xonotic.js'
 import altvmp from './altvmp.js'
 import vintagestorymaster from './vintagestorymaster.js'
 import vintagestory from './vintagestory.js'
+import soldat from './soldat.js'
 
 export {
   armagetron, ase, asa, assettocorsa, battlefield, buildandshoot, cs2d, discord, doom3, eco, epic, factorio, farmingsimulator, ffow,
@@ -69,5 +70,5 @@ export {
   minecraftbedrock, minecraftvanilla, minetest, mumble, mumbleping, nadeo, openttd, palworld, quake1, quake2, quake3, rfactor, ragemp, samp,
   savage2, starmade, starsiege, teamspeak2, teamspeak3, terraria, tribes1, tribes1master, unreal2, ut3, valve,
   vcmp, ventrilo, warsow, eldewrito, beammpmaster, beammp, dayz, theisleevrima, xonotic, altvmp, vintagestorymaster,
-  vintagestory
+  vintagestory, soldat
 }
