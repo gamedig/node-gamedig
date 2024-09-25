@@ -199,18 +199,18 @@ export default class renegadex extends Core {
   populateProperties (state, serverInfo) {
     let emptyPrefix = ''
     if (serverInfo.NamePrefix) emptyPrefix = serverInfo.NamePrefix + ' '
-    const servername = `${emptyPrefix}${serverInfo.Name}`
+    const servername = `${emptyPrefix}${serverInfo.Name || ''}`
     const numplayers = serverInfo.Players || 0
     const variables = serverInfo.Variables || {}
 
     state.name = servername
-    state.map = serverInfo['Current Map']
-    state.password = variables.bPassworded
+    state.map = serverInfo['Current Map'] || ''
+    state.password = !!variables.bPassworded
 
     state.numplayers = numplayers
     state.maxplayers = variables['Player Limit'] || 0
 
-    state.raw = variables
-    state.version = serverInfo['Game Version']
+    state.raw = serverInfo
+    state.version = serverInfo['Game Version'] || ''
   }
 }
