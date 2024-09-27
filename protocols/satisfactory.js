@@ -11,27 +11,25 @@ export default class satisfactory extends Core {
   constructor () {
     super()
 
-    /**
-     * To get information about the Satisfactory game server, you need to first obtain a client authenticationToken.
-     * https://satisfactory.wiki.gg/wiki/Dedicated_servers/HTTPS_API
-     */
-
-    this.authenticationToken = null
-
     // Don't use the tcp ping probing
     this.usedTcp = true
 
   }
 
   async run (state) {
-    await this.getClientAuthenticationToken()
 
-    await this.queryInfo(state)
-    await this.cleanup(state)
+    let authenticationToken = await this.getClientAuthenticationToken()
+    await this.queryInfo(state, authenticationToken)
+
   }
 
   async getClientAuthenticationToken () {
     this.logger.debug('Requesting client access token ...')
+
+    /**
+     * To get information about the Satisfactory game server, you need to first obtain a client authenticationToken.
+     * https://satisfactory.wiki.gg/wiki/Dedicated_servers/HTTPS_API
+     */
 
     const url = `https://${this.options.host}:${this.options.port}/api/v1/`
 
@@ -53,10 +51,10 @@ export default class satisfactory extends Core {
       throw new Error('Unable to retrieve authenticationToken')
     }
 
-    this.authenticationToken = response.data.authenticationToken
+    return response.data.authenticationToken
   }
 
-  async queryInfo (state) {
+  async queryInfo (state, authenticationToken) {
     const url = `https://${this.options.host}:${this.options.port}/api/v1/`
 
     const json = {
@@ -65,7 +63,7 @@ export default class satisfactory extends Core {
 
     const headers = {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.authenticationToken}`
+      Authorization: `Bearer ${authenticationToken}`
     }
 
     this.logger.debug(`POST: ${url}`)
@@ -86,7 +84,4 @@ export default class satisfactory extends Core {
     state.raw = response
   }
 
-  async cleanup (state) {
-    this.authenticationToken = null
-  }
 }
