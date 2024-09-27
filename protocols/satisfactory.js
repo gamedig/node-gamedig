@@ -1,12 +1,5 @@
 import Core from './core.js'
 
-/**
- * Satisfactory servers run by default self-signed certificates. This is used to ignore the validation for the requests.
- */
-const https = {
-  rejectUnauthorized: false
-}
-
 export default class satisfactory extends Core {
   constructor () {
     super()
@@ -18,70 +11,65 @@ export default class satisfactory extends Core {
 
   async run (state) {
 
-    let authenticationToken = await this.getClientAuthenticationToken()
-    await this.queryInfo(state, authenticationToken)
-
-  }
-
-  async getClientAuthenticationToken () {
-    this.logger.debug('Requesting client access token ...')
-
     /**
      * To get information about the Satisfactory game server, you need to first obtain a client authenticationToken.
      * https://satisfactory.wiki.gg/wiki/Dedicated_servers/HTTPS_API
      */
 
-    const url = `https://${this.options.host}:${this.options.port}/api/v1/`
-
-    const json = {
+    const tokenRequestJson = {
       function: 'PasswordlessLogin',
       data: {
         MinimumPrivilegeLevel: 'Client'
       }
     }
 
-    const headers = {
-      'Content-Type': 'application/json'
-    }
-
-    this.logger.debug(`POST: ${url}`)
-    const response = await this.request({ url, json, https, headers, method: 'POST', responseType: 'json' })
-
-    if (response.data == null) {
-      throw new Error('Unable to retrieve authenticationToken')
-    }
-
-    return response.data.authenticationToken
-  }
-
-  async queryInfo (state, authenticationToken) {
-    const url = `https://${this.options.host}:${this.options.port}/api/v1/`
-
-    const json = {
+    const queryJson = {
       function: 'QueryServerState'
     }
 
-    const headers = {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${authenticationToken}`
+    let headers = {
+      'Content-Type': 'application/json'
     }
 
-    this.logger.debug(`POST: ${url}`)
-    const response = await this.request({ url, json, https, headers, method: 'POST', responseType: 'json' })
+    let tokenRequestResponse = await this.queryInfo(tokenRequestJson, headers)
 
-    if (response.data == null) {
-      throw new Error('Unable to retrieve serverGameState')
-    }
+    headers.Authorization = `Bearer ${tokenRequestResponse.data.authenticationToken}`
+
+    let queryResponse = await this.queryInfo(queryJson, headers)
 
     /**
      *  Satisfactory API cannot pull Server Name at the moment, see QA and vote for fix here
      *  https://questions.satisfactorygame.com/post/66ebebad772a987f4a8b9ef8
      */
 
-    state.numplayers = response.data.serverGameState.numConnectedPlayers
-    state.maxplayers = response.data.serverGameState.playerLimit
+    state.numplayers = queryResponse.data.serverGameState.numConnectedPlayers
+    state.maxplayers = queryResponse.data.serverGameState.playerLimit
+    state.raw = queryResponse
 
-    state.raw = response
   }
 
+  async queryInfo (json, headers) {
+
+    const url = `https://${this.options.host}:${this.options.port}/api/v1/`
+
+    this.logger.debug(`POST: ${url}`)
+
+    const response = await this.request({
+      url,
+      json,
+      headers,
+      method: 'POST',
+      responseType: 'json',
+      https: {
+        minVersion: 'TLSv1.2',
+        rejectUnauthorized: false
+      }
+    })
+
+    if (response.data == null) {
+      throw new Error('Unable to retrieve data from server')
+    } else {
+      return response
+    }
+  }
 }
