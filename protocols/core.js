@@ -18,6 +18,7 @@ export default class Core extends EventEmitter {
     this.delimiter = '\0'
     this.srvRecord = null
     this.abortedPromise = null
+    this.enabledBroadcast = null
     this.logger = new Logger()
     this.dnsResolver = new DnsResolver(this.logger)
 
@@ -28,6 +29,44 @@ export default class Core extends EventEmitter {
     this.shortestRTT = 0
     this.usedTcp = false
   }
+
+  // TODO: Consider adjusting the function being a field ("setupOptions = func") for _preventing_ overloading (ECMA 2022 required)
+  //   // define as field to prevent overriding
+  //   setupOptions = (options, userOptions = undefined) => {
+  setupOptions (options, userOptions = undefined) {
+    // safety check
+    userOptions ||= {}
+
+    // retrieve default options from subclasses
+    const defaultOptions = {}
+    this.getOptionsDefaults(defaultOptions)
+    Object.keys(defaultOptions).forEach(key => {
+      options[key] ??= defaultOptions[key]
+    })
+
+    // retrieve overriding options from subclasses
+    const overrideOptions = {}
+    this.getOptionsOverrides(overrideOptions)
+    Object.keys(overrideOptions).forEach(key => {
+      // prioritize user options, allow null parameters
+      options[key] = userOptions[key] ?? overrideOptions[key] ?? options[key]
+    })
+
+    return options
+  }
+
+  /**
+   * Update options. Can be used to add/change/override/remove protocol-specific options
+   */
+  updateOptionsDefaults () { }
+  /**
+   * Build/add list of options to override. Can be used to override protocol options
+   */
+  getOptionsDefaults (outOptions) { }
+  /**
+   * Build/add list of options to override. Can be used to override protocol options
+   */
+  getOptionsOverrides (outOptions) { }
 
   // Runs a single attempt with a timeout and cleans up afterward
   async runOnceSafe () {
@@ -78,10 +117,39 @@ export default class Core extends EventEmitter {
       options.port ||= resolved.port
     }
 
-    const state = new Results()
-    await this.run(state)
+    // create initial state, run protocol and let specifiic protocol implementations handle populdate a given state
+    const initialState = this.prepareRun()
+    await this.run(initialState)
+    this.finishRun(initialState)
 
+    return initialState
+  }
+
+  /** main process executing the query */
+  async run (/** Results */ state) {}
+
+  /** Setup/prepare run, will provide how to build up a state. Used in subclasses */
+  prepareRun () { return this.createState() }
+
+  /** finish run, will provide how to generate final state. Used in subclasses */
+  finishRun (state) { this.populateState(state) }
+
+  /**
+   * Creates a default state object
+   * @returns {Results} A state for populate queried values into
+   */
+  createState () {
+    return new Results()
+  }
+
+  /**
+   * Populates and sets up the given state with with basic properties based on given raw values
+   * @param {Results} state The initial created state for returning as query result
+   */
+  populateState (state) {
+    const { options } = this
     state.queryPort = options.port
+
     // because lots of servers prefix with spaces to try to appear first
     state.name = (state.name || '').trim()
     state.connect = state.connect || `${state.gameHost || options.host || options.address}:${state.gamePort || options.port}`
@@ -94,11 +162,7 @@ export default class Core extends EventEmitter {
       log('Size of players array:', state.players.length)
       log('Size of bots array:', state.bots.length)
     })
-
-    return state
   }
-
-  async run (/** Results */ state) {}
 
   /** Param can be a time in ms, or a promise (which will be timed) */
   registerRtt (param) {
@@ -253,7 +317,7 @@ export default class Core extends EventEmitter {
     if (typeof buffer === 'string') buffer = Buffer.from(buffer, 'binary')
 
     const socket = this.udpSocket
-    await socket.send(buffer, address, port, this.options.debug)
+    await socket.send(buffer, address, port, this.options.debug, this.enabledBroadcast)
 
     if (!onPacket && !onTimeout) {
       return null
@@ -261,18 +325,27 @@ export default class Core extends EventEmitter {
 
     let socketCallback
     let timeout
+    const results = []
+    const isBroadcast = !!this.enabledBroadcast && (address?.includes('255') ?? false)
 
     try {
       const promise = new Promise((resolve, reject) => {
         const start = Date.now()
         socketCallback = (fromAddress, fromPort, buffer) => {
           try {
-            if (fromAddress !== address || fromPort !== port) return
+            // in case of a configured broadcast address, the received response might come from the same "address"
+            // e.g. responses for UE3 lan queries might be sent as broadcast therefore the address can be the same
+            if ((fromAddress !== address && !isBroadcast) || fromPort !== port) return
+
             this.registerRtt(Date.now() - start)
             const result = onPacket(buffer)
             if (result !== undefined) {
-              this.logger.debug('UDP send finished by callback')
-              resolve(result)
+              // broadcasts may expect multiple respones, store packet and keep waiting for additional responses
+              results.push(result)
+              if (!isBroadcast) {
+                this.logger.debug('UDP send finished by callback')
+                resolve(result)
+              }
             }
           } catch (e) {
             reject(e)
@@ -282,6 +355,12 @@ export default class Core extends EventEmitter {
       })
       timeout = Promises.createTimeout(socketTimeout, 'UDP')
       const wrappedTimeout = Promise.resolve(timeout).catch((e) => {
+        // in case of broadcast query and received responses, don't return as timeout-error.
+        // consider the timeout out with at least one received response as valid
+        if (isBroadcast && !!results.length) {
+          return results
+        }
+
         this.logger.debug('UDP timeout detected')
         if (onTimeout) {
           const result = onTimeout()
@@ -332,5 +411,34 @@ export default class Core extends EventEmitter {
     } finally {
       requestPromise?.cancel()
     }
+  }
+}
+
+/**
+ * Implements the core LAN protocol
+ */
+export class CoreLAN extends Core {
+  constructor () {
+    super()
+    this.enabledBroadcast = false
+    this.outputAsArray = null
+  }
+
+  /** @override */
+  getOptionsDefaults (outOptions) {
+    super.getOptionsDefaults(outOptions)
+    const defaults = {
+      address: '255.255.255.255',
+      givenPortOnly: true
+    }
+    Object.assign(outOptions, defaults)
+  }
+
+  /** @override */
+  updateOptionsDefaults () {
+    super.updateOptionsDefaults()
+
+    // update enabledBroadcast value manually based on provided address
+    this.enabledBroadcast = this.options.address?.includes('255') ?? this.enabledBroadcast
   }
 }
