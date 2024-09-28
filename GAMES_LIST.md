@@ -257,7 +257,7 @@
 | rune                 | Rune                                             |                                                 |
 | rust                 | Rust                                             | [Valve Protocol](#valve)                        |
 | s2ats                | Savage 2: A Tortured Soul                        |                                                 |
-| satisfactory         | Satisfactory                                     |                                                 |
+| satisfactory         | Satisfactory                                     | [Notes](#satisfactory)                          |
 | sdtd                 | 7 Days to Die                                    | [Valve Protocol](#valve)                        |
 | serioussam           | Serious Sam                                      |                                                 |
 | serioussam2          | Serious Sam 2                                    |                                                 |
@@ -492,6 +492,10 @@ EOS does not provide players data.
 ### <a name="palworld"></a>Palworld
 Palworld support can be unstable, the devs mention the api is currently experimental.  
 To query Palworld servers, the `RESTAPIEnabled` setting must be `True` in the configuration file, and you need to pass the `username` (currently always `admin`) and the `adminpassword` (from the server config) as the `password` parameter.
+
+### <a name="satisfactory"></a>Satisfactory
+Satisfactory servers unless specified use self-signed certificates for the HTTPS API. Because of this you will need to set the `rejectUnauthorized` flag in options to `false` in order to connect.
+For more information on setting a user certificate refer to the [Satisfactory Dedicated server/HTTPS API wiki documentation](https://satisfactory.wiki.gg/wiki/Dedicated_servers/HTTPS_API).
 
 ### <a name="soldat"></a>Soldat
 Requires `Allow_Download` and `Logging` to be `1` in the server config.

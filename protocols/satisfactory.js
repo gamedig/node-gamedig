@@ -62,7 +62,7 @@ export default class satisfactory extends Core {
       responseType: 'json',
       https: {
         minVersion: 'TLSv1.2',
-        rejectUnauthorized: false
+        rejectUnauthorized: this.options.rejectUnauthorized
       }
     })
 
