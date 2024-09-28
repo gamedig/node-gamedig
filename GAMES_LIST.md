@@ -268,7 +268,7 @@
 | sinepisodes          | SiN Episodes                                     | [Valve Protocol](#valve)                        |
 | sof                  | Soldier of Fortune                               |                                                 |
 | sof2                 | Soldier of Fortune 2                             |                                                 |
-| soldat               | Soldat                                           |                                                 |
+| soldat               | Soldat                                           | [Notes](#soldat)                                |
 | sotf                 | Sons Of The Forest                               | [Valve Protocol](#valve)                        |
 | soulmask             | Soulmask                                         | [Valve Protocol](#valve)                        |
 | spaceengineers       | Space Engineers                                  | [Valve Protocol](#valve)                        |
@@ -315,6 +315,7 @@
 | toh                  | Take On Helicopters                              |                                                 |
 | tonolf               | The Operative: No One Lives Forever              |                                                 |
 | towerunite           | Tower Unite                                      | [Valve Protocol](#valve)                        |
+| toxikk               | TOXIKK                                           |                                                 |
 | trackmania2          | Trackmania 2                                     | [Notes](#nadeo)                                 |
 | trackmaniaforever    | Trackmania Forever                               | [Notes](#nadeo)                                 |
 | tremulous            | Tremulous                                        |                                                 |
@@ -491,3 +492,6 @@ EOS does not provide players data.
 ### <a name="palworld"></a>Palworld
 Palworld support can be unstable, the devs mention the api is currently experimental.  
 To query Palworld servers, the `RESTAPIEnabled` setting must be `True` in the configuration file, and you need to pass the `username` (currently always `admin`) and the `adminpassword` (from the server config) as the `password` parameter.
+
+### <a name="soldat"></a>Soldat
+Requires `Allow_Download` and `Logging` to be `1` in the server config.
