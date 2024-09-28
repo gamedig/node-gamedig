@@ -164,13 +164,39 @@ export default class renegadex extends Core {
   }
 
   async run (state) {
+    // query master list and find specific server
+    const servers = await this.getMasterServerList()
+    const serverInfo = servers.find((server) => {
+      return server.IP === this.options.address && server.Port === this.options.port
+    })
+
+    if (serverInfo == null) {
+      throw new Error('Server not found in master server list')
+    }
+
+    // set state properties based on received server info
+    this.populateProperties(state, serverInfo)
+  }
+
+  /**
+   * Retrieves server list from master server
+   * @throws {Error} Will throw error when no master list was received
+   * @returns a list of servers as raw data
+   */
+  async getMasterServerList () {
     const servers = await this.request({
       url: 'https://serverlist-rx.totemarts.services/servers.jsp',
       responseType: 'json'
     })
 
-    if (!servers) {
+    if (servers == null) {
       throw new Error('Unable to retrieve master server list')
+    }
+    if (!Array.isArray(servers)) {
+      throw new Error('Invalid data received from master server. Expecting list of data')
+    }
+    if (servers.length === 0) {
+      throw new Error('No data received from master server.')
     }
 
     // TODO: Ajv response validation
@@ -179,17 +205,7 @@ export default class renegadex extends Core {
     //   throw new Error(`Received master server data is unknown/invalid: ${ajv.errorsText(ajv.errors)}`)
     // }
 
-    const serverInfo = servers.find(
-      (server) =>
-        server.IP === this.options.address && server.Port === this.options.port
-    )
-
-    if (serverInfo == null) {
-      throw new Error('Server not found in master server list')
-    }
-
-    // set state properties based on received server info
-    this.populateProperties(state, serverInfo)
+    return servers
   }
 
   /**
