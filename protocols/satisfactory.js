@@ -31,6 +31,13 @@ export default class satisfactory extends Core {
       'Content-Type': 'application/json'
     }
 
+    /**
+     *  Satisfactory servers unless specified use self-signed certificates for the HTTPS API.
+     *  Because of this we default the `rejectUnauthorized` flag to `false` unless set.
+     *  For more information see GAMES_LIST.md
+     */
+    if (!this.options.rejectUnauthorized) this.options.rejectUnauthorized = false
+
     let tokenRequestResponse = await this.queryInfo(tokenRequestJson, headers)
 
     headers.Authorization = `Bearer ${tokenRequestResponse.data.authenticationToken}`
