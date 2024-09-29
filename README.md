@@ -4,7 +4,7 @@
 **node-GameDig** is a game server query Node.js module (as well as a [command line executable](#usage-from-command-line)), 
 capable of querying for the status of nearly any game or voice server.
 
-If a server makes its status publically available, GameDig can fetch it for you.
+If a server makes its status publicly available, GameDig can fetch it for you.
 
 Support is available on the [Discord](https://discord.gg/NVCMn3tnxH) for questions, or [GitHub](https://github.com/gamedig/node-gamedig/issues) for bugs.
 
@@ -103,16 +103,16 @@ npx gamedig --type minecraft mc.example.com:11234
 
 The output of the command will be in JSON format.  
 Additional advanced parameters can be passed in as well:
-* `--debug`: Print debugging informations, useful when stating an issue.
+* `--debug`: Print debugging information, useful when stating an issue.
 * `--pretty`: Outputs the JSON format nicely.
 * `--requestRules`: Request Valve games rules.
 * `--givenPortOnly`: Run the query with the specified port only (if any).
-* `--socketTimeout N`: Specifies socket timeout (where `N` is a number, eg. `5000`).
+* `--socketTimeout N`: Specifies socket timeout (where `N` is a number, e.g. `5000`).
 * ... and the rest in the same format.
 
 ## Using with other runtimes
 While we still expect to be some minor issues with these, the library works, if any problems
-arises please open an issue and we'll look into it.
+arises please open an issue, and we'll look into it.
 
 * **Deno**: Minimum supported deno version is `1.39.2` and the `--allow-net` permission is required.  
 * **Bun**: Minimum supported version is `1.1.21`.
@@ -122,7 +122,7 @@ arises please open an issue and we'll look into it.
 ### Firewalls block incoming UDP
 *(replit / docker / some VPS providers)*
 
-Most game query protocols require a UDP request and response. This means that in some environments, gamedig may not be able to receive the reponse required due to environmental restrictions.
+Most game query protocols require a UDP request and response. This means that in some environments, gamedig may not be able to receive the response required due to environmental restrictions.
 
 Some examples include:
 * Docker containers
