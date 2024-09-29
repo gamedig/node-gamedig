@@ -37,10 +37,10 @@ Confused on how this works, or you want to see more? Checkout the [examples](/ex
 
 ## Required Fields
 
-| Field    | Type   | Description                                                    |
-|:---------|:-------|:---------------------------------------------------------------|
+| Field    | Type   | Description                                                                                                                                                                          |
+|:---------|:-------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **type** | string | One of the game type IDs listed in the [games list](GAMES_LIST.md). Or you can use `protocol-[name]` to select a specific protocol. Protocols are listed [here](protocols/index.js). |
-| **host** | string | Hostname or IP of the game server.                             |
+| **host** | string | Hostname or IP of the game server.                                                                                                                                                   |
 
 ## Optional Fields
 
@@ -81,7 +81,7 @@ The returned state object will contain the following keys:
 | **connect**      | string           | This will typically include the game's `IP:PORT`. The port will reflect the server's game port, even if your request specified the game's query port in the request. For some games, this may be a server ID or connection URL if an IP:PORT is not appropriate for end-users.                                             |
 | **ping**         | number           | Round trip time to the server (in milliseconds). Note that this is not the RTT of an ICMP echo, as ICMP packets are often blocked by NATs and node has poor support for raw sockets. This value is derived from the RTT of one of the query packets, which is usually quite accurate, but may add a bit due to server lag. |
 | **queryPort**    | number           | Indicates on which port the query was done on, 0 if this is not applicable.                                                                                                                                                                                                                                                |
-| **version**      | string           | Game version that is running on the server. Empty if not present.                                                                                                                                                                                                                                                |
+| **version**      | string           | Game version that is running on the server. Empty if not present.                                                                                                                                                                                                                                                          |
 | **raw**          | object           | Contains all information received from the server in a disorganized format.                                                                                                                                                                                                                                                |
 
 Note that `raw` (or **unstable**) objects contents MAY change on a per-protocol basis between GameDig patch releases (although not typical).
