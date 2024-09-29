@@ -17,7 +17,7 @@ Please provide the steps to reproduce the behavior, this should include what ver
 A clear and concise description of what you expected to happen.
 
 **Screenshots or Data**
-If applicable, add screenshots/data to help explain your problem, if this is about a query, run the CLI version with the `--debug` option and put the output in an collapsible section.
+If applicable, add screenshots/data to help explain your problem, if this is about a query, run the CLI version with the `--debug` option and put the output in a collapsible section.
 <details>
 ```
 How to do a collapsible section:
