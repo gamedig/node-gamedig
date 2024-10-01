@@ -3,6 +3,7 @@
 ## 5.X.Y
 * Feat: Replaced `punycode` package usage with `url.domainToASCII` (#630).
 * Feat: World of Padman (2007) - Added support (#636)
+* Feat: Satisfactory - Added support (By @Smidy13 #645)
 * Feat: Update Soldat protocol (#642)
 * Feat: TOXIKK (2016) - Added support (#641)
 
