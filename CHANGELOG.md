@@ -6,6 +6,7 @@
 * Feat: Satisfactory - Added support (By @Smidy13 #645)
 * Feat: Update Soldat protocol (#642)
 * Feat: TOXIKK (2016) - Added support (#641)
+* Feat: Update redorchestra to use correct query port and type (#639)
 
 ## 5.1.3
 * Fix: `Deus Ex` using the wrong protocol (#621)
@@ -26,7 +27,7 @@
 ## 5.1.1
 * Lock dependencies to fix problems with cheerio's `1.0.0` release and update punycode to `2.3.1` to mitigate
 a vulnerability (#604)
-* Fix the `name` field on Minecraft servers: 
+* Fix the `name` field on Minecraft servers:
 * * running Velocity with multiple layers of color encoding (#595)
 * * the top-level text of the description is a string composed of empty characters (#599)
 * Fix branding for alt:V Multiplayer (By @xCausxn #600)
@@ -55,7 +56,7 @@ a vulnerability (#604)
 * Farming Simulator 19 (2018) - Added support (By @Vito0912 #531)
 * Assetto Corsa - Fixed how `state.numplayers` is set (By @podrivo #538)
 * TeamSpeak 2 - Fixed how `state.name` is set (By @podrivo #544)
-* Grand Theft Auto: San Andreas OpenMP - Fixed `state.players` returning an empty array (By @Focus04 #547) 
+* Grand Theft Auto: San Andreas OpenMP - Fixed `state.players` returning an empty array (By @Focus04 #547)
 * Perf: Re-write of the `core` class.
 * Perf: Remove many if statements from `GameSpy2`.
 * Myth of Empires - Added support.
@@ -88,7 +89,7 @@ a vulnerability (#604)
 
 #### Games
 * Almost all games ids have been changed to follow a standard, see [CONTRIBUTING.md#naming](https://github.com/gamedig/node-gamedig/blob/5ae12dd494c927abcbe43352609d9aa34a54753c/CONTRIBUTING.md?plain=1#L27C3-L27C3).
-* Removed `minecraftping` (as it was deprecated and the same thing as `minecraft`) and 
+* Removed `minecraftping` (as it was deprecated and the same thing as `minecraft`) and
 `minecraftpe` (deprecated, which is now the same as `mbe` (Minecraft Bedrock Edition)).
 * Removed the `games.txt` file, the games definitions are now stored in-code (exported on `games`).
 
@@ -120,7 +121,7 @@ a vulnerability (#604)
 * Now documented: `address` (defaults to `undefined`) Override the IP address of the server skipping DNS resolution. When set, host will not be resolved, instead address will be connected to. However, some protocols still use host for other reasons e.g. as part of the query.
 
 #### Games
-* Removed the players::setNum method, the library will no longer add empty players as 
+* Removed the players::setNum method, the library will no longer add empty players as
 placeholders in the `players` fields.
 * Valve: dont skip players with no name and keep state.raw.players.
 * Stabilized field `numplayers`.
