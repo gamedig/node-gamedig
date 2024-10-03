@@ -1,33 +1,5 @@
 import Core from './core.js'
-// import { TranslateMapUT3 } from './ut3.js'
-
-/**
- * Deeply merges two objects, combining their properties recursively.
- *
- * If both objects have a property with the same key and that property is an object,
- * the properties of the second object will be merged into the first object's property.
- * If the property is not an object or if it does not exist in the first object,
- * the property from the second object will overwrite the property in the first object.
- *
- * @param {Object} obj1 - The first object to merge.
- * @param {Object} obj2 - The second object to merge.
- * @returns {Object} A new object containing the merged properties of both input objects.
- */
-function deepMerge (obj1, obj2) {
-  const result = { ...obj1 }
-
-  for (const key in obj2) {
-    if (Object.hasOwn(obj2, key)) {
-      if (obj2[key] instanceof Object && obj1[key] instanceof Object) {
-        result[key] = deepMerge(obj1[key], obj2[key])
-      } else {
-        result[key] = obj2[key]
-      }
-    }
-  }
-
-  return result
-}
+import { MeteorBackendApi } from './hawakeningmaster.js'
 
 /**
  * Implements the protocol for Hawkening, a fan project of the UnrealEngine3 based game HAWKEN
@@ -38,10 +10,11 @@ export default class hawakening extends Core {
     super()
 
     // this.meteorUri = 'https://v2-services-live-pc.playhawken.com'
-    this.meteorUri = 'https://hawakening.com/api'
+    const meteorUri = 'https://hawakening.com/api'
+    this.backendApi = new MeteorBackendApi(this, meteorUri)
+    this.backendApi.setLogger(this.logger)
 
     this.doLogout = true
-    this.accessToken = null
     this.userInfo = null
 
     // Don't use the tcp ping probing
@@ -82,7 +55,7 @@ export default class hawakening extends Core {
     await this.sendExitMessage()
     await this.sendLogout()
 
-    this.accessToken = null
+    this.backendApi.cleanup()
     this.userInfo = null
   }
 
@@ -108,113 +81,53 @@ export default class hawakening extends Core {
   async retrieveClientAccessToken () {
     if (this.options.token) {
       this.doLogout = false
-      this.accessToken = this.options.token
+      this.backendApi.accessToken = this.options.token
       await this.checkAccess()
       return
     }
 
-    this.logger.debug('Requesting client access token ...')
-    this.accessToken = await this.getClientAccessToken()
+    this.logger.debug(`Retrieving user access token for ${this.options.username}...`)
+    const response = await this.backendApi.getClientAccessToken(this.options.username, this.options.password)
+
+    MeteorBackendApi.AssertResponse(response, 'access token')
+    MeteorBackendApi.AssertResponseMessage(response, { match: ['Access Grant Not Issued: User not found'], errorMessage: 'Invalid user name' })
+    MeteorBackendApi.AssertResponseMessage(response, { match: ['Access Grant Not Issued: Incorrect password'], errorMessage: 'Incorrect password' })
+    MeteorBackendApi.AssertResponseStatus(response, 'access token', { printStatus: true })
+    MeteorBackendApi.AssertResponseMessage(response, 'access token', { expected: ['User Logged In'] })
+    MeteorBackendApi.AssertResponseData(response, 'access token')
+    this.backendApi.accessToken = response.Result
   }
 
   async retrieveUser () {
     this.userInfo = await this.getUserInfo()
   }
 
-  async makeCall (endpoint, requestParams, callParams) {
-    const { requireAuth = false } = callParams
-
-    const url = `${this.meteorUri}/${endpoint}`
-    const headers = {
-      Accept: '*/*',
-      'Content-Type': 'application/json',
-      ...(requireAuth ? { Authorization: `Basic ${this.accessToken}` } : {})
-    }
-
-    const defaultParams = {
-      url,
-      headers,
-      method: 'GET',
-      responseType: 'json'
-    }
-    const requestCollection = deepMerge(defaultParams, requestParams)
-
-    this.logger.debug(`${requestCollection.method || 'GET'}: ${url}`)
-    const response = await this.request(requestCollection)
-    return response
-  }
-
   async checkAccess () {
     this.logger.debug('Checking access ...')
-    const response = await this.makeCall('status/services', {}, { requireAuth: true })
-
-    if (!response || response.Status !== 200) {
-      throw new Error('Error retrieving status message with no valid response')
-    }
-    if (response.Message?.toLowerCase() !== 'Status found'.toLowerCase()) {
-      throw new Error('Invalid status message received')
-    }
-  }
-
-  async getClientAccessToken () {
-    this.logger.debug(`Retrieving user access token for ${this.options.username}...`)
-
-    const endpoint = `users/${encodeURIComponent(this.options.username)}/accessGrant`
-    const body = { Password: this.options.password }
-    const response = await this.makeCall(endpoint, { json: body, method: 'POST', headers: { myheader: 'test' } }, { requireAuth: true })
-
-    if (!response) {
-      throw new Error('Error retrieving access token with no valid response')
-    }
-    if (response.Message?.toLowerCase() === 'Access Grant Not Issued: User not found'.toLowerCase()) {
-      throw new Error('Invalid user name')
-    }
-    if (response.Message?.toLowerCase() === 'Access Grant Not Issued: Incorrect password'.toLowerCase()) {
-      throw new Error('Incorrect password')
-    }
-    if (response.Status !== 200) {
-      throw new Error(`Error retrieving valid access token response. Response Status: ${response.Status}`)
-    }
-    if (response.Message?.toLowerCase() !== 'User Logged In'.toLowerCase()) {
-      throw new Error('Invalid access token message received')
-    }
-    if (!response.Result) {
-      throw new Error('No access token received')
-    }
-
-    return response.Result
+    const response = await this.backendApi.getStatusServices()
+    MeteorBackendApi.AssertResponseStatus(response, 'service status')
+    MeteorBackendApi.AssertResponseMessage(response, 'service status', { expected: ['Status found'] })
   }
 
   async getUserInfo () {
     this.logger.debug(`Requesting user info for ${this.options.username} ...`)
 
-    const endpoint = `users/${encodeURIComponent(this.options.username)}`
-    const response = await this.makeCall(endpoint, {}, { requireAuth: true })
-    if (!response || response.Status !== 200) {
-      throw new Error('Error retrieving user info with no valid response')
-    }
-    if (response.Message?.toLowerCase() !== 'Userfound'.toLowerCase()) {
-      throw new Error('Invalid user info message received')
-    }
-    if (response.Result == null) {
-      throw new Error('No user info received')
-    }
-
+    const response = await this.backendApi.getUserInfo(this.options.username)
+    const tag = 'user info'
+    MeteorBackendApi.AssertResponseStatus(response, tag)
+    MeteorBackendApi.AssertResponseMessage(response, tag, { expected: ['Userfound'] })
+    MeteorBackendApi.AssertResponseData(response, tag)
     return response.Result
   }
 
   async getMasterServerList () {
     this.logger.debug('Requesting game servers ...')
-    const response = await this.makeCall('gameServerListings', {}, { requireAuth: true })
-    if (!response || response.Status !== 200) {
-      throw new Error('Error retrieving access token with no valid response')
-    }
-    if (response.Message?.toLowerCase() !== 'Listings found'.toLowerCase()) {
-      throw new Error('Invalid server list message received')
-    }
-    if (response.Result == null) {
-      throw new Error('No server listing received')
-    }
+    const response = await this.backendApi.getMasterServerList()
+
+    const tag = 'server list'
+    MeteorBackendApi.AssertResponseStatus(response, tag)
+    MeteorBackendApi.AssertResponseMessage(response, tag, { expected: ['Listings found'] })
+    MeteorBackendApi.AssertResponseData(response, tag)
 
     const servers = response.Result
     if (!Array.isArray(servers)) {
@@ -235,71 +148,33 @@ export default class hawakening extends Core {
 
   async getServerToken (serverListing) {
     this.logger.debug(`Requesting server token ${serverListing.Guid} ...`)
+    const response = await this.backendApi.getServerToken(serverListing, this.userInfo)
 
-    const body = {
-      GameVersion: serverListing.GameVersion,
-      OwnerGuid: this.userInfo.Guid,
-      Region: serverListing.Region,
-      RequestedServerGuid: serverListing.Guid,
-      Users: [this.userInfo.Guid]
-    }
-    const response = await this.makeCall('hawkenClientMatchmakingAdvertisements', { json: body, method: 'POST' }, { requireAuth: true })
-    if (!response || response.Status !== 200) {
-      throw new Error('Error retrieving server token with no valid response')
-    }
-    if (response.Message?.toLowerCase() !== 'Succesfully created the advertisement'.toLowerCase()) {
-      throw new Error('Invalid server token message received')
-    }
-    if (response.Result == null) {
-      throw new Error('No server token received')
-    }
-
+    const tag = 'server token'
+    MeteorBackendApi.AssertResponseStatus(response, tag)
+    MeteorBackendApi.AssertResponseMessage(response, tag, { expected: ['Succesfully created the advertisement'] })
+    MeteorBackendApi.AssertResponseData(response, tag)
     return response.Result
   }
 
   async getMatchInfo (serverToken) {
     this.logger.debug(`Requesting match info ${serverToken} ...`)
+    const response = await this.backendApi.getMatchInfo(serverToken)
 
-    const endpoint = `hawkenClientMatchmakingAdvertisements/${serverToken}`
-    const response = await this.makeCall(endpoint, {}, { requireAuth: true })
-    if (!response || response.Status !== 200) {
-      throw new Error('Error retrieving match info with no valid response')
-    }
-    if (response.Message?.toLowerCase() !== 'Successfully loaded ClientMatchmakingAdvertisement.'.toLowerCase()) {
-      throw new Error('Invalid match info message received')
-    }
-    if (response.Result == null) {
-      throw new Error('No match info received')
-    }
-
+    const tag = 'match info'
+    MeteorBackendApi.AssertResponseStatus(response, tag)
+    MeteorBackendApi.AssertResponseMessage(response, tag, { expected: ['Successfully loaded ClientMatchmakingAdvertisement.'] })
+    MeteorBackendApi.AssertResponseData(response, tag)
     return response.Result
   }
 
   async sendExitMessage () {
     this.logger.debug('Sending exit notify message ...')
+    const response = await this.backendApi.notifyExit(this.userInfo)
 
-    const body = [{
-      Data: {
-        TimeCreated: (new Date().getTime() / 1000)
-      },
-      Producer: {
-        Id: '\\Hawken-CL142579\\Binaries\\Win32\\HawkenGame-Win32-Shipping.exe',
-        Type: 'HawkenGameClient'
-      },
-      Subject: {
-        Id: this.userInfo.Guid,
-        Type: 'Player'
-      },
-      Timestamp: (new Date().toISOString()),
-      Verb: 'ExitClient'
-    }]
-    const response = await this.makeCall('gameClientEvent', { json: body, method: 'POST' }, { requireAuth: true })
-    if (!response || response.Status !== 200) {
-      throw new Error('Error retrieving exit message response')
-    }
-    if (response.Message?.toLowerCase() !== 'Event emission successful'.toLowerCase()) {
-      throw new Error('Invalid exit message received')
-    }
+    const tag = 'exit message'
+    MeteorBackendApi.AssertResponseStatus(response, tag)
+    MeteorBackendApi.AssertResponseMessage(response, tag, { expected: ['Event emission successful'] })
   }
 
   async sendLogout () {
@@ -308,15 +183,10 @@ export default class hawakening extends Core {
     }
 
     this.logger.debug(`Sending logout message for ${this.userInfo?.EmailAddress || this.userInfo.Guid}...`)
+    const response = await this.backendApi.logout(this.userInfo)
 
-    const endpoint = `users/${this.userInfo.Guid}/accessGrant`
-    const body = { AccessGrant: this.accessToken }
-    const response = await this.makeCall(endpoint, { json: body, method: 'PUT' }, { requireAuth: true })
-    if (!response || response.Status !== 200) {
-      throw new Error('Error retrieving logout response')
-    }
-    if (response.Message?.toLowerCase() !== 'AccessGrant Revoked'.toLowerCase()) {
-      throw new Error('Invalid logout message received')
-    }
+    const tag = 'logout message'
+    MeteorBackendApi.AssertResponseStatus(response, tag)
+    MeteorBackendApi.AssertResponseMessage(response, tag, { expected: ['AccessGrant Revoked'] })
   }
 }
