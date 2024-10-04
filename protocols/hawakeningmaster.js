@@ -452,20 +452,29 @@ export const MasterServerResponseSchema = {
 }
 
 /**
- * Implements the protocol for retrieving a master list for Hawkening, a fan project of the UnrealEngine3 based game HAWKEN
+ * Implements the protocol for retrieving a master list for Hawakening, a fan project of the UnrealEngine3 based game HAWKEN
  * using a Meteor backend for the master server
  */
 export default class hawakeningmaster extends Core {
   constructor () {
     super()
 
-    // this.meteorUri = 'https://v2-services-live-pc.playhawken.com'
+    // backend API url for original Hawken release
+    // const meteorUri = 'https://v2-services-live-pc.playhawken.com'
+    // Hawakening API for public release in 2024
     const meteorUri = 'https://hawakening.com/api'
+
     this.backendApi = new MeteorBackendApi(this, meteorUri)
     this.backendApi.setLogger(this.logger)
 
+    // set when querying needs access token
+    this.requireToken = false
+    // set when querying for specific server only
     this.doQuerySingle = false
+    // set to logout on cleanup (to revoke access token)
     this.doLogout = true
+
+    // stored user, queried from backend
     this.userInfo = null
 
     // Don't use the tcp ping probing
@@ -565,11 +574,17 @@ export default class hawakeningmaster extends Core {
       return
     }
 
+    if (!this.options.username && !this.requireToken) {
+      this.logger.debug('retrieveClientAccessToken: No username provided but no token required for current protocol.')
+      return
+    }
+
     this.logger.debug(`Retrieving user access token for ${this.options.username}...`)
     const response = await this.backendApi.getClientAccessToken(this.options.username, this.options.password)
 
     const tag = 'access token'
     MeteorBackendApi.AssertResponse(response, tag)
+    MeteorBackendApi.AssertResponseMessage(response, tag, { match: ['Access Grant Not Issued: Unrecognized options for login request'], errorMessage: 'No user name or password' })
     MeteorBackendApi.AssertResponseMessage(response, tag, { match: ['Access Grant Not Issued: User not found'], errorMessage: 'Invalid user name' })
     MeteorBackendApi.AssertResponseMessage(response, tag, { match: ['Access Grant Not Issued: Incorrect password'], errorMessage: 'Incorrect password' })
     MeteorBackendApi.AssertResponseStatus(response, tag, { printStatus: true })
@@ -581,6 +596,11 @@ export default class hawakeningmaster extends Core {
   }
 
   async retrieveUser () {
+    if (!this.options.username && !this.requireToken) {
+      this.logger.debug('retrieveUser: No username provided but no token required for current protocol.')
+      return
+    }
+
     this.userInfo = await this.getUserInfo()
   }
 
@@ -597,10 +617,12 @@ export default class hawakeningmaster extends Core {
 
   async getUserInfo () {
     this.logger.debug(`Requesting user info for ${this.options.username} ...`)
-
     const response = await this.backendApi.getUserInfo(this.options.username)
+
     const tag = 'user info'
-    MeteorBackendApi.AssertResponseStatus(response, tag)
+    MeteorBackendApi.AssertResponse(response, tag)
+    MeteorBackendApi.AssertResponseMessage(response, tag, { match: ['User not found'], errorMessage: 'Invalid or no user name' })
+    MeteorBackendApi.AssertResponseStatus(response, tag, { printStatus: true })
     MeteorBackendApi.AssertResponseMessage(response, tag, { expected: ['Userfound'] })
     MeteorBackendApi.AssertResponseData(response, tag)
     return response.Result
@@ -668,6 +690,11 @@ export default class hawakeningmaster extends Core {
   }
 
   async sendExitMessage () {
+    // in case of non-authorized query, early out and skip sending logout message
+    if (!this.backendApi.accessToken || !this.userInfo) {
+      return
+    }
+
     this.logger.debug('Sending exit notify message ...')
     const response = await this.backendApi.notifyExit(this.userInfo)
 
@@ -677,7 +704,8 @@ export default class hawakeningmaster extends Core {
   }
 
   async sendLogout () {
-    if (!this.doLogout) {
+    // in case of no logged user or non-authorized query, early out and skip sending logout message
+    if (!this.doLogout || !this.backendApi.accessToken || !this.userInfo) {
       return
     }
 
