@@ -100,8 +100,8 @@ export class MeteorBackendApi {
    * @param {boolean} [callParams.requireAuth=false] - Whether the call requires authentication.
    * @returns {Promise<Object>} A promise that resolves to the response object from the API call.
    */
-  makeCall (endpoint, requestParams, callParams) {
-    const { requireAuth = false } = callParams
+  makeCall (endpoint, requestParams = null, callParams = null) {
+    const { requireAuth = false } = callParams ?? {}
 
     const url = `${this.#apiUri}/${endpoint}`
     const headers = {
@@ -136,7 +136,17 @@ export class MeteorBackendApi {
    * @returns {Promise<Object>} A promise that resolves to the response object from the API call.
    */
   getStatusServices () {
-    const response = this.makeCall('status/services', {}, { requireAuth: true })
+    const response = this.makeCall('status/services')
+    return response
+  }
+
+  /**
+   * Retrieves Bundles.
+   * 
+   * @returns {Promise<Object>} A promise that resolves to the response object from the API call.
+   */
+  getBundles () {
+    const response = this.makeCall('bundles', {}, { requireAuth: true })
     return response
   }
 
@@ -150,7 +160,7 @@ export class MeteorBackendApi {
   getClientAccessToken (userName, password) {
     const endpoint = `users/${encodeURIComponent(userName)}/accessGrant`
     const body = { Password: password }
-    const response = this.makeCall(endpoint, { json: body, method: 'POST', headers: { myheader: 'test' } }, { requireAuth: true })
+    const response = this.makeCall(endpoint, { json: body, method: 'POST' })
     return response
   }
 
@@ -565,7 +575,9 @@ export default class hawakeningmaster extends Core {
     MeteorBackendApi.AssertResponseStatus(response, tag, { printStatus: true })
     MeteorBackendApi.AssertResponseMessage(response, tag, { expected: ['User Logged In'] })
     MeteorBackendApi.AssertResponseData(response, tag)
+
     this.backendApi.accessToken = response.Result
+    await this.checkAccess()
   }
 
   async retrieveUser () {
@@ -574,9 +586,13 @@ export default class hawakeningmaster extends Core {
 
   async checkAccess () {
     this.logger.debug('Checking access ...')
-    const response = await this.backendApi.getStatusServices()
-    MeteorBackendApi.AssertResponseStatus(response, 'service status')
-    MeteorBackendApi.AssertResponseMessage(response, 'service status', { expected: ['Status found'] })
+    const responseServices = await this.backendApi.getStatusServices()
+    MeteorBackendApi.AssertResponseStatus(responseServices, 'service status')
+    MeteorBackendApi.AssertResponseMessage(responseServices, 'service status', { expected: ['Status found'] })
+
+    const responseTest = await this.backendApi.getBundles()
+    MeteorBackendApi.AssertResponseStatus(responseTest, 'bundles')
+    MeteorBackendApi.AssertResponseMessage(responseTest, 'bundles', { expected: ['Bundles Filter successful'] })
   }
 
   async getUserInfo () {
