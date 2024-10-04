@@ -1,5 +1,122 @@
 import Core from './core.js'
 import { MeteorBackendApi } from './hawakeningmaster.js'
+// import Ajv from 'ajv'
+// const ajv = new Ajv()
+
+export const MasterServerServerListingSchema = {
+  type: 'object',
+  required: [
+    'userGuid',
+    'AllowedRoles',
+    'DeveloperData',
+    'Endpoint',
+    'GameType',
+    'GameVersion',
+    'IsMatchmakingVisible',
+    'IsPublicVisible',
+    'LastUpdate',
+    'Map',
+    'MatchCompletionPercent',
+    'MatchId',
+    'MaxUsers',
+    'MinUsers',
+    'Port',
+    'Region',
+    'ServerName',
+    'ServerRanking',
+    'ServerScore',
+    'Status',
+    'Users',
+    'VoiceChannelListing',
+    'Guid'
+  ],
+  properties: {
+    userGuid: { type: 'string' },
+    AllowedRoles: {
+      type: 'array',
+      items: {
+        items: {}
+      }
+    },
+    DeveloperData: {
+      type: 'object',
+      properties: {
+        AveragePilotLevel: { type: 'string' },
+        MatchState: { type: 'string' },
+        bIgnoreMMR: { type: 'string' },
+        bTournament: { type: 'string' },
+        PasswordHash: {
+          type: 'string'
+        }
+      },
+      required: [
+        'AveragePilotLevel',
+        'MatchState',
+        'bIgnoreMMR',
+        'bTournament'
+      ]
+    },
+    Endpoint: { type: 'null' },
+    GameType: { type: 'string' },
+    GameVersion: { type: 'string' },
+    IsMatchmakingVisible: { type: 'boolean' },
+    IsPublicVisible: { type: 'boolean' },
+    LastUpdate: { type: 'string' },
+    Map: { type: 'string' },
+    MatchCompletionPercent: {
+      type: 'integer',
+      minimum: 0
+    },
+    MatchId: {
+      type: 'string',
+      pattern: '^[A-Fa-f0-9]{32}$'
+    },
+    MaxUsers: {
+      type: 'integer',
+      minimum: 0
+    },
+    MinUsers: {
+      type: 'integer',
+      minimum: 0
+    },
+    Port: {
+      type: 'null'
+    },
+    Region: {
+      type: 'string',
+      enum: [
+        'Asia',
+        'Europe',
+        'North-America',
+        'Oceania'
+      ]
+    },
+    ServerName: { type: 'string' },
+    ServerRanking: { type: 'integer' },
+    ServerScore: { type: 'string' },
+    Status: { type: 'integer' },
+    Users: {
+      type: 'array',
+      items: {
+        type: 'string',
+        format: 'uuid'
+      }
+    },
+    VoiceChannelListing: { type: 'string' },
+    Guid: {
+      type: 'string',
+      format: 'uuid'
+    }
+  }
+}
+
+export const MasterServerResponseSchema = {
+  type: 'array',
+  items: { $ref: '#/$defs/server' },
+  $defs: {
+    server: MasterServerServerListingSchema
+  }
+}
 
 /**
  * Implements the protocol for Hawkening, a fan project of the UnrealEngine3 based game HAWKEN
@@ -136,6 +253,12 @@ export default class hawakening extends Core {
     if (servers.length === 0) {
       throw new Error('No data received from master server.')
     }
+
+    // TODO: Ajv response validation
+    // const isDataValid = ajv.validate(MasterServerResponseSchema, servers)
+    // if (!isDataValid) {
+    //   throw new Error(`Received master server data is unknown/invalid: ${ajv.errorsText(ajv.errors)}`)
+    // }
 
     return servers
   }
