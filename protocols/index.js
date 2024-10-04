@@ -3,6 +3,8 @@ import ase from './ase.js'
 import asa from './asa.js'
 import assettocorsa from './assettocorsa.js'
 import battlefield from './battlefield.js'
+import brokeprotocol from './brokeprotocol.js'
+import brokeprotocolmaster from './brokeprotocolmaster.js'
 import buildandshoot from './buildandshoot.js'
 import cs2d from './cs2d.js'
 import discord from './discord.js'
@@ -71,7 +73,7 @@ import vintagestorymaster from './vintagestorymaster.js'
 import vintagestory from './vintagestory.js'
 
 export {
-  armagetron, ase, asa, assettocorsa, battlefield, buildandshoot, cs2d, discord, doom3, eco, epic, factorio, farmingsimulator, ffow,
+  armagetron, ase, asa, assettocorsa, battlefield, brokeprotocol, brokeprotocolmaster, buildandshoot, cs2d, discord, doom3, eco, epic, factorio, farmingsimulator, ffow,
   fivem, gamespy1, gamespy2, gamespy3, geneshift, goldsrc, gtasao, hawakening, hawakeningmaster, hexen2, jc2mp, kspdmp, mafia2mp, mafia2online, minecraft,
   minecraftbedrock, minecraftvanilla, minetest, mumble, mumbleping, nadeo, openttd, palworld, quake1, quake2, quake3, renegadex, renegadexmaster, rfactor, ragemp, samp,
   satisfactory, soldat, savage2, starmade, starsiege, teamspeak2, teamspeak3, terraria, toxikk, tribes1, tribes1master, unreal2, ut3, valve,
