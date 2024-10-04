@@ -150,6 +150,7 @@
 | gus                  | Gore: Ultimate Soldier                           |                                                 |
 | halo                 | Halo                                             |                                                 |
 | halo2                | Halo 2                                           |                                                 |
+| hawakening           | Hawakening                                       | [Notes](#hawakening)                            |
 | heretic2             | Heretic II                                       |                                                 |
 | hexen2               | Hexen II                                         |                                                 |
 | hiddendangerous2     | Hidden & Dangerous 2                             |                                                 |
@@ -479,6 +480,22 @@ If you know your use case, it's better to use a single protocol or make your own
 ### <a name='farmingsimulator'></a>Farming Simulator
 Farming Simulator servers need a token (reffered as code in the game). It can be obtained at your server's web interface (http://ip:port/settings.html). It can be passed to GameDig with the additional option: `token`. It does only work for your own server.
 The response includes much information about the server. Currently, only the fields about server information (name, map, version, etc.), players and mods are parsed.
+
+
+### <a name='hawakening'></a>Hawakening
+Querying server info for Hawakening requires a _ServerId_ to be passed to GameDig instead of an IP address. You can acquire such a _ServerId_ from the master query protocol `protocol-hawakening` (see `raw.listing.Guid`).
+
+Additionally, the master server requires authorization. A **user profile is required** for querying the API. Such a profile can be created on the [_official page_](https://hawakening.com/enlist).
+
+- Provide a Server Id via `serverId`
+- Provide a client profile with `username` (email address, not callsign)
+
+And one of the following options for gaining access:  
+- Provide a client access token via the option `token`
+- Provide the user profile password via the option `password`
+
+> **_NOTE:_** The protocol `hawakening` will query additional server info by requesting a matchmaking _token_, which will fail for full servers. Due to this, the IP address and port cannot be queried for such servers.
+
 
 Protocols with Additional Notes
 ---
