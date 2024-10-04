@@ -6,6 +6,7 @@
 * Feat: Satisfactory - Added support (By @Smidy13 #645)
 * Feat: Update Soldat protocol (#642)
 * Feat: TOXIKK (2016) - Added support (#641)
+* Feat: Renegade X (2014) - Added support (#643)
 
 ## 5.1.3
 * Fix: `Deus Ex` using the wrong protocol (#621)
