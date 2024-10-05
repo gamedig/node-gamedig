@@ -483,7 +483,7 @@ The response includes much information about the server. Currently, only the fie
 
 
 ### <a name='hawakening'></a>Hawakening
-Querying server info for Hawakening requires a _ServerId_ to be passed to GameDig instead of an IP address. You can acquire such a _ServerId_ from the master query protocol `protocol-hawakening` (see `raw.listing.Guid`).
+Querying server info for Hawakening requires a _ServerId_ to be passed to GameDig instead of an IP address. You can acquire such a _ServerId_ from the master query protocol _hawakeningmaster_ [type: `protocol-hawakeningmaster`] (see `raw.servers[]raw.listing.Guid`).
 
 Additionally, the master server requires authorization. A **user profile is required** for querying the API. Such a profile can be created on the [_official page_](https://hawakening.com/enlist).
 
