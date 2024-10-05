@@ -1,4 +1,6 @@
 import Core from './core.js'
+// import Ajv from 'ajv'
+// const ajv = new Ajv()
 
 /**
  * Implements the protocol for retrieving a master list for BROKE PROTOCOL, a Unity based game
@@ -122,6 +124,12 @@ export default class brokeprotocolmaster extends Core {
       throw new Error('No data received from master server.')
     }
 
+    // TODO: Ajv response validation
+    // const isDataValid2 = ajv.validate(SchemaDefMasterServerListArrayServers, servers)
+    // if (!isDataValid2) {
+    //   throw new Error(`Received master server data is unknown/invalid: ${ajv.errorsText(ajv.errors)}`)
+    // }
+
     return servers
   }
 
@@ -141,6 +149,12 @@ export default class brokeprotocolmaster extends Core {
     if (serverInfo && !(typeof serverInfo === 'object' && !Array.isArray(serverInfo))) {
       throw new Error('Invalid data received from API. Expecting object for server info')
     }
+
+    // TODO: Ajv response validation
+    // const isDataValid = ajv.validate(SchemaResponseServerInfo, serverInfo)
+    // if (!isDataValid) {
+    //   throw new Error(`Received server info data is unknown/invalid: ${ajv.errorsText(ajv.errors)}`)
+    // }
 
     return serverInfo
   }
@@ -168,5 +182,195 @@ export default class brokeprotocolmaster extends Core {
         snapshotInterval: intervalOption || '1h'
       }
     }
+  }
+}
+
+export const SchemaDefMasterServerListServer = {
+  type: 'object',
+  required: [
+    'name',
+    'version',
+    'ip',
+    'port',
+    'whitelist',
+    'location',
+    'validation',
+    'url',
+    'playerLimit',
+    'difficulty',
+    'map',
+    'assetBundles',
+    'plugins',
+    'flags',
+    'hourlyAverageSnapshots',
+    'snapshots',
+    'daySnapshots',
+    'id',
+    'updated',
+    'created'
+  ],
+  properties: {
+    name: {
+      type: 'string'
+    },
+    version: {
+      type: 'string',
+      enum: [
+        '1.42',
+        '1.40',
+        '1.41'
+      ]
+    },
+    ip: {
+      type: 'string',
+      format: 'ipv4'
+    },
+    port: {
+      type: 'integer',
+      minimum: 0,
+      maximum: 65535
+    },
+    whitelist: {
+      type: 'boolean'
+    },
+    location: {
+      type: 'string'
+      // enum: ['FR', 'GB', 'DE', 'SG', 'PL', 'NL', 'AU', 'US', 'RU']
+    },
+    validation: {
+      type: 'string'
+      // enum: ['+', '!']
+    },
+    url: {
+      type: 'string'
+    },
+    playerLimit: {
+      type: 'integer',
+      minimum: 0
+    },
+    difficulty: {
+      type: [
+        'number',
+        'integer'
+      ]
+    },
+    map: {
+      type: 'object',
+      properties: {
+        hash: { type: 'string' },
+        name: { type: 'string' },
+        filesize: { type: 'integer' }
+      },
+      required: ['hash', 'name', 'filesize']
+    },
+    assetBundles: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          hash: { type: 'string' },
+          name: { type: 'string' },
+          filesize: { type: 'integer' }
+        },
+        required: ['hash', 'name', 'filesize']
+      }
+    },
+    plugins: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          hash: { type: 'string' },
+          name: { type: 'string' },
+          description: { type: 'string' }
+        },
+        required: ['hash', 'name', 'description']
+      }
+    },
+    flags: {
+      type: 'integer'
+    },
+    hourlyAverageSnapshots: {
+      type: 'array',
+      items: {
+        items: {}
+      }
+    },
+    snapshots: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          playerCount: { type: 'integer' },
+          at: { type: 'integer' }
+        },
+        required: ['playerCount', 'at']
+      }
+    },
+    daySnapshots: {
+      type: 'array',
+      items: {
+        items: {}
+      }
+    },
+    id: {
+      type: 'string'
+    },
+    updated: {
+      type: 'string'
+    },
+    created: {
+      type: 'string'
+    }
+  }
+}
+
+export const SchemaDefMasterServerListGlobalSnapshot = {
+  type: 'object',
+  properties: {
+    playerCount: { type: 'integer', minimum: 0 },
+    at: { type: 'integer' }
+  },
+  required: ['playerCount', 'at']
+}
+
+export const SchemaDefMasterServerListGlobalDaySnapshot = {
+  type: 'object',
+  properties: {
+    playerCount: { type: 'integer', minimum: 0 },
+    at: { type: 'integer' }
+  },
+  required: ['playerCount', 'at']
+}
+
+export const SchemaDefMasterServerListArrayServers = {
+  type: 'array',
+  items: SchemaDefMasterServerListServer
+}
+
+export const SchemaResponseServerInfo = SchemaDefMasterServerListServer
+
+export const SchemaResponseMasterServerList = {
+  type: 'object',
+  required: [
+    'servers',
+    'globalSnapshots',
+    'globalDaySnapshots'
+  ],
+  properties: {
+    servers: { $ref: '#/$defs/servers' },
+    globalSnapshots: {
+      type: 'array',
+      items: { $ref: '#/$defs/globalSnapshot' }
+    },
+    globalDaySnapshots: {
+      type: 'array',
+      items: { $ref: '#/$defs/globalDaySnapshot' }
+    }
+  },
+  $defs: {
+    servers: SchemaDefMasterServerListArrayServers,
+    globalSnapshot: SchemaDefMasterServerListGlobalSnapshot,
+    globalDaySnapshot: SchemaDefMasterServerListGlobalDaySnapshot
   }
 }
