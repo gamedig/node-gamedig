@@ -1,6 +1,18 @@
 import Core from './core.js'
+import got from 'got'
 // import Ajv from 'ajv'
 // const ajv = new Ajv()
+
+function objectKeysToLowerCase (input) {
+  if (typeof input !== 'object') return input
+  if (Array.isArray(input)) return input.map(objectKeysToLowerCase)
+  return Object.keys(input).reduce(function (newObj, key) {
+    const val = input[key]
+    const newVal = (typeof val === 'object') && val !== null ? objectKeysToLowerCase(val) : val
+    newObj[key.toLowerCase()] = newVal
+    return newObj
+  }, {})
+}
 
 /**
  * Implements the protocol for retrieving a master list for BROKE PROTOCOL, a Unity based game
@@ -12,6 +24,8 @@ export default class brokeprotocolmaster extends Core {
 
     this.backendApiUriServers = 'https://bp.userr00t.com/serverbrowser/api/server'
     this.backendApiUriServer = 'https://bp.userr00t.com/serverbrowser/api/server/{id}'
+    this.backendApiUriCheck = 'https://bp.userr00t.com/serverbrowser/api/'
+    this.fallbackUri = 'https://brokeprotocol.com/servers.json'
 
     this.hexCharacters = [
       '&0', '&1', '&2', '&3', '&4', '&5', '&6', '&7',
@@ -23,6 +37,7 @@ export default class brokeprotocolmaster extends Core {
   }
 
   async run (state) {
+    this.hasApi = await this.checkApi()
     await this.queryInfo(state)
   }
 
@@ -69,8 +84,12 @@ export default class brokeprotocolmaster extends Core {
   }
 
   async queryServerInfo (state, serverId) {
-    // query server info
-    const serverInfo = await this.getServerInfo(serverId)
+    let serverInfo = null
+    if (this.hasApi) {
+      // query server info from API
+      serverInfo = await this.getServerInfo(serverId)
+    }
+
     if (serverInfo == null) {
       throw new Error(`Unable to retrieve server info with given id: ${serverId}`)
     }
@@ -94,11 +113,31 @@ export default class brokeprotocolmaster extends Core {
 
     const snaps = [...(serverInfo.snapshots || [])]
     snaps.sort((a, b) => b?.at - a?.at)
-    state.numplayers = snaps[0]?.playerCount || 0
-    state.maxplayers = serverInfo.playerLimit || 0
+    // API data only provides snapshot data, where as JSON data has "PlayerCount", try to use PlayerCount first
+    state.numplayers = serverInfo.playercount || snaps[0]?.playercount || 0
+    state.maxplayers = serverInfo.playerlimit || 0
 
     state.raw = serverInfo
     state.version = serverInfo.version || ''
+  }
+
+  /**
+   * Checks if the API is available
+   * @returns a list of servers as raw data
+   */
+  async checkApi () {
+    try {
+      const response = await got(this.backendApiUriCheck, {
+        method: 'HEAD',
+        timeout: { request: 2000 },
+        retry: { limit: 0 }
+      })
+      return !!response?.ok
+    } catch (err) {
+      // ignore error message
+    }
+
+    return false
   }
 
   /**
@@ -107,13 +146,15 @@ export default class brokeprotocolmaster extends Core {
    * @returns a list of servers as raw data
    */
   async getMasterServerList () {
+    const queryUrl = this.hasApi ? this.backendApiUriServers : this.fallbackUri
     const masterData = await this.request({
-      url: this.backendApiUriServers,
+      url: queryUrl,
       responseType: 'json',
-      ...(this.getSearchParams())
+      ...(this.hasApi ? this.getSearchParams() : {})
     })
 
-    const servers = masterData.servers
+    // non-api data will provide server-data only
+    const servers = this.hasApi ? masterData.servers : masterData
     if (servers == null) {
       throw new Error('Unable to retrieve master server list')
     }
@@ -130,7 +171,9 @@ export default class brokeprotocolmaster extends Core {
     //   throw new Error(`Received master server data is unknown/invalid: ${ajv.errorsText(ajv.errors)}`)
     // }
 
-    return servers
+    // API and non-API data mismatches in letter case, force lower case (Note: loosing camel-case style for API data)
+    const serversLowerCase = servers.map(x => objectKeysToLowerCase(x))
+    return serversLowerCase
   }
 
   /**
