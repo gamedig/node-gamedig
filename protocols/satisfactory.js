@@ -6,10 +6,27 @@ export default class satisfactory extends Core {
 
     // Don't use the tcp ping probing
     this.usedTcp = true
-
   }
 
   async run (state) {
+    const packet = Buffer.from([0xD5, 0xF6, 0, 1, 5, 5, 5, 5, 5, 5, 5, 5, 1])
+    const response = await this.udpSend(packet, packet => {
+      const reader = this.reader(packet)
+      const header = reader.part(4)
+      if (header.equals(Buffer.from([0xD5, 0xF6, 1, 2]))) return
+      reader.skip(8) // skip the cookie
+      return reader
+    })
+
+    state.raw.serverState = response.int(1)
+    state.version = response.int(4).toString()
+    state.raw.serverFlags = response.int(8)
+
+    const subStatesCount = response.int(1)
+    response.skip(subStatesCount * 3)
+
+    const nameLength = response.int(2)
+    state.name = response.part(nameLength).toString('utf-8')
 
     /**
      * To get information about the Satisfactory game server, you need to first obtain a client authenticationToken.
@@ -27,7 +44,7 @@ export default class satisfactory extends Core {
       function: 'QueryServerState'
     }
 
-    let headers = {
+    const headers = {
       'Content-Type': 'application/json'
     }
 
@@ -38,25 +55,24 @@ export default class satisfactory extends Core {
      */
     if (!this.options.rejectUnauthorized) this.options.rejectUnauthorized = false
 
-    let tokenRequestResponse = await this.queryInfo(tokenRequestJson, headers)
+    const tokenRequestResponse = await this.queryInfo(tokenRequestJson, headers)
 
-    headers.Authorization = `Bearer ${tokenRequestResponse.data.authenticationToken}`
-
-    let queryResponse = await this.queryInfo(queryJson, headers)
+    const { data: queryResponse } = await this.queryInfo(queryJson, {
+      ...headers,
+      Authorization: `Bearer ${tokenRequestResponse.data.authenticationToken}`
+    })
 
     /**
      *  Satisfactory API cannot pull Server Name at the moment, see QA and vote for fix here
      *  https://questions.satisfactorygame.com/post/66ebebad772a987f4a8b9ef8
      */
 
-    state.numplayers = queryResponse.data.serverGameState.numConnectedPlayers
-    state.maxplayers = queryResponse.data.serverGameState.playerLimit
-    state.raw = queryResponse
-
+    state.numplayers = queryResponse.serverGameState.numConnectedPlayers
+    state.maxplayers = queryResponse.serverGameState.playerLimit
+    state.raw.http = queryResponse
   }
 
   async queryInfo (json, headers) {
-
     const url = `https://${this.options.host}:${this.options.port}/api/v1/`
 
     this.logger.debug(`POST: ${url}`)
