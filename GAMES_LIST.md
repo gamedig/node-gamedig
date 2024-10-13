@@ -521,8 +521,10 @@ Palworld support can be unstable, the devs mention the api is currently experime
 To query Palworld servers, the `RESTAPIEnabled` setting must be `True` in the configuration file, and you need to pass the `username` (currently always `admin`) and the `adminpassword` (from the server config) as the `password` parameter.
 
 ### <a name="satisfactory"></a>Satisfactory
-Satisfactory servers unless specified use self-signed certificates for the HTTPS API. If you are using a self-signed certificate you will need to set the `rejectUnauthorized` flag in options to `false` in order to connect.
+Satisfactory servers unless specified use self-signed certificates for the HTTPS API. If you are using proper-signed certificates you will need to set the `rejectUnauthorized` flag in options to `true` to ensure a secured query.
 For more information on setting a user certificate refer to the [Satisfactory Dedicated server/HTTPS API wiki documentation](https://satisfactory.wiki.gg/wiki/Dedicated_servers/HTTPS_API).
+
+One can also provide an authentication token via the `token` option to skip the `PasswordlessLogin` query.
 
 ### <a name="soldat"></a>Soldat
 Requires `Allow_Download` and `Logging` to be `1` in the server config.

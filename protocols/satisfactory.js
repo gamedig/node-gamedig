@@ -28,22 +28,6 @@ export default class satisfactory extends Core {
     const nameLength = response.int(2)
     state.name = response.part(nameLength).toString('utf-8')
 
-    /**
-     * To get information about the Satisfactory game server, you need to first obtain a client authenticationToken.
-     * https://satisfactory.wiki.gg/wiki/Dedicated_servers/HTTPS_API
-     */
-
-    const tokenRequestJson = {
-      function: 'PasswordlessLogin',
-      data: {
-        MinimumPrivilegeLevel: 'Client'
-      }
-    }
-
-    const queryJson = {
-      function: 'QueryServerState'
-    }
-
     const headers = {
       'Content-Type': 'application/json'
     }
@@ -55,11 +39,26 @@ export default class satisfactory extends Core {
      */
     if (!this.options.rejectUnauthorized) this.options.rejectUnauthorized = false
 
-    const tokenRequestResponse = await this.queryInfo(tokenRequestJson, headers)
+    let token = this.options.token
+    if (!token) {
+      const tokenRequestJson = {
+        function: 'PasswordlessLogin',
+        data: {
+          MinimumPrivilegeLevel: 'Client'
+        }
+      }
 
-    const { data: queryResponse } = await this.queryInfo(queryJson, {
+      const response = await this.queryInfo(tokenRequestJson, headers)
+      token = response.authenticationToken
+    }
+
+    const queryJson = {
+      function: 'QueryServerState'
+    }
+
+    const queryResponse = await this.queryInfo(queryJson, {
       ...headers,
-      Authorization: `Bearer ${tokenRequestResponse.data.authenticationToken}`
+      Authorization: `Bearer ${token}`
     })
 
     /**
@@ -92,7 +91,7 @@ export default class satisfactory extends Core {
     if (response.data == null) {
       throw new Error('Unable to retrieve data from server')
     } else {
-      return response
+      return response.data
     }
   }
 }
