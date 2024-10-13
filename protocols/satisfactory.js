@@ -28,6 +28,15 @@ export default class satisfactory extends Core {
     const nameLength = response.int(2)
     state.name = response.part(nameLength).toString('utf-8')
 
+    try {
+      await this.doHttpApiQueries(state)
+    } catch (e) {
+      this.logger.debug('HTTP API query failed.')
+      this.logger.debug(e)
+    }
+  }
+
+  async doHttpApiQueries (state) {
     const headers = {
       'Content-Type': 'application/json'
     }
