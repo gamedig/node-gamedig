@@ -53,6 +53,7 @@
 | breach               | Breach                                           | [Valve Protocol](#valve)                        |
 | breed                | Breed                                            |                                                 |
 | brink                | Brink                                            | [Valve Protocol](#valve)                        |
+| brokeprotocol        | BROKE PROTOCOL                                   | [Notes](#brokeprotocol)                         |
 | c2d                  | CS2D                                             |                                                 |
 | c3db                 | Commandos 3: Destination Berlin                  |                                                 |
 | cacr                 | Command and Conquer: Renegade                    |                                                 |
@@ -495,6 +496,14 @@ And one of the following options for gaining access:
 - Provide the user profile password via the option `password`
 
 > **_NOTE:_** The protocol `hawakening` will query additional server info by requesting a matchmaking _token_, which will fail for full servers. Due to this, the IP address and port cannot be queried for such servers.
+
+
+### <a name='brokeprotocol'></a>BROKE PROTOCOL
+When querying a server on [BROKE PROTOCOL](https://brokeprotocol.com/), you have two options for querying the server:
+1. Passing the `address` and `port` request fields (or `--address` and `--port` when using the cli to the server).
+2. Setting the `serverId` request field or `--serverId` when using the cli to the publicId of the server.
+
+You can acquire a _ServerId_ from the master query protocol `protocol-brokeprotocolmaster` (see `raw.servers[].raw.id`).
 
 
 Protocols with Additional Notes
