@@ -526,5 +526,7 @@ For more information on setting a user certificate refer to the [Satisfactory De
 
 One can also provide an authentication token via the `token` option to skip the `PasswordlessLogin` query.
 
+The query is done via the lightweight query option but also safely tries to utilize the HTTP one.
+
 ### <a name="soldat"></a>Soldat
 Requires `Allow_Download` and `Logging` to be `1` in the server config.
