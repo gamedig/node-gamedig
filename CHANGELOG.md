@@ -1,6 +1,8 @@
 
 ## To Be Released...
 ## 5.X.Y
+
+## 5.1.4
 * Feat: Replaced `punycode` package usage with `url.domainToASCII` (#630).
 * Feat: World of Padman (2007) - Added support (#636)
 * Feat: Satisfactory - Added support (By @Smidy13 #645, #652, #653)
