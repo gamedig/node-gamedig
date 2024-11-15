@@ -61,8 +61,6 @@ export default class minecraft extends Core {
         if (typeof description === 'string') {
           name = description
         } else if (typeof description === 'object') {
-          name = description?.text || ''
-
           const stack = [description]
 
           while (stack.length) {
