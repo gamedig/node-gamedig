@@ -2,6 +2,16 @@
 ## To Be Released...
 ## 5.X.Y
 
+## 5.1.4
+* Feat: Replaced `punycode` package usage with `url.domainToASCII` (#630).
+* Feat: World of Padman (2007) - Added support (#636)
+* Feat: Satisfactory - Added support (By @Smidy13 #645, #652, #653)
+* Feat: Update Soldat protocol (#642)
+* Feat: TOXIKK (2016) - Added support (#641)
+* Feat: Renegade X (2014) - Added support (#643)
+* Feat: Hawakening (2024) - Added support (#648)
+* Feat: BROKE PROTOCOL (2024) - Added support (#651)
+
 ## 5.1.3
 * Fix: `Deus Ex` using the wrong protocol (#621)
 * Fix: `Soldier of Fortune` using the wrong protocol (#623)

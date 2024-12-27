@@ -3,6 +3,8 @@ import ase from './ase.js'
 import asa from './asa.js'
 import assettocorsa from './assettocorsa.js'
 import battlefield from './battlefield.js'
+import brokeprotocol from './brokeprotocol.js'
+import brokeprotocolmaster from './brokeprotocolmaster.js'
 import buildandshoot from './buildandshoot.js'
 import cs2d from './cs2d.js'
 import discord from './discord.js'
@@ -20,6 +22,8 @@ import gamespy3 from './gamespy3.js'
 import geneshift from './geneshift.js'
 import goldsrc from './goldsrc.js'
 import gtasao from './gtasao.js'
+import hawakening from './hawakening.js'
+import hawakeningmaster from './hawakeningmaster.js'
 import hexen2 from './hexen2.js'
 import jc2mp from './jc2mp.js'
 import kspdmp from './kspdmp.js'
@@ -37,14 +41,19 @@ import palworld from './palworld.js'
 import quake1 from './quake1.js'
 import quake2 from './quake2.js'
 import quake3 from './quake3.js'
+import renegadex from './renegadex.js'
+import renegadexmaster from './renegadexmaster.js'
 import rfactor from './rfactor.js'
 import samp from './samp.js'
+import satisfactory from './satisfactory.js'
 import savage2 from './savage2.js'
+import soldat from './soldat.js'
 import starmade from './starmade.js'
 import starsiege from './starsiege.js'
 import teamspeak2 from './teamspeak2.js'
 import teamspeak3 from './teamspeak3.js'
 import terraria from './terraria.js'
+import toxikk from './toxikk.js'
 import tribes1 from './tribes1.js'
 import tribes1master from './tribes1master.js'
 import unreal2 from './unreal2.js'
@@ -64,10 +73,9 @@ import vintagestorymaster from './vintagestorymaster.js'
 import vintagestory from './vintagestory.js'
 
 export {
-  armagetron, ase, asa, assettocorsa, battlefield, buildandshoot, cs2d, discord, doom3, eco, epic, factorio, farmingsimulator, ffow,
-  fivem, gamespy1, gamespy2, gamespy3, geneshift, goldsrc, gtasao, hexen2, jc2mp, kspdmp, mafia2mp, mafia2online, minecraft,
-  minecraftbedrock, minecraftvanilla, minetest, mumble, mumbleping, nadeo, openttd, palworld, quake1, quake2, quake3, rfactor, ragemp, samp,
-  savage2, starmade, starsiege, teamspeak2, teamspeak3, terraria, tribes1, tribes1master, unreal2, ut3, valve,
-  vcmp, ventrilo, warsow, eldewrito, beammpmaster, beammp, dayz, theisleevrima, xonotic, altvmp, vintagestorymaster,
-  vintagestory
+  armagetron, ase, asa, assettocorsa, battlefield, brokeprotocol, brokeprotocolmaster, buildandshoot, cs2d, discord, doom3, eco, epic, factorio, farmingsimulator, ffow,
+  fivem, gamespy1, gamespy2, gamespy3, geneshift, goldsrc, gtasao, hawakening, hawakeningmaster, hexen2, jc2mp, kspdmp, mafia2mp, mafia2online, minecraft,
+  minecraftbedrock, minecraftvanilla, minetest, mumble, mumbleping, nadeo, openttd, palworld, quake1, quake2, quake3, renegadex, renegadexmaster, rfactor, ragemp, samp,
+  satisfactory, soldat, savage2, starmade, starsiege, teamspeak2, teamspeak3, terraria, toxikk, tribes1, tribes1master, unreal2, ut3, valve,
+  vcmp, ventrilo, warsow, eldewrito, beammpmaster, beammp, dayz, theisleevrima, xonotic, altvmp, vintagestorymaster, vintagestory
 }

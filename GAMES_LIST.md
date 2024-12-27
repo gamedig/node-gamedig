@@ -1,4 +1,6 @@
 ### Supported
+
+<!--- BEGIN GENERATED GAMES -->
 | GameDig Type ID      | Name                                             | See Also                                        |
 |----------------------|--------------------------------------------------|-------------------------------------------------|
 | a2oa                 | ARMA 2: Operation Arrowhead                      | [Valve Protocol](#valve)                        |
@@ -51,6 +53,7 @@
 | breach               | Breach                                           | [Valve Protocol](#valve)                        |
 | breed                | Breed                                            |                                                 |
 | brink                | Brink                                            | [Valve Protocol](#valve)                        |
+| brokeprotocol        | BROKE PROTOCOL                                   | [Notes](#brokeprotocol)                         |
 | c2d                  | CS2D                                             |                                                 |
 | c3db                 | Commandos 3: Destination Berlin                  |                                                 |
 | cacr                 | Command and Conquer: Renegade                    |                                                 |
@@ -148,6 +151,7 @@
 | gus                  | Gore: Ultimate Soldier                           |                                                 |
 | halo                 | Halo                                             |                                                 |
 | halo2                | Halo 2                                           |                                                 |
+| hawakening           | Hawakening                                       | [Notes](#hawakening)                            |
 | heretic2             | Heretic II                                       |                                                 |
 | hexen2               | Hexen II                                         |                                                 |
 | hiddendangerous2     | Hidden & Dangerous 2                             |                                                 |
@@ -241,6 +245,7 @@
 | redline              | Redline                                          |                                                 |
 | redorchestra         | Red Orchestra                                    |                                                 |
 | redorchestra2        | Red Orchestra 2                                  | [Valve Protocol](#valve)                        |
+| renegade10           | Renegade X                                       |                                                 |
 | rfactor              | rFactor                                          |                                                 |
 | rfactor2             | rFactor 2                                        | [Valve Protocol](#valve)                        |
 | ricochet             | Ricochet                                         | [Valve Protocol](#valve)                        |
@@ -255,6 +260,7 @@
 | rune                 | Rune                                             |                                                 |
 | rust                 | Rust                                             | [Valve Protocol](#valve)                        |
 | s2ats                | Savage 2: A Tortured Soul                        |                                                 |
+| satisfactory         | Satisfactory                                     | [Notes](#satisfactory)                          |
 | sdtd                 | 7 Days to Die                                    | [Valve Protocol](#valve)                        |
 | serioussam           | Serious Sam                                      |                                                 |
 | serioussam2          | Serious Sam 2                                    |                                                 |
@@ -265,7 +271,7 @@
 | sinepisodes          | SiN Episodes                                     | [Valve Protocol](#valve)                        |
 | sof                  | Soldier of Fortune                               |                                                 |
 | sof2                 | Soldier of Fortune 2                             |                                                 |
-| soldat               | Soldat                                           |                                                 |
+| soldat               | Soldat                                           | [Notes](#soldat)                                |
 | sotf                 | Sons Of The Forest                               | [Valve Protocol](#valve)                        |
 | soulmask             | Soulmask                                         | [Valve Protocol](#valve)                        |
 | spaceengineers       | Space Engineers                                  | [Valve Protocol](#valve)                        |
@@ -312,6 +318,7 @@
 | toh                  | Take On Helicopters                              |                                                 |
 | tonolf               | The Operative: No One Lives Forever              |                                                 |
 | towerunite           | Tower Unite                                      | [Valve Protocol](#valve)                        |
+| toxikk               | TOXIKK                                           |                                                 |
 | trackmania2          | Trackmania 2                                     | [Notes](#nadeo)                                 |
 | trackmaniaforever    | Trackmania Forever                               | [Notes](#nadeo)                                 |
 | tremulous            | Tremulous                                        |                                                 |
@@ -340,12 +347,14 @@
 | warsow               | Warsow                                           |                                                 |
 | wet                  | Wolfenstein: Enemy Territory                     |                                                 |
 | wolfenstein          | Wolfenstein                                      |                                                 |
+| wop                  | World Of Padman                                  |                                                 |
 | wot                  | Wheel of Time                                    |                                                 |
 | wurmunlimited        | Wurm Unlimited                                   | [Valve Protocol](#valve)                        |
 | xonotic              | Xonotic                                          |                                                 |
 | xpandrally           | Xpand Rally                                      |                                                 |
 | zombiemaster         | Zombie Master                                    | [Valve Protocol](#valve)                        |
 | zps                  | Zombie Panic: Source                             | [Valve Protocol](#valve)                        |
+<!--- END GENERATED GAMES -->
 
 ### Not supported (yet)
 
@@ -473,6 +482,30 @@ If you know your use case, it's better to use a single protocol or make your own
 Farming Simulator servers need a token (reffered as code in the game). It can be obtained at your server's web interface (http://ip:port/settings.html). It can be passed to GameDig with the additional option: `token`. It does only work for your own server.
 The response includes much information about the server. Currently, only the fields about server information (name, map, version, etc.), players and mods are parsed.
 
+
+### <a name='hawakening'></a>Hawakening
+Querying server info for Hawakening requires a _ServerId_ to be passed to GameDig instead of an IP address. You can acquire such a _ServerId_ from the master query protocol _hawakeningmaster_ [type: `protocol-hawakeningmaster`] (see `raw.servers[]raw.listing.Guid`).
+
+Additionally, the master server requires authorization. A **user profile is required** for querying the API. Such a profile can be created on the [_official page_](https://hawakening.com/enlist).
+
+- Provide a Server Id via `serverId`
+- Provide a client profile with `username` (email address, not callsign)
+
+And one of the following options for gaining access:  
+- Provide a client access token via the option `token`
+- Provide the user profile password via the option `password`
+
+> **_NOTE:_** The protocol `hawakening` will query additional server info by requesting a matchmaking _token_, which will fail for full servers. Due to this, the IP address and port cannot be queried for such servers.
+
+
+### <a name='brokeprotocol'></a>BROKE PROTOCOL
+When querying a server on [BROKE PROTOCOL](https://brokeprotocol.com/), you have two options for querying the server:
+1. Passing the `address` and `port` request fields (or `--address` and `--port` when using the cli to the server).
+2. Setting the `serverId` request field or `--serverId` when using the cli to the publicId of the server.
+
+You can acquire a _ServerId_ from the master query protocol `protocol-brokeprotocolmaster` (see `raw.servers[].raw.id`).
+
+
 Protocols with Additional Notes
 ---
 
@@ -486,3 +519,14 @@ EOS does not provide players data.
 ### <a name="palworld"></a>Palworld
 Palworld support can be unstable, the devs mention the api is currently experimental.  
 To query Palworld servers, the `RESTAPIEnabled` setting must be `True` in the configuration file, and you need to pass the `username` (currently always `admin`) and the `adminpassword` (from the server config) as the `password` parameter.
+
+### <a name="satisfactory"></a>Satisfactory
+Satisfactory servers unless specified use self-signed certificates for the HTTPS API. If you are using proper-signed certificates you will need to set the `rejectUnauthorized` flag in options to `true` to ensure a secured query.
+For more information on setting a user certificate refer to the [Satisfactory Dedicated server/HTTPS API wiki documentation](https://satisfactory.wiki.gg/wiki/Dedicated_servers/HTTPS_API).
+
+One can also provide an authentication token via the `token` option to skip the `PasswordlessLogin` query.
+
+The query is done via the lightweight query option but also safely tries to utilize the HTTP one.
+
+### <a name="soldat"></a>Soldat
+Requires `Allow_Download` and `Logging` to be `1` in the server config.
