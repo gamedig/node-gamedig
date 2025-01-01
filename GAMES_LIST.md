@@ -128,6 +128,7 @@
 | farcry2              | Far Cry 2                                        |                                                 |
 | farmingsimulator19   | Farming Simulator 19                             |                                                 |
 | farmingsimulator22   | Farming Simulator 22                             |                                                 |
+| farmingsimulator25   | Farming Simulator 25                             |                                                 |
 | fear                 | F.E.A.R.                                         |                                                 |
 | ffow                 | Frontlines: Fuel of War                          |                                                 |
 | fof                  | Fistful of Frags                                 | [Valve Protocol](#valve)                        |

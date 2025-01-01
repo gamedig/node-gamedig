@@ -1,6 +1,7 @@
 
 ## To Be Released...
 ## 5.X.Y
+* Feat: Farming Simulator 25 (2024) - Added support (#660)
 
 ## 5.1.4
 * Feat: Replaced `punycode` package usage with `url.domainToASCII` (#630).
