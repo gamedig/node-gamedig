@@ -141,6 +141,12 @@ export default class valve extends Core {
               state.maxplayers = value
             }
           }
+          if (tag.startsWith('cp')) {
+            const value = parseInt(tag.replace('cp', ''))
+            if (!isNaN(value)) {
+              state.numplayers = value
+            }
+          }
         }
       }
     }
