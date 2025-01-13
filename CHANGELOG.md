@@ -2,6 +2,7 @@
 ## To Be Released...
 ## 5.X.Y
 * Fix: Use `cp` tag to get player count on Rust (By @xCausxn #663)
+* Feat: Farming Simulator 25 (2024) - Added support (#660)
 
 ## 5.1.4
 * Feat: Replaced `punycode` package usage with `url.domainToASCII` (#630).
