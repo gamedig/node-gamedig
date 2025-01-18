@@ -19,7 +19,7 @@ export default class palworld extends Core {
 
     const { players } = await this.makeCall('players')
     state.numplayers = players.length
-    state.players = players.map(p => p.name)
+    state.players = players.map((player) => ({ name: player.name, raw: player }))
     state.raw.players = players
 
     state.raw.settings = await this.makeCall('settings')
