@@ -6,7 +6,7 @@
 * Feat: Farming Simulator 25 (2024) - Added support (#660)
 * Feat: Exfil (2024) - Added support (#661)
 * Docs: Valheim numplayers being always 0 on crossplay servers (#668)
-* Fix: Palworld not respecting query output schema (#)
+* Fix: Palworld not respecting query output schema (#666)
 
 ## 5.1.4
 * Feat: Replaced `punycode` package usage with `url.domainToASCII` (#630).
