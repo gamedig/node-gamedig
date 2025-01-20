@@ -1,6 +1,7 @@
 
 ## To Be Released...
 ## 5.X.Y
+* Fix: Minecraft name being duplicated in the name string (#656)
 * Fix: Use `cp` tag to get player count on Rust (By @xCausxn #663)
 * Feat: Farming Simulator 25 (2024) - Added support (#660)
 * Feat: Exfil (2024) - Added support (#661)
