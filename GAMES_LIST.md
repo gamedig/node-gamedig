@@ -464,7 +464,8 @@ Requires tshock server mod, and a REST user token, which can be passed to GameDi
 additional option: `token`
 
 ### <a name="valheim"></a>Valheim
-Valheim servers will only respond to queries if they are started in public mode (`-public 1`).
+Valheim servers will only respond to queries if they are started in public mode (`-public 1`).  
+Crossplay servers reports `numplayers` always being `0`, servers without this option work as expected ([#539](https://github.com/gamedig/node-gamedig/issues/539)).
 
 ### <a name="dayz"></a>DayZ
 DayZ stores some of it's servers information inside the `tags` attribute. Make sure to set `requestRules: true` to access it. Some data inside `dayzMods` attribute may be fuzzy, due to how mods are loaded into the servers. Players can be fetched, but will not show ingame names. Alternatively, some servers may have a [third party tool](https://dayzsalauncher.com/#/tools) that you can use to get the mods information. If it's installed, you can access it via browser with the game servers IP:PORT, but add up 10 to the port. (eg. if game port is 2302 then use 2312).
