@@ -4,6 +4,7 @@
 * Fix: Use `cp` tag to get player count on Rust (By @xCausxn #663)
 * Feat: Farming Simulator 25 (2024) - Added support (#660)
 * Feat: Exfil (2024) - Added support (#661)
+* Docs: Valheim numplayers being always 0 on crossplay servers (#668)
 
 ## 5.1.4
 * Feat: Replaced `punycode` package usage with `url.domainToASCII` (#630).
