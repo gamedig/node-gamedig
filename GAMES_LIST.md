@@ -434,7 +434,7 @@ The server must have `xmlrpc` enabled, the port needs to be the `xmlrpc` one, no
 You must also pass the info of a user account on the server with the access level of **User** or higher
 in the options parameters as `login` and `password`.
 
-**Note**: the `map` field is not available now, see (#634).
+**Note**: the `map` field is not available now, see ([#634](https://github.com/gamedig/node-gamedig/issues/634)).
 
 ### <a name="gta5r"></a> Grand Theft Auto V - RAGE MP
 If you are using a FQDN for your server, you will need to set the host parameter to be this domain e.g. rage2.mydomain.com
