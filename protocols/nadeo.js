@@ -9,20 +9,19 @@ export default class nadeo extends Core {
       await this.query(client, 'Authenticate', this.options.login, this.options.password)
       this.registerRtt(Date.now() - start)
 
-      // const data = this.methodCall(client, 'GetStatus');
-
       {
         const results = await this.query(client, 'GetServerOptions')
         state.name = this.stripColors(results.Name)
         state.password = (results.Password !== 'No password')
         state.maxplayers = results.CurrentMaxPlayers
         state.raw.maxspectators = results.CurrentMaxSpectators
+        state.raw.GetServerOptions = results
       }
 
       {
-        const results = await this.query(client, 'GetCurrentMapInfo')
+        const results = await this.query(client, 'GetCurrentChallengeInfo')
         state.map = this.stripColors(results.Name)
-        state.raw.mapUid = results.UId
+        state.raw.GetCurrentChallengeInfo = results
       }
 
       {
@@ -37,12 +36,13 @@ export default class nadeo extends Core {
         if (igm === 5) gamemode = 'Cup'
         state.raw.gametype = gamemode
         state.raw.mapcount = results.NbChallenge
+        state.raw.GetCurrentGameInfo = results
       }
 
       {
-        const results = await this.query(client, 'GetNextMapInfo')
-        state.raw.nextmapName = this.stripColors(results.Name)
-        state.raw.nextmapUid = results.UId
+        const results = await this.query(client, 'GetVersion')
+        state.version = results.Version
+        state.raw.GetVersion = results
       }
 
       if (this.options.port === 5000) {
@@ -71,11 +71,10 @@ export default class nadeo extends Core {
     }
   }
 
-  async query (client, ...cmdset) {
-    const cmd = cmdset[0]
-    const params = cmdset.slice(1)
+  async query (client, command, ...args) {
+    const params = args.slice()
 
-    const sentPromise = client.query(cmd, params)
+    const sentPromise = client.query(command, params)
     const timeoutPromise = Promises.createTimeout(this.options.socketTimeout, 'GBX Method Call')
     return await Promise.race([sentPromise, timeoutPromise, this.abortedPromise])
   }

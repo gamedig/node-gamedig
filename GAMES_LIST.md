@@ -430,9 +430,9 @@ If you do not wish to run the plugin, or do not require details such as channel 
 you can use the 'mumbleping' server type instead, which uses a less accurate but more reliable solution
 
 ### <a name="nadeo"></a> Nadeo (ShootMania / TrackMania / etc)
-The server must have xmlrpc enabled, and you must pass the xmlrpc port to GameDig, not the connection port.
-You must have a user account on the server with access level User or higher.
-Pass the login into to GameDig with the additional options: login, password
+The server must have `xmlrpc` enabled, the port needs to be the `xmlrpc` one, not the connection port.  
+You must also pass the info of a user account on the server with the access level of **User** or higher
+in the options parameters as `login` and `password`.
 
 ### <a name="gta5r"></a> Grand Theft Auto V - RAGE MP
 If you are using a FQDN for your server, you will need to set the host parameter to be this domain e.g. rage2.mydomain.com
