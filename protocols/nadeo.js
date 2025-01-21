@@ -19,9 +19,9 @@ export default class nadeo extends Core {
       }
 
       {
-        const results = await this.query(client, 'GetVersion')
-        state.version = results.Version
-        state.raw.GetVersion = results
+        const results = await this.query(client, 'GetCurrentChallengeInfo')
+        state.map = this.stripColors(results.Name)
+        state.raw.GetCurrentChallengeInfo = results
       }
 
       {
@@ -40,9 +40,9 @@ export default class nadeo extends Core {
       }
 
       {
-        const results = await this.query(client, 'GetCurrentChallengeInfo')
-        state.map = this.stripColors(results.Name)
-        state.raw.GetCurrentChallengeInfo = results
+        const results = await this.query(client, 'GetVersion')
+        state.version = results.Version
+        state.raw.GetVersion = results
       }
 
       if (this.options.port === 5000) {
