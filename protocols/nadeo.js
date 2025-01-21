@@ -39,6 +39,12 @@ export default class nadeo extends Core {
         state.raw.GetCurrentGameInfo = results
       }
 
+      {
+        const results = await this.query(client, 'GetCurrentChallengeInfo')
+        state.map = this.stripColors(results.Name)
+        state.raw.GetCurrentChallengeInfo = results
+      }
+
       if (this.options.port === 5000) {
         state.gamePort = 2350
       }
