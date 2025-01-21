@@ -42,6 +42,8 @@ Confused on how this works, or you want to see more? Checkout the [examples](/ex
 | **type** | string | One of the game type IDs listed in the [games list](GAMES_LIST.md). Or you can use `protocol-[name]` to select a specific protocol. Protocols are listed [here](protocols/index.js). |
 | **host** | string | Hostname or IP of the game server.                                                                                                                                                   |
 
+Note that some games might require additional values to be specified.
+
 ## Optional Fields
 
 | Field                      | Type    | Default     | Description                                                                                                                                                                                                                   |
