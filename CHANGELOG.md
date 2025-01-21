@@ -1,6 +1,8 @@
 
 ## To Be Released...
 ## 5.X.Y
+
+## 5.2.0
 * Fix: Palworld not respecting query output players schema (#666)
 * Fix: Minecraft name being duplicated in the name string (#656)
 * Fix: Use `cp` tag to get player count on Rust (By @xCausxn #663)
