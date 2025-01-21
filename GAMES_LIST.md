@@ -223,7 +223,7 @@
 | openarena            | OpenArena                                        |                                                 |
 | openttd              | OpenTTD                                          |                                                 |
 | painkiller           | Painkiller                                       |                                                 |
-| palworld             | Palworld                                         |                                                 |
+| palworld             | Palworld                                         | [Notes](#palworld)                              |
 | pce                  | Primal Carnage: Extinction                       | [Valve Protocol](#valve)                        |
 | pixark               | PixARK                                           | [Valve Protocol](#valve)                        |
 | postal2              | Postal 2                                         |                                                 |
