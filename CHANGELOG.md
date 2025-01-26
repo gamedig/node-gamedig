@@ -2,6 +2,7 @@
 ## To Be Released...
 ## 5.X.Y
 * Docs: Arma Reforger query setup note (#670, thanks @xCausxn)
+* Feat: Add support for Trackmania (2020) (By @Hornochs #672)
 
 ## 5.2.0
 * Fix: Palworld not respecting query output players schema (#666)
