@@ -322,7 +322,7 @@
 | towerunite           | Tower Unite                                      | [Valve Protocol](#valve)                         |
 | toxikk               | TOXIKK                                           |                                                  |
 | trackmania2          | Trackmania 2                                     | [Notes](#nadeo)                                  |
-| trackmania2020       | Trackmania                                  | [Notes](#nadeo)                                  |
+| trackmania2020       | Trackmania                                       | [Notes](#nadeo)                                  |
 | trackmaniaforever    | Trackmania Forever                               | [Notes](#nadeo)                                  |
 | tremulous            | Tremulous                                        |                                                  |
 | tribesvengeance      | Tribes: Vengeance                                |                                                  |
