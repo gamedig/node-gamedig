@@ -143,7 +143,7 @@
 | goldeneyesource      | GoldenEye: Source                                | [Valve Protocol](#valve)                         |
 | groundbreach         | Ground Breach                                    | [Valve Protocol](#valve)                         |
 | gta5am               | Grand Theft Auto V - alt:V Multiplayer           | [Notes](#gta5am)                                 |
-| gta5f                | Grand Theft Auto V - FiveM                       |                                                  |
+| gta5f                | Grand Theft Auto V - FiveM                       | [Notes](#gta5f)                                  |
 | gta5r                | Grand Theft Auto V - RageMP                      | [Notes](#gta5r)                                  |
 | gtasam               | Grand Theft Auto: San Andreas Multiplayer        |                                                  |
 | gtasamta             | Grand Theft Auto: San Andreas - Multi Theft Auto |                                                  |
@@ -535,3 +535,6 @@ The query is done via the lightweight query option but also safely tries to util
 
 ### <a name="soldat"></a>Soldat
 Requires `Allow_Download` and `Logging` to be `1` in the server config.
+
+### <a name="gta5f"></a>Grand Theft Auto V - FiveM
+Requires the `sv_exposePlayerIdentifiersInHttpEndpoint` convar to be `1` for the query to return players' data.
