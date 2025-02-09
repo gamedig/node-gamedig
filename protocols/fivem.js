@@ -20,7 +20,7 @@ export default class fivem extends quake2 {
       if ('version' in state.raw.info) state.version = state.raw.info.version
     }
 
-    {
+    try {
       const json = await this.request({
         url: 'http://' + this.options.address + ':' + this.options.port + '/players.json',
         responseType: 'json'
@@ -29,6 +29,6 @@ export default class fivem extends quake2 {
       for (const player of json) {
         state.players.push({ name: player.name, ping: player.ping })
       }
-    }
+    } catch (_) {}
   }
 }
