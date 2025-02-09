@@ -21,6 +21,7 @@ export default class fivem extends quake2 {
     }
 
     try {
+      // TODO: #674, eventually add `requestPlayers` and `requestPlayersRequired`.
       const json = await this.request({
         url: 'http://' + this.options.address + ':' + this.options.port + '/players.json',
         responseType: 'json'
