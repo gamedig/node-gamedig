@@ -79,7 +79,7 @@
 | corekeeper           | Core Keeper                                      | [Valve Protocol](#valve)                         |
 | counterstrike15      | Counter-Strike 1.5                               |                                                  |
 | counterstrike16      | Counter-Strike 1.6                               | [Valve Protocol](#valve)                         |
-| counterstrike2       | Counter-Strike 2                                 | [Valve Protocol](#valve)                         |
+| counterstrike2       | Counter-Strike 2                                 | [Notes](#cs2), [Valve Protocol](#valve)          |
 | crce                 | Cross Racing Championship Extreme                |                                                  |
 | creativerse          | Creativerse                                      | [Valve Protocol](#valve)                         |
 | crysis               | Crysis                                           |                                                  |
@@ -538,3 +538,6 @@ Requires `Allow_Download` and `Logging` to be `1` in the server config.
 
 ### <a name="gta5f"></a>Grand Theft Auto V - FiveM
 Requires the `sv_exposePlayerIdentifiersInHttpEndpoint` convar to be `1` for the query to return players' data.
+
+### <a name="cs2"></a>Counter-Strike 2
+Does not provide players names, using a plugin like this [one](https://github.com/Source2ZE/ServerListPlayersFix) makes the query to return them.
