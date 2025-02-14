@@ -19,6 +19,7 @@ export default class mumbleping extends Core {
     state.version = state.raw.versionMajor + '.' + state.raw.versionMinor + '.' + state.raw.versionPatch
     reader.skip(8)
     state.numplayers = reader.uint(4)
+    state.players = state.numplayers
     state.maxplayers = reader.uint(4)
     state.raw.allowedbandwidth = reader.uint(4)
   }
