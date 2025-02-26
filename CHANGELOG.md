@@ -4,6 +4,7 @@
 * Docs: Arma Reforger query setup note (#670, thanks @xCausxn)
 * Fix: Grand Theft Auto V - FiveM wrap the players query in a try block as it doesn't provide the data by default anymore (#674, thanks @xCausxn)
 * Docs: Counter-Strike 2 does not provide players names, note this and a plugin workaround (#675).
+* Fix: Minetest - server filtering replace missing field ip with address (By @hjri #678)
 
 ## 5.2.0
 * Fix: Palworld not respecting query output players schema (#666)
