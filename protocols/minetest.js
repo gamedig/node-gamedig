@@ -18,7 +18,7 @@ export default class minetest extends Core {
 
     const serverInfo = servers.list.find(
       (server) =>
-        server.ip === this.options.address && server.port === this.options.port
+        server.address === this.options.address && server.port === this.options.port
     )
 
     if (serverInfo == null) {
