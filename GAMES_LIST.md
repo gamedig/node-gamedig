@@ -511,6 +511,8 @@ You can acquire a _ServerId_ from the master query protocol `protocol-brokeproto
 ### <a name='armareforger'></a>ARMA: Reforger
 For queries to work, A2S needs to be setup in the server config, more info [here](https://community.bistudio.com/wiki/Arma_Reforger:Server_Config#a2s_2).
 
+Does not provide players data.
+
 Protocols with Additional Notes
 ---
 
