@@ -35,7 +35,11 @@ export default class farmingsimulator extends Core {
       }
     })
 
-    state.raw.mods = []
+    state.raw = {
+      data: request,
+      mods: []
+    }
+
     $('Mod').each(function () {
       if ($(this).attr('name') !== undefined) {
         state.raw.mods.push({
@@ -49,7 +53,5 @@ export default class farmingsimulator extends Core {
     })
 
     state.version = serverInfo.attr('version')
-
-    // TODO: Add state.raw
   }
 }
