@@ -6,6 +6,7 @@
 * Docs: Counter-Strike 2 does not provide players names, note this and a plugin workaround (#675).
 * Fix: Minetest - server filtering replace missing field ip with address (By @hjri #678)
 * Docs: Arma Reforger does not provide players data (#680)
+* Feat: Farming Simulator add response to raw object (#682)
 
 ## 5.2.0
 * Fix: Palworld not respecting query output players schema (#666)
