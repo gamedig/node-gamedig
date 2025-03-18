@@ -36,10 +36,12 @@ export default class farmingsimulator extends Core {
 
       state.players.push({
         name: player['#text'],
-        raw: {
-          isAdmin: player.attr('@_isAdmin') === 'true',
-          uptime: parseInt(player.attr('@_uptime'), 10)
-        }
+        isUsed: player['@_isUsed'] === 'true',
+        isAdmin: player['@_isAdmin'] === 'true',
+        uptime: parseInt(player['@_uptime'], 10),
+        x: parseFloat(player['@_x']),
+        y: parseFloat(player['@_y']),
+        z: parseFloat(player['@_z'])
       })
     }
 
