@@ -1,55 +1,36 @@
 import Core from './core.js'
-import * as cheerio from 'cheerio'
 
 export default class buildandshoot extends Core {
   async run (state) {
-    const body = await this.request({
-      url: 'http://' + this.options.address + ':' + this.options.port + '/'
+    const request = await this.request({
+      url: 'http://' + this.options.address + ':' + this.options.port + '/json',
+      responseType: 'json'
     })
 
-    let m
+    state.name = request.serverName
+    state.map = request.map.name;
+    state.numplayers = request.players?.length || 0;
+    state.maxplayers = request.maxPlayers;
 
-    m = body.match(/status server for (.*?)\.?[\r\n]/)
-    if (m) state.name = m[1]
+    state.version = request.serverVersion;
 
-    m = body.match(/Current uptime: (\d+)/)
-    if (m) state.raw.uptime = m[1]
+    state.raw = request || {};
 
-    m = body.match(/currently running (.*?) by /)
-    if (m) state.map = m[1]
+    // Backwards compatibility
+    state.raw.uptime = request.serverUptime;
 
-    m = body.match(/Current players: (\d+)\/(\d+)/)
-    if (m) {
-      state.numplayers = parseInt(m[1])
-      state.maxplayers = m[2]
+    state.players = [];
+
+    for (const player of request.players) {
+      // for backwards compatibility we have added latency and ping as the same value and score as kills
+      state.players.push({
+        name: player.name,
+        latency: player.latency,
+        ping: player.latency,
+        team: player.team,
+        score: player.score,
+        kills: player.score
+      })
     }
-
-    m = body.match(/aos:\/\/[0-9]+:[0-9]+/)
-    if (m) {
-      state.connect = m[0]
-    }
-
-    const $ = cheerio.load(body)
-    $('#playerlist tbody tr').each((i, tr) => {
-      if (!$(tr).find('td').first().attr('colspan')) {
-        state.players.push({
-          name: $(tr).find('td').eq(2).text(),
-          ping: $(tr).find('td').eq(3).text().trim(),
-          team: $(tr).find('td').eq(4).text().toLowerCase(),
-          score: parseInt($(tr).find('td').eq(5).text())
-        })
-      }
-    })
-    /*
-        var m = this.options.address.match(/(\d+)\.(\d+)\.(\d+)\.(\d+)/);
-        if(m) {
-            var o1 = parseInt(m[1]);
-            var o2 = parseInt(m[2]);
-            var o3 = parseInt(m[3]);
-            var o4 = parseInt(m[4]);
-            var addr = o1+(o2<<8)+(o3<<16)+(o4<<24);
-            state.raw.url = 'aos://'+addr;
-        }
-        */
   }
 }
