@@ -7,6 +7,8 @@
 * Fix: Minetest - server filtering replace missing field ip with address (By @hjri #678)
 * Docs: Arma Reforger does not provide players data (#680)
 * Feat: Farming Simulator add response to raw object (#682)
+* Chore: Replace cheerio with fast-xml-parser (By @xCausxn #683)
+* Feat: Fix Build and Shoot protocol using the new json status server (By @xCausxn #683)
 
 ## 5.2.0
 * Fix: Palworld not respecting query output players schema (#666)
