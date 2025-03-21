@@ -16,13 +16,11 @@ export default class buildandshoot extends Core {
 
     state.raw = request || {};
 
-    // Backwards compatibility
     state.raw.uptime = request.serverUptime;
 
     state.players = [];
 
     for (const player of request.players) {
-      // for backwards compatibility we have added latency and ping as the same value and score as kills
       state.players.push({
         name: player.name,
         latency: player.latency,
