@@ -545,4 +545,4 @@ Requires the `sv_exposePlayerIdentifiersInHttpEndpoint` convar to be `1` for the
 Does not provide players names, using a plugin like this [one](https://github.com/Source2ZE/ServerListPlayersFix) makes the query to return them.
 
 ### <a name="buildandshoot"></a>Ace of Spades / Build and Shoot
-Requires usage of the status query server enabled in the config.txt.
+Requires usage of the status query server enabled in the config.txt. `status_server.enabled` to `true`
