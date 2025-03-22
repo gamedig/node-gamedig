@@ -7,6 +7,7 @@
 * Fix: Minetest - server filtering replace missing field ip with address (By @hjri #678)
 * Docs: Arma Reforger does not provide players data (#680)
 * Feat: Farming Simulator add response to raw object (#682)
+* Feat: Renown (2025) - Added support (#684 By @anthonyphysgun)
 
 ## 5.2.0
 * Fix: Palworld not respecting query output players schema (#666)
