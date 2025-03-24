@@ -4,10 +4,12 @@ on:
   push:
     paths:
       - "lib/games.js"
+      - "GAMES_LIST.md"
       - ".github/workflows/games_list.yml" # This action
   pull_request:
     paths:
       - "lib/games.js"
+      - "GAMES_LIST.md"
       - ".github/workflows/games_list.yml" # This action
   workflow_dispatch:
 
