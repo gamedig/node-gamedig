@@ -58,7 +58,7 @@ Object.entries(sortedGames).forEach(([id, game]) => {
   if (game.options.protocol === 'valve' || game.options.protocol === 'dayz') {
     notes.push('[Valve Protocol](#valve)')
   }
-  if (game.options.protocol === 'epic' || game.options.protocol === 'asa' || game.options.protocol === 'theisleevrima') {
+  if (game.options.protocol === 'epic' || game.options.protocol === 'asa' || game.options.protocol === 'theisleevrima' || game.options.protocol === 'renown') {
     notes.push('[EOS Protocol](#epic)')
   }
   lineArray[HeaderType.Notes] = notes.join(', ')
