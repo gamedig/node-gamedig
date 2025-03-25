@@ -1,5 +1,5 @@
 import Core from './core.js'
-import cheerio from 'cheerio'
+import { XMLParser, XMLValidator } from 'fast-xml-parser'
 
 export default class farmingsimulator extends Core {
   async run (state) {
@@ -11,47 +11,59 @@ export default class farmingsimulator extends Core {
       responseType: 'text'
     })
 
-    const $ = cheerio.load(request, {
-      xmlMode: true
-    })
+    const isValidXML = XMLValidator.validate(request)
+    if (!isValidXML) {
+      throw new Error('Invalid XML received from Farming Simulator Server')
+    }
 
-    const serverInfo = $('Server')
-    const playerInfo = serverInfo.find('Slots')
+    const parser = new XMLParser({ ignoreAttributes: false })
+    const parsed = parser.parse(request)
 
-    state.name = serverInfo.attr('name')
-    state.map = serverInfo.attr('mapName')
-    state.numplayers = playerInfo.attr('numUsed')
-    state.maxplayers = playerInfo.attr('capacity')
+    const serverInfo = parsed.Server
+    const playerInfo = serverInfo.Slots
 
-    $('Player').each(function () {
-      if ($(this).attr('isUsed') === 'true') {
-        state.players.push({
-          name: $(this).text(),
-          raw: {
-            isAdmin: $(this).attr('isAdmin') === 'true',
-            uptime: parseInt($(this).attr('uptime'), 10)
-          }
-        })
-      }
-    })
+    // Attributes in fast-xml-parser are prefixed with @_
+
+    state.name = serverInfo['@_name']
+    state.map = serverInfo['@_mapName']
+    state.numplayers = parseInt(playerInfo['@_numUsed'], 10) || 0
+    state.maxplayers = parseInt(playerInfo['@_capacity'], 10) || 0
+
+    const players = playerInfo.Player
+
+    for (const player of players) {
+      if (player['@_isUsed'] !== 'true') { continue }
+
+      state.players.push({
+        name: player['#text'],
+        isUsed: player['@_isUsed'] === 'true',
+        isAdmin: player['@_isAdmin'] === 'true',
+        uptime: parseInt(player['@_uptime'], 10),
+        x: parseFloat(player['@_x']),
+        y: parseFloat(player['@_y']),
+        z: parseFloat(player['@_z'])
+      })
+    }
 
     state.raw = {
       data: request,
       mods: []
     }
 
-    $('Mod').each(function () {
-      if ($(this).attr('name') !== undefined) {
-        state.raw.mods.push({
-          name: $(this).text(),
-          short_name: $(this).attr('name'),
-          author: $(this).attr('author'),
-          version: $(this).attr('version'),
-          hash: $(this).attr('hash')
-        })
-      }
-    })
+    const mods = serverInfo.Mods.Mod
 
-    state.version = serverInfo.attr('version')
+    for (const mod of mods) {
+      if (mod['@_name'] == null) { continue }
+
+      state.raw.mods.push({
+        name: mod['#text'],
+        short_name: mod['@_name'],
+        author: mod['@_author'],
+        version: mod['@_version'],
+        hash: mod['@_hash']
+      })
+    }
+
+    state.version = serverInfo['@_version']
   }
 }
