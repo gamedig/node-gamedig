@@ -1,5 +1,5 @@
 import Core from './core.js'
-import {XMLParser, XMLValidator} from 'fast-xml-parser'
+import { XMLParser, XMLValidator } from 'fast-xml-parser'
 
 export default class farmingsimulator extends Core {
   async run (state) {
