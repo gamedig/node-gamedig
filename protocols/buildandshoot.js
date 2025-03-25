@@ -8,17 +8,17 @@ export default class buildandshoot extends Core {
     })
 
     state.name = request.serverName
-    state.map = request.map.name;
-    state.numplayers = request.players?.length || 0;
-    state.maxplayers = request.maxPlayers;
+    state.map = request.map.name
+    state.numplayers = request.players?.length || 0
+    state.maxplayers = request.maxPlayers
 
-    state.version = request.serverVersion;
+    state.version = request.serverVersion
 
-    state.raw = request || {};
+    state.raw = request || {}
 
-    state.raw.uptime = request.serverUptime;
+    state.raw.uptime = request.serverUptime
 
-    state.players = [];
+    state.players = []
 
     for (const player of request.players) {
       state.players.push({
