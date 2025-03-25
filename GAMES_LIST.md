@@ -17,7 +17,7 @@
 | americasarmy3        | America's Army 3                                 | [Valve Protocol](#valve)                         |
 | aoc                  | Age of Chivalry                                  | [Valve Protocol](#valve)                         |
 | aoe2                 | Age of Empires 2                                 |                                                  |
-| aosc                 | Ace of Spades Classic                            |                                                  |
+| aosc                 | Ace of Spades Classic                            | [Notes](#aosc-buildandshoot)                     |
 | arma2                | ARMA 2                                           | [Valve Protocol](#valve)                         |
 | arma3                | ARMA 3                                           | [Valve Protocol](#valve)                         |
 | armagetronadvanced   | Armagetron Advanced                              |                                                  |
@@ -34,7 +34,7 @@
 | baldursgate          | Baldur's Gate                                    |                                                  |
 | ballisticoverkill    | Ballistic Overkill                               | [Valve Protocol](#valve)                         |
 | barotrauma           | Barotrauma                                       | [Valve Protocol](#valve)                         |
-| bas                  | Build and Shoot                                  | [Notes](buildandshoot)                           |
+| bas                  | Build and Shoot                                  | [Notes](#aosc-buildandshoot)                     |
 | basedefense          | Base Defense                                     | [Valve Protocol](#valve)                         |
 | battalion1944        | Battalion 1944                                   | [Valve Protocol](#valve)                         |
 | battlefield1942      | Battlefield 1942                                 |                                                  |
@@ -545,5 +545,5 @@ Requires the `sv_exposePlayerIdentifiersInHttpEndpoint` convar to be `1` for the
 ### <a name="cs2"></a>Counter-Strike 2
 Does not provide players names, using a plugin like this [one](https://github.com/Source2ZE/ServerListPlayersFix) makes the query to return them.
 
-### <a name="buildandshoot"></a>Ace of Spades / Build and Shoot
+### <a name="aosc-buildandshoot"></a>Ace of Spades / Build and Shoot
 Requires usage of the status query server enabled in the config.txt. `status_server.enabled` to `true`
