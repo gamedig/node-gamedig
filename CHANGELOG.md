@@ -8,6 +8,7 @@
 * Docs: Arma Reforger does not provide players data (#680)
 * Feat: Farming Simulator add response to raw object (#682)
 * Feat: Renown (2025) - Added support (#684 By @anthonyphysgun)
+* Fix: Terraria - add missing supported maxplayers field (By @GoodDays13 #686)
 
 ## 5.2.0
 * Fix: Palworld not respecting query output players schema (#666)
