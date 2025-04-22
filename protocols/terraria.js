@@ -13,6 +13,8 @@ export default class terraria extends Core {
 
     if (json.status !== '200') throw new Error('Invalid status')
 
+    state.raw = json
+
     for (const one of json.players) {
       state.players.push({ name: one.nickname, team: one.team })
     }
