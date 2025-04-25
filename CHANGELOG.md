@@ -11,6 +11,7 @@
 * Fix: Terraria - add missing supported maxplayers field and raw field (By @GoodDays13 #686)
 * Chore: Replace cheerio with fast-xml-parser (By @xCausxn #683)
 * Fix: Build and Shoot protocol using the new json status server (By @xCausxn #683)
+* Chore: Update `long` from `5.2.3` to `5.3.2`
 
 ## 5.2.0
 * Fix: Palworld not respecting query output players schema (#666)
