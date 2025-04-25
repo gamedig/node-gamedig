@@ -1,5 +1,7 @@
 import Core from './core.js'
 
+// We are doing some shenanigans here as we are trying to support the stable version and the git master version
+// as in the latest (0.75) releases they are mixed up.
 export default class buildandshoot extends Core {
   async run (state) {
     const request = await this.request({
@@ -9,26 +11,32 @@ export default class buildandshoot extends Core {
 
     state.name = request.serverName
     state.map = request.map.name
-    state.numplayers = request.players?.length || 0
-    state.maxplayers = request.maxPlayers
-
     state.version = request.serverVersion
 
-    state.raw = request || {}
+    const bluePlayers = request.players?.blue || []
+    const greenPlayers = request.players?.green || []
+    let players = bluePlayers.concat(greenPlayers)
+    if (Array.isArray(request.players)) {
+      players = players.concat(request.players)
+    }
 
-    state.raw.uptime = request.serverUptime
+    state.numplayers = players.length
+    state.maxplayers = request.maxPlayers || request.players?.maxPlayers
 
     state.players = []
-
-    for (const player of request.players) {
-      state.players.push({
-        name: player.name,
-        latency: player.latency,
-        ping: player.latency,
-        team: player.team,
-        score: player.score,
-        kills: player.score
-      })
+    for (const player of players) {
+      if (typeof player === 'string') {
+        state.players.push({
+          name: player
+        })
+      } else {
+        state.players.push({
+          name: player.name,
+          raw: player
+        })
+      }
     }
+
+    state.raw = request
   }
 }
