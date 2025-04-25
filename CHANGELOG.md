@@ -1,6 +1,8 @@
 
 ## To Be Released...
 ## 5.X.Y
+
+## 5.3.0
 * Docs: Arma Reforger query setup note (#670, thanks @xCausxn)
 * Fix: Grand Theft Auto V - FiveM wrap the players query in a try block as it doesn't provide the data by default anymore (#674, thanks @xCausxn)
 * Docs: Counter-Strike 2 does not provide players names, note this and a plugin workaround (#675).
