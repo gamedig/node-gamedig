@@ -17,6 +17,9 @@ on:
       - "package-lock.json"
       - ".github/workflows/node.yml" # This action
 
+permissions:
+  contents: read
+
 jobs:
   build:
 

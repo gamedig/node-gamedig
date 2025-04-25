@@ -13,6 +13,9 @@ on:
       - ".github/workflows/games_list.yml" # This action
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   check_file:
 

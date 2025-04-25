@@ -11,6 +11,9 @@ on:
       - ".github/workflows/id-tests.yml" # This action
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   test:
 
