@@ -31,10 +31,8 @@ export default class buildandshoot extends Core {
         })
       } else {
         state.players.push({
-          name: player.name,
-          ping: player.ping,
-          team: player.team,
-          score: player.score
+          ...player,
+          name: player.name
         })
       }
     }
