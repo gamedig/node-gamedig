@@ -12,6 +12,7 @@
 * Chore: Replace cheerio with fast-xml-parser (By @xCausxn #683)
 * Fix: Build and Shoot protocol using the new json status server (By @xCausxn #683)
 
+
 ## 5.2.0
 * Fix: Palworld not respecting query output players schema (#666)
 * Fix: Minecraft name being duplicated in the name string (#656)
