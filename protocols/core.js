@@ -310,13 +310,6 @@ export default class Core extends EventEmitter {
   async request (params) {
     await this.tcpPing()
 
-    const response = await this.rawRequest(params)
-    return response.body
-  }
-
-  async rawRequest (params) {
-    await this.tcpPing()
-
     let requestPromise
     try {
       requestPromise = got({
@@ -333,7 +326,7 @@ export default class Core extends EventEmitter {
       })
       const wrappedPromise = requestPromise.then(response => {
         if (response.statusCode !== 200) throw new Error('Bad status code: ' + response.statusCode)
-        return response
+        return response.body
       })
       return await Promise.race([wrappedPromise, this.abortedPromise])
     } finally {

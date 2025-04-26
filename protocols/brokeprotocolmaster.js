@@ -126,11 +126,12 @@ export default class brokeprotocolmaster extends Core {
    */
   async checkApi () {
     try {
-      const response = await this.rawRequest({
+      await this.request({
         url: this.backendApiUriCheck,
         method: 'HEAD'
       })
-      return !!response?.ok
+
+      return true
     } catch (err) {
       // ignore error message
     }
