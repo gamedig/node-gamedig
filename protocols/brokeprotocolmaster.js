@@ -128,7 +128,8 @@ export default class brokeprotocolmaster extends Core {
     try {
       await this.request({
         url: this.backendApiUriCheck,
-        method: 'HEAD'
+        method: 'HEAD',
+        retry: { limit: 0 } // TODO: #650 remove this
       })
 
       return true
