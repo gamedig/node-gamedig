@@ -1,6 +1,7 @@
 
 ## To Be Released...
 ## 5.X.Y
+* Fix: HTTP requests would end up making more retries than needed due to got's internal retry mechanism (#690)
 
 ## 5.3.0
 * Docs: Arma Reforger query setup note (#670, thanks @xCausxn)
