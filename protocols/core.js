@@ -316,6 +316,9 @@ export default class Core extends EventEmitter {
         ...params,
         timeout: {
           request: this.options.socketTimeout
+        },
+        retry: {
+          limit: 0
         }
       })
       this.logger.debug(log => {
