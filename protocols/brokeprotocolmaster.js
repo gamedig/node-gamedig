@@ -1,5 +1,4 @@
 import Core from './core.js'
-import got from 'got'
 // import Ajv from 'ajv'
 // const ajv = new Ajv()
 
@@ -123,16 +122,17 @@ export default class brokeprotocolmaster extends Core {
 
   /**
    * Checks if the API is available
-   * @returns a list of servers as raw data
+   * @returns a boolean representing api availability
    */
   async checkApi () {
     try {
-      const response = await got(this.backendApiUriCheck, {
+      await this.request({
+        url: this.backendApiUriCheck,
         method: 'HEAD',
-        timeout: { request: 2000 },
-        retry: { limit: 0 }
+        retry: { limit: 0 } // TODO: #650 remove this
       })
-      return !!response?.ok
+
+      return true
     } catch (err) {
       // ignore error message
     }
