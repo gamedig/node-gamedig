@@ -122,7 +122,7 @@ export default class brokeprotocolmaster extends Core {
 
   /**
    * Checks if the API is available
-   * @returns a list of servers as raw data
+   * @returns a boolean representing api availability
    */
   async checkApi () {
     try {
