@@ -264,7 +264,7 @@
 | rust                 | Rust                                             | [Valve Protocol](#valve)                         |
 | s2ats                | Savage 2: A Tortured Soul                        |                                                  |
 | satisfactory         | Satisfactory                                     | [Notes](#satisfactory)                           |
-| sdtd                 | 7 Days to Die                                    | [Valve Protocol](#valve)                         |
+| sdtd                 | 7 Days to Die                                    | [Notes](#sdtd), [Valve Protocol](#valve)         |
 | serioussam           | Serious Sam                                      |                                                  |
 | serioussam2          | Serious Sam 2                                    |                                                  |
 | shatteredhorizon     | Shattered Horizon                                | [Valve Protocol](#valve)                         |
@@ -547,3 +547,8 @@ Does not provide players names, using a plugin like this [one](https://github.co
 
 ### <a name="aosc-buildandshoot"></a>Ace of Spades / Build and Shoot
 Requires usage of the status query server enabled in the config.txt. `status_server.enabled` to `true`
+
+### <a name="sdtd"></a>7 Days to Die
+Does not provide player names but can be provided via telnet commands, to use these make sure in `serverconfig.xml` you
+have configured `TelnetEnabled` to `true`, `TelnetPort` and `TelnetPassword` and pass `telnetPort` and `telnetPassword`
+to the query parameters.

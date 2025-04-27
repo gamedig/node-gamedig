@@ -55,7 +55,7 @@ Object.entries(sortedGames).forEach(([id, game]) => {
   if (game?.extra?.doc_notes) {
     notes.push('[Notes](#' + game.extra.doc_notes + ')')
   }
-  if (['valve', 'dayz'].includes(game.options.protocol)) {
+  if (['valve', 'dayz', 'sdtd'].includes(game.options.protocol)) {
     notes.push('[Valve Protocol](#valve)')
   }
   if (['epic', 'asa', 'theisleevrima', 'renown'].includes(game.options.protocol)) {

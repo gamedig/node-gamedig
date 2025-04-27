@@ -7,6 +7,7 @@ import Logger from '../lib/Logger.js'
 import DnsResolver from '../lib/DnsResolver.js'
 import { Results } from '../lib/Results.js'
 import Promises from '../lib/Promises.js'
+import { Telnet } from 'telnet-client'
 
 let uid = 0
 
@@ -27,6 +28,8 @@ export default class Core extends EventEmitter {
     this.udpSocket = null
     this.shortestRTT = 0
     this.usedTcp = false
+
+    this.telnetClient = new Telnet()
   }
 
   // Runs a single attempt with a timeout and cleans up afterward
@@ -335,5 +338,24 @@ export default class Core extends EventEmitter {
     } finally {
       requestPromise?.cancel()
     }
+  }
+
+  async telnetConnect (params) {
+    await this.telnetClient.connect({
+      timeout: 2000,
+      execTimeout: 2000,
+      host: this.options.host,
+      debug: this.debugEnabled,
+      ...params
+    })
+  }
+
+  async telnetExecute (command) {
+    return await this.telnetClient.exec(command)
+  }
+
+  async telnetClose () {
+    await this.telnetClient.end()
+    await this.telnetClient.destroy()
   }
 }
