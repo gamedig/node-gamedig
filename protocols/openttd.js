@@ -9,12 +9,12 @@ export default class openttd extends Core {
 
       switch (version) {
         case 7:
-          state.raw.ticksPlaying = reader.uint(8)
+          state.raw.ticks_playing = reader.uint(8)
         case 6:
-          state.raw.newgrfSerialisation = reader.uint(1)
+          state.raw.newgrf_serialisation = reader.uint(1)
         case 5:
-          state.raw.gamescriptVersion = reader.uint(4)
-          state.raw.gamescriptName = reader.string() // .replace(/\0/g, '')
+          state.raw.gamescript_version = reader.uint(4)
+          state.raw.gamescript_name = reader.string() // .replace(/\0/g, '')
         case 4:
           const numGrf = reader.uint(1)
           state.raw.grfs = []
@@ -51,7 +51,7 @@ export default class openttd extends Core {
 
           if (version < 3) {
             state.raw.date_current = this.readOldDate(reader)
-            state.raw.start_current = this.readOldDate(reader)
+            state.raw.date_start = this.readOldDate(reader)
           }
           if (version < 6) {
             state.map = reader.string()
@@ -63,6 +63,11 @@ export default class openttd extends Core {
             ['temperate', 'arctic', 'desert', 'toyland']
           )
           state.raw.dedicated = !!reader.uint(1)
+      }
+      
+      if (version < 7) {
+        const DAY_TICKS = 74;
+        state.raw.ticks_playing = (new Date(state.raw.date_current).getTime() - new Date(state.raw.date_start).getTime()) / 1000 / 3600 / 24 * DAY_TICKS + 1280; //1280 looks like initial ticks after server start
       }
     }
 
@@ -137,7 +142,7 @@ export default class openttd extends Core {
     const daysSinceZero = reader.uint(4)
     const temp = new Date(0, 0, 1)
     temp.setFullYear(0)
-    temp.setDate(daysSinceZero + 1)
+    temp.setDate(daysSinceZero + 2) // to show correct date here must be +2
     return temp.toISOString().split('T')[0]
   }
 
@@ -146,7 +151,7 @@ export default class openttd extends Core {
     const daysSinceZero = DAYS_TILL_ORIGIANAL_BASE_YEAR + reader.uint(2)
     const temp = new Date(0, 0, 1)
     temp.setFullYear(0) //not sure about this - no option to test it
-    temp.setDate(daysSinceZero + 1)
+    temp.setDate(daysSinceZero + 2)
     return temp.toISOString().split('T')[0]
   }
 
