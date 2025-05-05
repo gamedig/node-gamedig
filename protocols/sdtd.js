@@ -1,8 +1,10 @@
 import Valve from './valve.js'
 import { Players } from '../lib/Results.js'
 
-const playerLineRegex = /(?<=id=\d+,\s*)(?<name>\S[^,]*)(?=,)/
-const modLineRegex = /^Mod\s+([^:]+):\s*([\d.]+)$/
+const playerRegex = /(?<=id=\d+,\s*)(?<name>\S[^,]*)(?=,)/
+const gameVersionsRegex = /V \d+\.\d+(?: \(b\d+\))?/g
+const modRegex = /^Mod\s+([^:]+):\s*([\d.]+)$/
+const dateTimeRegex = /Day\s+(\d+),\s*(\d{2}:\d{2})/
 
 const sanitizeTelnetResponse = response => {
   return response
@@ -53,7 +55,7 @@ export default class sdtd extends Valve {
     const playersResponse = await this.telnetExecute('listplayers')
     state.players = new Players()
     for (const possiblePlayerLine of sanitizeTelnetResponse(playersResponse)) {
-      const match = possiblePlayerLine.match(playerLineRegex)
+      const match = possiblePlayerLine.match(playerRegex)
 
       const name = match?.groups?.name
       if (name) {
@@ -70,8 +72,7 @@ export default class sdtd extends Valve {
   async telnetMoreData (state) {
     const gettimeResponse = await this.telnetExecute('gettime')
     const dateTime = sanitizeTelnetResponse(gettimeResponse)[0] || ''
-    const match = dateTime.match(/Day\s+(\d+),\s*(\d{2}:\d{2})/)
-
+    const match = dateTime.match(dateTimeRegex)
     if (match) {
       state.raw.day = Number(match[1])
       state.raw.time = match[2]
@@ -80,19 +81,17 @@ export default class sdtd extends Valve {
     state.raw.telnetGettimeResponse = gettimeResponse
 
     const versionResponse = await this.telnetExecute('version')
-    const version = sanitizeTelnetResponse(versionResponse)
-    const gameVersions = version[0] || ''
-
-    const versions = gameVersions.match(/V \d+\.\d+(?: \(b\d+\))?/g)
-
-    if (versions) {
-      state.raw.gameVersion = versions[0]
-      state.raw.compatibilityVersion = versions[1]
+    const versions = sanitizeTelnetResponse(versionResponse)
+    const gameVersions = versions[0] || ''
+    const gameVersionsMatch = gameVersions.match(gameVersionsRegex)
+    if (gameVersionsMatch) {
+      state.raw.gameVersion = gameVersionsMatch[0]
+      state.raw.compatibilityVersion = gameVersionsMatch[1]
     }
 
     const mods = []
-    for (const possibleMod of version.slice(1)) {
-      const match = possibleMod.match(modLineRegex)
+    for (const possibleMod of versions.slice(1)) {
+      const match = possibleMod.match(modRegex)
       if (match) {
         mods.push({
           name: match[1],
