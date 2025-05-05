@@ -33,7 +33,8 @@ export default class sdtd extends Valve {
       port: telnetPort,
       password: telnetPassword,
       passwordPrompt: /Please enter password:/i,
-      shellPrompt: /\r\n$/
+      shellPrompt: /\r\n$/,
+      echoLines: 0
     })
 
     await this.telnetCallPlayers(state)
