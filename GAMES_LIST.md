@@ -552,4 +552,5 @@ Requires usage of the status query server enabled in the config.txt. `status_ser
 Does not provide player names but can be provided via telnet commands, to use these make sure in `serverconfig.xml` you
 have configured `TelnetEnabled` to `true`, `TelnetPort` and `TelnetPassword` and pass `telnetPort` and `telnetPassword`
 to the query parameters.
+
 To fetch more info via telnet (game and mods versions, date and time), at the cost of a longer query time, set `moreData` to `true`.
