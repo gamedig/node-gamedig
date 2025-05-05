@@ -76,6 +76,9 @@ export default class sdtd extends Valve {
     if (match) {
       state.raw.day = Number(match[1])
       state.raw.time = match[2]
+      state.raw.hordeDay = state.raw.day % 7 === 0
+    } else {
+      state.raw.hordeDay = false
     }
 
     state.raw.telnetGettimeResponse = gettimeResponse
