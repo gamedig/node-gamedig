@@ -29,6 +29,6 @@ This is hidden until it is not!
 
 **Additional context**
 Add any other context about the changes here, for example:
-* 'Closes issue #T'
-* 'Could be related to #F'
-* 'This is similar to the #Two problem discussed on the Discord server.'
+* 'Closes issue #T, lore-related to issue #F, mentioned in pr #Two'
+* 'To validate the changes, one can test on this address: 127.255.0.256'
+* 'I couldn't find any live servers to validate these changes, here are the docs on how to start a local server: www.google.com'
