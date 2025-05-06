@@ -2,7 +2,7 @@
 name: Feature
 about: Add something new and hopefully useful
 title: 'feat: add this game'
-labels: enhancement
+labels: feature
 assignees: ''
 
 ---
