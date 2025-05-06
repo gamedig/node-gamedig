@@ -9,7 +9,7 @@ assignees: ''
 
 <!-- This section must be completed! -->
 **Describe the changes**
-[ ] I have added a line in the [CHANGELOG.md](https://github.com/gamedig/node-gamedig/blob/master/CHANGELOG.md) file.
+- [ ] I have added a line in the [CHANGELOG.md](https://github.com/gamedig/node-gamedig/blob/master/CHANGELOG.md) file.
 <!-- (example): `* Fix: The word engineer has 3 e's in it (By @you, #PR_NUMBER)` -->
 <!-- Note: mentioning yourself is not necessary, everything else is! -->
 

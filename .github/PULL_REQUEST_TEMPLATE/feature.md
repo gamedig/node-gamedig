@@ -9,7 +9,7 @@ assignees: ''
 
 <!-- This section must be completed! -->
 **Describe the changes**
-[ ] I have added a line in the [CHANGELOG.md](https://github.com/gamedig/node-gamedig/blob/master/CHANGELOG.md) file.
+- [ ] I have added a line in the [CHANGELOG.md](https://github.com/gamedig/node-gamedig/blob/master/CHANGELOG.md) file.
 <!-- (example): `* Feat: Add a 10th character (By @you, #PR_NUMBER)` -->
 <!-- Note: mentioning yourself is not necessary, everything else is! -->
 
