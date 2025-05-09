@@ -4,6 +4,7 @@
 * Fix: HTTP requests would end up making more retries than needed due to got's internal retry mechanism (#690, thanks @RattleSN4K3)
 * Feat: 7 Days to Die add Telnet support for missing player names (#692, thanks @jammsen)
 * Feat: 7 Days to Die get more optional Telnet data via an option (#693)
+* Feat: Update OpenTTD (By @mwkaicz #695)
 
 ## 5.3.0
 * Docs: Arma Reforger query setup note (#670, thanks @xCausxn)
