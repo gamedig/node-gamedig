@@ -6,6 +6,7 @@
 * Feat: 7 Days to Die get more optional Telnet data via an option (#693)
 * Feat: Update OpenTTD (By @mwkaicz #695)
 * Fix: Skip non-response packets in protocol-battlefield (By @cetteup #704)
+* Fix: throwing in tcpSend onData callback would crash gamedig (#705, thanks @cetteup)
 
 ## 5.3.0
 * Docs: Arma Reforger query setup note (#670, thanks @xCausxn)
