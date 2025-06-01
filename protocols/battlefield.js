@@ -146,8 +146,21 @@ export default class battlefield extends Core {
   decodePacket (buffer) {
     if (buffer.length < 8) return false
     const reader = this.reader(buffer)
-    reader.uint(4) // header
+    const header = reader.uint(4)
     const totalLength = reader.uint(4)
+    // Venice Unleashed servers "broadcast" in-game events to any connected rcon client
+    // If we get such a non-response packet, skip it and decode any remaining data
+    // Note: We will receive the broadcast ticket again next time the socket receives data, as data is concatenated
+    if (!(header & 0x40000000)) {
+      // Skip total length minus already read bytes (4 header + 4 length)
+      reader.skip(totalLength - 8)
+      if (reader.done()) {
+        this.logger.debug('Skipping packet, type mismatch')
+        return
+      } else {
+        return this.decodePacket(reader.rest())
+      }
+    }
     if (buffer.length < totalLength) return false
     this.logger.debug('Expected ' + totalLength + ' bytes, have ' + buffer.length)
 
