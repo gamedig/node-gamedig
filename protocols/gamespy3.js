@@ -122,7 +122,7 @@ export default class gamespy3 extends Core {
           let value = playerInfo[from]
 
           if (key === 'player') key = 'name'
-          if (key === 'score' || key === 'ping' || key === 'team' || key === 'deaths' || key === 'pid') value = parseInt(value)
+          if (['score', 'ping', 'team', 'deaths', 'pid'].includes(key)) value = parseInt(value)
           player[key] = value
         }
         state.players.push(player)
