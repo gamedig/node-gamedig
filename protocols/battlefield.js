@@ -85,16 +85,7 @@ export default class battlefield extends Core {
             if (key === 'teamId') key = 'team'
             else if (key === 'squadId') key = 'squad'
 
-            if (
-              key === 'kills' ||
-                            key === 'deaths' ||
-                            key === 'score' ||
-                            key === 'rank' ||
-                            key === 'team' ||
-                            key === 'squad' ||
-                            key === 'ping' ||
-                            key === 'type'
-            ) {
+            if (['kills', 'deaths', 'score', 'rank', 'team', 'squad', 'ping', 'type'].includes(key)) {
               value = parseInt(value)
             }
 
