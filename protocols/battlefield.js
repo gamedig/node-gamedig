@@ -39,7 +39,8 @@ export default class battlefield extends Core {
         if (data.length) state.raw.uptime = parseInt(data.shift())
         if (data.length) state.raw.roundtime = parseInt(data.shift())
 
-        const isBadCompany2 = data[0] === 'BC2'
+        // If this is a Bad Company 2 server, the next field will indicate the "gameMod" followed by an unknown field
+        const isBadCompany2 = data[0] === 'BC2' || data[0] === 'VIETNAM'
         if (isBadCompany2) {
           if (data.length) data.shift()
           if (data.length) data.shift()
