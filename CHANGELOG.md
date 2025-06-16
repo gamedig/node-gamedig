@@ -1,6 +1,7 @@
 
 ## To Be Released...
 ## 5.X.Y
+* Fix: detect BFBC2 Vietnam DLC as BFBC2 (By @cetteup #713)
 
 ## 5.3.1
 * Fix: HTTP requests would end up making more retries than needed due to got's internal retry mechanism (#690, thanks @RattleSN4K3)
