@@ -554,3 +554,8 @@ have configured `TelnetEnabled` to `true`, `TelnetPort` and `TelnetPassword` and
 to the query parameters.
 
 To fetch more info via telnet (game and mods versions, date and time), at the cost of a longer query time, set `moreData` to `true`.
+
+### <a name="ssl"></a>SCP: Secret Laboratory
+Unfortunately, only verified servers can be queried, for this you'd need a `accountId`, an `apiKey` and `serverId`
+(this optional, not providing this just returns the server list associated with the account in the raw object).
+
