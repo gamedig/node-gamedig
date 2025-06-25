@@ -50,7 +50,5 @@ export default class scpsl extends Core {
     const [numplayers, maxplayers] = server.Players.split('/').map(Number)
     state.numplayers = numplayers
     state.maxplayers = maxplayers
-
-    console.log(server)
   }
 }
