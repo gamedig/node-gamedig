@@ -45,6 +45,7 @@ export default class scpsl extends Core {
     }
 
     state.version = server.Version
+    state.name = Buffer.from(server.Info, 'base64').toString()
 
     const [numplayers, maxplayers] = server.Players.split('/').map(Number)
     state.numplayers = numplayers
