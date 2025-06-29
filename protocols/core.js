@@ -346,10 +346,12 @@ export default class Core extends EventEmitter {
   }
 
   async telnetConnect (params) {
+    const { socketTimeout, host } = this.options
+
     await this.telnetClient.connect({
-      timeout: 2000,
-      execTimeout: 2000,
-      host: this.options.host,
+      timeout: socketTimeout,
+      execTimeout: socketTimeout,
+      host,
       debug: this.debugEnabled,
       ...params
     })
