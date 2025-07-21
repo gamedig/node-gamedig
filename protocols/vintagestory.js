@@ -1,9 +1,9 @@
 import Core from './core.js'
-import vintagestorymaster from './vintagestorymaster.js'
+import VintageStoryMaster from './vintagestorymaster.js'
 
 export default class vintagestory extends Core {
   async run (state) {
-    const master = new vintagestorymaster()
+    const master = new VintageStoryMaster()
     master.options = this.options
     const masterState = await master.runOnceSafe()
     const servers = masterState.raw.servers

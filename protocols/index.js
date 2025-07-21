@@ -30,8 +30,8 @@ import kspdmp from './kspdmp.js'
 import mafia2mp from './mafia2mp.js'
 import mafia2online from './mafia2online.js'
 import minecraft from './minecraft.js'
-import minecraftbedrock from './minecraftbedrock.js'
-import minecraftvanilla from './minecraftvanilla.js'
+import MinecraftBedrock from './minecraftbedrock.js'
+import MinecraftVanilla from './minecraftvanilla.js'
 import minetest from './minetest.js'
 import mumble from './mumble.js'
 import mumbleping from './mumbleping.js'
@@ -63,14 +63,14 @@ import valve from './valve.js'
 import vcmp from './vcmp.js'
 import ventrilo from './ventrilo.js'
 import warsow from './warsow.js'
-import beammpmaster from './beammpmaster.js'
+import BeamMpMaster from './beammpmaster.js'
 import beammp from './beammp.js'
 import dayz from './dayz.js'
 import theisleevrima from './theisleevrima.js'
 import ragemp from './ragemp.js'
 import xonotic from './xonotic.js'
 import altvmp from './altvmp.js'
-import vintagestorymaster from './vintagestorymaster.js'
+import VintageStoryMaster from './vintagestorymaster.js'
 import vintagestory from './vintagestory.js'
 import sdtd from './sdtd.js'
 import scpsl from './scpsl.js'
@@ -78,7 +78,7 @@ import scpsl from './scpsl.js'
 export {
   armagetron, ase, asa, assettocorsa, battlefield, brokeprotocol, brokeprotocolmaster, buildandshoot, cs2d, discord, doom3, eco, epic, factorio, farmingsimulator, ffow,
   fivem, gamespy1, gamespy2, gamespy3, geneshift, goldsrc, gtasao, hawakening, hawakeningmaster, hexen2, jc2mp, kspdmp, mafia2mp, mafia2online, minecraft,
-  minecraftbedrock, minecraftvanilla, minetest, mumble, mumbleping, nadeo, openttd, palworld, quake1, quake2, quake3, renegadex, renegadexmaster, renown, rfactor, ragemp, samp,
+  MinecraftBedrock, MinecraftVanilla, minetest, mumble, mumbleping, nadeo, openttd, palworld, quake1, quake2, quake3, renegadex, renegadexmaster, renown, rfactor, ragemp, samp,
   satisfactory, soldat, savage2, starmade, starsiege, teamspeak2, teamspeak3, terraria, toxikk, tribes1, tribes1master, unreal2, ut3, valve,
-  vcmp, ventrilo, warsow, eldewrito, beammpmaster, beammp, dayz, theisleevrima, xonotic, altvmp, vintagestorymaster, vintagestory, sdtd, scpsl
+  vcmp, ventrilo, warsow, eldewrito, BeamMpMaster, beammp, dayz, theisleevrima, xonotic, altvmp, VintageStoryMaster, vintagestory, sdtd, scpsl
 }

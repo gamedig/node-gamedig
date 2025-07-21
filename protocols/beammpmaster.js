@@ -1,6 +1,6 @@
 import Core from './core.js'
 
-export default class beammpmaster extends Core {
+export default class BeamMpMaster extends Core {
   constructor () {
     super()
 

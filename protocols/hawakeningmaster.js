@@ -70,7 +70,7 @@ export default class hawakeningmaster extends Core {
     })
 
     this.logger.debug('Server Listing:', serverListing)
-    if (serverListing == null) {
+    if (serverListing === null) {
       throw new Error('Server not found in master server listing')
     }
 
@@ -209,13 +209,12 @@ export default class hawakeningmaster extends Core {
     // match info is received by requesting a matchmaking "token"
     // if the server is at capacity, the response won't provide valid data (500 error)
     // return an empty server info when server is already full
-    if (serverListing.MaxUsers == serverListing.Users?.length) {
+    if (serverListing.MaxUsers === serverListing.Users?.length) {
       return {}
     }
 
     const serverToken = await this.getServerToken(serverListing)
-    const matchInfo = await this.getMatchInfo(serverToken)
-    return matchInfo
+    return await this.getMatchInfo(serverToken)
   }
 
   async getServerToken (serverListing) {
@@ -303,7 +302,7 @@ function isObject (item) {
 
 /**
  * Class representing a client for the Meteor Backend API.
- * 
+ *
  * This class provides methods for interacting with the Meteor Backend API, including
  * authentication, retrieving user information, and handling server-related operations.
  */
@@ -314,7 +313,7 @@ export class MeteorBackendApi {
 
   /**
    * Creates an instance of the MeteorBackendApi.
-   * 
+   *
    * @param {Object} protocol - The protocol object to handle requests.
    * @param {string} apiUri - The base URI for the API.
    */
@@ -326,7 +325,7 @@ export class MeteorBackendApi {
 
   /**
    * The base URI of the API.
-   * 
+   *
    * @returns {string} The API URI.
    */
   get apiUri () {
@@ -350,7 +349,7 @@ export class MeteorBackendApi {
 
   /**
    * Sets the logger for the instance.
-   * 
+   *
    * @param {Object} logger - The logger instance to use for logging.
    */
   setLogger (logger) {
@@ -359,7 +358,7 @@ export class MeteorBackendApi {
 
   /**
    * Makes an API call to the specified endpoint with the given request parameters.
-   * 
+   *
    * @param {string} endpoint - The API endpoint to call.
    * @param {Object} requestParams - The parameters for the API request.
    * @param {Object} callParams - Additional parameters for the call.
@@ -398,7 +397,7 @@ export class MeteorBackendApi {
 
   /**
    * Retrieves the status of the service.
-   * 
+   *
    * @returns {Promise<Object>} A promise that resolves to the response object from the API call.
    */
   getStatusServices () {
@@ -408,7 +407,7 @@ export class MeteorBackendApi {
 
   /**
    * Retrieves Bundles.
-   * 
+   *
    * @returns {Promise<Object>} A promise that resolves to the response object from the API call.
    */
   getBundles () {
@@ -418,7 +417,7 @@ export class MeteorBackendApi {
 
   /**
    * Retrieves an access token for a client using the provided username and password.
-   * 
+   *
    * @param {string} userName - The username of the client.
    * @param {string} password - The password of the client.
    * @returns {Promise<Object>} A promise that resolves to the response object from the API call.
@@ -432,7 +431,7 @@ export class MeteorBackendApi {
 
   /**
    * Retrieves user information based on the username.
-   * 
+   *
    * @param {string} userName - The username of the user.
    * @returns {Promise<Object>} A promise that resolves to the response object from the API call.
    */
@@ -444,7 +443,7 @@ export class MeteorBackendApi {
 
   /**
    * Retrieves a list of master servers.
-   * 
+   *
    * @returns {Promise<Object>} A promise that resolves to the response object from the API call.
    */
   getMasterServerList () {
@@ -454,7 +453,7 @@ export class MeteorBackendApi {
 
   /**
    * Retrieves a server token based on the server listing and user information.
-   * 
+   *
    * @param {Object} serverListing - The server listing object containing server details.
    * @param {Object} userInfo - The user information object.
    * @returns {Promise<Object>} A promise that resolves to the response object from the API call.
@@ -473,7 +472,7 @@ export class MeteorBackendApi {
 
   /**
    * Retrieves match information based on the server token.
-   * 
+   *
    * @param {string} serverToken - The token of the server.
    * @returns {Promise<Object>} A promise that resolves to the response object from the API call.
    */
@@ -485,7 +484,7 @@ export class MeteorBackendApi {
 
   /**
    * Notifies the system that a user has exited.
-   * 
+   *
    * @param {Object} userInfo - The user information object.
    * @returns {Promise<Object>} A promise that resolves to the response object from the API call.
    */
@@ -511,7 +510,7 @@ export class MeteorBackendApi {
 
   /**
    * Logs out a user based on their information.
-   * 
+   *
    * @param {Object} userInfo - The user information object.
    * @returns {Promise<Object>} A promise that resolves to the response object from the API call.
    */
@@ -524,7 +523,7 @@ export class MeteorBackendApi {
 
   /**
    * Asserts that the response is valid.
-   * 
+   *
    * @static
    * @param {Object} response - The response object to validate.
    * @param {string} tag - A tag for the error message.
@@ -542,7 +541,7 @@ export class MeteorBackendApi {
 
   /**
    * Asserts that the response status is valid.
-   * 
+   *
    * @static
    * @param {Object} response - The response object to validate.
    * @param {string} tag - A tag for the error message.
@@ -561,7 +560,7 @@ export class MeteorBackendApi {
 
   /**
    * Asserts that the response message is valid.
-   * 
+   *
    * @static
    * @param {Object} response - The response object to validate.
    * @param {string} tag - A tag for the error message.
@@ -587,7 +586,7 @@ export class MeteorBackendApi {
 
   /**
    * Asserts that the response contains valid data.
-   * 
+   *
    * @static
    * @param {Object} response - The response object to validate.
    * @param {string} tag - A tag for the error message.
@@ -600,7 +599,6 @@ export class MeteorBackendApi {
     }
   }
 }
-
 
 export const MasterServerServerListingSchema = {
   type: 'object',
