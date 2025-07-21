@@ -1,6 +1,6 @@
 import Core from './core.js'
-import minecraftbedrock from './minecraftbedrock.js'
-import minecraftvanilla from './minecraftvanilla.js'
+import MinecraftBedrock from './minecraftbedrock.js'
+import MinecraftVanilla from './minecraftvanilla.js'
 import Gamespy3 from './gamespy3.js'
 
 /*
@@ -21,7 +21,7 @@ export default class minecraft extends Core {
     /** @type {Promise<Results>[]} */
     const promises = []
 
-    const vanillaResolver = new minecraftvanilla()
+    const vanillaResolver = new MinecraftVanilla()
     vanillaResolver.options = this.options
     vanillaResolver.udpSocket = this.udpSocket
     promises.push(vanillaResolver)
@@ -34,7 +34,7 @@ export default class minecraft extends Core {
     gamespyResolver.udpSocket = this.udpSocket
     promises.push(gamespyResolver)
 
-    const bedrockResolver = new minecraftbedrock()
+    const bedrockResolver = new MinecraftBedrock()
     bedrockResolver.options = this.options
     bedrockResolver.udpSocket = this.udpSocket
     promises.push(bedrockResolver)

@@ -49,8 +49,10 @@ export default class gamespy2 extends Core {
     // both use gamename = "armygame"
     if (state.raw.gamename === 'armygame') {
       const stripColor = (str) => {
+        if (!this.options.stripColors) return str
         // uses unreal 2 color codes
-        return this.options.stripColors ? str.replace(/\x1b...|[\x00-\x1a]/g, '') : str
+        // eslint-disable-next-line no-control-regex
+        return str.replace(/\x1b...|[\x00-\x1a]/g, '')
       }
       state.name = stripColor(state.name)
       state.map = stripColor(state.map)

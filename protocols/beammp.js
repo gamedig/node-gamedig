@@ -1,9 +1,9 @@
 import Core from './core.js'
-import beammpmaster from './beammpmaster.js'
+import BeamMpMaster from './beammpmaster.js'
 
 export default class beammp extends Core {
   async run (state) {
-    const master = new beammpmaster()
+    const master = new BeamMpMaster()
     master.options = this.options
     const masterState = await master.runOnceSafe()
     const servers = masterState.raw.servers

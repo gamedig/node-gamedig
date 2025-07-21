@@ -1,6 +1,6 @@
 import Core from './core.js'
 
-export default class vintagestorymaster extends Core {
+export default class VintageStoryMaster extends Core {
   constructor () {
     super()
     this.usedTcp = true

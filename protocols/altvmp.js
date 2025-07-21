@@ -1,12 +1,12 @@
 import Core from './core.js'
 
 export default class altvmp extends Core {
-  constructor() {
+  constructor () {
     super()
     this.usedTcp = true
   }
 
-  async getServerFromMasterList() {
+  async getServerFromMasterList () {
     const targetID = `${this.options.host}:${this.options.port}`
 
     const results = await this.request({
@@ -30,7 +30,7 @@ export default class altvmp extends Core {
     return serverInfo
   }
 
-  async getServerById(targetID) {
+  async getServerById (targetID) {
     const serverInfo = await this.request({
       url: `https://api.alt-mp.com/servers/${targetID}`,
       responseType: 'json'
@@ -43,7 +43,7 @@ export default class altvmp extends Core {
     return serverInfo
   }
 
-  async run(state) {
+  async run (state) {
     const serverInfo = this.options.serverId
       ? await this.getServerById(this.options.serverId)
       : await this.getServerFromMasterList()

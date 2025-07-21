@@ -1,74 +1,83 @@
 import Core from './core.js'
 
 export default class openttd extends Core {
-  async run(state) {
-    {
-      let [reader, version] = await this.query(7, 6, 1, -1)
+  async run (state) {
+    let [reader, version] = await this.query(7, 6, 1, -1)
 
-      if (version > 7) version = 7 //current version is 7, but this should work for heigher versions too
+    version = Math.min(version, 7) // current version is 7, but this should work for heigher versions too
 
-      switch (version) {
-        case 7:
-          state.raw.ticks_playing = reader.uint(8)
-        case 6:
-          state.raw.newgrf_serialisation = reader.uint(1)
-        case 5:
-          state.raw.gamescript_version = reader.uint(4)
-          state.raw.gamescript_name = reader.string() // .replace(/\0/g, '')
-        case 4:
-          const numGrf = reader.uint(1)
-          state.raw.grfs = []
-          for (let i = 0; i < numGrf; i++) {
-            const grf = {}
-            grf.id = reader.part(4).toString('hex')
-            grf.md5 = reader.part(16).toString('hex')
-            grf.name = reader.string()
-            state.raw.grfs.push(grf)
-          }
-        case 3:
-          state.raw.date_current = this.readDate(reader)
-          state.raw.date_start = this.readDate(reader)
-        case 2:
-          state.raw.maxcompanies = reader.uint(1)
-          state.raw.numcompanies = reader.uint(1)
-          state.raw.maxspectators = reader.uint(1) //deprecated
-        case 1:
-          state.name = reader.string()
-          state.version = reader.string()
+    if (version >= 7) {
+      state.raw.ticks_playing = reader.uint(8)
+    }
 
-          if (version < 6) {
-            // reader.skip(1)
-            state.raw.language = this.decode(
-              reader.uint(1),
-              ['any', 'en', 'de', 'fr']
-            )
-          }
+    if (version >= 6) {
+      state.raw.newgrf_serialisation = reader.uint(1)
+    }
 
-          state.password = !!reader.uint(1)
-          state.maxplayers = reader.uint(1)
-          state.numplayers = reader.uint(1)
-          state.raw.numspectators = reader.uint(1)
+    if (version >= 5) {
+      state.raw.gamescript_version = reader.uint(4)
+      state.raw.gamescript_name = reader.string() // .replace(/\0/g, '')
+    }
 
-          if (version < 3) {
-            state.raw.date_current = this.readOldDate(reader)
-            state.raw.date_start = this.readOldDate(reader)
-          }
-          if (version < 6) {
-            state.map = reader.string()
-          }
-          state.raw.map_width = reader.uint(2)
-          state.raw.map_height = reader.uint(2)
-          state.raw.landscape = this.decode(
-            reader.uint(1),
-            ['temperate', 'arctic', 'desert', 'toyland']
-          )
-          state.raw.dedicated = !!reader.uint(1)
+    if (version >= 4) {
+      const numGrf = reader.uint(1)
+      state.raw.grfs = []
+      for (let i = 0; i < numGrf; i++) {
+        const grf = {}
+        grf.id = reader.part(4).toString('hex')
+        grf.md5 = reader.part(16).toString('hex')
+        grf.name = reader.string()
+        state.raw.grfs.push(grf)
       }
-      
-      if (version < 7) {
-        const DAY_TICKS = 74;
-        state.raw.ticks_playing = (new Date(state.raw.date_current).getTime() - new Date(state.raw.date_start).getTime()) / 1000 / 3600 / 24 * DAY_TICKS + 1280; //1280 looks like initial ticks after server start
+    }
+
+    if (version >= 3) {
+      state.raw.date_current = this.readDate(reader)
+      state.raw.date_start = this.readDate(reader)
+    }
+
+    if (version >= 2) {
+      state.raw.maxcompanies = reader.uint(1)
+      state.raw.numcompanies = reader.uint(1)
+      state.raw.maxspectators = reader.uint(1) // deprecated
+    }
+
+    if (version >= 1) {
+      state.name = reader.string()
+      state.version = reader.string()
+
+      if (version < 6) {
+        // reader.skip(1)
+        state.raw.language = this.decode(
+          reader.uint(1),
+          ['any', 'en', 'de', 'fr']
+        )
       }
+
+      state.password = !!reader.uint(1)
+      state.maxplayers = reader.uint(1)
+      state.numplayers = reader.uint(1)
+      state.raw.numspectators = reader.uint(1)
+
+      if (version < 3) {
+        state.raw.date_current = this.readOldDate(reader)
+        state.raw.date_start = this.readOldDate(reader)
+      }
+      if (version < 6) {
+        state.map = reader.string()
+      }
+      state.raw.map_width = reader.uint(2)
+      state.raw.map_height = reader.uint(2)
+      state.raw.landscape = this.decode(
+        reader.uint(1),
+        ['temperate', 'arctic', 'desert', 'toyland']
+      )
+      state.raw.dedicated = !!reader.uint(1)
+    }
+
+    if (version < 7) {
+      const DAY_TICKS = 74
+      state.raw.ticks_playing = (new Date(state.raw.date_current).getTime() - new Date(state.raw.date_start).getTime()) / 1000 / 3600 / 24 * DAY_TICKS + 1280 // 1280 looks like initial ticks after server start
     }
 
     /**
@@ -146,11 +155,11 @@ export default class openttd extends Core {
     return temp.toISOString().split('T')[0]
   }
 
-  readOldDate(reader) {
+  readOldDate (reader) {
     const DAYS_TILL_ORIGIANAL_BASE_YEAR = 365 * 500 + 125
     const daysSinceZero = DAYS_TILL_ORIGIANAL_BASE_YEAR + reader.uint(2)
     const temp = new Date(0, 0, 1)
-    temp.setFullYear(0) //not sure about this - no option to test it
+    temp.setFullYear(0) // not sure about this - no option to test it
     temp.setDate(daysSinceZero + 2)
     return temp.toISOString().split('T')[0]
   }

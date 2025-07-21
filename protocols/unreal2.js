@@ -127,7 +127,8 @@ export default class unreal2 extends Core {
     }
 
     if (stripColor && this.options.stripColors) {
-      out = out.replace(/\x1b...|[\x00-\x1a]/gus, '')
+      // eslint-disable-next-line no-control-regex
+      out.replace(/\x1b...|[\x00-\x1a]/g, '')
     }
 
     return out
