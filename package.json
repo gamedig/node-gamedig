@@ -64,7 +64,7 @@
         "long": "5.3.2",
         "minimist": "1.2.8",
         "seek-bzip": "2.0.0",
-        "telnet-client": "2.2.5",
+        "telnet-client": "2.2.6",
         "varint": "6.0.0"
     },
     "devDependencies": {
