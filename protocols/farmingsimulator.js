@@ -50,7 +50,7 @@ export default class farmingsimulator extends Core {
       mods: []
     }
 
-    const mods = serverInfo.Mods.Mod
+    const mods = serverInfo?.Mods?.Mod || [];
 
     for (const mod of mods) {
       if (mod['@_name'] == null) { continue }
