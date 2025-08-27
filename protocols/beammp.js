@@ -7,7 +7,7 @@ export default class beammp extends Core {
     master.options = this.options
     const masterState = await master.runOnceSafe()
     const servers = masterState.raw.servers
-    const server = servers.find(s => s.ip === this.options.address)
+    const server = servers.find(s => s.ip === this.options.address && this.matchPort(parseInt(s.port)))
 
     if (!server) {
       throw new Error('Server not found in the master list')
@@ -29,5 +29,14 @@ export default class beammp extends Core {
 
     state.raw = server
     if ('version' in state.raw) state.version = state.raw.version
+  }
+
+  matchPort (givenPort) {
+      const port = this.options.port
+      if (!port) {
+          return true
+      }
+
+      return givenPort === port
   }
 }
