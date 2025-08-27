@@ -7,7 +7,10 @@ export default class beammp extends Core {
     master.options = this.options
     const masterState = await master.runOnceSafe()
     const servers = masterState.raw.servers
-    const server = servers.find(s => s.ip === this.options.address && this.matchPort(parseInt(s.port)))
+    const sameIpServers = servers.filter(s => s.ip === this.options.address)
+    const sortedServers = sameIpServers.sort(s => s.port)
+    // Cause some don't have ports specified, so we prioritize those who do
+    const server = sortedServers.find(s => s.ip === this.options.address && this.matchPort(s.port))
 
     if (!server) {
       throw new Error('Server not found in the master list')
@@ -32,11 +35,12 @@ export default class beammp extends Core {
   }
 
   matchPort (givenPort) {
+    const parsedPort = parseInt(givenPort)
     const port = this.options.port
-    if (!port) {
+    if (!port || isNaN(parsedPort)) {
       return true
     }
 
-    return givenPort === port
+    return port === parsedPort
   }
 }
