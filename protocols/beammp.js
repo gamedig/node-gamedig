@@ -32,11 +32,11 @@ export default class beammp extends Core {
   }
 
   matchPort (givenPort) {
-      const port = this.options.port
-      if (!port) {
-          return true
-      }
+    const port = this.options.port
+    if (!port) {
+      return true
+    }
 
-      return givenPort === port
+    return givenPort === port
   }
 }
