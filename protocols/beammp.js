@@ -8,7 +8,7 @@ export default class beammp extends Core {
     const masterState = await master.runOnceSafe()
     const servers = masterState.raw.servers
     const sameIpServers = servers.filter(s => s.ip === this.options.address)
-    const sortedServers = sameIpServers.sort(s => s.port)
+    const sortedServers = sameIpServers.sort(s => parseInt(s.port))
     // Cause some don't have ports specified, so we prioritize those who do
     const server = sortedServers.find(s => s.ip === this.options.address && this.matchPort(s.port))
 
