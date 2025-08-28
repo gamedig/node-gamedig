@@ -4,6 +4,7 @@
 * Fix: detect BFBC2 Vietnam DLC as BFBC2 (By @cetteup #713)
 * Feat: SCP: Secret Laboratory (2020) - Added support (#715, thanks @Draakoor)
 * Fix: Farming Simulator handle possible missing mod attribute (By @yellowfromseegg #723)
+* Fix: BeamMP would not match on given port (#730)
 
 ## 5.3.1
 * Fix: HTTP requests would end up making more retries than needed due to got's internal retry mechanism (#690, thanks @RattleSN4K3)
