@@ -1,6 +1,6 @@
 import Epic from './epic.js'
 
-export default class asa extends Epic {
+export default class squad extends Epic {
   constructor () {
     super()
 
