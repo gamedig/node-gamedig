@@ -278,7 +278,7 @@
 | sotf                 | Sons Of The Forest                               | [Valve Protocol](#valve)                         |
 | soulmask             | Soulmask                                         | [Valve Protocol](#valve)                         |
 | spaceengineers       | Space Engineers                                  | [Valve Protocol](#valve)                         |
-| squad                | Squad                                            | [Valve Protocol](#valve)                         |
+| squad                | Squad                                            | [EOS Protocol](#epic)                            |
 | ssl                  | SCP: Secret Labratory                            | [Notes](#ssl)                                    |
 | sstse                | Serious Sam: The Second Encounter                |                                                  |
 | stalker              | S.T.A.L.K.E.R.                                   |                                                  |
