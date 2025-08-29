@@ -14,6 +14,7 @@ export default class squad extends Epic {
   async run (state) {
     await super.run(state)
     state.name = state.raw.attributes.SERVERNAME_s
+    state.password = state.raw.attributes.PASSWORD_b
     state.version = state.raw.attributes.GAMEVERSION_s
   }
 }
