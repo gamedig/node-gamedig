@@ -89,6 +89,7 @@ export default class Core extends EventEmitter {
     state.name = (state.name || '').trim()
     state.connect = state.connect || `${state.gameHost || options.host || options.address}:${state.gamePort || options.port}`
     state.ping = this.shortestRTT
+    state.version = String(state.version) // #734 - we should eventually do this for the entire query schema
 
     delete state.gameHost
     delete state.gamePort
