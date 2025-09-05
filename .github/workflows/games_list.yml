@@ -5,11 +5,13 @@ on:
     paths:
       - "lib/games.js"
       - "GAMES_LIST.md"
+      - "tools/generate_games_list.js"
       - ".github/workflows/games_list.yml" # This action
   pull_request:
     paths:
       - "lib/games.js"
       - "GAMES_LIST.md"
+      - "tools/generate_games_list.js"
       - ".github/workflows/games_list.yml" # This action
   workflow_dispatch:
 
