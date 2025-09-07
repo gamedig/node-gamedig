@@ -7,6 +7,7 @@
 * Fix: BeamMP would not match on given port (#730)
 * Fix: version field would sometimes be a Number type (#735)
 * Feat: Squad - Replace Valve protocol with EOS protocol (By @k3ithos #731)
+* Feat: Clive Barker's Undying - Added support (By @dgibbs64 #733)
 
 ## 5.3.1
 * Fix: HTTP requests would end up making more retries than needed due to got's internal retry mechanism (#690, thanks @RattleSN4K3)
