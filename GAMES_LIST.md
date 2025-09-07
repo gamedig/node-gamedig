@@ -57,6 +57,7 @@
 | c2d                  | CS2D                                             |                                                  |
 | c3db                 | Commandos 3: Destination Berlin                  |                                                  |
 | cacr                 | Command and Conquer: Renegade                    |                                                  |
+| cbu                  | Clive Barker's Undying                           |                                                  |
 | chaser               | Chaser                                           |                                                  |
 | chrome               | Chrome                                           |                                                  |
 | cmw                  | Chivalry: Medieval Warfare                       | [Valve Protocol](#valve)                         |
