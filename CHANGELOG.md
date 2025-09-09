@@ -1,6 +1,7 @@
 
 ## To Be Released...
 ## 5.X.Y
+* Fix: Add User-Agent header for Vintage Story master server query to avoid HTTP 403 (By @nunopaiva1 #725)
 * Fix: detect BFBC2 Vietnam DLC as BFBC2 (By @cetteup #713)
 * Feat: SCP: Secret Laboratory (2020) - Added support (#715, thanks @Draakoor)
 * Fix: Farming Simulator handle possible missing mod attribute (By @yellowfromseegg #723)
