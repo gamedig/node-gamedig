@@ -1,6 +1,8 @@
 
 ## To Be Released...
 ## 5.X.Y
+
+## 5.3.2
 * Fix: detect BFBC2 Vietnam DLC as BFBC2 (By @cetteup #713)
 * Feat: SCP: Secret Laboratory (2020) - Added support (#715, thanks @Draakoor)
 * Fix: Farming Simulator handle possible missing mod attribute (By @yellowfromseegg #723)
