@@ -16,6 +16,7 @@ export default class Epic extends Core {
     this.deploymentId = null
     this.epicApi = 'https://api.epicgames.dev'
     this.authByExternalToken = false // Some games require a client access token to POST to the matchmaking endpoint.
+    this.wildcardMatchmaking = false
 
     this.deviceIdAccessToken = null
     this.accessToken = null
@@ -96,7 +97,11 @@ export default class Epic extends Core {
   }
 
   async queryInfo (state) {
-    const url = `${this.epicApi}/matchmaking/v1/${this.deploymentId}/filter`
+    let baseUrl = this.epicApi
+    if (this.wildcardMatchmaking) {
+      baseUrl = `${baseUrl}/wildcard`
+    }
+    const url = `${baseUrl}/matchmaking/v1/${this.deploymentId}/filter`
     const body = {
       criteria: [
         {
