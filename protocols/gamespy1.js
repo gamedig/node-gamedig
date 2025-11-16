@@ -86,19 +86,7 @@ export default class gamespy1 extends Core {
 
     const players = Object.values(playersById)
 
-    const seenHashes = new Set()
     for (const player of players) {
-      // Some servers (bf1942) report the same player multiple times (bug?)
-      // Ignore these duplicates
-      if (player.keyhash) {
-        if (seenHashes.has(player.keyhash)) {
-          this.logger.debug('Rejected player with hash ' + player.keyhash + ' (Duplicate keyhash)')
-          continue
-        } else {
-          seenHashes.add(player.keyhash)
-        }
-      }
-
       // Convert player's team ID to team name if possible
       if (Object.prototype.hasOwnProperty.call(player, 'teamId')) {
         if (Object.keys(teamNamesById).length) {
@@ -110,6 +98,12 @@ export default class gamespy1 extends Core {
       }
 
       state.players.push(player)
+    }
+
+    // Some servers (bf1942) send stale player entries when players leave the server (including duplicates)
+    // Ignore any player list entries beyond the indicated number of players
+    if (!isNaN(state.raw.numplayers) && state.players.length > state.raw.numplayers) {
+      state.players = state.players.slice(0, state.raw.numplayers)
     }
 
     state.numplayers = state.players.length

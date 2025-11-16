@@ -1,6 +1,7 @@
 
 ## To Be Released...
 ## 5.X.Y
+* Fix: ignore stale player list entries (By @cetteup #744)
 
 ## 5.3.2
 * Fix: detect BFBC2 Vietnam DLC as BFBC2 (By @cetteup #713)
