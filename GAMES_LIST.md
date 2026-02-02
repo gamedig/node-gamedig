@@ -166,6 +166,7 @@
 | homefront            | Homefront                                        | [Valve Protocol](#valve)                         |
 | homeworld2           | Homeworld 2                                      |                                                  |
 | hurtworld            | Hurtworld                                        | [Valve Protocol](#valve)                         |
+| hytale               | Hytale                                           |                                                  |
 | i2cs                 | IGI 2: Covert Strike                             |                                                  |
 | i2s                  | IL-2 Sturmovik                                   |                                                  |
 | icarus               | Icarus                                           | [Valve Protocol](#valve)                         |
