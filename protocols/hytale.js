@@ -4,8 +4,6 @@ export default class hytale extends Core {
   async run (state) {
     this.usedTcp = true
 
-    if (!this.options.rejectUnauthorized) this.options.rejectUnauthorized = false
-
     const response = await this.queryEndpoint()
 
     state.raw.basic = response.Basic
@@ -43,11 +41,7 @@ export default class hytale extends Core {
       headers: {
         Accept: 'application/json'
       },
-      responseType: 'json',
-      https: {
-        minVersion: 'TLSv1.2',
-        rejectUnauthorized: this.options.rejectUnauthorized
-      }
+      responseType: 'json'
     }
 
     return await this.request(requestOptions)
