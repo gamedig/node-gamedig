@@ -166,7 +166,7 @@
 | homefront            | Homefront                                        | [Valve Protocol](#valve)                         |
 | homeworld2           | Homeworld 2                                      |                                                  |
 | hurtworld            | Hurtworld                                        | [Valve Protocol](#valve)                         |
-| hytale               | Hytale                                           |                                                  |
+| hytale               | Hytale                                           | [Notes](#hytale)                                 |
 | i2cs                 | IGI 2: Covert Strike                             |                                                  |
 | i2s                  | IL-2 Sturmovik                                   |                                                  |
 | icarus               | Icarus                                           | [Valve Protocol](#valve)                         |
@@ -562,3 +562,6 @@ To fetch more info via telnet (game and mods versions, date and time), at the co
 Unfortunately, only verified servers can be queried, for this you'd need a `accountId`, an `apiKey` and `serverId`
 (this optional, not providing this just returns the server list associated with the account in the raw object).
 
+### <a name="Hytale"></a>Hytale
+The query is done via the [hytale-plugin-query](https://github.com/nitrado/hytale-plugin-query) mod, make sure to configure permissions.  
+One can also query a server which has the [hytale-sourcequery](https://github.com/physgun-com/hytale-sourcequery) mod via `protocol-valve` but this does not have official support.
