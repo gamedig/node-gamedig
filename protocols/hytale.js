@@ -4,21 +4,9 @@ export default class hytale extends Core {
   async run (state) {
     this.usedTcp = true
 
-    // Hytale servers commonly use self-signed certificates for HTTPS.
-    // We default rejectUnauthorized to false unless explicitly set.
-    if (this.options.rejectUnauthorized === undefined) {
-      this.options.rejectUnauthorized = false
-    }
+    if (!this.options.rejectUnauthorized) this.options.rejectUnauthorized = false
 
-    let response
-    // Try HTTPS first (most common), fall back to HTTP
-    try {
-      response = await this.queryEndpoint('https')
-    } catch (e) {
-      this.logger.debug('HTTPS query failed, trying HTTP')
-      this.logger.debug(e)
-      response = await this.queryEndpoint('http')
-    }
+    const response = await this.queryEndpoint()
 
     if (response.Server) {
       state.name = response.Server.Name
@@ -48,19 +36,16 @@ export default class hytale extends Core {
     }
   }
 
-  async queryEndpoint (protocol) {
-    const url = `${protocol}://${this.options.host}:${this.options.port}/Nitrado/Query`
+  async queryEndpoint () {
+    const url = `http://${this.options.host}:${this.options.port}/Nitrado/Query`
 
     const requestOptions = {
       url,
       headers: {
         Accept: 'application/json'
       },
-      responseType: 'json'
-    }
-
-    if (protocol === 'https') {
-      requestOptions.https = {
+      responseType: 'json',
+      https: {
         minVersion: 'TLSv1.2',
         rejectUnauthorized: this.options.rejectUnauthorized
       }
