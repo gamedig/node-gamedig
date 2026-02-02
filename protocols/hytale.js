@@ -8,6 +8,8 @@ export default class hytale extends Core {
 
     const response = await this.queryEndpoint()
 
+    state.raw.basic = response.Basic
+
     if (response.Server) {
       state.name = response.Server.Name
       state.version = response.Server.Version
