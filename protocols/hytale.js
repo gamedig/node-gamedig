@@ -24,10 +24,7 @@ export default class hytale extends Core {
     if (response.Players) {
       state.players = response.Players.map(player => ({
         name: player.Name,
-        raw: {
-          uuid: player.UUID,
-          world: player.World
-        }
+        raw: player
       }))
     }
 
