@@ -9,7 +9,7 @@
         "test": "vitest",
         "test:unit": "vitest run test/unit",
         "test:integration": "vitest run test/integration",
-        "test:capture": "node test/integration/capture-fixtures.js",
+        "test:capture": "node test/integration/capture-binary.js",
         "test:watch": "vitest watch",
         "test:coverage": "vitest run --coverage",
         "test:ui": "vitest --ui"
