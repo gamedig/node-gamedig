@@ -1,0 +1,8 @@
+{
+  "name": "hypixel-without-port",
+  "capturedAt": "2026-02-06T13:27:32.362Z",
+  "udpPackets": 0,
+  "tcpPackets": 3,
+  "udpTimeouts": 2,
+  "tcpTimeouts": -2
+}
