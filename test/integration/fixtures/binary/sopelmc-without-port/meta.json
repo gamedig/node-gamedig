@@ -1,0 +1,8 @@
+{
+  "name": "sopelmc-without-port",
+  "capturedAt": "2026-02-06T13:27:38.417Z",
+  "udpPackets": 0,
+  "tcpPackets": 0,
+  "udpTimeouts": 4,
+  "tcpTimeouts": 0
+}

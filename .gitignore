@@ -3,5 +3,6 @@
 /*.iml
 /.idea
 /dist
+/coverage
 # Deno bin/gamedig executable
 gamedig

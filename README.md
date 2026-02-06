@@ -153,3 +153,35 @@ const gamedig = new GameDig({
 });
 gamedig.query(...)
 ```
+
+## Development
+
+### Run CLI locally
+Test your changes without installing the package globally:
+```bash
+node bin/gamedig.js --type minecraft hypixel.net
+node bin/gamedig.js --type csgo 127.0.0.1:27015 --debug
+```
+
+## Testing
+
+### Run tests
+```bash
+npm test                    # All tests
+npm run test:unit          # Unit tests only
+npm run test:integration   # Integration tests only
+npm run test:watch         # Watch mode for development
+```
+
+Run specific test file:
+```bash
+npm test -- test/unit/protocols/core.test.js
+```
+
+### Capture binary fixtures
+Captures raw UDP/TCP responses from live servers for integration tests:
+```bash
+node test/integration/capture-binary.js
+```
+
+Binary fixtures are saved to `test/integration/fixtures/binary/`. Edit `capture-binary.js` to add more servers.

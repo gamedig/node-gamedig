@@ -78,7 +78,9 @@ export default class Core extends EventEmitter {
     if (('host' in options) && !('address' in options)) {
       const resolved = await dnsResolver.resolve(options.host, options.ipFamily, this.srvRecord)
       options.address = resolved.address
-      options.port ||= resolved.port
+      if (resolved.port && !options.givenPortOnly) {
+        options.port = resolved.port
+      }
     }
 
     const state = new Results()

@@ -1,0 +1,223 @@
+{
+  "name": "SOPELMC.PL > dc.sopelmc.pl [1.16.4-1.21.x] Start serwera Survival bez P2W w lutym!",
+  "map": "",
+  "password": false,
+  "raw": {
+    "vanilla": {
+      "name": "",
+      "map": "",
+      "password": false,
+      "raw": {
+        "version": {
+          "name": "§cUzyj wersji od 1.16.4-1.21.x",
+          "protocol": -1
+        },
+        "favicon": "data:image/png;base64,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",
+        "description": {
+          "text": "",
+          "extra": [
+            {
+              "text": "lutym!",
+              "bold": true,
+              "color": "aqua"
+            },
+            {
+              "text": "Survival bez P2W w ",
+              "bold": true,
+              "color": "white"
+            },
+            {
+              "text": "Start serwera ",
+              "bold": true,
+              "color": "aqua"
+            },
+            {
+              "text": "] \n ",
+              "bold": true,
+              "color": "gray"
+            },
+            {
+              "text": "1.16.4-1.21.x",
+              "bold": true,
+              "color": "white"
+            },
+            {
+              "text": " [",
+              "bold": true,
+              "color": "gray"
+            },
+            {
+              "text": " dc.sopelmc.pl",
+              "bold": true,
+              "color": "white"
+            },
+            {
+              "text": " >",
+              "bold": true,
+              "color": "gray"
+            },
+            {
+              "text": "MC.PL",
+              "bold": true,
+              "color": "white"
+            },
+            {
+              "text": "SOPEL",
+              "bold": true,
+              "color": "aqua"
+            }
+          ]
+        },
+        "players": {
+          "max": 100,
+          "online": 0,
+          "sample": [
+            {
+              "id": "b3d802da-7394-41ca-bf88-410928524f3e",
+              "name": "§b§lSOPEL§f§lMC.PL §7[1.16.4-1.21.x]"
+            },
+            {
+              "id": "24452771-b9f1-4e73-8623-37e6fbad9f0c",
+              "name": ""
+            },
+            {
+              "id": "e8106259-12ac-443d-a414-a72592ccc9a9",
+              "name": "§bDiscord: §7dc.sopelmc.pl"
+            },
+            {
+              "id": "643a64b7-53d4-4131-81d3-f018ef470e04",
+              "name": "§7https://discord.gg/Yt3rzjRjKt"
+            },
+            {
+              "id": "a0a0b069-9433-4f27-af1f-965295aa7469",
+              "name": ""
+            },
+            {
+              "id": "a7d4895b-364a-4951-bd02-d20dd3d619d6",
+              "name": "§fDolacz do nas juz teraz!"
+            }
+          ]
+        },
+        "bcc": {}
+      },
+      "version": "",
+      "maxplayers": 100,
+      "numplayers": 0,
+      "players": [
+        {
+          "name": "§b§lSOPEL§f§lMC.PL §7[1.16.4-1.21.x]",
+          "raw": {
+            "id": "b3d802da-7394-41ca-bf88-410928524f3e"
+          }
+        },
+        {
+          "name": "",
+          "raw": {
+            "id": "24452771-b9f1-4e73-8623-37e6fbad9f0c"
+          }
+        },
+        {
+          "name": "§bDiscord: §7dc.sopelmc.pl",
+          "raw": {
+            "id": "e8106259-12ac-443d-a414-a72592ccc9a9"
+          }
+        },
+        {
+          "name": "§7https://discord.gg/Yt3rzjRjKt",
+          "raw": {
+            "id": "643a64b7-53d4-4131-81d3-f018ef470e04"
+          }
+        },
+        {
+          "name": "",
+          "raw": {
+            "id": "a0a0b069-9433-4f27-af1f-965295aa7469"
+          }
+        },
+        {
+          "name": "§fDolacz do nas juz teraz!",
+          "raw": {
+            "id": "a7d4895b-364a-4951-bd02-d20dd3d619d6"
+          }
+        }
+      ],
+      "bots": [],
+      "queryPort": 26420,
+      "connect": "sopelmc.pl:26420",
+      "ping": 45
+    },
+    "gamespy": {
+      "name": "",
+      "map": "",
+      "password": false,
+      "raw": {
+        "playerTeamInfo": {
+          "": []
+        },
+        "hostname": "",
+        "gametype": "SMP",
+        "game_id": "MINECRAFT",
+        "version": "1.21.10",
+        "plugins": "Purpur on 1.21.10-R0.1-SNAPSHOT: ViaVersion 5.7.2-SNAPSHOT; LuckPerms 5.5.0; Vault 1.7.3-b131; floodgate 2.2.5-SNAPSHOT (b125-a772911); WorldEdit 7.3.17+7262-c7fbe08; PlaceholderAPI 2.11.7; fairy-lib-plugin 0.8.3b1-SNAPSHOT; ViaBackwards 5.7.2-SNAPSHOT; Geyser-Spigot 2.9.1-SNAPSHOT; WorldGuard 7.0.14+2339-43997ec; TAB 5.4.0; Essentials 2.21.2; raytraced-antixray 0.20.5beta; SkinsRestorer 15.10.0; Sonar 2.1.44; LibreLogin 0.25.5; AxGraves 1.26.0; CarbonChat 3.0.0-beta.36; PvPManager 4.0.7; OmegaVision 2.5.16; CustomCrafty 1.2; GrimAC 2.3.73-daa3bfe; raytraced-tile-culling 0.20.6beta; EssentialsSpawn 2.22.0-dev+53-9ad754b; Censura 2.2.1; DeathMessages 1.2.0; FoxOneMace 1.6; Images 2.5.8; CommandWhitelist 2.12.0; PistonMOTD 5.3.0; Insights 6.20.2; GSit 3.1.0; CoreProtect 23.1; Chunky 1.4.40; BetterRTP 3.6.13; AutoMessage 2.0.0",
+        "map": "world",
+        "numplayers": "0",
+        "maxplayers": "3",
+        "hostport": "26420",
+        "hostip": "10.1.226.182"
+      },
+      "version": "",
+      "maxplayers": 3,
+      "numplayers": 0,
+      "players": [],
+      "bots": [],
+      "queryPort": 26420,
+      "connect": "sopelmc.pl:26420",
+      "ping": 45
+    }
+  },
+  "version": "§cUzyj wersji od 1.16.4-1.21.x",
+  "maxplayers": 3,
+  "numplayers": 0,
+  "players": [
+    {
+      "name": "§b§lSOPEL§f§lMC.PL §7[1.16.4-1.21.x]",
+      "raw": {
+        "id": "b3d802da-7394-41ca-bf88-410928524f3e"
+      }
+    },
+    {
+      "name": "",
+      "raw": {
+        "id": "24452771-b9f1-4e73-8623-37e6fbad9f0c"
+      }
+    },
+    {
+      "name": "§bDiscord: §7dc.sopelmc.pl",
+      "raw": {
+        "id": "e8106259-12ac-443d-a414-a72592ccc9a9"
+      }
+    },
+    {
+      "name": "§7https://discord.gg/Yt3rzjRjKt",
+      "raw": {
+        "id": "643a64b7-53d4-4131-81d3-f018ef470e04"
+      }
+    },
+    {
+      "name": "",
+      "raw": {
+        "id": "a0a0b069-9433-4f27-af1f-965295aa7469"
+      }
+    },
+    {
+      "name": "§fDolacz do nas juz teraz!",
+      "raw": {
+        "id": "a7d4895b-364a-4951-bd02-d20dd3d619d6"
+      }
+    }
+  ],
+  "bots": [],
+  "queryPort": 26420,
+  "connect": "sopelmc.pl:26420",
+  "ping": 45
+}
