@@ -57,7 +57,7 @@
         "README.md"
     ],
     "dependencies": {
-        "fast-xml-parser": "5.3.4",
+        "fast-xml-parser": "5.3.6",
         "gbxremote": "0.2.1",
         "got": "13.0.0",
         "iconv-lite": "0.7.0",
