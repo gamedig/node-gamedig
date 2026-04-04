@@ -228,6 +228,7 @@
 | palworld             | Palworld                                         | [Notes](#palworld)                               |
 | pce                  | Primal Carnage: Extinction                       | [Valve Protocol](#valve)                         |
 | pixark               | PixARK                                           | [Valve Protocol](#valve)                         |
+| plutonium            | Plutonium                                        |                                                  |
 | postal2              | Postal 2                                         |                                                  |
 | postscriptum         | Post Scriptum                                    | [Valve Protocol](#valve)                         |
 | prb2                 | Project Reality: Battlefield 2                   |                                                  |
