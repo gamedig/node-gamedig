@@ -116,6 +116,9 @@ export default class dayz extends valve {
     this.logger.debug(buffer)
 
     const reader = this.reader(buffer)
+    // Single-byte header fields use DayZ byte encoding. Multi-byte integers use
+    // readDayzUint (per-byte DayZ decoding) so 0x01 in the stream does not
+    // misalign; strings use raw uint8 length + UTF-8 octets (see readDayzString)
     const version = this.readDayzByte(reader)
     const overflow = this.readDayzByte(reader)
     const dlc1 = this.readDayzByte(reader)
@@ -141,7 +144,8 @@ export default class dayz extends valve {
 
   readDayzModsSection (/** Reader */ reader, withHeader) {
     const out = []
-    const count = this.readDayzByte(reader)
+    // Entry count is a raw byte; readDayzByte can mis-handle value 1 (0x01)
+    const count = reader.uint(1)
     this.logger.debug('dayz mod section withHeader:' + withHeader + ' count:' + count)
     for (let i = 0; i < count; i++) {
       if (reader.done()) break
@@ -149,18 +153,49 @@ export default class dayz extends valve {
       if (withHeader) {
         mod.unknown = this.readDayzUint(reader, 4) // ?
 
-        // For some reason this is 4 on all of them, but doesn't exist on the last one? but only sometimes?
+        // Raw byte: 0x04 = standard mod entry. readDayzByte would mis-handle 0x01
         const offset = reader.offset()
-        const flag = this.readDayzByte(reader)
+        const flag = reader.uint(1)
         if (flag !== 4) reader.setOffset(offset)
 
-        mod.workshopId = this.readDayzUint(reader, 4)
+        // When flag === 4, workshop uses DayZ 0x01 0x01 prefix encoding (readDayzUint)
+        // When flag !== 4, the next 4 octets are raw LE only; readDayzUint would eat
+        // into the following title (e.g. 01 01 01 02 before length 0x14 and "Umbrella")
+        mod.workshopId = flag === 4
+          ? this.readDayzUint32(reader)
+          : reader.uint(4)
       }
       mod.title = this.readDayzString(reader)
       this.logger.debug(mod)
       out.push(mod)
     }
     return out
+  }
+
+  /**
+   * Workshop id after flag 0x04: almost always DayZ readDayzUint (variable raw
+   * byte count). Exception: raw uint32 LE when the stream begins with 0x01 0x02
+   * (e.g. 1427374081 = 01 02 18 55) — readDayzUint would steal the title length.
+   * Some servers send 01 02 … where the next field is still DayZ-encoded (e.g.
+   * 01 02 08 27 6b 12 …); raw uint32 then leaves 0x6b as the title length and
+   * merges many mods into one string. If the byte after a raw four-byte id is
+   * too large to be a typical mod name length, use readDayzUint instead.
+   */
+  readDayzUint32 (reader) {
+    const p = reader.offset()
+    const b0 = reader.uint(1)
+    const b1 = reader.uint(1)
+    reader.setOffset(p)
+    if (b0 === 0x01 && b1 === 0x02) {
+      reader.skip(4)
+      const lenAfterRaw = reader.uint(1)
+      reader.setOffset(p)
+      if (lenAfterRaw >= 0x60) {
+        return this.readDayzUint(reader, 4)
+      }
+      return reader.uint(4)
+    }
+    return this.readDayzUint(reader, 4)
   }
 
   readDayzUint (reader, bytes) {
@@ -186,11 +221,7 @@ export default class dayz extends valve {
   }
 
   readDayzString (reader) {
-    const length = this.readDayzByte(reader)
-    const out = []
-    for (let i = 0; i < length; i++) {
-      out.push(this.readDayzByte(reader))
-    }
-    return Buffer.from(out).toString('utf8')
+    const length = reader.uint(1)
+    return reader.string(length)
   }
 }
