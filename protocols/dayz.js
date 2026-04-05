@@ -12,6 +12,21 @@ function dayzTitleHasControlGarbage (s) {
   return false
 }
 
+/**
+ * Some servers with no (or empty) mod payload mis-parse the A2S "game" / hostname
+ * string into the mod list with a 1-code-unit offset (missing first character).
+ */
+function dayzModTitleLooksLikeGameOrNameLeak (title, state) {
+  const game = (state?.raw?.game != null && String(state.raw.game).trim()) || ''
+  const name = (state?.name != null && String(state.name).trim()) || ''
+  for (const ref of [game, name]) {
+    if (ref.length >= 2 && title === ref.slice(1)) {
+      return true
+    }
+  }
+  return false
+}
+
 export default class dayz extends valve {
   async run (state) {
     if (!this.options.port) this.options.port = 27016
@@ -64,7 +79,7 @@ export default class dayz extends valve {
       rules[key] = reader.string()
     }
 
-    state.raw.dayzMods = this.sanitizeDayzModsList(this.readDayzMods(Buffer.from(dayZPayload)))
+    state.raw.dayzMods = this.sanitizeDayzModsList(this.readDayzMods(Buffer.from(dayZPayload)), state)
   }
 
   processQueryInfo (state) {
@@ -157,8 +172,10 @@ export default class dayz extends valve {
    * Drop entries that are clearly mis-parsed (binary in title, empty names) or
    * non-objects. Steam Workshop titles are never empty for listed items; empty
    * titles usually mean padding or misalignment after the real mod list.
+   * Also drops rows where the title is the server "game" or hostname string
+   * with the first character missing (rules blob misaligned with A2S strings).
    */
-  sanitizeDayzModsList (mods) {
+  sanitizeDayzModsList (mods, state) {
     if (!Array.isArray(mods)) {
       return []
     }
@@ -172,6 +189,9 @@ export default class dayz extends valve {
       }
       const title = rawTitle.trim()
       if (!title) {
+        return false
+      }
+      if (state != null && dayzModTitleLooksLikeGameOrNameLeak(title, state)) {
         return false
       }
       if (dayzTitleHasControlGarbage(rawTitle)) {
