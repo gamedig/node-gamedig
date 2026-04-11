@@ -5,3 +5,4 @@
 /dist
 # Deno bin/gamedig executable
 gamedig
+/.claude
