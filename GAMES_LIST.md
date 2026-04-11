@@ -305,6 +305,7 @@
 | synergy              | Synergy                                          | [Valve Protocol](#valve)                         |
 | t1s                  | Tribes 1: Starsiege                              |                                                  |
 | tacticalops          | Tactical Ops                                     |                                                  |
+| tce                  | The Cenozoic Era                                 | [Valve Protocol](#valve)                         |
 | tcgraw               | Tom Clancy's Ghost Recon Advanced Warfighter     |                                                  |
 | tcgraw2              | Tom Clancy's Ghost Recon Advanced Warfighter 2   |                                                  |
 | teamfactor           | Team Factor                                      |                                                  |
@@ -314,7 +315,6 @@
 | terminus             | Terminus                                         |                                                  |
 | terrariatshock       | Terraria - TShock                                | [Notes](#terraria)                               |
 | tfc                  | Team Fortress Classic                            | [Valve Protocol](#valve)                         |
-| thecenozoicera       | The Cenozoic Era                                 | [Valve Protocol](#valve)                         |
 | theforest            | The Forest                                       | [Valve Protocol](#valve)                         |
 | thefront             | The Front                                        | [Valve Protocol](#valve)                         |
 | thehidden            | The Hidden                                       | [Valve Protocol](#valve)                         |
