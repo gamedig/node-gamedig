@@ -191,6 +191,7 @@
 | mbe                  | Minecraft: Bedrock Edition                       |                                                  |
 | medievalengineers    | Medieval Engineers                               | [Valve Protocol](#valve)                         |
 | mgm                  | Mumble - GT Murmur                               | [Notes](#mumble)                                 |
+| mindustry            | Mindustry                                        |                                                  |
 | minecraft            | Minecraft                                        | [Notes](#minecraft)                              |
 | minetest             | Minetest                                         |                                                  |
 | mnc                  | Monday Night Combat                              | [Valve Protocol](#valve)                         |
@@ -313,6 +314,7 @@
 | terminus             | Terminus                                         |                                                  |
 | terrariatshock       | Terraria - TShock                                | [Notes](#terraria)                               |
 | tfc                  | Team Fortress Classic                            | [Valve Protocol](#valve)                         |
+| thecenozoicera       | The Cenozoic Era                                 | [Valve Protocol](#valve)                         |
 | theforest            | The Forest                                       | [Valve Protocol](#valve)                         |
 | thefront             | The Front                                        | [Valve Protocol](#valve)                         |
 | thehidden            | The Hidden                                       | [Valve Protocol](#valve)                         |
@@ -346,6 +348,7 @@
 | valheim              | Valheim                                          | [Notes](#valheim), [Valve Protocol](#valve)      |
 | vampireslayer        | Vampire Slayer                                   | [Valve Protocol](#valve)                         |
 | vcm                  | Vice City Multiplayer                            |                                                  |
+| vein                 | VEIN                                             | [Valve Protocol](#valve)                         |
 | ventrilo             | Ventrilo                                         |                                                  |
 | vietcong             | Vietcong                                         |                                                  |
 | vietcong2            | Vietcong 2                                       |                                                  |
