@@ -279,7 +279,7 @@
 | sof2                 | Soldier of Fortune 2                             |                                                  |
 | soldat               | Soldat                                           | [Notes](#soldat)                                 |
 | sotf                 | Sons Of The Forest                               | [Valve Protocol](#valve)                         |
-| soulmask             | Soulmask                                         | [Valve Protocol](#valve)                         |
+| soulmask             | Soulmask                                         | [Notes](#soulmask), [Valve Protocol](#valve)     |
 | spaceengineers       | Space Engineers                                  | [Valve Protocol](#valve)                         |
 | squad                | Squad                                            | [EOS Protocol](#epic)                            |
 | ssl                  | SCP: Secret Labratory                            | [Notes](#ssl)                                    |
@@ -517,6 +517,9 @@ You can acquire a _ServerId_ from the master query protocol `protocol-brokeproto
 For queries to work, A2S needs to be setup in the server config, more info [here](https://community.bistudio.com/wiki/Arma_Reforger:Server_Config#a2s_2).
 
 Does not provide players data.
+
+### <a name="soulmask"></a>Soulmask
+Soulmask reports a hardcoded version (`1.0.0.0`) in the A2S_INFO response. To get the real game version, pass `requestRules: true` — the actual version is read from the `NO_s` rules key.
 
 Protocols with Additional Notes
 ---
