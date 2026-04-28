@@ -3,6 +3,7 @@
 ## 5.X.Y
 * Fix: ignore stale player list entries (By @cetteup #744)
 * Feat: Plutonium - Added support (#745)
+* Fix: Soulmask set version from rules if available (By @podrivo #772)
 
 ## 5.3.2
 * Fix: detect BFBC2 Vietnam DLC as BFBC2 (By @cetteup #713)
