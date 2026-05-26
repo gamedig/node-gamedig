@@ -4,6 +4,9 @@
 * Fix: ignore stale player list entries (By @cetteup #744)
 * Feat: Plutonium - Added support (#745)
 * Fix: Soulmask set version from rules if available (By @podrivo #772)
+* Chore: Update `fast-xml-parser` from `5.7.0` to `5.8.0` (#778)
+* Chore: Update `iconv-lite` from `0.7.0` to `0.7.2` (#778)
+* Chore: Update `telnet-client` from `2.2.6` to `2.2.13` (#778)
 
 ## 5.3.2
 * Fix: detect BFBC2 Vietnam DLC as BFBC2 (By @cetteup #713)
