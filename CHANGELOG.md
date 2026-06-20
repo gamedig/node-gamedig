@@ -1,6 +1,7 @@
 
 ## To Be Released...
 ## 5.X.Y
+* Fix: Red Orchestra - merge the bogus `redorchestra` entry into `Red Orchestra: Ostfront 41-45` (`roo4145`) and switch it to the `unreal2` protocol; `redorchestra` is kept as an old id (#616)
 * Feat: American Truck Simulator - Added support (#768)
 * Feat: The Cenozoic Era - Added support (#768)
 * Feat: VEIN - Added support (#768)
