@@ -5,7 +5,8 @@ const ids = Object.keys(games)
 Object.keys(games).forEach((key) => {
   if (games[key].extra && games[key].extra.old_id) {
     const idOld = games[key].extra.old_id
-    ids.push(idOld)
+    const idsOld = Array.isArray(idOld) ? idOld : [idOld]
+    ids.push(...idsOld)
   }
 })
 
