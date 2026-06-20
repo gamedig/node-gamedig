@@ -250,7 +250,6 @@
 | rdkf                 | Rag Doll Kung Fu                                 | [Valve Protocol](#valve)                         |
 | rdr2r                | Red Dead Redemption 2 - RedM                     |                                                  |
 | redline              | Redline                                          |                                                  |
-| redorchestra         | Red Orchestra                                    |                                                  |
 | redorchestra2        | Red Orchestra 2                                  | [Valve Protocol](#valve)                         |
 | renegade10           | Renegade X                                       |                                                  |
 | renown               | Renown                                           | [EOS Protocol](#epic)                            |
