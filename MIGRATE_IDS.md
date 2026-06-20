@@ -116,6 +116,7 @@ This means some ids will not work as they could have been changed to something e
 | r6                   | → | rainbowsix           |
 | r6roguespear         | → | rs2rs                |
 | r6ravenshield        | → | rs3rs                |
+| redorchestra         | → | roo4145              |
 | redorchestraost      | → | roo4145              |
 | redm                 | → | rdr2r                |
 | riseofnations        | → | ron                  |
