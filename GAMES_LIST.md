@@ -60,6 +60,7 @@
 | cacr                 | Command and Conquer: Renegade                    |                                                  |
 | cbu                  | Clive Barker's Undying                           |                                                  |
 | chaser               | Chaser                                           |                                                  |
+| chivalry2            | Chivalry 2                                       | [Valve Protocol](#valve)                         |
 | chrome               | Chrome                                           |                                                  |
 | cmw                  | Chivalry: Medieval Warfare                       | [Valve Protocol](#valve)                         |
 | cod                  | Call of Duty                                     |                                                  |
