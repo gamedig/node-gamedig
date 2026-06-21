@@ -46,6 +46,18 @@ export const runWithUdpResponse = async (protocol, buffer, options = {}) => {
   return state
 }
 
+// Drives a protocol that issues several udpSend calls in sequence (e.g. an
+// info query, then players, then teams), answering each call with the next
+// buffer in `buffers`. No socket is opened.
+export const runWithUdpSequence = async (protocol, buffers, options = {}) => {
+  protocol.options = options
+  let call = 0
+  protocol.udpSend = async (_payload, onPacket) => onPacket(buffers[call++])
+  const state = new Results()
+  await protocol.run(state)
+  return state
+}
+
 // Drives a Valve-family protocol by stubbing sendPacket, answering each query
 // with the buffer registered for the response type it expects (e.g. 0x49 for
 // A2S_INFO). Unregistered types resolve to null (i.e. a timed-out query).
