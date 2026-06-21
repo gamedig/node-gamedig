@@ -5,6 +5,7 @@
         "lint:check": "eslint .",
         "lint:fix": "eslint --fix .",
         "test": "node --test",
+        "test:coverage": "node --test --experimental-test-coverage",
         "prepare": "npm run build",
         "build": "node tools/esbuild.js"
     },
