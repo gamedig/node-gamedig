@@ -2,16 +2,11 @@ import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
 import { Buffer } from 'node:buffer'
 import Ase from '../../protocols/ase.js'
-import { Results } from '../../lib/Results.js'
-
-// ASE strings are length-prefixed with a single byte equal to (length + 1).
-const pstr = (s) => {
-  const body = Buffer.from(s, 'utf8')
-  return Buffer.concat([Buffer.from([body.length + 1]), body])
-}
-const byte = (n) => Buffer.from([n])
+import { u8, pstr, runWithUdpResponse } from './_helpers.js'
 
 // A complete, valid ASE ("EYE1") response: server info, one rule, two players.
+// ASE strings are length-prefixed with a byte equal to (length + 1), which is
+// pstr's default.
 const response = Buffer.concat([
   Buffer.from('EYE1', 'utf8'),
   pstr('ase'), // gamename
@@ -25,20 +20,11 @@ const response = Buffer.concat([
   pstr('16'), // maxplayers
   pstr('rule1'), pstr('value1'), // one rule
   pstr(''), // empty key terminates the rules section
-  byte(0b1001), pstr('Alice'), pstr('10'), // flags: name + score
-  byte(0b1001), pstr('Bob'), pstr('20')
+  u8(0b1001), pstr('Alice'), pstr('10'), // flags: name + score
+  u8(0b1001), pstr('Bob'), pstr('20')
 ])
 
-// Drives a protocol's run() against a fixed response buffer by replacing the
-// single network method (udpSend) with one that invokes the real onPacket
-// parser. Nothing here opens a socket.
-const runWithResponse = async (protocol, buffer) => {
-  protocol.options = {}
-  protocol.udpSend = async (_payload, onPacket) => onPacket(buffer)
-  const state = new Results()
-  await protocol.run(state)
-  return state
-}
+const runWithResponse = (protocol, buffer) => runWithUdpResponse(protocol, buffer)
 
 describe('ase protocol parsing', () => {
   it('parses server info from an EYE1 response', async () => {
