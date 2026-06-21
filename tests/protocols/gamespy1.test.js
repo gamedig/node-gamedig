@@ -21,11 +21,9 @@ const response = backslashKV([
   'final', ''
 ])
 
-const runWithResponse = (protocol, buffer) => runWithUdpResponse(protocol, buffer)
-
 describe('gamespy1 protocol parsing', () => {
   it('maps well-known keys onto the result', async () => {
-    const state = await runWithResponse(new Gamespy1(), response)
+    const state = await runWithUdpResponse(new Gamespy1(), response)
     assert.equal(state.name, 'My GS1 Server')
     assert.equal(state.map, 'de_dust2')
     assert.equal(state.password, false)
@@ -34,7 +32,7 @@ describe('gamespy1 protocol parsing', () => {
   })
 
   it('groups indexed keys into players', async () => {
-    const state = await runWithResponse(new Gamespy1(), response)
+    const state = await runWithUdpResponse(new Gamespy1(), response)
     assert.equal(state.numplayers, 2)
     assert.equal(state.players.length, 2)
     assert.equal(state.players[0].name, 'Alice')

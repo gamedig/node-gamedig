@@ -24,11 +24,9 @@ const response = Buffer.concat([
   u8(0b1001), pstr('Bob'), pstr('20')
 ])
 
-const runWithResponse = (protocol, buffer) => runWithUdpResponse(protocol, buffer)
-
 describe('ase protocol parsing', () => {
   it('parses server info from an EYE1 response', async () => {
-    const state = await runWithResponse(new Ase(), response)
+    const state = await runWithUdpResponse(new Ase(), response)
     assert.equal(state.raw.gamename, 'ase')
     assert.equal(state.name, 'Test Server')
     assert.equal(state.raw.gametype, 'CTF')
@@ -40,12 +38,12 @@ describe('ase protocol parsing', () => {
   })
 
   it('parses rules into raw', async () => {
-    const state = await runWithResponse(new Ase(), response)
+    const state = await runWithUdpResponse(new Ase(), response)
     assert.equal(state.raw.rule1, 'value1')
   })
 
   it('parses the player list with flag-gated fields', async () => {
-    const state = await runWithResponse(new Ase(), response)
+    const state = await runWithUdpResponse(new Ase(), response)
     assert.equal(state.players.length, 2)
     assert.equal(state.players[0].name, 'Alice')
     assert.equal(state.players[0].raw.score, 10)
