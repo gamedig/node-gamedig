@@ -1,12 +1,11 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
-import { Buffer } from 'node:buffer'
 import Gamespy1 from '../../protocols/gamespy1.js'
-import { Results } from '../../lib/Results.js'
+import { backslashKV, runWithUdpResponse } from './_helpers.js'
 
 // GameSpy1 responses are backslash-delimited key/value pairs. A queryid with a
 // part number plus a trailing \final\ marks the response as complete.
-const fields = [
+const response = backslashKV([
   'hostname', 'My GS1 Server',
   'mapname', 'de_dust2',
   'gametype', 'ctf',
@@ -20,16 +19,9 @@ const fields = [
   'score_1', '20',
   'queryid', '1.1',
   'final', ''
-]
-const response = Buffer.from('\\' + fields.join('\\'), 'latin1')
+])
 
-const runWithResponse = async (protocol, buffer) => {
-  protocol.options = {}
-  protocol.udpSend = async (_payload, onPacket) => onPacket(buffer)
-  const state = new Results()
-  await protocol.run(state)
-  return state
-}
+const runWithResponse = (protocol, buffer) => runWithUdpResponse(protocol, buffer)
 
 describe('gamespy1 protocol parsing', () => {
   it('maps well-known keys onto the result', async () => {
