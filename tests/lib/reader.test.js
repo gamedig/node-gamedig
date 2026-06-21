@@ -89,6 +89,19 @@ describe('Reader.int / Reader.uint', () => {
     assert.equal(reader.int(1), -1)
   })
 
+  it('reads 16-bit and 32-bit little-endian signed integers', () => {
+    const reader = makeReader(hex('2c01' + '2c010000'))
+    assert.equal(reader.int(2), 300)
+    assert.equal(reader.int(4), 300)
+  })
+
+  it('reads big-endian signed integers', () => {
+    const reader = makeReader(hex('ff' + '012c' + '0000012c'), { byteorder: 'be' })
+    assert.equal(reader.int(1), -1)
+    assert.equal(reader.int(2), 300)
+    assert.equal(reader.int(4), 300)
+  })
+
   it('reads little-endian unsigned integers', () => {
     const reader = makeReader(hex('ff'))
     assert.equal(reader.uint(1), 255)
@@ -100,15 +113,21 @@ describe('Reader.int / Reader.uint', () => {
     assert.equal(reader.uint(4), 1)
   })
 
-  it('reads big-endian values when configured', () => {
-    const reader = makeReader(hex('0100'), { byteorder: 'be' })
+  it('reads 16-bit and 32-bit big-endian values when configured', () => {
+    const reader = makeReader(hex('0100' + '00000100'), { byteorder: 'be' })
     assert.equal(reader.uint(2), 256)
+    assert.equal(reader.uint(4), 256)
   })
 
   it('reads a 64-bit unsigned value as a Long', () => {
     const reader = makeReader(hex('0100000000000000'))
     const value = reader.uint(8)
     assert.equal(value.toString(), '1')
+  })
+
+  it('reads a 64-bit big-endian unsigned value as a Long', () => {
+    const reader = makeReader(hex('0000000000000100'), { byteorder: 'be' })
+    assert.equal(reader.uint(8).toString(), '256')
   })
 
   it('returns 0 and still advances when not enough bytes remain', () => {
@@ -123,6 +142,13 @@ describe('Reader.float', () => {
     const buffer = Buffer.alloc(4)
     buffer.writeFloatLE(1.5, 0)
     const reader = makeReader(buffer)
+    assert.equal(reader.float(), 1.5)
+  })
+
+  it('reads a big-endian 32-bit float when configured', () => {
+    const buffer = Buffer.alloc(4)
+    buffer.writeFloatBE(1.5, 0)
+    const reader = makeReader(buffer, { byteorder: 'be' })
     assert.equal(reader.float(), 1.5)
   })
 })
