@@ -2,8 +2,7 @@ import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
 import { Buffer } from 'node:buffer'
 import Valve from '../../protocols/valve.js'
-import { Results } from '../../lib/Results.js'
-import { u8, u16le, i32le, f32le, cstr, char } from './_helpers.js'
+import { u8, u16le, i32le, f32le, cstr, char, runWithPackets } from './_helpers.js'
 
 // A2S_INFO response body (everything after the 0x49 type byte, which is what
 // valve.sendPacket returns to queryInfo). extraFlag 0xA0 = game port + tags.
@@ -35,24 +34,14 @@ const playersPayload = Buffer.concat([
   u8(1), cstr('Bob'), i32le(20), f32le(60)
 ])
 
-// Builds a Valve protocol whose per-query network calls are answered from the
-// fixtures above based on the response type each query expects.
-const makeValve = (overrides = {}) => {
-  const protocol = new Valve()
-  protocol.options = { requestPlayers: true, port: 27015, ...overrides }
-  protocol.sendPacket = async (type, payload, expect) => {
-    if (expect === 0x49) return infoPayload
-    if (expect === 0x44) return playersPayload
-    return null
-  }
-  return protocol
-}
-
-const runValve = async (overrides) => {
-  const state = new Results()
-  await makeValve(overrides).run(state)
-  return state
-}
+// Answers each query from the fixtures above based on the A2S response type it
+// expects (0x49 = info, 0x44 = players).
+const runValve = (overrides = {}) =>
+  runWithPackets(
+    new Valve(),
+    { 0x49: infoPayload, 0x44: playersPayload },
+    { requestPlayers: true, port: 27015, ...overrides }
+  )
 
 describe('valve A2S_INFO parsing', () => {
   it('reads the core server info fields', async () => {
