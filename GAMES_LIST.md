@@ -529,7 +529,7 @@ Soulmask reports a hardcoded version (`1.0.0.0`) in the A2S_INFO response. To ge
 ### <a name="chivalry2"></a>Chivalry 2
 Chivalry 2 reports an incorrect `appId` (`100`) in the `raw` field. This is a limitation of the A2S protocol, so it cannot represent Chivalry 2's real Steam appId (`1824220`).
 
-Player names containing non-ASCII characters may be truncated by the server, so a name like `SŦĐ Eureka` arrives as `SŦĐ Eure`, while pure-ASCII names come through intact.
+Player names containing non-ASCII characters may be truncated by the server, so a name like `ŦĐ Vanguardian` arrives as `ŦĐ Vanguard`, while pure-ASCII names come through intact.
 
 Protocols with Additional Notes
 ---
