@@ -2,8 +2,7 @@ import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
 import { Buffer } from 'node:buffer'
 import Dayz from '../../protocols/dayz.js'
-import { Results } from '../../lib/Results.js'
-import { u8, u16le, i32le, f32le, cstr, char } from './_helpers.js'
+import { u8, u16le, i32le, f32le, cstr, char, runWithPackets } from './_helpers.js'
 
 // A2S_INFO body with DayZ-style server tags, which DayZ decodes in
 // processQueryInfo. extraFlag 0x20 = tags only.
@@ -44,23 +43,12 @@ const rulesPayload = Buffer.concat([
   cstr('version'), cstr('1.0') // a normal rule
 ])
 
-const makeDayz = (overrides = {}) => {
-  const protocol = new Dayz()
-  protocol.options = { port: 27016, ...overrides }
-  protocol.sendPacket = async (type, payload, expect) => {
-    if (expect === 0x49) return infoPayload
-    if (expect === 0x44) return playersPayload
-    if (expect === 0x45) return rulesPayload
-    return null
-  }
-  return protocol
-}
-
-const runDayz = async (overrides) => {
-  const state = new Results()
-  await makeDayz(overrides).run(state)
-  return state
-}
+const runDayz = (overrides = {}) =>
+  runWithPackets(
+    new Dayz(),
+    { 0x49: infoPayload, 0x44: playersPayload, 0x45: rulesPayload },
+    { port: 27016, ...overrides }
+  )
 
 describe('dayz info and tag parsing', () => {
   it('inherits Valve A2S_INFO parsing', async () => {
