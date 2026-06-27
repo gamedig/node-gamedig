@@ -1,10 +1,20 @@
 
 ## To Be Released...
 ## 5.X.Y
+* Feat: American Truck Simulator - Added support (#768)
+* Feat: The Cenozoic Era - Added support (#768)
+* Feat: VEIN - Added support (#768)
+* Feat: Mindustry - Added support (#768)
+
+## 5.3.3
 * Fix: ignore stale player list entries (By @cetteup #744)
 * Feat: Plutonium - Added support (#745)
 * Fix: ASA - resolve servers via ARK CDN lists, with a `token` option for private servers
 * Docs: ASA - document the EOS session id / `token` workaround and its limitations
+* Fix: Soulmask set version from rules if available (By @podrivo #772)
+* Chore: Update `fast-xml-parser` from `5.7.0` to `5.8.0` (#778)
+* Chore: Update `iconv-lite` from `0.7.0` to `0.7.2` (#778)
+* Chore: Update `telnet-client` from `2.2.6` to `2.2.13` (#778)
 
 ## 5.3.2
 * Fix: detect BFBC2 Vietnam DLC as BFBC2 (By @cetteup #713)

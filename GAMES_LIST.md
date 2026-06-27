@@ -28,6 +28,7 @@
 | asr08                | Arca Sim Racing '08                              |                                                  |
 | assettocorsa         | Assetto Corsa                                    |                                                  |
 | atlas                | Atlas                                            | [Valve Protocol](#valve)                         |
+| ats                  | American Truck Simulator                         | [Valve Protocol](#valve)                         |
 | avorion              | Avorion                                          | [Valve Protocol](#valve)                         |
 | avp2                 | Aliens versus Predator 2                         |                                                  |
 | avp2010              | Aliens vs. Predator 2010                         | [Valve Protocol](#valve)                         |
@@ -190,6 +191,7 @@
 | mbe                  | Minecraft: Bedrock Edition                       |                                                  |
 | medievalengineers    | Medieval Engineers                               | [Valve Protocol](#valve)                         |
 | mgm                  | Mumble - GT Murmur                               | [Notes](#mumble)                                 |
+| mindustry            | Mindustry                                        |                                                  |
 | minecraft            | Minecraft                                        | [Notes](#minecraft)                              |
 | minetest             | Minetest                                         |                                                  |
 | mnc                  | Monday Night Combat                              | [Valve Protocol](#valve)                         |
@@ -279,7 +281,7 @@
 | sof2                 | Soldier of Fortune 2                             |                                                  |
 | soldat               | Soldat                                           | [Notes](#soldat)                                 |
 | sotf                 | Sons Of The Forest                               | [Valve Protocol](#valve)                         |
-| soulmask             | Soulmask                                         | [Valve Protocol](#valve)                         |
+| soulmask             | Soulmask                                         | [Notes](#soulmask), [Valve Protocol](#valve)     |
 | spaceengineers       | Space Engineers                                  | [Valve Protocol](#valve)                         |
 | squad                | Squad                                            | [EOS Protocol](#epic)                            |
 | ssl                  | SCP: Secret Labratory                            | [Notes](#ssl)                                    |
@@ -303,6 +305,7 @@
 | synergy              | Synergy                                          | [Valve Protocol](#valve)                         |
 | t1s                  | Tribes 1: Starsiege                              |                                                  |
 | tacticalops          | Tactical Ops                                     |                                                  |
+| tce                  | The Cenozoic Era                                 | [Valve Protocol](#valve)                         |
 | tcgraw               | Tom Clancy's Ghost Recon Advanced Warfighter     |                                                  |
 | tcgraw2              | Tom Clancy's Ghost Recon Advanced Warfighter 2   |                                                  |
 | teamfactor           | Team Factor                                      |                                                  |
@@ -345,6 +348,7 @@
 | valheim              | Valheim                                          | [Notes](#valheim), [Valve Protocol](#valve)      |
 | vampireslayer        | Vampire Slayer                                   | [Valve Protocol](#valve)                         |
 | vcm                  | Vice City Multiplayer                            |                                                  |
+| vein                 | VEIN                                             | [Valve Protocol](#valve)                         |
 | ventrilo             | Ventrilo                                         |                                                  |
 | vietcong             | Vietcong                                         |                                                  |
 | vietcong2            | Vietcong 2                                       |                                                  |
@@ -517,6 +521,9 @@ You can acquire a _ServerId_ from the master query protocol `protocol-brokeproto
 For queries to work, A2S needs to be setup in the server config, more info [here](https://community.bistudio.com/wiki/Arma_Reforger:Server_Config#a2s_2).
 
 Does not provide players data.
+
+### <a name="soulmask"></a>Soulmask
+Soulmask reports a hardcoded version (`1.0.0.0`) in the A2S_INFO response. To get the real game version, pass `requestRules: true` — the actual version is read from the `NO_s` rules key.
 
 Protocols with Additional Notes
 ---

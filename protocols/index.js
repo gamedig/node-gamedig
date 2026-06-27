@@ -33,6 +33,7 @@ import mafia2online from './mafia2online.js'
 import minecraft from './minecraft.js'
 import minecraftbedrock from './minecraftbedrock.js'
 import minecraftvanilla from './minecraftvanilla.js'
+import mindustry from './mindustry.js'
 import minetest from './minetest.js'
 import mumble from './mumble.js'
 import mumbleping from './mumbleping.js'
@@ -80,7 +81,7 @@ import scpsl from './scpsl.js'
 export {
   armagetron, ase, asa, assettocorsa, battlefield, brokeprotocol, brokeprotocolmaster, buildandshoot, cs2d, discord, doom3, eco, epic, factorio, farmingsimulator, ffow,
   fivem, gamespy1, gamespy2, gamespy3, geneshift, goldsrc, gtasao, hawakening, hawakeningmaster, hexen2, hytale, jc2mp, kspdmp, mafia2mp, mafia2online, minecraft,
-  minecraftbedrock, minecraftvanilla, minetest, mumble, mumbleping, nadeo, openttd, palworld, quake1, quake2, quake3, renegadex, renegadexmaster, renown, rfactor, ragemp, samp,
+  minecraftbedrock, minecraftvanilla, mindustry, minetest, mumble, mumbleping, nadeo, openttd, palworld, quake1, quake2, quake3, renegadex, renegadexmaster, renown, rfactor, ragemp, samp,
   satisfactory, soldat, savage2, squad, starmade, starsiege, teamspeak2, teamspeak3, terraria, toxikk, tribes1, tribes1master, unreal2, ut3, valve,
   vcmp, ventrilo, warsow, eldewrito, beammpmaster, beammp, dayz, theisleevrima, xonotic, altvmp, vintagestorymaster, vintagestory, sdtd, scpsl
 }

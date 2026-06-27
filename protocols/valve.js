@@ -11,7 +11,8 @@ const AppId = {
   CS_Source: 240,
   EternalSilence: 17550,
   Insurgency_MIC: 17700,
-  Source_SDK_Base_2006: 215
+  Source_SDK_Base_2006: 215,
+  Soulmask: 2646460
 }
 
 export default class valve extends Core {
@@ -273,6 +274,13 @@ export default class valve extends Core {
     if (appId === AppId.Squad) {
       if (rules.Password_b === 'true') {
         state.password = true
+      }
+    }
+
+    // Soulmask reports a hardcoded version in A2S_INFO; real version is in rules
+    if (appId === AppId.Soulmask) {
+      if ('NO_s' in rules) {
+        state.version = rules.NO_s
       }
     }
   }

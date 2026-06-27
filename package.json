@@ -32,7 +32,7 @@
         "require": "./dist/index.cjs"
     },
     "author": "GameDig Contributors",
-    "version": "5.3.2",
+    "version": "5.3.3",
     "repository": {
         "type": "git",
         "url": "https://github.com/gamedig/node-gamedig.git"
@@ -57,14 +57,14 @@
         "README.md"
     ],
     "dependencies": {
-        "fast-xml-parser": "5.5.7",
+        "fast-xml-parser": "5.8.0",
         "gbxremote": "0.2.1",
         "got": "13.0.0",
-        "iconv-lite": "0.7.0",
+        "iconv-lite": "0.7.2",
         "long": "5.3.2",
         "minimist": "1.2.8",
         "seek-bzip": "2.0.0",
-        "telnet-client": "2.2.6",
+        "telnet-client": "2.2.13",
         "varint": "6.0.0"
     },
     "devDependencies": {
