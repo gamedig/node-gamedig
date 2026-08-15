@@ -269,6 +269,7 @@
 | rust                 | Rust                                             | [Valve Protocol](#valve)                         |
 | s2ats                | Savage 2: A Tortured Soul                        |                                                  |
 | satisfactory         | Satisfactory                                     | [Notes](#satisfactory)                           |
+| sbox                 | s&box                                            | [Valve Protocol](#valve)                         |
 | sdtd                 | 7 Days to Die                                    | [Notes](#sdtd), [Valve Protocol](#valve)         |
 | serioussam           | Serious Sam                                      |                                                  |
 | serioussam2          | Serious Sam 2                                    |                                                  |
