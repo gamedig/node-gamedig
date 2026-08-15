@@ -5,6 +5,7 @@
 * Feat: The Cenozoic Era - Added support (#768)
 * Feat: VEIN - Added support (#768)
 * Feat: Mindustry - Added support (#768)
+* Feat: s&box - Added support
 
 ## 5.3.3
 * Fix: ignore stale player list entries (By @cetteup #744)
