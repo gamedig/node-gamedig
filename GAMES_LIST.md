@@ -60,6 +60,7 @@
 | cacr                 | Command and Conquer: Renegade                    |                                                  |
 | cbu                  | Clive Barker's Undying                           |                                                  |
 | chaser               | Chaser                                           |                                                  |
+| chivalry2            | Chivalry 2                                       | [Notes](#chivalry2), [Valve Protocol](#valve)    |
 | chrome               | Chrome                                           |                                                  |
 | cmw                  | Chivalry: Medieval Warfare                       | [Valve Protocol](#valve)                         |
 | cod                  | Call of Duty                                     |                                                  |
@@ -524,6 +525,11 @@ Does not provide players data.
 
 ### <a name="soulmask"></a>Soulmask
 Soulmask reports a hardcoded version (`1.0.0.0`) in the A2S_INFO response. To get the real game version, pass `requestRules: true` — the actual version is read from the `NO_s` rules key.
+
+### <a name="chivalry2"></a>Chivalry 2
+Chivalry 2 reports an incorrect `appId` (`100`) in the `raw` field. This is a limitation of the A2S protocol, so it cannot represent Chivalry 2's real Steam appId (`1824220`).
+
+Player names containing non-ASCII characters may be truncated by the server, so a name like `ŦĐ Vanguardian` arrives as `ŦĐ Vanguard`, while pure-ASCII names come through intact.
 
 Protocols with Additional Notes
 ---
