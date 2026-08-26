@@ -5,6 +5,7 @@
 * Feat: The Cenozoic Era - Added support (#768)
 * Feat: VEIN - Added support (#768)
 * Feat: Mindustry - Added support (#768)
+* Feat: Add `stripTypes` option to return plain JS objects/arrays instead of the typed `Results`/`Players`/`Player` instances (#657)
 
 ## 5.3.3
 * Fix: ignore stale player list entries (By @cetteup #744)
