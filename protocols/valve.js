@@ -114,6 +114,10 @@ export default class valve extends Core {
       }
     }
 
+    // some servers (e.g. Starbound) report a placeholder appId in A2S_INFO and
+    // provide no usable GameID field; allow the game config to supply the real one
+    if (this.options.appId) state.raw.appId = this.options.appId
+
     const appId = state.raw.appId
 
     // from https://developer.valvesoftware.com/wiki/Server_queries
