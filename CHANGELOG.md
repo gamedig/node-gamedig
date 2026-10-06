@@ -5,6 +5,7 @@
 * Feat: The Cenozoic Era - Added support (#768)
 * Feat: VEIN - Added support (#768)
 * Feat: Mindustry - Added support (#768)
+* Feat: Minecraft Bedrock - Support servers on the NetherNet transport (BDS 26.50+) through the `/v1/join` endpoint as a fallback when the RakNet ping fails
 
 ## 5.3.3
 * Fix: ignore stale player list entries (By @cetteup #744)
