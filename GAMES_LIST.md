@@ -23,7 +23,7 @@
 | armagetronadvanced   | Armagetron Advanced                              |                                                  |
 | armareforger         | ARMA: Reforger                                   | [Notes](#armareforger), [Valve Protocol](#valve) |
 | armaresistance       | ARMA: Resistance                                 |                                                  |
-| asa                  | Ark: Survival Ascended                           | [EOS Protocol](#epic)                            |
+| asa                  | Ark: Survival Ascended                           | [Notes](#asa), [EOS Protocol](#epic)             |
 | ase                  | Ark: Survival Evolved                            | [Valve Protocol](#valve)                         |
 | asr08                | Arca Sim Racing '08                              |                                                  |
 | assettocorsa         | Assetto Corsa                                    |                                                  |
@@ -534,6 +534,20 @@ option: `requestRules: true`. Beware that this may increase query time.
 
 ### <a name="epic"></a>Epic Online Services (EOS) Protocol
 EOS does not provide players data.
+
+### <a name="asa"></a>Ark: Survival Ascended
+ASA does not answer direct server queries; all server info comes from Epic Online Services (EOS).
+
+The `asa` protocol resolves the server's EOS **session ID** and then reads that session directly:
+
+- **Official and Nitrado-hosted unofficial servers** are listed on ARK's public server lists, so they are resolved automatically from `IP:port` (no extra options needed). Because these lists are large, you may need to raise the timeout, e.g. `socketTimeout: 10000`.
+- **Private / self-hosted servers** are not on those public lists and cannot be discovered by IP. For these, pass the server's EOS session ID via the `token` option.
+
+The session ID is a 32-character hex string (e.g. `1b3a5edf9b1f4e7b82affa72496ea46d`) that the server logs when it registers with EOS (check `ShooterGame/Saved/Logs/`). Note that the session ID changes every time the server restarts, so it must be refreshed after each restart.
+
+```
+gamedig --type asa --token <eos-session-id> 1.2.3.4:7777
+```
 
 ### <a name="palworld"></a>Palworld
 Palworld support can be unstable, the devs mention the api is currently experimental.  
