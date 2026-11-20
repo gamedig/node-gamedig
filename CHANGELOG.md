@@ -1,6 +1,7 @@
 
 ## To Be Released...
 ## 5.X.Y
+* Fix: `maxRetries` now means the number of retries *after* the first attempt (total tries per port = `maxRetries + 1`) and `maxRetries: 0` is honored for a single try with no retries. Note: passing an explicit `maxRetries` now performs one more try than before; the error message also reports `tries x ports` for clarity (#640)
 * Feat: American Truck Simulator - Added support (#768)
 * Feat: The Cenozoic Era - Added support (#768)
 * Feat: VEIN - Added support (#768)
