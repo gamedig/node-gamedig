@@ -98,6 +98,7 @@
 | dayzmod              | DayZ Mod                                         | [Valve Protocol](#valve)                         |
 | ddd                  | Dino D-Day                                       | [Valve Protocol](#valve)                         |
 | ddpt                 | Deadly Dozen: Pacific Theater                    |                                                  |
+| deadlock             | Deadlock                                         | [Valve Protocol](#valve)                         |
 | deathmatchclassic    | Deathmatch Classic                               | [Valve Protocol](#valve)                         |
 | deerhunter2005       | Deer Hunter 2005                                 |                                                  |
 | descent3             | Descent 3                                        |                                                  |
