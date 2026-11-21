@@ -220,6 +220,7 @@
 | nmrih                | No More Room in Hell                             | [Valve Protocol](#valve)                         |
 | nolf2asihw           | No One Lives Forever 2: A Spy in H.A.R.M.'s Way  |                                                  |
 | nucleardawn          | Nuclear Dawn                                     | [Valve Protocol](#valve)                         |
+| nuclearoption        | Nuclear Option                                   | [Valve Protocol](#valve)                         |
 | ofcwc                | Operation Flashpoint: Cold War Crisis            |                                                  |
 | ofr                  | Operation Flashpoint: Resistance                 |                                                  |
 | ohd                  | Operation: Harsh Doorstop                        | [Valve Protocol](#valve)                         |
