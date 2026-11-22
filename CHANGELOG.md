@@ -5,6 +5,7 @@
 * Feat: The Cenozoic Era - Added support (#768)
 * Feat: VEIN - Added support (#768)
 * Feat: Mindustry - Added support (#768)
+* Fix: Starbound - report correct appId (211820) via a new optional valve `appId` config override (#617)
 
 ## 5.3.3
 * Fix: ignore stale player list entries (By @cetteup #744)
