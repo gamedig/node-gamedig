@@ -357,6 +357,7 @@
 | warfork              | Warfork                                          |                                                  |
 | warsow               | Warsow                                           |                                                  |
 | wet                  | Wolfenstein: Enemy Territory                     |                                                  |
+| windrose             | Windrose                                         | [Valve Protocol](#valve)                         |
 | wolfenstein          | Wolfenstein                                      |                                                  |
 | wop                  | World Of Padman                                  |                                                  |
 | wot                  | Wheel of Time                                    |                                                  |

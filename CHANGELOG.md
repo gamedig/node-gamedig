@@ -1,6 +1,7 @@
 
 ## To Be Released...
 ## 5.X.Y
+* Feat: Windrose - Added support (#791)
 * Feat: American Truck Simulator - Added support (#768)
 * Feat: The Cenozoic Era - Added support (#768)
 * Feat: VEIN - Added support (#768)
