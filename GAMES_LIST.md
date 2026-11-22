@@ -289,6 +289,7 @@
 | stalker              | S.T.A.L.K.E.R.                                   |                                                  |
 | starbound            | Starbound                                        | [Valve Protocol](#valve)                         |
 | starmade             | StarMade                                         |                                                  |
+| starrupture          | StarRupture                                      |                                                  |
 | starsiege            | Starsiege                                        |                                                  |
 | stbc                 | Star Trek: Bridge Commander                      |                                                  |
 | stn                  | Survive the Nights                               | [Valve Protocol](#valve)                         |
