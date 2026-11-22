@@ -24,13 +24,20 @@ for (const key of Object.keys(argv)) {
   options[key] = value
 }
 
-// Separate host and port
+// Separate host and port, supporting IPv6 addresses (RFC 3986)
 if (argv._.length >= 1) {
-  const target = argv._[0]
-  const split = target.split(':')
-  options.host = split[0]
-  if (split.length > 1) {
-    options.port = split[1]
+  const target = String(argv._[0])
+  const bracketed = target.match(/^\[(.+)\](?::(.+))?$/)
+  if (bracketed) {
+    // Bracketed IPv6, e.g. [2001:db8::1]:27015 or [2001:db8::1]
+    options.host = bracketed[1]
+    if (bracketed[2]) options.port = bracketed[2]
+  } else if (target.split(':').length === 2) {
+    // Exactly one colon: host:port or ipv4:port
+    [options.host, options.port] = target.split(':')
+  } else {
+    // No port, or a bare (unbracketed) IPv6 address
+    options.host = target
   }
 }
 
