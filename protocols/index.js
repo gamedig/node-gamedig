@@ -56,6 +56,7 @@ import starmade from './starmade.js'
 import starsiege from './starsiege.js'
 import teamspeak2 from './teamspeak2.js'
 import teamspeak3 from './teamspeak3.js'
+import teamspeak6 from './teamspeak6.js'
 import terraria from './terraria.js'
 import toxikk from './toxikk.js'
 import tribes1 from './tribes1.js'
@@ -82,6 +83,6 @@ export {
   armagetron, ase, asa, assettocorsa, battlefield, brokeprotocol, brokeprotocolmaster, buildandshoot, cs2d, discord, doom3, eco, epic, factorio, farmingsimulator, ffow,
   fivem, gamespy1, gamespy2, gamespy3, geneshift, goldsrc, gtasao, hawakening, hawakeningmaster, hexen2, hytale, jc2mp, kspdmp, mafia2mp, mafia2online, minecraft,
   minecraftbedrock, minecraftvanilla, mindustry, minetest, mumble, mumbleping, nadeo, openttd, palworld, quake1, quake2, quake3, renegadex, renegadexmaster, renown, rfactor, ragemp, samp,
-  satisfactory, soldat, savage2, squad, starmade, starsiege, teamspeak2, teamspeak3, terraria, toxikk, tribes1, tribes1master, unreal2, ut3, valve,
+  satisfactory, soldat, savage2, squad, starmade, starsiege, teamspeak2, teamspeak3, teamspeak6, terraria, toxikk, tribes1, tribes1master, unreal2, ut3, valve,
   vcmp, ventrilo, warsow, eldewrito, beammpmaster, beammp, dayz, theisleevrima, xonotic, altvmp, vintagestorymaster, vintagestory, sdtd, scpsl
 }

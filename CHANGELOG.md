@@ -1,5 +1,6 @@
 
 ## To Be Released...
+* Feat: TeamSpeak 6 - Added support via the HTTP WebQuery API (By @yellowfromseegg #756)
 ## 5.X.Y
 * Feat: American Truck Simulator - Added support (#768)
 * Feat: The Cenozoic Era - Added support (#768)

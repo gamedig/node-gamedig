@@ -312,6 +312,7 @@
 | teamfortress2        | Team Fortress 2                                  | [Valve Protocol](#valve)                         |
 | teamspeak2           | Teamspeak 2                                      |                                                  |
 | teamspeak3           | Teamspeak 3                                      | [Notes](#teamspeak3)                             |
+| teamspeak6           | Teamspeak 6                                      | [Notes](#teamspeak6)                             |
 | terminus             | Terminus                                         |                                                  |
 | terrariatshock       | Terraria - TShock                                | [Notes](#terraria)                               |
 | tfc                  | Team Fortress Classic                            | [Valve Protocol](#valve)                         |
@@ -467,6 +468,20 @@ For teamspeak 3 queries to work correctly, the following permissions must be ava
 
 In the extremely unusual case that your server host responds to queries on a non-default port (the default is 10011),
 you can specify their host query port using the teamspeakQueryPort option.
+
+### <a name="teamspeak6"></a>TeamSpeak 6
+Requires the API key passed as `token` (displayed in the logs of the **first** server start).
+The HTTP query port is passed as `teamspeakQueryPort` (it is different from `port`, which is the voice port).
+If no `port` is passed but the query succeeds, an error listing the available ports will be returned.
+
+Needed Options:
+| option              | Value            | Default   |
+|---------------------|------------------|-----------|
+| port                | Voice Port       | 9987      |
+| teamspeakQueryPort  | http queryport   | 10080     |
+| token               | < API-Key >      | -         |
+| type                | teamspeak6       | -         |
+| host                | < your host ip > | -         |
 
 ### <a name="terraria"></a>Terraria
 Requires tshock server mod, and a REST user token, which can be passed to GameDig with the
